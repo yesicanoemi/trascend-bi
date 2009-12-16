@@ -1,0 +1,6 @@
+#summary Pagina para listar los requerimientos en forma de historia de usuarios
+
+= Introduction =
+
+Una historia de usuario es un requerimiento de un sistema de software formulado como una o mas oraciones utilizando lenguaje comun.
+
