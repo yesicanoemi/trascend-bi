@@ -1,0 +1,14 @@
+#labels Integración,Consistencia,Menúdelaaplicación
+Equipo de integración
+
+
+= Detalles =
+
+
+Integridad y Consistencia de la Base de Datos: María Salazar.
+
+Homegeneidad y Consistencia de la interfaz gráfica: Manuel Vargas.
+
+Creación del menú de la aplicación: Manuel Vargas.
+
+Enlaces entre las opciones del menú y páginas de la aplicación: María Salazar y Manuel Vargas.
