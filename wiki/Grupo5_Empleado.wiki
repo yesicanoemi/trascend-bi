@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Gestion de Empleados en el Sistema.
+
+
+= Details =
+  * Ingresar Empleado*_Eduardo Rotundo_
+  * Modificar Empleado* _Eduardo Rotundo_
+  * Consultar Empleado * _Iann Yanes_
+  * Eliminar Empleado * _Iann Yanes_
