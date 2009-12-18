@@ -6,7 +6,7 @@ Gestion de Empleados en el Sistema.
 
 
 = Details =
-  * Ingresar Empleado*_Eduardo Rotundo_
+  * Ingresar Empleado* _Eduardo Rotundo_
   * Modificar Empleado* _Eduardo Rotundo_
-  * Consultar Empleado * _Iann Yanes_
-  * Eliminar Empleado * _Iann Yanes_
+  * Consultar Empleado* _Iann Yanes_
+  * Eliminar Empleado* _Iann Yanes_
