@@ -1,4 +1,4 @@
-#Gestión de Usuario.
+#summary One-Gestión de Usuario.
 
 = Introducción =
 
@@ -6,12 +6,12 @@ Casos de uso para la gestión de usuario y 2 reportes
 
 = Detalles =
 
-* Agregar Usuario - Daniel Trejo
-* Modificar Usuario - Daniel Trejo
-* Consultar Usuario - Dinangela Rojas 
-* Eliminar Usuario - Sofia Ostos 
-* Recuperación de contraseña - Sofia Ostos 
+    * Agregar Usuario - Daniel Trejo
+    * Modificar Usuario - Daniel Trejo
+    * Consultar Usuario - Dinangela Rojas 
+    * Eliminar Usuario - Sofia Ostos 
+    * Recuperación de contraseña - Sofia Ostos 
 
 Reportes: 
-* Gastos anuales - Sofia Ostos
-* Facturas emitidas por rango de fecha - Dinangela Rojas
+    * Gastos anuales - Sofia Ostos
+    * Facturas emitidas por rango de fecha - Dinangela Rojas
