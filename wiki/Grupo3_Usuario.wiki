@@ -1,4 +1,4 @@
-#summary One-Gestión de Usuario.
+#summary Gestión de Usuario.
 
 = Introducción =
 
