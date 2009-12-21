@@ -7,10 +7,16 @@ Add your content here.
 
 = Details =
 
-Ingresar Propuesta 
+Ingresar Propuesta - Juan Diego De Abreu
 
-Modificar Propuesta
+Modificar Propuesta - Jean Paul Benfele
 
-Consultar Propuesta
+Consultar Propuesta - Akemi Tirado
 
-Eliminar Propuesta
+Eliminar Propuesta - Akemi Tirado
+
+Reporte
+
+Propuesta emitida por rango de fecha - Juan Diego De Abreu
+
+Total de propuestas emitidas anuales - Jean Paul Benfele
