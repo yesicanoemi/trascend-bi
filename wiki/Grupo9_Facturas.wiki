@@ -1,4 +1,4 @@
-#labels Gestión_de_facturas
+#labels Gestión,de,Facturas
 1. Ingresar Factura - Luis Figueras
 
 2. Modificar Factura - Jesús Viloria
@@ -7,5 +7,7 @@
 
 
 Reportes:
+
 Propuestas emitidas por rango de fechas - Jesús Viloria
+
 Total de propuestas emitidas anuales - Alexis Romero
