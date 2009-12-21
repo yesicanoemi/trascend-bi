@@ -1,4 +1,4 @@
-#summary Gestion de Facturas
+#summary Gestión de Facturas
 
 = Introduction =
 Add your content here.
