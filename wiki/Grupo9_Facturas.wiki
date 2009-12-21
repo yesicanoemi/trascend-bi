@@ -1,4 +1,12 @@
-#labels Gestión_de_Facturas
+#summary Gestion de Facturas
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
 1. Ingresar Factura - Luis Figueras
 
 2. Modificar Factura - Jesús Viloria
