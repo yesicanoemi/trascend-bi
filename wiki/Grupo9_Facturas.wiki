@@ -1,7 +1,6 @@
 #summary Gestion de Facturas
 
 = Introduction =
-
 Add your content here.
 
 
