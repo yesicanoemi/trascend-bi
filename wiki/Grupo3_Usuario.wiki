@@ -29,6 +29,10 @@ Casos de uso para la gestión de usuario y 2 reportes
 || *Flujo Principal* || *1)* El sistema solicita los datos del <br> usuario (nombre, apellido, email y CI <br> o RIF según sea el caso) <br> *2)* El usuario introduce los datos y pulsa <br> el botón enviar. <br> *3)* El sistema verifica los datos y los <br> almacena. <br> *4)* El usuario administrador asigna nombre, <br>  contraseña y permisos al nuevo usuario  y <br> los almacena, y le da click a "Enviar correo"<br> *5)* El sistema verifica los datos <br> almacenándolos y enviando el correo. <br> *6)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *2a)* El usuario selecciona la opción "Salir" <br> y el sistema finaliza el caso de uso. <br> *3a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 2) del  <br>Flujo Principal. <br> *4a)* El usuario rechaza la solicitud y finaliza <br> el caso de uso. <br> *5a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 4) del <br>Flujo Principal. <br> ||
 
+http://trascend-bi.googlecode.com/files/Usuario_Agregar.jpg
+
+
+
 *2) Modificar Usuario:*
 
 || *Identificador* || *CU-U02* ||
