@@ -1,6 +1,8 @@
 #summary Gestión de Usuario.
 
-<wiki:toc />
+*Tabla de Contenido:*
+
+<wiki:toc max_depth="4"/>
 
 == Introducción ==
 
