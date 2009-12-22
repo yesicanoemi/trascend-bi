@@ -1,10 +1,10 @@
 #summary Gestión de Usuario.
 
-= Introducción =
+== Introducción ==
 
 Casos de uso para la gestión de usuario y 2 reportes
 
-= Detalles =
+== Detalles ==
 
     * Agregar Usuario - Daniel Trejo
     * Modificar Usuario - Daniel Trejo
@@ -16,7 +16,7 @@ Casos de uso para la gestión de usuario y 2 reportes
     * Gastos anuales - Sofia Ostos
     * Facturas emitidas por rango de fecha - Dinangela Rojas
 
-= Casos de uso =
+== Casos de uso ==
 
 *1) Agregar Usuario:*
 
