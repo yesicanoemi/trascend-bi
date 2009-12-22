@@ -27,8 +27,16 @@ Casos de uso para la gestión de usuario y 2 reportes
 || *Resumen/Propósito*  || El usuario ingresará los datos requeridos, <br> el sistema verificará la información, <br> seguidamente el usuario administrador <br> asignará un nombre de usuario, contraseña <br> y permisos, el sistema mandará un mail <br> notificando el registro exitoso al usuario.|| 
 || *Precondiciones* || *1)* La persona a registrar debe elegir entre <br> empleado o cliente. <br> *2)* El sistema verificará la existencia de la <br> CI del empleado o RIF del cliente. <br> *3)* Verificar el nombre de usuario.||
 || *Flujo Principal* || *1)* El sistema solicita los datos del <br> usuario (nombre, apellido, email y CI <br> o RIF según sea el caso) <br> *2)* El usuario introduce los datos y pulsa <br> el botón enviar. <br> *3)* El sistema verifica los datos y los <br> almacena. <br> *4)* El usuario administrador asigna nombre, <br>  contraseña y permisos al nuevo usuario  y <br> los almacena, y le da click a "Enviar correo"<br> *5)* El sistema verifica los datos <br> almacenándolos y enviando el correo. <br> *6)* El sistema finaliza el caso de uso.||
-|| *Flujos Alternativos* || *2a)* El usuario selecciona la opción "Salir" <br> y el sistema finaliza el caso de uso. <br> *3a)* Se produce un error en los datos <br> y el sistema informa al usuario para <br> que éste los vuelva a introducir, volviendo<br> al paso 2) del Flujo Principal.||
+|| *Flujos Alternativos* || *2a)* El usuario selecciona la opción "Salir" <br> y el sistema finaliza el caso de uso. <br> *3a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 2) del  <br>Flujo Principal. <br> *4a)* El usuario rechaza la solicitud y finaliza <br> el caso de uso. <br> *5a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 4) del <br>Flujo Principal. <br> ||
 
 
+*2) Modificar Usuario:*
 
-
+|| *Identificador* || *CU-U02* ||
+|| *Caso de Uso* ||Modificar datos o permisos de usuario ||
+|| *Actores* ||Sistema, Usuario, Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || Permitir modificar la información o permisos  <br> de un usuario existente en el sistema||
+|| *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> y permisos del usuario a modificar.||
+|| *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El sistema muestra los datos del usuario <br> (nombre, apellido, email, CI o RIF según<br> sea el caso y si desea  cambiar la<br> contraseña) o  los permisos del mismo. <br> *4)* El usuario modifica los datos o permisos <br>(según sea el caso) y pulsa el botón<br> "Guardar". <br> *5)* El sistema actualiza los datos o <br>permisos. <br> *6)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del <br>Flujo Principal. <br> *4a)* El usuario selecciona la opción "Salir",<br> el sistema finaliza el caso de uso.||
