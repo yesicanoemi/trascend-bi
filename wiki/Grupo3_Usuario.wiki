@@ -12,6 +12,23 @@ Casos de uso para la gestión de usuario y 2 reportes
     * Eliminar Usuario - Sofia Ostos 
     * Recuperación de contraseña - Sofia Ostos 
 
-Reportes: 
+*Reportes:*
     * Gastos anuales - Sofia Ostos
     * Facturas emitidas por rango de fecha - Dinangela Rojas
+
+= Casos de uso =
+
+*1) Agregar Usuario:*
+
+|| *Identificador* || *CU-U01* ||
+|| *Caso de Uso* ||Ingresar usuario ||
+|| *Actores* ||Sistema, Usuario, Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El usuario ingresará los datos requeridos, <br> el sistema verificará la información, <br> seguidamente el usuario administrador <br> asignará un nombre de usuario, contraseña <br> y permisos, el sistema mandará un mail <br> notificando el registro exitoso al usuario.|| 
+|| *Precondiciones* || *1)* La persona a registrar debe elegir entre <br> empleado o cliente. <br> *2)* El sistema verificará la existencia de la <br> CI del empleado o RIF del cliente. <br> *3)* Verificar el nombre de usuario.||
+|| *Flujo Principal* || *1)* El sistema solicita los datos del <br> usuario (nombre, apellido, email y CI <br> o RIF según sea el caso) <br> *2)* El usuario introduce los datos y pulsa <br> el botón enviar. <br> *3)* El sistema verifica los datos y los <br> almacena. <br> *4)* El usuario administrador asigna nombre, <br>  contraseña y permisos al nuevo usuario  y <br> los almacena, y le da click a "Enviar correo"<br> *5)* El sistema verifica los datos <br> almacenándolos y enviando el correo. <br> *6)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *2a)* El usuario selecciona la opción "Salir" <br> y el sistema finaliza el caso de uso. <br> *3a)* Se produce un error en los datos <br> y el sistema informa al usuario para <br> que éste los vuelva a introducir, volviendo<br> al paso 2) del Flujo Principal.||
+
+
+
+
