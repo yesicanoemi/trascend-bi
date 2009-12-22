@@ -1,5 +1,7 @@
 #summary Gestión de Usuario.
 
+<wiki:toc />
+
 == Introducción ==
 
 Casos de uso para la gestión de usuario y 2 reportes
@@ -18,7 +20,7 @@ Casos de uso para la gestión de usuario y 2 reportes
 
 == Casos de uso ==
 
-*1) Agregar Usuario:*
+====*1) Agregar Usuario*====
 
 || *Identificador* || *CU-U01* ||
 || *Caso de Uso* ||Ingresar usuario ||
@@ -33,7 +35,7 @@ http://trascend-bi.googlecode.com/files/Usuario_Agregar.jpg
 
 
 
-*2) Modificar Usuario:*
+====*2) Modificar Usuario*====
 
 || *Identificador* || *CU-U02* ||
 || *Caso de Uso* ||Modificar datos o permisos de usuario ||
@@ -47,7 +49,7 @@ http://trascend-bi.googlecode.com/files/Usuario_Agregar.jpg
 http://trascend-bi.googlecode.com/files/Usuario_Modificar.jpg
 
 
-*3) Consultar Usuario:*
+====*3) Consultar Usuario*====
 
 || *Identificador* || *CU-U03* ||
 || *Caso de Uso* ||Consultar datos o permisos de usuario ||
