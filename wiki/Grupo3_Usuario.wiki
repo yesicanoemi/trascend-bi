@@ -44,6 +44,8 @@ http://trascend-bi.googlecode.com/files/Usuario_Agregar.jpg
 || *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El sistema muestra los datos del usuario <br> (nombre, apellido, email, CI o RIF según<br> sea el caso y si desea  cambiar la<br> contraseña) o  los permisos del mismo. <br> *4)* El usuario modifica los datos o permisos <br>(según sea el caso) y pulsa el botón<br> "Guardar". <br> *5)* El sistema actualiza los datos o <br>permisos. <br> *6)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br> *4a)* El usuario selecciona la opción "Salir",<br> el sistema finaliza el caso de uso.||
 
+http://trascend-bi.googlecode.com/files/Usuario_Modificar.jpg
+
 
 *3) Consultar Usuario:*
 
@@ -55,3 +57,5 @@ http://trascend-bi.googlecode.com/files/Usuario_Agregar.jpg
 || *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> y permisos del usuario a consultar.||
 || *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El sistema muestra los datos del usuario <br> (nombre, apellido, email, CI o RIF según<br> sea el caso. <br>*4)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal.||
+
+http://trascend-bi.googlecode.com/files/Usuario_Consultar.jpg
