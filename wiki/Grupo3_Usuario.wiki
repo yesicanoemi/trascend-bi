@@ -2,7 +2,7 @@
 
 *Tabla de Contenido:*
 
-<wiki:toc max_depth="4"/>
+<wiki:toc />
 
 == Introducción ==
 
