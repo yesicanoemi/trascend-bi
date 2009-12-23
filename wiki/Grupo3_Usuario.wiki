@@ -66,6 +66,6 @@ http://trascend-bi.googlecode.com/files/Usuario_Consultar.jpg
 
 == Diagrama de Clases ==
 
-*NOTA:* Esto no es el diagrama de clases final sino lo que llevamos hasta los momentos. 
+*NOTA:* Esto no es el diagrama de clases final sino lo que llevamos hasta los momentos.  
 
 http://trascend-bi.googlecode.com/files/Usuario_DiagramaDeClases.jpg
