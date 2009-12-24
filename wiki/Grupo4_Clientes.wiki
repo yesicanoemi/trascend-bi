@@ -1,4 +1,4 @@
-#Gestión de clientes
+#summary Gestión de clientes.
 = Introduction =
 
 Gestion de clientes en el sistema.
