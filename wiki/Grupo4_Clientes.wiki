@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Gestion de clientes en el sistema.
+
+
+
+= Details =
+
+
+  * *Ingresar cliente* _Bracho Harold_
+  * *Modificar clientes* _Bracho Harold_
+  * *Eliminar clientes* _Ibarra Antonio_
+  * *Consultar clientes* _Ibarra Antonio_
