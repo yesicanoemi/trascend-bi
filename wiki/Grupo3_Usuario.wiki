@@ -64,6 +64,20 @@ http://trascend-bi.googlecode.com/files/Usuario_Modificar.jpg
 
 http://trascend-bi.googlecode.com/files/Usuario_Consultar.jpg
 
+====*4) Eliminar Usuario*====
+
+|| *Identificador* || *CU-U04* ||
+|| *Caso de Uso* ||Eliminar usuario ||
+|| *Actores* ||Sistema, Usuario, Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || Permitir a un usuario administrador <br>  cambiar el estatus <br> de activo a inactivo <br> de un usuario existente en el sistema <br> quedando este inhabilitado||
+|| *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> del usuario a eliminar.||
+|| *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br>*2)* El sistema valida el usuario. <br>*3)* El usuario administrador introduce<br> el nombre del usuario a eliminar <br>*4)* El sistema valida el usuario <br>*5)* El sistema muestra los datos del usuario <br>*6)* El usuario administrador modifica el estatus <br>y pulsa el botón<br> "Guardar". <br>*7)* El sistema actualiza el estatus <br>y deshablita al usuario. <br>*8)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br> *4a)* Se produce un error al <br> encontrar el usuario<br> el sistema vuelve al paso 3) del Flujo <br>Principal. <br> *8a)* El usuario selecciona la opción "Salir",<br> el sistema finaliza el caso de uso. ||
+
+
+
+
 == Diagrama de Clases ==
 
 *NOTA:* Esto no es el diagrama de clases final sino lo que llevamos hasta los momentos.  
