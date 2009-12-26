@@ -76,6 +76,7 @@ http://trascend-bi.googlecode.com/files/Usuario_Consultar.jpg
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br> *4a)* Se produce un error al <br> encontrar el usuario<br> el sistema vuelve al paso 3) del Flujo <br>Principal. <br> *8a)* El usuario selecciona la opción "Salir",<br> el sistema finaliza el caso de uso. ||
 
 
+http://trascend-bi.googlecode.com/files/Eliminar.jpg
 
 ====*5) Recuperar contraseña*====
 
