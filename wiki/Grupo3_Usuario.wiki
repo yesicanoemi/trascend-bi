@@ -88,7 +88,7 @@ http://trascend-bi.googlecode.com/files/Eliminar.jpg
 || *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> del usuario a recuperar contraseña.||
 || *Flujo Principal* || *1)* El usuario selecciona la opcion <br>de recuperar la contraseña. <br>*2)* El usuario introduce su login <br> *3)* El sistema valida el usuario. <br>*4) El sistema muestra la pregunta <br> *5) El usuario introduce su respuesta<br> a la pregunta secreta <br>*6)* El sistema valida la respuesta <br>*7)* El sistema envia un email <br> al usuario con una contraseña nueva <br>*8)* El sistema finaliza el caso de uso.||
 
-http://trascend-bi.googlecode.com/files/Use Case Diagram2.jpg
+http://trascend-bi.googlecode.com/files/Rec_Cont.jpg
 
 
 
