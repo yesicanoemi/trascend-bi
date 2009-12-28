@@ -1,12 +1,5 @@
 #summary Gestion de Propuesta
 
-*Introduccion
-
-*Detalles
-
-*Casos de Uso
-
-
 = Introduccion =
 
 Add your content here.
