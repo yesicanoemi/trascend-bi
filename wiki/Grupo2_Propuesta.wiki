@@ -1,10 +1,10 @@
 #summary Gestion de Propuesta
 
-* Introduccion
+*Introduccion
 
-* Detalles
+*Detalles
 
-* Casos de Uso
+*Casos de Uso
 
 
 = Introduccion =
