@@ -98,4 +98,4 @@ http://trascend-bi.googlecode.com/files/Usuario_Reporte_Facturas.jpg
 
 *NOTA:* Esto no es el diagrama de clases final sino lo que llevamos hasta los momentos.  
 
-http://trascend-bi.googlecode.com/files/Usuario_DiagramaDeClases.jpg
+http://trascend-bi.googlecode.com/files/Usuario_Diagrama_Clases.jpg
