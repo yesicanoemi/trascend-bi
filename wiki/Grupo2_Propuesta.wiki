@@ -1,11 +1,18 @@
 #summary Gestion de Propuesta
 
-= Introduction =
+* Introduccion
+
+* Detalles
+
+* Casos de Uso
+
+
+= Introduccion =
 
 Add your content here.
 
 
-= Details =
+= Detalles =
 
 Ingresar Propuesta - Juan Diego De Abreu
 
