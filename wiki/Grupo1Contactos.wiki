@@ -1,0 +1,16 @@
+#summary One-sentence summary of this page.
+
+Gestion Contacto
+
+= Introduction =
+
+Gestion de Contacto en el Sistema
+
+= Details =
+
+Ingresar Contacto: Edgar Ruiz.
+Eliminar Contacto: Claudio Melcón.
+Consultar Contacto: Claudio Melcón.
+Modificar Contacto: Edgar Ruiz.
+
+Sujeto a Cambios.
