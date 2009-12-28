@@ -33,7 +33,7 @@ Casos de uso para la gestión de usuario y 2 reportes
 || *Flujos Alternativos* || *2a)* El usuario selecciona la opción "Salir" <br> y el sistema finaliza el caso de uso. <br> *3a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 2) del  <br>Flujo Principal. <br> *4a)* El usuario rechaza la solicitud y finaliza <br> el caso de uso. <br> *5a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 4) del <br>Flujo Principal. <br> ||
 
 
-
+http://trascend-bi.googlecode.com/files/Usuario_Ingresar.jpg
 
 ====*2) Modificar Usuario*====
 
@@ -46,6 +46,8 @@ Casos de uso para la gestión de usuario y 2 reportes
 || *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El sistema muestra los datos del usuario <br> (nombre, apellido, email, CI o RIF según<br> sea el caso y si desea  cambiar la<br> contraseña) o  los permisos del mismo. <br> *4)* El usuario modifica los datos o permisos <br>(según sea el caso) y pulsa el botón<br> "Guardar". <br> *5)* El sistema actualiza los datos o <br>permisos. <br> *6)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br> *4a)* El usuario selecciona la opción "Salir",<br> el sistema finaliza el caso de uso.||
 
+
+http://trascend-bi.googlecode.com/files/Usuario_Modificar.jpg
 
 
 ====*3) Consultar Usuario*====
@@ -60,6 +62,7 @@ Casos de uso para la gestión de usuario y 2 reportes
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal.||
 
 
+http://trascend-bi.googlecode.com/files/Usuario_Consultar.jpg
 
 ====*4) Eliminar Usuario*====
 
@@ -88,6 +91,8 @@ http://trascend-bi.googlecode.com/files/Eliminar.jpg
 || *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El usuario selecciona el reporte de  <br>Facturas. <br>*4)* El sistema muestra el reporte de Facturas.  <br>*5)* El usuario imprime el reporte. <br>*6)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br>*5a)* El usuario no imprime el reporte.||
 
+
+http://trascend-bi.googlecode.com/files/Usuario_Reporte de Facturas.jpg
 
 == Diagrama de Clases ==
 
