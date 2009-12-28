@@ -10,14 +10,14 @@ Casos de uso para la gestión de usuario y 2 reportes
 
 == Detalles ==
 
-    * Agregar Usuario - Daniel Trejo
-    * Modificar Usuario - Daniel Trejo
-    * Consultar Usuario - Dinangela Rojas 
-    * Eliminar Usuario - Sofia Ostos 
+    * Agregar Usuario (CU-U01)- Daniel Trejo
+    * Modificar Usuario (CU-U02) - Daniel Trejo
+    * Consultar Usuario (CU-U03) - Dinangela Rojas 
+    * Eliminar Usuario (CU-U04)- Sofia Ostos 
 
 *Reportes:*
-    * Gastos anuales - Sofia Ostos
-    * Facturas emitidas por rango de fecha - Dinangela Rojas
+    * Gastos anuales (CU-U05)- Sofia Ostos
+    * Facturas emitidas por rango de fecha (CU-U06)- Dinangela Rojas
 
 == Casos de uso ==
 
