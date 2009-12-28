@@ -8,9 +8,9 @@ Gestion de Contacto en el Sistema
 
 = Details =
 
-Ingresar Contacto: Edgar Ruiz.
-Eliminar Contacto: Claudio Melcón.
-Consultar Contacto: Claudio Melcón.
-Modificar Contacto: Edgar Ruiz.
-
+Ingresar Contacto: Edgar Ruiz.<br/>
+Eliminar Contacto: Claudio Melcón.<br/>
+Consultar Contacto: Claudio Melcón.<br/>
+Modificar Contacto: Edgar Ruiz.<br/>
+<br/>
 Sujeto a Cambios.
