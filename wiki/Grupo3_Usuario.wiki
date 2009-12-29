@@ -27,10 +27,10 @@ Casos de uso para la gestión de usuario y 2 reportes
 || *Caso de Uso* ||Ingresar usuario ||
 || *Actores* ||Usuario administrador ||
 || *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  || El usuario ingresará los datos requeridos, <br> el sistema verificará la información, <br> seguidamente el usuario administrador <br> asignará un nombre de usuario, contraseña <br> y permisos, el sistema mandará un mail <br> notificando el registro exitoso al usuario.|| 
-|| *Precondiciones* || *1)* La persona a registrar debe elegir entre <br> empleado o cliente. <br> *2)* El sistema verificará la existencia de la <br> CI del empleado o RIF del cliente. <br> *3)* Verificar el nombre de usuario.||
-|| *Flujo Principal* || *1)* El sistema solicita los datos del <br> usuario (nombre, apellido, email y CI <br> o RIF según sea el caso) <br> *2)* El usuario introduce los datos y pulsa <br> el botón enviar. <br> *3)* El sistema verifica los datos y los <br> almacena. <br> *4)* El usuario administrador asigna nombre, <br>  contraseña y permisos al nuevo usuario  y <br> los almacena, y le da click a "Enviar correo"<br> *5)* El sistema verifica los datos <br> almacenándolos y enviando el correo. <br> *6)* El sistema finaliza el caso de uso.||
-|| *Flujos Alternativos* || *2a)* El usuario selecciona la opción "Salir" <br> y el sistema finaliza el caso de uso. <br> *3a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 2) del  <br>Flujo Principal. <br> *4a)* El usuario rechaza la solicitud y finaliza <br> el caso de uso. <br> *5a)* Se produce un error en los datos y el  <br>sistema informa al usuario para que éste los <br> vuelva a introducir, volviendo al paso 4) del <br>Flujo Principal. <br> ||
+|| *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>usuario al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el usuario administrador.||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo usuario <br> asignando un nombre de usuario y <br> contraseña.<br>*3)* El administrador asigna los permisos al <br> usuario y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
 
 
 http://trascend-bi.googlecode.com/files/Usuario_Ingresar.jpg
