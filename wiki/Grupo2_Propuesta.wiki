@@ -33,14 +33,20 @@ Total de propuestas emitidas anuales - Jean Paul Benfele
 
 http://trascend-bi.googlecode.com/files/GestionarPropuesta.jpg
 
+== *1- Ingresar Propuesta* ==
 
 http://trascend-bi.googlecode.com/files/IngresarPropuesta.JPG
 
+== *2- Consultar Propuesta* ==
 
 http://trascend-bi.googlecode.com/files/ConsultarPropuesta.JPG
 
 
+== *3- Modificar Propuesta* ==
+
 http://trascend-bi.googlecode.com/files/ModificarPropuesta.JPG
 
+
+== *4- Eliminar Propuesta* ==
 
 http://trascend-bi.googlecode.com/files/EliminarPropuesta.JPG
