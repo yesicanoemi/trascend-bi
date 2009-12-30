@@ -105,4 +105,4 @@ http://trascend-bi.googlecode.com/files/Usuario_Diagrama_Clases.jpg
 
 *NOTA:* Como se puede ver en la imagen, no es el diagrama de secuencia final.  
 
-http://trascend-bi.googlecode.com/files/Usuario_DiagramaSecuecia.jpg
+http://trascend-bi.googlecode.com/files/Usuario_DiagramaSecuencia.jpg
