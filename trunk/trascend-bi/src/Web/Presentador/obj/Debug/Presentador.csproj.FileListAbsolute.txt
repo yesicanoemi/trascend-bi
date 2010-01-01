@@ -1,0 +1,7 @@
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.pdb

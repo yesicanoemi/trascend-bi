@@ -1,0 +1,7 @@
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\bin\Debug\Core.exe
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\bin\Debug\Core.pdb
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.exe
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.pdb
