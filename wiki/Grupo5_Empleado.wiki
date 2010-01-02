@@ -1,12 +1,28 @@
 #summary Gestion de Empleados.
 
-= Introduction =
+*Tabla de Contenido:*
+<wiki:toc />
+
+== Introduccion ==
 
 Gestion de Empleados en el Sistema.
 
 
-= Details =
-  * Ingresar Empleado _Eduardo Rotundo_
-  * Modificar Empleado _Eduardo Rotundo_
-  * Consultar Empleado _Iann Yanes_
-  * Eliminar Empleado _Iann Yanes_
+== Details ==
+  * Ingresar Empleado (CU-E01) _Eduardo Rotundo_
+  * Modificar Empleado (CU-E02) _Eduardo Rotundo_
+  * Consultar Empleado (CU-E03) _Iann Yanes_
+  * Eliminar Empleado (CU-E04) _Iann Yanes_
+
+== Casos de uso ==
+
+====*1) Ingresar Empleado*====
+
+|| *Identificador* || *CU-E01* ||
+|| *Caso de Uso* ||Ingresar Empleado ||
+|| *Actores* ||Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Empleado al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el usuario administrador.||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado <br> asignando un nombre de usuario, de empleado y <br> contraseña.<br>*3)* El administrador asigna los permisos al <br> empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
