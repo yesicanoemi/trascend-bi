@@ -24,5 +24,38 @@ Gestion de Empleados en el Sistema.
 || *Tipo* ||Necesario ||
 || *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Empleado al sistema.|| 
 || *Precondiciones* || *1)* Debe existir el usuario administrador.||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado <br> asignando un nombre de empleado y los datos *3)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*2a)*El administrador crea un usuario asociado al empleado recien creado CU-U01.||
+
+====*2) Modificar Empleado*====
+
+|| *Identificador* || *CU-E02* ||
+|| *Caso de Uso* ||Modificar Empleado ||
+|| *Actores* || Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El usuario administrador selecciona y modifica los datos de un <br>Empleado en el sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el usuario administrador. <br> *2)* Debe existir el usuario a modificar||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador busca el Empleado que desea modificar <br> lo selecciona y el sistema le muestra los datos <br>*3)* El administrador asigna los valores <br> a los datos del empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
+
+====*3) Consultar Empleado*====
+
+|| *Identificador* || *CU-E02* ||
+|| *Caso de Uso* ||Modificar Empleado ||
+|| *Actores* || Por definir ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Empleado al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el usuario administrador.||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado <br> asignando un nombre de usuario, de empleado y <br> contraseña.<br>*3)* El administrador asigna los permisos al <br> empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
+
+====*4) Consultar Empleado*====
+
+|| *Identificador* || *CU-E02* ||
+|| *Caso de Uso* ||Modificar Empleado ||
+|| *Actores* || Por definir ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Empleado al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el usuario administrador.||
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado <br> asignando un nombre de usuario, de empleado y <br> contraseña.<br>*3)* El administrador asigna los permisos al <br> empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
