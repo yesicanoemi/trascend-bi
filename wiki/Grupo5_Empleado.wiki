@@ -24,7 +24,7 @@ Gestion de Empleados en el Sistema.
 || *Tipo* ||Necesario ||
 || *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Empleado al sistema.|| 
 || *Precondiciones* || *1)* Debe existir el usuario administrador.||
-|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado <br> asignando un nombre de empleado y los datos *3)* El sistema finaliza el caso de uso.||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado asignando un nombre de empleado y los datos <br>*3)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*2a)*El administrador crea un usuario asociado al empleado recien creado CU-U01.||
 
 ====*2) Modificar Empleado*====
