@@ -31,7 +31,7 @@ Gestion de Clientes en el Sistema.
 
 || *Identificador* || *CU-C02* ||
 || *Caso de Uso* ||Modificar Cliente ||
-|| *Actores* || Usuario administrador ||
+|| *Actores* || Usuario administrador, Cliente ||
 || *Tipo* ||Necesario ||
 || *Resumen/Propósito*  || El usuario administrador selecciona y modifica los datos <br> de un Cliente en el sistema.|| 
 || *Precondiciones* || *1)* Debe existir el usuario administrador. <br> *2)* Debe existir el cliente a modificar||
