@@ -35,10 +35,11 @@ http://trascend-bi.googlecode.com/files/CU_cons_fact.jpg
 
 http://trascend-bi.googlecode.com/files/Desc_cons_fact.jpg
 
-
+<br>
+<br>
 *Reportes:*
 <br>
-<br>
+
 ====*3) Propuestas emitidas por rango de fechas*====
 
 http://trascend-bi.googlecode.com/files/Rep1.jpg
