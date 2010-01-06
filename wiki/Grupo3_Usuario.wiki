@@ -85,7 +85,7 @@ http://trascend-bi.googlecode.com/files/EliminarU.jpg
 || *Caso de Uso* ||Reporte de Gastos Anuales ||
 || *Actores* ||Usuario, Usuario administrador ||
 || *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  || Permitir la consulta  de reportes  de los,  <br> gastos anuales ||
+|| *Resumen/Propósito*  || Permitir la consulta  de reportes  de los  <br> gastos anuales ||
 || *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los <br> permisos del usuario.  <br> *3)* El sistema debe tener gastos registrados.||
 || *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El usuario selecciona el reporte de  <br>Gastos Anuales. <br>*4)* El sistema muestra el reporte de Gastos Anuales.  <br>*5)* El usuario imprime el reporte. <br>*6)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br>*5a)* El usuario no imprime el reporte.||
