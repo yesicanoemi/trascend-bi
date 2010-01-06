@@ -50,3 +50,8 @@ http://trascend-bi.googlecode.com/files/ModificarPropuesta.JPG
 == *Eliminar Propuesta* ==
 
 http://trascend-bi.googlecode.com/files/EliminarPropuesta.JPG
+
+== *Diagrama de Clases* ==
+No es la Version Final
+
+http://trascend-bi.googlecode.com/files/DiagramadeClasesPropuesta.jpg
