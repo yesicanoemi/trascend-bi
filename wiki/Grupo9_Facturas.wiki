@@ -1,20 +1,27 @@
-#summary Gestión de Facturas
+#summary Gestión de Facturas.
 
-= Introduction =
-Add your content here.
+*Tabla de Contenido:*
+
+<wiki:toc />
+
+== Introducción ==
+
+Casos de uso para la Gestión de Facturas y 2 reportes correspondientes a propuestas.
+
+== Detalles ==
+
+    * Generar Factura (CU-901)    - Jesús Viloria
+    * Consultar Factura (CU-902)  - Luis Figueras 
+
+*Reportes:*
+    * Propuestas emitidas por rango de fechas (CU-903)- Alexis Romero
+    * Total de Propuestas emitidas anuales (CU-904)- Aún no definido
+
+== Casos de uso ==
+
+====*1) Generar Factura*====
+
+http://trascend-bi.googlecode.com/files/ing_fact.jpg
 
 
-= Details =
-
-1. Ingresar Factura - Luis Figueras
-
-2. Modificar Factura - Jesús Viloria
-
-3. Consultar Factura - Alexis Romero
-
-
-Reportes:
-
-Propuestas emitidas por rango de fechas - Jesús Viloria
-
-Total de propuestas emitidas anuales - Alexis Romero
+http://trascend-bi.googlecode.com/files/Desc_ing_fact.jpg
