@@ -38,3 +38,8 @@ http://trascend-bi.googlecode.com/files/Desc_cons_fact.jpg
 
 *Reportes:*
 ====*3) Propuestas emitidas por rango de fechas*====
+
+http://trascend-bi.googlecode.com/files/Rep_1.jpg
+
+
+http://trascend-bi.googlecode.com/files/Desc_Rep_1.jpg
