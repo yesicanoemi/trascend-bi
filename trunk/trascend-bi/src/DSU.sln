@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentador", "Web\Presenta
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site1", "Web\Site1\", "{21404306-33B2-471F-84F7-B49F58EB8F0F}"
 	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "Svn"
+		SccAuxPath = "Svn"
+		SccLocalPath = "Svn"
+		SccProvider = "SubversionScc"
 		TargetFramework = "2.0"
 		ProjectReferences = "{7C472447-ACA3-4627-9E00-8879527FECCC}|Presentador.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Site1"
