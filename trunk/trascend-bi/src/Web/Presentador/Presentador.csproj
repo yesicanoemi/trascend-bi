@@ -54,6 +54,9 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DefaultPresenter.cs" />
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
+    <Compile Include="Empleado\EmpleadoController.cs" />
+    <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
