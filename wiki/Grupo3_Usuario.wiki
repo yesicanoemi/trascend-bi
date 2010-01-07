@@ -122,3 +122,7 @@ http://trascend-bi.googlecode.com/files/Usuario_Diagrama_Clases.jpg
 ====*Iniciar Sesión*====
 
 http://trascend-bi.googlecode.com/files/GestionUsuario_Secuencia_IniSesion.jpg
+
+====*Agregar Usuario*====
+
+http://trascend-bi.googlecode.com/files/GestionUsuario_Secuencia_AgregarUsuario.jpg
