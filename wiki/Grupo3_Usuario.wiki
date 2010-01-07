@@ -115,8 +115,10 @@ http://trascend-bi.googlecode.com/files/Usuario_Reporte_Facturas.jpg
 http://trascend-bi.googlecode.com/files/Usuario_Diagrama_Clases.jpg
 
 
-== Diagrama de Secuencia ==
+== Diagramas de Secuencia ==
 
 *NOTA:* Como se puede ver en la imagen, no es el diagrama de secuencia final.  
 
-http://trascend-bi.googlecode.com/files/Usuario_DiagramaSecuencia.jpg
+====*Iniciar Sesión*====
+
+http://trascend-bi.googlecode.com/files/GestionUsuario_Secuencia_IniSesion.jpg
