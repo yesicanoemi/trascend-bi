@@ -27,7 +27,7 @@ Gestion de Clientes en el Sistema.
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Cliente<br> asignando un nombre de cliente y los datos basicos <br>*3)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
-http://trascend-bi.googlecode.com/files/Ingresar Cliente CU-C01.jpg
+http://trascend-bi.googlecode.com/files/Ingresar_Cliente_CU-C01.jpg
 
 ====*2) Modificar Cliente*====
 
