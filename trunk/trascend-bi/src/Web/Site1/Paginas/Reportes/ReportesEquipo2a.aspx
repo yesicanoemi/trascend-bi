@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo2a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -28,11 +29,47 @@
 			<div class="sub-content"> 
     <div class="features_overview"> 
         <div class="features_overview_right"> 
-            <h3>Reporte Equipo #2</h3> 
-            <p class="large">
+            <h3>Reporte Equipo #2 (Total horas anuales por rol)</h3> 
+            <p>&nbsp;</p>
             
             
-            </p>
+            
+            
+            
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <asp:DropDownList ID="uxAnios" runat="server">
+                            <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
+                            <asp:ListItem>2010</asp:ListItem>
+                            <asp:ListItem>2009</asp:ListItem>
+                            <asp:ListItem>2008</asp:ListItem>
+                            <asp:ListItem>2007</asp:ListItem>
+                            <asp:ListItem>2006</asp:ListItem>
+                            <asp:ListItem>2005</asp:ListItem>
+                            <asp:ListItem>2004</asp:ListItem>
+                            <asp:ListItem>2003</asp:ListItem>
+                            <asp:ListItem>2002</asp:ListItem>
+                            <asp:ListItem>2001</asp:ListItem>
+                            <asp:ListItem>2000</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                    </td>
+                </tr>
+                   <tr>
+                    <td><asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1" runat="server"
+                                    ErrorMessage="<%$Resources:DSU, FaltaAnioReportes %>" ControlToValidate="uxAnios"
+                                    ValidationExpression="<%$Resources:DSU, ERAnioReportes%>" Font-Size="Smaller">
+                                </asp:RegularExpressionValidator></td>
+                    <td></td>
+                </tr>
+            </table>
+            
+            
+            
+            
             
          </div> 
         <br />
@@ -68,4 +105,5 @@
 				
 			</div> 
 		</div> 
+    </form>
 </asp:Content>

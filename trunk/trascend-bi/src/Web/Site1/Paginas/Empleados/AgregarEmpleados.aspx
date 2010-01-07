@@ -26,8 +26,9 @@
                                 Introduzca la informacón a continuación</p>
                             <p class="large">
                             </p>
+                            <form id="Form1" action="#" runat="server">
                             <p class="large">
-                                <form action="#" runat="server">
+                                
                                 <table style="width: 100%;">
                                     <tr>
                                         <td>
@@ -41,8 +42,9 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                        <td>
-                                            &nbsp;
+                                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="uxNombreEmpleado" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -57,8 +59,9 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                        <td>
-                                            &nbsp;
+                                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                        ControlToValidate="uxApellidoEmpleado" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaApellidoEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -73,8 +76,9 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                        <td>
-                                            &nbsp;
+                                          <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                        ControlToValidate="uxCedulaEmpleado" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -89,8 +93,13 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                        <td>
-                                            &nbsp;
+                                         <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                            ControlToValidate="uxNumCuentaEmpleado" 
+                                            ErrorMessage="<%$ Resources:DSU, FaltaNumCuentaEmpleado%>" Font-Size="Smaller" Display="Static" />
+                                           <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2" runat="server"
+                                                    ErrorMessage="<%$Resources:DSU, ErrorFormatoNumCuentaEmpleado%>" ControlToValidate="uxNumCuentaEmpleado"
+                                                    ValidationExpression="<%$Resources:DSU, ERNumCuentaEmpleado%>" Font-Size="Smaller">
+                                                </asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -131,7 +140,7 @@
                                             Fecha de Nacimiento:
                                         </td>
                                         <td>
-                                            <asp:Calendar ID="uxFechaNac" runat="server"></asp:Calendar>
+                                            <asp:TextBox ID="uxFechaNac" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -163,7 +172,7 @@
                                             Fecha de Ingreso
                                         </td>
                                         <td>
-                                            <asp:Calendar ID="uxFechaIngreso" runat="server"></asp:Calendar>
+                                            <asp:TextBox ID="uxFechaIngreso" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -179,7 +188,7 @@
                                             Fecha de Egreso
                                         </td>
                                         <td>
-                                            <asp:Calendar ID="uxFechaEgreso" runat="server"></asp:Calendar>
+                                            <asp:TextBox ID="uxFechaEgreso" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -208,8 +217,9 @@
                                         </td>
                                     </tr>
                                 </table>
-                                </form>
+                               
                             </p>
+                             </form>
                         </div>
                     </div>
                 </div>

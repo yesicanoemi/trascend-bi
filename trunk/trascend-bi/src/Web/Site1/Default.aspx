@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,15 +31,33 @@
                                 
                                 <asp:Label ID="uxNombreLogin" runat="server" Text="Nombre de usuario"></asp:Label>
                                 &nbsp;
-                                <asp:TextBox ID="uxLogin" runat="server" Width="150px"></asp:TextBox>
+                                <asp:TextBox ID="uxLogin" runat="server" Width="150px"></asp:TextBox><br />
+                                
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="uxLogin" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
+                            
+                                <!-- <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1" runat="server"
+                                    ErrorMessage="<%$Resources:DSU, ErrorFormatoLogin %>" ControlToValidate="uxLogin"
+                                    ValidationExpression="<%$Resources:DSU, ERLogin%>" Font-Size="Smaller">
+                                </asp:RegularExpressionValidator>-->
+                                
 
                                 <br />
                                 <br />
                                 <asp:Label ID="uxNombreContrasena" runat="server" Text="Contrasena"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                 <asp:TextBox ID="uxContrasena" runat="server" Width="150px" TextMode="Password"></asp:TextBox>
-                              
-               
+                                <br />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                        ControlToValidate="uxContrasena" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaContrasena%>" Font-Size="Smaller" />
+                                
+                               <!-- <br />
+                                <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2" runat="server"
+                                    ErrorMessage="<%$Resources:DSU, ErrorFormatoPassword%>" ControlToValidate="uxContrasena"
+                                    ValidationExpression="<%$Resources:DSU, ERPassword%>" Font-Size="Smaller">
+                                </asp:RegularExpressionValidator> -->
                                 <br />
                                 <br />
                                 <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="uxBotonAceptar_Click"/>

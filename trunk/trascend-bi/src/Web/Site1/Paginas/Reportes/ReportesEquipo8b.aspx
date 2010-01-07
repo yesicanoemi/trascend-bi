@@ -28,11 +28,22 @@
 			<div class="sub-content"> 
     <div class="features_overview"> 
         <div class="features_overview_right"> 
-            <h3>Reporte Equipo #8</h3> 
-            <p class="large">
-            
-            
-            </p>
+            <h3>Reporte Equipo #8 (Total Facturas Cobradas)</h3> 
+            <p>&nbsp;</p>
+            <asp:DropDownList ID="DropDownList1" runat="server">
+             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
+                            <asp:ListItem>2010</asp:ListItem>
+                            <asp:ListItem>2009</asp:ListItem>
+                            <asp:ListItem>2008</asp:ListItem>
+                            <asp:ListItem>2007</asp:ListItem>
+                            <asp:ListItem>2006</asp:ListItem>
+                            <asp:ListItem>2005</asp:ListItem>
+                            <asp:ListItem>2004</asp:ListItem>
+                            <asp:ListItem>2003</asp:ListItem>
+                            <asp:ListItem>2002</asp:ListItem>
+                            <asp:ListItem>2001</asp:ListItem>
+                            <asp:ListItem>2000</asp:ListItem>
+            </asp:DropDownList>
             
          </div> 
          <br />

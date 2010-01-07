@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo9a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo9" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -28,11 +29,31 @@
 			<div class="sub-content"> 
     <div class="features_overview"> 
         <div class="features_overview_right"> 
-            <h3>Reporte Equipo #9</h3> 
-            <p class="large">
+            <h3>Reporte Equipo #9 (Propuestas Emitidas)</h3> 
+           <p>&nbsp;</p>
+           
             
-            
-            </p>
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        Fecha Inicio:
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha Fin:&nbsp;&nbsp;&nbsp;
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="Button1" runat="server" Text="Button" />
+                    </td>
+                </tr>
+            </table>
+           
             
          </div> 
      <br />
@@ -67,4 +88,5 @@
 
 			</div> 
 		</div> 
+    </form>
 </asp:Content>

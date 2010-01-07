@@ -14,6 +14,8 @@ using System.Web.UI.WebControls.WebParts;
 public class PaginaBase: Page
 {
     protected const string paginaPrueba = "~/Paginas/Usuarios/AgregarUsuarios.aspx";
+    protected const string paginaInicial = "~/Paginas/Usuarios/AgregarUsuarios.aspx";
+    protected const string paginaDefault = "~/Default.aspx";
     public PaginaBase()
     {
         //

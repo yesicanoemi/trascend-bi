@@ -37,9 +37,18 @@ public partial class _Default : PaginaBase, IDefaultPresenter
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-
-        _presenter.OnBotonAceptar();
-
+        if(Page.IsValid == true)
+            {
+                if ((uxLogin.Text == "usuario") && (uxContrasena.Text == "clave"))
+                {
+                    _presenter.OnBotonAceptar();
+                }
+                /*else
+                {
+                    Response.Redirect();
+                }*/
+            
+            }
     }
 
     public void IngresarSistema()

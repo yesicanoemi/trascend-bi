@@ -24,12 +24,15 @@
             <form id="Form1" action="#" runat="server">
                <table style="width:100%;">
                    <tr>
-                       <td>Titulos:</td>
+                       <td>Titulo:</td>
                        <td><asp:TextBox ID="uxTitulo" runat="server"></asp:TextBox></td>
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                ControlToValidate="uxTitulo" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaTituloPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Version:</td>
@@ -37,18 +40,24 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                ControlToValidate="uxVersion" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaVersionPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Fecha de firma:</td>
                        <td>
-                           <asp:Calendar ID="uxFechaFirma" runat="server"></asp:Calendar>
+                           <asp:TextBox ID="uxFechaFirma" runat="server"></asp:TextBox>
                        </td>
                    </tr>
                    
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                ControlToValidate="uxFechaFirma" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaFechaFirmaPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Nombre del receptor:</td>
@@ -56,7 +65,10 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                ControlToValidate="uxNombreReceptor" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaNombreReceptorPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Apellido del receptor:</td>
@@ -64,7 +76,10 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                                ControlToValidate="uxApellidoReceptor" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaApellidoReceptorPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Cargo del receptor:</td>
@@ -80,22 +95,28 @@
                    <tr>
                        <td>Fecha de inicio:</td>
                        <td>
-                           <asp:Calendar ID="uxFechaInicio" runat="server"></asp:Calendar>
+                           <asp:TextBox ID="uxFechaInicio" runat="server"></asp:TextBox>
                        </td>
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                                ControlToValidate="uxFechaInicio" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaFechaInicioPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Fecha fin:</td>
                        <td>
-                          <asp:Calendar ID="uxFechaFin" runat="server"></asp:Calendar>
+                           <asp:TextBox ID="uxFechaFin" runat="server"></asp:TextBox>
                        </td>
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                                ControlToValidate="uxFechaFin" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaFechaFinPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Equipo de trabajo:</td>
@@ -115,7 +136,10 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                                ControlToValidate="uxTotalHoras" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaTotalHorasPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
                    </tr>
                    <tr>
                                    <td>&nbsp;</td>
