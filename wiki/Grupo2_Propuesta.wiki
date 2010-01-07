@@ -51,7 +51,7 @@ http://trascend-bi.googlecode.com/files/ModificarPropuesta.JPG
 
 http://trascend-bi.googlecode.com/files/EliminarPropuesta.JPG
 
-== *Diagrama de Clases* ==
+= *Diagrama de Clases* =
 No es la Version Final
 
 http://trascend-bi.googlecode.com/files/DiagramadeClasesPropuesta.jpg
