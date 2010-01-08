@@ -49,4 +49,4 @@ http://trascend-bi.googlecode.com/files/Desc_Rep1.jpg
 
 ====*4) Diagrama de Clases - Gestion de Facturas*====
 
-http://trascend-bi.googlecode.com/files/Factura.jpg
+http://trascend-bi.googlecode.com/files/Diag_clases_p2.jpg
