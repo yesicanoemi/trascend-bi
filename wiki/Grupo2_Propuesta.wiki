@@ -62,3 +62,22 @@ http://trascend-bi.googlecode.com/files/DiagramadeClasesPropuesta2.jpg
 No es la Version Final
 
 http://trascend-bi.googlecode.com/files/AgregarPropuesta2.jpg
+
+== *Consultar Propuesta* ==
+
+No es la Version Final
+
+
+Consultar Propuesta por Titulo
+
+http://trascend-bi.googlecode.com/files/ConsultarPropuestaxtitulo.jpg
+
+
+Consultar Propuesta por Cliente
+
+http://trascend-bi.googlecode.com/files/ConsultarPropuestaxCliente.jpg
+
+
+Consultar Propuesta por Fecha
+
+http://trascend-bi.googlecode.com/files/ConsultarPropuestaxFecha.jpg
