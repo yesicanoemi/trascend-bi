@@ -51,6 +51,8 @@ http://trascend-bi.googlecode.com/files/Ingresar_Cliente_CU-C01.jpg
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador ingresa los datos del criterio de busqueda de Empleado <br> asignando uno o varios valores a los mostrados por el sistema <br>*3)* El sistema muestra los resultados de la busqueda y termina el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.||
 
+http://trascend-bi.googlecode.com/files/ConsultarCliente.jpg
+
 ====*4) Eliminar Cliente*====
 
 || *Identificador* || *CU-C04* ||
