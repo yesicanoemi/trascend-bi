@@ -72,4 +72,4 @@ http://trascend-bi.googlecode.com/files/consultarCliente.jpg
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador inicia el caso de uso CU-C03 (eliminar cleinte)<br>*3)* El sistema muestra el resultado de la busqueda.<br>*4)* El administrador selecciona el cliente a eliminar. <br> *5)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
-http://trascend-bi.googlecode.com/files/consultarCliente.jpg
+http://trascend-bi.googlecode.com/files/eliminarCliente.jpg
