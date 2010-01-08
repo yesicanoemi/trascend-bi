@@ -55,3 +55,10 @@ http://trascend-bi.googlecode.com/files/EliminarPropuesta.JPG
 No es la Version Final
 
 http://trascend-bi.googlecode.com/files/DiagramadeClasesPropuesta2.jpg
+
+= *Diagramas de Secuencias* =
+
+== *Ingresar Propuesta* ==
+No es la Version Final
+
+http://trascend-bi.googlecode.com/files/AgregarPropuesta2.jpg
