@@ -27,7 +27,9 @@ Gestion de Clientes en el Sistema.
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Cliente<br> asignando un nombre de cliente y los datos basicos <br>*3)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
+
 http://trascend-bi.googlecode.com/files/Ingresar_Cliente_CU-C01.jpg
+
 
 ====*2) Modificar Cliente*====
 
@@ -40,6 +42,10 @@ http://trascend-bi.googlecode.com/files/Ingresar_Cliente_CU-C01.jpg
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador busca el Cliente que desea modificar <br> lo selecciona y el sistema le muestra los datos basicos es decir(RIF, nombre, dirección, teléfonos, área de negocio, contactos) <br>*3)* El administrador asigna los valores <br> a los datos del empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
 
+
+http://trascend-bi.googlecode.com/files/ModificarCliente.jpg
+
+
 ====*3) Consultar Cliente*====
 
 || *Identificador* || *CU-C03* ||
@@ -51,7 +57,9 @@ http://trascend-bi.googlecode.com/files/Ingresar_Cliente_CU-C01.jpg
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador ingresa los datos del criterio de busqueda de Empleado <br> asignando uno o varios valores a los mostrados por el sistema <br>*3)* El sistema muestra los resultados de la busqueda y termina el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.||
 
+
 http://trascend-bi.googlecode.com/files/consultarCliente.jpg
+
 
 ====*4) Eliminar Cliente*====
 
@@ -63,3 +71,5 @@ http://trascend-bi.googlecode.com/files/consultarCliente.jpg
 || *Precondiciones* || *1)* Debe existir el usuario administrador. <br> *2)* Debe existir el Cliente a eliminar.||
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador inicia el caso de uso CU-C03 (eliminar cleinte)<br>*3)* El sistema muestra el resultado de la busqueda.<br>*4)* El administrador selecciona el cliente a eliminar. <br> *5)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
+
+http://trascend-bi.googlecode.com/files/consultarCliente.jpg
