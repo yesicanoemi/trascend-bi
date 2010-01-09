@@ -7,8 +7,20 @@ Gestion de Contacto en el Sistema
 = Details =
 
 Ingresar Contacto: Edgar Ruiz.<br/>
-Eliminar Contacto: Claudio Melcón.<br/>
 Consultar Contacto: Claudio Melcón.<br/>
+Eliminar Contacto: Claudio Melcón.<br/>
 Modificar Contacto: Edgar Ruiz.<br/>
 <br/>
-Sujeto a Cambios.
+
+*Ingresar*
+
+|| *Identificador* || CC-I ||
+|| *Caso de Uso* ||Ingresar Contacto ||
+|| *Actores* ||administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El administrador ingresa un contacto al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el administrador. <br/>*2)* El administrador debe haber iniciado sesión||
+|| *Flujo Principal* || *1) Actor:* Introduce los datos del usuario. <br>*2) Sistema:* Busca los datos relacionados en el sistema utilizando CC-B y acepta<br>*3) Actor:* Confirma los datos y acepta<br>*4) Sistema:* Guarda el nuevo contacto en el sistema||
+|| *Flujos Alternativos* || *2a) Sistema:* Los datos ingresados ya existen o no son validos. Envia un mensaje de advertencia<br>*3a) Actor:* Usuario cancela o vuelve al paso *1)*||
+
+_Sujeto a Cambios_
