@@ -61,4 +61,17 @@ http://trascend-bi.googlecode.com/files/IngresarContacto.jpg
 
 http://trascend-bi.googlecode.com/files/EliminarContacto.jpg 
 
+*Modificar*
+
+|| *Identificador* || CC-M ||
+|| *Caso de Uso* ||Modificar Contacto ||
+|| *Actores* ||Administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El administrador modifica un contacto al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el administrador. <br/>*2)* El administrador debe haber iniciado sesión||
+|| *Flujo Principal* || *1) Actor:* Introduce los datos del usuario. <br>*2) Sistema:* Busca utilizando CC-C, muestra todas los resultados por pantalla<br>*3) Actor:* Selecciona la opcion deseada de los resultados<br>*4) Sistema:* Muestra por pantalla los datos de la selección<br>*5) Actor:* Modifica los datos deseados y presiona aceptar<br>*6) Sistema:* Muestra pantalla de confirmación<br>*7) Actor:* Confirma los cambios<br>*8) Sistema:* Guarda en el sistema los cambios||
+|| *Flujos Alternativos* || *3a) Actor:* No se encuentra la opcion deseada, vuelve al paso *1* o cancela<br>*7b) Actor:* no acepta los cambios, volviendo al paso *4* o cancela||
+
+http://trascend-bi.googlecode.com/files/ModificarContacto.jpg 
+
 _Sujeto a Cambios_
