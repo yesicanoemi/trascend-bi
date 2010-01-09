@@ -6,8 +6,8 @@ Gestion de Contacto en el Sistema
 
 = Details =
 
-Ingresar Contacto: Edgar Ruiz.<br/>
 Consultar Contacto: Claudio Melcón.<br/>
+Ingresar Contacto: Edgar Ruiz.<br/>
 Eliminar Contacto: Claudio Melcón.<br/>
 Modificar Contacto: Edgar Ruiz.<br/>
 <br/>
@@ -20,13 +20,13 @@ http://trascend-bi.googlecode.com/files/Diagrama_de_Clases1.jpg
 
 ==*Casos de uso*=
 
-*Buscar*
+*Consultar*
 
-|| *Identificador* || CC-B ||
+|| *Identificador* || CC-C ||
 || *Caso de Uso* ||Consultar Contacto ||
 || *Actores* ||Usuario ||
 || *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  || El administrador ingresa un contacto al sistema.|| 
+|| *Resumen/Propósito*  || El usuario busca un contacto en el sistema.|| 
 || *Precondiciones* || *1)* Debe existir el usuario. <br/>*2)* El usuario debe haber iniciado sesión||
 || *Flujo Principal* || *1) Actor:* Introduce los datos del usuario. <br>*2) Sistema:* Busca los datos relacionados en el sistema y muestra los resultados que coincidan por pantalla<br>||
 || *Flujos Alternativos* || *2a) Sistema:* Los datos ingresados ya existen o no son validos. Envia un mensaje de advertencia<br>*3a) Actor:* Usuario cancela o vuelve al paso *1)*||
