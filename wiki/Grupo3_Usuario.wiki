@@ -134,3 +134,7 @@ http://trascend-bi.googlecode.com/files/GestionUsuario_Secuencia_ModificarUsuari
 ====*3)  Consultar Usuario*====
 
 http://trascend-bi.googlecode.com/files/GestionUsuario_Secuencia_ConsultarUsuarioU.jpg
+
+====*4)  Eliminar Usuario*====
+
+http://trascend-bi.googlecode.com/files/Eliminar_Usuario.jpg
