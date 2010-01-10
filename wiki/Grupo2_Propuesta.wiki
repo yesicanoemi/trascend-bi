@@ -81,3 +81,8 @@ http://trascend-bi.googlecode.com/files/ConsultarPropuestaxCliente.jpg
 Consultar Propuesta por Fecha
 
 http://trascend-bi.googlecode.com/files/ConsultarPropuestaxFecha.jpg
+
+== *Modificar Propuesta* ==
+No es la Version Final
+
+http://trascend-bi.googlecode.com/files/ModificaPropuesta.jpg
