@@ -87,7 +87,7 @@ No es la Version Final
 
 http://trascend-bi.googlecode.com/files/ModificaPropuesta2.jpg
 
-= *Eliminar Propuesta* ==
+== *Eliminar Propuesta* ==
 No es la Version Final
 
 http://trascend-bi.googlecode.com/files/EliminarPropuesta2.jpg
