@@ -85,7 +85,7 @@ http://trascend-bi.googlecode.com/files/ConsultarPropuestaxFecha.jpg
 == *Modificar Propuesta* ==
 No es la Version Final
 
-http://trascend-bi.googlecode.com/files/ModificaPropuesta.jpg
+http://trascend-bi.googlecode.com/files/ModificaPropuesta2.jpg
 
 = *Eliminar Propuesta* ==
 No es la Version Final
