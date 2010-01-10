@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentador", "Web\Presentador\Presentador.csproj", "{7C472447-ACA3-4627-9E00-8879527FECCC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E9A7DB7-6693-4068-83B6-F9271D44BB2F} = {8E9A7DB7-6693-4068-83B6-F9271D44BB2F}
+	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site1", "Web\Site1\", "{21404306-33B2-471F-84F7-B49F58EB8F0F}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -26,6 +29,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site1", "Web\Site1\", "{214
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "1288"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{8E9A7DB7-6693-4068-83B6-F9271D44BB2F} = {8E9A7DB7-6693-4068-83B6-F9271D44BB2F}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8E9A7DB7-6693-4068-83B6-F9271D44BB2F}"
