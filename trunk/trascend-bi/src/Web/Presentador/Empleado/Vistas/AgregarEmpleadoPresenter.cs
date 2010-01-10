@@ -20,6 +20,7 @@ namespace Presentador.Empleado.Vistas
         #region Manejo de Eventos
         public void IngresarEmpleado()
         {
+
         }
         #endregion
     }
