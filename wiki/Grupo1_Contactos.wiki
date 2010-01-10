@@ -1,15 +1,19 @@
 Gestion Contacto
 
+*Indice:*
+
+<wiki:toc />
+
 = Introduction =
 
 Gestion de Contacto en el Sistema
 
-= Details =
+= Detalles =
 
-Consultar Contacto: Claudio Melcón.<br/>
-Ingresar Contacto: Edgar Ruiz.<br/>
-Eliminar Contacto: Claudio Melcón.<br/>
-Modificar Contacto: Edgar Ruiz.<br/>
+Consultar Contacto(CC-C): Claudio Melcón.<br/>
+Ingresar Contacto(CC-I): Edgar Ruiz.<br/>
+Eliminar Contacto(CC-E): Claudio Melcón.<br/>
+Modificar Contacto(CC-M): Edgar Ruiz.<br/>
 <br/>
 
 
@@ -20,7 +24,7 @@ http://trascend-bi.googlecode.com/files/Diagrama_de_Clases1.jpg
 
 ==*Casos de uso*=
 
-*Consultar*
+====*Consultar*====
 
 || *Identificador* || CC-C ||
 || *Caso de Uso* ||Consultar Contacto ||
@@ -35,7 +39,7 @@ http://trascend-bi.googlecode.com/files/Diagrama_de_Clases1.jpg
 http://trascend-bi.googlecode.com/files/ConsultarContacto.jpg 
 
 
-*Ingresar*
+====*Ingresar*====
 
 || *Identificador* || CC-I ||
 || *Caso de Uso* ||Ingresar Contacto ||
@@ -48,7 +52,7 @@ http://trascend-bi.googlecode.com/files/ConsultarContacto.jpg
 
 http://trascend-bi.googlecode.com/files/IngresarContacto.jpg 
 
-*Eliminar*
+====*Eliminar*====
 
 || *Identificador* || CC-E ||
 || *Caso de Uso* ||Eliminar Contacto ||
@@ -61,7 +65,7 @@ http://trascend-bi.googlecode.com/files/IngresarContacto.jpg
 
 http://trascend-bi.googlecode.com/files/EliminarContacto.jpg 
 
-*Modificar*
+====*Modificar*====
 
 || *Identificador* || CC-M ||
 || *Caso de Uso* ||Modificar Contacto ||
