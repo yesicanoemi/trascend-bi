@@ -61,6 +61,11 @@
     <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
     <Compile Include="Empleado\EmpleadoController.cs" />
     <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
+    <Compile Include="Factura\Contratos\IConsultarFactura.cs" />
+    <Compile Include="Factura\Contratos\IIngresarFactura.cs" />
+    <Compile Include="Factura\FacturaController.cs" />
+    <Compile Include="Factura\Vistas\ConsultarFacturaPresenter.cs" />
+    <Compile Include="Factura\Vistas\IngresarFacturaPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

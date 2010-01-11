@@ -11,8 +11,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarFacturas.aspx" class="active">Agregar<span></span></a></li> 
   <li><a href="ConsultarFacturas.aspx" >Consultar<span></span></a></li> 
-    <li><a href="EliminarFacturas.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarFacturas.aspx" >Modificar<span></span></a></li>
+   
 </ul> 
 						
 				</div> 
@@ -28,10 +27,20 @@
  
           <div class="features_overview_right"> 
             <h3>Agregar Facturas</h3>
-            <p class="large">Introduzca la informacion a continuacion</p> 
+            <p class="large">Introduzca la informacion a continuación</p> 
              <p class="large">
-                <form id="Form1" action="#" runat="server">
+                <form id="Form1" runat="server">
                            <table style="width:100%;">
+                               <tr>
+                                   <td>Proyecto asociado: </td>
+                                   <td>
+                                       <asp:TextBox ID="uxProyectoAsociado" runat="server"></asp:TextBox>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
                                <tr>
                                    <td>Titulo: </td>
                                    <td><asp:TextBox ID="uxTituloFactura" runat="server"></asp:TextBox></td>
@@ -67,18 +76,7 @@
                                <tr>
                                    <td>Fecha de Pago: </td>
                                    <td>
-                                       <asp:Calendar ID="uxFechaPago" runat="server"></asp:Calendar>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Proyecto asociado: </td>
-                                   <td>
-                                       <asp:DropDownList ID="uxProyectoAsociado" runat="server">
-                                       </asp:DropDownList> 
+                                       <asp:TextBox ID="uxFechaPago" runat="server"></asp:TextBox>
                                    </td>
                                </tr>
                                <tr>

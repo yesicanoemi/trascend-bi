@@ -11,8 +11,6 @@
 					<ul id="subnav"> 
   <li><a href="AgregarEmpleados.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarEmpleados.aspx" class="active">Consultar<span></span></a></li> 
-    <li><a href="EliminarEmpleados.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarEmpleados.aspx" >Modificar<span></span></a></li>
 </ul> 
 						
 				</div> 
