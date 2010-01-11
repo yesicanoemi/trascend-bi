@@ -12,6 +12,6 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presenter = AgregarFacturaPresenter(this);
+        _presenter = new AgregarFacturaPresenter(this);
     }
 }
