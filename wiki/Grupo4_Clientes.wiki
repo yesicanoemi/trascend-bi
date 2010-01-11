@@ -77,3 +77,7 @@ http://trascend-bi.googlecode.com/files/EliminarCliente.jpg
 == Diagrama de Clase Cliente ==
 
 http://trascend-bi.googlecode.com/files/DiagramaClaseCliente1.jpg  
+
+== Diagrama de Secuencia Ingresar Cliente ==
+ 
+http://trascend-bi.googlecode.com/files/IngresarClienteS.jpg
