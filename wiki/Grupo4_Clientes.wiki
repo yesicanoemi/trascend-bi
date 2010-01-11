@@ -73,3 +73,7 @@ http://trascend-bi.googlecode.com/files/consultarCliente.jpg
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
 http://trascend-bi.googlecode.com/files/EliminarCliente.jpg
+
+== Diagrama de Clase Cliente ==
+
+http://trascend-bi.googlecode.com/files/Diagrama de ClaseCliente.jpg
