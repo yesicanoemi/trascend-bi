@@ -76,4 +76,4 @@ http://trascend-bi.googlecode.com/files/EliminarCliente.jpg
 
 == Diagrama de Clase Cliente ==
 
-http://trascend-bi.googlecode.com/files/DiagramaClaseCliente.jpg 
+http://trascend-bi.googlecode.com/files/DiagramaClaseCliente1.jpg  
