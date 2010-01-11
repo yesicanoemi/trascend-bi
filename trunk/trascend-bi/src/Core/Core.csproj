@@ -52,10 +52,6 @@
   <ItemGroup>
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoFacturaPropuesta\ConsultarDatosPropuesta.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoFacturaPropuesta\ConsultarxNombrePropuesta.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoFacturaPropuesta\ConsultarxNumero.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoFacturaPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Entidades\Empleado.cs" />
     <Compile Include="LogicaNegocio\Entidades\Persona.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
@@ -80,9 +76,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Servicios\Contrato\IContratoServicioEmpleado.cs" />
-    <Compile Include="Servicios\Contrato\IContratoServicioFactura.cs" />
     <Compile Include="Servicios\Implementacion\ServicioEmpleado.cs" />
-    <Compile Include="Servicios\Implementacion\ServicioFactura.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AccesoDatos\Fabricas\" />

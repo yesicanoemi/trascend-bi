@@ -5,3 +5,12 @@ C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projec
 C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
 C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb

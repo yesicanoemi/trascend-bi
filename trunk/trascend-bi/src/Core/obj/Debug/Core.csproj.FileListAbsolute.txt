@@ -5,3 +5,10 @@ C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projec
 C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.exe
 C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Core\obj\Debug\Core.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\Core.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\Core.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\obj\Debug\Core.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\obj\Debug\Core.pdb

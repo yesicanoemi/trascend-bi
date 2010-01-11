@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Presentador.Factura.Contrato
 {
-    class IAgregarFactura
+    public interface IAgregarFactura
     {
     }
 }

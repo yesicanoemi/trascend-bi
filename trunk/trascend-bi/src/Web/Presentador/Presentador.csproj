@@ -61,7 +61,8 @@
     <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
     <Compile Include="Empleado\EmpleadoController.cs" />
     <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
-    <Compile Include="Factura\Contrato\IAgregarFactura.cs" />
+    <Compile Include="Factura\Contrato\IAgregarFactura.cs">
+    </Compile>
     <Compile Include="Factura\FacturaController.cs" />
     <Compile Include="Factura\Vistas\AgregarFacturaPresenter.cs" />
     <Compile Include="Program.cs" />

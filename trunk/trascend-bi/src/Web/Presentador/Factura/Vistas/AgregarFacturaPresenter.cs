@@ -7,7 +7,7 @@ using Core.LogicaNegocio.Entidades;
 
 namespace Presentador.Factura.Vistas
 {
-    class AgregarFacturaPresenter
+    public class AgregarFacturaPresenter
     {
         IAgregarFactura _vista;
         FacturaController _controller = new FacturaController();
