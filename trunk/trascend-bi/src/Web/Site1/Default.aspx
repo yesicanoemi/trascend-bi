@@ -37,10 +37,7 @@
                                         ControlToValidate="uxLogin" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
                             
-                                <!-- <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1" runat="server"
-                                    ErrorMessage="<%$Resources:DSU, ErrorFormatoLogin %>" ControlToValidate="uxLogin"
-                                    ValidationExpression="<%$Resources:DSU, ERLogin%>" Font-Size="Smaller">
-                                </asp:RegularExpressionValidator>-->
+    
                                 
 
                                 <br />
@@ -51,13 +48,10 @@
                                 <br />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                         ControlToValidate="uxContrasena" 
-                                        ErrorMessage="<%$ Resources:DSU, FaltaContrasena%>" Font-Size="Smaller" />
+                                        ErrorMessage="<%$ Resources:DSU, FaltaContrasena%>"  />
                                 
-                               <!-- <br />
-                                <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2" runat="server"
-                                    ErrorMessage="<%$Resources:DSU, ErrorFormatoPassword%>" ControlToValidate="uxContrasena"
-                                    ValidationExpression="<%$Resources:DSU, ERPassword%>" Font-Size="Smaller">
-                                </asp:RegularExpressionValidator> -->
+                                <br />
+                                
                                 <br />
                                 <br />
                                 <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="uxBotonAceptar_Click"/>
