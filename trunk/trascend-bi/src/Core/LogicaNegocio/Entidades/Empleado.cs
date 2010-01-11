@@ -5,7 +5,7 @@ namespace Core.LogicaNegocio.Entidades
     using System;
     using System.Collections.Generic;
 
-    class Empleado : Persona
+    public class Empleado : Persona
     {
         private int cedula;
         private int cuenta;
@@ -67,7 +67,7 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual DateTime Fechaingreso
+        public virtual DateTime FechaIngreso
         {
             get
             {

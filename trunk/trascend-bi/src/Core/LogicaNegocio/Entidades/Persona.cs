@@ -5,7 +5,7 @@ namespace Core.LogicaNegocio.Entidades
     using System;
     using System.Collections.Generic;
 
-    class Persona
+    public class Persona
     {
         private string nombre;
 
