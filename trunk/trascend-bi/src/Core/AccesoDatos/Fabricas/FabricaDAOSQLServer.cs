@@ -14,5 +14,10 @@ namespace Core.AccesoDatos.Fabricas
 			return new DAOUsuarioSQLServer();
 		}
 
+        public static IDAOFactura ObtenerDAOFactura()
+        {
+            return new DAOFacturaSQLServer();
+        }
+
 	}
 }

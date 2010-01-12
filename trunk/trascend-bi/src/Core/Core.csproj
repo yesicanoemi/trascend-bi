@@ -95,13 +95,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\Criterio\CriterioUsuario.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Entidades\Empleado.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Factura.cs" />
     <Compile Include="LogicaNegocio\Entidades\Persona.cs" />
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
