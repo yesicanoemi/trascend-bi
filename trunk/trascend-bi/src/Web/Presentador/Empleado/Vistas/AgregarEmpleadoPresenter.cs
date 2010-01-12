@@ -43,19 +43,20 @@ namespace Presentador.Empleado.Vistas
         }
         #endregion
 
-        #region Comando
-        public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
+      //  #region Comando
+     /*   public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
             Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresarId(entidad);
+         //   ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresarId(entidad);
 
             //try
             //{    
             //ejecuta el comando.
-            return ingresar.Ejecutar();
+          //  return ingresar.Ejecutar();
         }
         #endregion
+      */
     }
 }

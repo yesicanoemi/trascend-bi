@@ -11,17 +11,19 @@ namespace Presentador.Propuesta.Vistas
     {
         private IAgregarPropuesta _vista;
 
-
+        #region Constructor
         public AgregarPropuestaPresenter(IAgregarPropuesta vista)
         {
             _vista = vista;
 
         }
+        #endregion
 
-
+        #region Metodos
         public void IngresarPropuesta()
         {
 
         }
+        #endregion
     }
 }

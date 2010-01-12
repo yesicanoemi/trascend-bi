@@ -18,6 +18,10 @@ namespace Core.AccesoDatos.Fabricas
         {
             return new DAOFacturaSQLServer();
         }
+        public static IDAOPropuesta ObtenerDAOPropuesta()
+        {
+            return new DAOPropuestaSQLServer();
+        }
 
 	}
 }

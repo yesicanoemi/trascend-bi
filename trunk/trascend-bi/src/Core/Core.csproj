@@ -96,9 +96,11 @@
   <ItemGroup>
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IDAOPropuesta.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\Criterio\CriterioUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
