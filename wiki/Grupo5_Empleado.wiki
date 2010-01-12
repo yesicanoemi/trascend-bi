@@ -40,6 +40,8 @@ http://trascend-bi.googlecode.com/files/Ingresar%20Empleado%20CU-E01.jpg
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador busca el Empleado que desea modificar <br> lo selecciona y el sistema le muestra los datos <br>*3)* El administrador asigna los valores <br> a los datos del empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
 
+http://trascend-bi.googlecode.com/files/Modificar%20Datos%20de%20Empleado%20CU-E02.jpg
+
 ====*3) Consultar Empleado*====
 
 || *Identificador* || *CU-E03* ||
@@ -51,6 +53,8 @@ http://trascend-bi.googlecode.com/files/Ingresar%20Empleado%20CU-E01.jpg
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador ingresa los datos del criterio de busqueda de Empleado <br> asignando uno o varios valores a los mostrados por el sistema <br>*3)* El sistema muestra los resultados de la busqueda y termina el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.||
 
+http://trascend-bi.googlecode.com/files/Consultar%20Datos%20de%20Empleado%20CU-E03.jpg
+
 ====*4) Eliminar Empleado*====
 
 || *Identificador* || *CU-E04* ||
@@ -61,3 +65,5 @@ http://trascend-bi.googlecode.com/files/Ingresar%20Empleado%20CU-E01.jpg
 || *Precondiciones* || *1)* Debe existir el usuario administrador. <br> *2)* Debe existir el empleado a eliminar.||
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador inicia el caso de uso CU-E03<br>*3)* El sistema muestra el resultado de la busqueda.<br>*4)* El administrador selecciona el usuario a eliminar. <br> *5)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
+
+http://trascend-bi.googlecode.com/files/Eliminar%20Empleado%20CU-E04.jpg
