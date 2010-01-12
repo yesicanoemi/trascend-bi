@@ -10,12 +10,12 @@ Casos de uso para la Gestión de Facturas y 2 reportes correspondientes a propue
 
 == Detalles ==
 
-    * Generar Factura (CU-901)    - Jesús Viloria
-    * Consultar Factura (CU-902)  - Luis Figueras 
-
-*Reportes:*
-    * Propuestas emitidas por rango de fechas (CU-903)- Alexis Romero
-    * Total de Propuestas emitidas anuales (CU-904)- Aún no definido
+    * Generar Factura - Interfaz Gráfico y la implementación MVP/MVC (CU-901) - Luis Figueras
+    * Generar Factura - Implementación de los comandos (CU-902) - Alexis Romero
+    * Generar Factura - Capa de BD e implementación de DAO (CU-903) - Luis Figueras
+    * Consultar Factura - Interfaz Gráfico y la implementación MVP/MVC (CU-904) - Luis Figueras
+    * Consultar Factura - Implementación de los comandos (CU-905) - Alexis Romero
+    * Consultar Factura - Capa de BD e implementación de DAO (CU-906) - Luis Figueras
 
 == Casos de uso ==
 
