@@ -28,3 +28,17 @@ C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Castle.DynamicProxy2.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\log4net.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Iesi.Collections.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\NHibernate.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Castle.Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb

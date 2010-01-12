@@ -19,7 +19,7 @@
    <div class="features_overview"> 
        <div class="features_overview_right"> 
           <h3>Agregar Propuesta</h3>
-            <p class="large">Introduzca la informacón a continuación</p>  
+            <p class="large">Introduzca la información a continuación</p>  
           <p class="large">
             <form id="Form1" action="#" runat="server">
                <table style="width:100%;">
@@ -139,6 +139,21 @@
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
                                 ControlToValidate="uxTotalHoras" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaTotalHorasPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       </td>
+                   </tr>
+                   
+                    <tr>
+                    <td>Monto Total:</td>
+                     <td>
+                           <asp:TextBox ID="uxMontoTotal" runat="server"></asp:TextBox>
+                       </td>
+                      
+                   </tr>
+                   <tr>
+                   <td>&nbsp;</td>
+                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                                ControlToValidate="uxMontoTotal" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaMontoPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
                    </tr>
                    <tr>

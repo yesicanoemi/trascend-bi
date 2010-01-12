@@ -231,4 +231,7 @@
   <data name="FaltaVersionPropuesta" xml:space="preserve">
     <value>Debe introducir la version de la propuesta</value>
   </data>
+  <data name="FaltaMontoPropuesta" xml:space="preserve">
+    <value>Debe Introducir el monto total de la Propuesta</value>
+  </data>
 </root>
