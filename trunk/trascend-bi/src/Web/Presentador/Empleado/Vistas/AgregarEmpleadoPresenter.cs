@@ -32,31 +32,31 @@ namespace Presentador.Empleado.Vistas
                 empleado.Cuenta = Int32.Parse(_vista.CuentaEmpleado.Text);
                 empleado.Estado = "Activo";
                 empleado.FechaIngreso = DateTime.Now;
-                empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.Text);
+                empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
-                //empleado = _controller
+                empleado = Ingresar(empleado);
             }
-            catch(WebException e)
+            catch (WebException e)
             {
                 //Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
         #endregion
 
-      //  #region Comando
-     /*   public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
+        #region Comando
+     public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
             Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
-         //   ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresarId(entidad);
+            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresar(empleado);
 
             //try
             //{    
             //ejecuta el comando.
-          //  return ingresar.Ejecutar();
+         return ingresar.Ejecutar();
         }
         #endregion
-      */
+      
     }
 }
