@@ -10,4 +10,8 @@ public partial class Paginas_Usuarios_AgregarUsuarios : System.Web.UI.Page
     {
 
     }
+    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }
