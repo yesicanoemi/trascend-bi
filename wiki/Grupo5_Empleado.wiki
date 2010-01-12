@@ -27,6 +27,8 @@ Gestion de Empleados en el Sistema.
 || *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Empleado <br> asignando un nombre de empleado y los datos <br>*3)* El sistema finaliza el caso de uso.||
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*2a)*El administrador crea un usuario asociado al empleado <br> recien creado CU-U01.||
 
+http://trascend-bi.googlecode.com/files/Ingresar%20Empleado%20CU-E01.jpg
+
 ====*2) Modificar Empleado*====
 
 || *Identificador* || *CU-E02* ||
