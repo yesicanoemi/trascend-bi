@@ -12,12 +12,12 @@ namespace Presentador.Empleado.Vistas
     public class AgregarEmpleadoPresenter
     {
         private IAgregarEmpleado _vista;
-        private EmpleadoController _controller;
+        //private EmpleadoController _controller;
 
         public AgregarEmpleadoPresenter(IAgregarEmpleado vista)
         {
             _vista = vista;
-            _controller = new EmpleadoController();
+            //_controller = new EmpleadoController();
         }
 
         #region Manejo de Eventos
