@@ -42,3 +42,8 @@ C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\D
 C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
 C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.DynamicProxy2.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\log4net.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Iesi.Collections.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\NHibernate.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.Core.dll

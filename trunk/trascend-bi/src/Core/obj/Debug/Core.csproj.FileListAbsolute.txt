@@ -42,3 +42,11 @@ C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Core\obj\Debug\Core.P
 C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Core\obj\Debug\Core.dll
 C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Core\obj\Debug\Core.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\Castle.Core.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\Castle.DynamicProxy2.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\Iesi.Collections.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\log4net.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\Microsoft.Practices.Web.UI.WebControls.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\NHibernate.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Core\bin\Debug\nunit.framework.dll

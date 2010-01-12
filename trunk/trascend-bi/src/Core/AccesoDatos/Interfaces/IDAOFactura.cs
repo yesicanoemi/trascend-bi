@@ -9,10 +9,10 @@ namespace Core.AccesoDatos.Interfaces
 {
     public interface IDAOFactura
     {
-        public Factura IngresarFactura(Factura factura);
+        Factura IngresarFactura(Factura factura);
 
-        public IList<Factura> ConsultarFacturas();
+        IList<Factura> ConsultarFacturas();
 
-        public Factura ConsultarFacturaID(Factura factura);
+        Factura ConsultarFacturaID(Factura factura);
     }
 }

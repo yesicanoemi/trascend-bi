@@ -17,7 +17,7 @@ namespace Core.AccesoDatos.SqlServer
 
         public IList<Factura> ConsultarFacturas()
         {
-            return new IList<Factura>();
+            return new List<Factura>();
         }
 
         public Factura ConsultarFacturaID(Factura factura)
