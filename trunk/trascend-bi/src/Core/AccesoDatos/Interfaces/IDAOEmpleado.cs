@@ -1,16 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Data;
 using Core.LogicaNegocio.Entidades;
 
 namespace Core.AccesoDatos.Interfaces
 {
-
-	public interface IDAOUsuario
-	{
-
-	    Usuario ConsultarLoginPassword(Usuario usuario);
-
-	}
+    public interface IDAOEmpleado
+    {
+        Empleado Ingresar(Empleado empleado);
+    }
 }

@@ -9,10 +9,6 @@ namespace Core.AccesoDatos.Fabricas
 
     public class FabricaDAOSQLServer
     {
-        public static IDAOUsuario ObtenerDAOUsuario()
-        {
-            return new DAOUsuarioSQLServer();
-        }
 
         public static IDAOEmpleado ObtenerDAOEmpleado()
         {
