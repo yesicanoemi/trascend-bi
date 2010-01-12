@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Presentador.Empleado.Contrato;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.Fabricas;
+using Core.LogicaNegocio.Comandos;
 using System.Net;
 namespace Presentador.Empleado.Vistas
 {
@@ -38,6 +40,21 @@ namespace Presentador.Empleado.Vistas
             {
                 //Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
+        }
+        #endregion
+
+        #region Comando
+        public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
+        {
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
+
+            //fábrica que instancia el comando Ingresar.
+            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresarId(entidad);
+
+            //try
+            //{    
+            //ejecuta el comando.
+            return ingresar.Ejecutar();
         }
         #endregion
     }
