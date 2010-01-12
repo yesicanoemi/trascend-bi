@@ -6,22 +6,28 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.AccesoDatos.Fabricas
 {
-	
-	public class FabricaDAOSQLServer
-	{
-		public static IDAOUsuario ObtenerDAOUsuario()
-		{
-			return new DAOUsuarioSQLServer();
-		}
 
-        public static IDAOFactura ObtenerDAOFactura()
+    public class FabricaDAOSQLServer
+    {
+        public static IDAOUsuario ObtenerDAOUsuario()
         {
-            return new DAOFacturaSQLServer();
+            return new DAOUsuarioSQLServer();
+        }
+
+        public static IDAOEmpleado ObtenerDAOEmpleado()
+        {
+            return new DAOEmpleadoSQLServer();
         }
         public static IDAOPropuesta ObtenerDAOPropuesta()
         {
             return new DAOPropuestaSQLServer();
         }
 
-	}
+        public static IDAOFactura ObtenerDAOFactura()
+        {
+            return new DAOFacturaSQLServer();
+        }
+
+    }
 }
+
