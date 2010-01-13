@@ -10,9 +10,9 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarPropuestas.aspx">Agregar<span></span></a></li> 
-  <li><a href="ConsultarPropuestas.aspx" class="active">Consultar<span></span></a></li> 
+  <li><a href="ConsultarPropuestas.aspx" class="active">Administrar<span></span></a></li> 
     <li><a href="EliminarPropuestas.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarPropuestas.aspx" >Modificar<span></span></a></li>
+  
 </ul> 
 						
 				</div> 

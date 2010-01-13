@@ -5,30 +5,26 @@
     <div class="container subnav">
         <div class="content">
             <div class="sub-heading">
-                <h2>
-                    Empleados</h2>
+                <h2>Empleados</h2>
             </div>
             <div class="subnav-container">
                 <ul id="subnav">
                     <li><a href="AgregarEmpleados.aspx" class="active">Agregar<span></span></a></li>
-                    <li><a href="ConsultarEmpleados.aspx">Consultar<span></span></a></li>
+                    <li><a href="ConsultarEmpleados.aspx">Administrar<span></span></a></li>
                     <li><a href="EliminarEmpleados.aspx">Eliminar<span></span></a></li>
-                    <li><a href="ModificarEmpleados.aspx">Modificar<span></span></a></li>
+                    
                 </ul>
             </div>
             <div class="sub-content">
                 <div class="features_overview">
-                    <div class="features_overview">
+                   
                         <div class="features_overview_right">
                             <h3>
                                 Agregar Empleados</h3>
                             <p class="large">
                                 Introduzca la informacón a continuación</p>
-                            <p class="large">
-                            </p>
-                            <form id="Form1" action="#" runat="server">
-                            <p class="large">
-                                
+                           <p class="large">
+                            <form id="Form1" runat="server">
                                 <table style="width: 100%;">
                                     <tr>
                                         <td>
@@ -42,7 +38,7 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                         ControlToValidate="uxNombreEmpleado" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
@@ -59,7 +55,7 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                         ControlToValidate="uxApellidoEmpleado" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaApellidoEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
@@ -69,6 +65,10 @@
                                             C.I.:
                                         </td>
                                         <td>
+                                           <!-- Cedula venezolana o extranjera <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                                            <asp:ListItem Value="0">V: </asp:ListItem>
+                                            <asp:ListItem Value="1">E: </asp:ListItem>
+                                            </asp:RadioButtonList> -->
                                             <asp:TextBox ID="uxCedulaEmpleado" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
@@ -76,7 +76,7 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                          <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                         ControlToValidate="uxCedulaEmpleado" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
@@ -93,10 +93,11 @@
                                         <td>
                                             &nbsp;
                                         </td>
-                                         <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                             ControlToValidate="uxNumCuentaEmpleado" 
                                             ErrorMessage="<%$ Resources:DSU, FaltaNumCuentaEmpleado%>" Font-Size="Smaller" Display="Static" />
-                                           <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2" runat="server"
+                                             <br />
+                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
                                                     ErrorMessage="<%$Resources:DSU, ErrorFormatoNumCuentaEmpleado%>" ControlToValidate="uxNumCuentaEmpleado"
                                                     ValidationExpression="<%$Resources:DSU, ERNumCuentaEmpleado%>" Font-Size="Smaller">
                                                 </asp:RegularExpressionValidator>
@@ -217,12 +218,13 @@
                                         </td>
                                     </tr>
                                 </table>
-                               
+                               </form>
                             </p>
-                             </form>
+                             
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </asp:Content>

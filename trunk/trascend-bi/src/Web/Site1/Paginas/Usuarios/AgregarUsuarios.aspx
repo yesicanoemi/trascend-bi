@@ -22,7 +22,7 @@
                     
                     <li><a href="EliminarUsuarios.aspx" >Eliminar<span></span></a></li> 
                     
-                    <li><a href="ModificarUsuarios.aspx" >Modificar<span></span></a></li>
+                 
                 </ul> 
 
             </div> 

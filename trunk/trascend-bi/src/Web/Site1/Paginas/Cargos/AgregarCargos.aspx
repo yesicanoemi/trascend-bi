@@ -10,9 +10,9 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarCargos.aspx" class="active">Agregar<span></span></a></li> 
-  <li><a href="ConsultarCargos.aspx" >Consultar<span></span></a></li> 
+  <li><a href="ConsultarCargos.aspx" >Administrar<span></span></a></li> 
     <li><a href="EliminarCargos.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarCargos.aspx" >Modificar<span></span></a></li>
+  
 </ul> 
 						
 				</div> 
@@ -39,6 +39,7 @@
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
+                                   
                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                         ControlToValidate="uxNombre" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaNombreCargo%>" Font-Size="Smaller" Display="Static" />

@@ -10,4 +10,12 @@ public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page
     {
 
     }
+    protected void uxBuscarNombre_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void uxBuscarRango_Click(object sender, EventArgs e)
+    {
+
+    }
 }

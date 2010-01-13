@@ -10,9 +10,9 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarEmpleados.aspx">Agregar<span></span></a></li> 
-  <li><a href="ConsultarEmpleados.aspx">Consultar<span></span></a></li> 
+  <li><a href="ConsultarEmpleados.aspx">Administrar<span></span></a></li> 
     <li><a href="EliminarEmpleados.aspx" class="active">Eliminar<span></span></a></li> 
-  <li><a href="ModificarEmpleados.aspx" >Modificar<span></span></a></li>
+  
 </ul> 
 						
 				</div> 

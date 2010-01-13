@@ -16,26 +16,18 @@
 </ul> 
 						
 				</div> 
-				
-				
 				<div class="sub-content"> 
- 
-        				
-				
- 
-                  <div class="features_overview"> 
-         
- 
-          <div class="features_overview_right"> 
-           <h3>Agregar Contactos de Clientes</h3>
-            <p class="large">Introduzca la informacón a continuación</p>  
-            <p class="large">
-                <form id="Form1" action="#" runat="server">
-                           <table style="width:100%;">
-                               <tr>
-                                   <td>Nombre: </td>
-                                   <td><asp:TextBox ID="uxNombreContacto" runat="server"></asp:TextBox></td>
-                               </tr>
+                    <div class="features_overview"> 
+                        <div class="features_overview_right"> 
+                            <h3>Agregar Contactos de Clientes</h3>
+                            <p class="large">Introduzca la informacón a continuación</p>  
+                            <p class="large">
+                                <form id="Form1" action="#" runat="server">
+                                    <table style="width:100%;">
+                                        <tr>
+                                           <td>Nombre: </td>
+                                           <td><asp:TextBox ID="uxNombreContacto" runat="server"></asp:TextBox></td>
+                                       </tr>
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>

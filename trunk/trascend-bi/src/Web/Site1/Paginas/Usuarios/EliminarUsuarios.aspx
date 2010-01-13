@@ -12,7 +12,7 @@
   <li><a href="AgregarUsuarios.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarUsuarios.aspx">Consultar<span></span></a></li> 
   <li><a href="EliminarUsuarios.aspx" class="active">Eliminar<span></span></a></li> 
-  <li><a href="ModificarUsuarios.aspx" >Modificar<span></span></a></li>
+ 
 </ul> 
 						
 				</div> 

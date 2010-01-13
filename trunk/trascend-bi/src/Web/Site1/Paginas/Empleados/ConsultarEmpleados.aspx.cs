@@ -10,4 +10,12 @@ public partial class Paginas_Empleados_ConsultarEmpleados : System.Web.UI.Page
     {
 
     }
+    protected void uxBuscarCedula_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void uxBuscarNombre_Click(object sender, EventArgs e)
+    {
+
+    }
 }

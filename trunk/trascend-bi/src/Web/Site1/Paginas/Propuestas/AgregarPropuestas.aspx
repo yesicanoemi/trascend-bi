@@ -10,17 +10,16 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarPropuestas.aspx" class="active">Agregar<span></span></a></li> 
-  <li><a href="ConsultarPropuestas.aspx" >Consultar<span></span></a></li> 
+  <li><a href="ConsultarPropuestas.aspx" >Administrar<span></span></a></li> 
     <li><a href="EliminarPropuestas.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarPropuestas.aspx" >Modificar<span></span></a></li>
+  
 </ul> 
 </div> 
 <div class="sub-content"> 
    <div class="features_overview"> 
        <div class="features_overview_right"> 
           <h3>Agregar Propuesta</h3>
-            <p class="large">Introduzca la información a continuación</p>  
-          <p class="large">
+            <p class="large">Introduzca la informacón a continuación</p>  
             <form id="Form1" action="#" runat="server">
                <table style="width:100%;">
                    <tr>
@@ -29,7 +28,7 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                 ControlToValidate="uxTitulo" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaTituloPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -40,7 +39,7 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="uxVersion" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaVersionPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -54,7 +53,7 @@
                    
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                 ControlToValidate="uxFechaFirma" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaFirmaPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -65,7 +64,7 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                 ControlToValidate="uxNombreReceptor" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaNombreReceptorPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -76,7 +75,7 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                                 ControlToValidate="uxApellidoReceptor" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaApellidoReceptorPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -100,7 +99,7 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                                 ControlToValidate="uxFechaInicio" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaInicioPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -113,7 +112,7 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                                 ControlToValidate="uxFechaFin" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaFinPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
@@ -121,7 +120,7 @@
                    <tr>
                        <td>Equipo de trabajo:</td>
                        <td>
-                          /*Equipo #2 como prefiere que se ingrese el equipo de trabajo*/
+                          /*Equipo #2 como prefieran que se ingrese el equipo de trabajo*/
                        </td>
                    </tr>
                    <tr>
@@ -136,24 +135,9 @@
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
                                 ControlToValidate="uxTotalHoras" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaTotalHorasPropuesta%>" Font-Size="Smaller" Display="Static" />
-                       </td>
-                   </tr>
-                   
-                    <tr>
-                    <td>Monto Total:</td>
-                     <td>
-                           <asp:TextBox ID="uxMontoTotal" runat="server"></asp:TextBox>
-                       </td>
-                      
-                   </tr>
-                   <tr>
-                   <td>&nbsp;</td>
-                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
-                                ControlToValidate="uxMontoTotal" 
-                                ErrorMessage="<%$ Resources:DSU, FaltaMontoPropuesta%>" Font-Size="Smaller" Display="Static" />
                        </td>
                    </tr>
                    <tr>
