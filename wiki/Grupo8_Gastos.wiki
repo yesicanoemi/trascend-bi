@@ -1,5 +1,4 @@
 #summary Gestion de Gastos.
-_Gestion Gastos_
 
 = Detalles =
 
