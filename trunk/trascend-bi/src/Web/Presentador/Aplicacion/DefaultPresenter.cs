@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.LogicaNegocio.Entidades;
+using Core.LogicaNegocio.Fabricas;
 
 namespace Presentador.Aplicacion
 {
@@ -15,7 +17,6 @@ namespace Presentador.Aplicacion
         }
         public void OnBotonAceptar()
         {
-            /* Se implementara cuando la BD este lista 
              
              Usuario user = new Usuario();
 
@@ -25,7 +26,7 @@ namespace Presentador.Aplicacion
 
              user = ConsultarCredenciales(user);
          
-             if (user != null)
+             if (user.Status == "activo")
              {
              
                  _vista.IngresarSistema();
@@ -37,20 +38,17 @@ namespace Presentador.Aplicacion
                 //Mensaje de error al usuario
              }
             
-             */
 
-            _vista.IngresarSistema();
+            //_vista.IngresarSistema();
         
         }
-
-        /* Desarrollo 3 en prueba
        
         public Usuario ConsultarCredenciales(Usuario entidad)
         {
 
             Usuario usuario1 = null;
 
-            ConsultarCredenciales comando;
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarCredenciales comando;
 
             comando = FabricaComandosUsuario.CrearComandoConsultarCredenciales(entidad);
 
@@ -58,6 +56,6 @@ namespace Presentador.Aplicacion
 
             return usuario1;
         }
-        */
+
     }
 }

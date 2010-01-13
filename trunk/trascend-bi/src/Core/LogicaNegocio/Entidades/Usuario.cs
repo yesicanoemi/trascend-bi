@@ -13,6 +13,8 @@ namespace Core.LogicaNegocio.Entidades
         
         private string password;
 
+        private string status;
+
         public virtual int IdUsuario
         {
             get
@@ -46,6 +48,18 @@ namespace Core.LogicaNegocio.Entidades
             set
             {
                 this.password = value;
+            }
+        }
+
+        public virtual string Status
+        {
+            get
+            {
+                return this.status;
+            }
+            set
+            {
+                this.status = value;
             }
         }
     }

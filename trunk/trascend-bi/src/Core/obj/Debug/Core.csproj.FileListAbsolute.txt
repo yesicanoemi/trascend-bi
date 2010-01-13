@@ -76,3 +76,4 @@ C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.Properties.Resou
 C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.dll
 C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.pdb
+C:\Aplicaciones\trascend-bi\src\Core\bin\Debug\nunit.framework.xml

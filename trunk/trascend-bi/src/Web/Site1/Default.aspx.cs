@@ -39,10 +39,10 @@ public partial class _Default : PaginaBase, IDefaultPresenter
     {
         if(Page.IsValid == true)
             {
-                if ((uxLogin.Text == "usuario") && (uxContrasena.Text == "clave"))
-                {
+               // if ((uxLogin.Text == "usuario") && (uxContrasena.Text == "clave"))
+               // {
                     _presenter.OnBotonAceptar();
-                }
+                //}
                 /*else
                 {
                     Response.Redirect();

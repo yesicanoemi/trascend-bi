@@ -1,7 +1,9 @@
-using System.Web;
-//using Core.AccesoDatos.Interfaces;
-//using Core.AccesoDatos.Fabricas;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.SqlServer;
 
 
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
@@ -27,24 +29,19 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
         #region Metodos
 
         /// <summary>Método que implementa la ejecución del comando 'CosultarCredenciales'.</summary>
-       
-        /* Desarrollo 3 en prueba
-        
+    
         public Usuario Ejecutar()
         {
-            Usuario entidad = null;
-            //Objeto DAO.
-            IDAOUsuario daoUsuario;
-
-            //fábrica que instancia el DAO para usuario.
-            daoUsuario = FabricaDAOSQLServer.ObtenerDAOUsuario();
-            //invoca el método ingresar del DAO de usuario.
-            entidad = daoUsuario.ConsultarLoginPassword(usuario);
-            //Retorna el Usuario que ha ingresado sesion
-            return entidad;
+            Usuario _usuario;
+         
+            UsuarioSQLServer bd = new UsuarioSQLServer();
+            
+            _usuario = bd.ConsultarCredenciales(usuario);
+            
+            return _usuario;
         }
-        
-        */
+
+
         #endregion
     }
 }
