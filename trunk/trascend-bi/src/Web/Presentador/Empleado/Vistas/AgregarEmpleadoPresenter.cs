@@ -44,7 +44,7 @@ namespace Presentador.Empleado.Vistas
         #endregion
 
         #region Comando
-     public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
             Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
 
@@ -54,7 +54,7 @@ namespace Presentador.Empleado.Vistas
             //try
             //{    
             //ejecuta el comando.
-         return ingresar.Ejecutar();
+            return ingresar.Ejecutar();
         }
         #endregion
       
