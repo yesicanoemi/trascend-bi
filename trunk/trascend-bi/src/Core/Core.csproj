@@ -81,6 +81,7 @@
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
+    <Compile Include="LogicaNegocio\Comandos\CoamndoCargo\ComandoIngresarCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Eliminar.cs" />
