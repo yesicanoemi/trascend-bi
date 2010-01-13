@@ -1,0 +1,92 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo1a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <form id="form1" runat="server">
+    <div class="container subnav"> 
+			<div class="content"> 
+				<div class="sub-heading"> 
+					<h2>Reportes</h2> 
+				</div> 
+				<div class="subnav-container"> 
+				
+					<ul id="subnav"> 
+      <li><a href="ReportesEquipo1a.aspx" class="active">Paquete Anual<span></span></a></li> 
+  <li><a href="ReportesEquipo1b.aspx" >Total Anual<span></span></a></li>
+  <li><a href="ReportesEquipo2a.aspx" >Total de Horas Anuales <span></span></a></li>
+  <li><a href="ReportesEquipo2b.aspx" >Gastos<span></span></a></li>
+  <li><a href="ReportesEquipo3a.aspx" >Gastos Anuales<span></span></a></li> 
+  <li><a href="ReportesEquipo3b.aspx" >Facturas Emitidas<span></span></a></li>
+ <li><a href="ReportesEquipo6a.aspx" >Facturas Cobradas<span></span></a></li>
+ <li><a href="ReportesEquipo6b.aspx" >Facturas Por Cobrar<span></span></a></li>
+ <li><a href="ReportesEquipo8a.aspx" >Total Facturas Emitidas<span></span></a></li>
+ <li><a href="ReportesEquipo8b.aspx" >Total Facturas Cobradas<span></span></a></li>
+ <li><a href="ReportesEquipo8c.aspx" >Total Facturas Por Cobrar<span></span></a></li>
+ <li><a href="ReportesEquipo9a.aspx" >Propuestas Emitidas<span></span></a></li>
+ <li><a href="ReportesEquipo9b.aspx" >Total de Propuestas Emitidas<span></span></a></li>
+</ul> 
+						
+				</div> 
+<div class="sub-content"> 
+    <div class="features_overview"> 
+        <div class="features_overview_right"> 
+            <h3>Reporte Equipo #1 (Paquete Anual Por Empleado)</h3>
+            <p>&nbsp;</p>
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        C.I.:<asp:TextBox ID="uxCedula" runat="server"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="uxBotonAceptar1" runat="server" Text="Aceptar" />
+                        
+                    </td>
+                    <td>
+                        Nombre:
+                        <asp:TextBox ID="uxNombre" runat="server"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="uxBotonAceptar2" runat="server" Text="Aceptar" />
+                        
+                    </td>
+                </tr>
+                 
+            </table>
+            
+                      
+             
+                                
+                 
+            
+         </div> 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div> 
+</div>  
+				
+			</div> 
+		</div> 
+    </form>
+</asp:Content>
