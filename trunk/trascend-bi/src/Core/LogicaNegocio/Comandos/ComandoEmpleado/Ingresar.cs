@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
 {
@@ -29,6 +31,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         public Empleado Ejecutar()
         {
             Empleado _empleado = null;
+            IDAOEmpleado daoEmpleado;
+            daoEmpleado = FabricaDAOSQLServer.ObtenerDAOEmpleado();
+            _empleado = daoEmpleado.Ingresar(empleado);
             return _empleado;
         }
         #endregion
