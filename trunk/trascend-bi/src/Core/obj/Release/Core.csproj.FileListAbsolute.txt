@@ -1,0 +1,12 @@
+C:\Desarrollo\src\Core\bin\Release\Core.dll
+C:\Desarrollo\src\Core\bin\Release\Core.pdb
+C:\Desarrollo\src\Core\bin\Release\AjaxControlToolkit.dll
+C:\Desarrollo\src\Core\bin\Release\log4net.dll
+C:\Desarrollo\src\Core\bin\Release\Microsoft.ApplicationBlocks.Data.dll
+C:\Desarrollo\src\Core\bin\Release\Microsoft.Practices.Web.UI.WebControls.dll
+C:\Desarrollo\src\Core\bin\Release\nunit.framework.dll
+C:\Desarrollo\src\Core\obj\Release\ResolveAssemblyReference.cache
+C:\Desarrollo\src\Core\obj\Release\Core.Properties.Resources.resources
+C:\Desarrollo\src\Core\obj\Release\Core.csproj.GenerateResource.Cache
+C:\Desarrollo\src\Core\obj\Release\Core.dll
+C:\Desarrollo\src\Core\obj\Release\Core.pdb

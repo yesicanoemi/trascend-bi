@@ -1,0 +1,10 @@
+C:\Desarrollo\src\Web\Presentador\bin\Release\Presentador.dll
+C:\Desarrollo\src\Web\Presentador\bin\Release\Presentador.pdb
+C:\Desarrollo\src\Web\Presentador\bin\Release\Core.dll
+C:\Desarrollo\src\Web\Presentador\bin\Release\Microsoft.ApplicationBlocks.Data.dll
+C:\Desarrollo\src\Web\Presentador\bin\Release\Core.pdb
+C:\Desarrollo\src\Web\Presentador\obj\Release\ResolveAssemblyReference.cache
+C:\Desarrollo\src\Web\Presentador\obj\Release\Presentador.Properties.Resources.resources
+C:\Desarrollo\src\Web\Presentador\obj\Release\Presentador.csproj.GenerateResource.Cache
+C:\Desarrollo\src\Web\Presentador\obj\Release\Presentador.dll
+C:\Desarrollo\src\Web\Presentador\obj\Release\Presentador.pdb

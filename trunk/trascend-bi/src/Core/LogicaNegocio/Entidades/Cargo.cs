@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Core.LogicaNegocio.Entidades
+{
+    public class Cargo
+    {
+        public virtual String Nombre
+        {
+            
+    }
+}
