@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DefaultPresenter.cs" />
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
+    <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
     <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />

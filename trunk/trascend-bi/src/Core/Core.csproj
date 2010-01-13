@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=1.0.10618.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\AjaxControlToolkit.dll</HintPath>
+      <HintPath>bin\Debug\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -83,6 +83,7 @@
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Empleado.cs" />
     <Compile Include="LogicaNegocio\Entidades\Factura.cs" />
     <Compile Include="LogicaNegocio\Entidades\Persona.cs" />
