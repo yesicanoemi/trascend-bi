@@ -69,6 +69,11 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page,IAg
     #endregion
 
     #endregion
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        _presentador = new AgregarEmpleadoPresenter(this);
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
 
