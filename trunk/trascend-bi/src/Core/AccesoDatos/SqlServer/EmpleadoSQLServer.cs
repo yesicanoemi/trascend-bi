@@ -49,17 +49,21 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[1];
-                // @ProductID Input Parameter 
-                // assign value = 1
-                arParms[0] = new SqlParameter("@dina", SqlDbType.Int);
-                arParms[0].Value = 1;
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ObtenerNombre");
-                if (reader.Read())
-                {
-                    _empleado.Cedula = (int)reader["dina"];
-                }
-                return _empleado;
+                SqlParameter[] arParms = new SqlParameter[6];
+                // Parametros 
+                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
+                arParms[0].Value = empleado.Cedula;
+                arParms[1] = new SqlParameter("@nombreEmpleado", SqlDbType.VarChar);
+                arParms[1].Value = empleado.Nombre;
+                arParms[2] = new SqlParameter("@apellidoEmpleado", SqlDbType.VarChar);
+                arParms[2].Value = empleado.Apellido;
+                arParms[3] = new SqlParameter("@numeroCta", SqlDbType.VarChar);
+                arParms[3].Value = empleado.Cuenta;
+                arParms[4] = new SqlParameter("@fechaNac", SqlDbType.SmallDateTime);
+                arParms[4].Value = empleado.FechaNacimiento.ToShortDateString();
+                arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
+                arParms[5].Value = empleado.Estado;
+                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarEmpleado", arParms);
             }
             catch (SqlException e)
             {

@@ -12,6 +12,7 @@ namespace Presentador.Empleado.Vistas
     public class AgregarEmpleadoPresenter
     {
         private IAgregarEmpleado _vista;
+        private string campoVacio = "";
         //private EmpleadoController _controller;
 
         public AgregarEmpleadoPresenter(IAgregarEmpleado vista)
@@ -35,11 +36,25 @@ namespace Presentador.Empleado.Vistas
                 empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
                 empleado = Ingresar(empleado);
+                LimpiarRegistros();
             }
             catch (WebException e)
             {
                 //Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
+        }
+
+        public void LimpiarRegistros()
+        {
+            _vista.NombreEmpleado.Text = campoVacio;
+            _vista.SueldoEmpleado.Text = campoVacio;
+            _vista.DireccionEmpleado.Text = campoVacio;
+            _vista.CuentaEmpleado.Text = campoVacio;
+            _vista.CedulaEmpleado.Text = campoVacio;
+            _vista.ApellidoEmpleado.Text = campoVacio;
+            _vista.FechaEgresoEmpleado.Text = DateTime.Now.ToString();
+            _vista.FechaIngresoEmpleado.Text = DateTime.Now.ToString();
+            _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
         }
         #endregion
 

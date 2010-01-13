@@ -11,7 +11,8 @@
   
 </head>
 <body id="interior">
-
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="false">
+    </asp:ScriptManager>
 <!-- \\\ START GLOBAL HEADER  /// -->
 <div id="header_full">	
 	

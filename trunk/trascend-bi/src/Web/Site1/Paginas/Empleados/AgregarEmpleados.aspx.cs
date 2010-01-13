@@ -45,26 +45,26 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page,IAg
 
     public TextBox FechaNacEmpleado
     {
-        get { return uxNombreEmpleado; }
-        set { uxNombreEmpleado = value; }
+        get { return uxFechaNac; }
+        set { uxFechaNac = value; }
     }
 
     public TextBox DireccionEmpleado
     {
-        get { return uxNombreEmpleado; }
-        set { uxNombreEmpleado = value; }
+        get { return uxDireccion; }
+        set { uxDireccion = value; }
     }
 
     public TextBox FechaIngresoEmpleado
     {
-        get { return uxNombreEmpleado; }
-        set { uxNombreEmpleado = value; }
+        get { return uxFechaIngreso; }
+        set { uxFechaIngreso = value; }
     }
 
     public TextBox FechaEgresoEmpleado
     {
-        get { return uxNombreEmpleado; }
-        set { uxNombreEmpleado = value; }
+        get { return uxFechaEgreso; }
+        set { uxFechaEgreso = value; }
     }
     #endregion
 
@@ -76,7 +76,6 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page,IAg
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
