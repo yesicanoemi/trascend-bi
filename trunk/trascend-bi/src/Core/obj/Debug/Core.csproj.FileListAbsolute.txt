@@ -57,3 +57,15 @@ C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Core\obj\Debug\Core
 C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Core\obj\Debug\Core.dll
 C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Core\obj\Debug\Core.pdb
+C:\Aplica\trascend-bi\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplica\trascend-bi\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Aplica\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Aplica\trascend-bi\src\Core\obj\Debug\Core.dll
+C:\Aplica\trascend-bi\src\Core\obj\Debug\Core.pdb
+C:\Aplica\trascend-bi\src\Core\bin\Debug\Core.dll
+C:\Aplica\trascend-bi\src\Core\bin\Debug\Core.pdb
+C:\Aplica\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dll
+C:\Aplica\trascend-bi\src\Core\bin\Debug\log4net.dll
+C:\Aplica\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplica\trascend-bi\src\Core\bin\Debug\Microsoft.Practices.Web.UI.WebControls.dll
+C:\Aplica\trascend-bi\src\Core\bin\Debug\nunit.framework.dll

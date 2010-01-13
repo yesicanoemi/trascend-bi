@@ -61,3 +61,13 @@ C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin
 C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.Core.dll
 C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
 C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
