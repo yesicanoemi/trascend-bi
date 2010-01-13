@@ -54,7 +54,11 @@
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -71,12 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
-    <Compile Include="AccesoDatos\Interfaces\IDAOEmpleado.cs" />
-    <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
-    <Compile Include="AccesoDatos\Interfaces\IDAOPropuesta.cs" />
-    <Compile Include="AccesoDatos\SqlServer\DAOEmpleadoSQLServer.cs" />
+    <Compile Include="Interfaces\IDAOFactura.cs" />
+    <Compile Include="Interfaces\IDAOPropuesta.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
