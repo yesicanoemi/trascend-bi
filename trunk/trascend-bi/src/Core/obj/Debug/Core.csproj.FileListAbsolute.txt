@@ -66,3 +66,13 @@ C:\Aplica\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
 C:\Aplica\trascend-bi\src\Core\bin\Debug\Microsoft.Practices.Web.UI.WebControls.dll
 C:\Aplica\trascend-bi\src\Core\bin\Debug\nunit.framework.dll
 C:\Aplicaciones\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\Core.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\Core.pdb
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\nunit.framework.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\nunit.framework.xml
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\obj\Debug\Core.pdb

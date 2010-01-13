@@ -67,3 +67,13 @@ C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
 C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb

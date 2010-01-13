@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DefaultPresenter.cs" />
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
+    <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
+    <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />
+    <Compile Include="Contacto\ContactoPresentador\AgregarPresentador.cs" />
+    <Compile Include="Contacto\ContactoPresentador\ConsultarPresentador.cs" />
+    <Compile Include="Contacto\ContactoPresentador\EliminarPresentador.cs" />
     <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
     <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
     <Compile Include="Factura\Contrato\IAgregarFactura.cs">

@@ -29,7 +29,7 @@
           <div class="features_overview_right"> 
            <h3>Agregar Contactos de Clientes</h3>
             <p class="large">Introduzca la informacón a continuación</p>  
-            <p class="large">
+            <p class="large"> </p>
                 <form id="Form1" action="#" runat="server">
                            <table style="width:100%;">
                                <tr>
@@ -108,14 +108,14 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" />
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="Aceptar_Click" />
                                     </td>
                                 </tr>
                            </table>
                     </form>
             
             
-            </p> 
+    <!--        </p> -->
             
           </div> 
         </div> 

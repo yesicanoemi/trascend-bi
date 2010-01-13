@@ -25,7 +25,48 @@
                     <p class="large">
                         
                         
-                    </p> 
+                        Busqueda por Nombre</p>
+                     <form id="Form3" runat="server">
+                           <table style="width:100%;">
+                               <tr>
+                                   <td>Nombre: </td>
+                                   <td><asp:TextBox ID="uxConsultaNombreContacto" runat="server"></asp:TextBox></td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Apellido: </td>
+                                   <td><asp:TextBox ID="uxConsultaApellidoContacto" runat="server"></asp:TextBox></td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Cedula</td>
+                                   <td>
+                                       <asp:TextBox ID="uxConsultaCedulaContacto" runat="server"></asp:TextBox>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                                <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                   <td>&nbsp;</td>
+                                   <td>
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="Aceptar_Click"/>
+                                    </td>
+                                </tr>
+                           </table>
+                     </form>
+                     
                  </div> 
               </div>
         </div> 
