@@ -16,17 +16,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
             this._cargo = cargo;
         }
 
-        override public void Ejecutar()
+        public void Ejecutar()
         {
-            Comando<Cargo> ingresarCargo = Fabricas.FabricaComandoCargo.CrearComandoIngresar(_cargo);
-            try
-            {
-                ingresarCargo.Ejecutar();
-            }
-            catch (Exception e)
-            { 
-                // no se pudo ingresar el cargo
-            }
+            
         }
     }
 }

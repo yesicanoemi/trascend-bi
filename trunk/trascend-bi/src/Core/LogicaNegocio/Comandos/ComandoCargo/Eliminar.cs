@@ -16,7 +16,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
             this._cargo = cargo;
         }
 
-        override public void Ejecutar()
+        public void Ejecutar()
         {
 
         }
