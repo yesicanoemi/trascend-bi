@@ -13,7 +13,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site1", "Web\Site1\", "{214
 		SccLocalPath = "Svn"
 		SccProvider = "SubversionScc"
 		TargetFramework = "2.0"
-		ProjectReferences = "{7C472447-ACA3-4627-9E00-8879527FECCC}|Presentador.dll;"
+		ProjectReferences = "{7C472447-ACA3-4627-9E00-8879527FECCC}|Presentador.dll;{8E9A7DB7-6693-4068-83B6-F9271D44BB2F}|Core.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Site1"
 		Debug.AspNetCompiler.PhysicalPath = "Web\Site1\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Site1\"
@@ -37,10 +37,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8E9A7DB7-6693-4068-83B6-F9271D44BB2F}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
 		Debug|Any CPU = Debug|Any CPU
@@ -83,5 +79,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

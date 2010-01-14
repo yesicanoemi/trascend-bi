@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Aplicaciones - Copy\trascend-bi\src\Core\bin\Debug\Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -63,9 +59,11 @@
     <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />
+    <Compile Include="Contacto\ContactoInterface\IModificarContacto.cs" />
     <Compile Include="Contacto\ContactoPresentador\AgregarPresentador.cs" />
     <Compile Include="Contacto\ContactoPresentador\ConsultarPresentador.cs" />
     <Compile Include="Contacto\ContactoPresentador\EliminarPresentador.cs" />
+    <Compile Include="Contacto\ContactoPresentador\ModificarPresentador.cs" />
     <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
     <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
     <Compile Include="Factura\Contrato\IAgregarFactura.cs">
@@ -94,6 +92,12 @@
     </Compile>
     <Compile Include="Propuesta\Contrato\IAgregarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{8E9A7DB7-6693-4068-83B6-F9271D44BB2F}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
