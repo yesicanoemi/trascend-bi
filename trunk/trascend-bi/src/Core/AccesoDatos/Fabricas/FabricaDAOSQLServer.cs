@@ -10,7 +10,7 @@ namespace Core.AccesoDatos.Fabricas
     public class FabricaDAOSQLServer
     {
 
-        public static IDAOPropuesta ObtenerDAOPropuesta()
+     /*   public static IDAOPropuesta ObtenerDAOPropuesta()
         {
             return new DAOPropuestaSQLServer();
         }
@@ -19,7 +19,7 @@ namespace Core.AccesoDatos.Fabricas
         {
             return new DAOFacturaSQLServer();
         }
-
+        */
     }
 }
 

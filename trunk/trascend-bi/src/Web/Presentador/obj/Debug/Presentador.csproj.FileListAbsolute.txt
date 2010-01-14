@@ -109,3 +109,13 @@ C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\P
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb

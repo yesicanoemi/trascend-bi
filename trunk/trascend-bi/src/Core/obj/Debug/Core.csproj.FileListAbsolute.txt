@@ -88,3 +88,15 @@ C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.Propert
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.dll
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\log4net.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\nunit.framework.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\bin\Debug\nunit.framework.xml
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.pdb

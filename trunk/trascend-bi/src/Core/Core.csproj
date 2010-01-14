@@ -76,11 +76,11 @@
   <ItemGroup>
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
     <Compile Include="Interfaces\IDAOFactura.cs" />
     <Compile Include="Interfaces\IDAOPropuesta.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
-    <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Consultar.cs" />

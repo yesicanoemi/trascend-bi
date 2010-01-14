@@ -20,10 +20,8 @@ namespace Presentador.Propuesta.Vistas
         #endregion
 
         #region Metodos
-        public void IngresarPropuesta()
-        {
+     
 
-        }
         #endregion
     }
 }
