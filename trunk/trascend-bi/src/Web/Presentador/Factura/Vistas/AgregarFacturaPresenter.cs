@@ -16,5 +16,23 @@ namespace Presentador.Factura.Vistas
         {
             _vista = vista;
         }
+        public void OnBotonAceptar()
+        {
+            
+             CambiarVista(1);
+
+        }
+        /// <summary>
+        /// Cambia la vista del multiview
+        /// </summary>
+        public void CambiarVista(int index)
+        {
+            _vista.MultiViewPropuesta.ActiveViewIndex = index;
+          
+
+        }
+
     }
+
+
 }

@@ -18,7 +18,7 @@ namespace Presentador.Usuario.Contrato
             Label NombreEmpleado { get; set; }
         
             Label ApellidoEmpleado { get; set; }
-        
+
             Label StatusUsuario { get; set; }
 
         #endregion
