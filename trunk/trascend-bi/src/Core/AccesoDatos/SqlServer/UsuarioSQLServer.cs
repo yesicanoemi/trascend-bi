@@ -103,7 +103,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
 
-                arParms[0].Value = usuario.Login;
+                arParms[0].Value = "%" + usuario.Login + "%";
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), 
                                         "ConsultarUsuario", arParms);
