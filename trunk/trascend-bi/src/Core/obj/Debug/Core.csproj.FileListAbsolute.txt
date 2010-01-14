@@ -115,3 +115,14 @@ C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.csp
 C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.dll
 C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Core\obj\Debug\Core.pdb
 >>>>>>> .r254
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\bin\Debug\Core.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\bin\Debug\Core.pdb
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\bin\Debug\log4net.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\bin\Debug\nunit.framework.xml
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\obj\Debug\Core.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Core\obj\Debug\Core.pdb

@@ -56,7 +56,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[3] = new SqlParameter("@SueldoMaximo", SqlDbType.Float);
                 arParms[3].Value = _cargo.SueldoMaximo;
                 arParms[4] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
-                arParms[4].Value = _cargo.Vigencia;
+                arParms[4].Value = _cargo.Vigencia.ToShortDateString;
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarCargo", arParms);
             }
             catch (SqlException e)
@@ -65,6 +65,44 @@ namespace Core.AccesoDatos.SqlServer
                 //System.Console.Write(e);
             }
             return true;
+        }
+
+        /// <summary>
+        /// Metodo para consultar un cargo por su nombre
+        /// </summary>
+        /// <param name="cargo">Criterio de la busqueda</param>
+        /// <returns>La informacion del cargo asociado al criterio</returns>
+        public Cargo ConsultarCargo( Cargo cargo )
+        {
+            Cargo _cargo = new Cargo();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0].Value = cargo.Nombre;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                                "ConsultarCargo", arParms);
+
+                if (reader.Read())
+                {
+                    _cargo.Nombre = (string)reader["Nombre"];
+                    _cargo.Descripcion = (string)reader["Descripcion"];
+                    _cargo.SueldoMinimo = (float)reader["SueldoMinimo"];
+                    _cargo.SueldoMaximo = (float)reader["SueldoMaximo"];
+                    _cargo.Vigencia = (smalldatetime)reader["VigenciaAnual"];
+                }
+
+                return _cargo;
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write( e );
+            }
+            return _cargo;
+
         }
         #endregion
     }
