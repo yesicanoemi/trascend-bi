@@ -2,10 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.LogicaNegocio.Entidades;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
-    class Ingresar
+    public class Ingresar : Comando
     {
+        private Cargo _cargo;
+   
+        
+        public Ingresar(Cargo cargo)
+        {
+            this._cargo = cargo;
+        }
+
+        public void Ejecutar()
+        {
+
+        }
     }
 }

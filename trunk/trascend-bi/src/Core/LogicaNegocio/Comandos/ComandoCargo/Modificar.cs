@@ -5,7 +5,19 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
-    class Modificar
+    public class Modificar : Comando
     {
+        private Cargo _cargo;
+
+
+        public Modificar(Cargo cargo)
+        {
+            this._cargo = cargo;
+        }
+
+        public void Ejecutar()
+        {
+
+        }
     }
 }

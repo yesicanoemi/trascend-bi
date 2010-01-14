@@ -5,7 +5,19 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
-    class Eliminar
+    public class Eliminar : Comando
     {
+        private Cargo _cargo;
+
+
+        public Eliminar(Cargo cargo)
+        {
+            this._cargo = cargo;
+        }
+
+        public void Ejecutar()
+        {
+
+        }
     }
 }
