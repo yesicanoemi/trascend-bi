@@ -12,6 +12,7 @@ namespace Presentador.Contacto.ContactoInterface
             TextBox TextBoxNombre { get; set; }
             TextBox TextBoxApellido { get; set; }
             TextBox TextBoxCedula { get; set; }
+            Table TablaResultados { get; set; }
             
     }
 }

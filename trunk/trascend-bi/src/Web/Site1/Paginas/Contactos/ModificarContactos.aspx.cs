@@ -29,6 +29,12 @@ public partial class Paginas_Contactos_ModificarContactos : System.Web.UI.Page, 
         set { uxModificarCedulaContacto = value; }
     }
 
+    public Table TablaResultados
+    {
+        get { return uxTablaResultados; }
+        set { uxTablaResultados = value; }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         _presentador = new ModificarPresentador(this);

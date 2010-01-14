@@ -64,6 +64,15 @@
                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="Aceptar_Click"/>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        <asp:Table ID="uxTablaResultados" runat="server" >
+                                        </asp:Table>
+                                    </td>
+                                </tr>
                            </table>
                      </form>
                      
