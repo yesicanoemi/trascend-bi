@@ -87,3 +87,15 @@ C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Pr
 C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.xml

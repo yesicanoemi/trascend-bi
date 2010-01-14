@@ -92,6 +92,8 @@
     </Compile>
     <Compile Include="Propuesta\Contrato\IAgregarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
+    <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
+    <Compile Include="Usuario\Vistas\ConsultarUsuarioPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.csproj">

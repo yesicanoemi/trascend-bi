@@ -18,35 +18,32 @@ namespace Presentador.Aplicacion
         }
         public void OnBotonAceptar()
         {
+            Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
+            user.Login = _vista.Login.Text;
 
-             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
+            user.Password = _vista.Password.Text;
 
-             user.Login = _vista.Login.Text;
+            user = ConsultarCredenciales(user);
 
-             user.Password = _vista.Password.Text;
+            if (user.Status == "activo")
+            {
 
-             user = ConsultarCredenciales(user);
-         
-             if (user.Status == "activo")
-             {
-             
-                 _vista.IngresarSistema();
-             
-             }
-            
-             else
-             {
+                _vista.IngresarSistema();
+
+            }
+
+            else
+            {
                 //Mensaje de error al usuario
-             }
-            
+            }
+
 
             //_vista.IngresarSistema();
-        
+
         }
 
-        public Core.LogicaNegocio.Entidades.Usuario ConsultarCredenciales
-                 (Core.LogicaNegocio.Entidades.Usuario entidad)
+        public Core.LogicaNegocio.Entidades.Usuario ConsultarCredenciales(Core.LogicaNegocio.Entidades.Usuario entidad)
         {
 
             Core.LogicaNegocio.Entidades.Usuario usuario1 = null;
