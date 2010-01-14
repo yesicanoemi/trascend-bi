@@ -14,7 +14,7 @@ namespace Core.AccesoDatos.SqlServer
 {
     public class CargoSQLServer
     {
-        #region Coneccion
+        #region Conexion
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
