@@ -83,6 +83,10 @@
     <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Consultar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Eliminar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Ingresar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Consultar.cs" />
@@ -98,6 +102,7 @@
     <Compile Include="LogicaNegocio\Entidades\Persona.cs" />
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosUsuario.cs" />
