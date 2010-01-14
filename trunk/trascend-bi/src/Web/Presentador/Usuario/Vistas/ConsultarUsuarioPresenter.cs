@@ -34,9 +34,9 @@ namespace Presentador.Usuario.Vistas
 
                 _vista.NombreU.Text = user.Login;
 
-                //_vista.NombreEmpleado = ???;
+                _vista.NombreEmpleado.Text = user.Nombre;
 
-                //_vista.ApellidoEmpleado = ???;
+                _vista.ApellidoEmpleado.Text = user.Apellido;
 
                 _vista.StatusUsuario.Text = user.Status;
 

@@ -4,7 +4,7 @@ namespace Core.LogicaNegocio.Entidades
     using System.Collections.Generic;
     
     
-    public class Usuario
+    public class Usuario : Empleado
     {
 
         private int idUsuario;

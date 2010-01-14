@@ -113,6 +113,10 @@ namespace Core.AccesoDatos.SqlServer
                     _usuario.Login = (string)reader["LoginUsuario"];
 
                     _usuario.Status = (string)reader["Status"];
+
+                    _usuario.Nombre = (string)reader["Nombre"];
+
+                    _usuario.Apellido = (string)reader["Apellido"];
                 }
 
                 return _usuario;
