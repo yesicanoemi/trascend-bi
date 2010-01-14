@@ -11,7 +11,15 @@ namespace Presentador.Usuario.Contrato
 
         #region Informacion Basica
 
-        TextBox NombreUsuario { get; set; }
+            TextBox NombreUsuario { get; set; }
+
+            Label NombreU { get; set; }
+        
+            Label NombreEmpleado { get; set; }
+        
+            Label ApellidoEmpleado { get; set; }
+        
+            Label StatusUsuario { get; set; }
 
         #endregion
     }

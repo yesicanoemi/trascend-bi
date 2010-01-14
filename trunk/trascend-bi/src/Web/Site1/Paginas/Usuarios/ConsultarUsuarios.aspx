@@ -44,17 +44,40 @@
                                </tr>
                                
                                <tr>
-                                   <td>&nbsp;</td>
+                                <td></td>
                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                         ControlToValidate="uxLogin" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaUserName%>" Font-Size="Smaller" Display="Static" />
                                     </td>
                                </tr>
+                              
                                <tr>
-                                   <td>&nbsp;</td>
+                          
+                                   <td>Usuario:</td>
+                                   <td><asp:Label ID="uxUsuario" runat="server" Text=""></asp:Label></td>
                                   
                                </tr>
-                              
+                             
+                               <tr>
+                           
+                                   <td>Nombre del Empleado:</td>
+                                   <td><asp:Label ID="uxNombreE" runat="server" Text=""></asp:Label></td>
+                                  
+                               </tr>
+                         
+                                  <tr>
+                         
+                                   <td>Apellido del Empleado:</td>
+                                   <td><asp:Label ID="uxApellidoE" runat="server" Text=""></asp:Label></td>
+                                  
+                               </tr>
+                         
+                                       <tr>
+                            
+                                   <td>Status del Usuario:</td>
+                                   <td><asp:Label ID="uxStatusU" runat="server" Text=""></asp:Label></td>
+                                  
+                               </tr>
                               
                
          

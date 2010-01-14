@@ -23,6 +23,30 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page,ICo
         set { uxLogin = value; }
     }
 
+    public Label NombreU
+    {
+        get { return uxUsuario; }
+        set { uxUsuario = value; }
+    }
+
+    public Label NombreEmpleado
+    {
+        get { return uxNombreE; }
+        set { uxNombreE = value; }
+    }
+
+    public Label ApellidoEmpleado
+    {
+        get { return uxApellidoE; }
+        set { uxApellidoE = value; }
+    }
+
+    public Label StatusUsuario
+    {
+        get { return uxStatusU; }
+        set { uxStatusU = value; }
+    }
+
     #endregion
 
 

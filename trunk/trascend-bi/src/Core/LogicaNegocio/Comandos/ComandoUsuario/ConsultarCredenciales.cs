@@ -10,7 +10,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
     public class ConsultarCredenciales : Comando<Usuario>
     {
-        private Usuario usuario;
+        private Core.LogicaNegocio.Entidades.Usuario usuario;
 
         #region Constructor
 
@@ -19,7 +19,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
         public ConsultarCredenciales()
         { }
 
-        public ConsultarCredenciales(Usuario usuario)
+        public ConsultarCredenciales(Core.LogicaNegocio.Entidades.Usuario usuario)
         {
             this.usuario = usuario;
         }

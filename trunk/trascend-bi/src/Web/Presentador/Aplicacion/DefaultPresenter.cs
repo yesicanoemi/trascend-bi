@@ -38,9 +38,6 @@ namespace Presentador.Aplicacion
                 //Mensaje de error al usuario
             }
 
-
-            //_vista.IngresarSistema();
-
         }
 
         public Core.LogicaNegocio.Entidades.Usuario ConsultarCredenciales(Core.LogicaNegocio.Entidades.Usuario entidad)

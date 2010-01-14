@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
@@ -25,10 +27,18 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         #region Metodos
 
-        /// <summary>Método que implementa la ejecución del comando 'CosultarCredenciales'.</summary>
+        /// <summary>Método que implementa la ejecución del comando 'CosultarUsuarios'.</summary>
 
+        public Usuario Ejecutar()
+        {
+            Usuario _usuario;
 
+            UsuarioSQLServer bd = new UsuarioSQLServer();
 
+            _usuario = bd.ConsultarUsuario(usuario);
+
+            return _usuario;
+        }
 
         #endregion
     }

@@ -8,6 +8,7 @@ using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Comandos.ComandoUsuario;
 using System.Net;
 
+
 namespace Presentador.Usuario.Vistas
 {
     public class ConsultarUsuarioPresenter
@@ -27,6 +28,26 @@ namespace Presentador.Usuario.Vistas
             user.Login = _vista.NombreUsuario.Text;
 
             user = ConsultarUsuario(user);
+
+            if (user != null)
+            {
+
+                _vista.NombreU.Text = user.Login;
+
+                //_vista.NombreEmpleado = ???;
+
+                //_vista.ApellidoEmpleado = ???;
+
+                _vista.StatusUsuario.Text = user.Status;
+
+            }
+
+            else
+            {
+                //Mensaje de error al usuario
+            }
+
+
         }
 
         public Core.LogicaNegocio.Entidades.Usuario ConsultarUsuario
@@ -39,7 +60,7 @@ namespace Presentador.Usuario.Vistas
 
             comando = FabricaComandosUsuario.CrearComandoConsultarUsuario(entidad);
 
-            //usuario1 = comando.Ejecutar();
+            usuario1 = comando.Ejecutar();
 
             return usuario1;
         }
