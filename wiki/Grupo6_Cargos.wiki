@@ -1,0 +1,42 @@
+#summary Gestión de Cargos.
+
+*Tabla de Contenido:*
+
+<wiki:toc />
+
+== Introducción ==
+
+Casos de uso para la Gestión de Cargos.
+
+== Detalles ==
+
+    * Ingresar Cargo (CU-01)
+    * Consultar Cargo (CU-U02)
+    * Modificar Cargo (CU-U03)
+    * Eliminar Cargo (CU-U04)
+
+
+== Casos de uso ==
+
+====*1) Ingresar Cargo*====
+
+
+
+
+
+====*2) Consultar Cargos*====
+
+
+
+
+
+====*3) Modificar Cargos*====
+
+
+
+
+====*4) Eliminar Cargos*====
+<br>
+<br>
+*Reportes:*
+<br>
