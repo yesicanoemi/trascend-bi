@@ -115,10 +115,13 @@
                                    <td>Fecha de Pago: </td>
                                    <td>
                                        <asp:TextBox ID="uxFechaPago" runat="server"></asp:TextBox>
+                                        <asp:Image ID="uxImagenFechaPago" runat="server" ImageUrl="~/Images/calendario.png" />
                                    </td>
                                </tr>
                                <tr>
-                                   <td>&nbsp;</td>
+                                   <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaPag"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaPago" PopupButtonID="uxImagenFechaPago" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                                    <td>&nbsp;</td>
                                </tr>
                                 <tr>

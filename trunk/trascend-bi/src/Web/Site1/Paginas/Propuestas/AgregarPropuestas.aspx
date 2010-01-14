@@ -46,14 +46,19 @@
                        </td>
                    </tr>
                    <tr>
+                  
                        <td>Fecha de firma:</td>
                        <td>
                            <asp:TextBox ID="uxFechaFirma" runat="server"></asp:TextBox>
+                           <asp:Image ID="uxImagenFechaFirma" runat="server" ImageUrl="~/Images/calendario.png" />
+                                            
                        </td>
                    </tr>
                    
                    <tr>
-                       <td>&nbsp;</td>
+                       <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uuxFechaFir"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaFirma" PopupButtonID="uxImagenFechaFirma" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                 ControlToValidate="uxFechaFirma" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaFirmaPropuesta%>" Font-Size="Smaller" Display="Static" />
@@ -96,10 +101,14 @@
                        <td>Fecha de inicio:</td>
                        <td>
                            <asp:TextBox ID="uxFechaInicio" runat="server"></asp:TextBox>
+                            <asp:Image ID="uxImagenFechaInicio" runat="server" ImageUrl="~/Images/calendario.png" />
+                            
                        </td>
                    </tr>
                    <tr>
-                       <td>&nbsp;</td>
+                       <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaIni"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaInicio" PopupButtonID="uxImagenFechaInicio" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                                 ControlToValidate="uxFechaInicio" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaInicioPropuesta%>" Font-Size="Smaller" Display="Static" />
@@ -109,10 +118,14 @@
                        <td>Fecha fin:</td>
                        <td>
                            <asp:TextBox ID="uxFechaFin" runat="server"></asp:TextBox>
+                           <asp:Image ID="uxImagenFechaFin" runat="server" ImageUrl="~/Images/calendario.png" />
+                            
                        </td>
                    </tr>
                    <tr>
-                       <td>&nbsp;</td>
+                       <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaF"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaFin" PopupButtonID="uxImagenFechaFin" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                                 ControlToValidate="uxFechaFin" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaFinPropuesta%>" Font-Size="Smaller" Display="Static" />

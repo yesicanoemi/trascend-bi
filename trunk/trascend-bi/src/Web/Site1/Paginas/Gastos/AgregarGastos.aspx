@@ -52,11 +52,15 @@
                                <tr>
                                    <td>Fecha del gasto: </td>
                                    <td>
-                                       <asp:Calendar ID="uxFechaGasto" runat="server"></asp:Calendar>
+                                       <asp:TextBox ID="uxFechaGasto" runat="server"></asp:TextBox>
+                                       <asp:Image ID="uxImagenFechaGasto" runat="server" ImageUrl="~/Images/calendario.png" />
+                                            
                                    </td>
                                </tr>
                                <tr>
-                                   <td>&nbsp;</td>
+                                   <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaGast"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaGasto" PopupButtonID="uxImagenFechaGasto" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                                    <td>&nbsp;</td>
                                </tr>
                                 <tr>

@@ -180,11 +180,14 @@
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxFechaIngreso" runat="server"></asp:TextBox>
+                                            <asp:Image ID="uxImagenFechaIngreso" runat="server" ImageUrl="~/Images/calendario.png" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            &nbsp;
+                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaIngres"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaIngreso" PopupButtonID="uxImagenFechaIngreso" >
+                                            </AjaxControlToolkit:CalendarExtender>
                                         </td>
                                         <td>
                                             &nbsp;
@@ -196,11 +199,14 @@
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxFechaEgreso" runat="server"></asp:TextBox>
+                                            <asp:Image ID="uxImagenFechaEgreso" runat="server" ImageUrl="~/Images/calendario.png" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            &nbsp;
+                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaEgres"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaEgreso" PopupButtonID="uxImagenFechaEgreso" >
+                                            </AjaxControlToolkit:CalendarExtender>
                                         </td>
                                         <td>
                                             &nbsp;
