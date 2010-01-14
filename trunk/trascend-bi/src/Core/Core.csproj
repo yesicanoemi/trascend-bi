@@ -79,11 +79,6 @@
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
-    <Compile Include="BddProy2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BddProy2DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Interfaces\IDAOFactura.cs" />
     <Compile Include="Interfaces\IDAOPropuesta.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
@@ -132,18 +127,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="app.config" />
-    <None Include="BddProy2DataSet.xsc">
-      <DependentUpon>BddProy2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BddProy2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BddProy2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BddProy2DataSet.xss">
-      <DependentUpon>BddProy2DataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
