@@ -35,7 +35,7 @@ namespace Presentador.Empleado.Vistas
                 empleado.FechaIngreso = DateTime.Now;
                 empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
-                empleado = Ingresar(empleado);
+                Ingresar(empleado);
                 LimpiarRegistros();
             }
             catch (WebException e)
@@ -59,9 +59,9 @@ namespace Presentador.Empleado.Vistas
         #endregion
 
         #region Comando
-        public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public void Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
+            Core.LogicaNegocio.Comandos.Comando<Core.LogicaNegocio.Entidades.Empleado> ingresar; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresar(empleado);
@@ -69,7 +69,7 @@ namespace Presentador.Empleado.Vistas
             //try
             //{    
             //ejecuta el comando.
-            return ingresar.Ejecutar();
+            ingresar.Ejecutar();
         }
         #endregion
       
