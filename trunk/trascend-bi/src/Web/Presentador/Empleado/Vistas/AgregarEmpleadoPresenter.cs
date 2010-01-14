@@ -61,7 +61,7 @@ namespace Presentador.Empleado.Vistas
         #region Comando
         public void Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.Comando<Core.LogicaNegocio.Entidades.Empleado> ingresar; //objeto del comando Ingresar.
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresar(empleado);
