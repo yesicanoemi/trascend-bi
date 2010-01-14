@@ -25,5 +25,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarUsuario(entidad);
         }
+
+        public static EliminarUsuario CrearComandoEliminarUsuario(Usuario entidad)
+        {
+            return new EliminarUsuario(entidad);
+        }
 	}
 }

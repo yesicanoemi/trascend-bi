@@ -128,6 +128,44 @@ namespace Core.AccesoDatos.SqlServer
             return _usuario;
 
         }
+
+
+         public Usuario EliminarUsuario(Usuario usuario)
+        {
+            Usuario _usuario = new Usuario();
+            try
+            {
+
+                SqlParameter[] arParms = new SqlParameter[2];
+                // Parametros 
+                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                arParms[0].Value = usuario.Login;
+                arParms[1] = new SqlParameter("@Status", SqlDbType.VarChar);
+                arParms[1].Value = usuario.Status;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                     "EliminarUsuario", arParms);
+
+                if (reader.Read())
+                {
+                    _usuario.Login = (string)reader["LoginUsuario"];
+
+                    _usuario.Status = (string)reader["Status"];
+                }
+
+                return _usuario;
+
+            }
+
+             catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            return _usuario;
+
+        }
+
+
         #endregion
 
 

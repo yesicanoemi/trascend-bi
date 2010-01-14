@@ -99,6 +99,18 @@ C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Pr
 C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
 C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.pdb
 C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.xml
+<<<<<<< .mine
+C:\DS\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\DS\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\DS\src\Web\Presentador\bin\Debug\Core.dll
+C:\DS\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\DS\src\Web\Presentador\bin\Debug\Core.pdb
+C:\DS\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.pdb
+=======
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
 C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
@@ -119,3 +131,4 @@ C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Deb
 C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
 C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+>>>>>>> .r254

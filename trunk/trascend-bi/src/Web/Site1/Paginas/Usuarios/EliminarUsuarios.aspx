@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" Title="Eliminar Usuarios" AutoEventWireup="true" CodeFile="EliminarUsuarios.aspx.cs" Inherits="Paginas_Usuarios_EliminarUsuarios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -26,7 +27,38 @@
                     <p class="large">
                         
                         
-                    </p> 
+                        Introduzca el usuario o seleccionelo de la lista</p>
+                     <p class="large">
+                        
+                        
+                         Usuario:
+                                                 
+                        
+                    </p>
+                     <p class="large">
+                        
+                        
+                         <asp:TextBox ID="uxUsuarioEliminar" runat="server"></asp:TextBox>
+                        
+                        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        
+                    </p>
+                     <p class="large">
+                        
+                        
+                         &nbsp;&nbsp;
+                        
+                        
+                         <asp:Button ID="uxBotonEliminar" runat="server" Text="Eliminar" />
+                        
+                        
+                    </p>
+                     <p class="large">
+                        
+                        
+                         &nbsp;</p>
                  </div> 
               </div>
         
@@ -35,4 +67,5 @@
 				
 			</div> 
 		</div> 
+    </form>
 </asp:Content>
