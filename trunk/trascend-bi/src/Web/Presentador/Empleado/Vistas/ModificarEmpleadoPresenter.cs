@@ -38,7 +38,7 @@ namespace Presentador.Empleado.Vistas
                 empleado.FechaIngreso = DateTime.Now;
                 empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
-                resultado = Modificar(empleado);
+                Modificar(empleado);
                 //LimpiarRegistros();
             }
             catch (WebException e)
@@ -49,7 +49,7 @@ namespace Presentador.Empleado.Vistas
         #endregion
 
         #region Comando
-        public int Modificar(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public void Modificar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
             Core.LogicaNegocio.Comandos.ComandoEmpleado.Modificar modificar; //objeto del comando Ingresar.
 
@@ -59,7 +59,7 @@ namespace Presentador.Empleado.Vistas
             //try
             //{    
             //ejecuta el comando.
-            return modificar.Ejecutar();
+            modificar.Ejecutar();
         }
         #endregion
     }
