@@ -33,26 +33,41 @@
             <p>&nbsp;</p>
            
             
-            <table style="width: 100%">
-                <tr>
-                    <td>
-                        Fecha Inicio:
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Fecha Fin:&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="Button1" runat="server" Text="Button" />
-                    </td>
-                </tr>
-            </table>
+           <table style="width: 100%">
+            <tr>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="Fecha inicio"></asp:Label>
+                    
+                    <asp:TextBox ID="uxFechaInicio" runat="server"></asp:TextBox>
+                   
+                    <asp:Image ID="uxFechaInicioImg" runat="server" ImageUrl="~/Images/calendario.png" />
+                    
+                    <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"
+                                        Format="dd/MM/yy" TargetControlID="uxFechaInicio" PopupButtonID="uxFechaInicioImg" >
+                    </AjaxControlToolkit:CalendarExtender>                      
+                                        
+                    
+                </td>
+                
+               
+            </tr>
+            <tr>
+                 <td>
+                   
+                    <asp:Label ID="Label4" runat="server" Text="Fecha fin"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="uxFechaFin" runat="server"></asp:TextBox>
+                    <asp:Image ID="uxFechaFinImg" runat="server" ImageUrl="~/Images/calendario.png" />
+                    
+                    <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="CalendarExtender2"
+                                        Format="dd/MM/yy" TargetControlID="uxFechaFin" PopupButtonID="uxFechaFinImg" >
+                    </AjaxControlToolkit:CalendarExtender>
+                 
+                </td>
+                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" /></td>
+             </tr>
+              
+        </table>
            
             
          </div> 

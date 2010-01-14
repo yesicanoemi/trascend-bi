@@ -30,7 +30,7 @@
         <div class="features_overview_right"> 
             <h3>Reporte Equipo #8 (Total Facturas Cobradas)</h3> 
             <p>&nbsp;</p>
-            <form runat=server>
+            <form id="Form1" runat=server>
              <table style="width: 100%">
                 <tr>
                     <td>

@@ -41,17 +41,17 @@
                     <td>
                         <asp:DropDownList ID="uxAnios" runat="server">
                             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
-                            <asp:ListItem>2010</asp:ListItem>
-                            <asp:ListItem>2009</asp:ListItem>
-                            <asp:ListItem>2008</asp:ListItem>
-                            <asp:ListItem>2007</asp:ListItem>
-                            <asp:ListItem>2006</asp:ListItem>
-                            <asp:ListItem>2005</asp:ListItem>
-                            <asp:ListItem>2004</asp:ListItem>
-                            <asp:ListItem>2003</asp:ListItem>
-                            <asp:ListItem>2002</asp:ListItem>
-                            <asp:ListItem>2001</asp:ListItem>
-                            <asp:ListItem>2000</asp:ListItem>
+                            <asp:ListItem Value="2010">2010</asp:ListItem>
+                            <asp:ListItem Value="2009">2009</asp:ListItem>
+                            <asp:ListItem Value="2008">2008</asp:ListItem>
+                            <asp:ListItem Value="2007">2007</asp:ListItem>
+                            <asp:ListItem Value="2006">2006</asp:ListItem>
+                            <asp:ListItem Value="2005">2005</asp:ListItem>
+                            <asp:ListItem Value="2004">2004</asp:ListItem>
+                            <asp:ListItem Value="2003">2003</asp:ListItem>
+                            <asp:ListItem Value="2002">2002</asp:ListItem>
+                            <asp:ListItem Value="2001">2001</asp:ListItem>
+                            <asp:ListItem Value="2000">2000</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -59,11 +59,12 @@
                     </td>
                 </tr>
                    <tr>
-                    <td><asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1" runat="server"
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RangeValidator MaximumValue="2010" MinimumValue="2000" Display="Static" ID="RegularExpressionValidator1" runat="server"
                                     ErrorMessage="<%$Resources:DSU, FaltaAnioReportes %>" ControlToValidate="uxAnios"
-                                    ValidationExpression="<%$Resources:DSU, ERAnioReportes%>" Font-Size="Smaller">
-                                </asp:RegularExpressionValidator></td>
-                    <td></td>
+                                    Font-Size="Smaller"></asp:RangeValidator>
+                             
+                    </td>
+                   
                 </tr>
             </table>
             

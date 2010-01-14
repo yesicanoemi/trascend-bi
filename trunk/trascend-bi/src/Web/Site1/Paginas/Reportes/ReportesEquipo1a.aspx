@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo1a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <form id="form1" runat="server">
+    
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -33,20 +33,33 @@
             <p>&nbsp;</p>
             <table style="width: 100%">
                 <tr>
-                    <td>
-                        C.I.:<asp:TextBox ID="uxCedula" runat="server"></asp:TextBox>
+                    <form id="fomr1" runat="server">
+                    <td>C.I.:<asp:TextBox ID="uxCedula" runat="server" ValidationGroup="validarCedula"></asp:TextBox>
+                    <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxCedula"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" ValidationGroup="validarCedula" /></td>
+                    
+                    <td><br />
                         <br />
-                        <asp:Button ID="uxBotonAceptar1" runat="server" Text="Aceptar" />
-                        
-                    </td>
-                    <td>
-                        Nombre:
-                        <asp:TextBox ID="uxNombre" runat="server"></asp:TextBox>
                         <br />
-                        <asp:Button ID="uxBotonAceptar2" runat="server" Text="Aceptar" />
-                        
+                        <asp:Button ID="uxBotonAceptar1" runat="server" Text="Buscar" ValidationGroup="validarCedula" /></td>
+                    
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    
+                    <td>Nombre:<asp:TextBox ID="uxNombre" runat="server" ValidationGroup="validarNombre"></asp:TextBox>
+                    <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxNombre"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" ValidationGroup="validarNombre"/>
                     </td>
+                    <td><br />
+                        <br />
+                        <br /> 
+                        <asp:Button ID="uxBotonAceptar2" runat="server" Text="Buscar" ValidationGroup="validarNombre"/></td>
+                    </form>
                 </tr>
+               
                  
             </table>
             
@@ -88,5 +101,5 @@
 				
 			</div> 
 		</div> 
-    </form>
+  
 </asp:Content>

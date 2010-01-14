@@ -30,7 +30,7 @@
         <div class="features_overview_right"> 
             <h3>Reportes</h3> 
             <p class="large">
-            POR REALIZAR
+            REPORTES
             
             </p> 
             
