@@ -27,7 +27,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #endregion
 
         #region Metodos
-        override public void Ejecutar()
+        public void Ejecutar()
         {
             Empleado _empleado = null;
             EmpleadoSQLServer bd = new EmpleadoSQLServer();
