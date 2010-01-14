@@ -14,6 +14,10 @@ namespace Core.AccesoDatos.SqlServer
 {
     public class CargoSQLServer
     {
+        public CargoSQLServer()
+        {
+        }
+
         #region Conexion
         private SqlConnection GetConnection()
         {
