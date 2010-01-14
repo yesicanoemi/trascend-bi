@@ -27,12 +27,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #endregion
 
         #region Metodos
-        public int Ejecutar()
+        public void Ejecutar()
         {
             int _resultado= 0;
             EmpleadoSQLServer bd = new EmpleadoSQLServer();
             _resultado = bd.Modificar(empleado);
-            return _resultado;
         }
         #endregion
     }

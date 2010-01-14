@@ -7,6 +7,6 @@ namespace Core.LogicaNegocio.Comandos
 {
     public abstract class Comando<Entity>
     {
-        public abstract void Ejecutar();
+
     }
 }
