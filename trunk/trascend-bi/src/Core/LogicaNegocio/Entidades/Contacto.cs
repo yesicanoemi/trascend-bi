@@ -7,15 +7,28 @@ namespace Core.LogicaNegocio.Entidades
     public class Contacto : Persona
     {
 
-        
+        private int cedula;
         private string cargo;
         private string areaDeNegocio;
-        private float sueldoBase;
+        
  //       private DateTime fechaNacimiento;
  //       private DateTime fechaIngreso;
  //       private DateTime fechaEgreso;
  //       private string estado;
 
+
+        public virtual int Cedula
+        {
+            get
+            {
+                return cedula;
+            }
+
+            set
+            {
+                cedula = value;
+            }
+        }
 
 
         public virtual string Cargo
