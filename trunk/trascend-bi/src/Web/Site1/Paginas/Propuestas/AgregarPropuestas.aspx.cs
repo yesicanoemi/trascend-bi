@@ -6,9 +6,6 @@ using System.Web.UI.WebControls;
 using Presentador.Propuesta.Contrato;
 using Presentador.Propuesta.Vistas;
 
-
-
-
 public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, IAgregarPropuesta
 {
     public TextBox Titulo 

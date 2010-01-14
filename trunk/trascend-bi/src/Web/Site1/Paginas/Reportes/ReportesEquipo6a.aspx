@@ -30,11 +30,7 @@
     <div class="features_overview"> 
         <div class="features_overview_right"> 
             <h3>Reporte Equipo #6 (Facturas Cobradas)</h3> 
-            <p>&nbsp;</p>
-            
-            
-         </div> 
-        <table style="width: 100%">
+            <p> <table style="width: 100%">
             <tr>
                 <td>
                     Fecha Inicio:
@@ -49,11 +45,15 @@
             </tr>
             <tr>
                 <td>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="Button1" runat="server" Text="Button" />
                 </td>
             </tr>
-        </table>
+        </table></p>
+            
+            
+         </div> 
+       
         <br />
         <br />
         <br />

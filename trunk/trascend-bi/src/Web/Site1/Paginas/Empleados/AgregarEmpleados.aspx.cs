@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Empleado.Contrato;
 using Presentador.Empleado.Vistas;
 
-public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page,IAgregarEmpleado
+public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IAgregarEmpleado
 {
     private AgregarEmpleadoPresenter _presentador;
     #region Propiedades

@@ -234,4 +234,7 @@
   <data name="FaltaMontoPropuesta" xml:space="preserve">
     <value>Debe Introducir el monto total de la Propuesta</value>
   </data>
+  <data name="NombreUsuario" xml:space="preserve">
+    <value>Nombre de Usuario:</value>
+  </data>
 </root>

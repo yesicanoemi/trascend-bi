@@ -8,6 +8,7 @@
     <link href="../Estilos/base.css" rel="stylesheet" type="text/css" />
     <link href="../Estilos/type.css" rel="stylesheet" type="text/css" />
     <link href="../Estilos/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../Estilos/Otros.css" rel="stylesheet" type="text/css" />
   
 </head>
 <body id="interior">
@@ -18,26 +19,22 @@
 	
     <div id="global_header">
 		    <div id="header_main">
-			    <h1 id="logo"><a href="../Usuarios/AgregarUsuarios.aspx">dsu</a></h1>
+			    <h1 id="logo"><a href="../Home/Home.aspx">dsu</a></h1>
     					
-			    <ul id="global_login">
-				    <li class="login"><a href="../Usuarios/AgregarUsuarios.aspx" onclick="pageTracker._trackPageview('/login');">Login</a></li>
-				    <li class="signup"><a href="../Usuarios/AgregarUsuarios.aspx">Sign Up Free</a></li>
-
-			    </ul>
+			   
 		    </div>
     		
 		    <ul id="global_nav">
 		    
-			    <li class="features"><a href="../Usuarios/AgregarUsuarios.aspx">Usuarios</a></li>
-			    <li class="pricing"><a href="../Cargos/AgregarCargos.aspx">Cargos</a></li>
-			    <li class="customers"><a href="../Empleados/AgregarEmpleados.aspx">Empleados</a></li>
-			    <li class="resources"><a href="../Propuestas/AgregarPropuestas.aspx">Propuesta</a></li>
+			    <li class="features"><a href="../Usuarios/DefaultUsuarios.aspx">Usuarios</a></li>
+			    <li class="pricing"><a href="../Cargos/DefaultCargos.aspx">Cargos</a></li>
+			    <li class="customers"><a href="../Empleados/DefaultEmpleados.aspx">Empleados</a></li>
+			    <li class="resources"><a href="../Propuestas/DefaultPropuestas.aspx">Propuesta</a></li>
 
-			    <li class="support"><a  href="../Clientes/AgregarClientes.aspx">Clientes</a></li>
-			    <li class="about"><a  href="../Contactos/AgregarContactos.aspx">Contactos</a></li>
-			    <li class="blog"><a href="../Gastos/AgregarGastos.aspx">Gastos</a></li>
-			    <li class="facturas"><a href="../Facturas/AgregarFacturas.aspx">Facturas</a></li>
+			    <li class="support"><a  href="../Clientes/DefaultClientes.aspx">Clientes</a></li>
+			    <li class="about"><a  href="../Contactos/DefaultContactos.aspx">Contactos</a></li>
+			    <li class="blog"><a href="../Gastos/DefaultGastos.aspx">Gastos</a></li>
+			    <li class="facturas"><a href="../Facturas/DefaultFacturas.aspx">Facturas</a></li>
 			    <li class="reportes"><a href="../Reportes/InicioReportes.aspx">Reportes</a></li>
 		    </ul>
     		

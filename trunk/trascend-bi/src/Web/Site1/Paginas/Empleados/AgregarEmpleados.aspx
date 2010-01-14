@@ -141,13 +141,14 @@
                                         <td>
                                             Fecha de Nacimiento:
                                         </td>
-                                        <td align="left" style="z-index:1000;">
+                                        <td>
                                             <asp:TextBox ID="uxFechaNac" runat="server" TabIndex="63"></asp:TextBox>
-                                            <asp:Image ID="ImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
-                                            <AjaxControlToolkit:CalendarExtender Animated="true" runat="server" ID="ceFechaNac"
-                                                Format="dd/MM/yy" TargetControlID="uxFechaNac" PopupButtonID="ImgFechaNac" >
-                                            </AjaxControlToolkit:CalendarExtender>
+                                            <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
+                                            
                                         </td>
+                                        <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxceFechaNac"
+                                                Format="dd/MM/yy" TargetControlID="uxFechaNac" PopupButtonID="uxImgFechaNac" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                                     </tr>
                                     <tr>
                                         <td>

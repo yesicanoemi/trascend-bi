@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo9b.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo9b" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <form id="form1" runat="server">
+  
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -33,30 +33,38 @@
            <p>&nbsp;</p>
            
             
-            <table style="width: 100%">
+            <form id="Form2" runat=server>
+             <table style="width: 100%">
                 <tr>
                     <td>
-            <asp:DropDownList ID="DropDownList1" runat="server">
-             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
-                            <asp:ListItem>2010</asp:ListItem>
-                            <asp:ListItem>2009</asp:ListItem>
-                            <asp:ListItem>2008</asp:ListItem>
-                            <asp:ListItem>2007</asp:ListItem>
-                            <asp:ListItem>2006</asp:ListItem>
-                            <asp:ListItem>2005</asp:ListItem>
-                            <asp:ListItem>2004</asp:ListItem>
-                            <asp:ListItem>2003</asp:ListItem>
-                            <asp:ListItem>2002</asp:ListItem>
-                            <asp:ListItem>2001</asp:ListItem>
-                            <asp:ListItem>2000</asp:ListItem>
-            </asp:DropDownList>
-            
+                          <asp:DropDownList ID="uxAnios" runat="server">
+                            <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
+                            <asp:ListItem Value="2010">2010</asp:ListItem>
+                            <asp:ListItem Value="2009">2009</asp:ListItem>
+                            <asp:ListItem Value="2008">2008</asp:ListItem>
+                            <asp:ListItem Value="2007">2007</asp:ListItem>
+                            <asp:ListItem Value="2006">2006</asp:ListItem>
+                            <asp:ListItem Value="2005">2005</asp:ListItem>
+                            <asp:ListItem Value="2004">2004</asp:ListItem>
+                            <asp:ListItem Value="2003">2003</asp:ListItem>
+                            <asp:ListItem Value="2002">2002</asp:ListItem>
+                            <asp:ListItem Value="2001">2001</asp:ListItem>
+                            <asp:ListItem Value="2000">2000</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Button" />
+                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                    </td>
+                </tr>
+                   <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RangeValidator MaximumValue="2010" MinimumValue="2000" Display="Static" ID="RegularExpressionValidator1" runat="server"
+                                    ErrorMessage="<%$Resources:DSU, FaltaAnioReportes %>" ControlToValidate="uxAnios"
+                                    Font-Size="Smaller"></asp:RangeValidator>
+                             
                     </td>
                 </tr>
             </table>
+           </form>
            
             
          </div> 
@@ -87,10 +95,8 @@
         <br />
         <br />
         <br />
-    </div> 
-</div>  
-
+                </div> 
+              </div>  
 			</div> 
 		</div> 
-    </form>
 </asp:Content>
