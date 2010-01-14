@@ -10,6 +10,7 @@ namespace Presentador.Aplicacion
     public class DefaultPresenter
     {
         private IDefaultPresenter _vista;
+
         public DefaultPresenter(IDefaultPresenter vista)
         {
             _vista = vista;
@@ -17,8 +18,9 @@ namespace Presentador.Aplicacion
         }
         public void OnBotonAceptar()
         {
-             
-             Usuario user = new Usuario();
+
+
+             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
              user.Login = _vista.Login.Text;
 
@@ -42,11 +44,12 @@ namespace Presentador.Aplicacion
             //_vista.IngresarSistema();
         
         }
-       
-        public Usuario ConsultarCredenciales(Usuario entidad)
+
+        public Core.LogicaNegocio.Entidades.Usuario ConsultarCredenciales
+                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {
 
-            Usuario usuario1 = null;
+            Core.LogicaNegocio.Entidades.Usuario usuario1 = null;
 
             Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarCredenciales comando;
 
