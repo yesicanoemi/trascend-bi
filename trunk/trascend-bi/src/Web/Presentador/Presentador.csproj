@@ -54,6 +54,11 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DefaultPresenter.cs" />
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="BddProy2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BddProy2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
     <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
     <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
@@ -72,6 +77,8 @@
     </Compile>
     <Compile Include="Factura\FacturaController.cs" />
     <Compile Include="Factura\Vistas\AgregarFacturaPresenter.cs" />
+    <Compile Include="Gasto\Contrato\IIngresarGasto.cs" />
+    <Compile Include="Gasto\Vistas\IngresarGastoPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -83,6 +90,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
+    <None Include="BddProy2DataSet.xsc">
+      <DependentUpon>BddProy2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BddProy2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BddProy2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BddProy2DataSet.xss">
+      <DependentUpon>BddProy2DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
