@@ -93,6 +93,10 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Consultar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
@@ -105,6 +109,7 @@
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosPropuesta.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosUsuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

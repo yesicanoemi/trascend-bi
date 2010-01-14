@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Entidades
 {
-    class Propuesta
+   public class Propuesta
     {
         private string titulo;
         private string version;

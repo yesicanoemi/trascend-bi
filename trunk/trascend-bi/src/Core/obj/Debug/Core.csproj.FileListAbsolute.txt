@@ -76,3 +76,15 @@ C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dl
 C:\Aplicaciones\Desarrollo2\trascend-bi\src\Core\bin\Debug\log4net.dll
 C:\Aplicaciones\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dll
 C:\Aplicaciones\trascend-bi\src\Core\bin\Debug\log4net.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\Core.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\Core.pdb
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\AjaxControlToolkit.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\log4net.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\nunit.framework.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\bin\Debug\nunit.framework.xml
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.Properties.Resources.resources
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Core\obj\Debug\Core.pdb
