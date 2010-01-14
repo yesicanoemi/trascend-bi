@@ -8,7 +8,7 @@ using Presentador.Gasto.Contrato;
 
 public partial class Paginas_Gastos_AgregarGastos : System.Web.UI.Page
 {
-    private IngresarGastoPresenter _presentador;
+    //private IngresarGastoPresenter _presentador;
 
     //protected void Page_Load(object sender, EventArgs e)
     //{
