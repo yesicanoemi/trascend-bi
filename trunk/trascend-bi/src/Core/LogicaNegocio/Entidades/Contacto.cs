@@ -4,7 +4,7 @@ namespace Core.LogicaNegocio.Entidades
     using System;
     using System.Collections.Generic;
 
-    class Contacto : Persona
+    public class Contacto : Persona
     {
 
         private int cedula;  // claudio, borra esto despues de la herencia

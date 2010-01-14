@@ -16,7 +16,6 @@ C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Softwa
 C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
-C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
 C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
@@ -87,3 +86,4 @@ C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Pr
 C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
 C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
 C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
