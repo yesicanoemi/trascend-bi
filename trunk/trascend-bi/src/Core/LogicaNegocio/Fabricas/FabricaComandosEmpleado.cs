@@ -13,5 +13,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Ingresar(empleado);
         }
+
+        public static Modificar CrearComandoModificar(Empleado empleado)
+        {
+            return new Modificar(empleado);
+        }
     }
 }

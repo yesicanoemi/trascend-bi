@@ -7,23 +7,26 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
+
 namespace Presentador.Empleado.Vistas
 {
-    public class AgregarEmpleadoPresenter
+    public class ModificarEmpleadoPresenter
     {
-        private IAgregarEmpleado _vista;
+        #region Propiedades
+        private IModificarEmpleado _vista;
         private string campoVacio = "";
-        //private EmpleadoController _controller;
+        #endregion
         #region Constructor
-        public AgregarEmpleadoPresenter(IAgregarEmpleado vista)
+        public ModificarEmpleadoPresenter(IModificarEmpleado vista)
         {
             _vista = vista;
-            //_controller = new EmpleadoController();
         }
         #endregion
+
         #region Manejo de Eventos
-        public void IngresarEmpleado()
+        public void ModificarEmpleado()
         {
+            int resultado = 0;
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
             try
             {
@@ -35,43 +38,29 @@ namespace Presentador.Empleado.Vistas
                 empleado.FechaIngreso = DateTime.Now;
                 empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
-                empleado = Ingresar(empleado);
-                LimpiarRegistros();
+                resultado = Modificar(empleado);
+                //LimpiarRegistros();
             }
             catch (WebException e)
             {
                 //Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
-
-        public void LimpiarRegistros()
-        {
-            _vista.NombreEmpleado.Text = campoVacio;
-            _vista.SueldoEmpleado.Text = campoVacio;
-            _vista.DireccionEmpleado.Text = campoVacio;
-            _vista.CuentaEmpleado.Text = campoVacio;
-            _vista.CedulaEmpleado.Text = campoVacio;
-            _vista.ApellidoEmpleado.Text = campoVacio;
-            _vista.FechaEgresoEmpleado.Text = DateTime.Now.ToString();
-            _vista.FechaIngresoEmpleado.Text = DateTime.Now.ToString();
-            _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
-        }
         #endregion
 
         #region Comando
-        public Core.LogicaNegocio.Entidades.Empleado Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public int Modificar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.Modificar modificar; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresar(empleado);
+            modificar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoModificar(empleado);
 
             //try
             //{    
             //ejecuta el comando.
-            return ingresar.Ejecutar();
+            return modificar.Ejecutar();
         }
         #endregion
-      
     }
 }

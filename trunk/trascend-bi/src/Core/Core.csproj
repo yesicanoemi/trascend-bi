@@ -88,6 +88,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />

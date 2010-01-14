@@ -23,7 +23,7 @@ namespace Core.AccesoDatos.SqlServer
         {
         }
         #endregion 
-
+        #region Conexion a Base de Datos
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
@@ -41,7 +41,7 @@ namespace Core.AccesoDatos.SqlServer
 
             return connection;
         }
-
+        #endregion
         #region Metodos
         public Empleado Ingresar(Empleado empleado)
         {
@@ -71,6 +71,18 @@ namespace Core.AccesoDatos.SqlServer
             }
             return _empleado;
 
+        }
+        public int Modificar(Empleado empleado)
+        {
+            int resultado = 0;
+            try
+            {
+                return resultado;
+            }
+            catch (SqlException e)
+            {
+            }
+            return resultado;
         }
         #endregion
     }
