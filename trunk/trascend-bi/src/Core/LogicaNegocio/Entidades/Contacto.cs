@@ -7,7 +7,7 @@ namespace Core.LogicaNegocio.Entidades
     public class Contacto : Persona
     {
 
-        private int cedula;  // claudio, borra esto despues de la herencia
+        
         private string cargo;
         private string areaDeNegocio;
         private float sueldoBase;

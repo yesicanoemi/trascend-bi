@@ -7,9 +7,24 @@ namespace Core.LogicaNegocio.Entidades
 
     public class Persona
     {
+        private int cedula;
+
         private string nombre;
 
         private string apellido;
+
+        public virtual int Cedula
+        {
+            get
+            {
+                return cedula;
+            }
+
+            set
+            {
+                cedula = value;
+            }
+        }
 
         public virtual string Nombre
         {
