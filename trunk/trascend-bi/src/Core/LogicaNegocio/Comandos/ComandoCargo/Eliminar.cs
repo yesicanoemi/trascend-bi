@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.LogicaNegocio.Entidades;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
-    public class Eliminar : Comando
+    public class Eliminar : Comando<Cargo>
     {
         private Cargo _cargo;
 

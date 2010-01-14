@@ -6,7 +6,7 @@ using Core.LogicaNegocio.Entidades;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
-    public class Ingresar : Comando
+    public class Ingresar : Comando<Cargo>
     {
         private Cargo _cargo;
    
