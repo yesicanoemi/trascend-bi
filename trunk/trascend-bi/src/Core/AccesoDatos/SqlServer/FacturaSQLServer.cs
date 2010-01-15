@@ -12,8 +12,9 @@ using System.Xml;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    class DAOFacturaSQLServer
+    class FacturaSQLServer
     {
+        #region conexion
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
@@ -30,6 +31,9 @@ namespace Core.AccesoDatos.SqlServer
 
             return connection;
         }
+        #endregion
+
+        #region metodos
 
         public Factura IngresarFactura(Factura factura)
         {
@@ -79,8 +83,10 @@ namespace Core.AccesoDatos.SqlServer
             {
                 System.Console.Write(e);
             }
-            return factura;        
+            return factura;
         }
+
+        #endregion
 
     }
 }
