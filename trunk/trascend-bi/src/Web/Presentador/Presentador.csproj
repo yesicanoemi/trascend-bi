@@ -103,7 +103,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Propuesta\Contrato\IAgregarPropuesta.cs" />
+    <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
+    <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
     <Compile Include="Usuario\Vistas\ConsultarUsuarioPresenter.cs" />

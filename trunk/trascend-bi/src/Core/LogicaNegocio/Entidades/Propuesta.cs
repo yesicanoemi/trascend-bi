@@ -17,7 +17,7 @@ namespace Core.LogicaNegocio.Entidades
         private DateTime fechaFin;
         private IList<Empleado> equipoTrabajo;
         private int totalHoras;
-        private int montoTotal;
+        private float montoTotal;
         private int ID;
 
         public virtual int Id
@@ -150,7 +150,7 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual int MontoTotal
+        public virtual float MontoTotal
         {
             get
             {
