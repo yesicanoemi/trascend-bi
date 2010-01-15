@@ -29,7 +29,7 @@
             <h3>Agregar Clientes</h3>
             <p class="large">Introduzca la informacón a continuación</p> 
             <p class="large">
-                  <form action="#" runat="server">
+                  <form id="form1" runat="server">
                            <table style="width:100%;">
                                <tr>
                                    <td>R.I.F:</td>
@@ -48,16 +48,39 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Direccion 1:</td>
-                                   <td><asp:TextBox ID="uxDireccion1" runat="server"></asp:TextBox></td>
+                                   <td>Avenida</td>
+                                   <td><asp:TextBox ID="uxAvenida" runat="server"></asp:TextBox><tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr></td>
+                               </tr>
+                               <tr>
+                                   <td>Calle</td>
+                                   <td><asp:TextBox ID="uxCalle" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Direccion2:</td>
-                                   <td><asp:TextBox ID="uxDireccion2" runat="server"></asp:TextBox></td>
+                                   <td>Urbanizacion</td>
+                                   <td><asp:TextBox ID="uxUrbanizacion" runat="server"></asp:TextBox></td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Edificio/Casa</td>
+                                   <td><asp:TextBox ID="uxEdificioCasa" runat="server"></asp:TextBox></td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                                <tr>
+                                   <td>Piso/Apartamento</td>
+                                   <td><asp:TextBox ID="uxPisoApartamento" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -65,50 +88,39 @@
                                </tr>
                                  <tr>
                                    <td>Ciudad:</td>
-                                   <td><asp:TextBox ID="uxCiudad" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxciudad" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
-                                 <tr>
-                                   <td>Estado:</td>
-                                   <td>
-                                       <asp:DropDownList ID="uxEstado" runat="server">
-                                       </asp:DropDownList>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Telefono 1:</td>
-                                   <td>
-                                       <asp:TextBox ID="uxTelefono1" runat="server"></asp:TextBox>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
+                <tr>
                                    <td>Area de Negocio:</td>
-                                   <td>
-                                       <asp:DropDownList ID="uxAreaNegocio" runat="server">
-                                       </asp:DropDownList>
-                                   </td>
+                                   <td><asp:TextBox ID="uxAreaNegocioCliente" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Contactos:</td>
-                                   <td>
-                                       NOSE COMO PONERLO
-                                   </td>
+                                   <td>Telefono Celular:</td>
+                                   <td><asp:TextBox ID="uxTelefonoCelular" runat="server"></asp:TextBox></td>
                                </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Telefono Trabajo:</td>
+                                   <td><asp:TextBox ID="uxTelefonoTrabajo" runat="server"></asp:TextBox></td>
+                               </tr>
+                               
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                              
+     
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>

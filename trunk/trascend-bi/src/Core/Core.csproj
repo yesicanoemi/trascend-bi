@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\CargoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
@@ -88,6 +89,10 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Consultar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Eliminar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Ingresar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Consultar.cs" />
@@ -106,7 +111,9 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Cliente.cs" />
     <Compile Include="LogicaNegocio\Entidades\Contacto.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Direccion.cs" />
     <Compile Include="LogicaNegocio\Entidades\Empleado.cs" />
     <Compile Include="LogicaNegocio\Entidades\Factura.cs" />
     <Compile Include="LogicaNegocio\Entidades\Gasto.cs" />
@@ -115,6 +122,7 @@
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoGasto.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosCliente.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosPropuesta.cs" />

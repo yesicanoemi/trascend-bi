@@ -56,6 +56,14 @@
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
     <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
     <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
+    <Compile Include="Cliente\Contrato\AgregarClientePresentador.cs" />
+    <Compile Include="Cliente\Contrato\ConsultarClientePresentador.cs" />
+    <Compile Include="Cliente\Contrato\EliminarClientePresentador.cs" />
+    <Compile Include="Cliente\Contrato\ModificarClientePresentador.cs" />
+    <Compile Include="Cliente\Vistas\IAgregarCliente.cs" />
+    <Compile Include="Cliente\Vistas\IConsultarCliente.cs" />
+    <Compile Include="Cliente\Vistas\IEliminarCliente.cs" />
+    <Compile Include="Cliente\Vistas\IModificarCliente.cs" />
     <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />
