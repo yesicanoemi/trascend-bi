@@ -1,9 +1,8 @@
+using System;
+using System.Collections.Generic;
+
 namespace Core.LogicaNegocio.Entidades
 {
-    using System;
-    using System.Collections.Generic;
-    
-    
     public class Usuario : Empleado
     {
 
@@ -14,6 +13,8 @@ namespace Core.LogicaNegocio.Entidades
         private string password;
 
         private string status;
+
+        private IList<Core.LogicaNegocio.Entidades.Permiso> permisoUsu;
 
         public virtual int IdUsuario
         {
@@ -60,6 +61,18 @@ namespace Core.LogicaNegocio.Entidades
             set
             {
                 this.status = value;
+            }
+        }
+
+        public virtual IList<Core.LogicaNegocio.Entidades.Permiso> PermisoUsu
+        {
+            get
+            {
+                return this.permisoUsu;
+            }
+            set
+            {
+                this.permisoUsu = value;
             }
         }
     }

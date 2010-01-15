@@ -16,9 +16,17 @@ namespace Presentador.Usuario.Contrato
 
         MultiView MultiViewConsultar { get; set; }
 
-        GridView GridViewConsultaEmpleado { get; set; }
+        GridView GridViewConsultaUsuario { get; set; }
 
-        ObjectContainerDataSource GetObjectContainerConsultaEmpleado { get; set; }
+        ObjectContainerDataSource GetObjectContainerConsultaUsuario { get; set; }
+
+        Label NombreUsu { get; set; }
+
+        Label NombreEmp { get; set; }
+
+        Label ApellidoEmp { get; set; }
+
+        Label UsuarioU { get; set; }
 
         #endregion
     }

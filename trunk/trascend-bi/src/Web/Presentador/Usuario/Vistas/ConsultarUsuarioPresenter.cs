@@ -16,16 +16,38 @@ namespace Presentador.Usuario.Vistas
     {
         private IConsultarUsuario _vista;
 
+        #region Constructor
+
         public ConsultarUsuarioPresenter(IConsultarUsuario vista)
         {
             _vista = vista;
 
         }
 
-        public void OnBotonBuscar()
+        #endregion
+
+        #region Metodos
+
+        public void CambiarVista(int index)
         {
 
+            _vista.MultiViewConsultar.ActiveViewIndex = index;
+        }
 
+
+         private void CargarDatos(Core.LogicaNegocio.Entidades.Usuario usuario)
+        {
+            _vista.NombreUsu.Text = usuario.Login;
+
+            _vista.NombreEmp.Text = usuario.Nombre;
+
+            _vista.ApellidoEmp.Text = usuario.Apellido;
+
+            _vista.UsuarioU.Text = usuario.Status;
+        }
+  
+        public void OnBotonBuscar()
+        {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
             user.Login = _vista.NombreUsuario.Text;
@@ -35,7 +57,7 @@ namespace Presentador.Usuario.Vistas
             if (listado != null)
             {
 
-                _vista.GetObjectContainerConsultaEmpleado.DataSource = listado;
+                _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
 
             }
 
@@ -43,14 +65,11 @@ namespace Presentador.Usuario.Vistas
             {
                 //Mensaje de error al usuario
             }
-
-
         }
 
         public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {
-
             IList<Core.LogicaNegocio.Entidades.Usuario> usuario1 = null;
 
             Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuario comando;
@@ -62,11 +81,24 @@ namespace Presentador.Usuario.Vistas
             return usuario1;
         }
 
-        public void uxObjectConsultaEmpleadoSelecting(string id)
+        public void uxObjectConsultaUsuarioSelecting(string login)
         {
-            //CargarDatos(_controlador.ConsultarAgenciaCobro(id));
-            //CambiarVista(1);
+            Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
+
+            user.Login = login;
+            
+            IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
+
+            user = null;
+
+            user = listado[0];
+
+            CargarDatos(user);
+            
+            CambiarVista(1);
 
         }
+
+        #endregion
     }
 }

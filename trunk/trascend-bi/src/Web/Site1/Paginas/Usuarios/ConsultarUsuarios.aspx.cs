@@ -31,17 +31,41 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
         set { throw new System.NotImplementedException(); }
     }
 
-    public GridView GridViewConsultaEmpleado
+    public GridView GridViewConsultaUsuario
     {
-        get { return uxConsultaEmpleado; }
+        get { return uxConsultaUsuario; }
         set { throw new System.NotImplementedException(); }
     }
 
-    public ObjectContainerDataSource GetObjectContainerConsultaEmpleado
+    public ObjectContainerDataSource GetObjectContainerConsultaUsuario
     {
-        get { return uxObjectConsultaEmpleado; }
-        set { uxObjectConsultaEmpleado = value; }
+        get { return uxObjectConsultaUsuario; }
+        set { uxObjectConsultaUsuario = value; }
     }
+
+    public Label NombreUsu
+    {
+        get { return uxNombreU; }
+        set { uxNombreU = value; }
+    }
+
+    public Label NombreEmp
+    {
+        get { return uxNombreEmp; }
+        set { uxNombreEmp = value; }
+    }
+    
+    public Label ApellidoEmp
+    {
+        get { return uxApellidoEmp; }
+        set { uxApellidoEmp = value; }
+    }     
+    
+    public Label UsuarioU
+    {
+        get { return uxStatusU; }
+        set { uxStatusU = value; }
+    }  
 
     #endregion
 
@@ -53,7 +77,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
 
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        _presentador.uxObjectConsultaEmpleadoSelecting(uxConsultaEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaUsuarioSelecting(uxConsultaUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void Page_Init(object sender, EventArgs e)
