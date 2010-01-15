@@ -14,7 +14,6 @@ namespace Presentador.Cargo.Contrato
         TextBox SueldoMinimo { get; set; }
         TextBox SueldoMaximo { get; set; }
         TextBox VigenciaSueldo { get; set; }
-        TextBox Inflacion { get; set; }
         #endregion
     }
 }
