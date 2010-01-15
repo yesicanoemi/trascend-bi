@@ -21,8 +21,44 @@ namespace Core.AccesoDatos.SqlServer
         }
 
         public Factura ConsultarFacturaID(Factura factura)
-        {
-            return new Factura(); //por ahora
+        {            
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@NumeroFactura", SqlDbType.VarChar);
+
+                arParms[0].Value = "%" + factura.Numero + "%";
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarFacturaID", arParms);
+
+                if (reader.Read())
+                {
+                    factura.Numero = (int)reader["NumeroFactura"];
+
+                    factura.Titulo = (string)reader["Titulo"];
+
+                    factura.Descripcion = (string)reader["Descripcion"];
+
+                    factura.Procentajepagado = (string)reader["Porcentaje"];
+
+                    factura.Fechapago = (DateTime)reader["Fecha"];
+
+                    factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                    factura.Estado = (string)reader["Estado"];
+
+                    factura.Prop.Id = (int)reader["IdPropuesta"];
+                }
+
+                return factura;
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            return _factura;        
         }
     }
 }

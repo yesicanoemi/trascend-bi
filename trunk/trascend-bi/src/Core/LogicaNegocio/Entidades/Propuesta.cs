@@ -18,6 +18,19 @@ namespace Core.LogicaNegocio.Entidades
         private IList<Empleado> equipoTrabajo;
         private int totalHoras;
         private int montoTotal;
+        private int ID;
+
+        public virtual int Id
+        {
+            get
+            {
+                return ID;
+            }
+            set
+            {
+                ID = value;
+            }
+        }
 
         public virtual string Titulo
         {
