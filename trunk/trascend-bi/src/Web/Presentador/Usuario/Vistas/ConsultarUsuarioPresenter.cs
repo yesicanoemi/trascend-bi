@@ -7,6 +7,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Comandos.ComandoUsuario;
 using System.Net;
+using System.Collections;
 
 
 namespace Presentador.Usuario.Vistas
@@ -23,22 +24,18 @@ namespace Presentador.Usuario.Vistas
 
         public void OnBotonBuscar()
         {
+
+
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
             user.Login = _vista.NombreUsuario.Text;
 
-            user = ConsultarUsuario(user);
+            IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
-            if (user != null)
+            if (listado != null)
             {
 
-                _vista.NombreU.Text = user.Login;
-
-                _vista.NombreEmpleado.Text = user.Nombre;
-
-                _vista.ApellidoEmpleado.Text = user.Apellido;
-
-                _vista.StatusUsuario.Text = user.Status;
+                _vista.GetObjectContainerConsultaEmpleado.DataSource = listado;
 
             }
 
@@ -50,11 +47,11 @@ namespace Presentador.Usuario.Vistas
 
         }
 
-        public Core.LogicaNegocio.Entidades.Usuario ConsultarUsuario
+        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {
 
-            Core.LogicaNegocio.Entidades.Usuario usuario1 = null;
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario1 = null;
 
             Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuario comando;
 
@@ -63,6 +60,13 @@ namespace Presentador.Usuario.Vistas
             usuario1 = comando.Ejecutar();
 
             return usuario1;
+        }
+
+        public void uxObjectConsultaEmpleadoSelecting(string id)
+        {
+            //CargarDatos(_controlador.ConsultarAgenciaCobro(id));
+            //CambiarVista(1);
+
         }
     }
 }

@@ -13,8 +13,8 @@ using System.Web.UI.WebControls.WebParts;
 /// </summary>
 public class PaginaBase: Page
 {
-    protected const string paginaPrueba = "~/Paginas/Usuarios/AgregarUsuarios.aspx";
-    protected const string paginaInicial = "~/Paginas/Usuarios/AgregarUsuarios.aspx";
+    protected const string paginaPrueba = "~/Paginas/Usuarios/DefaultUsuarios.aspx";
+    protected const string paginaInicial = "~/Paginas/Usuarios/DefaultUsuarios.aspx";
     protected const string paginaDefault = "~/Default.aspx";
     public PaginaBase()
     {

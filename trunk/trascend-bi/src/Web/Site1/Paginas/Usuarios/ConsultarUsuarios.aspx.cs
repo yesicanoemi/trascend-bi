@@ -5,8 +5,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
+using Microsoft.Practices.Web.UI.WebControls;
 
-public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page,IConsultarUsuario
+
+public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IConsultarUsuario
 {
 
     #region Propiedades
@@ -23,32 +25,36 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page,ICo
         set { uxLogin = value; }
     }
 
-    public Label NombreU
+    public MultiView MultiViewConsultar
     {
-        get { return uxUsuario; }
-        set { uxUsuario = value; }
+        get { return uxMultiViewConsultar; }
+        set { throw new System.NotImplementedException(); }
     }
 
-    public Label NombreEmpleado
+    public GridView GridViewConsultaEmpleado
     {
-        get { return uxNombreE; }
-        set { uxNombreE = value; }
+        get { return uxConsultaEmpleado; }
+        set { throw new System.NotImplementedException(); }
     }
 
-    public Label ApellidoEmpleado
+    public ObjectContainerDataSource GetObjectContainerConsultaEmpleado
     {
-        get { return uxApellidoE; }
-        set { uxApellidoE = value; }
-    }
-
-    public Label StatusUsuario
-    {
-        get { return uxStatusU; }
-        set { uxStatusU = value; }
+        get { return uxObjectConsultaEmpleado; }
+        set { uxObjectConsultaEmpleado = value; }
     }
 
     #endregion
 
+    protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
+    {
+        //_presentador.CargarAgenciasCobro();
+        //uxConsultaEmpleado.PageIndex = e.NewPageIndex;
+    }
+
+    protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
+    {
+        _presentador.uxObjectConsultaEmpleadoSelecting(uxConsultaEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
 
     protected void Page_Init(object sender, EventArgs e)
     {

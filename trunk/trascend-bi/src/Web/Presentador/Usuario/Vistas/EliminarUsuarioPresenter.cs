@@ -22,6 +22,8 @@ namespace Presentador.Usuario.Vistas
 
         }
 
+        /*
+
         public void OnBotonEliminar()
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
@@ -44,7 +46,9 @@ namespace Presentador.Usuario.Vistas
 
 
          }
+        */
 
+        /*
         public Core.LogicaNegocio.Entidades.Usuario ConsultarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {
@@ -60,6 +64,8 @@ namespace Presentador.Usuario.Vistas
             return usuario1;
         }
 
+        */
+        
         public Core.LogicaNegocio.Entidades.Usuario EliminarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {

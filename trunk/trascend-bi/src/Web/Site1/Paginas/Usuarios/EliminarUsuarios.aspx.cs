@@ -27,7 +27,7 @@ public partial class Paginas_Usuarios_EliminarUsuarios : System.Web.UI.Page, IEl
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presenter.OnBotonEliminar();
+        //_presenter.OnBotonEliminar();
     }
 }
 

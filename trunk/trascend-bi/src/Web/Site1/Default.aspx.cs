@@ -53,12 +53,8 @@ public partial class _Default : PaginaBase, IDefaultPresenter
 
     public void IngresarSistema()
     {
-//        String Pags = "";
-//        Pags = "Paginas/Usuarios/AgregrarUsuarios.aspx";
-
         Response.Redirect(paginaPrueba);
         
-        //Response.Redirect(paginaInicial);
     }
 
 }

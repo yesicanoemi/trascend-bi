@@ -29,13 +29,13 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         /// <summary>Método que implementa la ejecución del comando 'CosultarUsuarios'.</summary>
 
-        public Usuario Ejecutar()
+        public IList<Core.LogicaNegocio.Entidades.Usuario> Ejecutar()
         {
-            Usuario _usuario;
+            //Usuario _usuario;
 
             UsuarioSQLServer bd = new UsuarioSQLServer();
 
-            _usuario = bd.ConsultarUsuario(usuario);
+            IList<Core.LogicaNegocio.Entidades.Usuario> _usuario = bd.ConsultarUsuario(usuario);
 
             return _usuario;
         }

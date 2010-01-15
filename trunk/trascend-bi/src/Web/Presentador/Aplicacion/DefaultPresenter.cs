@@ -16,6 +16,11 @@ namespace Presentador.Aplicacion
             _vista = vista;
         
         }
+
+        /// <summary>
+        /// Metodo para ingresar al sistema al darle click a aceptar
+        /// </summary>
+        
         public void OnBotonAceptar()
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
@@ -39,6 +44,12 @@ namespace Presentador.Aplicacion
             }
 
         }
+
+        /// <summary>
+        /// Metodo que consulta las credenciales del usuario que ha iniciado sesion
+        /// </summary>
+        /// <param name="entidad">el usuario que ingreso sus datos</param>
+        /// <returns>el usuario si se encuentra en la bd</returns>
 
         public Core.LogicaNegocio.Entidades.Usuario ConsultarCredenciales(Core.LogicaNegocio.Entidades.Usuario entidad)
         {

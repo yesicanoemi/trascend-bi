@@ -24,7 +24,7 @@ namespace Core.AccesoDatos.SqlServer
         {
         }
 
-        #endregion 
+        #endregion
 
         private SqlConnection GetConnection()
         {
@@ -51,11 +51,11 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="usuario">Usuario que inicia sesion</param>
         /// <returns>Estado del usuario ("Status")</returns>
-        
+
         public Usuario ConsultarCredenciales(Usuario usuario)
         {
             Usuario _usuario = new Usuario();
-            
+
             try
             {
                 SqlParameter[] arParms = new SqlParameter[2];
@@ -68,8 +68,8 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[1].Value = usuario.Password;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), 
-                                        "ConsultarCredenciales",arParms);
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarCredenciales", arParms);
 
                 if (reader.Read())
                 {
@@ -87,15 +87,17 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
-       /// <summary>
-       /// Metodo para consultar el usuario por "Login"
-       /// </summary>
-       /// <param name="usuario">Criterio de busqueda</param>
-       /// <returns>Usuario(s) que coincidan con el criterio</returns>
-       
-        public Usuario ConsultarUsuario(Usuario usuario)
+        /// <summary>
+        /// Metodo para consultar el usuario por "Login"
+        /// </summary>
+        /// <param name="usuario">Criterio de busqueda</param>
+        /// <returns>Usuario(s) que coincidan con el criterio</returns>
+
+
+        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario(Usuario entidad)
         {
-            Usuario _usuario = new Usuario();
+            //Usuario _usuario = new Usuario();
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario = new List<Core.LogicaNegocio.Entidades.Usuario>();
 
             try
             {
@@ -103,24 +105,67 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
 
-                arParms[0].Value = "%" + usuario.Login + "%";
+                arParms[0].Value = "%" + entidad.Login + "%";
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), 
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                         "ConsultarUsuario", arParms);
+
+                while (reader.Read())
+                {
+                    Usuario _usuario = new Usuario();
+
+                    _usuario.Login = (string)reader["LoginUsuario"];
+
+                    _usuario.Nombre = (string)reader["Nombre"];
+
+                    _usuario.Apellido = (string)reader["Apellido"];
+
+                    _usuario.Status = (string)reader["Status"];
+
+                    usuario.Add(_usuario);
+                }
+
+                return usuario;
+
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return usuario;
+
+        }
+
+
+        public Usuario EliminarUsuario(Usuario usuario)
+        {
+            Usuario _usuario = new Usuario();
+            try
+            {
+
+                SqlParameter[] arParms = new SqlParameter[2];
+                // Parametros
+                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                arParms[0].Value = usuario.Login;
+                arParms[1] = new SqlParameter("@Status", SqlDbType.VarChar);
+                arParms[1].Value = usuario.Status;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                "EliminarUsuario", arParms);
 
                 if (reader.Read())
                 {
                     _usuario.Login = (string)reader["LoginUsuario"];
 
                     _usuario.Status = (string)reader["Status"];
-
-                    _usuario.Nombre = (string)reader["Nombre"];
-
-                    _usuario.Apellido = (string)reader["Apellido"];
                 }
 
                 return _usuario;
+
             }
+
             catch (SqlException e)
             {
                 System.Console.Write(e);
@@ -129,46 +174,7 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
-
-         public Usuario EliminarUsuario(Usuario usuario)
-        {
-            Usuario _usuario = new Usuario();
-            try
-            {
-
-                SqlParameter[] arParms = new SqlParameter[2];
-                // Parametros 
-                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
-                arParms[0].Value = usuario.Login;
-                arParms[1] = new SqlParameter("@Status", SqlDbType.VarChar);
-                arParms[1].Value = usuario.Status;
-
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                     "EliminarUsuario", arParms);
-
-                if (reader.Read())
-                {
-                    _usuario.Login = (string)reader["LoginUsuario"];
-
-                    _usuario.Status = (string)reader["Status"];
-                }
-
-                return _usuario;
-
-            }
-
-             catch (SqlException e)
-            {
-                System.Console.Write(e);
-            }
-            return _usuario;
-
-        }
-
-
         #endregion
-
-
 
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Usuario.Contrato
 {
@@ -11,15 +12,13 @@ namespace Presentador.Usuario.Contrato
 
         #region Informacion Basica
 
-            TextBox NombreUsuario { get; set; }
+        TextBox NombreUsuario { get; set; }
 
-            Label NombreU { get; set; }
-        
-            Label NombreEmpleado { get; set; }
-        
-            Label ApellidoEmpleado { get; set; }
+        MultiView MultiViewConsultar { get; set; }
 
-            Label StatusUsuario { get; set; }
+        GridView GridViewConsultaEmpleado { get; set; }
+
+        ObjectContainerDataSource GetObjectContainerConsultaEmpleado { get; set; }
 
         #endregion
     }
