@@ -6,7 +6,7 @@
     public class Gasto
     {
         private int codigo;
-        private int estado;
+        private string estado;
         private float monto;
         private DateTime fechaGasto;
         private DateTime fechaIngreso;
@@ -26,7 +26,7 @@
             }
         }
 
-        public virtual int Estado
+        public virtual string Estado
         {
             get
             {

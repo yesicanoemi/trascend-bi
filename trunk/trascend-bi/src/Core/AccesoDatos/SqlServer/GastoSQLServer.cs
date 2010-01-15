@@ -72,7 +72,9 @@ namespace Core.AccesoDatos.SqlServer
                 
                 parametros[6] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[6].Value = gasto.Descripcion;
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarGasto", parametros);
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "InsertarGasto", parametros);
 
             }
             catch (SqlException e)

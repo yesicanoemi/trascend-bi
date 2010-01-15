@@ -116,7 +116,8 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" />
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                           onclick="uxBotonAceptar_Click" />
                                     </td>
                                 </tr>
                             </table>
