@@ -79,7 +79,7 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="cargo">Criterio de la busqueda</param>
         /// <returns>La informacion del cargo asociado al criterio</returns>
-        public Cargo ConsultarCargo(Cargo cargo)
+        public Entidad ConsultarCargo(Cargo cargo)
         {
             Cargo _cargo = new Cargo();
 
@@ -111,7 +111,8 @@ namespace Core.AccesoDatos.SqlServer
             return _cargo;
 
         }
-        #endregion
+        
+
 
         public Boolean EliminarCargo(Cargo cargo)
         {
@@ -137,5 +138,9 @@ namespace Core.AccesoDatos.SqlServer
         {
             return true;
         }
-    }
+
+
+        #endregion
+    
+    }   
 }

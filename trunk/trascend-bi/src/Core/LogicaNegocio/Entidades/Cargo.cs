@@ -5,13 +5,26 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Entidades
 {
-    public class Cargo
+    public class Cargo : Entidad
     {
+        private int id;
         private String nombre;
         private String descripcion;
         private float sueldo_minimo;
         private float sueldo_maximo;
         private DateTime vigencia;
+
+        public virtual int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
 
         public virtual String Nombre
         {

@@ -20,7 +20,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         public Cargo Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
-            return bd.ConsultarCargo( _cargo );
+            return (Cargo)bd.ConsultarCargo( _cargo );
         }
     }
 }
