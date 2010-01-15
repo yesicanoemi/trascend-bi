@@ -11,9 +11,9 @@ namespace Presentador.Cargo.Contrato
         #region Informacion Basica
         TextBox NombreCargo { get; set; }
         TextBox DescripcionCargo { get; set; }
-        DropDownList RangoSueldo { get; set; }
+        TextBox SueldoMinimo { get; set; }
+        TextBox SueldoMaximo { get; set; }
         TextBox VigenciaSueldo { get; set; }
-        TextBox Inflacion { get; set; }
         #endregion
     }
 }

@@ -27,10 +27,16 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         set { uxDescripcion = value; }
     }
 
-    public DropDownList RangoSueldo
+    public TextBox SueldoMinimo
     {
-        get { return uxRangoSueldo; }
-        set { uxRangoSueldo = value; }
+        get { return uxSueldoMinimo; }
+        set { uxSueldoMinimo = value; }
+    }
+
+    public TextBox SueldoMaximo
+    {
+        get { return uxSueldoMaximo; }
+        set { uxSueldoMaximo = value; }
     }
 
     public TextBox VigenciaSueldo
@@ -39,14 +45,11 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         set { uxVigenciaSueldo = value; }
     }
 
-    public TextBox Inflacion
-    {
-        get { return uxInflacion; }
-        set { uxInflacion = value; }
-    }
+   
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.IngresarCargo();
     }
+     
 }

@@ -47,23 +47,23 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="cargo">cargo que se va a ingresar</param>
         /// <returns></returns>
-        public Boolean IngresarCargo( Cargo cargo )
+        public Boolean IngresarCargo(Cargo cargo)
         {
-            Cargo _cargo = new Cargo();
+            //   Cargo _cargo = new Cargo();
             try
             {
                 SqlParameter[] arParms = new SqlParameter[5];
                 //Parametros
                 arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-                arParms[0].Value = _cargo.Nombre;
+                arParms[0].Value = cargo.Nombre;
                 arParms[1] = new SqlParameter("@Descripcion", SqlDbType.VarChar);
-                arParms[1].Value = _cargo.Descripcion;
+                arParms[1].Value = cargo.Descripcion;
                 arParms[2] = new SqlParameter("@SueldoMinimo", SqlDbType.Float);
-                arParms[2].Value = _cargo.SueldoMinimo;
+                arParms[2].Value = cargo.SueldoMinimo;
                 arParms[3] = new SqlParameter("@SueldoMaximo", SqlDbType.Float);
-                arParms[3].Value = _cargo.SueldoMaximo;
+                arParms[3].Value = cargo.SueldoMaximo;
                 arParms[4] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
-                arParms[4].Value = _cargo.Vigencia;
+                arParms[4].Value = cargo.Vigencia;
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarCargo", arParms);
             }
             catch (SqlException e)
@@ -79,7 +79,7 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="cargo">Criterio de la busqueda</param>
         /// <returns>La informacion del cargo asociado al criterio</returns>
-        public Cargo ConsultarCargo( Cargo cargo )
+        public Cargo ConsultarCargo(Cargo cargo)
         {
             Cargo _cargo = new Cargo();
 
@@ -106,11 +106,36 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write( e );
+                System.Console.Write(e);
             }
             return _cargo;
 
         }
         #endregion
+
+        public Boolean EliminarCargo(Cargo cargo)
+        {
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+                //Parametros
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0].Value = cargo.Nombre;
+
+                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarCargo", arParms);
+            }
+            catch (SqlException e)
+            {
+                return false;
+                //System.Console.Write(e);
+            }
+            return true;
+
+        }
+
+        public Boolean ModificarCargo(Cargo cargo)
+        {
+            return true;
+        }
     }
 }

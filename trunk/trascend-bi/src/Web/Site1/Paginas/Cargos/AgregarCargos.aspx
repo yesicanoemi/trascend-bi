@@ -28,7 +28,7 @@
           <div class="features_overview_right"> 
             <h3>Agregar Cargo</h3>
             <p class="large">Introduzca la informacón a continuación</p>
-             <form id="Form1" action="#" runat="server">
+              <form id="Form1" runat="server">
             <p class="large">
                
                            <table style="width:100%">
@@ -53,10 +53,9 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Rango de Sueldo:</td>
+                                   <td>Sueldo Mínimo:</td>
                                    <td>
-                                       <asp:DropDownList ID="uxRangoSueldo" runat="server">
-                                       </asp:DropDownList>
+                                       <asp:TextBox ID="uxSueldoMinimo" runat="server"></asp:TextBox>
                                    </td>
                                </tr>
                                <tr>
@@ -64,16 +63,26 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
+                                   <td>Sueldo Máximo</td>
+                                   <td>
+                                       <asp:TextBox ID="uxSueldoMaximo" runat="server"></asp:TextBox>
+                                   </td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
                                    <td>Vigencia de Sueldo:</td>
-                                   <td><asp:TextBox ID="uxVigenciaSueldo" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Inflacion:</td>
-                                   <td><asp:TextBox ID="uxInflacion" runat="server"></asp:TextBox></td>
+                                   <td>
+                                            <asp:TextBox ID="uxVigenciaSueldo" runat="server" TabIndex="63"></asp:TextBox>
+                                            <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
+                                            
+                                   </td>
+                                        <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxceFechaNac"
+                                                Format="dd/MM/yy" TargetControlID="uxVigenciaSueldo" PopupButtonID="uxImgFechaNac" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -93,7 +102,7 @@
                 
             
                 </p> 
-            </form>
+              </form>
           </div> 
         </div> 
  
