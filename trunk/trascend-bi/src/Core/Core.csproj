@@ -117,6 +117,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Entidad.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Permiso.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonoceular.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonotrabajo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cliente.cs" />

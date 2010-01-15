@@ -60,14 +60,6 @@
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
     <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
     <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
-    <Compile Include="Cliente\Vistas\AgregarClientePresentador.cs" />
-    <Compile Include="Cliente\Vistas\ConsultarClientePresentador.cs" />
-    <Compile Include="Cliente\Vistas\EliminarClientePresentador.cs" />
-    <Compile Include="Cliente\Contrato\IAgregarCliente.cs" />
-    <Compile Include="Cliente\Contrato\IConsultarCliente.cs" />
-    <Compile Include="Cliente\Contrato\IEliminarCliente.cs" />
-    <Compile Include="Cliente\Contrato\IModificarCliente.cs" />
-    <Compile Include="Cliente\Vistas\ModificarClientePresentador.cs" />
     <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />
@@ -120,6 +112,10 @@
       <Project>{8E9A7DB7-6693-4068-83B6-F9271D44BB2F}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cliente\Contrato\" />
+    <Folder Include="Cliente\Vistas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
