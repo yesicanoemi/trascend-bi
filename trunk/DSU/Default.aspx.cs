@@ -1,23 +1,64 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
+using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
+using System.Web.SessionState;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
+using Presentador.Aplicacion;
 
-namespace DSU
+public partial class _Default : PaginaBase, IDefaultPresenter
 {
-    public partial class _Default : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+    private DefaultPresenter _presenter;
 
-        }
+    #region Propiedades
+
+    public TextBox Login
+    {
+        get { return uxLogin; }
+        set { uxLogin = value; }
     }
+
+    public TextBox Password
+    {
+        get { return uxContrasena; }
+        set { uxContrasena = value; }
+    }
+
+    #endregion
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        _presenter = new DefaultPresenter(this);
+
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        if(Page.IsValid == true)
+            {
+               // if ((uxLogin.Text == "usuario") && (uxContrasena.Text == "clave"))
+               // {
+                    _presenter.OnBotonAceptar();
+                //}
+                /*else
+                {
+                    Response.Redirect();
+                }*/
+            
+            }
+    }
+
+    public void IngresarSistema()
+    {
+//        String Pags = "";
+//        Pags = "Paginas/Usuarios/AgregrarUsuarios.aspx";
+
+        Response.Redirect(paginaPrueba);
+        
+        //Response.Redirect(paginaInicial);
+    }
+
 }
