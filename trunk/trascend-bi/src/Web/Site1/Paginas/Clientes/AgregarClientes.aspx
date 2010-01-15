@@ -103,16 +103,7 @@
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
-                               <tr>
-                                   <td>Contactos:</td>
-                                   <td>
-                                       NOSE COMO PONERLO
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
+                              
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
