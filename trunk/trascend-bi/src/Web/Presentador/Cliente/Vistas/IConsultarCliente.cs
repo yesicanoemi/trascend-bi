@@ -8,7 +8,7 @@ namespace Presentador.Cliente.ClienteInterface
 {
     public interface IConsultarCliente
     {
-
+//
         TextBox TextBoxNombre { get; set; }
         TextBox TextBoxRif { get; set; }
 

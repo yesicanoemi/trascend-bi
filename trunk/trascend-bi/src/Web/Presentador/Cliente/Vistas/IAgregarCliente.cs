@@ -8,6 +8,7 @@ namespace Presentador.Cliente.ClienteInterface
 {
     public interface IAgregarCliente
     {
+//
         #region informacion Basicas
         TextBox rifCliente { get; set; }
         TextBox NombreCliente { get; set; }
