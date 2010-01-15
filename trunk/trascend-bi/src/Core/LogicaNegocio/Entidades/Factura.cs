@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Core.LogicaNegocio.Entidades
+﻿namespace Core.LogicaNegocio.Entidades
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Factura
     {
+
         private int numero;
         private string titulo;
         private string descripcion;
@@ -15,6 +14,8 @@ namespace Core.LogicaNegocio.Entidades
         private DateTime fechaingreso;
         private string estado;
         private Propuesta propuesta;
+
+
 
 
         public virtual Propuesta Prop
@@ -126,5 +127,6 @@ namespace Core.LogicaNegocio.Entidades
                 estado = value;
             }
         }
+
     }
 }

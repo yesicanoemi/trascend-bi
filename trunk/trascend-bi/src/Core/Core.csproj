@@ -108,6 +108,10 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxFacturaID.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxIDPro.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxNomPro.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
@@ -127,6 +131,7 @@
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosCliente.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosFactura.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosPropuesta.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosUsuario.cs" />
     <Compile Include="Program.cs" />

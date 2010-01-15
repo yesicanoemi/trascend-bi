@@ -75,6 +75,7 @@ namespace Core.AccesoDatos.SqlServer
                     factura.Estado = (string)reader["Estado"];
 
                     factura.Prop.Id = (int)reader["IdPropuesta"];
+                   
                 }
 
                 return factura;
