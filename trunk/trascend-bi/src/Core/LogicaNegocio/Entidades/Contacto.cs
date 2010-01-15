@@ -10,12 +10,7 @@ namespace Core.LogicaNegocio.Entidades
         private int cedula;
         private string cargo;
         private string areaDeNegocio;
-        
- //       private DateTime fechaNacimiento;
- //       private DateTime fechaIngreso;
- //       private DateTime fechaEgreso;
- //       private string estado;
-
+     
 
         public virtual int Cedula
         {

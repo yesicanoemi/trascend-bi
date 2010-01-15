@@ -36,7 +36,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
                 {
                     Contacto _contacto;
 
-                     UsuarioSQLServer bd = new UsuarioSQLServer();
+                     ContactoSQLServer bd = new ContactoSQLServer();
 
                     _contacto = bd.ConsultarContactos(contacto);
 

@@ -47,11 +47,11 @@
     </Reference>
     <Reference Include="Microsoft.Practices.Web.UI.WebControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Aplicaciones - Copy\trascend-bi\src\Core\bin\Debug\Microsoft.Practices.Web.UI.WebControls.dll</HintPath>
+      <HintPath>..\Web\Site1\Bin\Microsoft.Practices.Web.UI.WebControls.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework, Version=2.5.3.9345, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\NUnit 2.5.3\bin\net-1.1\framework\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -120,6 +120,7 @@
     <Compile Include="LogicaNegocio\Entidades\Gasto.cs" />
     <Compile Include="LogicaNegocio\Entidades\Persona.cs" />
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Telefono.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoGasto.cs" />

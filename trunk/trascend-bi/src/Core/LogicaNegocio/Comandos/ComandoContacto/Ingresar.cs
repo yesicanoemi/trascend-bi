@@ -30,8 +30,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         public Contacto Ejecutar()
         {
             Contacto _contacto = null;
-            /*UsuarioSQLServer bd = new UsuarioSQLServer();
-            _contacto = bd.Ingresar(contacto);*/
+            ContactoSQLServer bd = new ContactoSQLServer();
+            _contacto = bd.Ingresar(contacto);
 
             return _contacto;
         }
