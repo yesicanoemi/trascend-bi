@@ -72,6 +72,20 @@ namespace Core.AccesoDatos.SqlServer
             return _empleado;
 
         }
+
+        public IList<Empleado> Consultar()
+        {
+            IList<Empleado> empleado = null;
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarEmpleados");
+            while (reader.Read())
+            {
+                Empleado _empleado = new Empleado();
+                _empleado.Nombre = (string)reader["nombre"];
+                empleado.Add(_empleado);
+            }
+            return empleado;
+        }
+
         public int Modificar(Empleado empleado)
         {
             int resultado = 0;
