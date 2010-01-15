@@ -6,15 +6,18 @@ using System.Web.UI.WebControls;
 using Presentador.Cliente.ClienteInterface;
 using Presentador.Cliente.ClientePresentador;
 
+
+
 public partial class Paginas_Clientes_AgregarClientes : System.Web.UI.Page,IAgregarCliente
 {
     #region Propiedades
     private AgregarClientePresentador _presentador;
+    
     #endregion
 
     #region Informacion Basica
 
-    public TextBox RifCliente
+    public TextBox rifCliente
     {
         get { return uxRif; }
         set { uxRif = value; }
@@ -27,16 +30,10 @@ public partial class Paginas_Clientes_AgregarClientes : System.Web.UI.Page,IAgre
     }
 
 
-    public TextBox AvenidaCliente
+    public TextBox CalleAvenidaCliente
     {
-        get { return uxAvenida; }
-        set { uxAvenida = value; }
-    }
-
-    public TextBox CalleCliente
-    {
-        get { return uxCalle; }
-        set { uxCalle = value; }
+        get { return uxAvenidaCalle; }
+        set { uxAvenidaCalle = value; }
     }
 
     public TextBox UrbanizacionCliente
@@ -57,10 +54,16 @@ public partial class Paginas_Clientes_AgregarClientes : System.Web.UI.Page,IAgre
         set { uxPisoApartamento = value; }
     }
 
-    public TextBox CiudadCliente
+    public DropDownList CiudadCliente
     {
         get { return uxciudad; }
         set { uxciudad = value; }
+    }
+
+    public DropDownList ContactoCliente
+    {
+        get { return uxContacto; }
+        set { uxContacto = value; }
     }
 
     public TextBox AreaNegocioCliente
@@ -79,6 +82,7 @@ public partial class Paginas_Clientes_AgregarClientes : System.Web.UI.Page,IAgre
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        _presentador.Onclick();
-    } 
+        _presentador.IngersarCliente();
+    }
+
 }

@@ -48,19 +48,11 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Avenida</td>
-                                   <td><asp:TextBox ID="uxAvenida" runat="server"></asp:TextBox><tr>
+                                   <td>Calle/Avenida</td>
+                                   <td><asp:TextBox ID="uxAvenidaCalle" runat="server"></asp:TextBox><tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr></td>
-                               </tr>
-                               <tr>
-                                   <td>Calle</td>
-                                   <td><asp:TextBox ID="uxCalle" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
                                </tr>
                                <tr>
                                    <td>Urbanizacion</td>
@@ -88,7 +80,7 @@
                                </tr>
                                  <tr>
                                    <td>Ciudad:</td>
-                                   <td><asp:TextBox ID="uxciudad" runat="server"></asp:TextBox></td>
+                                   <td><asp:DropDownList ID="uxciudad" runat="server"></asp:DropDownList></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -104,7 +96,7 @@
                                </tr>
                                <tr>
                                    <td>Telefono Celular:</td>
-                                   <td><asp:TextBox ID="uxTelefonoCelular" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxTelefonoCelularCliente" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -113,6 +105,14 @@
                                <tr>
                                    <td>Telefono Trabajo:</td>
                                    <td><asp:TextBox ID="uxTelefonoTrabajo" runat="server"></asp:TextBox></td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                                 <tr>
+                                   <td>Contacto:</td>
+                                   <td><asp:DropDownList ID="uxContacto" runat="server"></asp:DropDownList></td>
                                </tr>
                                
                                <tr>
@@ -132,7 +132,8 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" />
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                           onclick="uxBotonAceptar_Click" />
                                     </td>
                                 </tr>
                            </table>

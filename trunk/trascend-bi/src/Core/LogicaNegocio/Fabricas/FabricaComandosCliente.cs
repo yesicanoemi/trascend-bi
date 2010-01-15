@@ -18,6 +18,14 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Consultar(cliente);
         }
+        public static Modificar CrearComandoModificar(Cliente cliente)
+        {
+            return new Modificar(cliente);
+        }
+        /*public static Eliminar CrearComandoEliminar(Cliente cliente)
+        {
+            return new Eliminar(cliente);
+        }*/
    
     }
 }

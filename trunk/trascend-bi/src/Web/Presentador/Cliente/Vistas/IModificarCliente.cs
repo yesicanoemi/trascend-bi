@@ -9,9 +9,19 @@ namespace Presentador.Cliente.ClienteInterface
     public interface IModificarCliente
     {
 
-        TextBox TextBoxNombre { get; set; }
-        TextBox TextBoxApellido { get; set; }
-        TextBox TextBoxRif { get; set; }
+        #region informacion Basicas
+        TextBox rifCliente { get; set; }
+        TextBox NombreCliente { get; set; }
+        TextBox CalleAvenidadCliente { get; set; }
+        TextBox UrbanizacionCliente { get; set; }
+        TextBox EdificioCasaCliente { get; set; }
+        TextBox PisoApartamentoCliente { get; set; }
+        DropDownList CiudadCliente { get; set; }
+        TextBox AreaNegocioCliente { get; set; }
+        TextBox TelefonoCelularCliente { get; set; }
+        TextBox TelefonoTrabajoCliente { get; set; }
+        DropDownList ContactoCliente { get; set; }
+        #endregion
         
     }
 }

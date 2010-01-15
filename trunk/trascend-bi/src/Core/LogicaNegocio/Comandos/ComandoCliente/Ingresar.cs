@@ -30,8 +30,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         public Cliente Ejecutar()
         {
             Cliente _cliente = null;
-            /*UsuarioSQLServer bd = new UsuarioSQLServer();
-            _cliente = bd.Ingresar(cliente);*/
+            DAOClienteSQLServer bd = new DAOClienteSQLServer();
+            _cliente = bd.Ingresar(cliente);
 
             return _cliente;
         }

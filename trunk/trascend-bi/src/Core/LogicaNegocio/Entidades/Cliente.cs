@@ -7,10 +7,9 @@ namespace Core.LogicaNegocio.Entidades
     public class Cliente
     {
 
-        private int rif;
+        private string rif;
         private string nombre;
-        private string calle;
-        private string avenida;
+        private string calleAvenidad;
         private string urbanizacion;
         private string edificioCasa;
         private string pisoApartamento;
@@ -18,7 +17,7 @@ namespace Core.LogicaNegocio.Entidades
         private string areaNegocio;
 
 
-        public virtual int Rif
+        public virtual string Rif
         {
             get
             {
@@ -44,31 +43,20 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual string Calle
+        public virtual string CalleAvenidad
         {
             get
             {
-                return calle;
+                return calleAvenidad;
             }
 
             set
             {
-                calle = value;
+                calleAvenidad = value;
             }
         }
 
-        public virtual string Avenida
-        {
-            get
-            {
-                return avenida;
-            }
-
-            set
-            {
-                avenida = value;
-            }
-        }
+        
 
         public virtual string Urbanizacion
         {
