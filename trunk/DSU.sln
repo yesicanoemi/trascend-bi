@@ -25,6 +25,10 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site1", "..\..\WebSites\Sit
 		VWDPort = "51707"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17} = {D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}
+		{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1} = {7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
