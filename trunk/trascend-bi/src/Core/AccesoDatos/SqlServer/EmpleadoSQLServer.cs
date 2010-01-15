@@ -9,7 +9,6 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
-using Core.LogicaNegocio.Excepciones;
 
 
 namespace Core.AccesoDatos.SqlServer
@@ -68,7 +67,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new IngresarException("Error insertando en Sql Server",e);
+
             }
             return _empleado;
 
