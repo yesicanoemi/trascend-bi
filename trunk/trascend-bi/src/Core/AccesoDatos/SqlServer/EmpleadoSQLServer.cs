@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
+using Core.LogicaNegocio.Excepciones;
 
 
 namespace Core.AccesoDatos.SqlServer
@@ -63,11 +64,11 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[4].Value = empleado.FechaNacimiento.ToShortDateString();
                 arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
                 arParms[5].Value = empleado.Estado;
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarEmpleado", arParms);
+                SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarEmpleado", arParms);
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new IngresarException("Error insertando en Sql Server",e);
             }
             return _empleado;
 
@@ -91,6 +92,21 @@ namespace Core.AccesoDatos.SqlServer
             int resultado = 0;
             try
             {
+                SqlParameter[] arParms = new SqlParameter[6];
+                // Parametros 
+                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
+                arParms[0].Value = empleado.Cedula;
+                arParms[1] = new SqlParameter("@nombreEmpleado", SqlDbType.VarChar);
+                arParms[1].Value = empleado.Nombre;
+                arParms[2] = new SqlParameter("@apellidoEmpleado", SqlDbType.VarChar);
+                arParms[2].Value = empleado.Apellido;
+                arParms[3] = new SqlParameter("@numeroCta", SqlDbType.VarChar);
+                arParms[3].Value = empleado.Cuenta;
+                arParms[4] = new SqlParameter("@fechaNac", SqlDbType.SmallDateTime);
+                arParms[4].Value = empleado.FechaNacimiento.ToShortDateString();
+                arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
+                arParms[5].Value = empleado.Estado;
+                resultado = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarEmpleado", arParms);
                 return resultado;
             }
             catch (SqlException e)
