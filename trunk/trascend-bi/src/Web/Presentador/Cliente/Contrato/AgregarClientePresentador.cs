@@ -13,7 +13,7 @@ namespace Presentador.Cliente.ClientePresentador
 {
     public class AgregarClientePresentador
     {
-        
+        	//
             private IAgregarCliente _vista;
             private string campoVacio = "";
 
