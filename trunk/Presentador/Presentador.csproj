@@ -45,8 +45,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicacion\DefaultPresenter.cs" />
+    <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
+    <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
+    <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
+    <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />
+    <Compile Include="Contacto\ContactoInterface\IModificarContacto.cs" />
+    <Compile Include="Contacto\ContactoPresentador\AgregarPresentador.cs" />
+    <Compile Include="Contacto\ContactoPresentador\ConsultarPresentador.cs" />
+    <Compile Include="Contacto\ContactoPresentador\EliminarPresentador.cs" />
+    <Compile Include="Contacto\ContactoPresentador\ModificarPresentador.cs" />
+    <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
+    <Compile Include="Empleado\Contrato\IModificarEmpleado.cs" />
+    <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
+    <Compile Include="Empleado\Vistas\ModificarEmpleadoPresenter.cs" />
+    <Compile Include="Factura\Contrato\IAgregarFactura.cs" />
+    <Compile Include="Factura\FacturaController.cs" />
+    <Compile Include="Factura\Vistas\AgregarFacturaPresenter.cs" />
+    <Compile Include="Gasto\Contrato\IIngresarGasto.cs" />
+    <Compile Include="Gasto\Vistas\IngresarGastoPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Propuesta\Contrato\IAgregarPropuesta.cs" />
+    <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
+    <Compile Include="Usuario\Contrato\IAgregarUsuario.cs" />
+    <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
+    <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
+    <Compile Include="Usuario\Vistas\ConsultarUsuarioPresenter.cs" />
+    <Compile Include="Usuario\Vistas\EliminarUsuarioPresenter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
