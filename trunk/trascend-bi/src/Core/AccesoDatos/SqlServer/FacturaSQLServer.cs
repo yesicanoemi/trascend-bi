@@ -154,11 +154,14 @@ namespace Core.AccesoDatos.SqlServer
         {            
             try
             {
+                if (factura.Prop == null)
+                    factura.Prop = new Propuesta();
+
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@NumeroFactura", SqlDbType.VarChar);
+                arParms[0] = new SqlParameter("@NumeroFactura", SqlDbType.Int);
 
-                arParms[0].Value = "%" + factura.Numero + "%";
+                arParms[0].Value = factura.Numero;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                         "ConsultarFacturaID", arParms);
@@ -171,7 +174,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     factura.Descripcion = (string)reader["Descripcion"];
 
-                    factura.Procentajepagado = (float)reader["Porcentaje"];
+                    //factura.Procentajepagado = (float)reader["Porcentaje"];
 
                     factura.Fechapago = (DateTime)reader["Fecha"];
 

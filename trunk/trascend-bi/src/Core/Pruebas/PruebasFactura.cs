@@ -32,7 +32,7 @@ namespace Core.Pruebas
             factura.Numero = 1;
             factura = new FacturaSQLServer().ConsultarFacturaID(factura);
             Assert.AreNotEqual(factura, new Factura());
-            Assert.AreEqual(factura.Procentajepagado, 20);
+            Assert.AreEqual(factura.Titulo, "Pago de la primera cuota");
         }
 
         [Test]
