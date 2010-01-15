@@ -111,8 +111,38 @@ namespace Core.AccesoDatos.SqlServer
             return _cargo;
 
         }
-        
 
+        /// <summary>
+        /// Metodo para consultar todos los cargos del sistema
+        /// </summary>
+        /// <returns>Una IList de entidades que contienen todos los cargos</returns>
+        public IList<Entidad> ConsultarCargos()
+        {
+            try
+            {
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargos");
+                Cargo cargo;
+                IList<Entidad> listaCargos = null;
+
+                while (reader.Read())
+                {
+                    cargo = new Cargo();
+                    cargo.Id = (int)reader["IdCargo"];
+                    cargo.Nombre = reader["Nombre"].ToString();
+                    cargo.Descripcion = reader["Descripcion"].ToString();
+                    cargo.SueldoMaximo = (float)reader["SueldoMaximo"];
+                    cargo.SueldoMinimo = (float)reader["SueldoMinimo"];
+
+                    listaCargos.Add(cargo);
+                }
+                return listaCargos;
+            }
+            catch (SqlException e)
+            {
+                return null;
+            }
+        
+        }
 
         public Boolean EliminarCargo(Cargo cargo)
         {
