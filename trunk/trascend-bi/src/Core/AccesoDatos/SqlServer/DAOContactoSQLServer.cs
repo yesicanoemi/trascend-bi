@@ -72,6 +72,26 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
+
+        public IList<Contacto> Consultar()
+        {
+            IList<Contacto> contacto = null;
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarContacto");
+            while (reader.Read())
+            {
+                Contacto _contacto = new Contacto();
+                _contacto.Nombre = (string)reader["nombre"];
+                _contacto.Apellido = (string)reader["apellido"];
+                _contacto.AreaDeNegocio = (string)reader["areanegocio"];
+                _contacto.Cargo = (string)reader["cargo"];
+
+                contacto.Add(_contacto);
+            }
+            return contacto;
+        }
+
+
+
         public Contacto EliminarContacto(Contacto contacto)
         {
             Contacto _contacto = new Contacto();

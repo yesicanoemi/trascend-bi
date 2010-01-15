@@ -116,6 +116,8 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Telefonoceular.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Telefonotrabajo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cliente.cs" />
     <Compile Include="LogicaNegocio\Entidades\Contacto.cs" />
     <Compile Include="LogicaNegocio\Entidades\Direccion.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefono.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoGasto.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosCliente.cs" />
