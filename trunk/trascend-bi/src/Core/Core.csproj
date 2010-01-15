@@ -94,7 +94,10 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGasto.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoGasto\EliminarGasto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\IngresarGasto.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ModificarGasto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />

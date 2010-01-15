@@ -7,18 +7,18 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
-    public class IngresarGasto : Comando<Gasto>
+    public class ConsultarGasto : Comando<Gasto>
     {
         private Gasto gasto;
 
         #region Constructor
 
-        /// <summary> Conructor de la Clase 'IngresarGasto' </summary>
-        public IngresarGasto()
+        /// <summary> Conructor de la Clase 'ConsultarGasto' </summary>
+        public ConsultarGasto()
         { }
 
-        /// <summary>Constructor de la clase 'Ingresar'.</summary>
-        public IngresarGasto(Gasto gasto)
+        /// <summary>Constructor de la clase 'Consultar'.</summary>
+        public ConsultarGasto(Gasto gasto)
         {
             this.gasto = gasto;
         }
@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         {
             Gasto _gasto = null;
             //GastoSQLServer bd = new GastoSQLServer();
-            //_gasto = bd.IngresarGasto(gasto);
+            //_gasto = bd.ConsultarGasto(gasto);
         }
         #endregion
     }

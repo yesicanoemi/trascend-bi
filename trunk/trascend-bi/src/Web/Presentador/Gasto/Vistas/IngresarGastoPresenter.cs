@@ -14,9 +14,6 @@ namespace Presentador.Gasto.Vistas
         #region Constructor
 
         #endregion
-        
-
-        
 
     }
 }
