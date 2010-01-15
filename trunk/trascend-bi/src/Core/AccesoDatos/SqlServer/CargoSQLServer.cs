@@ -63,7 +63,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[3] = new SqlParameter("@SueldoMaximo", SqlDbType.Float);
                 arParms[3].Value = _cargo.SueldoMaximo;
                 arParms[4] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
-                arParms[4].Value = _cargo.Vigencia.ToShortDateString;
+                arParms[4].Value = _cargo.Vigencia;
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarCargo", arParms);
             }
             catch (SqlException e)
@@ -99,7 +99,7 @@ namespace Core.AccesoDatos.SqlServer
                     _cargo.Descripcion = (string)reader["Descripcion"];
                     _cargo.SueldoMinimo = (float)reader["SueldoMinimo"];
                     _cargo.SueldoMaximo = (float)reader["SueldoMaximo"];
-                    _cargo.Vigencia = (smalldatetime)reader["VigenciaAnual"];
+                    _cargo.Vigencia = (DateTime)reader["VigenciaAnual"];
                 }
 
                 return _cargo;
