@@ -37,7 +37,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         {
             IList<Factura> _facturas = null;
             FacturaSQLServer bdfactura = new FacturaSQLServer();
-            _facturas = bdfactura.ConsultarFacturas();
+            Propuesta propuesta = new Propuesta();
+            _facturas = bdfactura.ConsultarFacturasNomPro(propuesta);
             return _facturas;
         }
         #endregion
