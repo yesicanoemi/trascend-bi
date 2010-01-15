@@ -40,7 +40,8 @@ namespace Presentador.Empleado.Vistas
             }
             catch (WebException e)
             {
-                //Aqui se maneja la excepcion en caso de que de error la seccion Web
+                _vista.Pintar("0001","Hola","Yop","lol");
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
 

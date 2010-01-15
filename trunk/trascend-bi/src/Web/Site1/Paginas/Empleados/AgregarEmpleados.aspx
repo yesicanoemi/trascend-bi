@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true"
     CodeFile="AgregarEmpleados.aspx.cs" Inherits="Paginas_Empleados_AgregarEmpleados" %>
 
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav">
         <div class="content">
@@ -144,11 +145,12 @@
                                         <td>
                                             <asp:TextBox ID="uxFechaNac" runat="server" TabIndex="63"></asp:TextBox>
                                             <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
-                                            
                                         </td>
-                                        <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxceFechaNac"
-                                                Format="dd/MM/yy" TargetControlID="uxFechaNac" PopupButtonID="uxImgFechaNac" >
-                                            </AjaxControlToolkit:CalendarExtender></td>
+                                        <td>
+                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
+                                                ID="uxceFechaNac" Format="dd/MM/yy" TargetControlID="uxFechaNac" PopupButtonID="uxImgFechaNac">
+                                            </AjaxControlToolkit:CalendarExtender>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -185,8 +187,8 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaIngres"
-                                                Format="dd/MM/yy" TargetControlID="uxFechaIngreso" PopupButtonID="uxImagenFechaIngreso" >
+                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
+                                                ID="uxFechaIngres" Format="dd/MM/yy" TargetControlID="uxFechaIngreso" PopupButtonID="uxImagenFechaIngreso">
                                             </AjaxControlToolkit:CalendarExtender>
                                         </td>
                                         <td>
@@ -204,8 +206,8 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaEgres"
-                                                Format="dd/MM/yy" TargetControlID="uxFechaEgreso" PopupButtonID="uxImagenFechaEgreso" >
+                                            <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
+                                                ID="uxFechaEgres" Format="dd/MM/yy" TargetControlID="uxFechaEgreso" PopupButtonID="uxImagenFechaEgreso">
                                             </AjaxControlToolkit:CalendarExtender>
                                         </td>
                                         <td>
@@ -230,6 +232,11 @@
                                     </tr>
                                 </table>
                             </p>
+                            <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                                <ContentTemplate>
+                                    <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                             </form>
                         </div>
                     </div>

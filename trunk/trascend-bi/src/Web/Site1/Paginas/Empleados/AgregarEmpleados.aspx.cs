@@ -10,7 +10,22 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IA
 {
     private AgregarEmpleadoPresenter _presentador;
     #region Propiedades
+    #region Dialogos
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        throw new NotImplementedException();
+    }
 
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
     #region Informacion Basica
 
     public TextBox NombreEmpleado
