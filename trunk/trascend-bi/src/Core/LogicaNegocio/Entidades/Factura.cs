@@ -10,7 +10,7 @@ namespace Core.LogicaNegocio.Entidades
         private int numero;
         private string titulo;
         private string descripcion;
-        private int porcentajepagado;
+        private float porcentajepagado;
         private DateTime fechapago;
         private DateTime fechaingreso;
         private string estado;
@@ -71,7 +71,7 @@ namespace Core.LogicaNegocio.Entidades
         }
 
 
-        public virtual int Procentajepagado
+        public virtual float Procentajepagado
         {
             get
             {
