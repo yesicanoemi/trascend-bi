@@ -33,14 +33,14 @@ namespace Presentador.Empleado.Vistas
                 empleado.Cuenta = Int32.Parse(_vista.CuentaEmpleado.Text);
                 empleado.Estado = "Activo";
                 empleado.FechaIngreso = DateTime.Now;
-                empleado.FechaNacimiento = DateTime.Now;
+                empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.ToString());
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
                 Ingresar(empleado);
                 LimpiarRegistros();
             }
             catch (WebException e)
             {
-                _vista.Pintar("0001","Hola","Yop","lol");
+                _vista.Pintar("0001",e.ToString(),"Yop","lol");
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }

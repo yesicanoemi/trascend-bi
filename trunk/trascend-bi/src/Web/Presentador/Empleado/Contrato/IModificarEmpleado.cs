@@ -19,5 +19,10 @@ namespace Presentador.Empleado.Contrato
         TextBox FechaIngresoEmpleado { get; set; }
         TextBox FechaEgresoEmpleado { get; set; }
         #endregion
+        #region Dialogo
+        bool DialogoVisible { get; set; }
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
+        void PintarInformacion(string mensaje, string estilo);
+        #endregion
     }
 }
