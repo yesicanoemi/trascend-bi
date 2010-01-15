@@ -12,7 +12,19 @@ namespace Core.LogicaNegocio.Entidades
 
         private string apellido;
 
-        
+        private IList<Empleado> Empleados;
+
+        public virtual IList<Empleado> Empleado
+        {
+            get
+            {
+                return Empleados;
+            }
+            set
+            {
+                Empleados = value;
+            }
+        }
 
         public virtual string Nombre
         {
