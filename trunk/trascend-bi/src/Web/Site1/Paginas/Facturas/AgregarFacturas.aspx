@@ -38,22 +38,39 @@
                             <form id="Form1" runat="server">
                                 <table>
                                     <tr>
-                                        <td> <asp:TextBox ID="uxTituloPropuesta" runat="server"></asp:TextBox></td>
-                                        <td> <asp:Button ID="uxBuscarTitulo" runat="server" Text="Buscar" 
-                                                onclick="uxBuscarTitulo_Click" /></td>
+                                        <td> 
+                                            <asp:Label ID="uxLabelNomProp" runat="server" 
+                                                Text="<%$Resources:DSU, NombrePropuestaFactura%>"></asp:Label>
+                                        </td>
+                                        <td> 
+                                            <asp:TextBox ID="uxTituloPropuesta" runat="server"></asp:TextBox>
+                                        </td>
+                                       
+                                           
+                                        <td>
+                                            <asp:Button ID="uxBuscarTitulo" runat="server" onclick="uxBuscarTitulo_Click" 
+                                                Text="Buscar" />
+                                        </td>
                                        
                                            
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxTituloPropuesta"
-                                                      Display="Static" ErrorMessage="<%$ Resources:DSU, FaltaTituloPropuesta%>"
-                                                      Font-Size="Smaller"/></td>
-                                        <td>&nbsp;</td>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                                ControlToValidate="uxTituloPropuesta" Display="Static" 
+                                                ErrorMessage="<%$ Resources:DSU, FaltaTituloPropuesta%>" Font-Size="Smaller" />
+                                        </td>
                                     </tr>
                                 </table>
                                
                                
                             </form>
+                            
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             
                             <p>
                             </p>
@@ -67,84 +84,267 @@
                     
                 </asp:View>
                 <asp:View ID="uxAgregarFactura" runat="server">
-                    <p><div style="background-color:InfoBackground">Agregar Factura</div></p>
-                    <p class="large">
-                        <form id="Form2" runat="server">
-                           <table style="width:100%;">
-                               <tr>
-                                   <td>Proyecto asociado: </td>
-                                   <td><asp:TextBox ID="uxProyectoAsociado" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Titulo: </td>
-                                   <td><asp:TextBox ID="uxTituloFactura" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
+                    <p><div style="background-color:InfoBackground">Información Propuesta</div>
+                        <p>
+                        </p>
+                        <p class="large">
+                            <form ID="Form2" runat="server">
+                            <table style="width:100%;">
                                 <tr>
-                                   <td>Descripcion: </td>
-                                   <td><asp:TextBox ID="uxDescripcionFactura" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>% del pago: </td>
-                                   <td><asp:TextBox ID="uxPorcentaje" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Monto: </td>
-                                   <td><asp:TextBox ID="uxMonto" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Fecha de Pago: </td>
-                                   <td>
-                                       <asp:TextBox ID="uxFechaPago" runat="server"></asp:TextBox>
-                                        <asp:Image ID="uxImagenFechaPago" runat="server" ImageUrl="~/Images/calendario.png" />
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxFechaPag"
-                                                Format="dd/MM/yy" TargetControlID="uxFechaPago" PopupButtonID="uxImagenFechaPago" >
-                                            </AjaxControlToolkit:CalendarExtender></td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                                <tr>
-                                   <td>Estado(cobrado o por cobrar): </td>
-                                   <td>
-                                       <asp:DropDownList ID="uxEstado" runat="server">
-                                       </asp:DropDownList> 
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                                <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
-                                   <td>&nbsp;</td>
-                                   <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" /></td>
+                                    <td>
+                                        <asp:Label ID="uxLabelMontoTotal" runat="server" 
+                                            Text="<%$Resources:DSU, MontoTotalPropuestaFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxMontoTotal" runat="server"></asp:TextBox>
+                                    </td>
                                 </tr>
-                           </table>
-                        </form>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelMontoCancelado" runat="server" 
+                                            Text="<%$Resources:DSU, MontosCanceladosPropFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxMontoCancelado" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelTotalCancelado" runat="server" 
+                                            Text="<%$Resources:DSU, TotalCanceladoFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxTotalCancelado" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelPorcCancelado" runat="server" 
+                                            Text="<%$Resources:DSU, PorcentajeCanceladoPropFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxPorcentajeCancelado" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelMontoFalt" runat="server" 
+                                            Text="<%$Resources:DSU, MontoFaltantePropFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxMontoFaltante" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelPorcFalt" runat="server" 
+                                            Text="<%$Resources:DSU, PorcentajeFaltantePropFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxPorcFaltante" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha de Pago:
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxFechaPago" runat="server"></asp:TextBox>
+                                        <asp:Image ID="uxImagenFechaPago" runat="server" 
+                                            ImageUrl="~/Images/calendario.png" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <AjaxControlToolkit:CalendarExtender ID="uxFechaPag" runat="server" 
+                                            Animated="true" CssClass="ajax__calendar" Format="dd/MM/yy" 
+                                            PopupButtonID="uxImagenFechaPago" TargetControlID="uxFechaPago">
+                                        </AjaxControlToolkit:CalendarExtender>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div style="background-color:InfoBackground">
+                                            Facturación</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelTituloFact" runat="server" 
+                                            Text="<%$Resources:DSU, TituloFactPropuesta%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxTituloFactura" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelDescProp" runat="server" 
+                                            Text="<%$Resources:DSU, DescripcionPropuestaFactura%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxDescProp" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Estado(cobrado o por cobrar): </td>
+                                    <td>
+                                        <asp:DropDownList ID="uxEstado" runat="server">
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelCodFactura" runat="server" 
+                                            Text="<%$Resources:DSU, CodifoFactPropuesta%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxCodigoFactura" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelPorcPagar" runat="server" 
+                                            Text="<%$Resources:DSU, PorcentajePagarFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxPorcentajePagar" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="uxLabelMontoPagar" runat="server" 
+                                            Text="<%$Resources:DSU, MontoPagarPropFact%>"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="uxMontoPagar" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" />
+                                    </td>
+                                </tr>
+                            </table>
+                            </form>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                        </p>
                     </p>
                 </asp:View>
             </asp:MultiView>
