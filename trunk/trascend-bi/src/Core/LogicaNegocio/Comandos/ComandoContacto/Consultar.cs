@@ -14,11 +14,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         #region Constructor
 
-        /// <summary>Constructor por defecto de la clase 'Ingresar'.</summary>
+        /// <summary>Constructor por defecto de la clase 'Consultar'.</summary>
         public Consultar()
         { }
 
-        /// <summary>Constructor de la clase 'Ingresar'.</summary>
+        /// <summary>Constructor de la clase 'Consultar'.</summary>
         /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
         public Consultar(Contacto contacto)
         {
