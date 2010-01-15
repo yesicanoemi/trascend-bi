@@ -56,7 +56,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
 
-                    arParms[0].Value = "%" + propuesta.Titulo + "%";
+                    arParms[0].Value = propuesta.Titulo;
 
                     DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                             "ConsultarFacturaNomPro", arParms);
@@ -79,16 +79,19 @@ namespace Core.AccesoDatos.SqlServer
 
                         factura.Estado = (string)reader["Estado"];
 
-                        factura.Prop.Id = (int)reader["IdPropuesta"];
+                        factura.Prop = propuesta;
 
                         facturas.Insert(i, factura);
+
+                        //reader.NextResult();
+
                         i++;
 
                     }
                 }
             }
 
-            return new List<Factura>();
+            return facturas;
         }
 
 
@@ -100,18 +103,20 @@ namespace Core.AccesoDatos.SqlServer
 
             foreach (Propuesta propuestaAux in propuestas)
             {
-                if (propuesta.Titulo.Equals(propuestaAux.Titulo))
+                Console.WriteLine(propuestaAux.Id);
+
+                if (propuesta.Id == propuestaAux.Id)
                 {
                     int i = 0;
 
                     SqlParameter[] arParms = new SqlParameter[1];
 
-                    arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+                    arParms[0] = new SqlParameter("@idpropuesta", SqlDbType.Int);
 
-                    arParms[0].Value = "%" + propuesta.Titulo + "%";
+                    arParms[0].Value = propuesta.Id;
 
                     DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                            "ConsultarFacturaNomPro", arParms);
+                                            "ConsultarFacturaIDPro", arParms);
 
                     while (reader.Read())
                     {
@@ -131,7 +136,7 @@ namespace Core.AccesoDatos.SqlServer
 
                         factura.Estado = (string)reader["Estado"];
 
-                        factura.Prop.Id = (int)reader["IdPropuesta"];
+                        factura.Prop = propuesta;
 
                         facturas.Insert(i, factura);
                         i++;
@@ -140,7 +145,7 @@ namespace Core.AccesoDatos.SqlServer
                 }
             }
 
-            return new List<Factura>();
+            return facturas;
         }
 
 
@@ -154,8 +159,7 @@ namespace Core.AccesoDatos.SqlServer
         {            
             try
             {
-                if (factura.Prop == null)
-                    factura.Prop = new Propuesta();
+                factura.Prop = new Propuesta();
 
                 SqlParameter[] arParms = new SqlParameter[1];
 
@@ -163,7 +167,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = factura.Numero;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), CommandType.StoredProcedure,
                                         "ConsultarFacturaID", arParms);
 
                 if (reader.Read())
@@ -174,7 +178,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     factura.Descripcion = (string)reader["Descripcion"];
 
-                    //factura.Procentajepagado = (float)reader["Porcentaje"];
+                    factura.Procentajepagado = (float)reader["Porcentaje"];
 
                     factura.Fechapago = (DateTime)reader["Fecha"];
 
@@ -184,6 +188,18 @@ namespace Core.AccesoDatos.SqlServer
 
                     factura.Prop.Id = (int)reader["IdPropuesta"];
                    
+                }
+
+                IList<Propuesta> propuestas = ConsultarPropuesta();
+
+                List<Factura> facturas = new List<Factura>();
+
+                foreach (Propuesta propuestaAux in propuestas)
+                {
+                    if (propuestaAux.Id == factura.Prop.Id)
+                    {
+                        factura.Prop = propuestaAux;
+                    }
                 }
 
                 return factura;
