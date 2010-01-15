@@ -1,0 +1,134 @@
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Documents and Settings\Administrador\Mis documentos\Visual Studio 2008\Projects\proyecto2\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Castle.DynamicProxy2.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\log4net.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Iesi.Collections.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\NHibernate.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Castle.Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.DynamicProxy2.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\log4net.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Iesi.Collections.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\NHibernate.dll
+C:\Documents and Settings\Jesus\Mis documentos\Universidad\Desarrollo del Software\Proyecto 2\1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.DynamicProxy2.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\log4net.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Iesi.Collections.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\NHibernate.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Castle.Core.dll
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\Desarrollo 2-1\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Aplica\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplica\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Aplicaciones\Desarrollo2\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Blaze2\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Aplicaciones\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.pdb
+C:\Users\Mcdohl\Documents\Visual Studio 2008\Projects\DSU\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.xml
+<<<<<<< .mine
+C:\DS\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\DS\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\DS\src\Web\Presentador\bin\Debug\Core.dll
+C:\DS\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\DS\src\Web\Presentador\bin\Debug\Core.pdb
+C:\DS\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\DS\src\Web\Presentador\obj\Debug\Presentador.pdb
+=======
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Diego\Desktop\3roDesarrollo\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\Users\Jean y Mater\Desktop\DESARROLLO\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
+>>>>>>> .r254
