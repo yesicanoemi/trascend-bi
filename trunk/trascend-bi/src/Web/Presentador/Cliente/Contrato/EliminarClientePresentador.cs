@@ -8,7 +8,7 @@ namespace Presentador.Cliente.ClientePresentador
 {
     public class EliminarClientePresentador
     {
-
+//
         private IEliminarCliente _vista;
 
         public EliminarClientePresentador(IEliminarCliente vista)

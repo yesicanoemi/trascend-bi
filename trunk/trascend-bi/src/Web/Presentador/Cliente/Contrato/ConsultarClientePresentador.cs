@@ -8,7 +8,7 @@ namespace Presentador.Cliente.ClientePresentador
 {
     public class ConsultarClientePresentador
     {
-
+//
         private IConsultarCliente _vista;
 
         public ConsultarClientePresentador(IConsultarCliente vista)

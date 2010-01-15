@@ -17,6 +17,7 @@ namespace Presentador.Cliente.Vistas
 {
     public class ModificarClientePresentador
  {
+//
         #region Propiedades
         private IModificarCliente _vista;
         private string campoVacio = "";
