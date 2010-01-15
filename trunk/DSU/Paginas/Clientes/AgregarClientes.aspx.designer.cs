@@ -10,79 +10,79 @@
 
 
 
-public partial class _Default {
+public partial class Paginas_Clientes_AgregarClientes {
     
     /// <summary>
-    /// Control Head1.
+    /// Control uxRif.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    protected global::System.Web.UI.WebControls.TextBox uxRif;
     
     /// <summary>
-    /// Control form1.
+    /// Control uxNombreCliente.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+    protected global::System.Web.UI.WebControls.TextBox uxNombreCliente;
     
     /// <summary>
-    /// Control uxNombreLogin.
+    /// Control uxDireccion1.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label uxNombreLogin;
+    protected global::System.Web.UI.WebControls.TextBox uxDireccion1;
     
     /// <summary>
-    /// Control uxLogin.
+    /// Control uxDireccion2.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox uxLogin;
+    protected global::System.Web.UI.WebControls.TextBox uxDireccion2;
     
     /// <summary>
-    /// Control RequiredFieldValidator1.
+    /// Control uxCiudad.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+    protected global::System.Web.UI.WebControls.TextBox uxCiudad;
     
     /// <summary>
-    /// Control uxNombreContrasena.
+    /// Control uxEstado.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label uxNombreContrasena;
+    protected global::System.Web.UI.WebControls.DropDownList uxEstado;
     
     /// <summary>
-    /// Control uxContrasena.
+    /// Control uxTelefono1.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox uxContrasena;
+    protected global::System.Web.UI.WebControls.TextBox uxTelefono1;
     
     /// <summary>
-    /// Control RequiredFieldValidator2.
+    /// Control uxAreaNegocio.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+    protected global::System.Web.UI.WebControls.DropDownList uxAreaNegocio;
     
     /// <summary>
     /// Control uxBotonAceptar.

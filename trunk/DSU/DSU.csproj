@@ -30,6 +30,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=1.0.10618.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\trascend\src\Web\Site1\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Core\bin\Debug\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\trascend\src\Web\Site1\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\trascend\src\Web\Site1\Bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\trascend\src\Web\Site1\Bin\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Presentador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Presentador\bin\Debug\Presentador.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -125,6 +149,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\DSU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU.resx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -135,69 +164,120 @@
       <DependentUpon>MasterPageHeader.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="MasterPage\MasterPageHeader.master.designer.cs">
+      <DependentUpon>MasterPageHeader.master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage\MasterPagePaginaBase.master.cs">
       <DependentUpon>MasterPagePaginaBase.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\MasterPagePaginaBase.master.designer.cs">
+      <DependentUpon>MasterPagePaginaBase.master</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Cargos\AgregarCargos.aspx.cs">
       <DependentUpon>AgregarCargos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Cargos\AgregarCargos.aspx.designer.cs">
+      <DependentUpon>AgregarCargos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Cargos\ConsultarCargos.aspx.cs">
       <DependentUpon>ConsultarCargos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Cargos\ConsultarCargos.aspx.designer.cs">
+      <DependentUpon>ConsultarCargos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Cargos\DefaultCargos.aspx.cs">
       <DependentUpon>DefaultCargos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Cargos\DefaultCargos.aspx.designer.cs">
+      <DependentUpon>DefaultCargos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Cargos\EliminarCargos.aspx.cs">
       <DependentUpon>EliminarCargos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Cargos\EliminarCargos.aspx.designer.cs">
+      <DependentUpon>EliminarCargos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Cargos\ModificarCargos.aspx.cs">
       <DependentUpon>ModificarCargos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Cargos\ModificarCargos.aspx.designer.cs">
+      <DependentUpon>ModificarCargos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Clientes\AgregarClientes.aspx.cs">
       <DependentUpon>AgregarClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Clientes\AgregarClientes.aspx.designer.cs">
+      <DependentUpon>AgregarClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Clientes\ConsultarClientes.aspx.cs">
       <DependentUpon>ConsultarClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Clientes\ConsultarClientes.aspx.designer.cs">
+      <DependentUpon>ConsultarClientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Clientes\DefaultClientes.aspx.cs">
       <DependentUpon>DefaultClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Clientes\DefaultClientes.aspx.designer.cs">
+      <DependentUpon>DefaultClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Clientes\EliminarClientes.aspx.cs">
       <DependentUpon>EliminarClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Clientes\EliminarClientes.aspx.designer.cs">
+      <DependentUpon>EliminarClientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Clientes\ModificarClientes.aspx.cs">
       <DependentUpon>ModificarClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Clientes\ModificarClientes.aspx.designer.cs">
+      <DependentUpon>ModificarClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Contactos\AgregarContactos.aspx.cs">
       <DependentUpon>AgregarContactos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Contactos\AgregarContactos.aspx.designer.cs">
+      <DependentUpon>AgregarContactos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Contactos\ConsultarContactos.aspx.cs">
       <DependentUpon>ConsultarContactos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Contactos\ConsultarContactos.aspx.designer.cs">
+      <DependentUpon>ConsultarContactos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Contactos\DefaultContactos.aspx.cs">
       <DependentUpon>DefaultContactos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Contactos\DefaultContactos.aspx.designer.cs">
+      <DependentUpon>DefaultContactos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Contactos\EliminarContactos.aspx.cs">
       <DependentUpon>EliminarContactos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Contactos\EliminarContactos.aspx.designer.cs">
+      <DependentUpon>EliminarContactos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Contactos\ModificarContactos.aspx.cs">
       <DependentUpon>ModificarContactos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Contactos\ModificarContactos.aspx.designer.cs">
+      <DependentUpon>ModificarContactos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Empleados\AgregarEmpleados.aspx.cs">
       <DependentUpon>AgregarEmpleados.aspx</DependentUpon>
@@ -207,17 +287,29 @@
       <DependentUpon>ConsultarEmpleados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Empleados\ConsultarEmpleados.aspx.designer.cs">
+      <DependentUpon>ConsultarEmpleados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Empleados\DefaultEmpleados.aspx.cs">
       <DependentUpon>DefaultEmpleados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Empleados\DefaultEmpleados.aspx.designer.cs">
+      <DependentUpon>DefaultEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Empleados\EliminarEmpleados.aspx.cs">
       <DependentUpon>EliminarEmpleados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Empleados\EliminarEmpleados.aspx.designer.cs">
+      <DependentUpon>EliminarEmpleados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Empleados\ModificarEmpleados.aspx.cs">
       <DependentUpon>ModificarEmpleados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Empleados\ModificarEmpleados.aspx.designer.cs">
+      <DependentUpon>ModificarEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Facturas\AgregarFacturas.aspx.cs">
       <DependentUpon>AgregarFacturas.aspx</DependentUpon>
@@ -227,17 +319,29 @@
       <DependentUpon>ConsultarFacturas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Facturas\ConsultarFacturas.aspx.designer.cs">
+      <DependentUpon>ConsultarFacturas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Facturas\DefaultFacturas.aspx.cs">
       <DependentUpon>DefaultFacturas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Facturas\DefaultFacturas.aspx.designer.cs">
+      <DependentUpon>DefaultFacturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Facturas\EliminarFacturas.aspx.cs">
       <DependentUpon>EliminarFacturas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Facturas\EliminarFacturas.aspx.designer.cs">
+      <DependentUpon>EliminarFacturas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Facturas\ModificarFacturas.aspx.cs">
       <DependentUpon>ModificarFacturas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Facturas\ModificarFacturas.aspx.designer.cs">
+      <DependentUpon>ModificarFacturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Gastos\AgregarGastos.aspx.cs">
       <DependentUpon>AgregarGastos.aspx</DependentUpon>
@@ -247,21 +351,36 @@
       <DependentUpon>ConsultarGastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Gastos\ConsultarGastos.aspx.designer.cs">
+      <DependentUpon>ConsultarGastos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Gastos\DefaultGastos.aspx.cs">
       <DependentUpon>DefaultGastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Gastos\DefaultGastos.aspx.designer.cs">
+      <DependentUpon>DefaultGastos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Gastos\EliminarGastos.aspx.cs">
       <DependentUpon>EliminarGastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Gastos\EliminarGastos.aspx.designer.cs">
+      <DependentUpon>EliminarGastos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Gastos\ModificarGastos.aspx.cs">
       <DependentUpon>ModificarGastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Gastos\ModificarGastos.aspx.designer.cs">
+      <DependentUpon>ModificarGastos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Home\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Home\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Propuestas\AgregarPropuestas.aspx.cs">
       <DependentUpon>AgregarPropuestas.aspx</DependentUpon>
@@ -271,25 +390,43 @@
       <DependentUpon>ConsultarPropuestas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Propuestas\ConsultarPropuestas.aspx.designer.cs">
+      <DependentUpon>ConsultarPropuestas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Propuestas\DefaultPropuestas.aspx.cs">
       <DependentUpon>DefaultPropuestas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Propuestas\DefaultPropuestas.aspx.designer.cs">
+      <DependentUpon>DefaultPropuestas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Propuestas\EliminarPropuestas.aspx.cs">
       <DependentUpon>EliminarPropuestas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Propuestas\EliminarPropuestas.aspx.designer.cs">
+      <DependentUpon>EliminarPropuestas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Propuestas\ModificarPropuestas.aspx.cs">
       <DependentUpon>ModificarPropuestas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Propuestas\ModificarPropuestas.aspx.designer.cs">
+      <DependentUpon>ModificarPropuestas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Reportes\InicioReportes.aspx.cs">
       <DependentUpon>InicioReportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Reportes\InicioReportes.aspx.designer.cs">
+      <DependentUpon>InicioReportes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo1a.aspx.cs">
       <DependentUpon>ReportesEquipo1a.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo1a.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo1a.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo1b.aspx.cs">
       <DependentUpon>ReportesEquipo1b.aspx</DependentUpon>
@@ -299,6 +436,9 @@
       <DependentUpon>ReportesEquipo2a.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo2a.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo2a.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo2b.aspx.cs">
       <DependentUpon>ReportesEquipo2b.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +446,9 @@
     <Compile Include="Paginas\Reportes\ReportesEquipo3a.aspx.cs">
       <DependentUpon>ReportesEquipo3a.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo3a.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo3a.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo3b.aspx.cs">
       <DependentUpon>ReportesEquipo3b.aspx</DependentUpon>
@@ -323,13 +466,22 @@
       <DependentUpon>ReportesEquipo8a.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo8a.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo8a.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo8b.aspx.cs">
       <DependentUpon>ReportesEquipo8b.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo8b.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo8b.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo8c.aspx.cs">
       <DependentUpon>ReportesEquipo8c.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo8c.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo8c.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Reportes\ReportesEquipo9a.aspx.cs">
       <DependentUpon>ReportesEquipo9a.aspx</DependentUpon>
@@ -339,25 +491,43 @@
       <DependentUpon>ReportesEquipo9b.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Reportes\ReportesEquipo9b.aspx.designer.cs">
+      <DependentUpon>ReportesEquipo9b.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Usuarios\AgregarUsuarios.aspx.cs">
       <DependentUpon>AgregarUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Usuarios\AgregarUsuarios.aspx.designer.cs">
+      <DependentUpon>AgregarUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Usuarios\ConsultarUsuarios.aspx.cs">
       <DependentUpon>ConsultarUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Usuarios\ConsultarUsuarios.aspx.designer.cs">
+      <DependentUpon>ConsultarUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Usuarios\DefaultUsuarios.aspx.cs">
       <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Usuarios\DefaultUsuarios.aspx.designer.cs">
+      <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Usuarios\EliminarUsuarios.aspx.cs">
       <DependentUpon>EliminarUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Paginas\Usuarios\EliminarUsuarios.aspx.designer.cs">
+      <DependentUpon>EliminarUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Usuarios\ModificarUsuarios.aspx.cs">
       <DependentUpon>ModificarUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Usuarios\ModificarUsuarios.aspx.designer.cs">
+      <DependentUpon>ModificarUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -365,6 +535,12 @@
     <None Include="Images\Thumbs.db" />
     <Content Include="MasterPage\MasterPageHeader.master" />
     <Content Include="MasterPage\MasterPagePaginaBase.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\DSU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>DSU.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

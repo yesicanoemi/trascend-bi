@@ -10,43 +10,25 @@
 
 
 
-public partial class _Default {
+public partial class Paginas_Cargos_AgregarCargos {
     
     /// <summary>
-    /// Control Head1.
+    /// Control Form1.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
     
     /// <summary>
-    /// Control form1.
+    /// Control uxNombre.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-    
-    /// <summary>
-    /// Control uxNombreLogin.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label uxNombreLogin;
-    
-    /// <summary>
-    /// Control uxLogin.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox uxLogin;
+    protected global::System.Web.UI.WebControls.TextBox uxNombre;
     
     /// <summary>
     /// Control RequiredFieldValidator1.
@@ -58,31 +40,40 @@ public partial class _Default {
     protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
     
     /// <summary>
-    /// Control uxNombreContrasena.
+    /// Control uxDescripcion.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label uxNombreContrasena;
+    protected global::System.Web.UI.WebControls.TextBox uxDescripcion;
     
     /// <summary>
-    /// Control uxContrasena.
+    /// Control uxRangoSueldo.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox uxContrasena;
+    protected global::System.Web.UI.WebControls.DropDownList uxRangoSueldo;
     
     /// <summary>
-    /// Control RequiredFieldValidator2.
+    /// Control uxVigenciaSueldo.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+    protected global::System.Web.UI.WebControls.TextBox uxVigenciaSueldo;
+    
+    /// <summary>
+    /// Control uxInflacion.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox uxInflacion;
     
     /// <summary>
     /// Control uxBotonAceptar.

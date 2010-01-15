@@ -10,34 +10,16 @@
 
 
 
-public partial class _Default {
+public partial class Paginas_Usuarios_ConsultarUsuarios {
     
     /// <summary>
-    /// Control Head1.
+    /// Control uxFormConsultarUsuario.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-    
-    /// <summary>
-    /// Control form1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-    
-    /// <summary>
-    /// Control uxNombreLogin.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label uxNombreLogin;
+    protected global::System.Web.UI.HtmlControls.HtmlForm uxFormConsultarUsuario;
     
     /// <summary>
     /// Control uxLogin.
@@ -49,6 +31,15 @@ public partial class _Default {
     protected global::System.Web.UI.WebControls.TextBox uxLogin;
     
     /// <summary>
+    /// Control uxBotonBuscar.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button uxBotonBuscar;
+    
+    /// <summary>
     /// Control RequiredFieldValidator1.
     /// </summary>
     /// <remarks>
@@ -58,38 +49,38 @@ public partial class _Default {
     protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
     
     /// <summary>
-    /// Control uxNombreContrasena.
+    /// Control uxUsuario.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label uxNombreContrasena;
+    protected global::System.Web.UI.WebControls.Label uxUsuario;
     
     /// <summary>
-    /// Control uxContrasena.
+    /// Control uxNombreE.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox uxContrasena;
+    protected global::System.Web.UI.WebControls.Label uxNombreE;
     
     /// <summary>
-    /// Control RequiredFieldValidator2.
+    /// Control uxApellidoE.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+    protected global::System.Web.UI.WebControls.Label uxApellidoE;
     
     /// <summary>
-    /// Control uxBotonAceptar.
+    /// Control uxStatusU.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button uxBotonAceptar;
+    protected global::System.Web.UI.WebControls.Label uxStatusU;
 }
