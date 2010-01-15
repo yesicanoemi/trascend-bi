@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSU", "DSU\DSU.csproj", "{6A6E6E86-E001-49C8-8223-7798E2139702}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17} = {D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}
+		{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1} = {7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentador", "Presentador\Presentador.csproj", "{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -17,6 +25,14 @@ Global
 		{6A6E6E86-E001-49C8-8223-7798E2139702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A6E6E86-E001-49C8-8223-7798E2139702}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A6E6E86-E001-49C8-8223-7798E2139702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7497F3F7-BBC8-4DF6-A82B-BCD065E677E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03383A1-E1D8-48B3-81D5-9F2F1F3FBB17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
