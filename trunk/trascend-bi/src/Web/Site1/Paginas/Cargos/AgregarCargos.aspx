@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarCargos.aspx.cs" Inherits="Paginas_Cargos_AgregarCargos" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarCargos.aspx.cs" Inherits="Paginas_Cargos_AgregarCargos" Title="Agregar Cargos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -10,9 +10,8 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarCargos.aspx" class="active">Agregar<span></span></a></li> 
-  <li><a href="ConsultarCargos.aspx" >Consultar<span></span></a></li> 
-    <li><a href="EliminarCargos.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarCargos.aspx" >Modificar<span></span></a></li>
+  <li><a href="AdministrarCargos.aspx" >Administrar<span></span></a></li> 
+  <li><a href="TablaCargos.aspx" >Tabla<span></span></a></li>
 </ul> 
 						
 				</div> 

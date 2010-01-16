@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarCargos.aspx.cs" Inherits="Paginas_Cargos_ConsultarCargos" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AdministrarCargos.aspx.cs" Inherits="Paginas_Cargos_AdministrarCargos" Title="Administrar Cargos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -10,16 +10,15 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarCargos.aspx">Agregar<span></span></a></li> 
-  <li><a href="ConsultarCargos.aspx" class="active">Consultar<span></span></a></li> 
-    <li><a href="EliminarCargos.aspx" >Eliminar<span></span></a></li> 
-  <li><a href="ModificarCargos.aspx" >Modificar<span></span></a></li>
+  <li><a href="AdministrarCargos.aspx" class="active">Administrar<span></span></a></li> 
+  <li><a href="TablaCargos.aspx" >Tabla<span></span></a></li>
 </ul> 
 	</div> 
     	<div class="sub-content"> 
              <div class="features_overview"> 
                  <div class="features_overview_right"> 
-                    <h3>Consultar cargos</h3>
-                    <p class="large">Introduzca el nombre del cargo que desea consultar</p>
+                    <h3>Administrar cargos</h3>
+                    <p class="large">Introduzca el nombre del cargo que desea gestionar</p>
                         <form id="Form1" runat="server"> 
                     <p class="large">
                          <table style="width:100%">
