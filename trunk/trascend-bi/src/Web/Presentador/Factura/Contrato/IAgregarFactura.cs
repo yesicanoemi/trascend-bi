@@ -21,6 +21,7 @@ namespace Presentador.Factura.Contrato
         TextBox PorcentajeCancelado { get; set; }
         TextBox MontoFaltante { get; set; }
         TextBox PorcentajeFaltante { get; set; }
+        TextBox NombrePropuesta { get; set; }
 
         #endregion
 
@@ -34,6 +35,7 @@ namespace Presentador.Factura.Contrato
         TextBox TituloFactura { get; set; }
         DropDownList EstadoFactura { get; set; }
         TextBox FechaPagoFact { get; set; }
+        TextBox FechaIngreso { get; set; }
         //Button Aceptar { get; set; }
 
         #endregion

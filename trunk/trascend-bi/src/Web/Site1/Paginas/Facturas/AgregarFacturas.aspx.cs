@@ -70,10 +70,22 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
         set { this.uxPorcFaltante = value; }
     }
 
+    public TextBox NombrePropuesta
+    {
+        get { return this.uxTituloPropuesta; }
+        set { this.uxTituloPropuesta = value; }
+    }
+
     #endregion
 
 
     #region Facturacion
+
+    public TextBox FechaIngreso
+    {
+        get { return this.uxFechaIngresoFactProp; }
+        set { this.uxFechaIngresoFactProp = value; }
+    }
 
     public TextBox MontoPagar
     {
@@ -131,10 +143,10 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
     {
         if (Page.IsValid == true)
         {
-            if (uxTituloPropuesta.Text == "propuesta1")
-            {
+           // if (uxTituloPropuesta.Text == "propuesta1")
+            
                 _presenter.OnBotonAceptar();
-            }
+            
             /*else
             {
                 Response.Redirect();

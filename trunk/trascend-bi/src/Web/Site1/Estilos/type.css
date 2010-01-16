@@ -62,7 +62,8 @@ input,textarea,select { width:200px;
 -moz-border-radius:4px;border-radius:4px;-webkit-border-radius:4px;font-size:1.1em;color:#666;margin-left:20px;padding:1px;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;z-index:100 !important;position:relative; }
 input { border:2px solid #ccc;background-color:#fff;
     top: 0px;
-    }
+	left: -9px;
+}
 input:focus,textarea:focus { border:2px solid #ef9e4d;background:#fff; }
 input[type="radio"],input[type="checkbox"] { background:transparent !important;border:0 !important;width:16px !important; }
 input[type="radio"] { width:13px !important; }

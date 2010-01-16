@@ -117,7 +117,7 @@
                                             Text="<%$Resources:DSU, MontosCanceladosPropFact%>"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxMontoCancelado" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxMontoCancelado" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -218,8 +218,7 @@
                                     <td>
                                         <AjaxControlToolkit:CalendarExtender ID="uxFechaPag" runat="server" 
                                             Animated="true" CssClass="ajax__calendar" Format="dd/MM/yy" 
-                                            PopupButtonID="uxImagenFechaPago" TargetControlID="uxFechaPago">
-                                        </AjaxControlToolkit:CalendarExtender>
+                                            PopupButtonID="uxImagenFechaPago" TargetControlID="uxFechaPago"></AjaxControlToolkit:CalendarExtender>
                                     </td>
                                     <td>
                                         &nbsp;</td>
@@ -228,6 +227,19 @@
                                     <td colspan="2">
                                         <div style="background-color:InfoBackground">
                                             Facturación</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha Ingreso:</td>
+                                    <td>
+                                        <asp:TextBox ID="uxFechaIngresoFactProp" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -334,6 +346,14 @@
                                 </tr>
                             </table>
                             </form>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             <p>
                             </p>
                             <p>
