@@ -48,7 +48,7 @@ namespace Presentador.Empleado.Vistas
         }
         public void ConsultarCargos()
         {
-            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = new List<Core.LogicaNegocio.Entidades.Entidad>();
+            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;
             try
             {
                 DropDownList e = new DropDownList();
