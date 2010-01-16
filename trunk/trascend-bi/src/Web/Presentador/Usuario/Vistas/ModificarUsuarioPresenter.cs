@@ -42,6 +42,54 @@ namespace Presentador.Usuario.Vistas
             _vista.UsuarioU.Text = usuario.Status;
         }
 
+        private void CargarCheckBox(IList<Core.LogicaNegocio.Entidades.Permiso> permiso)
+        {   //for para agregar
+            for (int i = 0; i < permiso.Count; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    //Revisa el CheckBoxList de Agregar
+                    if (_vista.CBLAgregar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                    {
+                        _vista.CBLAgregar.Items[j].Selected = true;
+                    }
+                    //Revisa el CheckBoxList de Consultar
+                    if (_vista.CBLConsultar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                    {
+                        _vista.CBLConsultar.Items[j].Selected = true;
+                    }
+                    //Revisa el CheckBoxList de Modificar
+                    if (_vista.CBLModificar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                    {
+                        _vista.CBLModificar.Items[j].Selected = true;
+                    }
+                    //Revisa el CheckBoxList de Eliminar
+                    if (_vista.CBLEliminar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                    {
+                        _vista.CBLEliminar.Items[j].Selected = true;
+                    }
+                    
+                }
+            }
+        }
+
+        private IList<Core.LogicaNegocio.Entidades.Permiso> ModificarCheckBox(System.Web.UI.WebControls.CheckBoxList CBL)
+        {
+            IList<Core.LogicaNegocio.Entidades.Permiso> _permiso =
+                new List<Core.LogicaNegocio.Entidades.Permiso>();
+            Core.LogicaNegocio.Entidades.Permiso permiso = new Permiso();
+            for (int j = 0; j < 6; j++)
+            {
+                if (CBL.Items[j].Selected == true)
+                {
+                    permiso.IdPermiso = Int32.Parse(CBL.Items[j].Value);
+
+                    _permiso.Add(permiso);
+                }
+            }
+            return _permiso;
+        }
+        
         public void OnBotonBuscar()
         {
 
@@ -80,6 +128,32 @@ namespace Presentador.Usuario.Vistas
             return usuario1;
         }
 
+        public IList<Core.LogicaNegocio.Entidades.Permiso> ConsultarPermisos
+                (Core.LogicaNegocio.Entidades.Usuario entidad)
+        {
+
+            IList<Core.LogicaNegocio.Entidades.Permiso> permiso1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarPermisos comando;
+
+            comando = FabricaComandosUsuario.CrearComandoConsultarPermisos(entidad);
+
+            permiso1 = comando.Ejecutar();
+
+            return permiso1;
+        }
+
+        private void ModificarUsuario (Core.LogicaNegocio.Entidades.Usuario entidad)
+        {
+
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ModificarUsuario comando;
+
+            comando = FabricaComandosUsuario.CrearComandoModificarUsuario(entidad);
+
+           comando.Ejecutar();
+        }
+
         public void uxObjectConsultaModificarUsuarioSelecting(string login)
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
@@ -92,15 +166,37 @@ namespace Presentador.Usuario.Vistas
 
             user = listado[0];
 
+            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(user);
+
+            CargarCheckBox(listadoPermiso);
+
             CargarDatos(user);
 
             CambiarVista(1);
 
         }
 
+        private IList<Core.LogicaNegocio.Entidades.Permiso> UnirPermisos(IList<Core.LogicaNegocio.Entidades.Permiso> permiso, IList<Core.LogicaNegocio.Entidades.Permiso>  _permiso)
+        { 
+            for (int i = 0; i < permiso.Count; i++)
+            {
+                _permiso.Add(permiso[i]);
+            }
+
+            return _permiso;
+        }
+       
         public void OnBotonAceptar()
         {
-
+            Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
+            
+            usuario.PermisoUsu = ModificarCheckBox(_vista.CBLAgregar);
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLModificar),usuario.PermisoUsu);
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
+            usuario.Login = _vista.NombreUsu.Text;
+            ModificarUsuario(usuario);
+            
         }
         #endregion
 

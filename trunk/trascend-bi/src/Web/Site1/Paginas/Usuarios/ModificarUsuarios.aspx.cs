@@ -66,7 +66,32 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
         set { uxStatusU = value; }
     }
 
+    public CheckBoxList CBLAgregar
+    {
+        get { return uxCBLAgregar; }
+        set { uxCBLAgregar = value; }
+    }
+
+    public CheckBoxList CBLConsultar
+    {
+        get { return uxCBLConsultar; }
+        set { uxCBLConsultar = value; }
+    }
+
+    public CheckBoxList CBLModificar
+    {
+        get { return uxCBLModificar; }
+        set { uxCBLModificar = value; }
+    }
+
+    public CheckBoxList CBLEliminar
+    {
+        get { return uxCBLEliminar; }
+        set { uxCBLEliminar = value; }
+    }
+
     #endregion
+
 
     protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
     {
@@ -78,8 +103,6 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
     {
         _presentador.uxObjectConsultaModificarUsuarioSelecting(uxConsultaModificarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
-
-
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -96,25 +119,12 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
         _presentador.OnBotonBuscar();
     }
 
-
-    #region Miembros de IModificarUsuario
-
-    #endregion
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.OnBotonAceptar();
+
     }
 
 
-    #region Get y Set CheckBox
-
-    /*public CheckBox CbAgregarCargo
-    {
-        get { return uxcb; }
-        set { uxCb = value; }
-    }
-
-
-    */
-    #endregion
+   
 }

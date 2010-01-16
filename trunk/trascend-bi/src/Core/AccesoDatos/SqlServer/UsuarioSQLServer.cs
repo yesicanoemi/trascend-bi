@@ -153,7 +153,6 @@ namespace Core.AccesoDatos.SqlServer
 
         public void ModificarUsuario(Usuario usuario)
         {//aun le falta pasarle la lista de los permisos..
-
             try
             {
                 SqlParameter[] arParms = new SqlParameter[1];
@@ -162,8 +161,33 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = usuario.Login;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                        "ModificarUsuario", arParms);
+                SqlHelper.ExecuteNonQuery(GetConnection(),
+                                        "EliminarPermisos", arParms);
+
+
+                SqlParameter[] arParmsAgregarPermisos = new SqlParameter[2];
+
+                arParmsAgregarPermisos[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParmsAgregarPermisos[0].Value = usuario.Login;
+
+                arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.VarChar);
+
+                
+             
+
+
+
+
+                
+                for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+                {
+                    arParmsAgregarPermisos[1].Value = usuario.PermisoUsu[i].IdPermiso;
+
+                    SqlHelper.ExecuteNonQuery(GetConnection(),
+                                            "AgregarPermisoUsuario", arParmsAgregarPermisos);
+                }
+
             }
             catch (SqlException e)
             {
@@ -295,6 +319,45 @@ namespace Core.AccesoDatos.SqlServer
                 System.Console.Write(e);
             }
             return _usuario;
+
+        }
+        
+
+        public IList<Core.LogicaNegocio.Entidades.Permiso> ConsultarPermisos(Usuario entidad)
+        {
+            
+            IList<Core.LogicaNegocio.Entidades.Permiso> permiso = new List<Core.LogicaNegocio.Entidades.Permiso>();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParms[0].Value = entidad.Login;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarPermisos", arParms);
+
+                while (reader.Read())
+                {
+                    Permiso _permiso = new Permiso();
+
+                    _permiso.IdPermiso = (int)reader["IdPermiso"];
+
+                    permiso.Add(_permiso);
+                }
+
+                return permiso;
+
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return permiso;
 
         }
 

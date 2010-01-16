@@ -145,217 +145,69 @@
                                                 <td>
                                                     Eliminar</td>
                                             </tr>
+                                            
                                             <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
+                                            <td> &nbsp; </td>
+                                            <td align="center"> <asp:CheckBoxList ID="uxCBLAgregar" runat="server">
+                                                    <asp:ListItem Value="1" Text="Cargo"></asp:ListItem>
+                                                    <asp:ListItem Value="5" Text="Cliente"></asp:ListItem>
+                                                    <asp:ListItem Value="9" Text="Contacto"></asp:ListItem>
+                                                    <asp:ListItem Value="13" Text="Empleado"></asp:ListItem>
+                                                    <asp:ListItem Value="17" Text="Factura"></asp:ListItem>
+                                                    <asp:ListItem Value="21" Text="Gasto"></asp:ListItem>
+                                                    <asp:ListItem Value="25" Text="Propuesta"></asp:ListItem>
+                                                    <asp:ListItem Value="29" Text="Usuario"></asp:ListItem>
+                                                    
+                                                    </asp:CheckBoxList> 
+                                            </td>
+                                            <td align="center"> <asp:CheckBoxList ID="uxCBLConsultar" runat="server">
+                                                    <asp:ListItem Value="2" Text="Cargo"></asp:ListItem>
+                                                    <asp:ListItem Value="6" Text="Cliente"></asp:ListItem>
+                                                    <asp:ListItem Value="10" Text="Contacto"></asp:ListItem>
+                                                    <asp:ListItem Value="14" Text="Empleado"></asp:ListItem>
+                                                    <asp:ListItem Value="18" Text="Factura"></asp:ListItem>
+                                                    <asp:ListItem Value="22" Text="Gasto"></asp:ListItem>
+                                                    <asp:ListItem Value="26" Text="Propuesta"></asp:ListItem>
+                                                    <asp:ListItem Value="30" Text="Usuario"></asp:ListItem>
+                                                    
+                                                    </asp:CheckBoxList> 
+                                            </td>
+                                            
+                                            <td align="center"> <asp:CheckBoxList ID="uxCBLModificar" runat="server">
+                                                    <asp:ListItem Value="3" Text="Cargo"></asp:ListItem>
+                                                    <asp:ListItem Value="7" Text="Cliente"></asp:ListItem>
+                                                    <asp:ListItem Value="11" Text="Contacto"></asp:ListItem>
+                                                    <asp:ListItem Value="15" Text="Empleado"></asp:ListItem>
+                                                    <asp:ListItem Value="19" Text="Factura"></asp:ListItem>
+                                                    <asp:ListItem Value="23" Text="Gasto"></asp:ListItem>
+                                                    <asp:ListItem Value="27" Text="Propuesta"></asp:ListItem>
+                                                    <asp:ListItem Value="31" Text="Usuario"></asp:ListItem>
+                                                    
+                                                    </asp:CheckBoxList> 
+                                            </td>
+                                                    
+                                            <td align="center"> <asp:CheckBoxList ID="uxCBLEliminar" runat="server">
+                                                    <asp:ListItem Value="4" Text="Cargo"></asp:ListItem>
+                                                    <asp:ListItem Value="8" Text="Cliente"></asp:ListItem>
+                                                    <asp:ListItem Value="12" Text="Contacto"></asp:ListItem>
+                                                    <asp:ListItem Value="16" Text="Empleado"></asp:ListItem>
+                                                    <asp:ListItem Value="20" Text="Factura" Enabled="false"></asp:ListItem>
+                                                    <asp:ListItem Value="24" Text="Gasto"></asp:ListItem>
+                                                    <asp:ListItem Value="28" Text="Propuesta"></asp:ListItem>
+                                                    <asp:ListItem Value="32" Text="Usuario"></asp:ListItem>
+                                                    
+                                                    </asp:CheckBoxList> 
+                                            </td>
+                                            
+                                            
                                             </tr>
+                                            
                                             <tr>
-                                                <td>
-                                                    Cargos</td>
-                                                <td>
-                                                    <input id="uxCbAgregarCargo" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarCargo" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarCargo" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarCargo" type="checkbox" /></td>
+                                                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                            onclick="uxBotonAceptar_Click" /></td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Clientes</td>
-                                                <td>
-                                                    <input id="uxCbAgregarCliente" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarCliente" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarCliente" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarCliente" type="checkbox" d/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Contactos</td>
-                                                <td>
-                                                    <input id="uxCbAgregarContacto" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarContacto" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarContacto" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarContacto" type="checkbox" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Empleados</td>
-                                                <td>
-                                                    <input id="uxCbAgregarEmpleado" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarEmpleado" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarEmpleado" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarEmpleado" type="checkbox" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Facturas</td>
-                                                <td>
-                                                    <input id="uxCbAgregarFactura" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarFactura" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarFactura" type="checkbox" /></td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Gastos</td>
-                                                <td>
-                                                    <input id="uxCbAgregarGasto" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarGasto" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarGasto" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarGasto" type="checkbox" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Propuestas</td>
-                                                <td>
-                                                    <input id="uxCbAgregarPropuesta" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarPropuesta" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarPropuesta" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarPropuesta" type="checkbox" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                                <td>
-                                                    &nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Usuarios</td>
-                                                <td>
-                                                    <input id="uxCbAgregarUsuario" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbConsultarUsuario" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbModificarUsuario" type="checkbox" /></td>
-                                                <td>
-                                                    <input id="uxCbEliminarUsuario" type="checkbox" /></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                  <tr>
-                                           <td>&nbsp;</td>
-                                           <td>&nbsp;</td>
-                                        </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                            onclick="uxBotonAceptar_Click" />
-                                    </td>
-                                </tr>
+                                           
+                                           
                             </table>
                         </form>
                         

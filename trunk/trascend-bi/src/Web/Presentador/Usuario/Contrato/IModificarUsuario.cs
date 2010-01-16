@@ -27,6 +27,18 @@ namespace Presentador.Usuario.Contrato
 
         Label UsuarioU { get; set; }
 
+        CheckBoxList CBLAgregar { get; set; }
+
+        CheckBoxList CBLConsultar { get; set; }
+
+        CheckBoxList CBLModificar { get; set; }
+
+        CheckBoxList CBLEliminar { get; set; }
+
+
+
+        //CheckBox CbAgregarCargo { get; set; }
+
         #endregion
 
 

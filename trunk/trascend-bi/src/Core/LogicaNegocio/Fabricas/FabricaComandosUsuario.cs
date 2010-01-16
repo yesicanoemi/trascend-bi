@@ -48,6 +48,15 @@ namespace Core.LogicaNegocio.Fabricas
             return new EliminarUsuario(entidad);
         }
 
-        #endregion
-    }
+        public static ConsultarPermisos CrearComandoConsultarPermisos(Usuario entidad)
+        {
+            return new ConsultarPermisos(entidad);
+        }
+
+        public static ModificarUsuario CrearComandoModificarUsuario (Usuario entidad)
+        {
+            return new ModificarUsuario(entidad);
+        }
+#endregion
+	}
 }

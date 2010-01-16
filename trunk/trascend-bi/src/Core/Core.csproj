@@ -123,6 +123,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarPermisos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ListaUsuarios.cs" />
