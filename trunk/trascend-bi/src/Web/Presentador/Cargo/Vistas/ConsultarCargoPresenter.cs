@@ -51,7 +51,7 @@ namespace Presentador.Cargo.Vistas
             _vista.VigenciaSueldo.Text = cargoRetorno.Vigencia.ToShortDateString().ToString();
         }
 
-        public void EliminarCargo()
+        public bool EliminarCargo()
         {
             
             Core.LogicaNegocio.Comandos.ComandoCargo.Eliminar ComandoEliminar;
@@ -59,12 +59,12 @@ namespace Presentador.Cargo.Vistas
             ComandoEliminar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoEliminar( 
                                                         int.Parse(_vista.NombreCargo.SelectedValue) );
 
-            ComandoEliminar.Ejecutar();
+            return ComandoEliminar.Ejecutar();
             
 
         }
 
-        public void ModificarCargo()
+        public bool ModificarCargo()
         {
 
             Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
@@ -80,7 +80,7 @@ namespace Presentador.Cargo.Vistas
 
             ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar( cargo );
 
-            ComandoModificar.Ejecutar();
+            return ComandoModificar.Ejecutar();
 
         }
     

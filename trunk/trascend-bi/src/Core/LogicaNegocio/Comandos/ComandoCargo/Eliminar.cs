@@ -23,10 +23,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
             _cargo.Id = idCargo;
         }
 
-        public void Ejecutar()
+        public bool Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
-            bd.EliminarCargo(_cargo.Id);
+            return bd.EliminarCargo(_cargo.Id);
         }
     }
 }

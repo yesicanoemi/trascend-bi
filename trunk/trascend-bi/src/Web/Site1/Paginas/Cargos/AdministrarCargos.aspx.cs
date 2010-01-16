@@ -45,17 +45,43 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
         set { uxVigenciaSueldo = value; }
     }
 
+    public Label LabelError
+    {
+        get { return uxLabelError; }
+        set { uxLabelError = value; }
+    }
+
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         _presenter.ConsultarCargo();
     }
+
     protected void uxBotonEliminar_Click(object sender, EventArgs e)
     {
-        _presenter.EliminarCargo();
+        if (!_presenter.EliminarCargo())
+        {
+            LabelError.Text = "Error eliminando el cargo";
+            LabelError.Visible = true;
+        }
+        else
+        {
+            LabelError.Text = "Cargo eliminado satisfactoriamente";
+            LabelError.Visible = true;
+        }
     }
+
     protected void uxBotonGuardar_Click(object sender, EventArgs e)
     {
-        _presenter.ModificarCargo();
+        if (!_presenter.ModificarCargo())
+        {
+            LabelError.Text = "Error guardando los cambios";
+            LabelError.Visible = true;
+        }
+        else
+        {
+            LabelError.Text = "Cambios guardos satisfactoriamente";
+            LabelError.Visible = true;
+        }
     }
 }

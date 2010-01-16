@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AdministrarCargos.aspx.cs" Inherits="Paginas_Cargos_AdministrarCargos" Title="Administrar Cargos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+                        <form id="Form1" runat="server"> 
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -19,7 +20,6 @@
                  <div class="features_overview_right"> 
                     <h3>Administrar cargos</h3>
                     <p class="large">Introduzca el nombre del cargo que desea gestionar</p>
-                        <form id="Form1" runat="server"> 
                     <p class="large">
                          <table style="width:100%">
                                <tr>
@@ -97,12 +97,14 @@
                                 </tr>
                              </table>
                              </p> 
-                        </form>
+                        <asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label>
                     
                  </div> 
               </div>
         </div> 
 	</div> 
 </div> 
-</asp:Content>
+                        </form>
+                    
+                 </asp:Content>
 

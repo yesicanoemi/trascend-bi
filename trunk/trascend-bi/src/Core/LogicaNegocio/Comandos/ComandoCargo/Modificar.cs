@@ -17,10 +17,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
             this._cargo = cargo;
         }
 
-        public void Ejecutar()
+        public bool Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
-            bd.ModificarCargo(_cargo);
+            return bd.ModificarCargo(_cargo);
         }
     }
 }
