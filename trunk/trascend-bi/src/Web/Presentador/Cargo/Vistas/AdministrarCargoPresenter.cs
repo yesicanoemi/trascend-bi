@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Presentador.Cargo.Vistas
 {
-    public class ConsultarCargoPresenter
+    public class AdministrarCargoPresenter
     {
         #region Propiedades
         private const string campoVacio = "";
@@ -18,7 +18,7 @@ namespace Presentador.Cargo.Vistas
         #endregion
 
         #region Constructor
-        public ConsultarCargoPresenter(IAdministrarCargo laVista)
+        public AdministrarCargoPresenter(IAdministrarCargo laVista)
         {
             _vista = laVista;
             if(_vista.NombreCargo.Items.Count < 1)

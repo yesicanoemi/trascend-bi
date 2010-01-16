@@ -8,11 +8,11 @@ using Presentador.Cargo.Contrato;
 
 public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdministrarCargo
 {
-    private ConsultarCargoPresenter _presenter;
+    private AdministrarCargoPresenter _presenter;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presenter = new ConsultarCargoPresenter(this);
+        _presenter = new AdministrarCargoPresenter(this);
     }
 
     public DropDownList NombreCargo
