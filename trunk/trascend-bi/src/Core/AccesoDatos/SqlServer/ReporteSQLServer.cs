@@ -50,7 +50,12 @@ namespace Core.AccesoDatos.SqlServer
         #region Metodos
 
     
-        
+        /// <summary>
+        /// Metodo para el reporte de facturas emitidas en un rango de fechas
+        /// </summary>
+        /// <param name="entidad">fechas de entidad Factura</param>
+        /// <returns>Objeto Factura</returns>
+     
         public IList<Core.LogicaNegocio.Entidades.Factura> 
                                                 FacturasEmitidas(Factura entidad)
         {
@@ -77,6 +82,8 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     Factura _factura = new Factura();
 
+                    Propuesta _propuesta = new Propuesta();
+
                     _factura.Numero = (int)reader["NumeroFactura"];
 
                     _factura.Titulo = (string)reader["Titulo"];
@@ -87,7 +94,9 @@ namespace Core.AccesoDatos.SqlServer
 
                     _factura.Estado = (string)reader["Estado"];
 
-                    _factura.Prop.Titulo = (string)reader["Titulo"];
+                    //_propuesta.Titulo = (string)reader["Titulo"];
+
+                    //_factura.Prop.Titulo = _propuesta.Titulo;
 
                     factura.Add(_factura);
                 }

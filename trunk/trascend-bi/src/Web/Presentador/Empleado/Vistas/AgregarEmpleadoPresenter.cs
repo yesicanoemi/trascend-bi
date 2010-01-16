@@ -27,6 +27,7 @@ namespace Presentador.Empleado.Vistas
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
             try
             {
+                
                 empleado.Nombre = _vista.NombreEmpleado.Text;
                 empleado.Apellido = _vista.ApellidoEmpleado.Text;
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);

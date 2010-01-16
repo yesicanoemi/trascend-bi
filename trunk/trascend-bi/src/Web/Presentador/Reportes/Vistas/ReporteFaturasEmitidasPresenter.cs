@@ -8,6 +8,11 @@ using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Comandos.ComandoReporte;
 using System.Net;
 using System.Collections;
+using System.Resources;
+using System.Threading;
+using System.Globalization;
+using System.Configuration;
+
 
 namespace Presentador.Reportes.Vistas
 {
@@ -27,20 +32,15 @@ namespace Presentador.Reportes.Vistas
 
         #region Metodos
 
-        public DateTime ConvertirToFecha(string fecha)
-        {
-            string[] str = fecha.Split('/');
-            return new DateTime(Convert.ToInt32(str[2]), Convert.ToInt32(str[0]), Convert.ToInt32(str[1]));
-
-        }
-
         public void OnBotonBuscar()
         {
             Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
 
-            factura.Fechaingreso = ConvertirToFecha(_vista.FechaInicio.Text);
+            //factura.Fechaingreso = ConvertirToFecha(_vista.FechaInicio.Text);
 
-            factura.Fechapago = ConvertirToFecha(_vista.FechaFin.Text);
+            factura.Fechaingreso = Convert.ToDateTime(_vista.FechaInicio.Text);
+
+            factura.Fechapago = Convert.ToDateTime(_vista.FechaFin.Text);
 
             IList<Core.LogicaNegocio.Entidades.Factura> listadoF = FacturasEmitidas(factura);
 
