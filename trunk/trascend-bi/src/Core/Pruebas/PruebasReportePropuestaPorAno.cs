@@ -15,7 +15,7 @@ namespace Core.Pruebas
         {
             Object[] propuestasPorAno = new Object[2];
             IList<Object> ListaPropuestasPorAno = new List<Object>();
-            IList<Object> ListaCompletaPropuestas = new List<Object>();
+            IList<Object[]> ListaCompletaPropuestas = new List<Object[]>();
             IList<Core.LogicaNegocio.Entidades.Propuesta> propuestas = new List<Core.LogicaNegocio.Entidades.Propuesta>();
 
             int ano = 0;
