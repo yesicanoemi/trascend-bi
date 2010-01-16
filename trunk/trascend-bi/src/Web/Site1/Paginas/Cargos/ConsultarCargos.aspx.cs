@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Cargo.Vistas;
 using Presentador.Cargo.Contrato;
 
-public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page , IAgregarCargo
+public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page, IAdministrarCargo
 {
     private ConsultarCargoPresenter _presenter;
 
@@ -15,7 +15,7 @@ public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page , IAgre
         _presenter = new ConsultarCargoPresenter(this);
     }
 
-    public TextBox NombreCargo
+    public DropDownList NombreCargo
     {
         get { return uxNombre; }
         set { uxNombre = value; }

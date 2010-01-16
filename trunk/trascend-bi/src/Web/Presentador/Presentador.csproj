@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DefaultPresenter.cs" />
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="Cargo\Contrato\IAdministrarCargo.cs" />
     <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
     <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
     <Compile Include="Cargo\Vistas\ConsultarCargoPresenter.cs" />

@@ -25,9 +25,10 @@
                          <table style="width:100%">
                                <tr>
                                    <td>Nombre:</td>
-                                   <td><asp:TextBox ID="uxNombre" runat="server"></asp:TextBox>
-                                       <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" 
-                                           onclick="uxBotonBuscar_Click" />
+                                   <td>
+                                       <asp:DropDownList ID="uxNombre" runat="server"  >
+                                       </asp:DropDownList>
+                                                             <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" OnClick="uxBotonBuscar_Click" />
                                                              </td>
                                    
                                </tr>
@@ -95,8 +96,9 @@
                                     </td>
                                 </tr>
                              </table>
+                             </p> 
                         </form>
-                    </p> 
+                    
                  </div> 
               </div>
         </div> 
