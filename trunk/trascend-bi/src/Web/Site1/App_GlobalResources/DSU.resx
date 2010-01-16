@@ -252,7 +252,6 @@
   <data name="FaltaNombreGasto" xml:space="preserve">
     <value>Debe introducir el nombre del gasto</value>
   </data>
-=======
   <data name="CanceladoPropuestaFact" xml:space="preserve">
     <value>Cancelado:</value>
   </data>
@@ -289,8 +288,8 @@
   <data name="PorcentajePagarFact" xml:space="preserve">
     <value>* Porcentaje a Pagar:</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="NumPropFact" xml:space="preserve">
+    <value>Número:</value>
   </data>
   <data name="TituloFactPropuesta" xml:space="preserve">
     <value>* Titulo:</value>
@@ -298,5 +297,4 @@
   <data name="TotalCanceladoFact" xml:space="preserve">
     <value>Total Cancelado:</value>
   </data>
->>>>>>> .r360
 </root>

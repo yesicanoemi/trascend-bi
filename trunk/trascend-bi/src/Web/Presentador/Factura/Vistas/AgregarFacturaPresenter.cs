@@ -32,7 +32,8 @@ namespace Presentador.Factura.Vistas
              float MontosCancelados = 0;
              float MontoRestante = 0;
              float PorcCancelado = 0;
-             
+             int i = 0;
+
              Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
@@ -61,7 +62,9 @@ namespace Presentador.Factura.Vistas
 
                      foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
                      {
-                         _vista.MontoCancelado.Text += FacturaAux.Fechaingreso + " " + FacturaAux.Titulo + " " + CalcularPorcentaje(FacturaAux, _propuesta) + "\n";
+                         i++;
+                         _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " + 
+                             FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
                      }
 
 
@@ -117,13 +120,6 @@ namespace Presentador.Factura.Vistas
         #region Manejo de Eventos
 
       
-        /*public void CargarDatosPropuesta(Core.LogicaNegocio.Entidades.Propuesta propuesta)
-        {
-            
-            
-        }*/
-
-
         public void IngresarFactura()
         {
             Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
