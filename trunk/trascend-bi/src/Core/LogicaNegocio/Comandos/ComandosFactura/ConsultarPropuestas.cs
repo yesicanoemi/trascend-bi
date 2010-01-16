@@ -7,7 +7,7 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
-    public class ConsultarPropuestas : Comando<Factura>
+    public class ConsultarPropuestas : Comando<Propuesta>
     {
 
         #region Constructor

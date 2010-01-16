@@ -5,9 +5,9 @@ using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
 
-namespace Core.LogicaNegocio.Comandos.ComandoFactura
+namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
 {
-    public class ConsultarPropuestasxEmision : Comando<Factura>
+    public class ConsultarPropuestasxEmision : Comando<Propuesta>
     {
 
         #region Constructor

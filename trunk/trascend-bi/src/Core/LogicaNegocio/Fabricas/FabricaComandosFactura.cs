@@ -39,9 +39,6 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarPropuestas();
         }
 
-        public static ConsultarPropuestasxEmision CrearComandoConsultarPropuestasxEmision()
-        {
-            return new ConsultarPropuestasxEmision();
-        }
+    
     }
 }
