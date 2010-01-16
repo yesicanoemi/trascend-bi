@@ -34,7 +34,7 @@
                 <asp:View ID="uxConsultarPropuesta" runat="server">
                     <p><div style="background-color:InfoBackground">Consultar Factura</div>
                         <p>&nbsp;</p>
-                        <p>Datos Propuesta:</p>
+                        <p>Introduzca nombre o Código de Propuesta:</p>
                         <p>
                             <form id="Form1" runat="server">
                                 <table>
@@ -49,8 +49,7 @@
                                        
                                            
                                         <td>
-                                            <asp:Button ID="uxConsultarxNombreProp" runat="server" Text="Consultar" 
-                                                onclick="uxConsultarxNombreProp_Click" />
+                                            <asp:Button ID="Button1" runat="server" Text="Button" onclick="uxConsultarxNombreProp_Click" />
                                         </td>
                                        
                                            
@@ -74,8 +73,7 @@
                                        
                                            
                                         <td>
-                                            <asp:Button ID="uxConsultarxNumProp" runat="server" Text="Consultar" 
-                                                onclick="uxConsultarxNumProp_Click" />
+                                            <asp:Button ID="Button2" runat="server" Text="Button" onclick="uxConsultarxNumProp_Click" />
                                         </td>
                                        
                                            
@@ -87,6 +85,11 @@
                                     </tr>
                                 </table> 
                             </form>
+                            
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             
                             <p>
                             </p>
@@ -196,6 +199,10 @@
                                 </tr>
                             </table>
                             </form>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             <p>
                             </p>
                             <p>

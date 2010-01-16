@@ -19,9 +19,9 @@ namespace Core.LogicaNegocio.Fabricas
             return new Consultar();
         }
 
-        public static Modificar CrearComandoModificar()
+        public static Modificar CrearComandoModificar(Factura factura)
         {
-            return new Modificar();
+            return new Modificar(factura);
         }
 
         public static ConsultarxFacturaID CrearComandoConsultarxFacturaID(Factura factura)

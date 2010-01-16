@@ -22,6 +22,7 @@ namespace Presentador.Factura.Contrato
         TextBox MontoFaltante { get; set; }
         TextBox PorcentajeFaltante { get; set; }
         TextBox NombrePropuesta { get; set; }
+        
 
         #endregion
 
