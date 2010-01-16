@@ -24,6 +24,11 @@ namespace Core.LogicaNegocio.Fabricas
             return new Eliminar(cargo);
         }
 
+        public static Eliminar CrearComandoEliminar(int idCargo)
+        {
+            return new Eliminar(idCargo);
+        }
+
         public static Consultar CrearComandoConsultar(Cargo cargo)
         {
             return new Consultar(cargo);

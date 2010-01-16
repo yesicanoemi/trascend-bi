@@ -162,14 +162,14 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
-        public Boolean EliminarCargo(Cargo cargo)
+        public Boolean EliminarCargo(int IdCargo)
         {
             try
             {
                 SqlParameter[] arParms = new SqlParameter[1];
                 //Parametros
                 arParms[0] = new SqlParameter("@IdCargo", SqlDbType.VarChar);
-                arParms[0].Value = cargo.Id;
+                arParms[0].Value = IdCargo;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarCargo", arParms);
             }

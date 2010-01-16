@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
@@ -16,9 +17,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
             this._cargo = cargo;
         }
 
+        public Eliminar(int idCargo)
+        {
+            _cargo = new Cargo();
+            _cargo.Id = idCargo;
+        }
+
         public void Ejecutar()
         {
-
+            CargoSQLServer bd = new CargoSQLServer();
+            bd.EliminarCargo(_cargo.Id);
         }
     }
 }

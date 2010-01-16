@@ -12,13 +12,14 @@ namespace Presentador.Cargo.Vistas
     {
         private IAdministrarCargo _vista;
         private Core.LogicaNegocio.Entidades.Cargo cargoRetorno;
-
         //private CargoController _controlador;
 
         public ConsultarCargoPresenter(IAdministrarCargo laVista)
         {
             _vista = laVista;
-            LlenarDDLCargos();
+            if(_vista.NombreCargo.Items.Count < 1)
+                LlenarDDLCargos();
+
         }
 
         private void LlenarDDLCargos()
@@ -35,13 +36,13 @@ namespace Presentador.Cargo.Vistas
         public void ConsultarCargo()
         {
             Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-            cargo.Nombre = _vista.NombreCargo.SelectedItem.Text;
+            cargo.Nombre = _vista.NombreCargo.SelectedItem.ToString();
 
             Core.LogicaNegocio.Comandos.ComandoCargo.Consultar ComandoConsultar;
 
             ComandoConsultar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoConsultar( cargo );
 
-            cargoRetorno = ComandoConsultar.Ejecutar();
+            Core.LogicaNegocio.Entidades.Cargo cargoRetorno = ComandoConsultar.Ejecutar();
 
             //_vista.NombreCargo.Text = cargoRetorno.Nombre;
             _vista.DescripcionCargo.Text = cargoRetorno.Descripcion;
@@ -55,7 +56,8 @@ namespace Presentador.Cargo.Vistas
             
             Core.LogicaNegocio.Comandos.ComandoCargo.Eliminar ComandoEliminar;
 
-            ComandoEliminar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoEliminar( cargoRetorno );
+            ComandoEliminar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoEliminar( 
+                                                        int.Parse(_vista.NombreCargo.SelectedValue) );
 
             ComandoEliminar.Ejecutar();
             
