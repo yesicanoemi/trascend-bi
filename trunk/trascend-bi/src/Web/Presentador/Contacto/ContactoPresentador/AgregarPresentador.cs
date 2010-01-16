@@ -20,11 +20,13 @@ namespace Presentador.Contacto.ContactoPresentador
         }
         public void Onclick()
         {
-            string x = _vista.TextBoxTelfCelular.Text;
+     /*       string x = _vista.TextBoxTelfCelular.Text;
             _vista.TextBoxTelfCelular.Text = _vista.TextBoxTelfOficina.Text;
             _vista.TextBoxTelfOficina.Text = _vista.TextBoxApellidoContacto.Text;
             _vista.TextBoxApellidoContacto.Text = _vista.TextBoxNombreContacto.Text;
-            _vista.TextBoxNombreContacto.Text = x;
+            _vista.TextBoxNombreContacto.Text = x; */
+
+            IngresarContacto();
         }
         public void IngresarContacto()
         {
