@@ -86,6 +86,8 @@ namespace Core.AccesoDatos.SqlServer
                 _contacto.Apellido = (string)reader["apellido"];
                 _contacto.AreaDeNegocio = (string)reader["areanegocio"];
                 _contacto.Cargo = (string)reader["cargo"];
+            //    _contacto.TelefonoDeTrabajo = (Int32)reader["telefonotrabajo"];
+            //    _contacto.TelefonoDeCelular = (Int32)reader["telefonocelular"];
 
                 contacto.Add(_contacto);
             }
@@ -93,8 +95,7 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
-
-        public Contacto EliminarContacto(Contacto contacto)
+        public Contacto Eliminar(Contacto contacto)
         {
             Contacto _contacto = new Contacto();
             try
@@ -132,7 +133,37 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
+         public int Modificar(Contacto contacto)
+        {
+            int resultado = 0;
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[6];
+                // Parametros 
+                
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0].Value = contacto.Nombre;
+                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+                arParms[1].Value = contacto.Apellido;
+                arParms[2] = new SqlParameter("@AreaNegocio", SqlDbType.VarChar);
+                arParms[2].Value = contacto.AreaDeNegocio;
+                arParms[3] = new SqlParameter("@Cargo", SqlDbType.VarChar);
+                arParms[3].Value = contacto.Cargo;
+                arParms[4] = new SqlParameter("@TelefonoTrabajo", SqlDbType.Int);
+                arParms[4].Value = contacto.TelefonoDeTrabajo;
+                arParms[5] = new SqlParameter("@TelefonoCelular", SqlDbType.Int);
+                arParms[5].Value = contacto.TelefonoDeCelular;
+                resultado = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarContacto", arParms);
+                return resultado;
+            }
+            catch (SqlException )
+            {
+            }
+            return resultado;
+        }
         #endregion
+
+        
     }
 }
 

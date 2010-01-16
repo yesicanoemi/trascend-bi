@@ -15,16 +15,16 @@ namespace Core.LogicaNegocio.Fabricas
         }
         public static  Consultar CrearComandoConsultar(Contacto contacto)
         {
-            return new Consultar(contacto);
+            return new Consultar();
         }
-     /*   public static Eliminar CrearComandoEliminar(Contacto contacto)
+        public static Eliminar CrearComandoEliminar(Contacto contacto)
         {
             return new Eliminar(contacto);
-        }*/
-      /*  public static Modificar CrearComandoIngresar(Contacto contacto)
+        }
+        public static Modificar CrearComandoModificar(Contacto contacto)
         {
             return new Modificar(contacto);
-        } */
+        } 
 
 
     }
