@@ -139,6 +139,7 @@
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosFactura.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosPropuesta.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosUsuario.cs" />
+    <Compile Include="LogicaNegocio\Telefonos\Ingresar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
