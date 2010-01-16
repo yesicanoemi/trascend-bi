@@ -29,5 +29,9 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarxNomPro(propuesta);
         }
 
+        public static ConsultarPropuestas CrearComandoConsultarPropuestas()
+        {
+            return new ConsultarPropuestas();
+        }
     }
 }
