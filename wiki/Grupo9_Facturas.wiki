@@ -10,17 +10,17 @@ Casos de uso para la Gestión de Facturas y 2 reportes correspondientes a propue
 
 == Detalles ==
 
-    * Generar Factura - Interfaz Gráfico y la implementación MVP/MVC (CU-901) - Luis Figueras
+    * Generar Factura - Interfaz Gráfico y la implementación MVP (CU-901) - Luis Figueras
     * Generar Factura - Implementación de los comandos (CU-902) - Alexis Romero
     * Generar Factura - Capa de BD (CU-903) - Luis Figueras
-    * Consultar Factura - Interfaz Gráfico y la implementación MVP/MVC (CU-904) - Luis Figueras
+    * Consultar Factura - Interfaz Gráfico y la implementación MVP (CU-904) - Luis Figueras
     * Consultar Factura - Implementación de los comandos (CU-905) - Alexis Romero
     * Consultar Factura - Capa de BD (CU-906) - Luis Figueras
     
     * Propuestas emitidas por rango de fechas - Implementacion de comandos (CU-907) - Alexis Romero
-    * Propuestas emitidas por rango de fechas - Implementacion de MVP (CU-908) - Alexis Romero y Jesus Viloria
+    * Propuestas emitidas por rango de fechas - Interfaz Gráfico e Implementacion de MVP (CU-908) - Alexis Romero y Jesus Viloria
     * Propuestas emitidas por rango de fechas - Capa de BD (CU-909) - Jesus Viloria
-    * Total de propuestas emitidas anuales - Implementacion de MVP (CU-910) - Alexis Romero y Jesus Viloria
+    * Total de propuestas emitidas anuales - Interfaz Gráfico e Implementacion de MVP (CU-910) - Alexis Romero y Jesus Viloria
     * Total de propuestas emitidas anuales - Implementacion de Comandos (CU-911) - Alexis Romero
     * Total de propuestas emitidas anuales - Capa de BD (CU-912) - Jesus Viloria
 
