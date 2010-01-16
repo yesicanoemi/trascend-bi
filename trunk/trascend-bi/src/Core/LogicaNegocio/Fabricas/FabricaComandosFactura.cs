@@ -14,6 +14,11 @@ namespace Core.LogicaNegocio.Fabricas
             return new Ingresar(factura);
         }
 
+        public static Consultar CrearComandoConsultar()
+        {
+            return new Consultar();
+        }
+
         public static ConsultarxFacturaID CrearComandoConsultarxFacturaID(Factura factura)
         {
             return new ConsultarxFacturaID(factura);
@@ -32,6 +37,11 @@ namespace Core.LogicaNegocio.Fabricas
         public static ConsultarPropuestas CrearComandoConsultarPropuestas()
         {
             return new ConsultarPropuestas();
+        }
+
+        public static ConsultarPropuestasxEmision CrearComandoConsultarPropuestasxEmision()
+        {
+            return new ConsultarPropuestasxEmision();
         }
     }
 }
