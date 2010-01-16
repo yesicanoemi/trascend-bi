@@ -8,9 +8,9 @@ using Presentador.Aplicacion;
 
 public partial class _Default : PaginaBase, IDefaultPresenter
 {
-    private DefaultPresenter _presenter;
-
     #region Propiedades
+
+    private DefaultPresenter _presenter;
 
     public TextBox Login
     {
@@ -26,6 +26,8 @@ public partial class _Default : PaginaBase, IDefaultPresenter
 
     #endregion
 
+    #region Métodos
+
     protected void Page_Init(object sender, EventArgs e)
     {
         _presenter = new DefaultPresenter(this);
@@ -38,17 +40,11 @@ public partial class _Default : PaginaBase, IDefaultPresenter
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         if(Page.IsValid == true)
-            {
-               // if ((uxLogin.Text == "usuario") && (uxContrasena.Text == "clave"))
-               // {
-                    _presenter.OnBotonAceptar();
-                //}
-                /*else
-                {
-                    Response.Redirect();
-                }*/
-            
-            }
+        {
+ 
+            _presenter.OnBotonAceptar();
+
+        }
     }
 
     public void IngresarSistema()
@@ -56,5 +52,7 @@ public partial class _Default : PaginaBase, IDefaultPresenter
         Response.Redirect(paginaPrueba);
         
     }
+
+    #endregion
 
 }

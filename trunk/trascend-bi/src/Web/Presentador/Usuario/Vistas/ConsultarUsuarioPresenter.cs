@@ -14,7 +14,11 @@ namespace Presentador.Usuario.Vistas
 {
     public class ConsultarUsuarioPresenter
     {
+        #region Propiedades
+
         private IConsultarUsuario _vista;
+
+        #endregion
 
         #region Constructor
 
@@ -54,7 +58,42 @@ namespace Presentador.Usuario.Vistas
 
             _vista.UsuarioU.Text = usuario.Status;
         }
-  
+
+        /// <summary>
+        /// Método que carga los checkbox de los permisos que tiene el usuario a consultar
+        /// </summary>
+        /// <param name="permiso">Lista de los permisos consultados</param>
+         
+        private void CargarCheckBox(IList<Core.LogicaNegocio.Entidades.Permiso> permiso)
+         {   //for para agregar
+             for (int i = 0; i < permiso.Count; i++)
+             {
+                 for (int j = 0; j < 8; j++)
+                 {
+                     //Revisa el CheckBoxList de Agregar
+                     if (_vista.CBLAgregar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                     {
+                         _vista.CBLAgregar.Items[j].Selected = true;
+                     }
+                     //Revisa el CheckBoxList de Consultar
+                     if (_vista.CBLConsultar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                     {
+                         _vista.CBLConsultar.Items[j].Selected = true;
+                     }
+                     //Revisa el CheckBoxList de Modificar
+                     if (_vista.CBLModificar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                     {
+                         _vista.CBLModificar.Items[j].Selected = true;
+                     }
+                     //Revisa el CheckBoxList de Eliminar
+                     if (_vista.CBLEliminar.Items[j].Value == permiso[i].IdPermiso.ToString())
+                     {
+                         _vista.CBLEliminar.Items[j].Selected = true;
+                     }
+
+                 }
+             }
+         }
 
         /// <summary>
         /// Acción del Botón Buscar (Por nombre de usuario)
@@ -84,6 +123,14 @@ namespace Presentador.Usuario.Vistas
             }
         }
 
+        /// <summary>
+        /// Método que redirecciona al usuario a otra página (de consulta)
+        /// </summary>
+
+        public void OnBotonAceptar()
+        {
+            _vista.CambiarPagina();                    
+        }
 
         /// <summary>
         /// Método de Consulta una vez seleccionado el usuario 
@@ -98,11 +145,15 @@ namespace Presentador.Usuario.Vistas
             
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
+            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(user);
+
             user = null;
 
             user = listado[0];
 
             CargarDatos(user);
+
+            CargarCheckBox(listadoPermiso);
             
             CambiarVista(1);
 
@@ -131,6 +182,27 @@ namespace Presentador.Usuario.Vistas
             usuario1 = comando.Ejecutar();
 
             return usuario1;
+        }
+
+        /// <summary>
+        /// Método para el comando ConsultarPermisos
+        /// </summary>
+        /// <param name="entidad">Entidad Permiso a consultar (depende del usuario selecc)</param>
+        /// <returns>Lista de permisos que posea el usuario</returns>
+        
+        public IList<Core.LogicaNegocio.Entidades.Permiso> ConsultarPermisos
+                                            (Core.LogicaNegocio.Entidades.Usuario entidad)
+        {
+
+            IList<Core.LogicaNegocio.Entidades.Permiso> permiso1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarPermisos comando;
+
+            comando = FabricaComandosUsuario.CrearComandoConsultarPermisos(entidad);
+
+            permiso1 = comando.Ejecutar();
+
+            return permiso1;
         }
 
         #endregion

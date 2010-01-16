@@ -15,6 +15,8 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
 
     private ConsultarUsuarioPresenter _presentador;
 
+    protected const string paginaConsulta = "~/Paginas/Usuarios/ConsultarUsuarios.aspx";
+
     #endregion
 
     #region Informacion Basica
@@ -65,21 +67,45 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
     {
         get { return uxStatusU; }
         set { uxStatusU = value; }
-    }  
+    }
+
+    public CheckBoxList CBLAgregar
+    {
+        get { return uxCBLAgregar; }
+        set { uxCBLAgregar = value; }
+    }
+
+    public CheckBoxList CBLConsultar
+    {
+        get { return uxCBLConsultar; }
+        set { uxCBLConsultar = value; }
+    }
+
+    public CheckBoxList CBLModificar
+    {
+        get { return uxCBLModificar; }
+        set { uxCBLModificar = value; }
+    }
+
+    public CheckBoxList CBLEliminar
+    {
+        get { return uxCBLEliminar; }
+        set { uxCBLEliminar = value; }
+    }
 
     #endregion
 
-    #region Metodos
+    #region Métodos
 
     protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
     {
-        //_presentador.CargarAgenciasCobro();
-        //uxConsultaEmpleado.PageIndex = e.NewPageIndex;
+
     }
 
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        _presentador.uxObjectConsultaUsuarioSelecting(uxConsultaUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaUsuarioSelecting
+                            (uxConsultaUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -97,6 +123,16 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
         _presentador.OnBotonBuscar();
     }
     
-    #endregion
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonAceptar();
+    }
 
+    public void CambiarPagina()
+    {
+        Response.Redirect(paginaConsulta);
+
+    }
+
+    #endregion
 }

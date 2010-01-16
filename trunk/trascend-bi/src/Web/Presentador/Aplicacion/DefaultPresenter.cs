@@ -9,13 +9,19 @@ namespace Presentador.Aplicacion
 {
     public class DefaultPresenter
     {
+        #region Constructor
+
         private IDefaultPresenter _vista;
 
         public DefaultPresenter(IDefaultPresenter vista)
         {
             _vista = vista;
-        
+
         }
+
+        #endregion
+
+        #region Métodos
 
         /// <summary>
         /// Metodo para ingresar al sistema al darle click a aceptar
@@ -51,7 +57,8 @@ namespace Presentador.Aplicacion
         /// <param name="entidad">el usuario que ingreso sus datos</param>
         /// <returns>el usuario si se encuentra en la bd</returns>
 
-        public Core.LogicaNegocio.Entidades.Usuario ConsultarCredenciales(Core.LogicaNegocio.Entidades.Usuario entidad)
+        public Core.LogicaNegocio.Entidades.Usuario 
+                        ConsultarCredenciales(Core.LogicaNegocio.Entidades.Usuario entidad)
         {
 
             Core.LogicaNegocio.Entidades.Usuario usuario1 = null;
@@ -64,6 +71,8 @@ namespace Presentador.Aplicacion
 
             return usuario1;
         }
+
+        #endregion
 
     }
 }

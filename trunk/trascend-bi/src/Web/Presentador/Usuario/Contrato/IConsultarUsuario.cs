@@ -10,7 +10,7 @@ namespace Presentador.Usuario.Contrato
     public interface IConsultarUsuario
     {
 
-        #region Informacion Basica
+        #region Información Básica
 
         TextBox NombreUsuario { get; set; }
 
@@ -27,6 +27,16 @@ namespace Presentador.Usuario.Contrato
         Label ApellidoEmp { get; set; }
 
         Label UsuarioU { get; set; }
+
+        CheckBoxList CBLAgregar { get; set; }
+
+        CheckBoxList CBLConsultar { get; set; }
+
+        CheckBoxList CBLModificar { get; set; }
+
+        CheckBoxList CBLEliminar { get; set; }
+
+        void CambiarPagina();
 
         #endregion
 
