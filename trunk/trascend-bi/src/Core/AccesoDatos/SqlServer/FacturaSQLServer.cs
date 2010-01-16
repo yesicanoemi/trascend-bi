@@ -206,6 +206,40 @@ namespace Core.AccesoDatos.SqlServer
             return factura;
         }
 
+        public IList<Factura> ConsultarFacturas(DateTime desde, DateTime hasta)
+        {
+            try
+            {
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas");
+                Factura factura;
+                Propuesta propuesta;
+                IList<Factura> listaFacturas = null;
+
+                while (reader.Read())
+                {
+                    factura = new Factura();
+
+                    factura.Numero = int.Parse(reader["NumeroFactura"].ToString());
+                    factura.Titulo = reader["Titulo"].ToString();
+                    factura.Descripcion = reader["Descripcion"].ToString();
+                    factura.Estado = reader["Estado"].ToString();
+                    factura.Fechapago = DateTime.Parse(reader["Fecha"].ToString());
+                    factura.Fechaingreso = DateTime.Parse(reader["FechaIngreso"].ToString());
+                    propuesta = new Propuesta();
+                    propuesta.Titulo = reader["NombrePropuesta"].ToString();
+                    factura.Prop = propuesta;
+
+                    listaFacturas.Add(factura);
+                }
+                return listaFacturas;
+            }
+            catch (SqlException e)
+            {
+                return null;
+            }
+        
+        }
+
         public Factura IngresarFactura(Factura factura)
         {
 
@@ -257,7 +291,6 @@ namespace Core.AccesoDatos.SqlServer
                 return factura;
         }
 
-       
 
         #endregion
 
