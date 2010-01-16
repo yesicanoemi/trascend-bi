@@ -11,9 +11,9 @@ Casos de uso para la Gestión de Cargos.
 == Detalles ==
 
     * Ingresar Cargo (CU-01)
-    * Consultar Cargo (CU-U02)
-    * Modificar Cargo (CU-U03)
-    * Eliminar Cargo (CU-U04)
+    * Modificar Cargo (CU-U02)
+    * Eliminar Cargo (CU-U03)
+    * Consultar Cargo (CU-U04)
 
 
 == Casos de uso ==
