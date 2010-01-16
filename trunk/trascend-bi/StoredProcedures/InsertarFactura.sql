@@ -2,7 +2,7 @@ CREATE PROCEDURE [dbo].[IngresarFactura]
 (
 @titulo varchar(50),
 @descripcion varchar(50),
-@porcentaje real,
+@porcentaje float,
 @fecha smalldatetime,
 @fechaingreso smalldatetime,
 @estado varchar(50),

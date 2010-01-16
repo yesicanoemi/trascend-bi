@@ -6,7 +6,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[ConsultarPropuesta] 
+CREATE PROCEDURE [dbo].[ConsultarPropuestaOrdenadoPorEmision] 
 	-- Add the parameters for the stored procedure here
 	
 AS
@@ -21,5 +21,5 @@ FROM         Receptor AS R INNER JOIN
                       Version AS V ON R.IdReceptor = V.IdReceptor INNER JOIN
                       Cargo AS C ON R.IdCargo = C.IdCargo CROSS JOIN
                       Propuesta AS P
-WHERE     (V.Status = 'Aprobada') AND (P.Estado = 'Activo') AND (V.IdPropuesta = P.IdPropuesta)
+WHERE     (V.Status = 'Aprobada') AND (P.Estado = 'Activo') AND (V.IdPropuesta = P.IdPropuesta) ORDER BY V.FechaInicio
 END
