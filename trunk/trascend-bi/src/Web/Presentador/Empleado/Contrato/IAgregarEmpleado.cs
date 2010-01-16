@@ -18,6 +18,7 @@ namespace Presentador.Empleado.Contrato
         TextBox DireccionEmpleado { get; set; }
         TextBox FechaIngresoEmpleado { get; set; }
         TextBox FechaEgresoEmpleado { get; set; }
+        DropDownList ComboCargos { get; set; }
         #endregion
         #region Dialogo
         bool DialogoVisible { get; set; }
