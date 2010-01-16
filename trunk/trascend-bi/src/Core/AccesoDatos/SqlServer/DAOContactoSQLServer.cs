@@ -49,7 +49,7 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[6];
+                SqlParameter[] arParms = new SqlParameter[9];
                 // Parametros 
                 arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
                 arParms[0].Value = contacto.Nombre;
@@ -63,6 +63,14 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[4].Value = contacto.TelefonoDeTrabajo;
                 arParms[5] = new SqlParameter("@TelefonoCelular", SqlDbType.Int);
                 arParms[5].Value = contacto.TelefonoDeCelular;
+                arParms[6] = new SqlParameter("@CodigoCel", SqlDbType.Int);
+                arParms[6].Value = contacto.TelefonoDeCelular.Codigocel;
+                arParms[7] = new SqlParameter("@CodigoArea", SqlDbType.Int);
+                arParms[7].Value = contacto.TelefonoDeTrabajo.Codigoarea;
+                arParms[8] = new SqlParameter("@Tipo", SqlDbType.Int);
+                arParms[8].Value = contacto.TelefonoDeTrabajo.Tipo;
+
+
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarContacto", arParms);
             }
@@ -138,7 +146,7 @@ namespace Core.AccesoDatos.SqlServer
             int resultado = 0;
             try
             {
-                SqlParameter[] arParms = new SqlParameter[6];
+                SqlParameter[] arParms = new SqlParameter[9];
                 // Parametros 
                 
                 arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
@@ -153,6 +161,12 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[4].Value = contacto.TelefonoDeTrabajo;
                 arParms[5] = new SqlParameter("@TelefonoCelular", SqlDbType.Int);
                 arParms[5].Value = contacto.TelefonoDeCelular;
+                arParms[6] = new SqlParameter("@CodigoCel", SqlDbType.Int);
+                arParms[6].Value = contacto.TelefonoDeCelular.Codigocel;
+                arParms[7] = new SqlParameter("@CodigoArea", SqlDbType.Int);
+                arParms[7].Value = contacto.TelefonoDeTrabajo.Codigoarea;
+                arParms[8] = new SqlParameter("@Tipo", SqlDbType.Int);
+                arParms[8].Value = contacto.TelefonoDeTrabajo.Tipo;
                 resultado = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarContacto", arParms);
                 return resultado;
             }
