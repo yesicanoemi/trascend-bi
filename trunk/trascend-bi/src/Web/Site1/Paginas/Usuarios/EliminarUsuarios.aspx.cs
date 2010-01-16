@@ -5,18 +5,21 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
+using System.Web.SessionState;
 
-public partial class Paginas_Usuarios_EliminarUsuarios : System.Web.UI.Page, IEliminarUsuario
+
+public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUsuario
 {
     private EliminarUsuarioPresenter _presenter;
 
     #region Propiedades
 
-    public TextBox UsuarioEliminar
+    public DropDownList UsuarioEliminar
     {
         get { return uxUsuarioEliminar; }
         set { uxUsuarioEliminar = value; }
     }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -27,9 +30,21 @@ public partial class Paginas_Usuarios_EliminarUsuarios : System.Web.UI.Page, IEl
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        //_presenter.OnBotonEliminar();
+        if (!IsPostBack)
+            _presenter.CargarUsuarios();
+            _presenter.OnBotonEliminar();
+
+
     }
+
+    public void Volver()
+    {
+        Response.Redirect(paginaInicial);
+    }
+
 }
+
+
 
 
 

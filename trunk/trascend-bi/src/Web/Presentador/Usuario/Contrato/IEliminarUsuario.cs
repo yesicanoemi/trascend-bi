@@ -8,6 +8,8 @@ namespace Presentador.Usuario.Contrato
 {
     public interface IEliminarUsuario
     {
-        TextBox UsuarioEliminar { get; set; }
+        DropDownList UsuarioEliminar { get; set; }
+        void Volver();
     }
+   
 }

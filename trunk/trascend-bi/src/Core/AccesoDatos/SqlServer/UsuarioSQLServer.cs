@@ -139,6 +139,96 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
+
+        /// <summary>
+        /// Metodo para consultar todos los usuarios activos del sistema
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Usuarios del sistema</returns>
+
+
+        public IList<Core.LogicaNegocio.Entidades.Usuario> ListaUsuarios()
+        {
+            
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario = new List<Core.LogicaNegocio.Entidades.Usuario>();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[0];
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ListaUsuarios", arParms);
+
+                while (reader.Read())
+                {
+                    Usuario _usuario = new Usuario();
+
+                    _usuario.Login = (string)reader["LoginUsuario"];
+
+                     usuario.Add(_usuario);
+                }
+
+                return usuario;
+
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return usuario;
+
+        }
+
+
+
+        /// <summary>
+        /// Metodo para verificar que  el "Login" exista en el sistema
+        /// </summary>
+        /// <param name="usuario">Criterio de busqueda (Usuario)</param>
+        /// <returns>Usuario que coincide con el criterio</returns>
+
+        public Usuario VerificarUsuario(Usuario usuario)
+        {
+            Usuario _usuario = new Usuario();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParms[0].Value = usuario.Login;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarUsuario", arParms);
+
+                if (reader.Read())
+                {
+                    _usuario.Login = (string)reader["LoginUsuario"];
+
+                    _usuario.Status = (string)reader["Status"];
+                }
+
+                return _usuario;
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            return _usuario;
+
+        }
+
+
+
+        /// <summary>
+        /// Metodo que actualiza el status de un usuario quedando inactivo
+        /// </summary>
+        /// <param name="usuario">Usuario que inicia sesion</param>
+        /// <returns>Usuario inactivo</returns>
+
         public Usuario EliminarUsuario(Usuario usuario)
         {
             Usuario _usuario = new Usuario();

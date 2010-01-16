@@ -22,7 +22,7 @@ namespace Presentador.Usuario.Vistas
 
         }
 
-        /*
+        
 
         public void OnBotonEliminar()
         {
@@ -30,12 +30,13 @@ namespace Presentador.Usuario.Vistas
 
             user.Login = _vista.UsuarioEliminar.Text;
 
-            user = ConsultarUsuario(user);
+            user = VerificarUsuario(user);
 
             if ((user != null) && (user.Status == "activo"))
             {
                 user.Status = "inactivo";
                 user = EliminarUsuario(user);
+                _vista.Volver();
                
             }
 
@@ -46,25 +47,61 @@ namespace Presentador.Usuario.Vistas
 
 
          }
-        */
 
-        /*
-        public Core.LogicaNegocio.Entidades.Usuario ConsultarUsuario
-                (Core.LogicaNegocio.Entidades.Usuario entidad)
+
+
+        public void CargarUsuarios()
+        {
+            Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
+            IList<Core.LogicaNegocio.Entidades.Usuario> listaUsuarios;
+
+            listaUsuarios = ListarUsuarios(user);
+            
+            _vista.UsuarioEliminar.Items.Clear();
+            _vista.UsuarioEliminar.Items.Add(" -- ");
+            _vista.UsuarioEliminar.Items[0].Value = "0";
+            _vista.UsuarioEliminar.DataSource = listaUsuarios;
+            _vista.UsuarioEliminar.DataValueField = "Login";
+            _vista.UsuarioEliminar.DataTextField = "login";
+            _vista.UsuarioEliminar.DataBind();
+
+        }
+
+
+
+        public IList<Core.LogicaNegocio.Entidades.Usuario> 
+            ListarUsuarios(Core.LogicaNegocio.Entidades.Usuario entidad)
         {
 
-            Core.LogicaNegocio.Entidades.Usuario usuario1 = null;
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario1 = null;
 
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuario comando;
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ListaUsuarios comando;
 
-            comando = FabricaComandosUsuario.CrearComandoConsultarUsuario(entidad);
+            comando = FabricaComandosUsuario.CrearComandoListaUsuarios(entidad);
 
             usuario1 = comando.Ejecutar();
 
             return usuario1;
         }
 
-        */
+
+     
+        public Core.LogicaNegocio.Entidades.Usuario VerificarUsuario
+                (Core.LogicaNegocio.Entidades.Usuario entidad)
+        {
+
+            Core.LogicaNegocio.Entidades.Usuario usuario1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.VerificarUsuario comando;
+
+            comando = FabricaComandosUsuario.CrearComandoVerificarUsuario(entidad);
+
+            usuario1 = comando.Ejecutar();
+
+            return usuario1;
+        }
+
+
         
         public Core.LogicaNegocio.Entidades.Usuario EliminarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)

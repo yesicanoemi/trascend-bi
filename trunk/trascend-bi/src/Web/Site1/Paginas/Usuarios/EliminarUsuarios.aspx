@@ -23,11 +23,8 @@
  
         		<div class="features_overview"> 
                  <div class="features_overview_right"> 
-                    <h3>Eliminar Usuario</h3> 
-                    <p class="large">
-                        
-                        
-                        Introduzca el usuario o seleccionelo de la lista</p>
+                    <h3>Eliminar Usuario</h3>
+                                                 <p>Seleccione el usuario a eliminar de la lista</p> 
                      <p class="large">
                         
                         
@@ -38,8 +35,12 @@
                      <p class="large">
                         
                         
-                         <asp:TextBox ID="uxUsuarioEliminar" runat="server"></asp:TextBox>
-                        
+                         
+ 
+                         <asp:DropDownList ID="uxUsuarioEliminar" runat="server" DataTextField="LoginUsuario" DataValueField="LoginUsuario" 
+                         AutoPostBack="false" AppendDataBoundItems="True" TabIndex="3">
+                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxUsuarioEliminar"/>
                         
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         

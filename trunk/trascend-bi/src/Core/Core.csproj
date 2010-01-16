@@ -115,6 +115,8 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ListaUsuarios.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\VerificarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Entidad.cs" />
     <Compile Include="LogicaNegocio\Entidades\Permiso.cs" />
