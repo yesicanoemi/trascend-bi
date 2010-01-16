@@ -32,9 +32,9 @@ namespace Presentador.Reportes.Vistas
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> Consultar(DateTime FechaIni, DateTime FechaFin)
         {
-            Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGastoFecha busqueda;
+            Core.LogicaNegocio.Comandos.ComandoReporte.ConsultarGastoFecha busqueda;
 
-            busqueda = FabricaComandoGasto.CrearComandoConsultarFecha(FechaIni, FechaFin);
+            busqueda = FabricaComandosReporte.CrearComandoConsultarFecha(FechaIni, FechaFin);
 
             Gastos = busqueda.Ejecutar();
 

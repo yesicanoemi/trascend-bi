@@ -21,6 +21,11 @@ namespace Core.LogicaNegocio.Fabricas
             return new FacturasEmitidas(entidad);
         }
 
+        public static ConsultarGastoFecha CrearComandoConsultarFecha(DateTime fechaini, DateTime fechafin)
+        {
+            return new ConsultarGastoFecha(fechaini, fechafin);
+        }
+
         public static ConsultaRol CrearComandoConsultarRol(IList<string> entidad)
         {
             return new ConsultaRol(entidad);

@@ -5,9 +5,9 @@ using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
 
-namespace Core.LogicaNegocio.Comandos.ComandoGasto
+namespace Core.LogicaNegocio.Comandos.ComandoReporte
 {
-   public class ConsultarGastoFecha : Comando<Gasto>
+     public class ConsultarGastoFecha : Comando<Gasto>
     {
        private DateTime _fechainicio;
 
@@ -25,11 +25,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
        public IList<Gasto> Ejecutar()
        {
 
-           GastoSQLServer acceso = new GastoSQLServer();
+           ReporteSQLServer acceso = new ReporteSQLServer();
           _listagasto = acceso.ConsultarGastoFecha(_fechainicio,_fechafin);
 
            return _listagasto;
        }
     }
-}
 
+}

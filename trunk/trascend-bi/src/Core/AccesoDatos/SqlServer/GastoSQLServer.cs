@@ -14,7 +14,7 @@ namespace Core.AccesoDatos.SqlServer
 {
     class GastoSQLServer
     {
-        List<Gasto> ListaGasto = new List<Gasto>();
+       
 
         #region Propiedades
 
@@ -184,11 +184,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             return _gasto;
         }
-
-        public IList<Gasto> ConsultarGastoFecha(DateTime fechai, DateTime fechaf)
-        {
-            return ListaGasto;
-        }
+ 
 
         #endregion
     }

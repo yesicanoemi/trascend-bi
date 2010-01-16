@@ -14,6 +14,8 @@ namespace Core.AccesoDatos.SqlServer
 {
     class ReporteSQLServer
     {
+        List<Gasto> ListaGasto = new List<Gasto>();
+
         #region Propiedades
 
         List<string> ListaRoles = new List<string>();
@@ -114,6 +116,55 @@ namespace Core.AccesoDatos.SqlServer
 
             return factura;
 
+        }
+
+        /// <summary>
+        /// Metodo que se encarga de Consultar todos los gastos comprendidos entre dos fechas
+        /// </summary>
+        /// <param name="fechai">Fecha de Inicio</param>
+        /// <param name="fechaf">Fecha Final</param>
+        /// <returns></returns>
+        
+        
+        public IList<Gasto> ConsultarGastoFecha(DateTime fechai, DateTime fechaf)
+        {
+            //Se declaran los parametros
+
+            SqlParameter[] Parametros = new SqlParameter[2];
+
+            Parametros[0] = new SqlParameter("@FechaInicio", SqlDbType.DateTime);
+
+            Parametros[0].Value = fechai;
+
+            Parametros[1] = new SqlParameter("@FechaFin", SqlDbType.DateTime);
+
+            Parametros[1].Value = fechaf;
+
+
+            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(),
+            "ConsultarGastoxFecha", Parametros);
+
+            int i = 0;
+
+            while (conexion.Read())
+            {
+
+                Gasto _gasto = new Gasto();
+
+                _gasto.Tipo = (string)conexion["Tipo"];
+
+                _gasto.Descripcion = (string)conexion["Descripcion"];
+
+                _gasto.FechaGasto = (DateTime)conexion["Fecha"];
+
+                _gasto.Monto = (float)conexion["Monto"];
+
+                ListaGasto.Insert(i, _gasto);
+                i++;
+
+            }
+
+            return ListaGasto;
         }
 
         /// <summary>
