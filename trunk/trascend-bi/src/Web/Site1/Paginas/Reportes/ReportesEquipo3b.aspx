@@ -63,9 +63,38 @@
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
-                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" /></td>
+                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                        onclick="uxBotonAceptar_Click" /></td>
              </tr>
-              
+             
+             <tr>
+             <td>
+
+             <asp:GridView runat="server" ID="uxReporteFactura3b" AutoGenerateColumns="false"
+                           DataKeyNames="Numero" AllowPaging="True" PageSize="10" ShowFooter="true"
+                           DataSourceID="uxObjectReporte3b">
+             <Columns>
+                                            
+                <asp:BoundField HeaderText="Número Factura" DataField="Numero" />
+                <asp:BoundField HeaderText="Título" DataField="Titulo" />
+                <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
+                <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" />
+                <asp:BoundField HeaderText="Estado" DataField="Estado" />
+                <asp:BoundField HeaderText="Título Propuesta" DataField="Titulo" />
+                                            
+             </Columns>
+                                            
+             <EmptyDataTemplate>
+                <center>
+                    <span>No hay data cargada </span>
+                </center>
+             </EmptyDataTemplate>
+                                        
+            </asp:GridView>
+            
+             
+                </td>
+            </tr>  
         </table>
             
             
@@ -104,4 +133,5 @@
 			</div> 
 		</div> 
     </form>
+    <pp:objectcontainerdatasource runat="server" ID="uxObjectReporte3b" DataObjectTypeName="Core.LogicaNegocio.Entidades.Factura" /> 
 </asp:Content>

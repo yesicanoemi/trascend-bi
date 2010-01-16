@@ -80,6 +80,7 @@
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\GastoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\ReporteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
     <Compile Include="Interfaces\IDAOFactura.cs" />
     <Compile Include="Interfaces\IDAOPropuesta.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefono.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosReporte.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoGasto.cs" />

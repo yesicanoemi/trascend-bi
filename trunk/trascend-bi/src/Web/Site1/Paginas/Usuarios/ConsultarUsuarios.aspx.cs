@@ -69,6 +69,8 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
 
     #endregion
 
+    #region Metodos
+
     protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
     {
         //_presentador.CargarAgenciasCobro();
@@ -94,4 +96,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
     {
         _presentador.OnBotonBuscar();
     }
+    
+    #endregion
+
 }
