@@ -39,14 +39,34 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.TelefonoDeCelular.Numero = int.Parse(_vista.TextBoxTelfCelular.Text);
                 contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxTelfOficina.Text);
                 contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
- // fax               contacto.TelefonoFax.Codigoarea = int.Parse(_vista.te);
-// fax
- //               IngresarContacto(contacto);
+                if (_vista.CheckBoxFax.Checked)
+                {
+                    contacto.TelefonoDeTrabajo.Tipo = "Fax";
+                }
+                else
+                {
+                    contacto.TelefonoDeTrabajo.Tipo = "Oficina";
+                }
+
+                Ingresar(contacto);
             }
             catch (WebException e)
             {
                 //Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
+        }
+
+        public void Ingresar(Core.LogicaNegocio.Entidades.Contacto _contacto)
+        {
+            Core.LogicaNegocio.Comandos.ComandoContacto.Ingresar ingresar;
+
+            //fábrica que instancia el comando Ingresar.
+            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
+
+            //try
+            //{    
+            //ejecuta el comando.
+            ingresar.Ejecutar();
         }
      }
     

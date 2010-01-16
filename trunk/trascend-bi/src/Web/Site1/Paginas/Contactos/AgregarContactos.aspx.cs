@@ -60,6 +60,12 @@ public partial class Paginas_Contactos_AgregarContactos : System.Web.UI.Page, IA
         set { uxCodCel = value; }
     }
 
+    public CheckBox CheckBoxFax
+    {
+        get { return uxFax; }
+        set { uxFax = value; }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         _presentador = new AgregarPresentador(this);

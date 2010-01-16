@@ -17,5 +17,6 @@ namespace Presentador.Contacto.ContactoInterface
             TextBox TextBoxTelfCelular { get; set; }
             TextBox TextBoxCodOficina { get; set; }
             TextBox TextBoxCodCelular { get; set; }
+            CheckBox CheckBoxFax { get; set; }
     }
 }
