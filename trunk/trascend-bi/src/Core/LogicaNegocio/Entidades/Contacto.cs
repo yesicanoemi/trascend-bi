@@ -12,6 +12,7 @@ namespace Core.LogicaNegocio.Entidades
         private string areaDeNegocio;
         private TelefonoCelular _telefonoCelular;
         private TelefonoTrabajo _telefonoTrabajo;
+        private TelefonoTrabajo _telefonoFax;
      
 
         public virtual int Cedula
@@ -64,6 +65,12 @@ namespace Core.LogicaNegocio.Entidades
         {
             get { return _telefonoCelular; }
             set { _telefonoCelular = value; }
+        }
+
+        public virtual TelefonoTrabajo TelefonoFax
+        {
+            get { return _telefonoFax; }
+            set { _telefonoFax = value; }
         }
 
     }

@@ -25,5 +25,6 @@ namespace Core.LogicaNegocio.Telefonos
 
         #endregion
 
+
     }
 }

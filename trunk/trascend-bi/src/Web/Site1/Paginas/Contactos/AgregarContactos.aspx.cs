@@ -23,13 +23,13 @@ public partial class Paginas_Contactos_AgregarContactos : System.Web.UI.Page, IA
         set { uxApellidoContacto = value; }
     }
 
-    public DropDownList DropDownCargoContacto
+    public TextBox TextBoxCargoContacto
     {
         get { return uxCargoContacto; }
         set { uxCargoContacto = value; }
     }
 
-    public DropDownList DropDownAreaNegocio
+    public TextBox TextBoxAreaNegocio
     {
         get { return uxAreaNegocio; }
         set { uxAreaNegocio = value; }
@@ -47,10 +47,17 @@ public partial class Paginas_Contactos_AgregarContactos : System.Web.UI.Page, IA
         set { uxTelfCelular = value; }
     
     }
-    public DropDownList DropDownCliente
+
+    public TextBox TextBoxCodOficina
     {
-        get { return uxCliente; }
-        set { uxCliente = value; }
+        get { return uxCodOficina; }
+        set { uxCodCel = value; }
+    }
+
+    public TextBox TextBoxCodCelular
+    {
+        get { return uxCodCel; }
+        set { uxCodCel = value; }
     }
 
     protected void Page_Load(object sender, EventArgs e)

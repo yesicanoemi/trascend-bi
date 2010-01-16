@@ -2,8 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using Core.LogicaNegocio.Telefonos;
 
-    public class Telefono
+    public abstract class Telefono
     {
 
 
@@ -27,32 +28,7 @@
             }
         }
 
-        
-
-        public virtual string Rifcliente
-        {
-            get
-            {
-                return rifCliente;
-            }
-
-            set
-            {
-                rifCliente = value;
-            }
-        }
-        public virtual string Rifcontacto
-        {
-            get
-            {
-                return rifContacto;
-            }
-
-            set
-            {
-                rifContacto = value;
-            }
-        }
+    //    public abstract Ingresar llenar(string cod,string nom);
 
     }
 }

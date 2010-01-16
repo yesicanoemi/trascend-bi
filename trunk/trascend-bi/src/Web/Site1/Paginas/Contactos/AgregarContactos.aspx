@@ -51,8 +51,8 @@
                                <tr>
                                    <td>Cargo: </td>
                                    <td>
-                                       <asp:DropDownList ID="uxCargoContacto" runat="server">
-                                       </asp:DropDownList>
+                                       <asp:TextBox ID="uxCargoContacto" runat="server">
+                                       </asp:TextBox>
                                    </td>
                                </tr>
                                <tr>
@@ -62,8 +62,8 @@
                                <tr>
                                    <td>Area de negocio: </td>
                                    <td>
-                                       <asp:DropDownList ID="uxAreaNegocio" runat="server">
-                                       </asp:DropDownList>
+                                       <asp:TextBox ID="uxAreaNegocio" runat="server">
+                                       </asp:TextBox>
                                    </td>
                                </tr>
                                <tr>
@@ -72,7 +72,10 @@
                                </tr>
                                <tr>
                                    <td>Telefono de Oficina: </td>
-                                   <td><asp:TextBox ID="uxTelfOficina" runat="server"></asp:TextBox></td>
+                                   <td>
+                                        <asp:TextBox ID="uxCodOficina" runat="server" Width="40"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="150"></asp:TextBox>
+                                   </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -80,17 +83,9 @@
                                </tr>
                                <tr>
                                    <td>Telefono de Celular: </td>
-                                   <td><asp:TextBox ID="uxTelfCelular" runat="server"></asp:TextBox></td>
-                               </tr>
-                                 <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Cliente al que pertenece: </td>
                                    <td>
-                                       <asp:DropDownList ID="uxCliente" runat="server">
-                                       </asp:DropDownList>
+                                        <asp:TextBox ID="uxCodCel" runat="server" Width="40"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="150"></asp:TextBox>
                                    </td>
                                </tr>
                                <tr>

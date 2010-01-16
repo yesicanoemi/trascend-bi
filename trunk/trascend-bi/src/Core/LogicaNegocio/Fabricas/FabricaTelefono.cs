@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.LogicaNegocio.Comandos.ComandoContacto;
+using Core.LogicaNegocio.Telefonos;
 
 namespace Core.LogicaNegocio.Fabricas
 {
@@ -11,15 +11,20 @@ namespace Core.LogicaNegocio.Fabricas
     {
                 
 
-        public static TelefonoCelular CrearTelefonoCelular(TelefonoCelular telefonocel)
+        public static Ingresar CrearTelefonoCelular(TelefonoCelular telefonocel)
         {
             
-            return telefonocel= new TelefonoCelular();
+            return new Ingresar(telefonocel);
         }
-        public static TelefonoTrabajo CrearTelefonoTrabajo(TelefonoTrabajo telefonotrabajo)
+        public static Ingresar CrearTelefonoTrabajo(TelefonoTrabajo telefonotrabajo)
         {
-            return telefonotrabajo = new TelefonoTrabajo();
+            return new Ingresar(telefonotrabajo) ;
         }
-   
+
+
+        internal static TelefonoCelular CrearTelefonoCelular()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

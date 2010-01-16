@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Presentador.Contacto.ContactoInterface;
 using System.Net;
+using Core.LogicaNegocio.Fabricas;
+using Core.LogicaNegocio.Entidades;
 
 namespace Presentador.Contacto.ContactoPresentador
 {
@@ -31,11 +33,14 @@ namespace Presentador.Contacto.ContactoPresentador
             {
                 contacto.Nombre = _vista.TextBoxNombreContacto.Text;
                 contacto.Apellido = _vista.TextBoxApellidoContacto.Text;
-                contacto.AreaDeNegocio = _vista.DropDownAreaNegocio.Text;
-                contacto.Cargo = _vista.DropDownCargoContacto.Text;
- //               contacto.TelefonoDeCelular = _vista.TextBoxTelfCelular;
- //               contacto.TelefonoDeTrabajo = _vista.TextBoxTelfOficina;
-
+                contacto.AreaDeNegocio = _vista.TextBoxAreaNegocio.Text;
+                contacto.Cargo = _vista.TextBoxCargoContacto.Text;
+                contacto.TelefonoDeCelular.Codigocel = int.Parse(_vista.TextBoxCodCelular.Text);
+                contacto.TelefonoDeCelular.Numero = int.Parse(_vista.TextBoxTelfCelular.Text);
+                contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxTelfOficina.Text);
+                contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
+ // fax               contacto.TelefonoFax.Codigoarea = int.Parse(_vista.te);
+// fax
  //               IngresarContacto(contacto);
             }
             catch (WebException e)

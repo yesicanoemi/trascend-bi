@@ -11,10 +11,11 @@ namespace Presentador.Contacto.ContactoInterface
         
             TextBox TextBoxNombreContacto { get; set; }
             TextBox TextBoxApellidoContacto { get; set; }
-            DropDownList DropDownCargoContacto { get; set; }
-            DropDownList DropDownAreaNegocio { get; set; }
+            TextBox TextBoxCargoContacto { get; set; }
+            TextBox TextBoxAreaNegocio { get; set; }
             TextBox TextBoxTelfOficina { get; set; }
             TextBox TextBoxTelfCelular { get; set; }
-            DropDownList DropDownCliente { get; set; }
+            TextBox TextBoxCodOficina { get; set; }
+            TextBox TextBoxCodCelular { get; set; }
     }
 }
