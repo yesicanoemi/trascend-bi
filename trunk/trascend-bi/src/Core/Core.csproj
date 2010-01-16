@@ -108,6 +108,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasEmitidas.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxFacturaID.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxIDPro.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxNomPro.cs" />

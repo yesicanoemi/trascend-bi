@@ -112,6 +112,8 @@
     <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
+    <Compile Include="Reportes\Contrato\IReporteFacturasEmitidas.cs" />
+    <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
     <Compile Include="Usuario\Vistas\ConsultarUsuarioPresenter.cs" />
