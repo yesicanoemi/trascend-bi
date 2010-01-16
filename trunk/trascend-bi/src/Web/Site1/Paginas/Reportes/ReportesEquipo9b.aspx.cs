@@ -19,6 +19,18 @@ public partial class Paginas_Reportes_ReportesEquipo9b : System.Web.UI.Page, IPr
         set { this.GridView1 = value; }
     }
 
+    public Button Boton
+    {
+        get { return this.Button1; }
+        set { this.Button1 = value; }
+    }
+
+    public DropDownList List
+    {
+        get { return this.uxAnios; }
+        set { this.uxAnios = value; }
+    }
+
     PropuestasPorAnoPresenter _presenter;
 
     protected void Page_Load(object sender, EventArgs e)
