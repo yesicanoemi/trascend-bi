@@ -37,6 +37,8 @@ public partial class Paginas_Reportes_ReportesEquipo9b : System.Web.UI.Page, IPr
     {
         _presenter = new PropuestasPorAnoPresenter(this);
     }
+   
+    
     protected void Button1_Click(object sender, EventArgs e)
     {
         _presenter.CargarGrid();
