@@ -38,7 +38,10 @@ namespace Core.Pruebas
                     ListaCompletaPropuestas.Add(propuestasPorAno);
                 }
             }
-            Assert.AreEqual(ListaCompletaPropuestas[0][0], 2009);
+            Assert.AreEqual((int)ListaCompletaPropuestas[0][0], 2009);
+            ListaPropuestasPorAno = (IList<Object>)ListaCompletaPropuestas[0][1];
+            Propuesta asserta = (Propuesta)ListaPropuestasPorAno[0];
+            Assert.AreEqual(asserta.FechaInicio.Year, 2009);
         }
     }
 }
