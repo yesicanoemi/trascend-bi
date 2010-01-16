@@ -49,7 +49,7 @@ namespace Core.Pruebas
             Propuesta propuesta = new Propuesta();
             propuesta.Titulo = "Automatizacion del Modulo de Ventas";
             IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasNomPro(propuesta);
-            Assert.AreEqual(facturas.Count, 2);
+            Assert.AreEqual(facturas.Count, 3);
         }
 
         [Test]
@@ -58,7 +58,23 @@ namespace Core.Pruebas
             Propuesta propuesta = new Propuesta();
             propuesta.Id = 1;
             IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasIDPro(propuesta);
-            Assert.AreEqual(facturas.Count, 2);
+            Assert.AreEqual(facturas.Count, 3);
+        }
+
+        [Test]
+        public void TestIngresarFactura()
+        {
+            Factura factura = new Factura();
+            factura.Numero = 0;
+            factura.Titulo = "Pago de la enesima cuota LULZ!!!";
+            factura.Descripcion = "Imaginate tu!";
+            factura.Procentajepagado = 1.3f;
+            factura.Fechapago = DateTime.Now;
+            factura.Fechaingreso = DateTime.Now;
+            factura.Estado = "Pagado";
+            factura.Prop = new Propuesta();
+            factura.Prop.Id = 1;
+            Assert.AreNotEqual(factura,new Factura());
         }
     }
 }

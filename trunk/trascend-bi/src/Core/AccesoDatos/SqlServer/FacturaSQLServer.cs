@@ -35,11 +35,6 @@ namespace Core.AccesoDatos.SqlServer
 
         #region metodos
 
-        public Factura IngresarFactura(Factura factura)
-        {
-            return new Factura(); //por ahora
-        }
-
         public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
         {
             IList<Propuesta> propuestas = ConsultarPropuesta();
@@ -71,7 +66,7 @@ namespace Core.AccesoDatos.SqlServer
 
                         factura.Descripcion = (string)reader["Descripcion"];
 
-                        factura.Procentajepagado = (float)reader["Porcentaje"];
+                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                         factura.Fechapago = (DateTime)reader["Fecha"];
 
@@ -128,7 +123,7 @@ namespace Core.AccesoDatos.SqlServer
 
                         factura.Descripcion = (string)reader["Descripcion"];
 
-                        factura.Procentajepagado = (float)reader["Porcentaje"];
+                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                         factura.Fechapago = (DateTime)reader["Fecha"];
 
@@ -167,7 +162,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = factura.Numero;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), CommandType.StoredProcedure,
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                         "ConsultarFacturaID", arParms);
 
                 if (reader.Read())
@@ -178,7 +173,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     factura.Descripcion = (string)reader["Descripcion"];
 
-                    factura.Procentajepagado = (float)reader["Porcentaje"];
+                    factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                     factura.Fechapago = (DateTime)reader["Fecha"];
 
@@ -210,6 +205,59 @@ namespace Core.AccesoDatos.SqlServer
             }
             return factura;
         }
+
+        public Factura IngresarFactura(Factura factura)
+        {
+
+            IList<Propuesta> propuestas = ConsultarPropuesta();
+
+            Boolean valido = false;
+            try
+            {
+                foreach (Propuesta propuestaAux in propuestas)
+                {
+                    if (propuestaAux.Id == factura.Prop.Id)
+                    {
+                        SqlParameter[] arparms = new SqlParameter[7];
+
+                        arparms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+                        arparms[0].Value = factura.Titulo;
+
+                        arparms[1] = new SqlParameter("@descripcion", SqlDbType.VarChar);
+                        arparms[1].Value = factura.Descripcion;
+
+                        arparms[2] = new SqlParameter("@porcentaje", SqlDbType.Float);
+                        arparms[2].Value = factura.Procentajepagado;
+
+                        arparms[3] = new SqlParameter("@fecha", SqlDbType.SmallDateTime);
+                        arparms[3].Value = factura.Fechapago.ToShortDateString();
+
+                        arparms[4] = new SqlParameter("@fechaIngreso", SqlDbType.SmallDateTime);
+                        arparms[4].Value = factura.Fechaingreso.ToShortDateString();
+
+                        arparms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
+                        arparms[5].Value = factura.Estado;
+
+                        arparms[6] = new SqlParameter("@idpropuesta", SqlDbType.Int);
+                        arparms[6].Value = factura.Prop.Id;
+
+                        int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarFactura", arparms);
+
+                        valido = true;
+                    }
+                }
+            }catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            if (valido == false)
+                return new Factura();
+            else 
+                return factura;
+        }
+
+       
 
         #endregion
 

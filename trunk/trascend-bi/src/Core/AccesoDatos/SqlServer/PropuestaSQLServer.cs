@@ -103,7 +103,7 @@ namespace Core.AccesoDatos.SqlServer
                 _Propuesta.FechaFirma  = (DateTime)conexion["FechaFirma"];
                 _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
                 _Propuesta.FechaFin    = (DateTime)conexion["FechaFin"];
-                _Propuesta.MontoTotal  = (float)conexion["Monto"];
+                _Propuesta.MontoTotal  = float.Parse(conexion["Monto"].ToString());
                 _Propuesta.Id          = (int)conexion["IdPropuesta"];
 
                 ListaPropuesta.Insert( i, _Propuesta );
