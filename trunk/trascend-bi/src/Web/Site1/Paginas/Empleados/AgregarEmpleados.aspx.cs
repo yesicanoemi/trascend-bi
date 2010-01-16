@@ -18,7 +18,7 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IA
     }
     public void Pintar(string codigo, string mensaje, string actor, string detalles)
     {
-        throw new NotImplementedException();
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
     }
 
     public void PintarInformacion(string mensaje, string estilo)
@@ -81,6 +81,12 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IA
         get { return uxFechaEgreso; }
         set { uxFechaEgreso = value; }
     }
+
+    public DropDownList ComboCargos
+    {
+        get { return uxCargoEmpleado; }
+        set { uxCargoEmpleado = value; }
+    }
     #endregion
 
     #endregion
@@ -91,6 +97,11 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IA
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            _presentador.ConsultarCargos();
+        }
+
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {

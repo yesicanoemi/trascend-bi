@@ -7,6 +7,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
+using System.Web.UI.WebControls;
 namespace Presentador.Empleado.Vistas
 {
     public class AgregarEmpleadoPresenter
@@ -45,7 +46,31 @@ namespace Presentador.Empleado.Vistas
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
-
+        public void ConsultarCargos()
+        {
+            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = new List<Core.LogicaNegocio.Entidades.Entidad>();
+            try
+            {
+                DropDownList e = new DropDownList();
+                Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+                cargos = conex.ConsultarCargos();
+                e.DataSource = cargos;
+                e.DataValueField = "Id";
+                e.DataTextField = "Nombre";
+                e.DataBind();
+                _vista.ComboCargos = e;
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar("0001", e.ToString(), "Yop", "lol");
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0001", e.ToString(), "Yop", "lol");
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+        }
         public void LimpiarRegistros()
         {
             _vista.NombreEmpleado.Text = campoVacio;

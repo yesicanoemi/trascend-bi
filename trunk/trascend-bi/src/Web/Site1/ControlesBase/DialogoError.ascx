@@ -4,7 +4,7 @@
 <script type="text/javascript">
     function OnAceptar() {
 
-    window.location = "../../Inicio.aspx"
+    window.location = "../Home/Home.aspx"
     
     }
 </script>
