@@ -17,7 +17,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
             this._cargo = cargo;
         }
 
-        public Boolean Ejecutar()
+        public bool Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
             return bd.IngresarCargo( _cargo );

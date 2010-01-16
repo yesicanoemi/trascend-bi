@@ -45,11 +45,25 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         set { uxVigenciaSueldo = value; }
     }
 
+    public Label LabelError
+    {
+        get { return uxLabelError; }
+        set { uxLabelError = value; }
+    }
+
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        Console.WriteLine("lololololololololololololololol");
-        _presentador.IngresarCargo();
+        if (!_presentador.IngresarCargo())
+        {
+            LabelError.Text = "Error ingresando el cargo";
+            LabelError.Visible = true;
+        }
+        else
+        {
+            LabelError.Text = "Cargo ingresado =)";
+            LabelError.Visible = true;
+        }
     }
      
 }

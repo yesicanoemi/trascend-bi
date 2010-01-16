@@ -18,10 +18,10 @@ namespace Presentador.Cargo.Vistas
             _vista = laVista;
         }
 
-        public void IngresarCargo()
+        public bool IngresarCargo()
         {
             Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-            
+
             cargo.Nombre = _vista.NombreCargo.Text;
             cargo.Descripcion = _vista.DescripcionCargo.Text;
             cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
@@ -30,11 +30,9 @@ namespace Presentador.Cargo.Vistas
 
             Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
 
-            ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar( cargo );
+            ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
 
-            ComandoIngresar.Ejecutar();
-
-
+            return ComandoIngresar.Ejecutar();
         }
     }
 }

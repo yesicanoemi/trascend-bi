@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarCargos.aspx.cs" Inherits="Paginas_Cargos_AgregarCargos" Title="Agregar Cargos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+              <form id="Form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -27,7 +28,6 @@
           <div class="features_overview_right"> 
             <h3>Agregar Cargo</h3>
             <p class="large">Introduzca la informacón a continuación</p>
-              <form id="Form1" runat="server">
             <p class="large">
                
                            <table style="width:100%">
@@ -101,7 +101,8 @@
                 
             
                 </p> 
-              </form>
+           
+              <asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label>
           </div> 
         </div> 
  
@@ -113,4 +114,5 @@
 				
 			</div> 
 		</div> 
-</asp:Content>
+              </form>
+          </asp:Content>
