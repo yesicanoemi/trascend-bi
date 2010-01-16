@@ -15,14 +15,14 @@ public partial class Paginas_Reportes_ReportesEquipo9b : System.Web.UI.Page, IPr
 {
     public GridView Grid
     {
-        get { return this.GridView1; }
-        set { this.GridView1 = value; }
+        get { return this.uxGrid; }
+        set { this.uxGrid = value; }
     }
 
     public Button Boton
     {
-        get { return this.Button1; }
-        set { this.Button1 = value; }
+        get { return this.uxBoton; }
+        set { this.uxBoton = value; }
     }
 
     public DropDownList List

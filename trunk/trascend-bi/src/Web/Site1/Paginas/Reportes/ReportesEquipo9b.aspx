@@ -55,7 +55,7 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" 
+                        <asp:Button ID="uxBoton" runat="server" Text="Buscar" 
                             onclick="Button1_Click" />
                     </td>
                 </tr>
@@ -76,7 +76,7 @@
         <br />
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server">
+        <asp:GridView ID="uxGrid" runat="server">
         </asp:GridView>
         <br />
         <br />
