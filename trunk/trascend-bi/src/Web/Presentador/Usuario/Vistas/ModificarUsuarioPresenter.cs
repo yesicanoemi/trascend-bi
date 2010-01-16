@@ -15,6 +15,7 @@ namespace Presentador.Usuario.Vistas
     public class ModificarUsuarioPresenter
     {
         private IModificarUsuario _vista;
+        private const int _TamañoLista = 8;
 
         #region Constructor
         public ModificarUsuarioPresenter(IModificarUsuario vista)
@@ -43,10 +44,10 @@ namespace Presentador.Usuario.Vistas
         }
 
         private void CargarCheckBox(IList<Core.LogicaNegocio.Entidades.Permiso> permiso)
-        {   //for para agregar
+        {   
             for (int i = 0; i < permiso.Count; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < _TamañoLista; j++)
                 {
                     //Revisa el CheckBoxList de Agregar
                     if (_vista.CBLAgregar.Items[j].Value == permiso[i].IdPermiso.ToString())
@@ -77,11 +78,13 @@ namespace Presentador.Usuario.Vistas
         {
             IList<Core.LogicaNegocio.Entidades.Permiso> _permiso =
                 new List<Core.LogicaNegocio.Entidades.Permiso>();
-            Core.LogicaNegocio.Entidades.Permiso permiso = new Permiso();
-            for (int j = 0; j < 6; j++)
+            //Core.LogicaNegocio.Entidades.Permiso permiso = new Permiso();
+
+            for (int j = 0; j < _TamañoLista; j++)
             {
                 if (CBL.Items[j].Selected == true)
                 {
+                    Core.LogicaNegocio.Entidades.Permiso permiso = new Permiso();
                     permiso.IdPermiso = Int32.Parse(CBL.Items[j].Value);
 
                     _permiso.Add(permiso);

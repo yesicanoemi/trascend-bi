@@ -129,9 +129,9 @@
                                            <td>&nbsp;</td>
                                            
                                         </tr>
-                                        <tr>
+                                     </table>   
                                     <td><b>Permisos:</b></td>
-                                    <td>
+                                    
                                         <table style="width: 100%; border: 1px solid #799CBE">
                                             <tr>
                                                 <td>
