@@ -297,6 +297,52 @@ namespace Core.AccesoDatos.SqlServer
                 return factura;
         }
 
+        public IList<Factura> ConsultarFacturas()
+        {
+            IList<Factura> facturas = new List<Factura>();
+
+            try
+            {
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarFacturas");
+                
+
+                int i = 0;
+
+                while (reader.Read())
+                {
+                    Factura factura = new Factura();
+
+                    factura.Numero = (int)reader["NumeroFactura"];
+
+                    factura.Titulo = (string)reader["Titulo"];
+
+                    factura.Descripcion = (string)reader["Descripcion"];
+
+                    factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+
+                    factura.Fechapago = (DateTime)reader["Fecha"];
+
+                    factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                    factura.Estado = (string)reader["Estado"];
+
+                    //factura.Prop = propuesta;
+
+                    facturas.Insert(i, factura);
+                    i++;
+
+                }
+
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+                return new List<Factura>();
+            }
+
+            return facturas;
+        }
 
         #endregion
 

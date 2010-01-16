@@ -113,6 +113,37 @@ namespace Core.AccesoDatos.SqlServer
 
             return ListaPropuesta;
         }
+
+        /// <summary>
+        /// Metodo para consultar las propuestas ordenadas por fecha de inicio
+        /// </summary>
+        /// <param name="propuesta"></param>
+        /// <returns></returns>
+        public IList<Propuesta> ConsultarPropuestaOrdenadoPorEmision()
+        {
+
+            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuesta");
+            int i = 0;
+
+            while (conexion.Read())
+            {
+
+                Propuesta _Propuesta = new Propuesta();
+                _Propuesta.Titulo = (string)conexion["Titulo"];
+                _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                _Propuesta.Id = (int)conexion["IdPropuesta"];
+
+                ListaPropuesta.Insert(i, _Propuesta);
+                i++;
+
+            }
+
+            return ListaPropuesta;
+        }
 #endregion
     }
 }
