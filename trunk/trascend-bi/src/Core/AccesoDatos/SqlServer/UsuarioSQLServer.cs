@@ -139,6 +139,28 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
+        public void ModificarUsuario(Usuario usuario)
+        {//aun le falta pasarle la lista de los permisos..
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParms[0].Value = usuario.Login;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ModificarUsuario", arParms);
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+        }
+
+
 
         /// <summary>
         /// Metodo para consultar todos los usuarios activos del sistema

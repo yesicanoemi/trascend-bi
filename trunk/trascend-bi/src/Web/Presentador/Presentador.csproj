@@ -116,8 +116,10 @@
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
+    <Compile Include="Usuario\Contrato\IModificarUsuario.cs" />
     <Compile Include="Usuario\Vistas\ConsultarUsuarioPresenter.cs" />
     <Compile Include="Usuario\Vistas\EliminarUsuarioPresenter.cs" />
+    <Compile Include="Usuario\Vistas\ModificarUsuarioPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.csproj">
