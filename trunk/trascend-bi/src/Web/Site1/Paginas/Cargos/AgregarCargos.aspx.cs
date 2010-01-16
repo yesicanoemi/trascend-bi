@@ -54,6 +54,7 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         if (!_presentador.IngresarCargo())
         {
             LabelError.Text = "Error ingresando el cargo";

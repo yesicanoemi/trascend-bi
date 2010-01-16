@@ -54,11 +54,13 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         _presenter.ConsultarCargo();
     }
 
     protected void uxBotonEliminar_Click(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         if (!_presenter.EliminarCargo())
         {
             LabelError.Text = "Error eliminando el cargo";
@@ -73,6 +75,7 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
 
     protected void uxBotonGuardar_Click(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         if (!_presenter.ModificarCargo())
         {
             LabelError.Text = "Error guardando los cambios";

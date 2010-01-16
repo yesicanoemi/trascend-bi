@@ -97,8 +97,7 @@
                                 </tr>
                              </table>
                              </p> 
-                        <asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label>
-                    
+                    <center><asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label></center>
                  </div> 
               </div>
         </div> 

@@ -10,10 +10,14 @@ namespace Presentador.Cargo.Vistas
 {
     public class ConsultarCargoPresenter
     {
+        #region Propiedades
+        private const string campoVacio = "";
         private IAdministrarCargo _vista;
         private Core.LogicaNegocio.Entidades.Cargo cargoRetorno;
         //private CargoController _controlador;
+        #endregion
 
+        #region Constructor
         public ConsultarCargoPresenter(IAdministrarCargo laVista)
         {
             _vista = laVista;
@@ -21,7 +25,9 @@ namespace Presentador.Cargo.Vistas
                 LlenarDDLCargos();
 
         }
+        #endregion
 
+        #region Metodos
         private void LlenarDDLCargos()
         {
             Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
@@ -35,6 +41,8 @@ namespace Presentador.Cargo.Vistas
 
         public void ConsultarCargo()
         {
+            LimpiarFormulario();
+
             Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
             cargo.Nombre = _vista.NombreCargo.SelectedItem.ToString();
 
@@ -59,9 +67,13 @@ namespace Presentador.Cargo.Vistas
             ComandoEliminar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoEliminar( 
                                                         int.Parse(_vista.NombreCargo.SelectedValue) );
 
-            return ComandoEliminar.Ejecutar();
-            
-
+            if (ComandoEliminar.Ejecutar())
+            {
+                LimpiarFormulario();
+                return true;
+            }
+            else
+                return false;  
         }
 
         public bool ModificarCargo()
@@ -80,9 +92,25 @@ namespace Presentador.Cargo.Vistas
 
             ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar( cargo );
 
-            return ComandoModificar.Ejecutar();
+            if(ComandoModificar.Ejecutar())
+            {
+                LimpiarFormulario();
+                return true;
+            }
+            else
+                return false;
 
         }
-    
+
+        private void LimpiarFormulario()
+        {
+            _vista.DescripcionCargo.Text = campoVacio;
+            _vista.SueldoMinimo.Text = campoVacio;
+            _vista.SueldoMaximo.Text = campoVacio;
+            _vista.VigenciaSueldo.Text = campoVacio;
+            _vista.LabelError.Text = campoVacio;
+            _vista.LabelError.Visible = false;
+        }
+        #endregion
     }
 }

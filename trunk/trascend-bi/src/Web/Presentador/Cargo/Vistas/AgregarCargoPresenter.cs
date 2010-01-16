@@ -10,6 +10,8 @@ namespace Presentador.Cargo.Vistas
 {
     public class AgregarCargoPresenter
     {
+        private const string campoVacio = "";
+
         private IAgregarCargo _vista;
         //private CargoController _controlador;
 
@@ -32,7 +34,24 @@ namespace Presentador.Cargo.Vistas
 
             ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
 
-            return ComandoIngresar.Ejecutar();
+            if (ComandoIngresar.Ejecutar())
+            {
+                LimpiarFormulario();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private void LimpiarFormulario()
+        {
+            _vista.NombreCargo.Text = campoVacio;
+            _vista.DescripcionCargo.Text = campoVacio;
+            _vista.SueldoMinimo.Text = campoVacio;
+            _vista.SueldoMaximo.Text = campoVacio;
+            _vista.VigenciaSueldo.Text = campoVacio;
+            _vista.LabelError.Text = campoVacio;
+            _vista.LabelError.Visible = false;
         }
     }
 }
