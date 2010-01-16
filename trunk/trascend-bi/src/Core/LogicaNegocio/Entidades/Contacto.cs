@@ -12,7 +12,13 @@ namespace Core.LogicaNegocio.Entidades
         private string areaDeNegocio;
         private TelefonoCelular _telefonoCelular;
         private TelefonoTrabajo _telefonoTrabajo;
-     
+
+
+        public Contacto()
+        {
+            _telefonoCelular = new TelefonoCelular();
+            _telefonoTrabajo = new TelefonoTrabajo();
+        }
 
         public virtual int Cedula
         {
