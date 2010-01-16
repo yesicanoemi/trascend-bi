@@ -53,6 +53,7 @@
                            <asp:Image ID="uxImagenFechaFirma" runat="server" ImageUrl="~/Images/calendario.png" />
                                             
                        </td>
+                      
                    </tr>
                    
                    <tr>
@@ -176,7 +177,7 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" /></td>
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick = "uxBotonAceptar_Click" /></td>
                                    
                                 </tr>
                    </table>

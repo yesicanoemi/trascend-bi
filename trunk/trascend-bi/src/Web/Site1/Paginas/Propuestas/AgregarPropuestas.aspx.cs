@@ -8,9 +8,12 @@ using Presentador.Propuesta.Vistas;
 
 public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, IAgregarPropuesta
 {
-    public TextBox Titulo 
+    private AgregarPropuestaPresenter _presentador;
+
+    #region Propiedades
+    public TextBox Titulo
     {
-        get { return uxTitulo;}
+        get { return uxTitulo; }
         set { uxTitulo = value; }
     }
 
@@ -38,7 +41,6 @@ public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, 
         set { uxApellidoReceptor = value; }
     }
 
-    /* Averiguar como se trabaja con DropDownList  */
     public DropDownList CargoReceptor
     {
         get { return uxCargoReceptor; }
@@ -57,11 +59,11 @@ public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, 
         set { uxFechaFin = value; }
     }
 
-   /* public TextBox EquipoTrabajo
-    {
-        get { }
-        set { }
-    }*/
+    /* public TextBox EquipoTrabajo
+     {
+         get { }
+         set { }
+     }*/
 
     public TextBox TotalHoras
     {
@@ -74,9 +76,23 @@ public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, 
         get { return uxMontoTotal; }
         set { uxMontoTotal = value; }
     }
-    
+    #endregion
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        _presentador = new AgregarPropuestaPresenter(this);
+    }
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
+    }
+
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        uxBotonAceptar.Visible = true;
+        _presentador.AgregarPropuesta();
     }
 }

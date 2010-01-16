@@ -25,5 +25,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarGasto(gasto);
         }
+
+        public static ConsultarGastoFecha CrearComandoConsultarFecha(DateTime fechaini, DateTime fechafin)
+        {
+            return new ConsultarGastoFecha(fechaini, fechafin);
+        }
     }
 }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
 {
     public class Ingresar : Comando<Propuesta>
     {
-        private Propuesta _propuesta;
+        private Propuesta propuesta;
 
         #region Constructor
 
@@ -25,7 +26,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         /// <param name="entidad">Endtidad de tipoPropuesta</param>
         public Ingresar(Propuesta entidad)
         {
-            _propuesta = entidad;
+            propuesta = entidad;
         }
         #endregion
 
@@ -34,9 +35,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         /// <summary>
         /// Metodo que implementa la ejecución del comando Ingresar
         /// </summary>
-        public void Ejecutar()
+        public Propuesta Ejecutar()
         {
-
+            Propuesta _propuesta;
+            PropuestaSQLServer conex = new PropuestaSQLServer();
+            _propuesta = conex.IngresarPropuesta(propuesta);
+            return _propuesta;
         }
         #endregion
     }

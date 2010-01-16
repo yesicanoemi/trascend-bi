@@ -64,7 +64,7 @@
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
-                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" /></td>
+                <td><asp:Button ID="uxAceptar" runat="server" Text="Aceptar" OnClick="uxAceptar_Click" /></td>
              </tr>
               
         </table>

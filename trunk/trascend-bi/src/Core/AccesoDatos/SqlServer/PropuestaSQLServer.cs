@@ -54,33 +54,76 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns></returns>
         public Propuesta IngresarPropuesta(Propuesta propuesta)
         {
-            Propuesta _propuesta = new Propuesta();
+            //Propuesta _propuesta = new Propuesta();
 
-            SqlParameter[] arparms = new SqlParameter[9];
+            SqlParameter[] arparmsP = new SqlParameter[2];
+
+            SqlParameter[] ParamV = new SqlParameter[6];
+
+            DateTime fechaingreso = DateTime.Now;
 
             //Se definen los parametros
-            arparms[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
-            arparms[0].Value = propuesta.Titulo;
-            arparms[1] = new SqlParameter("@Version", SqlDbType.Int);
-            arparms[1].Value = _propuesta.Version;
-            arparms[2] = new SqlParameter("@FechaFirma", SqlDbType.SmallDateTime);
-            arparms[2].Value = _propuesta.FechaFirma;
-            arparms[3] = new SqlParameter("@NombreReceptor", SqlDbType.VarChar);
-            arparms[3].Value = _propuesta.NombreReceptor;
-            arparms[4] = new SqlParameter("@ApellidoReceptor", SqlDbType.VarChar);
-            arparms[4].Value = _propuesta.ApellidoReceptor;
-            arparms[5] = new SqlParameter("@CargoReceptor", SqlDbType.VarChar);
-            arparms[5].Value = _propuesta.CargoReceptor;
-            arparms[6] = new SqlParameter("@FechaInicio", SqlDbType.SmallDateTime);
-            arparms[6].Value = _propuesta.FechaInicio;
-            arparms[7] = new SqlParameter("@FechaFin", SqlDbType.SmallDateTime);
-            arparms[7].Value = _propuesta.FechaFin;
+            arparmsP[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
+
+            arparmsP[0].Value = propuesta.Titulo;
+
+            arparmsP[1] = new SqlParameter("@MontoTotal", SqlDbType.Float);
+
+            arparmsP[1].Value = propuesta.MontoTotal;
+
+            int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarPropuesta", arparmsP);
+
+            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarIdPropuesta");
+
+            if (conexion.Read())
+            {
+                int IdPropuesta;
+
+                IdPropuesta = (int)conexion["maximo"];
+
+                ParamV[0] = new SqlParameter("@Version", SqlDbType.Int);
+
+                ParamV[0].Value = propuesta.Version;
+
+                ParamV[1] = new SqlParameter("@FechaFirma", SqlDbType.DateTime);
+
+                ParamV[1].Value = propuesta.FechaFirma;
+
+                ParamV[2] = new SqlParameter("@FechaIngreso", SqlDbType.DateTime);
+
+                ParamV[2].Value = fechaingreso;
+
+                ParamV[3] = new SqlParameter("@FechaInicio", SqlDbType.DateTime);
+
+                ParamV[3].Value = propuesta.FechaInicio;
+
+                ParamV[4] = new SqlParameter("@FechaFin", SqlDbType.DateTime);
+
+                ParamV[4].Value = propuesta.FechaFin;
+
+                ParamV[5] = new SqlParameter("@IdPropuesta", SqlDbType.DateTime);
+
+                ParamV[5].Value = IdPropuesta;
+
+                int result2 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarVersion", ParamV);
+            }
+
+            /* arparms[3] = new SqlParameter("@NombreReceptor", SqlDbType.VarChar);
+               arparms[3].Value = _propuesta.NombreReceptor;
+               arparms[4] = new SqlParameter("@ApellidoReceptor", SqlDbType.VarChar);
+               arparms[4].Value = _propuesta.ApellidoReceptor;
+               arparms[5] = new SqlParameter("@CargoReceptor", SqlDbType.VarChar);
+               arparms[5].Value = _propuesta.CargoReceptor;
+            
+               */
+
             // arparms[8] = new SqlParameter("@TotalHoras", SqlDbType.VarChar);
-            // arparms[8].Value = _propuesta.Titulo;
-            arparms[8] = new SqlParameter("@MontoTotal", SqlDbType.Int);
-            arparms[8].Value = _propuesta.MontoTotal;
-            int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarPropuesta", arparms);
-            return _propuesta;
+            //arparms[8].Value = propuesta.TotalHoras;
+
+
+            return propuesta;
+
+
         }
         
         /// <summary>
