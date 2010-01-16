@@ -206,11 +206,17 @@ namespace Core.AccesoDatos.SqlServer
             return factura;
         }
 
-        public IList<Factura> ConsultarFacturas(DateTime desde, DateTime hasta)
+        public IList<Factura> ConsultarFacturasxEstado(DateTime desde, DateTime hasta, Boolean cobradas)
         {
             try
             {
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas");
+                DbDataReader reader;
+
+                if(cobradas)
+                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas");
+                else
+                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasNoCobradas");
+               
                 Factura factura;
                 Propuesta propuesta;
                 IList<Factura> listaFacturas = null;
