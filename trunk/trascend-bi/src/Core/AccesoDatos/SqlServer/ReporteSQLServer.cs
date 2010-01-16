@@ -16,6 +16,8 @@ namespace Core.AccesoDatos.SqlServer
     {
         #region Propiedades
 
+        List<string> ListaRoles = new List<string>();
+
         #endregion
 
         #region Constructor
@@ -112,6 +114,35 @@ namespace Core.AccesoDatos.SqlServer
 
             return factura;
 
+        }
+
+        /// <summary>
+        /// Metodo que se comunica con la base de datos y realiza la consulta
+        /// solicitada
+        /// </summary>
+        /// <returns>Retorna una Lista de Gastos</returns>
+        public IList<string> ObtenerRol()
+        {
+
+            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarRol");
+            int i = 0;
+
+            while (conexion.Read())
+            {
+
+                string Rol;
+                string HorasParticipadas;
+
+                Rol = (string)conexion["Rol"];
+                HorasParticipadas = Convert.ToString((int)conexion["HorasParticipadas"]);
+          
+                ListaRoles.Add(Rol);
+                ListaRoles.Add(HorasParticipadas);
+                i++;
+
+            }
+
+            return ListaRoles;
         }
 
         #endregion

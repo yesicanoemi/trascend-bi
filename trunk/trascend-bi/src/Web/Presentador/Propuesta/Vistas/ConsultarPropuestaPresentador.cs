@@ -32,17 +32,17 @@ namespace Presentador.Propuesta.Vistas
             if (_vista.opcion.SelectedIndex == 0)
             {
 
-                _vista.opcion.Visible          = false;
-                _vista.LabelTipoC.Visible      = false;
+                _vista.opcion.Visible = false;
+                _vista.LabelTipoC.Visible = false;
                 _vista.SeleccionOpcion.Visible = true;
-                _vista.LabelSelec.Visible      = true;
+                _vista.LabelSelec.Visible = true;
 
             }
 
             if (_vista.opcion.SelectedIndex == 1)
             {
- 
-                _vista.opcion.Visible          = false;
+
+                _vista.opcion.Visible = false;
                 _vista.SeleccionOpcion.Visible = true;
 
             }
@@ -59,26 +59,34 @@ namespace Presentador.Propuesta.Vistas
 
             #region SolicitudServicios
 
-            if (_vista.opcion.SelectedIndex == 0) // Seleccion Cliente
+            if (_vista.opcion.SelectedIndex == 0) // PROPUESTA EN ESPERA
             {
-                //_propuesta.
-                // _presenter.BuscarPorTitulo();
 
-            }
-
-            if (_vista.opcion.SelectedIndex == 1)// Seleccion Titulo
-            {
                 int i = 0;
-                propuesta =  BuscarPorTitulo();
+                propuesta = BuscarEstadoEspera();
                 for (i = 0; i < propuesta.Count; i++)
                 {
+
                     _vista.SeleccionOpcion.Items.Add(propuesta.ElementAt(i).Titulo);
-                    
+
                 }
                 _vista.SeleccionOpcion.DataBind();
             }
 
-            if (_vista.opcion.SelectedIndex == 2)// Seleccion Fecha
+            if (_vista.opcion.SelectedIndex == 1)// PROPUESTA APROBADA
+            {
+                int i = 0;
+                propuesta = BuscarPorTitulo();
+                for (i = 0; i < propuesta.Count; i++)
+                {
+
+                    _vista.SeleccionOpcion.Items.Add(propuesta.ElementAt(i).Titulo);
+
+                }
+                _vista.SeleccionOpcion.DataBind();
+            }
+
+            if (_vista.opcion.SelectedIndex == 2)// PROPUESTA RECHAZADA
             {
 
             }
@@ -90,60 +98,161 @@ namespace Presentador.Propuesta.Vistas
         /// Metodo que ejcuta la Accion de realizar la consulta por parámetro indicado
         /// y presenta la propuesta seleccionada
         /// </summary>
-        public void BotonAccionConsulta ()
+        public void BotonAccionConsulta()
         {
             #region Atributos de la Pagina
-                #region Activar Campos
-                    _vista.LabelCarg.Visible = true;
-                    _vista.LabelCargP.Visible = true;
-                    _vista.LabelEquip.Visible = true;
-                    _vista.LabelEquipP.Visible = true;
-                    _vista.LabelFechaFi.Visible = true;
-                    _vista.LabelFechaFiP.Visible = true;
-                    _vista.LabelFechaI.Visible = true;
-                    _vista.LabelFechaIP.Visible = true;
-                    _vista.LabelFFirm.Visible = true;
-                    _vista.LabelFFirmP.Visible = true;
-                    _vista.LabelMont.Visible = true;
-                    _vista.LabelMontP.Visible = true;
-                    _vista.LabelRecep.Visible = true;
-                    _vista.LabelRecepP.Visible = true;
-                    _vista.LabelT.Visible = true;
-                    _vista.LabelTotalHoras.Visible = true;
-                    _vista.LabelTotalHorasP.Visible = true;
-                    _vista.LabelTP.Visible = true;
-                    _vista.LabelV.Visible = true;
-                    _vista.LabelVP.Visible = true;
-                #endregion
-                #region Desactivar Campos
-                    _vista.opcion.Visible = false;
-                    _vista.SeleccionOpcion.Visible = false;
-                #endregion
+            #region Activar Campos
+            _vista.LabelCarg.Visible = true;
+            _vista.LabelCargP.Visible = true;
+            _vista.LabelEquip.Visible = true;
+            _vista.LabelEquipP.Visible = true;
+            _vista.LabelFechaFi.Visible = true;
+            _vista.LabelFechaFiP.Visible = true;
+            _vista.LabelFechaI.Visible = true;
+            _vista.LabelFechaIP.Visible = true;
+            _vista.LabelFFirm.Visible = true;
+            _vista.LabelFFirmP.Visible = true;
+            _vista.LabelMont.Visible = true;
+            _vista.LabelMontP.Visible = true;
+            _vista.LabelRecep.Visible = true;
+            _vista.LabelRecepP.Visible = true;
+            _vista.LabelT.Visible = true;
+            _vista.LabelTotalHoras.Visible = true;
+            _vista.LabelTotalHorasP.Visible = true;
+            _vista.LabelTP.Visible = true;
+            _vista.LabelV.Visible = true;
+            _vista.LabelVP.Visible = true;
+            #endregion
+            #region Desactivar Campos
+            _vista.opcion.Visible = false;
+            _vista.SeleccionOpcion.Visible = false;
+            #endregion
 
             #endregion
 
             #region Solicitud Servicio
-            
-            int i = 0;
-            propuesta = BuscarPorTitulo();
-            for (i = 0; i < propuesta.Count; i++)
+
+
+
+            if (_vista.opcion.SelectedIndex == 0) // ES BUSQUEDA DE PROPUESTAS EN ESPERA
             {
-                if(propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
+                #region Propuestas En Espera
+                int i = 0;
+                propuesta = BuscarPorTitulo();
+                for (i = 0; i < propuesta.Count; i++)
                 {
-                   // Se Llenan Los Campos
-                    _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
-                    //_vista.LabelEquipP.Text = propuesta.ElementAt(i).EquipoTrabajo;
-                    _vista.LabelFechaFiP.Text =  propuesta.ElementAt(i).FechaFin.ToString();
-                    _vista.LabelFechaIP.Text  =  propuesta.ElementAt(i).FechaInicio.ToString();
-                    _vista.LabelFFirmP.Text   =  propuesta.ElementAt(i).FechaFirma.ToString();
-                    _vista.LabelMontP.Text    =  propuesta.ElementAt(i).MontoTotal.ToString();
-                    _vista.LabelRecepP.Text   =  propuesta.ElementAt(i).NombreReceptor;
-                    _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
-                    _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
-                    _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
-                    
+                    if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
+                    {
+                        // Se Llenan Los Campos
+                        _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
+                        //_vista.LabelEquipP.Text    = propuesta.ElementAt(i).EquipoTrabajo;
+                        _vista.LabelFechaFiP.Text = propuesta.ElementAt(i).FechaFin.ToString();
+                        _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
+                        _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
+                        _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
+                        _vista.LabelRecepP.Text = propuesta.ElementAt(i).NombreReceptor;
+                        _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
+                        _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
+                        _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
+
+                    }
+                }
+                #endregion
+            }
+
+
+
+            if (_vista.opcion.SelectedIndex == 1) // BUSQUEDA PROPUESTA APROBADA
+            {
+                #region Propuesta Aprobada
+                int i = 0;
+                propuesta = BuscarPorTitulo();
+                for (i = 0; i < propuesta.Count; i++)
+                {
+                    if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
+                    {
+                        // Se Llenan Los Campos
+                        _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
+                        //_vista.LabelEquipP.Text    = propuesta.ElementAt(i).EquipoTrabajo;
+                        _vista.LabelFechaFiP.Text = propuesta.ElementAt(i).FechaFin.ToString();
+                        _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
+                        _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
+                        _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
+                        _vista.LabelRecepP.Text = propuesta.ElementAt(i).NombreReceptor;
+                        _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
+                        _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
+                        _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
+
+                    }
+                }
+                /*
+                //OTRO METODO
+                int numrows = 9;
+                int numcells = 2;
+
+                List<string> daList = new List<string>();
+                daList.Add(_vista.LabelCargP.Text);
+                daList.Add(_vista.LabelFechaFiP.Text);
+                daList.Add(_vista.LabelFechaIP.Text);
+                daList.Add(_vista.LabelFFirmP.Text);
+                daList.Add(_vista.LabelMontP.Text);
+                daList.Add(_vista.LabelRecepP.Text);
+                daList.Add(_vista.LabelTotalHorasP.Text);
+                daList.Add(_vista.LabelTP.Text);
+                daList.Add(_vista.LabelVP.Text);
+
+                for (int j = 0; j < numrows; j++)
+                {
+                    TableRow r = new TableRow();
+                    for (int k = 0; k < numcells; k++)
+                    {
+                        TableCell c = new TableCell();
+                        if (k == 0)
+                        {
+                            c.Controls.Add(new LiteralControl("Nombre"));
+                        }
+                        else
+                        {
+                            c.Controls.Add(new LiteralControl(daList[j]));
+                        }
+                        r.Cells.Add(c);
+                    }
+                    _vista.TablaResultados.Rows.Add(r);
+                }
+
+                //FIN OTRO METODO
+                  */
+                #endregion
+            }
+
+
+            #region Otra Consulta
+            if (_vista.opcion.SelectedIndex == 3) // ES BUSQUEDA POR FECHA
+            {
+                int i = 0;
+                Core.LogicaNegocio.Entidades.Gasto _Gasto =
+                    new Core.LogicaNegocio.Entidades.Gasto();
+
+                for (i = 0; i < propuesta.Count; i++)
+                {
+                    if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
+                    {
+                        // Se Llenan Los Campos
+                        _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
+                        //_vista.LabelEquipP.Text    = propuesta.ElementAt(i).EquipoTrabajo;
+                        _vista.LabelFechaFiP.Text = propuesta.ElementAt(i).FechaFin.ToString();
+                        _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
+                        _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
+                        _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
+                        _vista.LabelRecepP.Text = propuesta.ElementAt(i).NombreReceptor;
+                        _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
+                        _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
+                        _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
+
+                    }
                 }
             }
+            #endregion
 
             #endregion
         }
@@ -154,10 +263,23 @@ namespace Presentador.Propuesta.Vistas
         /// <returns>devuelve objeto de tipo lista de propuestas</returns>
         public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo()
         {
-     
+
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
 
-            consultar = FabricaComandosPropuesta.CrearComandoConsultar( propuesta );
+            consultar = FabricaComandosPropuesta.CrearComandoConsultar(propuesta);
+
+            propuesta = consultar.Ejecutar();
+
+            return propuesta;
+
+        }
+
+        public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarEstadoEspera()
+        {
+
+            Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarEnEspera consultar;
+
+            consultar = FabricaComandosPropuesta.CrearComandoConsultarEspera(propuesta);
 
             propuesta = consultar.Ejecutar();
 

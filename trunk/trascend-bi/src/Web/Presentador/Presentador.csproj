@@ -120,10 +120,12 @@
     <Compile Include="Reportes\Contrato\IPropuestasIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasEmitidas.cs" />
     <Compile Include="Reportes\Contrato\IReporteGastoFecha.cs" />
+    <Compile Include="Reportes\Contrato\IReporteHorasRol.cs" />
     <Compile Include="Reportes\Vistas\PropuestasIntervaloPresenter.cs" />
     <Compile Include="Reportes\Vistas\PropuestasPorAnoPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteGastoFechaPresenter.cs" />
+    <Compile Include="Reportes\Vistas\ReporteHorasRolPresenter.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IModificarUsuario.cs" />

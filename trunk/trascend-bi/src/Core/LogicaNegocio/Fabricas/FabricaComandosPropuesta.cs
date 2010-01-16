@@ -38,5 +38,10 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarPropuestasxEmision();
         }
 
+        public static ConsultarEnEspera CrearComandoConsultarEspera(IList<Propuesta> arreglo)
+        {
+            return new ConsultarEnEspera(arreglo);
+        }
+
     }
 }

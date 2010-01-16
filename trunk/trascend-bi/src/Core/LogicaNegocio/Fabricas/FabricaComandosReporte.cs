@@ -12,5 +12,9 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new FacturasEmitidas(entidad);
         }
+        public static ConsultaRol CrearComandoConsultarRol(IList<string> entidad)
+        {
+            return new ConsultaRol(entidad);
+        }
     }
 }

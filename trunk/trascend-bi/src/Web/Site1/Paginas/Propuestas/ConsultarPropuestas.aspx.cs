@@ -153,4 +153,8 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : System.Web.UI.Page
     {
         _presenter.BotonAccionConsulta();
     }
+    protected void opcion1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

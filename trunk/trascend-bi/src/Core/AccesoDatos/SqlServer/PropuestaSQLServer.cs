@@ -130,7 +130,7 @@ namespace Core.AccesoDatos.SqlServer
         /// Metodo para consultar las propuestas
         /// </summary>
         /// <param name="propuesta"></param>
-        /// <returns></returns>
+        /// <returns>Lista de Propuesta</returns>
         public IList<Propuesta> ConsultarPropuesta()
         {
             
@@ -178,6 +178,36 @@ namespace Core.AccesoDatos.SqlServer
                 _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
                 _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
                 _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                _Propuesta.Id = (int)conexion["IdPropuesta"];
+
+                ListaPropuesta.Insert(i, _Propuesta);
+                i++;
+
+            }
+
+            return ListaPropuesta;
+        }
+        /// <summary>
+        /// Metodo que consulta las propuestas que Tiene Versiones en espera
+        /// de Aprobacion o Rechazo
+        /// </summary>
+        /// <returns>Lista de Propuestas que cumplen con la condicion</returns>
+        public IList<Propuesta> ConsultarPropuestaEnEspera()
+        {
+
+            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuestaEspera");
+            int i = 0;
+
+            while (conexion.Read())
+            {
+
+                Propuesta _Propuesta = new Propuesta();
+                _Propuesta.Titulo = (string)conexion["Titulo"];
+                _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                _Propuesta.MontoTotal = (int)conexion["Monto"];
                 _Propuesta.Id = (int)conexion["IdPropuesta"];
 
                 ListaPropuesta.Insert(i, _Propuesta);

@@ -37,9 +37,23 @@
             
             
             <table style="width: 100%">
+             <tr>
+                    <td>
+                        <asp:DropDownList ID="uxRol" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:Button ID="uxBotonRol" runat="server" Text="Consultar" 
+                            onclick="uxBotonRol_Click" />
+                    </td>
+                </tr>
+                   <tr>
+                    <td></td>
+                   
+                </tr>
                 <tr>
                     <td>
-                        <asp:DropDownList ID="uxAnios" runat="server">
+                        <asp:DropDownList ID="uxAnio" runat="server" Visible = "false">
                             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
                             <asp:ListItem Value="2010">2010</asp:ListItem>
                             <asp:ListItem Value="2009">2009</asp:ListItem>
@@ -55,17 +69,28 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                        <asp:Button ID="uxBotonAnio" runat="server" Text="Continuar" 
+                            onclick="uxBotonAnio_Click" />
                     </td>
                 </tr>
                    <tr>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RangeValidator MaximumValue="2010" MinimumValue="2000" Display="Static" ID="RegularExpressionValidator1" runat="server"
-                                    ErrorMessage="<%$Resources:DSU, FaltaAnioReportes %>" ControlToValidate="uxAnios"
+                                    ErrorMessage="<%$Resources:DSU, FaltaAnioReportes %>" ControlToValidate="uxAnio"
                                     Font-Size="Smaller"></asp:RangeValidator>
                              
                     </td>
                    
                 </tr>
+                <tr></tr>
+                
+                <tr>
+                    <td>
+                    <asp:Label ID="uxLabelTextoH" runat="server" Visible = "false" Text="Total de Horas"  ></asp:Label>
+                    </td>  
+                    <td> <asp:Label ID="uxLabelHoras" runat="server" Visible = "false"  ></asp:Label>
+                    </td>
+                </tr>
+               
             </table>
             
             
