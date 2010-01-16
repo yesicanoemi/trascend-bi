@@ -123,7 +123,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargos");
                 Cargo cargo;
-                IList<Entidad> listaCargos = null;
+                IList<Entidad> listaCargos = new List<Entidad>();
 
                 while (reader.Read())
                 {
@@ -131,8 +131,8 @@ namespace Core.AccesoDatos.SqlServer
                     cargo.Id = (int)reader["IdCargo"];
                     cargo.Nombre = reader["Nombre"].ToString();
                     cargo.Descripcion = reader["Descripcion"].ToString();
-                    cargo.SueldoMaximo = (float)reader["SueldoMaximo"];
-                    cargo.SueldoMinimo = (float)reader["SueldoMinimo"];
+                    cargo.SueldoMaximo = float.Parse(reader["SueldoMaximo"].ToString());
+                    cargo.SueldoMinimo = float.Parse(reader["SueldoMinimo"].ToString());
 
                     listaCargos.Add(cargo);
                 }
