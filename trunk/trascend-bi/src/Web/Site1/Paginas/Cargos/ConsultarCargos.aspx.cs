@@ -54,4 +54,8 @@ public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page, IAdmin
     {
         _presenter.EliminarCargo();
     }
+    protected void uxBotonGuardar_Click(object sender, EventArgs e)
+    {
+        _presenter.ModificarCargo();
+    }
 }

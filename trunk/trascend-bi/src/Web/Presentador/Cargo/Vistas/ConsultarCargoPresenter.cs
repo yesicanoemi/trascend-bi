@@ -69,7 +69,8 @@ namespace Presentador.Cargo.Vistas
 
             Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
 
-            cargo.Nombre = _vista.NombreCargo.Text;
+            cargo.Id = int.Parse(_vista.NombreCargo.SelectedValue);
+            cargo.Nombre = _vista.NombreCargo.SelectedItem.Text;
             cargo.Descripcion = _vista.DescripcionCargo.Text;
             cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
             cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);

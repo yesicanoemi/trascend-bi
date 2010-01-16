@@ -184,6 +184,30 @@ namespace Core.AccesoDatos.SqlServer
 
         public Boolean ModificarCargo(Cargo cargo)
         {
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[6];
+                //Parametros
+                arParms[0] = new SqlParameter("@IdCargo", SqlDbType.Int);
+                arParms[0].Value = cargo.Id;
+                arParms[1] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[1].Value = cargo.Nombre;
+                arParms[2] = new SqlParameter("@Descripcion", SqlDbType.VarChar);
+                arParms[2].Value = cargo.Descripcion;
+                arParms[3] = new SqlParameter("@SueldoMinimo", SqlDbType.Float);
+                arParms[3].Value = cargo.SueldoMinimo;
+                arParms[4] = new SqlParameter("@SueldoMaximo", SqlDbType.Float);
+                arParms[4].Value = cargo.SueldoMaximo;
+                arParms[5] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
+                arParms[5].Value = cargo.Vigencia;
+
+                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarCargo", arParms);
+            }
+            catch (SqlException e)
+            {
+                return false;
+                //System.Console.Write(e);
+            }
             return true;
         }
 
