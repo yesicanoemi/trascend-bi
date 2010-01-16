@@ -48,8 +48,7 @@ namespace Core.AccesoDatos.SqlServer
             Contacto _contacto = new Contacto();
             try
             {
-                int @ID;
-                @ID = 0;
+                
                 
                 SqlParameter[] arParms = new SqlParameter[10];
                 // Parametros 
@@ -95,8 +94,8 @@ namespace Core.AccesoDatos.SqlServer
                 _contacto.Apellido = (string)reader["apellido"];
                 _contacto.AreaDeNegocio = (string)reader["areanegocio"];
                 _contacto.Cargo = (string)reader["cargo"];
-            //    _contacto.TelefonoDeTrabajo = (Int32)reader["telefonotrabajo"];
-            //    _contacto.TelefonoDeCelular = (Int32)reader["telefonocelular"];
+                //    _contacto.TelefonoDeTrabajo = (Int32)reader["telefonotrabajo"];
+                //    _contacto.TelefonoDeCelular = (Int32)reader["telefonocelular"];
 
                 contacto.Add(_contacto);
             }
@@ -104,43 +103,154 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
-        public Contacto Eliminar(Contacto contacto)
+        #region ConsultarUsuario
+
+        /// <summary>
+        /// Metodo para consultar el usuario por "Login"
+        /// </summary>
+        /// <param name="usuario">Criterio de busqueda</param>
+        /// <returns>Usuario(s) que coincidan con el criterio</returns>
+
+
+        public IList<Contacto> Consultar(string Nombre,string Apellido,int Area,int Numero, int Zero)
         {
-            Contacto _contacto = new Contacto();
+            IList<Contacto> contacto = new List<Contacto>();
+
             try
             {
-
-                SqlParameter[] arParms = new SqlParameter[2];
-                // Parametros 
-        
-                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-                arParms[0].Value = contacto.Nombre;
-                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-                arParms[1].Value = contacto.Apellido;
+                //Parametros de busqueda
 
 
+                SqlParameter[] arParms = new SqlParameter[3];
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                     "EliminarContacto", arParms);
-                /*
-                                if (reader.Read())
-                                {
-                                    _usuario.Login = (string)reader["LoginUsuario"];
+                arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
 
-                                    _usuario.Status = (string)reader["Status"];
-                                }
-                                */
-                return _contacto;
+                arParms[0].Value = Nombre;
+
+                arParms[1] = new SqlParameter("@apellido", SqlDbType.VarChar);
+
+                arParms[1].Value = Apellido;
+
+                arParms[2] = new SqlParameter("@codigoArea", SqlDbType.Int);
+
+                arParms[2].Value = Area;
+
+                arParms[3] = new SqlParameter("@Numero", SqlDbType.Int);
+
+                arParms[3].Value = Numero;
+
+                DbDataReader reader = null;
+
+                switch (Zero)
+                {
+                    case 0:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoVacio", arParms);
+
+                        break;
+                    case 1:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoTelefono", arParms);
+                        break;
+                    case 10:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoApellido", arParms);
+                        break;
+                    case 11:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoApellidoTelefono", arParms);
+                        break;
+                    case 100:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoNombre", arParms);
+                        break;
+                    case 101:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoNombreTelefono", arParms);
+
+                        break;
+                    case 110:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoNombreApellido", arParms);
+                        break;
+                    case 111:
+
+                        reader = SqlHelper.ExecuteReader
+                                                (GetConnection(), "ConsultarContactoNombreApellidoTelefono", arParms);
+                        break;
+                }
+
+
+
+
+                while (reader.Read())
+                {
+                    Contacto _contacto = new Contacto();
+
+                    _contacto.Nombre = (string)reader["NOMBRE"];
+
+                    _contacto.Apellido = (string)reader["APELLIDO"];
+
+                    _contacto.AreaDeNegocio = (string)reader["AREA"];
+
+                    _contacto.Cargo = (string)reader["CARGO"];
+
+                    if ((string)reader["TIPO"] == "Celular")
+                    {
+                        _contacto.TelefonoDeCelular.Codigocel = (int)reader["CODIGOAREA"];
+
+                        _contacto.TelefonoDeCelular.Numero = (int)reader["NUMERO"];
+                    }
+
+                    if ((string)reader["TIPO"] == "Trabajo")
+                    {
+                        _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader["CODIGOAREA"];
+
+                        _contacto.TelefonoDeTrabajo.Numero = (int)reader["NUMERO"];
+
+                        _contacto.TelefonoDeTrabajo.Tipo = (string)reader["TIPO"];
+                    }
+
+                    if ((string)reader["TIPO"] == "Fax")
+                    {
+                        _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader["CODIGOAREA"];
+
+                        _contacto.TelefonoDeTrabajo.Numero = (int)reader["NUMERO"];
+
+                        _contacto.TelefonoDeTrabajo.Tipo = (string)reader["TIPO"];
+                    }
+
+                    contacto.Add(_contacto);
+                }
+
+                return contacto;
 
             }
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+
             }
-            return _contacto;
+
+            return contacto;
 
         }
+
+        #endregion
+
+
+         public Contacto Eliminar(Contacto contacto)
+        {
+            return new Contacto();
+        }
+   
 
          public int Modificar(Contacto contacto)
         {
