@@ -20,12 +20,6 @@ namespace Presentador.Contacto.ContactoPresentador
         }
         public void Onclick()
         {
-     /*       string x = _vista.TextBoxTelfCelular.Text;
-            _vista.TextBoxTelfCelular.Text = _vista.TextBoxTelfOficina.Text;
-            _vista.TextBoxTelfOficina.Text = _vista.TextBoxApellidoContacto.Text;
-            _vista.TextBoxApellidoContacto.Text = _vista.TextBoxNombreContacto.Text;
-            _vista.TextBoxNombreContacto.Text = x; */
-
             IngresarContacto();
         }
         public void IngresarContacto()
@@ -52,7 +46,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 Ingresar(contacto);
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 //Aqui se maneja la excepcion en caso de que de error la seccion Web
             }

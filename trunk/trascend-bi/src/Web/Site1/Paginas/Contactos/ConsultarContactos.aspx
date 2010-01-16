@@ -25,12 +25,15 @@
                     <p class="large">
                         
                         
-                        Busqueda por Nombre</p>
+                        Seleccione que atributos utilizara para la busqueda</p>
                      <form id="Form3" runat="server">
                            <table style="width:100%;">
                                <tr>
                                    <td>Nombre: </td>
-                                   <td><asp:TextBox ID="uxConsultaNombreContacto" runat="server"></asp:TextBox></td>
+                                   <td>
+                                        <asp:TextBox ID="uxConsultaNombreContacto" runat="server"></asp:TextBox>
+                                        <asp:CheckBox ID="uxCheckBoxNombre" runat="server" />
+                                   </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -38,16 +41,21 @@
                                </tr>
                                <tr>
                                    <td>Apellido: </td>
-                                   <td><asp:TextBox ID="uxConsultaApellidoContacto" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Cedula</td>
                                    <td>
-                                       <asp:TextBox ID="uxConsultaCedulaContacto" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxConsultaApellidoContacto" runat="server"></asp:TextBox>
+                                        <asp:CheckBox ID="uxChecBoxApellido" runat="server" />
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Telefono</td>
+                                   <td>
+                                        <asp:TextBox ID="uxConsultaCodigoContacto" runat="server" Width="40"></asp:TextBox>
+                                        <asp:TextBox ID="uxConsultaTelefonoContacto" runat="server" Width="150"></asp:TextBox>
+                                       <asp:CheckBox ID="uxCheckBoxTelefono" runat="server" />
                                    </td>
                                </tr>
                                <tr>
@@ -63,6 +71,11 @@
                                    <td>
                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="Aceptar_Click"/>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp</td>
+                                    <asp:Table ID="uxTablaResultado" runat="server">
+                                    </asp:Table>
                                 </tr>
                            </table>
                      </form>

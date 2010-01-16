@@ -24,13 +24,43 @@ public partial class Paginas_Contactos_ConsultarContactos : System.Web.UI.Page, 
             get { return uxConsultaApellidoContacto; }
             set { uxConsultaApellidoContacto = value; }
         }
-
-        public TextBox TextBoxCedula
+//////////
+        public TextBox TextBoxCodTelefono
         {
-            get { return uxConsultaCedulaContacto; }
-            set { uxConsultaCedulaContacto = value; }
+            get { return uxConsultaCodigoContacto; }
+            set { uxConsultaCodigoContacto = value; }
         }
-    
+
+        public TextBox TextBoxNumTelefono
+        {
+            get { return uxConsultaTelefonoContacto; }
+            set { uxConsultaTelefonoContacto = value; }
+        }
+
+        public CheckBox CheckBoxNombre
+        {
+            get { return uxCheckBoxNombre; }
+            set { uxCheckBoxNombre = value; }
+        }
+
+        public CheckBox CheckBoxApellido
+        {
+            get { return uxChecBoxApellido; }
+            set { uxChecBoxApellido = value; }
+        }
+
+        public CheckBox CheckBoxTelefono
+        {
+            get { return uxCheckBoxTelefono; }
+            set { uxCheckBoxTelefono = value; }
+        }
+
+        public Table TablaResultados
+        {
+            get { return uxTablaResultado; }
+            set { uxTablaResultado = value; }
+        }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         _presentador = new ConsultarPresentador(this);

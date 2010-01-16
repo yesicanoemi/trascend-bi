@@ -19,9 +19,6 @@ namespace Presentador.Contacto.ContactoPresentador
             }
             public void Onclick()
             {
-    //            string x=_vista.TextBoxNombre.Text;
-    //            _vista.TextBoxNombre.Text = _vista.TextBoxApellido.Text;
-    //            _vista.TextBoxApellido.Text = x;
 
              int numrows = 3;
              int numcells = 2;
