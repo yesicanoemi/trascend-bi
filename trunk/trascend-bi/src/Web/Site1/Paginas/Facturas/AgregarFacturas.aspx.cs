@@ -137,6 +137,7 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
     protected void Page_Load(object sender, EventArgs e)
     {
         _presenter = new AgregarFacturaPresenter(this);
+
     }
 
     protected void uxBuscarTitulo_Click(object sender, EventArgs e)
@@ -154,5 +155,9 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
 
         }
 
+    }
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        _presenter.OnAgregarFactura();
     }
 }

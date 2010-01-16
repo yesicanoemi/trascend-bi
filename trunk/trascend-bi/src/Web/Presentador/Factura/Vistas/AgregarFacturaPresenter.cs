@@ -80,14 +80,42 @@ namespace Presentador.Factura.Vistas
 
 
                      //_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
-                     _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yy");
+                     _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
-                 
+
+
+                     Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
+
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
+                    // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
+
+
+                    i = 0;
+                     foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
+                     {
+
+                         if (fact.Numero > i)
+                             i = fact.Numero;
+
+
+                     }
+                     
+                     _vista.CodigoFactura.Text = (i + 1).ToString();
+
+                          
                  }
              }
 
                 
         }
+
+
+        public void OnAgregarFactura()
+        {
+            this.IngresarFactura();
+        }
+
 
 
         private float CalcularPorcentaje(Core.LogicaNegocio.Entidades.Factura factura, Core.LogicaNegocio.Entidades.Propuesta propuesta)
@@ -132,13 +160,29 @@ namespace Presentador.Factura.Vistas
 
                 
                 factura.Procentajepagado = Int32.Parse(_vista.PorcentajePagar.Text);
-                factura.Fechaingreso = DateTime.Now;
-
+                factura.Fechaingreso = ConvertirToFecha(_vista.FechaIngreso.Text);
+                factura.Fechapago = ConvertirToFecha(_vista.FechaPagoFact.Text);
+                
                 //DateTime.Now.ToString("dd/MM/yyyy")
                 //factura.Fechapago = _vista.FechaPagoFact.ToString("MM/dd/yyyy");
                
                 //Ingresar(factura);
                 //LimpiarCampos();
+
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
+
+             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
+
+             foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+             {
+                 if (PropuestaAux.Titulo.Equals(_vista.NombrePropuesta.Text))
+                 {
+                     _propuesta = PropuestaAux;
+                 }
+             }
+                factura.Prop = _propuesta;
+                this.Ingresar(factura);
             }
             catch (WebException e)
             {
@@ -150,24 +194,6 @@ namespace Presentador.Factura.Vistas
 
 
 
-/*
-        public void CargarDatosPropuesta(Core.LogicaNegocio.Entidades.Propuesta propuesta)
-        {
-
-            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = null;
-            Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consulta; //objeto del comando Consultar.
-
-            //fábrica que instancia el comando Consultar.
-            consulta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(propuesta);
-
-            //try
-            //{    
-            //ejecuta el comando.
-            ListaPropuestas = consulta.Ejecutar();   
-            
-        }
-
- */
         /// <summary>
         /// Metodo que recibo un string y devuelve un objeto datetim con el formato DD/MM/AAAA
         /// </summary>
@@ -176,10 +202,11 @@ namespace Presentador.Factura.Vistas
         public DateTime ConvertirToFecha(string fecha)
         {
             string[] str = fecha.Split('/');
-            return new DateTime(Convert.ToInt32(str[2]), Convert.ToInt32(str[0]), Convert.ToInt32(str[1]));
+            return new DateTime(Convert.ToInt32(str[2]), Convert.ToInt32(str[1]), Convert.ToInt32(str[0]));
 
         }
 
+  
 
         public void InhabilitarCampos()
         {

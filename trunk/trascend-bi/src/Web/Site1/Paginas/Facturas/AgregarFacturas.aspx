@@ -217,7 +217,7 @@
                                 <tr>
                                     <td>
                                         <AjaxControlToolkit:CalendarExtender ID="uxFechaPag" runat="server" 
-                                            Animated="true" CssClass="ajax__calendar" Format="dd/MM/yy" 
+                                            Animated="true" CssClass="ajax__calendar" Format="dd/MM/yyyy" 
                                             PopupButtonID="uxImagenFechaPago" TargetControlID="uxFechaPago"></AjaxControlToolkit:CalendarExtender>
                                     </td>
                                     <td>
@@ -343,7 +343,8 @@
                                     <td>
                                         &nbsp;</td>
                                     <td>
-                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" />
+                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                            onclick="uxBotonAceptar_Click" />
                                     </td>
                                 </tr>
                             </table>
