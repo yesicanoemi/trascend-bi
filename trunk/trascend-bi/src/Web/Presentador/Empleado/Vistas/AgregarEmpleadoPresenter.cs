@@ -49,16 +49,20 @@ namespace Presentador.Empleado.Vistas
         public void ConsultarCargos()
         {
             IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;
+            IList<Core.LogicaNegocio.Entidades.Cargo> cargo = new List<Core.LogicaNegocio.Entidades.Cargo>();
             try
             {
                 DropDownList e = new DropDownList();
                 Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
                 cargos = conex.ConsultarCargos();
-                e.DataSource = cargos;
-                e.DataValueField = "Id";
-                e.DataTextField = "Nombre";
-                e.DataBind();
-                _vista.ComboCargos = e;
+                for (int i = 0; i < cargos.Count; i++)
+                {
+                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo) cargos[i]);            
+                }
+                _vista.ComboCargos.DataSource = cargo;
+                _vista.ComboCargos.DataTextField = "Nombre";
+                _vista.ComboCargos.DataValueField = "Id";
+                _vista.ComboCargos.DataBind();
             }
             catch (WebException e)
             {
