@@ -10,7 +10,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
     public class ConsultarCredenciales : Comando<Usuario>
     {
+        #region Propiedades
+
         private Core.LogicaNegocio.Entidades.Usuario usuario;
+
+        #endregion
 
         #region Constructor
 

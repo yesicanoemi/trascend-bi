@@ -18,7 +18,11 @@ namespace Presentador.Reportes.Vistas
 {
     public class ReporteFaturasEmitidasPresenter
     {
+        #region Propiedades
+
         private IReporteFacturasEmitidas _vista;
+
+        #endregion
 
         #region Constructor
 
@@ -30,13 +34,15 @@ namespace Presentador.Reportes.Vistas
 
         #endregion
 
-        #region Metodos
+        #region Métodos
+
+        /// <summary>
+        /// Acción del Botón Buscar (por rango de fechas)
+        /// </summary>
 
         public void OnBotonBuscar()
         {
             Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
-
-            //factura.Fechaingreso = ConvertirToFecha(_vista.FechaInicio.Text);
 
             factura.Fechaingreso = Convert.ToDateTime(_vista.FechaInicio.Text);
 
@@ -44,18 +50,31 @@ namespace Presentador.Reportes.Vistas
 
             IList<Core.LogicaNegocio.Entidades.Factura> listadoF = FacturasEmitidas(factura);
 
-            if (listadoF != null)
+            try
             {
-               _vista.GetObjectContainerReporteFactura3b.DataSource = listadoF;
+                if (listadoF != null)
+                {
+                    _vista.GetObjectContainerReporteFactura3b.DataSource = listadoF;
 
+                }
             }
 
-            else
+            catch (WebException e)
             {
                 //Mensaje de error al usuario
             }
         }
 
+        #endregion
+
+        #region Comando
+
+        /// <summary>
+        /// Método para el comando FacturasEmitidas
+        /// </summary>
+        /// <param name="entidad">Entidad Factura</param>
+        /// <returns>Lista de Facturas que cumplan con el criterio de búsqueda</returns>
+        
         public IList<Core.LogicaNegocio.Entidades.Factura> 
                                         FacturasEmitidas(Core.LogicaNegocio.Entidades.Factura entidad)
         
@@ -70,8 +89,6 @@ namespace Presentador.Reportes.Vistas
 
             return factura1;
         }
-
-
 
         #endregion
     }

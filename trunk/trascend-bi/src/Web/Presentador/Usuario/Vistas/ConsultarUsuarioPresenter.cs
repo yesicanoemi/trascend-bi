@@ -26,7 +26,12 @@ namespace Presentador.Usuario.Vistas
 
         #endregion
 
-        #region Metodos
+        #region Métodos
+
+        /// <summary>
+        /// Metodo para cambiar la vista 
+        /// </summary>
+        /// <param name="index">Numero de vista</param>
 
         public void CambiarVista(int index)
         {
@@ -34,7 +39,11 @@ namespace Presentador.Usuario.Vistas
             _vista.MultiViewConsultar.ActiveViewIndex = index;
         }
 
-
+        /// <summary>
+        /// Metodo para cargar los datos por pantalla una vez seleccionado el usuario
+        /// </summary>
+        /// <param name="usuario">Entidad Usuario con sus datos</param>
+        
          private void CargarDatos(Core.LogicaNegocio.Entidades.Usuario usuario)
         {
             _vista.NombreUsu.Text = usuario.Login;
@@ -46,6 +55,11 @@ namespace Presentador.Usuario.Vistas
             _vista.UsuarioU.Text = usuario.Status;
         }
   
+
+        /// <summary>
+        /// Acción del Botón Buscar (Por nombre de usuario)
+        /// </summary>
+         
         public void OnBotonBuscar()
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
@@ -54,33 +68,28 @@ namespace Presentador.Usuario.Vistas
 
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
-            if (listado != null)
+            try
             {
+               if (listado != null)
+                {
 
-                _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
+                    _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
 
-            }
+                }
+           }
 
-            else
+            catch (WebException e)
             {
                 //Mensaje de error al usuario
             }
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario
-                (Core.LogicaNegocio.Entidades.Usuario entidad)
-        {
-            IList<Core.LogicaNegocio.Entidades.Usuario> usuario1 = null;
 
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuario comando;
-
-            comando = FabricaComandosUsuario.CrearComandoConsultarUsuario(entidad);
-
-            usuario1 = comando.Ejecutar();
-
-            return usuario1;
-        }
-
+        /// <summary>
+        /// Método de Consulta una vez seleccionado el usuario 
+        /// </summary>
+        /// <param name="login">Nombre de Usuario</param>
+        
         public void uxObjectConsultaUsuarioSelecting(string login)
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
@@ -97,6 +106,31 @@ namespace Presentador.Usuario.Vistas
             
             CambiarVista(1);
 
+        }
+
+        #endregion
+
+        #region Comando
+
+        /// <summary>
+        /// Método para el comando ConsultarUsuario
+        /// </summary>
+        /// <param name="entidad">Entidad Usuario a consultar (por nombre de usuario)</param>
+        /// <returns>Lista de usuarios que cumplan con el parámetro de búsqueda</returns>
+        
+        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario
+                                                (Core.LogicaNegocio.Entidades.Usuario entidad)
+        
+        {
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuario comando;
+
+            comando = FabricaComandosUsuario.CrearComandoConsultarUsuario(entidad);
+
+            usuario1 = comando.Ejecutar();
+
+            return usuario1;
         }
 
         #endregion

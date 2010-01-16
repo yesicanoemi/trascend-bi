@@ -9,11 +9,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
     public class ConsultarUsuario : Comando<Core.LogicaNegocio.Entidades.Usuario>
     {
+        #region Propiedades
+
         private Core.LogicaNegocio.Entidades.Usuario usuario;
+
+        #endregion
 
         #region Constructor
 
-        /// <summary>Constructor de la clase 'CosultarCredenciales'.</summary>
+        /// <summary>Constructor de la clase 'CosultarUsuario'.</summary>
 
         public ConsultarUsuario()
         { }

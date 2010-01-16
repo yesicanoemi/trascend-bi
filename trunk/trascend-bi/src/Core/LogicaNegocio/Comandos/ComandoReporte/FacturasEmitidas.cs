@@ -9,7 +9,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
 {
     public class FacturasEmitidas : Comando<Core.LogicaNegocio.Entidades.Factura>
     {
+        #region Propiedades
+
         private Core.LogicaNegocio.Entidades.Factura factura;
+
+        #endregion
 
         #region Constructor
 

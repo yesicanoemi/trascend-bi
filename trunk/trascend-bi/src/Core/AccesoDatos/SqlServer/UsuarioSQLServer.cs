@@ -14,9 +14,6 @@ namespace Core.AccesoDatos.SqlServer
 {
     class UsuarioSQLServer
     {
-        #region Propiedades
-
-        #endregion
 
         #region Constructor
 
@@ -26,6 +23,8 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
+        #region Conexion a la Base de Datos
+     
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
@@ -43,8 +42,11 @@ namespace Core.AccesoDatos.SqlServer
             return connection;
         }
 
+        #endregion
+
         #region Metodos
 
+        #region ConsultarCredenciales
 
         /// <summary>
         /// Metodo que consulta el login y password de un usuario
@@ -58,6 +60,8 @@ namespace Core.AccesoDatos.SqlServer
 
             try
             {
+                //Parametros de busqueda
+
                 SqlParameter[] arParms = new SqlParameter[2];
 
                 arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
@@ -80,12 +84,16 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+
             }
             return _usuario;
 
         }
 
+
+        #endregion
+
+        #region ConsultarUsuario
 
         /// <summary>
         /// Metodo para consultar el usuario por "Login"
@@ -96,11 +104,13 @@ namespace Core.AccesoDatos.SqlServer
 
         public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario(Usuario entidad)
         {
-            //Usuario _usuario = new Usuario();
-            IList<Core.LogicaNegocio.Entidades.Usuario> usuario = new List<Core.LogicaNegocio.Entidades.Usuario>();
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario = 
+                                            new List<Core.LogicaNegocio.Entidades.Usuario>();
 
             try
             {
+                //Parametros de busqueda
+
                 SqlParameter[] arParms = new SqlParameter[1];
 
                 arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
@@ -131,12 +141,14 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+
             }
 
             return usuario;
 
         }
+
+        #endregion
 
 
         public void ModificarUsuario(Usuario usuario)

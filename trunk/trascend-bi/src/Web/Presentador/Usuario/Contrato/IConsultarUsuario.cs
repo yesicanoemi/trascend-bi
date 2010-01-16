@@ -29,5 +29,6 @@ namespace Presentador.Usuario.Contrato
         Label UsuarioU { get; set; }
 
         #endregion
+
     }
 }

@@ -7,19 +7,26 @@ using Core.LogicaNegocio.Entidades;
 
 namespace Core.LogicaNegocio.Fabricas
 {
-
 	public class FabricaComandosUsuario
-	{
+    {
+        #region Metodos
 
         /// <summary>
-        /// Metodo que fabrica el comando 'ConsultarCredenciales' de la entidad usuario
+        /// Metodo que fabrica el comando 'ConsultarCredenciales' de la entidad Usuario
         /// </summary>
-        /// <param name="entidad">la entidad</param>
-        /// <returns>el comando</returns>
+        /// <param name="entidad">Entidad Usuario con los datos</param>
+        /// <returns>Comando ConsultarCredenciales de la entidad Usuario</returns>
+        
 	    public static ConsultarCredenciales CrearComandoConsultarCredenciales(Usuario entidad)
 	    {
 	        return new ConsultarCredenciales(entidad);
 	    }
+
+        /// <summary>
+        /// Metodo que fabrica el comando "Consultar" de la entidad Usuario
+        /// </summary>
+        /// <param name="empleado">Entidad Usuario con los datos</param>
+        /// <returns>Comando Consultar de la entidad usuario</returns>
 
         public static ConsultarUsuario CrearComandoConsultarUsuario(Usuario entidad)
         {
@@ -40,5 +47,7 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new EliminarUsuario(entidad);
         }
-	}
+
+        #endregion
+    }
 }

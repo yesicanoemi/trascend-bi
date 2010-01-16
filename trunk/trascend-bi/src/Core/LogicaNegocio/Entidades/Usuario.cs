@@ -5,6 +5,7 @@ namespace Core.LogicaNegocio.Entidades
 {
     public class Usuario : Empleado
     {
+        #region Propiedades
 
         private int idUsuario;
         
@@ -75,5 +76,7 @@ namespace Core.LogicaNegocio.Entidades
                 this.permisoUsu = value;
             }
         }
+
+        #endregion
     }
 }
