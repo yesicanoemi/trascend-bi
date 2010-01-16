@@ -86,6 +86,25 @@ namespace Core.AccesoDatos.SqlServer
             return empleado;
         }
 
+        public IList<Empleado> ConsultarPorTipoNombre()
+        {
+            List<Empleado> empleado = new List<Empleado>();
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarEmpleadoNombre");
+            while (reader.Read())
+            {
+                Empleado _empleado = new Empleado();
+                _empleado.Cedula = (int)reader["CIEmpleado"];
+                _empleado.Nombre = (string)reader["Nombre"];
+                _empleado.Apellido = (string)reader["Apellido"];
+                _empleado.Cuenta = (string)reader["NumCuenta"];
+                _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+                _empleado.Estado = (string)reader["Estado"];
+                _empleado.Cargo = (string)reader["Expr1"];
+                _empleado.Direccion = (string)reader["Calle"] + ", " + (string)reader["Avenida"] + ", " + (string)reader["Urbanizacion"] + ", " + (string)reader["EdifCasa"] + ", " + (string)reader["PisoApto"] + ", " + (string)reader["Ciudad"];
+                empleado.Add(_empleado);
+            }
+            return empleado;
+        }
         public int Modificar(Empleado empleado)
         {
             int resultado = 0;

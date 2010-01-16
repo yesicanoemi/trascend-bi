@@ -8,12 +8,14 @@ namespace Core.LogicaNegocio.Entidades
     public class Empleado : Persona
     {
         private int cedula;
-        private int cuenta;
+        private string cuenta;
         private float sueldoBase;
         private DateTime fechaNacimiento;
         private DateTime fechaIngreso;
         private DateTime fechaEgreso;
         private string estado;
+        private string direccion;
+        private string cargo;
 
         public virtual int Cedula
         {
@@ -28,7 +30,7 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual int Cuenta
+        public virtual string Cuenta
         {
             get
             {
@@ -106,5 +108,30 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
+        public virtual string Direccion
+        {
+            get
+            {
+                return direccion;
+            }
+
+            set
+            {
+                direccion = value;
+            }
+        }
+
+        public virtual string Cargo
+        {
+            get
+            {
+                return cargo;
+            }
+
+            set
+            {
+                cargo = value;
+            }
+        }
     }
 }

@@ -18,5 +18,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Modificar(empleado);
         }
+
+        public static Consultar CrearComandoConsultar(IList<Empleado> empleado)
+        {
+            return new Consultar(empleado);
+        }   
     }
 }

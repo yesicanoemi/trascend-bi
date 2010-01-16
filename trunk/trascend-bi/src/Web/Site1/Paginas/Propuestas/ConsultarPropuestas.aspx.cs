@@ -15,7 +15,7 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : System.Web.UI.Page
     #region Propiedades de la Pagina
     public DropDownList opcion
     {
-        get { return opcion1; }
+        get { return opcion1; } 
         set { opcion1 = value; }
     }
     public DropDownList SeleccionOpcion

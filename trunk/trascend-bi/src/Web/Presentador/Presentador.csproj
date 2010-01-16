@@ -79,8 +79,10 @@
     <Compile Include="Contacto\ContactoPresentador\EliminarPresentador.cs" />
     <Compile Include="Contacto\ContactoPresentador\ModificarPresentador.cs" />
     <Compile Include="Empleado\Contrato\IAgregarEmpleado.cs" />
+    <Compile Include="Empleado\Contrato\IConsultarEmpleado.cs" />
     <Compile Include="Empleado\Contrato\IModificarEmpleado.cs" />
     <Compile Include="Empleado\Vistas\AgregarEmpleadoPresenter.cs" />
+    <Compile Include="Empleado\Vistas\ConsultarEmpleadoPresenter.cs" />
     <Compile Include="Empleado\Vistas\ModificarEmpleadoPresenter.cs" />
     <Compile Include="Factura\Contrato\IAgregarFactura.cs">
     </Compile>
