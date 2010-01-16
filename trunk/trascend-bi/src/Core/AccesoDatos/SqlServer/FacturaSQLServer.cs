@@ -232,7 +232,7 @@ namespace Core.AccesoDatos.SqlServer
                         arparms[3] = new SqlParameter("@fecha", SqlDbType.SmallDateTime);
                         arparms[3].Value = factura.Fechapago.ToShortDateString();
 
-                        arparms[4] = new SqlParameter("@fechaIngreso", SqlDbType.SmallDateTime);
+                        arparms[4] = new SqlParameter("@fechaingreso", SqlDbType.SmallDateTime);
                         arparms[4].Value = factura.Fechaingreso.ToShortDateString();
 
                         arparms[5] = new SqlParameter("@estado", SqlDbType.VarChar);

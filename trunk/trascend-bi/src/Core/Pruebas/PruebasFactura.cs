@@ -74,6 +74,7 @@ namespace Core.Pruebas
             factura.Estado = "Pagado";
             factura.Prop = new Propuesta();
             factura.Prop.Id = 1;
+            factura = new FacturaSQLServer().IngresarFactura(factura);
             Assert.AreNotEqual(factura,new Factura());
         }
     }
