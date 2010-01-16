@@ -58,11 +58,12 @@ label,.group-label { float:left;width:30%;margin-top:9px;text-align:right;font-s
 label.selection-label { float:none;width:auto;text-align:left;color:#666; }
 
 /* /* Text fields */
-input,textarea,select { width:200px;
+input,textarea,select { width:129px;
 -moz-border-radius:4px;border-radius:4px;-webkit-border-radius:4px;font-size:1.1em;color:#666;margin-left:20px;padding:1px;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;z-index:100 !important;position:relative; }
 input { border:2px solid #ccc;background-color:#fff;
-    top: 0px;
-	left: -9px;
+    top: 9px;
+	left: 79px;
+	height: 23px;
 }
 input:focus,textarea:focus { border:2px solid #ef9e4d;background:#fff; }
 input[type="radio"],input[type="checkbox"] { background:transparent !important;border:0 !important;width:16px !important; }

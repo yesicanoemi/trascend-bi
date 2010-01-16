@@ -30,27 +30,39 @@
                                     <asp:ListItem>Busqueda por Cargo</asp:ListItem>
                                     </asp:DropDownList></td>
                             </tr>
+                            <tr>
+                                <td><asp:Label ID="LabelSeparador" runat="server" Text = ""/>
+                                    <br />
+                                    <br />
+                                    <br />
+                                </td>
+                                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                        onclick="uxBotonAceptar_Click" />
+                                    <br />
+                                </td>
+                            </tr>
                            <tr>
-                                <td><asp:Label ID="LabelSeleccion" runat="server" Text = "Seleccione" Visible = "false" /></td>
+                                <td><asp:Label ID="LabelSeleccion" runat="server" Text = "Seleccione" />
+                                    <br />
+                                </td>
                                 <td><asp:DropDownList ID="uxSeleccion" runat="server">
                                     </asp:DropDownList></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                        onclick="uxBotonAceptar_Click" /></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Indique Parámetro de busqueda</td>
-                                 <td><asp:Label ID="LabelParametro" runat="server" Text = "" /></td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><asp:Button ID="uxBotonAceptar2" runat="server" Text="Aceptar" 
                                         onclick="uxBotonAceptar2_Click" /></td>
                             </tr>
+                            
+                            <tr>
+                                <td>
+                                    <br />
+                                    <br />
+                                    Indique Parámetro de busqueda</td>
+                                 <td><asp:Label ID="LabelParametro" runat="server" Text = "" /></td>
+                                <td></td>
+                            </tr>
+                            
                              <tr>
                                 <td>Cedula</td>
                                 <td><asp:Label ID="LabelCedulaEmpleado" runat="server" /></td>    
