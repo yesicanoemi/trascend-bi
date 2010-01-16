@@ -77,5 +77,14 @@ namespace Core.Pruebas
             factura = new FacturaSQLServer().IngresarFactura(factura);
             Assert.AreNotEqual(factura,new Factura());
         }
+
+        [Test]
+        public void TestUpdate()
+        {
+            Factura factura = new Factura();
+            factura.Numero = 6;
+            factura = new FacturaSQLServer().UpdateFactura(factura);
+            Assert.AreNotEqual(factura, new Factura());
+        }
     }
 }

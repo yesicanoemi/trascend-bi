@@ -344,6 +344,33 @@ namespace Core.AccesoDatos.SqlServer
             return facturas;
         }
 
+        public Factura UpdateFactura(Factura factura)
+        {
+            bool valido = false;
+            try
+            {               
+                SqlParameter[] arparms = new SqlParameter[1];
+
+                arparms[0] = new SqlParameter("@NumeroFactura", SqlDbType.Int);
+                arparms[0].Value = factura.Numero;
+
+                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "UpdateFactura", arparms);
+
+                valido = true;                   
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            if (valido)
+                return factura;
+            else
+                return new Factura();
+        }
+
+
+
         #endregion
 
     }
