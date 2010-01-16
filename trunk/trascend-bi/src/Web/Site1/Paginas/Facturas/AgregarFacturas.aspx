@@ -283,6 +283,8 @@
                                         Estado(cobrado o por cobrar): </td>
                                     <td>
                                         <asp:DropDownList ID="uxEstado" runat="server">
+                                            <asp:ListItem>Cobrada</asp:ListItem>
+                                            <asp:ListItem>Por Cobrar</asp:ListItem>
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -346,6 +348,10 @@
                                 </tr>
                             </table>
                             </form>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             <p>
                             </p>
                             <p>

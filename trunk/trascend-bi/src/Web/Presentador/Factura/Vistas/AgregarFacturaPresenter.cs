@@ -31,6 +31,7 @@ namespace Presentador.Factura.Vistas
              CambiarVista(1);
              float MontosCancelados = 0;
              float MontoRestante = 0;
+             float PorcCancelado = 0;
              
              Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
@@ -63,12 +64,22 @@ namespace Presentador.Factura.Vistas
                          _vista.MontoCancelado.Text += FacturaAux.Fechaingreso + " " + FacturaAux.Titulo + " " + CalcularPorcentaje(FacturaAux, _propuesta) + "\n";
                      }
 
-                     //_vista.PorcentajeCancelado = 
 
+                     PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
+                     _vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
+
+
+                   
                      MontoRestante = _propuesta.MontoTotal - MontosCancelados;
                      _vista.MontoFaltante.Text = MontoRestante.ToString();
-                     // _vista.PorcentajeFaltante.Text = 
 
+                     _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
+
+
+                     //_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
+                     _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yy");
+
+                 
                  }
              }
 
@@ -180,8 +191,8 @@ namespace Presentador.Factura.Vistas
             _vista.MontoCancelado.Enabled = false;
             _vista.TotalCancelado.Enabled = false;
             _vista.PorcentajeCancelado.Enabled = false;
-            _vista.MontoFaltante.Visible = true;
-            _vista.PorcentajeFaltante.Visible = false;
+            _vista.MontoFaltante.Enabled = true;
+            _vista.PorcentajeFaltante.Enabled = false;
             _vista.FechaIngreso.Enabled = false;
             _vista.CodigoFactura.Enabled = false;
             _vista.MontoPagar.Enabled = false;
