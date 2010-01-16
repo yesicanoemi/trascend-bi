@@ -9,11 +9,12 @@ namespace Presentador.Gasto.Contrato
     public interface IIngresarGasto
     {
         #region Datos del Gasto
-        TextBox CodigoGasto { get; set; }
-        TextBox EstadoGasto { get; set; }
-        TextBox MontoGasto { get; set; }
+        TextBox DescripcionGasto { get; set; }
         TextBox FechaGasto { get; set; }
-        TextBox FechaIngresoGasto { get; set; }
+        TextBox MontoGasto { get; set; }
+        TextBox EstadoGasto { get; set; }
+        TextBox TipoGasto { get; set; }
+        DropDownList PropuestaAsociada { get; set; }
         #endregion
     }
 }

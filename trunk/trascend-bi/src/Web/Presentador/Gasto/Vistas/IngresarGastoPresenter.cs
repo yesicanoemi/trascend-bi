@@ -7,27 +7,34 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
+using Presentador.Gasto.Contrato;
 namespace Presentador.Gasto.Vistas
 {
     public class IngresarGastoPresenter
     {
-        #region Constructor
+        private IIngresarGasto _vista;
 
+        #region Constructor
+        public IngresarGastoPresenter(IIngresarGasto vista)
+        {
+            _vista = vista;
+        }
         #endregion
 
         #region Evento
 
         public void ingresarGasto()
         {
-            Core.LogicaNegocio.Entidades.Gasto gasto= new Core.LogicaNegocio.Entidades.Gasto();
+            Core.LogicaNegocio.Entidades.Gasto gasto = new Core.LogicaNegocio.Entidades.Gasto();
 
-            gasto.Codigo = 3;
-            gasto.Descripcion = "describiendo";
-            gasto.Estado = "Gastado";
-            gasto.FechaGasto = DateTime.Now;
+            gasto.Descripcion = _vista.DescripcionGasto.Text;
+            gasto.Estado = _vista.EstadoGasto.Text;
+            gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
             gasto.FechaIngreso = DateTime.Now;
-            gasto.Monto = 12;
-            gasto.Tipo = "almuerzo";
+            gasto.Monto = float.Parse(_vista.MontoGasto.Text);
+            gasto.Tipo = _vista.TipoGasto.Text;
+            if (_vista.PropuestaAsociada.Enabled)
+                gasto.IdPropuesta = Int32.Parse(_vista.PropuestaAsociada.SelectedItem.Text);
 
             Ingresar(gasto);
 
@@ -43,9 +50,6 @@ namespace Presentador.Gasto.Vistas
             //fábrica que instancia el comando Ingresar.
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoIngresar(gasto);
 
-            //try
-            //{    
-            //ejecuta el comando.
             ingresar.Ejecutar();
         }
         #endregion

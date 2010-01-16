@@ -47,16 +47,10 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                 <form id="uxFormGasto" runat="server">
                            <table style="width:100%;">
                                <tr>
-                                   <td>Nombre de Gasto: </td>
-                                   <td>
-                                       <asp:TextBox ID="uxNombreGasto" runat="server"></asp:TextBox> 
-                                   </td>
+                                   <td>Tipo: </td>
+                                   <td><asp:TextBox ID="uxTipoGasto" runat="server"></asp:TextBox></td>
                                </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxNombreGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreGasto%>" Font-Size="Smaller" Display="static" /></td>
-                               </tr>
+                               
                                 <tr>
                                    <td>Descripcion: </td>
                                    <td><asp:TextBox ID="uxDescripcionGasto" runat="server"></asp:TextBox></td>
@@ -92,10 +86,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                </tr>
                                 <tr>
                                    <td>Estado del gasto: </td>
-                                   <td>
-                                       <asp:DropDownList ID="uxEstadoGasto" runat="server">
-                                       </asp:DropDownList>
-                                   </td>
+                                   <td><asp:TextBox ID="uxEstadoGasto" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>

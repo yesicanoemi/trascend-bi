@@ -12,6 +12,7 @@
         private DateTime fechaIngreso;
         private string tipo;
         private string descripcion;
+        private int idPropuesta;
 
         public virtual int Codigo
         {
@@ -23,6 +24,19 @@
             set
             {
                 codigo = value;
+            }
+        }
+
+        public virtual int IdPropuesta
+        {
+            get
+            {
+                return idPropuesta;
+            }
+
+            set
+            {
+                idPropuesta = value;
             }
         }
 

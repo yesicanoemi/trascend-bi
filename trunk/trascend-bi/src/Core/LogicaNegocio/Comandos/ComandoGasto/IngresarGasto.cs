@@ -30,7 +30,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         {
             Gasto _gasto = null;
             GastoSQLServer bd = new GastoSQLServer();
-            _gasto = bd.IngresarGasto(gasto);
+
+            if (gasto.IdPropuesta > 0)
+                _gasto = bd.IngresarGastoPropuesta(gasto);
+            else
+                _gasto = bd.IngresarGasto(gasto);
         }
         #endregion
     }
