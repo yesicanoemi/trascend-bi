@@ -170,8 +170,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Pruebas\PruebasFactura.cs" />
-    <Compile Include="Pruebas\PruebasReportePropuestasPorAno.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestasIntervalo.cs" />
+    <Compile Include="Pruebas\PruebasReportePropuestasPorAno.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
