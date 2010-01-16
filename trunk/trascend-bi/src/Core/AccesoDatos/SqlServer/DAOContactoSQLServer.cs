@@ -49,18 +49,20 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[5];
+                SqlParameter[] arParms = new SqlParameter[6];
                 // Parametros 
-                arParms[0] = new SqlParameter("@CIContacto", SqlDbType.Int);
-                arParms[0].Value = contacto.Cedula;
-                arParms[1] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-                arParms[1].Value = contacto.Nombre;
-                arParms[2] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-                arParms[2].Value = contacto.Apellido;
-                arParms[3] = new SqlParameter("@AreaNegocio", SqlDbType.VarChar);
-                arParms[3].Value = contacto.AreaDeNegocio;
-                arParms[4] = new SqlParameter("@Cargo", SqlDbType.VarChar);
-                arParms[4].Value = contacto.Cargo;
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0].Value = contacto.Nombre;
+                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+                arParms[1].Value = contacto.Apellido;
+                arParms[2] = new SqlParameter("@AreaNegocio", SqlDbType.VarChar);
+                arParms[2].Value = contacto.AreaDeNegocio;
+                arParms[3] = new SqlParameter("@Cargo", SqlDbType.VarChar);
+                arParms[3].Value = contacto.Cargo;
+                arParms[4] = new SqlParameter("@TelefonoTrabajo", SqlDbType.Int);
+                arParms[4].Value = contacto.TelefonoDeTrabajo;
+                arParms[5] = new SqlParameter("@TelefonoCelular", SqlDbType.Int);
+                arParms[5].Value = contacto.TelefonoDeCelular;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarContacto", arParms);
             }
@@ -98,18 +100,14 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[5];
+                SqlParameter[] arParms = new SqlParameter[2];
                 // Parametros 
-                arParms[0] = new SqlParameter("@CIContacto", SqlDbType.Int);
-                arParms[0].Value = contacto.Cedula;
-                arParms[1] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-                arParms[1].Value = contacto.Nombre;
-                arParms[2] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-                arParms[2].Value = contacto.Apellido;
-                arParms[3] = new SqlParameter("@AreaNegocio", SqlDbType.VarChar);
-                arParms[3].Value = contacto.AreaDeNegocio;
-                arParms[4] = new SqlParameter("@Cargo", SqlDbType.VarChar);
-                arParms[4].Value = contacto.Cargo;
+        
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0].Value = contacto.Nombre;
+                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+                arParms[1].Value = contacto.Apellido;
+
 
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
