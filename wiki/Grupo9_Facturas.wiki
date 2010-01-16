@@ -16,6 +16,9 @@ Casos de uso para la Gestión de Facturas y 2 reportes correspondientes a propue
     * Consultar Factura - Interfaz Gráfico y la implementación MVP (CU-904) - Luis Figueras
     * Consultar Factura - Implementación de los comandos (CU-905) - Alexis Romero
     * Consultar Factura - Capa de BD (CU-906) - Luis Figueras
+    * Modificar Factura - Interfaz Gráfico y la implementación MVP (CU-913) - Luis Figueras
+    * Modificar Factura - Implementación de los comandos (CU-914) - Alexis Romero
+    * Modificar Factura - Capa de BD (CU-915) - Luis Figueras
     
     * Propuestas emitidas por rango de fechas - Implementacion de comandos (CU-907) - Alexis Romero
     * Propuestas emitidas por rango de fechas - Interfaz Gráfico e Implementacion de MVP (CU-908) - Alexis Romero y Jesus Viloria
