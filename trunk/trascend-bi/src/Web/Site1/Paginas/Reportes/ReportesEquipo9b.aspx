@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
   
+            
+            <form id="Form2" runat=server>
+  
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -33,7 +36,6 @@
            <p>&nbsp;</p>
            
             
-            <form id="Form2" runat=server>
              <table style="width: 100%">
                 <tr>
                     <td>
@@ -53,7 +55,8 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" 
+                            onclick="Button1_Click" />
                     </td>
                 </tr>
                    <tr>
@@ -64,7 +67,6 @@
                     </td>
                 </tr>
             </table>
-           </form>
            
             
          </div> 
@@ -74,6 +76,12 @@
         <br />
         <br />
         <br />
+        <asp:GridView ID="GridView1" runat="server">
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="Id" />
+                <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+            </Columns>
+        </asp:GridView>
         <br />
         <br />
         <br />
@@ -99,4 +107,7 @@
               </div>  
 			</div> 
 		</div> 
-</asp:Content>
+           </form>
+           
+            
+         </asp:Content>

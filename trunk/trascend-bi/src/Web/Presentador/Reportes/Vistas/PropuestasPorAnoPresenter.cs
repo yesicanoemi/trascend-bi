@@ -3,15 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Comandos.ComandoPropuesta;
+using Presentador.Reportes.Contrato;
+using Core.LogicaNegocio.Entidades;
 
 namespace Presentador.Reportes.Vistas
 {
-    class PropuestasPorAnoPresenter
+    public class PropuestasPorAnoPresenter
     {
+        IPropuestaPorAnoPresenter _vista;
+
+        public PropuestasPorAnoPresenter(IPropuestaPorAnoPresenter vista)
+        {
+            _vista = vista;
+        }
+
+        public void CargarGrid()
+        {
+            IList<Object[]> lista = GetPropuestasPorAno();
+
+            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasPorAno = (IList<Core.LogicaNegocio.Entidades.Propuesta>)lista[0][1];
+
+            _vista.Grid.DataSource = ListaPropuestasPorAno;
+
+            _vista.Grid.DataBind();
+        }
         private IList<Object[]> GetPropuestasPorAno()
         {
             Object[] propuestasPorAno = new Object[2];
-            IList<Object> ListaPropuestasPorAno = new List<Object>();
+            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasPorAno = new List<Core.LogicaNegocio.Entidades.Propuesta>();
             IList<Object[]> ListaCompletaPropuestas = new List<Object[]>();
             Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarPropuestasxEmision comandoConsulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultarPropuestasxEmision();
@@ -27,7 +46,7 @@ namespace Presentador.Reportes.Vistas
                 else
                 {
                     ano = propuesta.FechaInicio.Year;
-                    ListaPropuestasPorAno = new List<Object>();
+                    ListaPropuestasPorAno = new List<Core.LogicaNegocio.Entidades.Propuesta>();
                     ListaPropuestasPorAno.Add(propuesta);
                     propuestasPorAno = new Object[2];
                     propuestasPorAno[0] = ano;

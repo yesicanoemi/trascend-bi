@@ -116,6 +116,7 @@
     <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
+    <Compile Include="Reportes\Contrato\IPropuestaPorAnoPresenter.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasEmitidas.cs" />
     <Compile Include="Reportes\Vistas\PropuestasIntervaloPresenter.cs" />
     <Compile Include="Reportes\Vistas\PropuestasPorAnoPresenter.cs" />
