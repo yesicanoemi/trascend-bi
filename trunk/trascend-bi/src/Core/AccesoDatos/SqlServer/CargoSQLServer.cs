@@ -145,22 +145,6 @@ namespace Core.AccesoDatos.SqlServer
         
         }
 
-        public DataSet ConsultarCargosDS()
-        {
-            try
-            {
-                SqlDataAdapter da = new SqlDataAdapter("ConsultarCargos", GetConnection());
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-
-                return ds;
-            }
-            catch (SqlException e)
-            {
-                return null;
-            }
-
-        }
 
         public Boolean EliminarCargo(int IdCargo)
         {
