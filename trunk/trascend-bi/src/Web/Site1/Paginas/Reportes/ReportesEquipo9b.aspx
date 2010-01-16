@@ -77,10 +77,6 @@
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server">
-            <Columns>
-                <asp:BoundField HeaderText="ID" DataField="Id" />
-                <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
-            </Columns>
         </asp:GridView>
         <br />
         <br />

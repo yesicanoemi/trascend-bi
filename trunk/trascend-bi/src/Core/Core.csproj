@@ -119,6 +119,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxIDPro.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxNomPro.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Ingresar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />

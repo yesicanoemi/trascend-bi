@@ -19,13 +19,27 @@ namespace Presentador.Reportes.Vistas
 
         public void CargarGrid()
         {
-            IList<Object[]> lista = GetPropuestasPorAno();
-
-            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasPorAno = (IList<Core.LogicaNegocio.Entidades.Propuesta>)lista[0][1];
-
-            _vista.Grid.DataSource = ListaPropuestasPorAno;
+            _vista.Grid.DataSource = null;
 
             _vista.Grid.DataBind();
+
+            IList<Object[]> lista = GetPropuestasPorAno();
+
+            int i = 0;
+
+            foreach (Object[] recorrido in lista)
+            {
+                if ((int)recorrido[i] == int.Parse(_vista.List.SelectedItem.ToString()))
+                {
+                    IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasPorAno = (IList<Core.LogicaNegocio.Entidades.Propuesta>)lista[i][1];
+
+                    _vista.Grid.DataSource = ListaPropuestasPorAno;
+
+                    _vista.Grid.DataBind();
+                }
+                
+                i++;
+            }
         }
         private IList<Object[]> GetPropuestasPorAno()
         {
