@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.LogicaNegocio.Comandos.ComandoPropuesta;
 
 namespace Presentador.Reportes.Vistas
 {
@@ -12,7 +13,9 @@ namespace Presentador.Reportes.Vistas
             Object[] propuestasPorAno = new Object[2];
             IList<Object> ListaPropuestasPorAno = new List<Object>();
             IList<Object[]> ListaCompletaPropuestas = new List<Object[]>();
-            IList<Core.LogicaNegocio.Entidades.Propuesta> propuestas = new List<Core.LogicaNegocio.Entidades.Propuesta>();
+            Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarPropuestasxEmision comandoConsulta =
+                Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultarPropuestasxEmision();
+            IList<Core.LogicaNegocio.Entidades.Propuesta> propuestas = comandoConsulta.Ejecutar();
 
             int ano = 0;
             foreach (Core.LogicaNegocio.Entidades.Propuesta propuesta in propuestas)
