@@ -26,8 +26,7 @@ namespace Presentador.Cargo.Vistas
             cargo.Descripcion = _vista.DescripcionCargo.Text;
             cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
             cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
-            //cargo.Vigencia = _vista.VigenciaSueldo.Date;
-            
+            cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
 
             Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
 

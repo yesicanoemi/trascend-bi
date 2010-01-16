@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Presentador.Cargo.Vistas;
+using Presentador.Cargo.Contrato;
 
-public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page
+public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page , IAgregarCargo
 {
+    private ConsultarCargoPresenter _presenter;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        _presenter = new ConsultarCargoPresenter(this);
     }
 
     public TextBox NombreCargo
@@ -44,6 +48,10 @@ public partial class Paginas_Cargos_ConsultarCargos : System.Web.UI.Page
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
-        
+        _presenter.ConsultarCargo();
+    }
+    protected void uxBotonEliminar_Click(object sender, EventArgs e)
+    {
+        _presenter.EliminarCargo();
     }
 }

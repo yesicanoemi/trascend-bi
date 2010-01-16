@@ -45,10 +45,10 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         set { uxVigenciaSueldo = value; }
     }
 
-   
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
+        Console.WriteLine("lololololololololololololololol");
         _presentador.IngresarCargo();
     }
      

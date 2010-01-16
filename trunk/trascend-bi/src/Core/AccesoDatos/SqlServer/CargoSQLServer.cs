@@ -63,7 +63,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[3] = new SqlParameter("@SueldoMaximo", SqlDbType.Float);
                 arParms[3].Value = cargo.SueldoMaximo;
                 arParms[4] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
-                arParms[4].Value = cargo.Vigencia;
+                arParms[4].Value = cargo.Vigencia.ToString();
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarCargo", arParms);
             }
             catch (SqlException e)
@@ -87,7 +87,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0] = new SqlParameter("@NombreCargo", SqlDbType.VarChar);
                 arParms[0].Value = cargo.Nombre;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
@@ -95,11 +95,12 @@ namespace Core.AccesoDatos.SqlServer
 
                 if (reader.Read())
                 {
-                    _cargo.Nombre = (string)reader["Nombre"];
-                    _cargo.Descripcion = (string)reader["Descripcion"];
-                    _cargo.SueldoMinimo = (float)reader["SueldoMinimo"];
-                    _cargo.SueldoMaximo = (float)reader["SueldoMaximo"];
-                    _cargo.Vigencia = (DateTime)reader["VigenciaAnual"];
+                    _cargo.Id = int.Parse(reader["IdCargo"].ToString());
+                    _cargo.Nombre = reader["Nombre"].ToString();
+                    _cargo.Descripcion = reader["Descripcion"].ToString();
+                    _cargo.SueldoMinimo = float.Parse(reader["SueldoMinimo"].ToString());
+                    _cargo.SueldoMaximo = float.Parse(reader["SueldoMaximo"].ToString());
+                    _cargo.Vigencia = DateTime.Parse(reader["VigenciaAnual"].ToString());
                 }
 
                 return _cargo;
@@ -150,8 +151,8 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[1];
                 //Parametros
-                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-                arParms[0].Value = cargo.Nombre;
+                arParms[0] = new SqlParameter("@IdCargo", SqlDbType.VarChar);
+                arParms[0].Value = cargo.Id;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarCargo", arParms);
             }

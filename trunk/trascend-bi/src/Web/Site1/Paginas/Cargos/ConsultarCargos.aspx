@@ -69,7 +69,14 @@
                                </tr>
                                <tr>
                                    <td>Vigencia de Sueldo:</td>
-                                   <td><asp:TextBox ID="uxVigenciaSueldo" runat="server"></asp:TextBox></td>
+                                   <td>
+                                            <asp:TextBox ID="uxVigenciaSueldo" runat="server" TabIndex="63"></asp:TextBox>
+                                            <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
+                                            
+                                   </td>
+                                        <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxceFechaNac"
+                                                Format="dd/MM/yyyy" TargetControlID="uxVigenciaSueldo" PopupButtonID="uxImgFechaNac" >
+                                            </AjaxControlToolkit:CalendarExtender></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -83,7 +90,8 @@
                                    <td>&nbsp;</td>
                                    <td>
                                        <asp:Button ID="uxBotonGuardar" runat="server" Text="Guardar" />
-                                       <asp:Button ID="uxBotonEliminar" runat="server" Text="Eliminar" />
+                                       <asp:Button ID="uxBotonEliminar" runat="server" Text="Eliminar" 
+                                           onclick="uxBotonEliminar_Click" />
                                     </td>
                                 </tr>
                              </table>
