@@ -31,12 +31,21 @@ namespace Presentador.Cargo.Vistas
         private void LlenarDDLCargos()
         {
             Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
-            DataSet cargos = bd.ConsultarCargosDS();
+            IList<Entidad> ListaEntidadesCargos = bd.ConsultarCargos();
 
-            _vista.NombreCargo.DataSource = cargos.Tables[0];
-            _vista.NombreCargo.DataTextField = cargos.Tables[0].Columns["Nombre"].ColumnName.ToString();
-            _vista.NombreCargo.DataValueField = cargos.Tables[0].Columns["IdCargo"].ColumnName.ToString();
-            _vista.NombreCargo.DataBind();
+            List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
+
+            for (int i = 0; i < ListaEntidadesCargos.Count; i++ )
+            {
+                ListaCargos.Add((Core.LogicaNegocio.Entidades.Cargo)ListaEntidadesCargos.ElementAt(i));
+            }
+
+                _vista.NombreCargo.DataSource = ListaCargos;
+                _vista.NombreCargo.DataTextField = "Nombre";
+                _vista.NombreCargo.DataValueField = "Id";
+                _vista.NombreCargo.DataBind();
+
+                
         }
 
         public void ConsultarCargo()
