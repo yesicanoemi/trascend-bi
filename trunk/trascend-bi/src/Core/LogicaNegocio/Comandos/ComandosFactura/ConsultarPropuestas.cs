@@ -24,7 +24,6 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             IList<Propuesta> _propuestas = null;
             FacturaSQLServer bdpropuestas = new FacturaSQLServer();
             _propuestas = bdpropuestas.ConsultarPropuesta();
-
             return _propuestas;
         }
 
