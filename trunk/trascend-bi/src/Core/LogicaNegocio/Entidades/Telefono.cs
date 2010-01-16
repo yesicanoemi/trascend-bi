@@ -9,8 +9,8 @@
 
 
         private int numero;
-        private string rifCliente;
-        private string rifContacto;
+       // private string rifCliente;
+        //private string rifContacto;
 
 
 
