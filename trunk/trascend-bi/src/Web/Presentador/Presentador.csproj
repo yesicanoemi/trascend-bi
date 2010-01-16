@@ -116,8 +116,8 @@
     <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
+    <Compile Include="Reportes\Contrato\IPropuestaIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaPorAnoPresenter.cs" />
-    <Compile Include="Reportes\Contrato\IPropuestasIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasEmitidas.cs" />
     <Compile Include="Reportes\Contrato\IReporteGastoFecha.cs" />
     <Compile Include="Reportes\Contrato\IReporteHorasRol.cs" />

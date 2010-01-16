@@ -10,7 +10,7 @@ namespace Presentador.Reportes.Vistas
 {
     public class PropuestasPorAnoPresenter
     {
-        IPropuestaPorAnoPresenter _vista;
+        private IPropuestaPorAnoPresenter _vista;
 
         public PropuestasPorAnoPresenter(IPropuestaPorAnoPresenter vista)
         {

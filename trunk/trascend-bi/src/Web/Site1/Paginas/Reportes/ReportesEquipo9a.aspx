@@ -62,9 +62,13 @@
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
-                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" /></td>
+                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" 
+                        onclick="Button3_Click" /></td>
              </tr>
               
+              
+              <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
         </table>
            
             
