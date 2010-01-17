@@ -7,11 +7,13 @@ using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Usuario.Contrato
 {
-    public interface IModificarUsuario
+    public interface IAgregarUsuarioPresenter
     {
         #region Informacion Basica
 
         TextBox NombreUsuario { get; set; }
+
+        TextBox Password { get; set; }
 
         MultiView MultiViewModificar { get; set; }
 
@@ -36,7 +38,5 @@ namespace Presentador.Usuario.Contrato
         CheckBoxList CBLEliminar { get; set; }
 
         #endregion
-
-
     }
 }

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
+using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Usuario.Contrato;
 using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Fabricas;
-using Core.LogicaNegocio.Comandos.ComandoUsuario;
-using System.Net;
-using System.Collections;
 
 
 namespace Presentador.Usuario.Vistas
@@ -199,6 +198,7 @@ namespace Presentador.Usuario.Vistas
             usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
             usuario.Login = _vista.NombreUsu.Text;
             ModificarUsuario(usuario);
+            
             
         }
         #endregion
