@@ -13,7 +13,7 @@ namespace Core.Pruebas
         [Test]
         public void PruebaConsultaConsigue()
         {
-            DateTime inicio = DateTime.Parse("1/4/2009");
+            DateTime inicio = DateTime.Parse("1/4/2005");
             DateTime fin = DateTime.Parse("1/5/2009");
 
             Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
@@ -61,8 +61,8 @@ namespace Core.Pruebas
         [Test]
         public void PruebaConsultaMala2()
         {
-            DateTime inicio = DateTime.Parse("1/4/2009");
-            DateTime fin = DateTime.Parse("1/4/2009");
+            DateTime inicio = DateTime.Parse("1/4/2003");
+            DateTime fin = DateTime.Parse("1/4/2004");
 
             Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
