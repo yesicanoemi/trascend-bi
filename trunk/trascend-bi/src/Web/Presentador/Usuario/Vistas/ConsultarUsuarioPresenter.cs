@@ -124,6 +124,58 @@ namespace Presentador.Usuario.Vistas
         }
 
         /// <summary>
+        /// Acción del Botón Buscar (Por Status de usuario)
+        /// </summary>
+
+        public void OnBotonBuscarStatus()
+        {
+            Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
+
+            user.Status = _vista.StatusDdL.Text;
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuarioStatus();
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> listadoActivo =
+                                                new List<Core.LogicaNegocio.Entidades.Usuario>();
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> listadoInactivo =
+                                               new List<Core.LogicaNegocio.Entidades.Usuario>();
+            try
+            {
+                if ((listado != null) && (user.Status == "Activo"))
+                {
+                    for (int i = 0; i < listado.Count; i++)
+                    {
+                        if (listado[i].Status == "Activo")
+                        {
+                            listadoActivo.Add(listado[i]);
+                        }
+                    }
+
+                    _vista.GetObjectContainerConsultaUsuario.DataSource = listadoActivo;
+                }
+
+                if ((listado != null) && (user.Status == "Inactivo"))
+                {
+                    for (int i = 0; i < listado.Count; i++)
+                    {
+                        if (listado[i].Status == "Inactivo")
+                        {
+                            listadoInactivo.Add(listado[i]);
+                        }
+                    }
+
+                    _vista.GetObjectContainerConsultaUsuario.DataSource = listadoInactivo;
+                }
+            }
+
+            catch (WebException e)
+            {
+                //Mensaje de error al usuario
+            }
+        }
+
+        /// <summary>
         /// Método que redirecciona al usuario a otra página (de consulta)
         /// </summary>
 
@@ -203,6 +255,25 @@ namespace Presentador.Usuario.Vistas
             permiso1 = comando.Ejecutar();
 
             return permiso1;
+        }
+
+        /// <summary>
+        /// Método para el comando ConsultarUsuarioStatus
+        /// </summary>
+        /// <param name="entidad">Entidad Usuario a consultar</param>
+        /// <returns>Lista de usuarios del sistema</returns>
+        
+        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuarioStatus()
+        {
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario = null;
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuarioStatus comando;
+
+            comando = FabricaComandosUsuario.CrearComandoConsultarUsuarioStatus();
+
+            usuario = comando.Ejecutar();
+
+            return usuario;
         }
 
         #endregion

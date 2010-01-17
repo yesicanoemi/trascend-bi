@@ -14,6 +14,8 @@ namespace Presentador.Usuario.Contrato
 
         TextBox NombreUsuario { get; set; }
 
+        DropDownList StatusDdL { get; set; }
+
         MultiView MultiViewConsultar { get; set; }
 
         GridView GridViewConsultaUsuario { get; set; }

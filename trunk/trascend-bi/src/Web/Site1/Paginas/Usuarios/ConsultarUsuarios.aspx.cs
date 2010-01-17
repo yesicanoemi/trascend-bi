@@ -27,6 +27,12 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
         set { uxLogin = value; }
     }
 
+    public DropDownList StatusDdL
+    {
+        get { return uxStatusDdL; }
+        set { uxStatusDdL = value; }
+    }
+
     public MultiView MultiViewConsultar
     {
         get { return uxMultiViewConsultar; }
@@ -122,6 +128,11 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
     {
         _presentador.OnBotonBuscar();
     }
+
+    protected void uxBotonBuscarStatus_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonBuscarStatus();
+    }
     
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
@@ -135,4 +146,5 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
     }
 
     #endregion
+
 }

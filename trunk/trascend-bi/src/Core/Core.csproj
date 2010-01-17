@@ -129,6 +129,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarPermisos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuarioStatus.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ListaUsuarios.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ModificarUsuario.cs" />
@@ -179,9 +180,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestasIntervalo.cs" />
+    <Compile Include="Pruebas\PruebasUsuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

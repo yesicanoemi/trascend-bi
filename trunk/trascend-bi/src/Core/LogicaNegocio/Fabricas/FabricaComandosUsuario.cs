@@ -23,7 +23,7 @@ namespace Core.LogicaNegocio.Fabricas
 	    }
 
         /// <summary>
-        /// Metodo que fabrica el comando "Consultar" de la entidad Usuario
+        /// Metodo que fabrica el comando "ConsultarUsuario" de la entidad Usuario
         /// </summary>
         /// <param name="empleado">Entidad Usuario con los datos</param>
         /// <returns>Comando Consultar de la entidad usuario</returns>
@@ -31,6 +31,17 @@ namespace Core.LogicaNegocio.Fabricas
         public static ConsultarUsuario CrearComandoConsultarUsuario(Usuario entidad)
         {
             return new ConsultarUsuario(entidad);
+        }
+
+        /// <summary>
+        /// Metodo que fabrica el comando "ConsultarUsuarioStatus" de la entidad Usuario
+        /// </summary>
+        /// <param name="empleado">Entidad Usuario con los datos</param>
+        /// <returns>Comando Consultar de la entidad usuario</returns>
+
+        public static ConsultarUsuarioStatus CrearComandoConsultarUsuarioStatus()
+        {
+            return new ConsultarUsuarioStatus();
         }
 
         public static VerificarUsuario CrearComandoVerificarUsuario(Usuario entidad)
