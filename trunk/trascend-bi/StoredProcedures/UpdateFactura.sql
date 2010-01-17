@@ -4,5 +4,5 @@ AS
 BEGIN
 UPDATE Factura
 SET Estado = 'Cobrada', Fecha = GETDATE() 
-WHERE NumeroFactura = @NumeroFactura
+WHERE IdFactura = @NumeroFactura
 END
