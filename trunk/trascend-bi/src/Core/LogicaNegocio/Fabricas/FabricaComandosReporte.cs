@@ -50,6 +50,11 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultaHora(rol);
         }
 
+        public static ConsultarFacturasPorEstado CrearComandoConsultarFacturasPorEstado(DateTime FechaInicio, DateTime FechaFin, bool tipo)
+        {
+            return new ConsultarFacturasPorEstado(FechaInicio,FechaFin,tipo);
+        }
+
         #endregion
 
     }
