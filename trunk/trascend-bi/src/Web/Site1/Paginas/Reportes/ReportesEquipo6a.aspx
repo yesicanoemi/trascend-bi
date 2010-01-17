@@ -83,7 +83,9 @@
         <br />
         <br />
         <asp:GridView ID="uxGridView" runat="server" 
-            onselectedindexchanged="GridView1_SelectedIndexChanged" Width="449px" AutoGenerateColumns=false>
+            onselectedindexchanged="GridView1_SelectedIndexChanged" 
+            AutoGenerateColumns="false" onrowdatabound="uxGridView_RowDataBound">
+            <RowStyle HorizontalAlign="Center" />
             <Columns>
                 <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
                 <asp:BoundField HeaderText="Porcentaje pagado" DataField="Procentajepagado" />

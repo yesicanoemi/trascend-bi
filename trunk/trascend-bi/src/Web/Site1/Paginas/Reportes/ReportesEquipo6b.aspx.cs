@@ -66,4 +66,9 @@ public partial class Paginas_Reportes_ReportesEquipo6b : System.Web.UI.Page, IRe
         return _presenter.FormatearFechaParaMostrar(fecha);
     }
 
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
 }
