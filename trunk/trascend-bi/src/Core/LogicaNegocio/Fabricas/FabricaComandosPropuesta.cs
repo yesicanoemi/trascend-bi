@@ -43,5 +43,10 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarEnEspera(arreglo);
         }
 
+        public static Eliminar CrearComandoEliminar(IList<string> lista)
+        {
+            return new Eliminar(lista);
+        }
+
     }
 }
