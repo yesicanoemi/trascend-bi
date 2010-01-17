@@ -89,7 +89,7 @@
                 <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
                 <asp:BoundField HeaderText="Porcentaje pagado" DataField="Procentajepagado" />
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso"  />
+                <asp:TemplateField HeaderText="Fecha Factura"><ItemTemplate><%# FormatearFecha((DateTime)Eval("FechaIngreso")) %></ItemTemplate></asp:TemplateField>
                 <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
                     <ItemTemplate>
                     <asp:Label ID="lblTotal42" runat="server" 

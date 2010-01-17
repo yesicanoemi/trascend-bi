@@ -61,4 +61,9 @@ public partial class Paginas_Reportes_ReportesEquipo6 : System.Web.UI.Page, IRep
     {
 
     }
+
+    protected string FormatearFecha(DateTime fecha)
+    {
+        return _presenter.FormatearFechaParaMostrar(fecha);
+    }
 }

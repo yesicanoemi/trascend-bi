@@ -88,9 +88,20 @@
                 <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
                 <asp:BoundField HeaderText="Porcentaje pagado" DataField="Procentajepagado" />
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" />
-                <asp:BoundField HeaderText="Monto" />
-                
+                <asp:TemplateField HeaderText="Fecha Ingreso"><ItemTemplate><%# FormatearFecha((DateTime)Eval("FechaIngreso")) %></ItemTemplate></asp:TemplateField>
+                <asp:TemplateField HeaderText="Fecha Cobro"><ItemTemplate><%# FormatearFecha((DateTime)Eval("Fechapago")) %></ItemTemplate></asp:TemplateField>
+                <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
+                    <ItemTemplate>
+                    <asp:Label ID="lblTotal42" runat="server" 
+                    Text='<%# DataBinder.Eval(Container, "DataItem.Prop.titulo") %>'></asp:Label>
+                    </ItemTemplate>
+                    </asp:TemplateField> 
+                <asp:TemplateField HeaderText="Monto" AccessibleHeaderText="Monto">
+                    <ItemTemplate>
+                    <asp:Label ID="lblTotal42" runat="server" 
+                    Text='<%# DataBinder.Eval(Container, "DataItem.Prop.montoTotal") %>'></asp:Label>
+                    </ItemTemplate>
+                    </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <br />
