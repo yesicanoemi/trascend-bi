@@ -33,5 +33,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Consultar(cargo);
         }
+
+        public static ConsultarTabla CrearComandoConsultarTabla()
+        {
+            return new ConsultarTabla();
+        }
     }
 }
