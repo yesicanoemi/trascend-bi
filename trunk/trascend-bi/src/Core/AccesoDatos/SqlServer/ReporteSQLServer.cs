@@ -196,6 +196,142 @@ namespace Core.AccesoDatos.SqlServer
             return ListaRoles;
         }
 
+
+        #region ReporteFacturasEmitidasAnuales
+        /// <summary>
+        /// Metodo para el reporte de facturas emitidas en un año especifico
+        /// </summary>
+        /// <param name="entidad">Entidad Factura</param>
+        /// <returns>Objeto Factura</returns>
+        /// 
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasEmitidas()
+        {
+            IList<Core.LogicaNegocio.Entidades.Factura> factura =
+                                                new List<Core.LogicaNegocio.Entidades.Factura>();
+
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasEmitidasAnuales");
+          
+            int i = 0;
+
+            while (reader.Read())
+            {
+
+                Factura _factura = new Factura();
+
+                Propuesta _propuesta = new Propuesta();
+
+                _factura.Numero = (int)reader["NumeroFactura"];
+
+                _factura.Titulo = (string)reader["Titulo"];
+
+                _factura.Descripcion = (string)reader["Descripcion"];
+
+                _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                _factura.Estado = (string)reader["Estado"];
+
+                _factura.Fechapago = (DateTime)reader["FechaPago"];
+
+                //_propuesta.Titulo = (string)reader["Titulo"];
+
+                //_factura.Prop.Titulo = _propuesta.Titulo;
+
+                factura.Add(_factura);
+            }
+
+            return factura;
+        }
+        #endregion
+        #region ReporteFacturasCobradasAnuales
+        /// <summary>
+        /// Metodo para el reporte de facturas cobradas en un año especifico
+        /// </summary>
+        /// <param name="entidad">Entidad Factura</param>
+        /// <returns>Objeto Factura</returns>
+        /// 
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasCobradas()
+        {
+            IList<Core.LogicaNegocio.Entidades.Factura> factura =
+                                                new List<Core.LogicaNegocio.Entidades.Factura>();
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasCobradasAnuales");
+
+            int i = 0;
+
+            while (reader.Read())
+            {
+
+                Factura _factura = new Factura();
+
+                Propuesta _propuesta = new Propuesta();
+
+                _factura.Numero = (int)reader["NumeroFactura"];
+
+                _factura.Titulo = (string)reader["Titulo"];
+
+                _factura.Descripcion = (string)reader["Descripcion"];
+
+                _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                _factura.Estado = (string)reader["Estado"];
+
+                _factura.Fechapago = (DateTime)reader["FechaPago"];
+
+                //_propuesta.Titulo = (string)reader["Titulo"];
+
+                //_factura.Prop.Titulo = _propuesta.Titulo;
+
+                factura.Add(_factura);
+            }
+
+            return factura;
+        }
+        #endregion
+
+        #region ReporteFacturasPorCobrarAnuales
+        /// <summary>
+        /// Metodo para el reporte de facturas por cobrar en un año especifico
+        /// </summary>
+        /// <param name="entidad">Entidad Factura</param>
+        /// <returns>Objeto Factura</returns>
+        /// 
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasPorCobrar()
+        {
+            IList<Core.LogicaNegocio.Entidades.Factura> factura =
+                                                new List<Core.LogicaNegocio.Entidades.Factura>();
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasPorCobrarAnuales");
+
+            int i = 0;
+
+            while (reader.Read())
+            {
+
+                Factura _factura = new Factura();
+
+                Propuesta _propuesta = new Propuesta();
+
+                _factura.Numero = (int)reader["NumeroFactura"];
+
+                _factura.Titulo = (string)reader["Titulo"];
+
+                _factura.Descripcion = (string)reader["Descripcion"];
+
+                _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                _factura.Estado = (string)reader["Estado"];
+
+                _factura.Fechapago = (DateTime)reader["FechaPago"];
+
+                //_propuesta.Titulo = (string)reader["Titulo"];
+
+                //_factura.Prop.Titulo = _propuesta.Titulo;
+
+                factura.Add(_factura);
+            }
+
+            return factura;
+        }
+        #endregion
+
         #endregion
 
     }
