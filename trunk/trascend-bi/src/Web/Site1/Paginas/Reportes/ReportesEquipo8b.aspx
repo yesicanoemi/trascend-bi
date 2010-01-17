@@ -30,11 +30,12 @@
         <div class="features_overview_right"> 
             <h3>Reporte Equipo #8 (Total Facturas Cobradas)</h3> 
             <p>&nbsp;</p>
-            <form id="Form1" runat=server>
+            <form id="Form1" runat="server">
              <table style="width: 100%">
                 <tr>
                     <td>
-                          <asp:DropDownList ID="uxAnios" runat="server">
+                          <asp:DropDownList ID="uxAnios" runat="server" 
+                              onselectedindexchanged="uxAnios_SelectedIndexChanged">
                             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
                             <asp:ListItem Value="2010">2010</asp:ListItem>
                             <asp:ListItem Value="2009">2009</asp:ListItem>
@@ -50,7 +51,8 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                        <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" 
+                                           onclick="uxBotonBuscar_Click" />
                     </td>
                 </tr>
                    <tr>
@@ -61,7 +63,7 @@
                     </td>
                 </tr>
             </table>
-           </form>
+          
          </div> 
          <br />
         <br />
@@ -69,6 +71,9 @@
         <br />
         <br />
         <br />
+        <asp:GridView ID="uxFacturasCobradas" runat="server" 
+            onselectedindexchanged="uxFacturasCobradas_SelectedIndexChanged" DataSourceID="uxObjectReporte8b">
+        </asp:GridView>
         <br />
         <br />
         <br />
@@ -90,9 +95,12 @@
         <br />
         <br />
         <br />
+         </form>
     </div> 
 </div>  
 
 			</div> 
 		</div> 
+		<pp:objectcontainerdatasource runat="server" ID="uxObjectReporte8b" DataObjectTypeName="Core.LogicaNegocio.Entidades.Factura" /> 
+
 </asp:Content>

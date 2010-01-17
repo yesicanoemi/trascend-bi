@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo8a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo8" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo8a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo8a" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <form id="form1" runat="server">
@@ -37,7 +37,8 @@
             <table style="width: 100%">
                 <tr>
                     <td>
-                          <asp:DropDownList ID="uxAnios" runat="server">
+                          <asp:DropDownList ID="uxAnios" runat="server" 
+                              onselectedindexchanged="uxAnios_SelectedIndexChanged">
                             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
                             <asp:ListItem Value="2010">2010</asp:ListItem>
                             <asp:ListItem Value="2009">2009</asp:ListItem>
@@ -53,7 +54,8 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                        <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" 
+                                           onclick="uxBotonBuscar_Click" />
                     </td>
                 </tr>
                    <tr>
@@ -73,6 +75,9 @@
         <br />
         <br />
         <br />
+         <asp:GridView ID="uxFacturasEmitidas" runat="server" 
+            onselectedindexchanged="uxFacturasEmitidas_SelectedIndexChanged" DataSourceID="uxObjectReporte8a">
+        </asp:GridView>
         <br />
         <br />
         <br />
@@ -101,4 +106,6 @@
 			</div> 
 		</div> 
     </form>
+    <pp:objectcontainerdatasource runat="server" ID="uxObjectReporte8a" DataObjectTypeName="Core.LogicaNegocio.Entidades.Factura" /> 
+
 </asp:Content>
