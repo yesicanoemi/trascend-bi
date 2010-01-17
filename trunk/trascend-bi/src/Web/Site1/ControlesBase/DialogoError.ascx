@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DialogoError.ascx.cs" Inherits="ControlesBase_DialogoError" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
+ <link href="../Estilos/Otros.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     function OnAceptar() {
 

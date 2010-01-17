@@ -49,7 +49,7 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[6];
+                SqlParameter[] arParms = new SqlParameter[7];
                 // Parametros 
                 arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
                 arParms[0].Value = empleado.Cedula;
@@ -63,11 +63,13 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[4].Value = empleado.FechaNacimiento.ToShortDateString();
                 arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
                 arParms[5].Value = empleado.Estado;
+                arParms[6] = new SqlParameter("@sueldo", SqlDbType.VarChar);
+                arParms[6].Value = empleado.SueldoBase;
                 SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarEmpleado", arParms);
             }
             catch (SqlException e)
             {
-
+                throw new Exception(e.ToString());
             }
             return _empleado;
 

@@ -29,6 +29,11 @@
                             </p>
                             <form id="Form1" action="#" runat="server">
                             <p class="large">
+                            <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                                <ContentTemplate>
+                                    <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                                 <table style="width: 100%;">
                                     <tr>
                                         <td>
@@ -110,7 +115,7 @@
                                             Sueldo Base:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="uxSueldoBase" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="uxSueldoBase" runat="server"></asp:TextBox><br /><asp:Label ID="lbRangoSueldo" Visible="false" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -126,7 +131,7 @@
                                             Cargo:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="uxCargoEmpleado" runat="server">
+                                            <asp:DropDownList ID="uxCargoEmpleado" AutoPostBack="true" runat="server" OnSelectedIndexChanged="uxCargoEmpleado_SelectedIndexChanged">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -232,11 +237,7 @@
                                     </tr>
                                 </table>
                             </p>
-                            <asp:UpdatePanel ID="UpdatePanel" runat="server">
-                                <ContentTemplate>
-                                    <uc1:DialogoError ID="uxDialogoError" runat="server" />
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+                            
                             </form>
                         </div>
                     </div>

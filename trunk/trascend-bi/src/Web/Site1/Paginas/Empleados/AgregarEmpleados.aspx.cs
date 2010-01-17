@@ -34,6 +34,18 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IA
         set { uxNombreEmpleado = value; }
     }
 
+    public string RangoSueldo
+    {
+        get { return lbRangoSueldo.Text; }
+        set { lbRangoSueldo.Text = value; }
+    }
+
+    public bool RangoVisible
+    {
+        get { return lbRangoSueldo.Visible; }
+        set { lbRangoSueldo.Visible = value; }
+    }
+
     public TextBox ApellidoEmpleado
     {
         get { return uxApellidoEmpleado; }
@@ -106,5 +118,9 @@ public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IA
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.IngresarEmpleado();
+    }
+    protected void uxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.ConsultarSueldos(); 
     }
 }

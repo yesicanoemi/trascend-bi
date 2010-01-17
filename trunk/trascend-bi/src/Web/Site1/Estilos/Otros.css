@@ -12,3 +12,120 @@
     left: 0px !important;
     top: 0px !important;
 }
+.modalBackgroundError {
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+.modalPopupError {
+	background-color:White;
+	border-width:3px;
+	border-style:solid;
+	border-color: Red;
+	padding:12px;
+	width:400px;
+	height:100px;
+	color:#006699;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: normal;
+	vertical-align:bottom;	
+}
+.modalBackground {
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+.modalPopup {
+	background-color:White;
+	border-width:3px;
+	border-style:solid;
+	border-color: #006699;
+	padding:3px;
+	width:350px;
+	height:100px;
+	color:#006699;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	font-weight: normal;
+	vertical-align:bottom;	
+}
+.texto_error {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+	color: #ff0000;
+	text-align: left;
+	
+}
+
+.texto_error_bold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #ff0000;
+	text-align: left;
+	
+}
+
+.texto_error_bold2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #ff0000;
+	text-align: center;
+	
+}
+.botonModal {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	background-position: center center;
+	text-align: center;
+	color: #006699;
+	background-color: #FFFFFF;
+	border-top-style: outset;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: outset;
+	border-top-color: #CDE0EB;
+	border-right-color: #CDE0EB;
+	border-bottom-color: #FFFFFF;
+	border-left-color: #CDE0EB;
+	border-color: #CDE0EB;
+	height: 20px;
+	width: 65px;
+}
+
+
+.botonModalError {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	background-position: center center;
+	text-align: center;
+	color: Red;
+	background-color: #FFFFFF;
+	border-top-style: outset;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: outset;
+	border-top-color: #CDE0EB;
+	border-right-color: #CDE0EB;
+	border-bottom-color: #FFFFFF;
+	border-left-color: #CDE0EB;
+	border-color: #CDE0EB;
+	height: 20px;
+	width: 65px;
+}
+
+.MaskedEditError
+{
+    background-color: #ffcccc;
+}

@@ -28,21 +28,27 @@ namespace Presentador.Empleado.Vistas
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
             try
             {
-                
+
                 empleado.Nombre = _vista.NombreEmpleado.Text;
                 empleado.Apellido = _vista.ApellidoEmpleado.Text;
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
                 empleado.Cuenta = _vista.CuentaEmpleado.Text;
                 empleado.Estado = "Activo";
-                empleado.FechaIngreso = DateTime.Now;
-                empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.ToString());
+                empleado.FechaIngreso = DateTime.Parse(_vista.FechaIngresoEmpleado.Text);
+                empleado.FechaEgreso = DateTime.Parse(_vista.FechaEgresoEmpleado.Text);
+                empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.Text);
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
                 Ingresar(empleado);
                 LimpiarRegistros();
             }
             catch (WebException e)
             {
-                _vista.Pintar("0001",e.ToString(),"Yop","lol");
+                _vista.Pintar("0001", "Error Ingresando Empleado" , "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0001", "Error Ingresando Empleado", "Especificacion del Error", e.ToString());
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
@@ -59,6 +65,9 @@ namespace Presentador.Empleado.Vistas
                 {
                     cargo.Add((Core.LogicaNegocio.Entidades.Cargo) cargos[i]);            
                 }
+                _vista.ComboCargos.Items.Clear();
+                _vista.ComboCargos.Items.Add("--");
+                _vista.ComboCargos.Items[0].Value = "0";
                 _vista.ComboCargos.DataSource = cargo;
                 _vista.ComboCargos.DataTextField = "Nombre";
                 _vista.ComboCargos.DataValueField = "Id";
@@ -73,6 +82,26 @@ namespace Presentador.Empleado.Vistas
             {
                 _vista.Pintar("0001", e.ToString(), "Yop", "lol");
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+        }
+        public void ConsultarSueldos()
+        {
+            try
+            {
+                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+                cargo.Nombre = _vista.ComboCargos.SelectedItem.Text;
+                Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+                cargo = (Core.LogicaNegocio.Entidades.Cargo)conex.ConsultarCargo(cargo);
+                _vista.RangoSueldo = "Rango de Sueldo: " + cargo.SueldoMinimo.ToString() + " - " + cargo.SueldoMaximo.ToString();
+                _vista.RangoVisible = true;
+                _vista.SueldoEmpleado.Text = cargo.SueldoMinimo.ToString();
+                _vista.SueldoEmpleado.Enabled = false;
+            }
+            catch (WebException e)
+            {
+            }
+            catch (Exception e)
+            {
             }
         }
         public void LimpiarRegistros()
