@@ -5,6 +5,7 @@ using System.Text;
 using Presentador.Propuesta.Contrato;
 using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Fabricas;
+using System.Net;
 
 namespace Presentador.Propuesta.Vistas
 {
@@ -63,31 +64,44 @@ namespace Presentador.Propuesta.Vistas
 
             #region SolicitudServicios
 
-            if (_vista.opcion.SelectedIndex == 0) // PROPUESTA EN ESPERA
+            if ( _vista.opcion.SelectedIndex == 0 ) // PROPUESTA EN ESPERA
             {
-
-                int i = 0;
-                propuesta = BuscarEstadoEspera();
-                for (i = 0; i < propuesta.Count; i++)
+                try
                 {
+                    int i = 0;
+                    propuesta = BuscarEstadoEspera();
 
-                    _vista.SeleccionOpcion.Items.Add(propuesta.ElementAt(i).Titulo);
+                    for ( i = 0; i < propuesta.Count; i++ )
+                    {
+                        _vista.SeleccionOpcion.Items.Add( propuesta.ElementAt( i ).Titulo );
 
+                    }
+                    _vista.SeleccionOpcion.DataBind();
                 }
-                _vista.SeleccionOpcion.DataBind();
+                catch ( WebException e )
+                {
+                    //MANEJO DE EXEPCIONES
+                }
             }
 
             if (_vista.opcion.SelectedIndex == 1)// PROPUESTA APROBADA
             {
-                int i = 0;
-                propuesta = BuscarPorTitulo();
-                for (i = 0; i < propuesta.Count; i++)
+                try
                 {
+                    int i = 0;
+                    propuesta = BuscarPorTitulo();
+                    for ( i = 0; i < propuesta.Count; i++ )
+                    {
 
-                    _vista.SeleccionOpcion.Items.Add(propuesta.ElementAt(i).Titulo);
+                        _vista.SeleccionOpcion.Items.Add( propuesta.ElementAt(i).Titulo );
 
+                    }
+                    _vista.SeleccionOpcion.DataBind();
                 }
-                _vista.SeleccionOpcion.DataBind();
+                catch (WebException e)
+                { 
+                    //MANEJO DE EXEPCIONES
+                }
             }
 
             if (_vista.opcion.SelectedIndex == 2)// PROPUESTA RECHAZADA
@@ -106,30 +120,35 @@ namespace Presentador.Propuesta.Vistas
         {
             #region Atributos de la Pagina
             #region Activar Campos
-            _vista.LabelCarg.Visible = true;
-            _vista.LabelCargP.Visible = true;
-            _vista.LabelEquip.Visible = true;
-            _vista.ListaEmpleados.Visible = true;
-            _vista.LabelFechaFi.Visible = true;
-            _vista.LabelFechaFiP.Visible = true;
-            _vista.LabelFechaI.Visible = true;
-            _vista.LabelFechaIP.Visible = true;
-            _vista.LabelFFirm.Visible = true;
-            _vista.LabelFFirmP.Visible = true;
-            _vista.LabelMont.Visible = true;
-            _vista.LabelMontP.Visible = true;
-            _vista.LabelRecep.Visible = true;
-            _vista.LabelRecepP.Visible = true;
-            _vista.LabelT.Visible = true;
-            _vista.LabelTotalHoras.Visible = true;
+
+            _vista.LabelCarg.Visible        = true;
+            _vista.LabelCargP.Visible       = true;
+            _vista.LabelEquip.Visible       = true;
+            _vista.ListaEmpleados.Visible   = true;
+            _vista.LabelFechaFi.Visible     = true;
+            _vista.LabelFechaFiP.Visible    = true;
+            _vista.LabelFechaI.Visible      = true;
+            _vista.LabelFechaIP.Visible     = true;
+            _vista.LabelFFirm.Visible       = true;
+            _vista.LabelFFirmP.Visible      = true;
+            _vista.LabelMont.Visible        = true;
+            _vista.LabelMontP.Visible       = true;
+            _vista.LabelRecep.Visible       = true;
+            _vista.LabelRecepP.Visible      = true;
+            _vista.LabelT.Visible           = true;
+            _vista.LabelTotalHoras.Visible  = true;
             _vista.LabelTotalHorasP.Visible = true;
-            _vista.LabelTP.Visible = true;
-            _vista.LabelV.Visible = true;
-            _vista.LabelVP.Visible = true;
+            _vista.LabelTP.Visible          = true;
+            _vista.LabelV.Visible           = true;
+            _vista.LabelVP.Visible          = true;
+
             #endregion
+
             #region Desactivar Campos
-            _vista.opcion.Visible = false;
+
+            _vista.opcion.Visible          = false;
             _vista.SeleccionOpcion.Visible = false;
+
             #endregion
 
             #endregion
@@ -138,105 +157,78 @@ namespace Presentador.Propuesta.Vistas
 
 
 
-            if (_vista.opcion.SelectedIndex == 0) // ES BUSQUEDA DE PROPUESTAS EN ESPERA
+            if ( _vista.opcion.SelectedIndex == 0 ) // ES BUSQUEDA DE PROPUESTAS EN ESPERA
             {
-                #region Propuestas En Espera
-                int i = 0;
-                int j = 0;
-                propuesta = BuscarEstadoEspera();
-                for (i = 0; i < propuesta.Count; i++)
+                
+
+                try
                 {
-                    if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
-                    {
-                        // Se Llenan Los Campos
-                        _vista.LabelCargP.Text       = propuesta.ElementAt(i).CargoReceptor;
-                        _vista.LabelFechaFiP.Text    = propuesta.ElementAt(i).FechaFin.ToString();
-                        _vista.LabelFechaIP.Text     = propuesta.ElementAt(i).FechaInicio.ToString();
-                        _vista.LabelFFirmP.Text      = propuesta.ElementAt(i).FechaFirma.ToString();
-                        _vista.LabelMontP.Text       = propuesta.ElementAt(i).MontoTotal.ToString();
-                        _vista.LabelRecepP.Text      = string.Concat( propuesta.ElementAt(i).NombreReceptor+" ",
-                                                                         propuesta.ElementAt(i).ApellidoReceptor);
-                        _vista.LabelCargP.Text       = propuesta.ElementAt(i).CargoReceptor;
-                        _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
-                        _vista.LabelTP.Text          = propuesta.ElementAt(i).Titulo;
-                        _vista.LabelVP.Text          = propuesta.ElementAt(i).Version;
-
-                        for (j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++)
-                        {
-                            _vista.ListaEmpleados.Items.Add
-(propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre);
-                        }
-
-                    }
+                    propuesta = BuscarEstadoEspera();
+                    CargaDatosPagina( propuesta );  
                 }
-                #endregion
+                catch (WebException e)
+                { 
+                    //MANEJO DE EXCEPCIONES
+                }
+                
             }
 
 
 
-            if (_vista.opcion.SelectedIndex == 1) // BUSQUEDA PROPUESTA APROBADA
+            if ( _vista.opcion.SelectedIndex == 1 ) // BUSQUEDA PROPUESTA APROBADA
             {
-                #region Propuesta Aprobada
-                int i = 0;
-                int j = 0;
-                propuesta = BuscarPorTitulo();
-                for (i = 0; i < propuesta.Count; i++)
+                try
                 {
-                    if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
-                    {
-                        // Se Llenan Los Campos
-                        _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
-                        //_vista.LabelEquipP.Text    = propuesta.ElementAt(i).EquipoTrabajo;
-                        _vista.LabelFechaFiP.Text = propuesta.ElementAt(i).FechaFin.ToString();
-                        _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
-                        _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
-                        _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
-                        _vista.LabelRecepP.Text = string.Concat(propuesta.ElementAt(i).NombreReceptor+" ",
-                                                                          propuesta.ElementAt(i).ApellidoReceptor);
-                        _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
-                        _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
-                        _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
-                        for (j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++)
-                        {
-                            _vista.ListaEmpleados.Items.Add(propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre);
-                        }
-
-                    }
+                    propuesta = BuscarPorTitulo();
+                    CargaDatosPagina(propuesta);
                 }
-           
-                #endregion
+                catch (WebException e)
+                { 
+                
+                }
             }
-
 
             #region Otra Consulta
             if (_vista.opcion.SelectedIndex == 3) // ES BUSQUEDA POR FECHA
             {
-                int i = 0;
-                Core.LogicaNegocio.Entidades.Gasto _Gasto =
-                    new Core.LogicaNegocio.Entidades.Gasto();
-
-                for (i = 0; i < propuesta.Count; i++)
-                {
-                    if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
-                    {
-                        // Se Llenan Los Campos
-                        _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
-                        //_vista.LabelEquipP.Text    = propuesta.ElementAt(i).EquipoTrabajo;
-                        _vista.LabelFechaFiP.Text = propuesta.ElementAt(i).FechaFin.ToString();
-                        _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
-                        _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
-                        _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
-                        _vista.LabelRecepP.Text = propuesta.ElementAt(i).NombreReceptor;
-                        _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
-                        _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
-                        _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
-
-                    }
-                }
+              
             }
             #endregion
 
             #endregion
+        }
+
+        /// <summary>
+        /// Método que se encarga de Dibujar en la página los resultados obtenidos
+        /// </summary>
+        private void CargaDatosPagina(IList<Core.LogicaNegocio.Entidades.Propuesta> propuesta)
+        {
+            int i = 0;
+            int j = 0;
+            for ( i = 0; i < propuesta.Count; i++ )
+            {
+                if ( propuesta.ElementAt(i).Titulo.Equals( _vista.SeleccionOpcion.SelectedItem.Text ) )
+                {
+                    // Se Llenan Los Campos
+                    _vista.LabelCargP.Text       = propuesta.ElementAt(i).CargoReceptor;
+                    _vista.LabelFechaFiP.Text    = propuesta.ElementAt(i).FechaFin.ToString();
+                    _vista.LabelFechaIP.Text     = propuesta.ElementAt(i).FechaInicio.ToString();
+                    _vista.LabelFFirmP.Text      = propuesta.ElementAt(i).FechaFirma.ToString();
+                    _vista.LabelMontP.Text       = propuesta.ElementAt(i).MontoTotal.ToString();
+                    _vista.LabelRecepP.Text      = string.Concat(propuesta.ElementAt(i).NombreReceptor + " ",
+                                                                      propuesta.ElementAt(i).ApellidoReceptor);
+                    _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
+                    _vista.LabelTP.Text          = propuesta.ElementAt(i).Titulo;
+                    _vista.LabelVP.Text          = propuesta.ElementAt(i).Version;
+
+                    for ( j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++ )
+                    {
+                        _vista.ListaEmpleados.Items.Add
+                            ( propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre );
+                    }
+
+                }
+            }
         }
 
         /// <summary>
@@ -248,7 +240,7 @@ namespace Presentador.Propuesta.Vistas
 
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
 
-            consultar = FabricaComandosPropuesta.CrearComandoConsultar(propuesta);
+            consultar = FabricaComandosPropuesta.CrearComandoConsultar( propuesta );
 
             propuesta = consultar.Ejecutar();
 
@@ -261,7 +253,7 @@ namespace Presentador.Propuesta.Vistas
 
             Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarEnEspera consultar;
 
-            consultar = FabricaComandosPropuesta.CrearComandoConsultarEspera(propuesta);
+            consultar = FabricaComandosPropuesta.CrearComandoConsultarEspera( propuesta );
 
             propuesta = consultar.Ejecutar();
 

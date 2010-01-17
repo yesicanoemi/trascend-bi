@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
+using System.Net;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -174,50 +175,62 @@ namespace Core.AccesoDatos.SqlServer
         /// Metodo que se comunica con la base de datos y realiza la consulta
         /// solicitada
         /// </summary>
-        /// <returns>Retorna una Lista de string q contiene el rol y las horas participadas</returns>
+        /// <returns>Retorna una Lista de string q contiene el rol</returns>
         public IList<string> ObtenerRol()
         {
-
-            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarRol");
-            int i = 0;
-
-            while (conexion.Read())
+            try
             {
+                DbDataReader conexion = SqlHelper.ExecuteReader( GetConnection(), "ConsultarRol" );
+                int i = 0;
 
-                string Rol;
-                string HorasParticipadas;
+                while ( conexion.Read() )
+                {
 
-                Rol = (string)conexion["Rol"];
-               
-          
-                ListaRoles.Add(Rol);
-                i++;
+                    string Rol;
+                    string HorasParticipadas;
+                    Rol = ( string )conexion["Rol"];
+                    ListaRoles.Add( Rol );
+                    i++;
 
+                }
+
+                return ListaRoles;
             }
-
-            return ListaRoles;
+            catch ( SqlException e )
+            {
+                throw new Exception( e.ToString() );
+            }
         }
         /// <summary>
         /// Metodo que consulta las Horas del Rol Seleccionado
         /// </summary>
         /// <returns>Retorna Entero que representa la suma de las horas del rol</returns>
-        public int SumaHora(string rol)
+        public int SumaHora( string rol )
         {
             int HorasParticipadas = 0;
-            SqlParameter ParametroRol = new SqlParameter();
-            ParametroRol = new SqlParameter("@Rol", SqlDbType.VarChar);
-
-            ParametroRol.Value = rol; ;
-
-            DbDataReader conexion = SqlHelper.ExecuteReader( GetConnection(), "ConsultarHorasRol",ParametroRol );
-            int i = 0;
-
-            while ( conexion.Read() )
+            try
             {
-                HorasParticipadas = ( int )conexion["TotalHoras"];
-            }
+                SqlParameter ParametroRol = new SqlParameter();
+                ParametroRol = new SqlParameter("@Rol", SqlDbType.VarChar);
 
-            return HorasParticipadas;
+                ParametroRol.Value = rol; ;
+
+                DbDataReader conexion = 
+                    SqlHelper.ExecuteReader( GetConnection(), "ConsultarHorasRol", ParametroRol );
+
+                int i = 0;
+
+                while ( conexion.Read() )
+                    {
+                        HorasParticipadas = ( int )conexion["TotalHoras"];
+                    }
+
+                return HorasParticipadas;
+            }
+            catch ( SqlException e )
+            {
+                throw new Exception( e.ToString() );
+            }
         }
 
 
