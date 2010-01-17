@@ -55,7 +55,10 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
     }
     #endregion
 
-
+    #region Metodos
+    /// <summary>
+    /// Metodo para la accion del boton de busqueda
+    /// </summary>
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         LabelError.Visible = false;
@@ -63,6 +66,9 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
         ActivarBotones();
     }
 
+    /// <summary>
+    /// Metodo para la accion del boton de eliminar
+    /// </summary>
     protected void uxBotonEliminar_Click(object sender, EventArgs e)
     {
         if (!_presenter.EliminarCargo())
@@ -77,6 +83,9 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
         }
     }
 
+    /// <summary>
+    /// Metodo para la accion del boton de guardar
+    /// </summary>
     protected void uxBotonGuardar_Click(object sender, EventArgs e)
     {
         if (!_presenter.ModificarCargo())
@@ -91,15 +100,22 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
         }
     }
 
+    /// <summary>
+    /// Metodo para habilitar los botones
+    /// </summary>
     private void ActivarBotones()
     {
         uxBotonGuardar.Enabled = true;
         uxBotonEliminar.Enabled = true;
     }
 
+    /// <summary>
+    /// Metodo para desabilitar los botones
+    /// </summary>
     private void DesactivarBotones()
     {
         uxBotonGuardar.Enabled = false;
         uxBotonEliminar.Enabled = false;
     }
+    #endregion
 }

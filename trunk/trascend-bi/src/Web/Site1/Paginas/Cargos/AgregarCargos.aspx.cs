@@ -54,6 +54,10 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
     #endregion
 
 
+    #region Metodos
+    /// <summary>
+    /// Metodo del evento del boton aceptar
+    /// </summary>
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         LabelError.Visible = false;
@@ -68,5 +72,6 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
             LabelError.Visible = true;
         }
     }
-     
+    #endregion
+
 }
