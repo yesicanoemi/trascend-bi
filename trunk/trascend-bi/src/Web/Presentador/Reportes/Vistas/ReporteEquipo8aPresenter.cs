@@ -18,6 +18,8 @@ namespace Presentador.Reportes.Vistas
     //Facturas Emitidas Anuales
     public class ReporteEquipo8aPresenter
     {
+
+
         IReporteEquipo8a _vista;
         #region Constructor
         public ReporteEquipo8aPresenter(IReporteEquipo8a vista)
@@ -26,7 +28,7 @@ namespace Presentador.Reportes.Vistas
         }
         #endregion
 
-        public void onBotonBuscar()
+        public void BuscarFactura()
         {
             Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
 
@@ -60,6 +62,8 @@ namespace Presentador.Reportes.Vistas
                                         FacturasEmitidas(Core.LogicaNegocio.Entidades.Factura entidad)
         {
             IList<Core.LogicaNegocio.Entidades.Factura> facturaRetorno = null;
+
+            entidad.Fechapago = Convert.ToDateTime("01/01/"+_vista.Anios.SelectedItem.Text);
 
             Core.LogicaNegocio.Comandos.ComandoReporte.FacturasEmitidasAnuales comandoFacturasEmitidas;
 

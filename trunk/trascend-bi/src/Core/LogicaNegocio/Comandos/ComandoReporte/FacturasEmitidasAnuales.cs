@@ -25,7 +25,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         public IList<Core.LogicaNegocio.Entidades.Factura> Ejecutar()
         {
             ReporteSQLServer bd = new ReporteSQLServer();
-            IList<Core.LogicaNegocio.Entidades.Factura> _factura = bd.ObtenerFacturasEmitidas();
+            IList<Core.LogicaNegocio.Entidades.Factura> _factura = bd.ObtenerFacturasEmitidas(factura);
             return _factura;
         }
         #endregion
