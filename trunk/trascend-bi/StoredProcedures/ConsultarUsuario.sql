@@ -1,10 +1,8 @@
-USE [BddProy2]
-GO
-/****** Objeto:  StoredProcedure [dbo].[ConsultarUsuario]    Fecha de la secuencia de comandos: 01/14/2010 09:51:15 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+-- =============================================
+-- Author:		<Dinangela Rojas>
+-- Create date: <14/01/2010>
+-- Description:	<Consulta de Usuario por Nombre>
+-- =============================================
 CREATE PROCEDURE [dbo].[ConsultarUsuario]
 
 @LoginUsuario varchar(20)
