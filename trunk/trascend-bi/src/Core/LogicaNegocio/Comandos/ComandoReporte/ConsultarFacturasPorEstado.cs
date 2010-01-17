@@ -25,7 +25,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
 
             IList<Factura> listaFacturas;
             FacturaSQLServer bd = new FacturaSQLServer();
-            listaFacturas = bd.ConsultarFacturasxEstado(_FechaInicio,_FechaFin,_tipo);
+            listaFacturas = bd.ConsultarFacturasPorEstado(_FechaInicio,_FechaFin,_tipo);
             return listaFacturas;
 
         }

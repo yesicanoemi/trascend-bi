@@ -4,6 +4,7 @@ using System.Text;
 using Core.LogicaNegocio.Comandos.ComandoReporte;
 using Core.LogicaNegocio.Entidades;
 
+
 namespace Core.LogicaNegocio.Fabricas
 {
     public class FabricaComandosReporte

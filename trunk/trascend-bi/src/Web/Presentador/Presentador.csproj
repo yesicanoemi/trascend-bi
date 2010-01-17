@@ -134,6 +134,7 @@
     <Compile Include="Reportes\Vistas\ReporteEquipo8aPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8bPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8cPresenter.cs" />
+    <Compile Include="Reportes\Vistas\ReporteFacturasCobradasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFacturasPorCobrarPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteGastoFechaPresenter.cs" />

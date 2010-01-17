@@ -210,7 +210,7 @@ namespace Core.AccesoDatos.SqlServer
             return factura;
         }
 
-        public IList<Factura> ConsultarFacturasxEstado(DateTime desde, DateTime hasta, Boolean cobradas)
+        public IList<Factura> ConsultarFacturasPorEstado(DateTime desde, DateTime hasta, Boolean cobradas)
         {
             try
             {

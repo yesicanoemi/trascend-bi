@@ -88,6 +88,7 @@
     <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Consultar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCargo\ConsultarTabla.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Modificar.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaHora.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarFacturasPorEstado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoFecha.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaRol.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasCobradasAnuales.cs" />
