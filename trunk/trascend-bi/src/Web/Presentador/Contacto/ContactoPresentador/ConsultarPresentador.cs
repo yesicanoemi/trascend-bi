@@ -32,37 +32,67 @@ namespace Presentador.Contacto.ContactoPresentador
                 {
                     flag = flag + 1;
                 }
-                /*8888888888888888888888888*/
+       //         _vista.TablaResultados = DibujarTablaContacto(// soy una lista de contactos);
+            }
 
-
-                List<string> daList = new List<string>();
-                daList.Add(_vista.TextBoxNombre.Text);
-                daList.Add(_vista.TextBoxApellido.Text);
-                daList.Add("("+_vista.TextBoxCodTelefono.Text+")"+_vista.TextBoxNumTelefono.Text);
-
-
-                int numrows = 3;
-                int numcells = 2;
-
-                for (int j = 0; j < numrows; j++)
+            public static Table DibujarTablaContacto(IList<Core.LogicaNegocio.Entidades.Contacto> contactos)
+            {
+                Table Tabla = new Table();
+                if (contactos.Count > 0)
                 {
                     TableRow r = new TableRow();
-                    for (int i = 0; i < numcells; i++)
+                    TableCell c = new TableCell();
+                    c.Controls.Add(new LiteralControl("ID"));
+                    c.Controls.Add(new LiteralControl("Nombre"));
+                    c.Controls.Add(new LiteralControl("Apellido"));
+                    c.Controls.Add(new LiteralControl("Cargo"));
+                    c.Controls.Add(new LiteralControl("Area de Negocio"));
+                    c.Controls.Add(new LiteralControl("Telefono Celular"));
+                    c.Controls.Add(new LiteralControl("Telefono Local"));
+                    r.Cells.Add(c);
+                    Tabla.Rows.Add(r);
+                    int indice = 0;
+                    int numcells = 7;
+                    foreach (Core.LogicaNegocio.Entidades.Contacto X in contactos)
                     {
-                        TableCell c = new TableCell();
-                        if (i == 0)
+                        indice++;
+                        r = new TableRow();
+                        for (int i = 0; i < numcells; i++)
                         {
-                            c.Controls.Add(new LiteralControl("Nombre"));
+                            c = new TableCell();
+                            switch (i)
+                            {
+                                case 0:
+                                    c.Controls.Add(new LiteralControl(indice.ToString()));
+                                    break;
+                                case 1:
+                                    c.Controls.Add(new LiteralControl(X.Nombre));
+                                    break;
+                                case 2:
+                                    c.Controls.Add(new LiteralControl(X.Apellido));
+                                    break;
+                                case 3:
+                                    c.Controls.Add(new LiteralControl(X.Cargo));
+                                    break;
+                                case 4:
+                                    c.Controls.Add(new LiteralControl(X.AreaDeNegocio));
+                                    break;
+                                case 5:
+                                    c.Controls.Add(new LiteralControl("(" + X.TelefonoDeCelular.Codigocel.ToString() + ")"
+                                        + X.TelefonoDeCelular.Numero.ToString()));
+                                    break;
+                                case 6:
+                                    c.Controls.Add(new LiteralControl("(" + X.TelefonoDeTrabajo.Codigoarea.ToString() + ")"
+                                        + X.TelefonoDeTrabajo.Numero.ToString()));
+                                    break;
+
+                            }
+                            r.Cells.Add(c);
                         }
-                        else
-                        {
-                            c.Controls.Add(new LiteralControl(daList[j]));
-                        }
-                        r.Cells.Add(c);
+                        Tabla.Rows.Add(r);
                     }
-                    _vista.TablaResultados.Rows.Add(r);
                 }
-                /*8888888888888888888888888*/
+                return Tabla;
             }
         }
     

@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using Core.LogicaNegocio.Entidades;
 
 public partial class Paginas_Contactos_DefaultContactos : System.Web.UI.Page
 {
