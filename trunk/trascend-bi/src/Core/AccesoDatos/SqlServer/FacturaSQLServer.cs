@@ -12,8 +12,12 @@ using System.Xml;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    class FacturaSQLServer
+    public class FacturaSQLServer
     {
+        public FacturaSQLServer()
+        {
+        }
+
         #region conexion
         private SqlConnection GetConnection()
         {
@@ -212,14 +216,22 @@ namespace Core.AccesoDatos.SqlServer
             {
                 DbDataReader reader;
 
+                SqlParameter[] arParms = new SqlParameter[2];
+
+                arParms[0] = new SqlParameter("@Fecha1", SqlDbType.SmallDateTime);
+                arParms[0].Value = desde;
+                arParms[1] = new SqlParameter("@Fecha2", SqlDbType.SmallDateTime);
+                arParms[1].Value = hasta;
+
                 if(cobradas)
-                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas");
+                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas", arParms);
                 else
-                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasNoCobradas");
+                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasPorCobrar", arParms);
                
                 Factura factura;
                 Propuesta propuesta;
-                IList<Factura> listaFacturas = null;
+                IList<Factura> listaFacturas = new List<Factura>();
+                DateTime fecha;
 
                 while (reader.Read())
                 {
@@ -228,11 +240,15 @@ namespace Core.AccesoDatos.SqlServer
                     factura.Numero = int.Parse(reader["IdFactura"].ToString());
                     factura.Titulo = reader["Titulo"].ToString();
                     factura.Descripcion = reader["Descripcion"].ToString();
-                    factura.Estado = reader["Estado"].ToString();
-                    factura.Fechapago = DateTime.Parse(reader["Fecha"].ToString());
+                    factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                    fecha = DateTime.Parse(reader["Fecha"].ToString());
+                    factura.Fechapago = DateTime.Parse(fecha.ToShortTimeString());
+                    fecha = DateTime.Parse(reader["FechaIngreso"].ToString());
                     factura.Fechaingreso = DateTime.Parse(reader["FechaIngreso"].ToString());
+                    factura.Estado = reader["Estado"].ToString();
                     propuesta = new Propuesta();
                     propuesta.Titulo = reader["NombrePropuesta"].ToString();
+                    propuesta.MontoTotal = float.Parse(reader["Monto"].ToString());
                     factura.Prop = propuesta;
 
                     listaFacturas.Add(factura);

@@ -120,6 +120,7 @@
     <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
+    <Compile Include="Reportes\Contrato\IReporteFacturasPorCobrar.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaPorAnoPresenter.cs" />
     <Compile Include="Reportes\Contrato\IReporteEquipo8a.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Reportes\Vistas\ReporteEquipo8aPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8bPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8cPresenter.cs" />
+    <Compile Include="Reportes\Vistas\ReporteFacturasPorCobrarPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteGastoFechaPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteHorasRolPresenter.cs" />

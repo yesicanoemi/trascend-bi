@@ -63,7 +63,8 @@
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
-                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" /></td>
+                <td><asp:Button ID="Button3" runat="server" Text="Aceptar" 
+                        onclick="Button3_Click" /></td>
              </tr>
               
         </table>
@@ -82,6 +83,17 @@
         <br />
         <br />
         <br />
+        <asp:GridView ID="uxGridView" runat="server" 
+            onselectedindexchanged="GridView1_SelectedIndexChanged" Width="449px" AutoGenerateColumns=false>
+            <Columns>
+                <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+                <asp:BoundField HeaderText="Porcentaje pagado" DataField="Procentajepagado" />
+                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" />
+                <asp:BoundField HeaderText="Monto" />
+                
+            </Columns>
+        </asp:GridView>
         <br />
         <br />
         <br />
