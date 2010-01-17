@@ -16,12 +16,21 @@ namespace Core.AccesoDatos.SqlServer
     {
 
         #region Constructor
+
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public CargoSQLServer()
         {
         }
         #endregion
 
         #region Conexion
+
+        /// <summary>
+        /// Metodo para tomar la conexion del archivo de configuracion
+        /// </summary>
+        /// <returns>devuelve la conexion</returns>
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
@@ -145,7 +154,11 @@ namespace Core.AccesoDatos.SqlServer
         
         }
 
-
+        /// <summary>
+        /// Metodo que elimina de la BD un cargo
+        /// </summary>
+        /// <param name="IdCargo">Identificador del cargo</param>
+        /// <returns>True si se elimino y false si hubo error</returns>
         public Boolean EliminarCargo(int IdCargo)
         {
             try
@@ -166,6 +179,11 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
+        /// <summary>
+        /// Metodo que modifica informacion de cargo
+        /// </summary>
+        /// <param name="cargo">El cargo con sus modificaciones</param>
+        /// <returns>True si se modifico y false si hubo error</returns>
         public Boolean ModificarCargo(Cargo cargo)
         {
             try

@@ -7,6 +7,7 @@ namespace Core.LogicaNegocio.Entidades
 {
     public class Cargo : Entidad
     {
+        #region Atributos
         private int id;
         private String nombre;
         private String descripcion;
@@ -15,7 +16,9 @@ namespace Core.LogicaNegocio.Entidades
         private DateTime vigencia;
         private float sueldo_minimo_inf;
         private float sueldo_maximo_inf;
+        #endregion
 
+        #region Encapsulamiento
         public virtual int Id
         {
             get
@@ -107,16 +110,30 @@ namespace Core.LogicaNegocio.Entidades
                 sueldo_minimo_inf = value;
             }
         }
+        #endregion
 
+        #region Metodos
+
+        /// <summary>
+        /// Metodo que calcula el sueldo minimo por inflacion
+        /// </summary>
+        /// <param name="inflacion">la inflacion</param>
+        /// <returns>sueldo minimo con inflacion</returns>
         public float getSueldoMinimoConInflacion(float inflacion)
         {
             return sueldo_minimo * (1 + inflacion);
         }
 
+        /// <summary>
+        /// Metodo que calcula el sueldo maximo por inflacion
+        /// </summary>
+        /// <param name="inflacion">la inflacion</param>
+        /// <returns>sueldo maximo con inflacion</returns>
         public float getSueldoMaximoConInflacion(float inflacion)
         {
             return sueldo_maximo * (1 + inflacion);
         }
+        #endregion
 
     }
 }
