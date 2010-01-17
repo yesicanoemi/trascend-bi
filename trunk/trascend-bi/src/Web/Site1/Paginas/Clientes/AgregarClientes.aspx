@@ -80,7 +80,27 @@
                                </tr>
                                  <tr>
                                    <td>Ciudad:</td>
-                                   <td><asp:DropDownList ID="uxciudad" runat="server"></asp:DropDownList></td>
+                                   <td><asp:DropDownList ID="uxciudad" runat="server" DataValueField="Caracas">
+                                       <asp:ListItem>Caracas</asp:ListItem>
+                                       <asp:ListItem>Maracaibo</asp:ListItem>
+                                       <asp:ListItem>Barquisimeto</asp:ListItem>
+                                       <asp:ListItem>Valencia</asp:ListItem>
+                                       <asp:ListItem>Maracay</asp:ListItem>
+                                       <asp:ListItem>Puerto la Cruz</asp:ListItem>
+                                       <asp:ListItem>Maturín</asp:ListItem>
+                                       <asp:ListItem>Barcelona</asp:ListItem>
+                                       <asp:ListItem>Ciudad Bolívar</asp:ListItem>
+                                       <asp:ListItem>Acarigua-Araure</asp:ListItem>
+                                       <asp:ListItem>Los Teques</asp:ListItem>
+                                       <asp:ListItem>San Cristóbal</asp:ListItem>
+                                       <asp:ListItem>Barinas</asp:ListItem>
+                                       <asp:ListItem>Cabimas</asp:ListItem>
+                                       <asp:ListItem>Cumaná</asp:ListItem>
+                                       <asp:ListItem>Puerto La Cruz</asp:ListItem>
+                                       <asp:ListItem>Punto Fijo</asp:ListItem>
+                                       <asp:ListItem>Guarenas</asp:ListItem>
+                                       <asp:ListItem>Carúpano</asp:ListItem>
+                                       </asp:DropDownList></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -94,33 +114,23 @@
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
-                               <tr>
-                                   <td>Telefono Celular:</td>
-                                   <td><asp:TextBox ID="uxTelefonoCelularCliente" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
+                               
                                <tr>
                                    <td>Telefono Trabajo:</td>
-                                   <td><asp:TextBox ID="uxTelefonoTrabajo" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxCodTrabajo" runat="server" Width="40"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelefonoTrabajo" runat="server" Width="150"></asp:TextBox></td>
                                </tr>
-                               <tr>
+                               <tr>s
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
-                                 <tr>
-                                   <td>Contacto:</td>
-                                   <td><asp:DropDownList ID="uxContacto" runat="server"></asp:DropDownList></td>
-                               </tr>
+                               
                                
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
-                              
-     
+                                                    
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>

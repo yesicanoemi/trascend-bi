@@ -15,6 +15,8 @@ namespace Core.LogicaNegocio.Entidades
         private string pisoApartamento;
         private string ciudad;
         private string areaNegocio;
+        private string telefonoTrabajo;
+        private string codigoTrabajo;
 
 
         public virtual string Rif
@@ -120,6 +122,32 @@ namespace Core.LogicaNegocio.Entidades
             set
             {
                 areaNegocio = value;
+            }
+        }
+
+        public virtual string TelefonoTrabajo
+        {
+            get
+            {
+                return telefonoTrabajo;
+            }
+
+            set
+            {
+                telefonoTrabajo = value;
+            }
+        }
+
+        public virtual string CodigoTrabajo
+        {
+            get
+            {
+                return codigoTrabajo;
+            }
+
+            set
+            {
+                codigoTrabajo = value;
             }
         }
   

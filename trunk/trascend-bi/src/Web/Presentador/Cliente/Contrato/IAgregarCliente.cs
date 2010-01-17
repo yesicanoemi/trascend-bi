@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace Presentador.Cliente.ClienteInterface
+namespace Presentador.Cliente.Contrato
 {
     public interface IAgregarCliente
     {
@@ -17,9 +17,9 @@ namespace Presentador.Cliente.ClienteInterface
         TextBox PisoApartamentoCliente { get; set; }
         DropDownList CiudadCliente { get; set; }
         TextBox AreaNegocioCliente { get; set; }
-        /*TextBox TelefonoCelularCliente { get; set; }
-        TextBox TelefonoTrabajoCliente { get; set; }*/
-        DropDownList ContactoCliente { get; set; }
+        TextBox TelefonoTrabajoCliente { get; set; }
+        TextBox CodigoTrabajoCliente { get; set; }
+        
         #endregion
 
     }

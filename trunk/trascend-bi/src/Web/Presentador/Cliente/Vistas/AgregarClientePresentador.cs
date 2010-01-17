@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Presentador.Cliente.ClienteInterface;
+using Presentador.Cliente.ClientePresentador;
+using Presentador.Cliente.Vistas;
+using Presentador.Cliente.Contrato;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 
 
-namespace Presentador.Cliente.ClientePresentador
+namespace Presentador.Cliente.Vistas
 {
     public class AgregarClientePresentador
     {
@@ -39,6 +42,8 @@ namespace Presentador.Cliente.ClientePresentador
                     cliente.PisoApartamento = _vista.PisoApartamentoCliente.Text;
                     cliente.Ciudad = _vista.CiudadCliente.Text;
                     cliente.AreaNegocio = _vista.AreaNegocioCliente.Text;
+                    cliente.TelefonoTrabajo = _vista.TelefonoTrabajoCliente.Text;
+                    cliente.CodigoTrabajo = _vista.CodigoTrabajoCliente.Text;
                     Ingresar(cliente);
                     limpiarRegistro();
                     
@@ -58,15 +63,13 @@ namespace Presentador.Cliente.ClientePresentador
         {
             _vista.AreaNegocioCliente.Text = campoVacio;
             _vista.CalleAvenidaCliente.Text = campoVacio;
-            _vista.CiudadCliente.Text = campoVacio;
-            _vista.ContactoCliente.Text = campoVacio;
+            _vista.CiudadCliente.Text = campoVacio;          
             _vista.EdificioCasaCliente.Text = campoVacio;
             _vista.NombreCliente.Text = campoVacio;
             _vista.PisoApartamentoCliente.Text = campoVacio;
             _vista.rifCliente.Text = campoVacio;
-            /*_vista.TelefonoCelularCliente.Text = campoVacio;
-            _vista.TelefonoTrabajoCliente.Text = campoVacio;*/
             _vista.UrbanizacionCliente.Text = campoVacio;
+            _vista.TelefonoTrabajoCliente.Text = campoVacio;
                                     
         }
 
