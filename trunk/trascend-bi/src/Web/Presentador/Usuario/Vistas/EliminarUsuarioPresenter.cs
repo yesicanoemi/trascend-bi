@@ -32,9 +32,9 @@ namespace Presentador.Usuario.Vistas
 
             user = VerificarUsuario(user);
 
-            if ((user != null) && (user.Status == "activo"))
+            if ((user != null) && (user.Status == "Activo"))
             {
-                user.Status = "inactivo";
+                user.Status = "Inactivo";
                 user = EliminarUsuario(user);
                 _vista.Volver();
                

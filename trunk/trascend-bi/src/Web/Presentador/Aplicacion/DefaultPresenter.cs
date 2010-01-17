@@ -37,7 +37,7 @@ namespace Presentador.Aplicacion
 
             user = ConsultarCredenciales(user);
 
-            if (user.Status == "activo")
+            if (user.Status == "Activo")
             {
 
                 _vista.IngresarSistema();
