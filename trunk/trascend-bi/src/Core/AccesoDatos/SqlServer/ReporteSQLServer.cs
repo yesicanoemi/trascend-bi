@@ -171,7 +171,7 @@ namespace Core.AccesoDatos.SqlServer
         /// Metodo que se comunica con la base de datos y realiza la consulta
         /// solicitada
         /// </summary>
-        /// <returns>Retorna una Lista de Gastos</returns>
+        /// <returns>Retorna una Lista de string q contiene el rol y las horas participadas</returns>
         public IList<string> ObtenerRol()
         {
 
@@ -185,15 +185,36 @@ namespace Core.AccesoDatos.SqlServer
                 string HorasParticipadas;
 
                 Rol = (string)conexion["Rol"];
-                HorasParticipadas = Convert.ToString((int)conexion["HorasParticipadas"]);
+               
           
                 ListaRoles.Add(Rol);
-                ListaRoles.Add(HorasParticipadas);
                 i++;
 
             }
 
             return ListaRoles;
+        }
+        /// <summary>
+        /// Metodo que consulta las Horas del Rol Seleccionado
+        /// </summary>
+        /// <returns>Retorna Entero que representa la suma de las horas del rol</returns>
+        public int SumaHora(string rol)
+        {
+            int HorasParticipadas = 0;
+            SqlParameter ParametroRol = new SqlParameter();
+            ParametroRol = new SqlParameter("@Rol", SqlDbType.VarChar);
+
+            ParametroRol.Value = rol; ;
+
+            DbDataReader conexion = SqlHelper.ExecuteReader( GetConnection(), "ConsultarHorasRol",ParametroRol );
+            int i = 0;
+
+            while ( conexion.Read() )
+            {
+                HorasParticipadas = ( int )conexion["TotalHoras"];
+            }
+
+            return HorasParticipadas;
         }
 
 

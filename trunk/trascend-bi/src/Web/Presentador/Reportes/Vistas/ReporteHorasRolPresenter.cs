@@ -10,6 +10,9 @@ namespace Presentador.Reportes.Vistas
     {
         private IReporteHorasRol _vista;
         private IList<string> empleado;
+        private string _rol;
+        private int _Horas;
+        
         #region Constructor
         public ReporteHorasRolPresenter()
         {
@@ -33,7 +36,8 @@ namespace Presentador.Reportes.Vistas
             for (i = 0; i < empleado.Count; i++)
             {
                 _vista.SeleccionRol.Items.Add(empleado.ElementAt(i));
-                i++;
+                
+
             }
             _vista.SeleccionRol.DataBind();
             _vista.SeleccionRol.Visible = true;
@@ -43,16 +47,9 @@ namespace Presentador.Reportes.Vistas
         {
             int i = 0;
             int horas = 0;
-
-            for (i = 0; i < empleado.Count; i++)
-            {
-                if (empleado.ElementAt(i).Equals(_vista.SeleccionRol.SelectedItem.Text))
-                {
-                    i++;
-                    horas = horas + Convert.ToInt32(empleado.ElementAt(i));
-                }
-                
-            }
+            _rol = _vista.SeleccionRol.SelectedItem.Text;
+            horas = SumaHora(_rol);
+           
             _vista.LabelHoras.Text = horas.ToString();
             _vista.LabelHoras.Visible = true;
             _vista.LabelTextoHoras.Visible = true;
@@ -66,6 +63,13 @@ namespace Presentador.Reportes.Vistas
             consultar = FabricaComandosReporte.CrearComandoConsultarRol(empleado);
             empleado = consultar.Ejecutar();
             return empleado;
+        }
+        public int SumaHora(string rol)
+        {
+            Core.LogicaNegocio.Comandos.ComandoReporte.ConsultaHora consultar;
+            consultar = FabricaComandosReporte.SumaHoraRol(rol);
+            _Horas = consultar.Ejecutar();
+            return _Horas;
         }
 
         #endregion

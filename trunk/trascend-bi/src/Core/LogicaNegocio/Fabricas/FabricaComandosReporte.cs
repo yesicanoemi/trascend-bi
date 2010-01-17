@@ -45,6 +45,11 @@ namespace Core.LogicaNegocio.Fabricas
             return new FacturasPorCobrarAnuales(entidad);
         }
 
+        public static ConsultaHora SumaHoraRol(string rol)
+        {
+            return new ConsultaHora(rol);
+        }
+
         #endregion
 
     }
