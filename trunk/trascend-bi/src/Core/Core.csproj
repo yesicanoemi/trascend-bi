@@ -114,7 +114,10 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoFecha.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaRol.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasCobradasAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasEmitidas.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasEmitidasAnuales.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasPorCobrarAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarPropuestas.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxFacturaID.cs" />
