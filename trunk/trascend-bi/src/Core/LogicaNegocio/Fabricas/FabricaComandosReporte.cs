@@ -30,6 +30,20 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultaRol(entidad);
         }
+        public static FacturasEmitidasAnuales CrearComandoFacturasEmitidasAnuales(Factura entidad)
+        {
+            return new FacturasEmitidasAnuales(entidad);
+        }
+
+        public static FacturasCobradasAnuales CrearComandoFacturasCobradasAnuales(Factura entidad)
+        {
+            return new FacturasCobradasAnuales(entidad);
+        }
+
+        public static FacturasPorCobrarAnuales CrearComandoFacturasPorCobrarAnuales(Factura entidad)
+        {
+            return new FacturasPorCobrarAnuales(entidad);
+        }
 
         #endregion
 
