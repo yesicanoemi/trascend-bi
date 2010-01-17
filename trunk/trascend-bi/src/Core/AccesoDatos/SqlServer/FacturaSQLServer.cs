@@ -60,7 +60,7 @@ namespace Core.AccesoDatos.SqlServer
                     {
                         Factura factura = new Factura();
 
-                        factura.Numero = (int)reader["NumeroFactura"];
+                        factura.Numero = (int)reader["IdFactura"];
 
                         factura.Titulo = (string)reader["Titulo"];
 
@@ -117,7 +117,7 @@ namespace Core.AccesoDatos.SqlServer
                     {
                         Factura factura = new Factura();
 
-                        factura.Numero = (int)reader["NumeroFactura"];
+                        factura.Numero = (int)reader["IdFactura"];
 
                         factura.Titulo = (string)reader["Titulo"];
 
@@ -167,7 +167,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 if (reader.Read())
                 {
-                    factura.Numero = (int)reader["NumeroFactura"];
+                    factura.Numero = (int)reader["IdFactura"];
 
                     factura.Titulo = (string)reader["Titulo"];
 
@@ -225,7 +225,7 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     factura = new Factura();
 
-                    factura.Numero = int.Parse(reader["NumeroFactura"].ToString());
+                    factura.Numero = int.Parse(reader["IdFactura"].ToString());
                     factura.Titulo = reader["Titulo"].ToString();
                     factura.Descripcion = reader["Descripcion"].ToString();
                     factura.Estado = reader["Estado"].ToString();
@@ -313,7 +313,7 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     Factura factura = new Factura();
 
-                    factura.Numero = (int)reader["NumeroFactura"];
+                    factura.Numero = (int)reader["IdFactura"];
 
                     factura.Titulo = (string)reader["Titulo"];
 
