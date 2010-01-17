@@ -11,11 +11,19 @@ namespace Presentador.Reportes.Vistas
     {
         private IReporteFacturasPorCobrar _vista;
 
+        #region Constructor
+
         public ReporteFacturasPorCobrarPresenter(IReporteFacturasPorCobrar laVista)
         {
             _vista = laVista;
         }
+        #endregion
 
+        #region Metodos
+
+        /// <summary>
+        /// Metodo para cargar el GridView
+        /// </summary>
         public void CargarGrid()
         {
 
@@ -46,9 +54,17 @@ namespace Presentador.Reportes.Vistas
             }
         }
 
+
+        /// <summary>
+        /// Metodo para transformar una fecha en ToShortDate 
+        /// </summary>
+        /// <param name="fecha">fecha que se quiere transformar</param>
+        /// <returns>ToShortDate de una vez en string</returns>
         public string FormatearFechaParaMostrar(DateTime fecha)
         {
             return fecha.ToShortDateString();
         }
+
+        #endregion
     }
 }
