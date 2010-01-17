@@ -90,19 +90,21 @@ namespace Core.AccesoDatos.SqlServer
 
                     Propuesta _propuesta = new Propuesta();
 
-                    _factura.Numero = (int)reader["IdFactura"];
+                    _factura.Prop = new Propuesta();
 
-                    _factura.Titulo = (string)reader["Titulo"];
+                    _factura.Numero = (int)reader.GetValue(0);
 
-                    _factura.Descripcion = (string)reader["Descripcion"];
+                    _factura.Titulo = (string)reader.GetValue(1);
 
-                    _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+                    _factura.Descripcion = (string)reader.GetValue(2);
 
-                    _factura.Estado = (string)reader["Estado"];
+                    _factura.Fechaingreso = (DateTime)reader.GetValue(3);
 
-                    _propuesta.Titulo = (string)reader["Titulo"];
+                    _factura.Estado = (string)reader.GetValue(4);
 
-                  //  _factura.Prop.Titulo = _propuesta.Titulo;
+                    _propuesta.Titulo = (string)reader.GetValue(5);
+
+                    _factura.Prop.Titulo = _propuesta.Titulo;
 
                     factura.Add(_factura);
                 }

@@ -145,6 +145,13 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IC
 
     }
 
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
     #endregion
 
 }
