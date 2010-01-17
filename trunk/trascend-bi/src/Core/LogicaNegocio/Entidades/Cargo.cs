@@ -13,6 +13,8 @@ namespace Core.LogicaNegocio.Entidades
         private float sueldo_minimo;
         private float sueldo_maximo;
         private DateTime vigencia;
+        private float sueldo_minimo_inf;
+        private float sueldo_maximo_inf;
 
         public virtual int Id
         {
@@ -79,6 +81,30 @@ namespace Core.LogicaNegocio.Entidades
             set
             {
                 vigencia = value;
+            }
+        }
+
+        public virtual float SueldoMaximoConInflacion
+        {
+            get
+            {
+                return sueldo_maximo_inf;
+            }
+            set
+            {
+                sueldo_maximo_inf = value;
+            }
+        }
+
+        public virtual float SueldoMinimoConInflacion
+        {
+            get
+            {
+                return sueldo_minimo_inf;
+            }
+            set
+            {
+                sueldo_minimo_inf = value;
             }
         }
 

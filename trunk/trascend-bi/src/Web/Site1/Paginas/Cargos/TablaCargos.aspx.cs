@@ -15,6 +15,11 @@ public partial class Paginas_Cargos_TablaCargos : System.Web.UI.Page , IInflacio
         _presenter = new InflacionCargoPresenter(this);
     }
 
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        this.Inflacion.Text = "0";
+    }
+
     public TextBox Inflacion
     {
         get { return uxInflacion; }
@@ -25,5 +30,9 @@ public partial class Paginas_Cargos_TablaCargos : System.Web.UI.Page , IInflacio
     {
         get { return uxTablaSueldos; }
         set { uxTablaSueldos = value; }
+    }
+    protected void uxBotonCargar_Click(object sender, EventArgs e)
+    {
+        _presenter.CargarTabla();
     }
 }
