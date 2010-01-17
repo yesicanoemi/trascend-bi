@@ -79,7 +79,7 @@
                            DataSourceID="uxObjectReporte3b">
              <Columns>
                                             
-                <asp:BoundField HeaderText="Número Factura" DataField="Numero" />
+                <asp:BoundField HeaderText="Id Factura" DataField="Numero" />
                 <asp:BoundField HeaderText="Título" DataField="Titulo" />
                 <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" />

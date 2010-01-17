@@ -53,7 +53,8 @@ namespace Core.AccesoDatos.SqlServer
 
         #region Metodos
 
-    
+        #region Reporte de Facturas por Fecha
+
         /// <summary>
         /// Metodo para el reporte de facturas emitidas en un rango de fechas
         /// </summary>
@@ -88,7 +89,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     Propuesta _propuesta = new Propuesta();
 
-                    _factura.Numero = (int)reader["NumeroFactura"];
+                    _factura.Numero = (int)reader["IdFactura"];
 
                     _factura.Titulo = (string)reader["Titulo"];
 
@@ -98,9 +99,9 @@ namespace Core.AccesoDatos.SqlServer
 
                     _factura.Estado = (string)reader["Estado"];
 
-                    //_propuesta.Titulo = (string)reader["Titulo"];
+                    _propuesta.Titulo = (string)reader["Titulo"];
 
-                    //_factura.Prop.Titulo = _propuesta.Titulo;
+                  //  _factura.Prop.Titulo = _propuesta.Titulo;
 
                     factura.Add(_factura);
                 }
@@ -117,6 +118,8 @@ namespace Core.AccesoDatos.SqlServer
             return factura;
 
         }
+
+        #endregion 
 
         /// <summary>
         /// Metodo que se encarga de Consultar todos los gastos comprendidos entre dos fechas
