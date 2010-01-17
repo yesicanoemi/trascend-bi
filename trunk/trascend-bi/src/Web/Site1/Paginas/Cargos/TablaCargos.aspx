@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="TablaCargos.aspx.cs" Inherits="Paginas_Cargos_TablaCargos" Title="Tabla de cargos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -24,10 +25,23 @@
                     <p class="large">
                         lol
                         
+                    </p>
+                     <p class="large">
+                         Inflación:
+                         <asp:TextBox ID="uxInflacion" runat="server"></asp:TextBox>
+                         %&nbsp;
+                         <asp:Button ID="uxBotonCargar" runat="server" Text="Cargar" />
+                        
+                    </p>
+                     <p class="large">
+                         <asp:GridView ID="uxTablaSueldos" runat="server">
+                         </asp:GridView>
+                        
                     </p> 
                  </div> 
               </div>
         </div> 
 			</div> 
 		</div> 
+    </form>
 </asp:Content>

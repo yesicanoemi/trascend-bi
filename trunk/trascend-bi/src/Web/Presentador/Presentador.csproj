@@ -60,8 +60,10 @@
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
     <Compile Include="Cargo\Contrato\IAdministrarCargo.cs" />
     <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
+    <Compile Include="Cargo\Contrato\IInflacionCargo.cs" />
     <Compile Include="Cargo\Vistas\AgregarCargoPresenter.cs" />
     <Compile Include="Cargo\Vistas\AdministrarCargoPresenter.cs" />
+    <Compile Include="Cargo\Vistas\InflacionCargoPresenter.cs" />
     <Compile Include="Cliente\Contrato\IAgregarCliente.cs" />
     <Compile Include="Cliente\Contrato\IConsultarCliente.cs" />
     <Compile Include="Cliente\Contrato\IEliminarCliente.cs" />
