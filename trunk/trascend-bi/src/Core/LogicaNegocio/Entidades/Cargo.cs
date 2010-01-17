@@ -81,5 +81,16 @@ namespace Core.LogicaNegocio.Entidades
                 vigencia = value;
             }
         }
+
+        public float getSueldoMinimoConInflacion(float inflacion)
+        {
+            return sueldo_minimo * (1 + inflacion);
+        }
+
+        public float getSueldoMaximoConInflacion(float inflacion)
+        {
+            return sueldo_maximo * (1 + inflacion);
+        }
+
     }
 }
