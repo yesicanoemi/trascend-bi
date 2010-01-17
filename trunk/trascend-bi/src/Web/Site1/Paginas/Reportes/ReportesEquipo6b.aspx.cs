@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
+using Microsoft.Practices.Web.UI.WebControls;
 
 public partial class Paginas_Reportes_ReportesEquipo6b : System.Web.UI.Page, IReporteFacturasPorCobrar
 {
@@ -60,4 +61,10 @@ public partial class Paginas_Reportes_ReportesEquipo6b : System.Web.UI.Page, IRe
     {
 
     }
+
+    protected string FormatearFecha(DateTime fecha)
+    {
+        return _presenter.FormatearFechaParaMostrar(fecha);
+    }
+
 }

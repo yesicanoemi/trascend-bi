@@ -45,5 +45,10 @@ namespace Presentador.Reportes.Vistas
                 _vista.Grid.DataBind();
             }
         }
+
+        public string FormatearFechaParaMostrar(DateTime fecha)
+        {
+            return fecha.ToShortDateString();
+        }
     }
 }
