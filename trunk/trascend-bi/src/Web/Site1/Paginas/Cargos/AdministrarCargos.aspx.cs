@@ -13,8 +13,11 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
     protected void Page_Load(object sender, EventArgs e)
     {
         _presenter = new AdministrarCargoPresenter(this);
+        LabelError.Visible = false;
+        DesactivarBotones();
     }
 
+    #region Propiedades
     public DropDownList NombreCargo
     {
         get { return uxNombre; }
@@ -50,17 +53,18 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
         get { return uxLabelError; }
         set { uxLabelError = value; }
     }
+    #endregion
 
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         LabelError.Visible = false;
         _presenter.ConsultarCargo();
+        ActivarBotones();
     }
 
     protected void uxBotonEliminar_Click(object sender, EventArgs e)
     {
-        LabelError.Visible = false;
         if (!_presenter.EliminarCargo())
         {
             LabelError.Text = "Error eliminando el cargo";
@@ -75,7 +79,6 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
 
     protected void uxBotonGuardar_Click(object sender, EventArgs e)
     {
-        LabelError.Visible = false;
         if (!_presenter.ModificarCargo())
         {
             LabelError.Text = "Error guardando los cambios";
@@ -86,5 +89,17 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
             LabelError.Text = "Cambios guardos satisfactoriamente";
             LabelError.Visible = true;
         }
+    }
+
+    private void ActivarBotones()
+    {
+        uxBotonGuardar.Enabled = true;
+        uxBotonEliminar.Enabled = true;
+    }
+
+    private void DesactivarBotones()
+    {
+        uxBotonGuardar.Enabled = false;
+        uxBotonEliminar.Enabled = false;
     }
 }

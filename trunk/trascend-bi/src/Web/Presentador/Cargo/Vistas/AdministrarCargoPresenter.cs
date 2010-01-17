@@ -21,9 +21,10 @@ namespace Presentador.Cargo.Vistas
         public AdministrarCargoPresenter(IAdministrarCargo laVista)
         {
             _vista = laVista;
+            DesactivarCampos();
             if(_vista.NombreCargo.Items.Count < 1)
                 LlenarDDLCargos();
-
+            
         }
         #endregion
 
@@ -43,9 +44,7 @@ namespace Presentador.Cargo.Vistas
                 _vista.NombreCargo.DataSource = ListaCargos;
                 _vista.NombreCargo.DataTextField = "Nombre";
                 _vista.NombreCargo.DataValueField = "Id";
-                _vista.NombreCargo.DataBind();
-
-                
+                _vista.NombreCargo.DataBind();               
         }
 
         public void ConsultarCargo()
@@ -66,6 +65,8 @@ namespace Presentador.Cargo.Vistas
             _vista.SueldoMinimo.Text = cargoRetorno.SueldoMinimo.ToString();
             _vista.SueldoMaximo.Text = cargoRetorno.SueldoMaximo.ToString();
             _vista.VigenciaSueldo.Text = cargoRetorno.Vigencia.ToShortDateString().ToString();
+
+            ActivarCampos();
         }
 
         public bool EliminarCargo()
@@ -79,6 +80,7 @@ namespace Presentador.Cargo.Vistas
             if (ComandoEliminar.Ejecutar())
             {
                 LimpiarFormulario();
+                LlenarDDLCargos();
                 return true;
             }
             else
@@ -104,6 +106,9 @@ namespace Presentador.Cargo.Vistas
             if(ComandoModificar.Ejecutar())
             {
                 LimpiarFormulario();
+                int i = _vista.NombreCargo.SelectedIndex;
+                LlenarDDLCargos();
+                _vista.NombreCargo.SelectedIndex = i;
                 return true;
             }
             else
@@ -119,6 +124,22 @@ namespace Presentador.Cargo.Vistas
             _vista.VigenciaSueldo.Text = campoVacio;
             _vista.LabelError.Text = campoVacio;
             _vista.LabelError.Visible = false;
+        }
+
+        private void ActivarCampos()
+        {
+            _vista.DescripcionCargo.Enabled = true;
+            _vista.SueldoMinimo.Enabled = true;
+            _vista.SueldoMaximo.Enabled = true;
+            _vista.VigenciaSueldo.Enabled = true;
+        }
+
+        private void DesactivarCampos()
+        {
+            _vista.DescripcionCargo.Enabled = false;
+            _vista.SueldoMinimo.Enabled = false;
+            _vista.SueldoMaximo.Enabled = false;
+            _vista.VigenciaSueldo.Enabled = false;
         }
         #endregion
     }

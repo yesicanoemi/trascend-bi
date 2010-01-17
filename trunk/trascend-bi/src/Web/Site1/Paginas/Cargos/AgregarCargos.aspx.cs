@@ -15,6 +15,7 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         _presentador = new AgregarCargoPresenter(this);
     }
 
+    #region Propiedades
     public TextBox NombreCargo
     {
         get { return uxNombre; }
@@ -50,6 +51,7 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         get { return uxLabelError; }
         set { uxLabelError = value; }
     }
+    #endregion
 
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
