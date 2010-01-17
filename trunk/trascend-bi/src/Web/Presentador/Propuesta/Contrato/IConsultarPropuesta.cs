@@ -31,7 +31,7 @@ namespace Presentador.Propuesta.Contrato
         Label LabelMont { get; set; }
         Label LabelMontP { get; set; }
         Label LabelEquip { get; set; }
-        Label LabelEquipP { get; set; }
+        ListBox ListaEmpleados { get; set; }
 
        
     }

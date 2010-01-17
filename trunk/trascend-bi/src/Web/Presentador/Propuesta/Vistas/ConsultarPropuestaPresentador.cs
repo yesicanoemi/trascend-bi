@@ -105,7 +105,7 @@ namespace Presentador.Propuesta.Vistas
             _vista.LabelCarg.Visible = true;
             _vista.LabelCargP.Visible = true;
             _vista.LabelEquip.Visible = true;
-            _vista.LabelEquipP.Visible = true;
+            _vista.ListaEmpleados.Visible = true;
             _vista.LabelFechaFi.Visible = true;
             _vista.LabelFechaFiP.Visible = true;
             _vista.LabelFechaI.Visible = true;
@@ -138,7 +138,8 @@ namespace Presentador.Propuesta.Vistas
             {
                 #region Propuestas En Espera
                 int i = 0;
-                propuesta = BuscarPorTitulo();
+                int j = 0;
+                propuesta = BuscarEstadoEspera();
                 for (i = 0; i < propuesta.Count; i++)
                 {
                     if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
@@ -154,6 +155,10 @@ namespace Presentador.Propuesta.Vistas
                         _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
                         _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
                         _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
+                        for (j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++)
+                        {
+                            _vista.ListaEmpleados.Items.Add(propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre);
+                        }
 
                     }
                 }
@@ -166,6 +171,7 @@ namespace Presentador.Propuesta.Vistas
             {
                 #region Propuesta Aprobada
                 int i = 0;
+                int j = 0;
                 propuesta = BuscarPorTitulo();
                 for (i = 0; i < propuesta.Count; i++)
                 {
@@ -182,6 +188,10 @@ namespace Presentador.Propuesta.Vistas
                         _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
                         _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
                         _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
+                        for (j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++)
+                        {
+                            _vista.ListaEmpleados.Items.Add(propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre);
+                        }
 
                     }
                 }

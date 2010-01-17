@@ -91,7 +91,7 @@
                             </tr>
                              <tr>
                                 <td><asp:Label ID="LabelEquipo" runat="server" Text = "Equipo de Trabajo" Visible ="False" /></td>
-                                <td><asp:Label ID="LabelEquipoP" runat="server" Visible ="False" /></td>
+                                <td><asp:Listbox ID="ListEquipoP" runat="server" Visible ="False" /></td>
                             </tr>
                         </table>
                      </form>

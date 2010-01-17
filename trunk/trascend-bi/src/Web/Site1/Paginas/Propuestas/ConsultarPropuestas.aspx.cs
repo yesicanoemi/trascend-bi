@@ -128,10 +128,11 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : System.Web.UI.Page
         get { return LabelEquipo; }
         set { LabelEquipo = value; }
     }
-    public Label LabelEquipP
+
+    public ListBox ListaEmpleados
     {
-        get { return LabelEquipoP; }
-        set { LabelEquipoP = value; }
+        get { return ListEquipoP; }
+        set { ListEquipoP = value; }
     }
     #endregion
 
