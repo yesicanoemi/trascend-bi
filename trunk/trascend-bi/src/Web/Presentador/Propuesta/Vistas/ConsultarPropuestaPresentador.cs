@@ -14,6 +14,10 @@ namespace Presentador.Propuesta.Vistas
         private IList<Core.LogicaNegocio.Entidades.Propuesta> propuesta;
 
         #region Constructor
+        public ConsultarPropuestaPresentador()
+        {
+        }
+
         public ConsultarPropuestaPresentador(IConsultarPropuesta vista)
         {
             _vista = vista;

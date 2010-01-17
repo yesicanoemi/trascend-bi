@@ -50,19 +50,30 @@ public partial class Paginas_Gastos_AgregarGastos : System.Web.UI.Page, IIngresa
         set { uxProyectosGasto = value; }
     }
 
+    public CheckBox AsociarPropuestaGasto
+    {
+        get { return uxCheckProyectoGasto; }
+        set { uxCheckProyectoGasto = value; }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
     {
         _presentadorGasto = new IngresarGastoPresenter(this);
+        _presentadorGasto.BuscarPropuesta();
     }
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentadorGasto.ingresarGasto();
     }
-    protected void uxCheckProyectoGasto_CheckedChanged(object sender, EventArgs e)
+    protected void uxCheckProyectoGasto_CheckedChanged1(object sender, EventArgs e)
     {
-        //_presentadorPropuesta.BuscarPorTitulo
+
+    }
+    protected void uxProyectosGasto_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }

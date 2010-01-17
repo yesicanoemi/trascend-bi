@@ -113,12 +113,12 @@ namespace Core.AccesoDatos.SqlServer
 
                 parametros[5] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[5].Value = gasto.Descripcion;
-
-                parametros[6] = new SqlParameter("@propuesta", SqlDbType.Int);
-                parametros[6].Value = gasto.IdPropuesta;
+                
+                parametros[6] = new SqlParameter("@version", SqlDbType.Int);
+                parametros[6].Value = gasto.IdVersion;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGastoPropuesta", parametros);
-
+                //DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "InsertarGastoPropuesta", parametros);
             }
             catch (SqlException e)
             {

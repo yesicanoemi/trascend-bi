@@ -15,6 +15,7 @@ namespace Presentador.Gasto.Contrato
         TextBox EstadoGasto { get; set; }
         TextBox TipoGasto { get; set; }
         DropDownList PropuestaAsociada { get; set; }
+        CheckBox AsociarPropuestaGasto { get; set; }
         #endregion
     }
 }

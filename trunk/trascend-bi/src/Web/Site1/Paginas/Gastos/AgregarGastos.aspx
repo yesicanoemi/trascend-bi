@@ -95,10 +95,13 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                 <tr>
                                    <td>Asociado a un proyecto:
                                        <asp:CheckBox ID="uxCheckProyectoGasto" runat="server" 
-                                           onClick="actualizarEstadoDDLGasto(this);" />
+                                           onClick="actualizarEstadoDDLGasto(this);" 
+                                           oncheckedchanged="uxCheckProyectoGasto_CheckedChanged1" />
+                                            
                                     </td>
                                    <td>
-                                       <asp:DropDownList ID="uxProyectosGasto" runat="server" Enabled="false">
+                                       <asp:DropDownList ID="uxProyectosGasto" runat="server" Enabled="false" 
+                                           onselectedindexchanged="uxProyectosGasto_SelectedIndexChanged">
                                        </asp:DropDownList>
                                     </td>
                                 </tr>

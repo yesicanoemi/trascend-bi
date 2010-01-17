@@ -12,7 +12,7 @@
         private DateTime fechaIngreso;
         private string tipo;
         private string descripcion;
-        private int idPropuesta;
+        private int idVersion;
 
         public virtual int Codigo
         {
@@ -27,16 +27,16 @@
             }
         }
 
-        public virtual int IdPropuesta
+        public virtual int IdVersion
         {
             get
             {
-                return idPropuesta;
+                return idVersion;
             }
 
             set
             {
-                idPropuesta = value;
+                idVersion = value;
             }
         }
 
