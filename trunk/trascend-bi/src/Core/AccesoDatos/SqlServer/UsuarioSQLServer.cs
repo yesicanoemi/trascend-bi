@@ -201,7 +201,7 @@ namespace Core.AccesoDatos.SqlServer
 
 
         public void ModificarUsuario(Usuario usuario)
-        {//aun le falta pasarle la lista de los permisos..
+        {
             try
             {
                 SqlParameter[] arParms = new SqlParameter[1];
@@ -221,12 +221,6 @@ namespace Core.AccesoDatos.SqlServer
                 arParmsAgregarPermisos[0].Value = usuario.Login;
 
                 arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.VarChar);
-
-                
-             
-
-
-
 
                 
                 for (int i = 0; i < usuario.PermisoUsu.Count; i++)
@@ -409,6 +403,78 @@ namespace Core.AccesoDatos.SqlServer
             return permiso;
 
         }
+
+        public void AgregarUsuario(Usuario usuario)
+        {
+            try
+            {
+                #region Busca el Id del empleado en cuestion
+                SqlParameter[] arParmsIdEmp = new SqlParameter[1];
+
+                arParmsIdEmp[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
+
+                arParmsIdEmp[0].Value = usuario.IdUsuario;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "BuscarIDEmpleado", arParmsIdEmp);
+
+                while (reader.Read())
+                {                    
+                    usuario.IdUsuario = (int)reader["IdEmpleado"];
+                }
+
+                #endregion
+
+                #region Agregar Usuario
+                SqlParameter[] arParms = new SqlParameter[4];
+
+                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParms[0].Value = usuario.Login;
+
+                arParms[1] = new SqlParameter("@Password", SqlDbType.VarChar);
+
+                arParms[1].Value = usuario.Password;
+
+                arParms[2] = new SqlParameter("@Status", SqlDbType.VarChar);
+
+                arParms[2].Value = "Activo";
+
+                arParms[3] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+
+                arParms[3].Value = usuario.IdUsuario;
+
+                SqlHelper.ExecuteNonQuery(GetConnection(),
+                                        "AgregarUsuario", arParms);
+                #endregion
+
+                #region Agregar Permisos
+                SqlParameter[] arParmsAgregarPermisos = new SqlParameter[2];
+
+                arParmsAgregarPermisos[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParmsAgregarPermisos[0].Value = usuario.Login;
+
+                arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.VarChar);
+
+
+                for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+                {
+                    arParmsAgregarPermisos[1].Value = usuario.PermisoUsu[i].IdPermiso;
+
+                    SqlHelper.ExecuteNonQuery(GetConnection(),
+                                            "AgregarPermisoUsuario", arParmsAgregarPermisos);
+                }
+                #endregion
+
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+        }
+
 
         #endregion
 

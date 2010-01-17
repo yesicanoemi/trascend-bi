@@ -141,7 +141,7 @@
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteGastoFechaPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteHorasRolPresenter.cs" />
-    <Compile Include="Usuario\Contrato\IAgregarUsuarioPresenter.cs" />
+    <Compile Include="Usuario\Contrato\IAgregarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IModificarUsuario.cs" />

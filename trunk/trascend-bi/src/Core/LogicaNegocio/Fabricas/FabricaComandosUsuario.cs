@@ -68,6 +68,11 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ModificarUsuario(entidad);
         }
+
+        public static AgregarUsuario CrearComandoAgregarUsuario(Usuario entidad)
+        {
+            return new AgregarUsuario(entidad);
+        }
 #endregion
 	}
 }

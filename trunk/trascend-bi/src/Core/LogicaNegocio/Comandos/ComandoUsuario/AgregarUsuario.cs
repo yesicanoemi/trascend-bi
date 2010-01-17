@@ -7,7 +7,7 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
-    public class ModificarUsuario : Comando<Core.LogicaNegocio.Entidades.Usuario>
+    public class AgregarUsuario : Comando<Core.LogicaNegocio.Entidades.Usuario>
     {
         private Core.LogicaNegocio.Entidades.Usuario usuario;
 
@@ -15,10 +15,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         /// <summary>Constructor de la clase 'CosultarCredenciales'.</summary>
 
-        public ModificarUsuario()
+        public AgregarUsuario()
         { }
 
-        public ModificarUsuario(Core.LogicaNegocio.Entidades.Usuario usuario)
+        public AgregarUsuario(Core.LogicaNegocio.Entidades.Usuario usuario)
         {
             this.usuario = usuario;
         }
@@ -35,7 +35,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
             UsuarioSQLServer bd = new UsuarioSQLServer();
 
-            bd.ModificarUsuario(usuario);
+            bd.AgregarUsuario(usuario);
 
         }
 
