@@ -164,6 +164,26 @@ namespace Core.AccesoDatos.SqlServer
                 _Propuesta.EquipoTrabajo = ListaEmpleado;
                 #endregion
 
+                #region Busqueda del Receptor
+
+                SqlParameter ParamIdPropuestaR = new SqlParameter();
+
+                ParamIdPropuestaR = new SqlParameter("@IdPropuesta", SqlDbType.Int);
+
+                ParamIdPropuestaR.Value = _Propuesta.Id;
+                DbDataReader conexionReceptor =
+                   SqlHelper.ExecuteReader
+                   (GetConnection(), "ConsultarReceptorVersion", ParamIdPropuestaR);
+                while (conexionReceptor.Read())
+                {
+                    _Propuesta.NombreReceptor   = ( string )conexionReceptor["NombreReceptor"];
+                    _Propuesta.ApellidoReceptor = ( string )conexionReceptor["Apellido"];
+                    _Propuesta.CargoReceptor    = ( string )conexionReceptor["Nombre"];
+                }
+
+
+                #endregion
+
                 ListaPropuesta.Insert( i, _Propuesta );
                 i++;
                 
@@ -202,6 +222,7 @@ namespace Core.AccesoDatos.SqlServer
 
             return ListaPropuesta;
         }
+
         /// <summary>
         /// Metodo que consulta las propuestas que Tiene Versiones en espera
         /// de Aprobacion o Rechazo
@@ -225,31 +246,25 @@ namespace Core.AccesoDatos.SqlServer
                 _Propuesta.MontoTotal  = float.Parse( conexion[ "Monto" ].ToString() );
                 _Propuesta.Id          = ( int )conexion[ "IdPropuesta" ];
 
-                #region Busqueda de Empleados
+                #region Busqueda de Empleado
 
-                
-                
-                List<Empleado> ListaEmpleado = new List<Empleado>();
+                _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+               
+                #endregion
 
-                SqlParameter ParamIdPropuesta = new SqlParameter();
-
-                ParamIdPropuesta = new SqlParameter("@IdPropuesta", SqlDbType.Int);
-
-                ParamIdPropuesta.Value = _Propuesta.Id;
-
-                DbDataReader conexionempleado = 
-                    SqlHelper.ExecuteReader
-                    (GetConnection(), "ConsultarEmpleadoVersion", ParamIdPropuesta);
-
+                #region Busqueda del Receptor
                 int j = 0;
-                while (conexionempleado.Read())
+                List<string> ListR = new List<string>();
+                ListR = BuscarReceptor(_Propuesta.Id);
+                for (j = 0; j < ListR.Count; j++)
                 {
-                    Empleado empleado = new Empleado();
-                    empleado.Nombre = (string)conexionempleado["Nombre"];
-                   ListaEmpleado.Insert(j, empleado );
-                   j++;
+                    _Propuesta.NombreReceptor = ListR.ElementAt(j);
+                    j++;
+                    _Propuesta.ApellidoReceptor = ListR.ElementAt(j);
+                    j++;
+                    _Propuesta.CargoReceptor = ListR.ElementAt(j);
                 }
-                _Propuesta.EquipoTrabajo = ListaEmpleado;
+
                 #endregion
 
                 ListaPropuesta.Insert( i, _Propuesta );
@@ -259,6 +274,63 @@ namespace Core.AccesoDatos.SqlServer
 
             return ListaPropuesta;
         }
+        /// <summary>
+        /// Metodo que se encarga de buscar Los empleados de una propuesta en específico
+        /// </summary>
+        /// <returns></returns>
+        private List<Empleado> BuscarEmpleado(int IdPropuesta)
+        {
+            
+            List<Empleado> ListaEmpleado = new List<Empleado>();
+
+            SqlParameter ParamIdPropuesta = new SqlParameter();
+
+            ParamIdPropuesta = new SqlParameter("@IdPropuesta", SqlDbType.Int);
+
+            ParamIdPropuesta.Value = IdPropuesta;
+
+            DbDataReader conexionempleado =
+                SqlHelper.ExecuteReader
+                (GetConnection(), "ConsultarEmpleadoVersion", ParamIdPropuesta);
+
+            int j = 0;
+            while (conexionempleado.Read())
+            {
+                Empleado empleado = new Empleado();
+                empleado.Nombre = (string)conexionempleado["Nombre"];
+                ListaEmpleado.Insert(j, empleado);
+                j++;
+            }
+            return ListaEmpleado;
+         
+        }
+        
+        /// <summary>
+        /// Metodo que consulta el Receptor de la propuesta
+        /// </summary>
+        /// <param name="IdPropuesta"> Se envia el id de la propuesta</param>
+        /// <returns>Retorna una lista de string que contiene los 3 campos Nombre Apellido y Receptor
+        /// la lista es de tipo string ya que no existe la entidad receptor como tal</returns>
+        private List<string> BuscarReceptor(int IdPropuesta)
+        {
+            List<string> ListaReceptor = new List<string>();
+            SqlParameter ParamIdPropuestaR = new SqlParameter();
+
+            ParamIdPropuestaR = new SqlParameter("@IdPropuesta", SqlDbType.Int);
+
+            ParamIdPropuestaR.Value = IdPropuesta;
+            DbDataReader conexionReceptor =
+               SqlHelper.ExecuteReader
+               (GetConnection(), "ConsultarReceptorVersion", ParamIdPropuestaR);
+            while (conexionReceptor.Read())
+            {
+                ListaReceptor.Add((string)conexionReceptor["NombreReceptor"]);
+                ListaReceptor.Add((string)conexionReceptor["Apellido"]);
+                ListaReceptor.Add((string)conexionReceptor["Nombre"]);
+            }
+            return ListaReceptor;
+        }
+
 #endregion
     }
 }

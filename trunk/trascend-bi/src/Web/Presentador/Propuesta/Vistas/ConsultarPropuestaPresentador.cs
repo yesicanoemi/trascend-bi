@@ -145,19 +145,22 @@ namespace Presentador.Propuesta.Vistas
                     if (propuesta.ElementAt(i).Titulo.Equals(_vista.SeleccionOpcion.SelectedItem.Text))
                     {
                         // Se Llenan Los Campos
-                        _vista.LabelCargP.Text = propuesta.ElementAt(i).CargoReceptor;
-                        //_vista.LabelEquipP.Text    = propuesta.ElementAt(i).EquipoTrabajo;
-                        _vista.LabelFechaFiP.Text = propuesta.ElementAt(i).FechaFin.ToString();
-                        _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
-                        _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
-                        _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
-                        _vista.LabelRecepP.Text = propuesta.ElementAt(i).NombreReceptor;
+                        _vista.LabelCargP.Text       = propuesta.ElementAt(i).CargoReceptor;
+                        _vista.LabelFechaFiP.Text    = propuesta.ElementAt(i).FechaFin.ToString();
+                        _vista.LabelFechaIP.Text     = propuesta.ElementAt(i).FechaInicio.ToString();
+                        _vista.LabelFFirmP.Text      = propuesta.ElementAt(i).FechaFirma.ToString();
+                        _vista.LabelMontP.Text       = propuesta.ElementAt(i).MontoTotal.ToString();
+                        _vista.LabelRecepP.Text      = string.Concat( propuesta.ElementAt(i).NombreReceptor+" ",
+                                                                         propuesta.ElementAt(i).ApellidoReceptor);
+                        _vista.LabelCargP.Text       = propuesta.ElementAt(i).CargoReceptor;
                         _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
-                        _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
-                        _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
+                        _vista.LabelTP.Text          = propuesta.ElementAt(i).Titulo;
+                        _vista.LabelVP.Text          = propuesta.ElementAt(i).Version;
+
                         for (j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++)
                         {
-                            _vista.ListaEmpleados.Items.Add(propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre);
+                            _vista.ListaEmpleados.Items.Add
+(propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre);
                         }
 
                     }
@@ -184,7 +187,8 @@ namespace Presentador.Propuesta.Vistas
                         _vista.LabelFechaIP.Text = propuesta.ElementAt(i).FechaInicio.ToString();
                         _vista.LabelFFirmP.Text = propuesta.ElementAt(i).FechaFirma.ToString();
                         _vista.LabelMontP.Text = propuesta.ElementAt(i).MontoTotal.ToString();
-                        _vista.LabelRecepP.Text = propuesta.ElementAt(i).NombreReceptor;
+                        _vista.LabelRecepP.Text = string.Concat(propuesta.ElementAt(i).NombreReceptor+" ",
+                                                                          propuesta.ElementAt(i).ApellidoReceptor);
                         _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
                         _vista.LabelTP.Text = propuesta.ElementAt(i).Titulo;
                         _vista.LabelVP.Text = propuesta.ElementAt(i).Version;
@@ -195,43 +199,7 @@ namespace Presentador.Propuesta.Vistas
 
                     }
                 }
-                /*
-                //OTRO METODO
-                int numrows = 9;
-                int numcells = 2;
-
-                List<string> daList = new List<string>();
-                daList.Add(_vista.LabelCargP.Text);
-                daList.Add(_vista.LabelFechaFiP.Text);
-                daList.Add(_vista.LabelFechaIP.Text);
-                daList.Add(_vista.LabelFFirmP.Text);
-                daList.Add(_vista.LabelMontP.Text);
-                daList.Add(_vista.LabelRecepP.Text);
-                daList.Add(_vista.LabelTotalHorasP.Text);
-                daList.Add(_vista.LabelTP.Text);
-                daList.Add(_vista.LabelVP.Text);
-
-                for (int j = 0; j < numrows; j++)
-                {
-                    TableRow r = new TableRow();
-                    for (int k = 0; k < numcells; k++)
-                    {
-                        TableCell c = new TableCell();
-                        if (k == 0)
-                        {
-                            c.Controls.Add(new LiteralControl("Nombre"));
-                        }
-                        else
-                        {
-                            c.Controls.Add(new LiteralControl(daList[j]));
-                        }
-                        r.Cells.Add(c);
-                    }
-                    _vista.TablaResultados.Rows.Add(r);
-                }
-
-                //FIN OTRO METODO
-                  */
+           
                 #endregion
             }
 
