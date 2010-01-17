@@ -10,16 +10,26 @@ namespace Presentador.Cargo.Vistas
 {
     public class AgregarCargoPresenter
     {
+        #region Atributos
         private const string campoVacio = "";
-
         private IAgregarCargo _vista;
-        //private CargoController _controlador;
-
+        #endregion
+        
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="laVista">La vista de la interfaz</param>
         public AgregarCargoPresenter(IAgregarCargo laVista)
         {
             _vista = laVista;
         }
 
+        #region Métodos
+
+        /// <summary>
+        /// Metodo para ingresar cargo nuevo
+        /// </summary>
+        /// <returns>true si fue correcto y false si hubo error</returns>
         public bool IngresarCargo()
         {
             Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
@@ -43,6 +53,9 @@ namespace Presentador.Cargo.Vistas
                 return false;
         }
 
+        /// <summary>
+        /// Metodo para limpiar los elementos de la interfaz
+        /// </summary>
         private void LimpiarFormulario()
         {
             _vista.NombreCargo.Text = campoVacio;
@@ -53,5 +66,7 @@ namespace Presentador.Cargo.Vistas
             _vista.LabelError.Text = campoVacio;
             _vista.LabelError.Visible = false;
         }
+
+        #endregion
     }
 }

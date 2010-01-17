@@ -18,6 +18,11 @@ namespace Presentador.Cargo.Vistas
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="laVista">Vista de la interfaz</param>
         public AdministrarCargoPresenter(IAdministrarCargo laVista)
         {
             _vista = laVista;
@@ -29,6 +34,10 @@ namespace Presentador.Cargo.Vistas
         #endregion
 
         #region Metodos
+
+        /// <summary>
+        /// Metodo para cargar los elementos del dropDownList de los nombres de los cargos
+        /// </summary>
         private void LlenarDDLCargos()
         {
             Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
@@ -47,6 +56,9 @@ namespace Presentador.Cargo.Vistas
                 _vista.NombreCargo.DataBind();               
         }
 
+        /// <summary>
+        /// Metodo para realizar la consulta del cargo
+        /// </summary>
         public void ConsultarCargo()
         {
             LimpiarFormulario();
@@ -69,6 +81,10 @@ namespace Presentador.Cargo.Vistas
             ActivarCampos();
         }
 
+        /// <summary>
+        /// Metodo del boton para eliminar el cargo
+        /// </summary>
+        /// <returns>True para correcto y false si hubo error</returns>
         public bool EliminarCargo()
         {
             
@@ -87,6 +103,10 @@ namespace Presentador.Cargo.Vistas
                 return false;  
         }
 
+        /// <summary>
+        /// Metodo para la modificacion del cargo buscado
+        /// </summary>
+        /// <returns>True si no hubo errores y false si hubo error</returns>
         public bool ModificarCargo()
         {
 
@@ -116,6 +136,9 @@ namespace Presentador.Cargo.Vistas
 
         }
 
+        /// <summary>
+        /// Metodo para limpiar los elementos de la pagina
+        /// </summary>
         private void LimpiarFormulario()
         {
             _vista.DescripcionCargo.Text = campoVacio;
@@ -126,6 +149,9 @@ namespace Presentador.Cargo.Vistas
             _vista.LabelError.Visible = false;
         }
 
+        /// <summary>
+        /// Metodo que abilita los campos en la interfaz
+        /// </summary>
         private void ActivarCampos()
         {
             _vista.DescripcionCargo.Enabled = true;
@@ -134,6 +160,9 @@ namespace Presentador.Cargo.Vistas
             _vista.VigenciaSueldo.Enabled = true;
         }
 
+        /// <summary>
+        /// Metodo que desactiva los campos en la interfaz
+        /// </summary>
         private void DesactivarCampos()
         {
             _vista.DescripcionCargo.Enabled = false;
