@@ -23,17 +23,26 @@ namespace Presentador.Cargo.Vistas
 
         public void CargarTabla()
         {
-            CargoSQLServer bd = new CargoSQLServer();
+  /*          CargoSQLServer bd = new CargoSQLServer();
             List<Core.LogicaNegocio.Entidades.Cargo> listaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
             IList<Entidad> listaEntidades = bd.ConsultarCargos();
-            Core.LogicaNegocio.Entidades.Cargo cargo;
+            Core.LogicaNegocio.Entidades.Cargo cargo; */
 
-            for (int i = 0; i < listaEntidades.Count; i++)
+            Core.LogicaNegocio.Comandos.ComandoCargo.ConsultarTabla ComandoConsultarTabla;
+
+            ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoConsultarTabla();
+
+            List<Core.LogicaNegocio.Entidades.Cargo> listaCargos = ComandoConsultarTabla.Ejecutar();
+
+            for (int i = 0; i < listaCargos.Count; i++)
             {
-                cargo = (Core.LogicaNegocio.Entidades.Cargo)listaEntidades[i];
-                cargo.SueldoMaximoConInflacion = cargo.SueldoMaximo * (1 + float.Parse(_vista.Inflacion.Text)/100);
-                cargo.SueldoMinimoConInflacion = cargo.SueldoMinimo * (1 + float.Parse(_vista.Inflacion.Text)/100);
-                listaCargos.Add(cargo);
+           //     cargo = (Core.LogicaNegocio.Entidades.Cargo)listaEntidades[i];
+         //       cargo.SueldoMaximoConInflacion = cargo.SueldoMaximo * (1 + float.Parse(_vista.Inflacion.Text)/100);
+           //     cargo.SueldoMinimoConInflacion = cargo.SueldoMinimo * (1 + float.Parse(_vista.Inflacion.Text)/100);
+    //            listaCargos.Add(cargo);
+
+                  listaCargos[i].SueldoMaximoConInflacion = listaCargos[i].SueldoMaximo * (1 + float.Parse(_vista.Inflacion.Text) / 100);
+                  listaCargos[i].SueldoMinimoConInflacion = listaCargos[i].SueldoMinimo * (1 + float.Parse(_vista.Inflacion.Text) / 100);
             }
 
             _vista.TablaSueldos.DataSource = listaCargos;
