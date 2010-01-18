@@ -10,8 +10,8 @@ Gestion de Clientes en el Sistema.
 
 == Details ==
   * Ingresar Clientes(CU-C01) _Bracho Harold_
-  * Modificar Clientes (CU-C02) _Bracho Harold_
-  * Consultar Clientes (CU-C03) _Ibarra Antonio_
+  * Modificar Clientes (CU-C02) _Ibarra Antonio_
+  * Consultar Clientes (CU-C03) _Bracho Harold_
   * Eliminar Clientes (CU-C04) _Ibarra Antonio_
 
 == Casos de uso ==
