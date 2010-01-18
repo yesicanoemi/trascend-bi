@@ -109,30 +109,37 @@ namespace Presentador.Cargo.Vistas
         /// <returns>True si no hubo errores y false si hubo error</returns>
         public bool ModificarCargo()
         {
-
-            Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-
-            cargo.Id = int.Parse(_vista.NombreCargo.SelectedValue);
-            cargo.Nombre = _vista.NombreCargo.SelectedItem.Text;
-            cargo.Descripcion = _vista.DescripcionCargo.Text;
-            cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
-            cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
-            cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
-
-            Core.LogicaNegocio.Comandos.ComandoCargo.Modificar ComandoModificar;
-
-            ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar( cargo );
-
-            if(ComandoModificar.Ejecutar())
+            if (ValidarCampos())
             {
-                LimpiarFormulario();
-                int i = _vista.NombreCargo.SelectedIndex;
-                LlenarDDLCargos();
-                _vista.NombreCargo.SelectedIndex = i;
-                return true;
+                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+
+                cargo.Id = int.Parse(_vista.NombreCargo.SelectedValue);
+                cargo.Nombre = _vista.NombreCargo.SelectedItem.Text;
+                cargo.Descripcion = _vista.DescripcionCargo.Text;
+                cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+                cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
+                cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
+
+                Core.LogicaNegocio.Comandos.ComandoCargo.Modificar ComandoModificar;
+
+                ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar(cargo);
+
+                if (ComandoModificar.Ejecutar())
+                {
+                    LimpiarFormulario();
+                    int i = _vista.NombreCargo.SelectedIndex;
+                    LlenarDDLCargos();
+                    _vista.NombreCargo.SelectedIndex = i;
+                    return true;
+                }
+                else
+                    return false;
             }
             else
+            {
+                _vista.LabelError.Text = "Debe rellenar todos los campos";
                 return false;
+            }
 
         }
 
@@ -169,6 +176,25 @@ namespace Presentador.Cargo.Vistas
             _vista.SueldoMinimo.Enabled = false;
             _vista.SueldoMaximo.Enabled = false;
             _vista.VigenciaSueldo.Enabled = false;
+        }
+
+        private bool ValidarCampos()
+        {
+            bool b = true;
+
+            if (_vista.DescripcionCargo.Text == "")
+                b = false;
+
+            if (_vista.SueldoMinimo.Text == "")
+                b = false;
+
+            if (_vista.SueldoMaximo.Text == "")
+                b = false;
+
+            if (_vista.VigenciaSueldo.Text == "")
+                b = false;
+
+            return b;
         }
         #endregion
     }

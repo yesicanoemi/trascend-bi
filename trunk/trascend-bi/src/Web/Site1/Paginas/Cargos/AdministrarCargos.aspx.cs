@@ -90,8 +90,13 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
     {
         if (!_presenter.ModificarCargo())
         {
-            LabelError.Text = "Error guardando los cambios";
-            LabelError.Visible = true;
+            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
+                LabelError.Visible = true;
+            else
+            {
+                LabelError.Text = "Error guardando los cambios";
+                LabelError.Visible = true;
+            }
         }
         else
         {
