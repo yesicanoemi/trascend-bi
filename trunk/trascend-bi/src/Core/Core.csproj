@@ -162,7 +162,7 @@
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ModificarFacturaADException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ConsultarFacturaLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\IngresarFacturaLNException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ModificarFacturaLN.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ModificarFacturaLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\IngresarException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosReporte.cs" />

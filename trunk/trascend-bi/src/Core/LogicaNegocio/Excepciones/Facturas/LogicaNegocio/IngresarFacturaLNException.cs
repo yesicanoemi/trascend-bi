@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio
 {
-    public class IngresarFacturaLNException
+    public class IngresarFacturaLNException: IngresarException
     {
+        public IngresarFacturaLNException(string s, Exception e): base(s, e)
+        {
+
+        }
     }
 }
