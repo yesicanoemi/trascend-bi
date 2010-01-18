@@ -309,4 +309,7 @@
   <data name="FaltaNumTelefono" xml:space="preserve">
     <value>Debe introducir el telefono</value>
   </data>
+  <data name="FaltaTipoGasto" xml:space="preserve">
+    <value>Debe introducir el tipo del gasto</value>
+  </data>
 </root>

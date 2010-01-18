@@ -277,9 +277,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
-                //_propuesta.Titulo = (string)reader["Titulo"];
-
-                //_factura.Prop.Titulo = _propuesta.Titulo;
+                _factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                 facturas.Add(_factura);
             }
@@ -329,9 +327,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
-                //_propuesta.Titulo = (string)reader["Titulo"];
-
-                //_factura.Prop.Titulo = _propuesta.Titulo;
+                _factura.Procentajepagado = (float)reader["Porcentaje"];
 
                 factura.Add(_factura);
             }
@@ -381,9 +377,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
-                //_propuesta.Titulo = (string)reader["Titulo"];
-
-                //_factura.Prop.Titulo = _propuesta.Titulo;
+                _factura.Procentajepagado = (float)reader["Porcentaje"];
 
                 factura.Add(_factura);
             }

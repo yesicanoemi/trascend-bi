@@ -47,9 +47,12 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                 <form id="uxFormGasto" runat="server">
                            <table style="width:100%;">
                                 <tr>
-                                    <td>
-                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false"/>
+                                    <td align="center">
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
                                 </tr>
                            </table>
                            <table style="width:100%;">
@@ -57,7 +60,11 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                    <td>Tipo: </td>
                                    <td><asp:TextBox ID="uxTipoGasto" runat="server"></asp:TextBox></td>
                                </tr>
-                               
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxTipoGasto"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaTipoGasto%>" Font-Size="Smaller" Display="static" /></td>
+                               </tr>
                                 <tr>
                                    <td>Descripcion: </td>
                                    <td><asp:TextBox ID="uxDescripcionGasto" runat="server"></asp:TextBox></td>

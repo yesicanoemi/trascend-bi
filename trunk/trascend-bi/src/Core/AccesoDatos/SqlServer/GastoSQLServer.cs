@@ -131,7 +131,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                //System.Console.Write(e);
                 _gasto.Codigo = -1;
             }
 

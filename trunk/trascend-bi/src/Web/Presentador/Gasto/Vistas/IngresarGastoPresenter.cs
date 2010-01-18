@@ -91,10 +91,13 @@ namespace Presentador.Gasto.Vistas
 
             gasto = ingresar.Ejecutar();
 
-            _vista.MensajeError.Visible = true;
-            _vista.MensajeError.Text = "te jodiste";
+            if (gasto.Codigo<0)
+            {
+                _vista.MensajeError.Text = "No se pudo insertar dicho GASTO";
+                _vista.MensajeError.Visible = true;
+            }
+            else limpiar();
 
-            limpiar();
         }
         #endregion
 
