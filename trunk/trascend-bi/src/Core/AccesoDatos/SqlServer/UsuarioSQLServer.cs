@@ -236,6 +236,20 @@ namespace Core.AccesoDatos.SqlServer
                                             "AgregarPermisoUsuario", arParmsAgregarPermisos);
                 }
 
+                SqlParameter[] arParmsStatus = new SqlParameter[2];
+
+                arParmsStatus[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParmsStatus[0].Value = usuario.Login;
+
+                arParmsStatus[1] = new SqlParameter("@Status", SqlDbType.VarChar);
+
+                arParmsStatus[1].Value = usuario.Status;
+
+
+                SqlHelper.ExecuteNonQuery(GetConnection(),
+                                        "ModificarUsuarioStatus", arParmsStatus);
+
             }
             catch (SqlException e)
             {
