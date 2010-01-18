@@ -83,7 +83,7 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
-        public IList<Contacto> Consultar()
+    /*    public IList<Contacto> Consultar()
         {
             IList<Contacto> contacto = null;
             DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarContacto");
@@ -100,13 +100,13 @@ namespace Core.AccesoDatos.SqlServer
                 contacto.Add(_contacto);
             }
             return contacto;
-        }
+        } */
 
 
-        #region ConsultarUsuario
+        #region ConsultarContacto
 
         /// <summary>
-        /// Metodo para consultar el usuario por "Login"
+        /// Metodo para consultar el Contacto
         /// </summary>
         /// <param name="usuario">Criterio de busqueda</param>
         /// <returns>Usuario(s) que coincidan con el criterio</returns>
@@ -121,7 +121,7 @@ namespace Core.AccesoDatos.SqlServer
                 //Parametros de busqueda
 
 
-                SqlParameter[] arParms = new SqlParameter[3];
+                SqlParameter[] arParms = new SqlParameter[4];
 
                 arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
 
