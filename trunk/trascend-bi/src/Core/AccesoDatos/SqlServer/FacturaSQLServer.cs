@@ -9,6 +9,8 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
+using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -45,49 +47,60 @@ namespace Core.AccesoDatos.SqlServer
 
             List<Factura> facturas = new List<Factura>();
 
-            foreach (Propuesta propuestaAux in propuestas)
+            try
             {
-                if (propuesta.Titulo.Equals(propuestaAux.Titulo))
+                foreach (Propuesta propuestaAux in propuestas)
                 {
-                    int i = 0;
-
-                    SqlParameter[] arParms = new SqlParameter[1];
-
-                    arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
-
-                    arParms[0].Value = propuesta.Titulo;
-
-                    DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                            "ConsultarFacturaNomPro", arParms);
-
-                    while (reader.Read())
+                    if (propuesta.Titulo.Equals(propuestaAux.Titulo))
                     {
-                        Factura factura = new Factura();
+                        int i = 0;
 
-                        factura.Numero = (int)reader["IdFactura"];
+                        SqlParameter[] arParms = new SqlParameter[1];
 
-                        factura.Titulo = (string)reader["Titulo"];
+                        arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
 
-                        factura.Descripcion = (string)reader["Descripcion"];
+                        arParms[0].Value = propuesta.Titulo;
 
-                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                        DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                                "ConsultarFacturaNomPro", arParms);
 
-                        factura.Fechapago = (DateTime)reader["Fecha"];
+                        while (reader.Read())
+                        {
+                            Factura factura = new Factura();
 
-                        factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+                            factura.Numero = (int)reader["IdFactura"];
 
-                        factura.Estado = (string)reader["Estado"];
+                            factura.Titulo = (string)reader["Titulo"];
 
-                        factura.Prop = propuesta;
+                            factura.Descripcion = (string)reader["Descripcion"];
 
-                        facturas.Insert(i, factura);
+                            factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
-                        //reader.NextResult();
+                            factura.Fechapago = (DateTime)reader["echa"];
 
-                        i++;
+                            factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
+                            factura.Estado = (string)reader["Estado"];
+
+                            factura.Prop = propuesta;
+
+                            facturas.Insert(i, factura);
+
+                            //reader.NextResult();
+
+                            i++;
+
+                        }
                     }
                 }
+            }
+            catch (SqlException e)
+            {
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta ",e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta", e);
             }
 
             return facturas;
@@ -100,48 +113,59 @@ namespace Core.AccesoDatos.SqlServer
 
             List<Factura> facturas = new List<Factura>();
 
-            foreach (Propuesta propuestaAux in propuestas)
+            try
             {
-                Console.WriteLine(propuestaAux.Id);
-
-                if (propuesta.Id == propuestaAux.Id)
+                foreach (Propuesta propuestaAux in propuestas)
                 {
-                    int i = 0;
+                    Console.WriteLine(propuestaAux.Id);
 
-                    SqlParameter[] arParms = new SqlParameter[1];
-
-                    arParms[0] = new SqlParameter("@idpropuesta", SqlDbType.Int);
-
-                    arParms[0].Value = propuesta.Id;
-
-                    DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                            "ConsultarFacturaIDPro", arParms);
-
-                    while (reader.Read())
+                    if (propuesta.Id == propuestaAux.Id)
                     {
-                        Factura factura = new Factura();
+                        int i = 0;
 
-                        factura.Numero = (int)reader["IdFactura"];
+                        SqlParameter[] arParms = new SqlParameter[1];
 
-                        factura.Titulo = (string)reader["Titulo"];
+                        arParms[0] = new SqlParameter("@idpropuesta", SqlDbType.Int);
 
-                        factura.Descripcion = (string)reader["Descripcion"];
+                        arParms[0].Value = propuesta.Id;
 
-                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                        DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                                "ConsultarFacturaIDPro", arParms);
 
-                        factura.Fechapago = (DateTime)reader["Fecha"];
+                        while (reader.Read())
+                        {
+                            Factura factura = new Factura();
 
-                        factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+                            factura.Numero = (int)reader["IdFactura"];
 
-                        factura.Estado = (string)reader["Estado"];
+                            factura.Titulo = (string)reader["Titulo"];
 
-                        factura.Prop = propuesta;
+                            factura.Descripcion = (string)reader["Descripcion"];
 
-                        facturas.Insert(i, factura);
-                        i++;
+                            factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
+                            factura.Fechapago = (DateTime)reader["Fecha"];
+
+                            factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                            factura.Estado = (string)reader["Estado"];
+
+                            factura.Prop = propuesta;
+
+                            facturas.Insert(i, factura);
+                            i++;
+
+                        }
                     }
                 }
+            }
+            catch (SqlException e)
+            {
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el ID de la propuesta",e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta", e);
             }
 
             return facturas;
@@ -205,7 +229,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las propuestas con el fin de utilizarlas para facturas", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarFacturaADException("Error consultando las propuestas con el fin de utilizarlas para facturas", e);
             }
             return factura;
         }

@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Excepciones
 {
-    class ModificarException
+    class ModificarException : ApplicationException
     {
+        public ModificarException(string s, Exception e) : base(s, e)
+        {
+
+        }
     }
 }

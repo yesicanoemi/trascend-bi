@@ -5,6 +5,8 @@ using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
 using NUnit.Framework;
+using Core.LogicaNegocio.Excepciones;
+using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 
 
 namespace Core.Pruebas
@@ -50,6 +52,25 @@ namespace Core.Pruebas
             propuesta.Titulo = "Automatizacion de la Certificacion de Empleados";
             IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasNomPro(propuesta);
             Assert.AreEqual(facturas.Count, 47);
+        }
+
+        [Test]
+        public void TestConsultarFacturasNomProExceptionGenerica()
+        {
+            try
+            {
+                Propuesta propuesta = null;
+                IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasNomPro(propuesta);
+                Assert.AreEqual(facturas.Count, 0);
+            }
+            catch (ConsultarFacturaADException e)
+            {
+                Console.WriteLine("Exito: "+e.Message);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("Excepcion Equivocada");
+            }
         }
 
         [Test]

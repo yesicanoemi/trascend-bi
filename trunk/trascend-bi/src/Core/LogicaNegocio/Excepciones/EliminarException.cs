@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Excepciones
 {
-    class EliminarException
+    public class EliminarException : ApplicationException
     {
+        public EliminarException(string s, Exception e) : base(s, e)
+        {
+
+        }
     }
 }
