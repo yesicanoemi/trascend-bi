@@ -28,7 +28,7 @@ Casos de uso para la Gestión de Facturas y 2 reportes correspondientes a propue
     * Total de propuestas emitidas anuales - Capa de BD (CU-912) - Jesus Viloria
 
     * Manejo de excepciones - Capa de MVP (CU-916) - Luis Figueras
-    * Manejo de excepciones - Capa de comandos (CU-917) - Alexis Romero
+    * Manejo de excepciones - Capa de Lógica de Negocios (CU-917) - Alexis Romero
     * Manejo de excepciones - Capa de BD (CU-918) - Jesus Viloria
 
 == Casos de uso ==
