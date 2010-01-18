@@ -11,7 +11,7 @@ SELECT     A.Nombre, A.Apellido, A.CIEmpleado, A.NumCuenta, A.FechaNac, A.Estado
                       c.PisoApto, c.Ciudad
 FROM         Empleado A, Cargo b, Direccion c
 WHERE       ((b.IdCargo = A.IdCargo) AND
-            (c.IdDireccion = A.IdDireccion)
+            (c.IdEmpleado = A.IdEmpleado)
             AND (A.Nombre LIKE @nombre)) 
 
 END
