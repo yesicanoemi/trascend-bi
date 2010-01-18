@@ -80,6 +80,7 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
         {
             LabelError.Text = "Cargo eliminado satisfactoriamente";
             LabelError.Visible = true;
+            DesactivarBotones();
         }
     }
 
@@ -90,13 +91,22 @@ public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdm
     {
         if (!_presenter.ModificarCargo())
         {
-            LabelError.Text = "Error guardando los cambios";
-            LabelError.Visible = true;
+            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
+            {
+                LabelError.Visible = true;
+                ActivarBotones();
+            }
+            else
+            {
+                LabelError.Text = "Error guardando los cambios";
+                LabelError.Visible = true;
+            }
         }
         else
         {
             LabelError.Text = "Cambios guardos satisfactoriamente";
             LabelError.Visible = true;
+            DesactivarBotones();
         }
     }
 

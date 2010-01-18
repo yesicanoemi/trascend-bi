@@ -138,6 +138,7 @@ namespace Presentador.Cargo.Vistas
             else
             {
                 _vista.LabelError.Text = "Debe rellenar todos los campos";
+                ActivarCampos();
                 return false;
             }
 

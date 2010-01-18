@@ -10,6 +10,7 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
 {
     private AgregarCargoPresenter _presentador;
 
+
     protected void Page_Load(object sender, EventArgs e)
     {
         _presentador = new AgregarCargoPresenter(this);
@@ -63,8 +64,13 @@ public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregar
         LabelError.Visible = false;
         if (!_presentador.IngresarCargo())
         {
-            LabelError.Text = "Error ingresando el cargo";
-            LabelError.Visible = true;
+            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
+                LabelError.Visible = true;
+            else
+            {
+                LabelError.Text = "Error ingresando el cargo";
+                LabelError.Visible = true;
+            }
         }
         else
         {
