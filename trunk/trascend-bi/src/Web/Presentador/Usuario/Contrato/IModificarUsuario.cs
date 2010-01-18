@@ -35,8 +35,9 @@ namespace Presentador.Usuario.Contrato
 
         CheckBoxList CBLEliminar { get; set; }
 
-        #endregion
+        DropDownList DLStatusUsuario { get; set; }
 
+        #endregion
 
     }
 }

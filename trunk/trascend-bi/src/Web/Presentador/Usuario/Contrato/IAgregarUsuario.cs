@@ -13,7 +13,7 @@ namespace Presentador.Usuario.Contrato
 
         TextBox NombreUsuario { get; set; }
 
-		TextBox ContrasenaUsuario { get; set; }
+        TextBox ContrasenaUsuario { get; set; }
 
         MultiView MultiViewAgregar { get; set; }
 
@@ -28,8 +28,8 @@ namespace Presentador.Usuario.Contrato
         Label ApellidoEmp { get; set; }
 
         Label CedulaEmp { get; set; }
-		
-		Label StatusEmp { get; set; }
+
+        Label StatusEmp { get; set; }
 
         CheckBoxList CBLAgregar { get; set; }
 

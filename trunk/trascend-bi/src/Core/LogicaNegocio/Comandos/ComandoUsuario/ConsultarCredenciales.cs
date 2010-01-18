@@ -19,7 +19,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
         #region Constructor
 
         /// <summary>Constructor de la clase 'CosultarCredenciales'.</summary>
-       
+
         public ConsultarCredenciales()
         { }
 
@@ -30,18 +30,18 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         #endregion
 
-        #region Metodos
+        #region Métodos
 
         /// <summary>Método que implementa la ejecución del comando 'CosultarCredenciales'.</summary>
-    
+
         public Usuario Ejecutar()
         {
             Usuario _usuario;
-         
+
             UsuarioSQLServer bd = new UsuarioSQLServer();
-            
+
             _usuario = bd.ConsultarCredenciales(usuario);
-            
+
             return _usuario;
         }
 

@@ -18,9 +18,7 @@ public partial class Paginas_Usuarios_AgregarUsuarios : System.Web.UI.Page, IAgr
 
     #endregion
 
-
-
-    #region Informacion Basica
+    #region Información Básica
 
     public TextBox NombreUsuario
     {
@@ -52,9 +50,8 @@ public partial class Paginas_Usuarios_AgregarUsuarios : System.Web.UI.Page, IAgr
         get { return uxObjectConsultaEmpleado; }
         set { uxObjectConsultaEmpleado = value; }
     }
-    /// <summary>
-    /// Metodo q retorna el nombre del empleado a buscar
-    /// </summary>
+
+    //Retorna el nombre del empleado a buscar
     public TextBox EmpleadoBuscar
     {
         get { return uxNombreEmpleadoBuscar; }
@@ -109,8 +106,9 @@ public partial class Paginas_Usuarios_AgregarUsuarios : System.Web.UI.Page, IAgr
         set { uxCBLEliminar = value; }
     }
 
-   
     #endregion
+
+    #region Métodos
 
     protected void SelectEmpleados(object sender, GridViewSelectEventArgs e)
     {
@@ -143,5 +141,7 @@ public partial class Paginas_Usuarios_AgregarUsuarios : System.Web.UI.Page, IAgr
         Response.Redirect(paginaConsulta);
 
     }
+
+    #endregion
 
 }

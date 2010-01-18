@@ -16,7 +16,7 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
 
     #endregion
 
-    #region Informacion Basica
+    #region Información Básica
 
     public TextBox NombreUsuario
     {
@@ -90,18 +90,25 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
         set { uxCBLEliminar = value; }
     }
 
+    public DropDownList DLStatusUsuario
+    {
+        get { return uxStatusUsuario; }
+        set { uxStatusUsuario = value; }
+    }
+
     #endregion
 
+    #region Métodos
 
     protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
     {
-        //_presentador.CargarAgenciasCobro();
-        //uxConsultaEmpleado.PageIndex = e.NewPageIndex;
+
     }
 
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        _presentador.uxObjectConsultaModificarUsuarioSelecting(uxConsultaModificarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaModificarUsuarioSelecting
+                    (uxConsultaModificarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -125,6 +132,11 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
 
     }
 
+    protected void StatusUsuario_SelectedIndexChanged(object sender, EventArgs e)
+    {
 
-   
+    }
+
+    #endregion
+
 }
