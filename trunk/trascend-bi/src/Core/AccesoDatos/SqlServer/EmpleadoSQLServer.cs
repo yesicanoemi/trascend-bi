@@ -88,10 +88,15 @@ namespace Core.AccesoDatos.SqlServer
             return empleado;
         }
 
-        public IList<Empleado> ConsultarPorTipoNombre()
+        public IList<Empleado> ConsultarPorTipoNombre(Empleado emp)
         {
             List<Empleado> empleado = new List<Empleado>();
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarEmpleadoNombre");
+            SqlParameter[] arParms = new SqlParameter[1];
+
+            arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
+            arParms[0].Value = "%" + emp.Nombre + "%";
+
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarEmpleadoNombre", arParms);
             while (reader.Read())
             {
                 Empleado _empleado = new Empleado();
@@ -107,6 +112,18 @@ namespace Core.AccesoDatos.SqlServer
             }
             return empleado;
         }
+
+        public IList<string> ConsultarCargos()
+        {
+            List<string> cargo = new List<string>();
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargos");
+            while (reader.Read())
+            {
+                cargo.Add((string)reader["Nombre"]);
+            }
+            return cargo;
+        }
+
         public int Modificar(Empleado empleado)
         {
             int resultado = 0;
