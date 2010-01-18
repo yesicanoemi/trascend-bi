@@ -78,6 +78,8 @@ namespace Core.AccesoDatos.SqlServer
                 if (reader.Read())
                 {
                     _usuario.Status = (string)reader["Status"];
+
+                    _usuario.Login = (string)reader["LoginUsuario"];
                 }
 
                 return _usuario;
