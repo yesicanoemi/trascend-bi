@@ -7,7 +7,7 @@ using Presentador.Gasto.Vistas;
 using Presentador.Propuesta.Vistas;
 using Presentador.Gasto.Contrato;
 
-public partial class Paginas_Gastos_AgregarGastos : System.Web.UI.Page, IIngresarGasto
+public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
 {
     private IngresarGastoPresenter _presentadorGasto;
 
@@ -66,8 +66,32 @@ public partial class Paginas_Gastos_AgregarGastos : System.Web.UI.Page, IIngresa
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presentadorGasto = new IngresarGastoPresenter(this);
-        _presentadorGasto.BuscarPropuesta();
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 21)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentadorGasto = new IngresarGastoPresenter(this);
+                
+                _presentadorGasto.BuscarPropuesta();
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)

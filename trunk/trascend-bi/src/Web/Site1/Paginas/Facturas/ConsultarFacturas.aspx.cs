@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Factura.Contrato;
 using Presentador.Factura.Vistas;
 
-public partial class Paginas_Facturas_ConsultarFacturas : System.Web.UI.Page, IConsultarFactura
+public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultarFactura
 {
 
     ConsultarFacturaPresenter _presenter;
@@ -39,9 +39,36 @@ public partial class Paginas_Facturas_ConsultarFacturas : System.Web.UI.Page, IC
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presenter = new ConsultarFacturaPresenter(this);
+
     }
 
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 18)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new ConsultarFacturaPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+    }
 
     protected void uxConsultarxNombreProp_Click(object sender, EventArgs e)
     {

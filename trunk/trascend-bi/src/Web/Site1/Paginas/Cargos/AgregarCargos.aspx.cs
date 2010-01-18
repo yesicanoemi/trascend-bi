@@ -6,14 +6,40 @@ using System.Web.UI.WebControls;
 using Presentador.Cargo.Contrato;
 using Presentador.Cargo.Vistas;
 
-public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregarCargo
+public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
 {
     private AgregarCargoPresenter _presentador;
 
+    protected void Page_Init(object sender, EventArgs e)
+    {
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 1)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new AgregarCargoPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presentador = new AgregarCargoPresenter(this);
+
     }
 
     #region Propiedades

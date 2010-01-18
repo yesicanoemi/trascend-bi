@@ -6,8 +6,9 @@ using System.Web.UI.WebControls;
 using Presentador.Empleado.Vistas;
 using Presentador.Empleado.Contrato;
 
-public partial class Paginas_Empleados_ModifcarEmpleados : System.Web.UI.Page,IModificarEmpleado
+public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificarEmpleado
 {
+   
     private ModificarEmpleadoPresenter _presentador;
     #region Propiedades
     #region Dialogos
@@ -92,4 +93,33 @@ public partial class Paginas_Empleados_ModifcarEmpleados : System.Web.UI.Page,IM
     {
         _presentador.ModificarEmpleado();
     }
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 15)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new  ModificarEmpleadoPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+    }
+
+
 }

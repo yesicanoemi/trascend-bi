@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Propuesta.Contrato;
 using Presentador.Propuesta.Vistas;
 
-public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, IAgregarPropuesta
+public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregarPropuesta
 {
     private AgregarPropuestaPresenter _presentador;
 
@@ -80,7 +80,30 @@ public partial class Paginas_Propuestas_AgregarPropuestas : System.Web.UI.Page, 
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presentador = new AgregarPropuestaPresenter(this);
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 25)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new AgregarPropuestaPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
 
 

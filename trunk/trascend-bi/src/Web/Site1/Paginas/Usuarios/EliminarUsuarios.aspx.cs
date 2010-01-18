@@ -24,7 +24,29 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presenter = new EliminarUsuarioPresenter(this);
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 32)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new EliminarUsuarioPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
 
     }
     

@@ -7,7 +7,7 @@ using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
 
-public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IModificarUsuario
+public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificarUsuario
 {
 
     #region Propiedades
@@ -113,7 +113,30 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presentador = new ModificarUsuarioPresenter(this);
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 31)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new ModificarUsuarioPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
 
     protected void Page_Load(object sender, EventArgs e)

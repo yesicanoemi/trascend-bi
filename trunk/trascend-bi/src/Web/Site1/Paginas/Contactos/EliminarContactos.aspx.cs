@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Contacto.ContactoInterface;
 using Presentador.Contacto.ContactoPresentador;
 
-public partial class Paginas_Contactos_EliminarContactos : System.Web.UI.Page, IEliminarContacto
+public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminarContacto
 {
 
 
@@ -99,7 +99,7 @@ public partial class Paginas_Contactos_EliminarContactos : System.Web.UI.Page, I
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presentador = new EliminarPresentador(this);
+
     }
 
     protected void Aceptar_Click(object sender, EventArgs e)
@@ -115,5 +115,32 @@ public partial class Paginas_Contactos_EliminarContactos : System.Web.UI.Page, I
     protected void ConfirmarClick(object sender, EventArgs e)
     {
         _presentador.onClickConfirmar();
+    }
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 12)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new EliminarPresentador(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
     }
 }

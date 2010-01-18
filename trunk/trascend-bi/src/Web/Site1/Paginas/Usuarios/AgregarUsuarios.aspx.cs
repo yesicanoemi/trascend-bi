@@ -126,7 +126,7 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 3)
+            if (usuario.PermisoUsu[i].IdPermiso == 29)
             {
                 i = usuario.PermisoUsu.Count;
 

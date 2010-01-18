@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Factura.Contrato;
 using Presentador.Factura.Vistas;
 
-public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgregarFactura
+public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactura
 {
     AgregarFacturaPresenter _presenter;
 
@@ -136,7 +136,7 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presenter = new AgregarFacturaPresenter(this);
+
 
     }
 
@@ -159,5 +159,32 @@ public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgre
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presenter.OnAgregarFactura();
+    }
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 17)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new AgregarFacturaPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
     }
 }

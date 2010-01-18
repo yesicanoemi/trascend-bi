@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Contacto.ContactoInterface;
 using Presentador.Contacto.ContactoPresentador;
 
-public partial class Paginas_Contactos_ConsultarContactos : System.Web.UI.Page, IConsultarContacto
+public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsultarContacto
 {
     
 
@@ -63,11 +63,38 @@ public partial class Paginas_Contactos_ConsultarContactos : System.Web.UI.Page, 
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presentador = new ConsultarPresentador(this);
+
     }
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
         _presentador.Onclick();
+    }
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 10)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new ConsultarPresentador(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
     }
 }

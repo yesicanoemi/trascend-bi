@@ -7,7 +7,7 @@ using Presentador.Empleado.Contrato;
 using Presentador.Empleado.Vistas;
 using Core.LogicaNegocio.Entidades;
 
-public partial class Paginas_Empleados_ConsultarEmpleados : System.Web.UI.Page, IConsultarEmpleado
+public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsultarEmpleado
 {
     private  ConsultarEmpleadoPresenter _presenter;
     private Empleado _empleado;
@@ -81,7 +81,30 @@ public partial class Paginas_Empleados_ConsultarEmpleados : System.Web.UI.Page, 
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presenter = new ConsultarEmpleadoPresenter(this);
+
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 14)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new ConsultarEmpleadoPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
     
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
