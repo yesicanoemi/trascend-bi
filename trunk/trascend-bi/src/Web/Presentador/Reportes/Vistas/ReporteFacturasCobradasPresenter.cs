@@ -7,7 +7,7 @@ using Core.LogicaNegocio.Comandos.ComandoReporte;
 
 namespace Presentador.Reportes.Vistas
 {
-    public class ReporteFacturasCobradasPresenter 
+    public class ReporteFacturasCobradasPresenter
     {
         private IReporteFacturasPorCobrar _vista;
 
@@ -17,7 +17,7 @@ namespace Presentador.Reportes.Vistas
             _vista = laVista;
         }
         #endregion
-         
+
 
         #region Metodos
 

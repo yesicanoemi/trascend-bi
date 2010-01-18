@@ -30,22 +30,22 @@ namespace Presentador.Reportes.Vistas
             _vista.Grid.DataSource = null;
             _vista.Grid.DataBind();
 
-           Core.LogicaNegocio.Comandos.ComandoReporte.ConsultarFacturasPorEstado ComandoConsultarFacturas;
+            Core.LogicaNegocio.Comandos.ComandoReporte.ConsultarFacturasPorEstado ComandoConsultarFacturas;
 
             ComandoConsultarFacturas = Core.LogicaNegocio.Fabricas.FabricaComandosReporte.CrearComandoConsultarFacturasPorEstado
                                                                 (Convert.ToDateTime(_vista.FechaInicio.Text),
                                                                 Convert.ToDateTime(_vista.FechaFin.Text),
                                                                 false);
 
-            IList<Core.LogicaNegocio.Entidades.Factura> lista = ComandoConsultarFacturas.Ejecutar(); 
+            IList<Core.LogicaNegocio.Entidades.Factura> lista = ComandoConsultarFacturas.Ejecutar();
 
-          
 
-    /*        Core.AccesoDatos.SqlServer.FacturaSQLServer bd = new Core.AccesoDatos.SqlServer.FacturaSQLServer();
 
-            IList<Core.LogicaNegocio.Entidades.Factura> lista = bd.ConsultarFacturasxEstado(Convert.ToDateTime(_vista.FechaInicio.Text), 
-                                                                Convert.ToDateTime(_vista.FechaFin.Text), 
-                                                                false); */
+            /*        Core.AccesoDatos.SqlServer.FacturaSQLServer bd = new Core.AccesoDatos.SqlServer.FacturaSQLServer();
+
+                    IList<Core.LogicaNegocio.Entidades.Factura> lista = bd.ConsultarFacturasxEstado(Convert.ToDateTime(_vista.FechaInicio.Text), 
+                                                                        Convert.ToDateTime(_vista.FechaFin.Text), 
+                                                                        false); */
 
             if (lista != null)
             {

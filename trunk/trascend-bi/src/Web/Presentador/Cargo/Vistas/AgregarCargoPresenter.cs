@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Presentador.Cargo.Contrato;
 using Core.LogicaNegocio;
+using System.Text.RegularExpressions;
 
 
 namespace Presentador.Cargo.Vistas
@@ -14,7 +15,8 @@ namespace Presentador.Cargo.Vistas
         private const string campoVacio = "";
         private IAgregarCargo _vista;
         #endregion
-        
+
+        #region Constructor
         /// <summary>
         /// Constructor de la clase
         /// </summary>
@@ -23,6 +25,7 @@ namespace Presentador.Cargo.Vistas
         {
             _vista = laVista;
         }
+        #endregion
 
         #region Métodos
 
@@ -32,25 +35,33 @@ namespace Presentador.Cargo.Vistas
         /// <returns>true si fue correcto y false si hubo error</returns>
         public bool IngresarCargo()
         {
-            Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-
-            cargo.Nombre = _vista.NombreCargo.Text;
-            cargo.Descripcion = _vista.DescripcionCargo.Text;
-            cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
-            cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
-            cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
-
-            Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
-
-            ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
-
-            if (ComandoIngresar.Ejecutar())
+            if (ValidarCampos())
             {
-                LimpiarFormulario();
-                return true;
+                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+
+                cargo.Nombre = _vista.NombreCargo.Text;
+                cargo.Descripcion = _vista.DescripcionCargo.Text;
+                cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+                cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
+                cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
+
+                Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
+
+                ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
+
+                if (ComandoIngresar.Ejecutar())
+                {
+                    LimpiarFormulario();
+                    return true;
+                }
+                else
+                    return false;
             }
             else
+            {
+                _vista.LabelError.Text = "Debe rellenar todos los campos";
                 return false;
+            }
         }
 
         /// <summary>
@@ -67,6 +78,24 @@ namespace Presentador.Cargo.Vistas
             _vista.LabelError.Visible = false;
         }
 
+        private bool ValidarCampos()
+        {
+            bool b = true;
+
+            if (_vista.DescripcionCargo.Text == "")
+                b = false;
+
+            if (_vista.SueldoMinimo.Text == "")
+                b = false;
+
+            if (_vista.SueldoMaximo.Text == "")
+                b = false;
+
+            if (_vista.VigenciaSueldo.Text == "")
+                b = false;
+
+            return b;
+        }
         #endregion
     }
 }
