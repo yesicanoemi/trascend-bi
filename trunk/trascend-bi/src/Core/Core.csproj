@@ -184,6 +184,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pruebas\PruebasCargo.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
