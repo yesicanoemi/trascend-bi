@@ -17,7 +17,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         public Eliminar()
         { }
 
-        /// <summary>Constructor de la clase 'Ingresar'.</summary>
+        /// <summary>Constructor de la clase 'Eliminar'.</summary>
         /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
         public Eliminar(Contacto contacto)
         {

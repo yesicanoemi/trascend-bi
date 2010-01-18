@@ -21,8 +21,8 @@ namespace Presentador.Contacto.ContactoPresentador
             {
                 string Lnombre = " ";
                 string Lapellido = " ";
-                string LcodTelf = " ";
-                string LnumTelf = " ";
+                string LcodTelf = "0";
+                string LnumTelf = "0";
 
                 int flag = 0;
                 if (_vista.CheckBoxNombre.Checked)
@@ -59,11 +59,23 @@ namespace Presentador.Contacto.ContactoPresentador
                     TableRow r = new TableRow();
                     TableCell c = new TableCell();
                     c.Controls.Add(new LiteralControl("ID"));
+                    r.Cells.Add(c);
+                    c = new TableCell();
                     c.Controls.Add(new LiteralControl("Nombre"));
+                    r.Cells.Add(c);
+                    c = new TableCell();
                     c.Controls.Add(new LiteralControl("Apellido"));
+                    r.Cells.Add(c);
+                    c = new TableCell();
                     c.Controls.Add(new LiteralControl("Cargo"));
+                    r.Cells.Add(c);
+                    c = new TableCell();
                     c.Controls.Add(new LiteralControl("Area de Negocio"));
+                    r.Cells.Add(c);
+                    c = new TableCell();
                     c.Controls.Add(new LiteralControl("Telefono Celular"));
+                    r.Cells.Add(c);
+                    c = new TableCell();
                     c.Controls.Add(new LiteralControl("Telefono Local"));
                     r.Cells.Add(c);
                     _vista.TablaResultados.Rows.Add(r);
@@ -95,11 +107,11 @@ namespace Presentador.Contacto.ContactoPresentador
                                     break;
                                 case 5:
                                     c.Controls.Add(new LiteralControl("(" + X.TelefonoDeCelular.Codigocel.ToString() + ")"
-                                        + X.TelefonoDeCelular.Numero.ToString()));
+                                        + X.TelefonoDeCelular.Numero.ToString() + " "));
                                     break;
                                 case 6:
                                     c.Controls.Add(new LiteralControl("(" + X.TelefonoDeTrabajo.Codigoarea.ToString() + ")"
-                                        + X.TelefonoDeTrabajo.Numero.ToString()));
+                                        + X.TelefonoDeTrabajo.Numero.ToString() + " "));
                                     break;
 
                             }

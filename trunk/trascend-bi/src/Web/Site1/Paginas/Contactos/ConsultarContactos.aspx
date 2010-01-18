@@ -74,7 +74,8 @@
                                 </tr>
                                 <tr>
                                     <td>&nbsp</td>
-                                    <asp:Table ID="uxTablaResultado" runat="server">
+                                    <asp:Table ID="uxTablaResultado" runat="server" GridLines="Both"
+                                     CellSpacing="30" CellPadding="30" BorderColor="Black">
                                     </asp:Table>
                                 </tr>
                            </table>
