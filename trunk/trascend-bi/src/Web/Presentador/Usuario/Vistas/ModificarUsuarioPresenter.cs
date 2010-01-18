@@ -40,6 +40,15 @@ namespace Presentador.Usuario.Vistas
             _vista.ApellidoEmp.Text = usuario.Apellido;
 
             _vista.UsuarioU.Text = usuario.Status;
+
+            if (usuario.Status == "Activo")
+            {
+                _vista.DLStatusUsuario.Items.FindByValue("Activo");
+            }
+            else
+            {
+                _vista.DLStatusUsuario.Items.FindByValue("Inactivo");
+            }
         }
 
         private void CargarCheckBox(IList<Core.LogicaNegocio.Entidades.Permiso> permiso)
@@ -197,6 +206,7 @@ namespace Presentador.Usuario.Vistas
             usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLModificar),usuario.PermisoUsu);
             usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
             usuario.Login = _vista.NombreUsu.Text;
+            usuario.Status = _vista.DLStatusUsuario.SelectedValue;
             ModificarUsuario(usuario);
             
             

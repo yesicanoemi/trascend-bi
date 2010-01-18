@@ -90,13 +90,18 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
         set { uxCBLEliminar = value; }
     }
 
+    public DropDownList DLStatusUsuario
+    {
+        get { return uxStatusUsuario; }
+        set { uxStatusUsuario = value; }
+    }
+
     #endregion
 
 
     protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
     {
-        //_presentador.CargarAgenciasCobro();
-        //uxConsultaEmpleado.PageIndex = e.NewPageIndex;
+        
     }
 
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
@@ -122,6 +127,11 @@ public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IM
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.OnBotonAceptar();
+
+    }
+
+    protected void StatusUsuario_SelectedIndexChanged(object sender, EventArgs e)
+    {
 
     }
 
