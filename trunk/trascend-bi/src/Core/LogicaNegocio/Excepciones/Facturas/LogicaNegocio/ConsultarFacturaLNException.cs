@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio
 {
-    class ConsultarFacturaLNException
+    public class ConsultarFacturaLNException
     {
     }
 }

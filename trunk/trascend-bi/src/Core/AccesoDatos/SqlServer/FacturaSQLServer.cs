@@ -294,7 +294,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                return null;
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las facturas por estado", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarFacturaADException("Error consultando las facturas por estado", e);
             }
         
         }
@@ -339,9 +343,14 @@ namespace Core.AccesoDatos.SqlServer
                         valido = true;
                     }
                 }
-            }catch (SqlException e)
+            }
+            catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.InsertarFacturaADException("Error de SQL insertando factura", e);
+            }
+            catch (Exception e)
+            {
+                throw new InsertarFacturaADException("Error insertando factura", e);
             }
 
             if (valido == false)
@@ -390,8 +399,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
-                return new List<Factura>();
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando una factura", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarFacturaADException("Error consultando una factura", e);
             }
 
             return facturas;
@@ -413,7 +425,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ModificarFacturaADException("Error de SQL modificando una factura", e);
+            }
+            catch (Exception e)
+            {
+                throw new ModificarFacturaADException("Error modificando una factura", e);
             }
 
             if (valido)

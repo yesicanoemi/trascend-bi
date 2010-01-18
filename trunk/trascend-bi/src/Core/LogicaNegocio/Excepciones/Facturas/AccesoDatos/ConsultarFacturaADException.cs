@@ -9,7 +9,7 @@ namespace Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos
     {
         public ConsultarFacturaADException(string s, Exception e): base(s, e)
         {
-            s += ". En la capa de Acceso a Datos consultando una factura.";
+
         }
     }
 }
