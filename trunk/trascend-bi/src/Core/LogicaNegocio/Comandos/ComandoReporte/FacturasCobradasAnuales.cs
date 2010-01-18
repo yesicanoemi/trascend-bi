@@ -13,7 +13,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         #region Constructor
         /// <summary>Constructor de la clase 'FacturasCobradasAnuales'.</summary>
         public FacturasCobradasAnuales()
-        {}
+        { }
         public FacturasCobradasAnuales(Core.LogicaNegocio.Entidades.Factura factura)
         {
             this.factura = factura;
@@ -25,7 +25,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         public IList<Core.LogicaNegocio.Entidades.Factura> Ejecutar()
         {
             ReporteSQLServer bd = new ReporteSQLServer();
-            IList<Core.LogicaNegocio.Entidades.Factura> _factura = bd.ObtenerFacturasCobradas();
+            IList<Core.LogicaNegocio.Entidades.Factura> _factura = bd.ObtenerFacturasCobradas(factura);
             return _factura;
         }
         #endregion

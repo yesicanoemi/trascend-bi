@@ -18,7 +18,7 @@ namespace Presentador.Gasto.Vistas
         private ConsultarPropuestaPresentador _presentadorPropuesta;
         private IList<Core.LogicaNegocio.Entidades.Propuesta> propuestas;
         private int id_version = 0;
-        
+
 
         #region Constructor
         public IngresarGastoPresenter(IIngresarGasto vista)
@@ -73,9 +73,7 @@ namespace Presentador.Gasto.Vistas
 
                     if (propuestas.ElementAt(i).Titulo.Equals(_vista.PropuestaAsociada.SelectedItem.Text))
 
-                        id_version = Int32.Parse(propuestas.ElementAt(i).Version);
-
-                gasto.IdVersion = id_version;
+                        gasto.IdVersion = Int32.Parse(propuestas.ElementAt(i).Version);
             }
             Ingresar(gasto);
 
@@ -91,7 +89,11 @@ namespace Presentador.Gasto.Vistas
             //fábrica que instancia el comando Ingresar.
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoIngresar(gasto);
 
-            ingresar.Ejecutar();
+            gasto = ingresar.Ejecutar();
+
+            _vista.MensajeError.Visible = true;
+            _vista.MensajeError.Text = "te jodiste";
+
             limpiar();
         }
         #endregion
@@ -102,14 +104,14 @@ namespace Presentador.Gasto.Vistas
         {
             _presentadorPropuesta = new ConsultarPropuestaPresentador();
 
-                int i = 0;
-                propuestas = _presentadorPropuesta.BuscarPorTitulo();
-                for (i = 0; i < propuestas.Count; i++)
-                {
-                    _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);
-                    
-                }
-                _vista.PropuestaAsociada.DataBind();
+            int i = 0;
+            propuestas = _presentadorPropuesta.BuscarPorTitulo();
+            for (i = 0; i < propuestas.Count; i++)
+            {
+                _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);
+
+            }
+            _vista.PropuestaAsociada.DataBind();
         }
         #endregion
 

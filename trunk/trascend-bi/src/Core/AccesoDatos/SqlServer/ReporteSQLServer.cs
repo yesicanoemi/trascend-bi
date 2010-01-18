@@ -254,8 +254,8 @@ namespace Core.AccesoDatos.SqlServer
 
             parametro[0].Value = factura.Fechapago;
 
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasEmitidasAnuales",parametro);
-          
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasEmitidasAnuales", parametro);
+
             int i = 0;
 
             while (reader.Read())
@@ -294,11 +294,19 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="entidad">Entidad Factura</param>
         /// <returns>Objeto Factura</returns>
         /// 
-        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasCobradas()
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasCobradas(Factura facturas)
         {
             IList<Core.LogicaNegocio.Entidades.Factura> factura =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasCobradasAnuales");
+
+            SqlParameter[] parametro = new SqlParameter[1];
+
+            parametro[0] = new SqlParameter("@yearFecha", SqlDbType.DateTime);
+
+            parametro[0].Value = facturas.Fechapago;
+
+
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasCobradasAnuales", parametro);
 
             int i = 0;
 
@@ -309,7 +317,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 Propuesta _propuesta = new Propuesta();
 
-                _factura.Numero = (int)reader["NumeroFactura"];
+                _factura.Numero = (int)reader["IdFactura"];
 
                 _factura.Titulo = (string)reader["Titulo"];
 
@@ -319,7 +327,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Estado = (string)reader["Estado"];
 
-                _factura.Fechapago = (DateTime)reader["FechaPago"];
+                _factura.Fechapago = (DateTime)reader["Fecha"];
 
                 //_propuesta.Titulo = (string)reader["Titulo"];
 
@@ -339,11 +347,18 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="entidad">Entidad Factura</param>
         /// <returns>Objeto Factura</returns>
         /// 
-        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasPorCobrar()
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasPorCobrar(Factura facturas)
         {
             IList<Core.LogicaNegocio.Entidades.Factura> factura =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasPorCobrarAnuales");
+
+            SqlParameter[] parametro = new SqlParameter[1];
+
+            parametro[0] = new SqlParameter("@yearFecha", SqlDbType.DateTime);
+
+            parametro[0].Value = facturas.Fechapago;
+
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasPorCobrarAnuales", parametro);
 
             int i = 0;
 
@@ -354,7 +369,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 Propuesta _propuesta = new Propuesta();
 
-                _factura.Numero = (int)reader["NumeroFactura"];
+                _factura.Numero = (int)reader["IdFactura"];
 
                 _factura.Titulo = (string)reader["Titulo"];
 
@@ -364,7 +379,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Estado = (string)reader["Estado"];
 
-                _factura.Fechapago = (DateTime)reader["FechaPago"];
+                _factura.Fechapago = (DateTime)reader["Fecha"];
 
                 //_propuesta.Titulo = (string)reader["Titulo"];
 

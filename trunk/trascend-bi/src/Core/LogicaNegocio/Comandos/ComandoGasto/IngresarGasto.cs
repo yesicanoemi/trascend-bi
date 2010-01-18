@@ -26,17 +26,27 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         #endregion
 
         #region Metodos
-        public void Ejecutar()
+
+        /// <summary>
+        /// Ejecuta el comando para:
+        ///     Ingresar el gasto sin asociacion.
+        ///     Ingresar el gasto asociado a, un proyecto o propuesta aprovada.
+        /// </summary>
+        public Gasto Ejecutar()
         {
             Gasto _gasto = null;
 
             GastoSQLServer bdGasto = new GastoSQLServer();
 
             if (gasto.IdVersion > 0)
+                // Ingresa el gasto asociado a un proyecto
                 _gasto = bdGasto.IngresarGastoPropuesta(gasto);
 
             else
+                //Ingresa el gasto sin asociacion
                 _gasto = bdGasto.IngresarGasto(gasto);
+
+            return _gasto;
         }
         #endregion
     }

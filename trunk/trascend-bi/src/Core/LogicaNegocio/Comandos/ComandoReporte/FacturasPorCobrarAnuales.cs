@@ -7,13 +7,13 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoReporte
 {
-    public class FacturasPorCobrarAnuales: Comando<Core.LogicaNegocio.Entidades.Factura> //se puede poner solo Factura
+    public class FacturasPorCobrarAnuales : Comando<Core.LogicaNegocio.Entidades.Factura> //se puede poner solo Factura
     {
         private Core.LogicaNegocio.Entidades.Factura factura;
         #region Constructor
         /// <summary>Constructor de la clase 'FacturasPorCobrarAnuales'.</summary>
         public FacturasPorCobrarAnuales()
-        {}
+        { }
         public FacturasPorCobrarAnuales(Core.LogicaNegocio.Entidades.Factura factura)
         {
             this.factura = factura;
@@ -25,7 +25,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         public IList<Core.LogicaNegocio.Entidades.Factura> Ejecutar()
         {
             ReporteSQLServer bd = new ReporteSQLServer();
-            IList<Core.LogicaNegocio.Entidades.Factura> _factura = bd.ObtenerFacturasPorCobrar();
+            IList<Core.LogicaNegocio.Entidades.Factura> _factura = bd.ObtenerFacturasPorCobrar(factura);
             return _factura;
         }
         #endregion

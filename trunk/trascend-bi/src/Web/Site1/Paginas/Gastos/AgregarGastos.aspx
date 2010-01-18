@@ -46,6 +46,13 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
             <p class="large">
                 <form id="uxFormGasto" runat="server">
                            <table style="width:100%;">
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false"/>
+                                    </td>
+                                </tr>
+                           </table>
+                           <table style="width:100%;">
                                <tr>
                                    <td>Tipo: </td>
                                    <td><asp:TextBox ID="uxTipoGasto" runat="server"></asp:TextBox></td>

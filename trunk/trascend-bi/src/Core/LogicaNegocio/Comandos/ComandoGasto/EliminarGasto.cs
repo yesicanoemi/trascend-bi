@@ -26,6 +26,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         #endregion
 
         #region Metodos
+        /// <summary>
+        /// Ejecuta el comando para eliminar el regustro en la base de datos
+        /// </summary>
         public void Ejecutar()
         {
             Gasto _gasto = null;
