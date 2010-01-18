@@ -3,7 +3,7 @@
 -- Create date: <10/01/2010>
 -- Description:	<Consulta de Credenciales de Usuario>
 -- =============================================
-CREATE PROCEDURE [dbo].[ConsultarCredenciales]
+ALTER PROCEDURE [dbo].[ConsultarCredenciales]
 
 	-- Add the parameters for the stored procedure here
 
@@ -18,7 +18,7 @@ BEGIN
 
 	SET NOCOUNT ON;
 	
-	SELECT Status from dbo.Usuario
+	SELECT * from dbo.Usuario
 	WHERE ((LoginUsuario=@LoginUsuario) and (Password=@Password))
 
 END
