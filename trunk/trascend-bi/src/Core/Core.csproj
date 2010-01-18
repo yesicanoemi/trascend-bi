@@ -153,6 +153,11 @@
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefono.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\ConsultarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\EliminarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Facturas\ConsultarFacturaException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\IngresarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosReporte.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
