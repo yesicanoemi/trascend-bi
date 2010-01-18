@@ -60,6 +60,7 @@ namespace Presentador.Factura.Vistas
                         {
                             MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
                         }
+                        
                         _vista.TotalCancelado.Text = MontosCancelados.ToString();
 
 
@@ -110,16 +111,41 @@ namespace Presentador.Factura.Vistas
                     }
                 }
             }
-            catch (Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException)
+            catch (InsertarFacturaADException e)
             {
-
-
+                //error en la capa de BD
+            }
+            catch (IngresarFacturaLNException e)
+            {
+                //error en la capa LN
+            }
+            catch (Exception e)
+            {
+                //Error aqui
             }
         }
 
         public void OnAgregarFactura()
         {
-            this.IngresarFactura();
+            try
+            {
+                if (int.Parse(_vista.MontoPagar.Text) > int.Parse(_vista.MontoFaltante.Text))
+                    throw new Exception("No se puede pagar una cantidad de dinero mayor al costo total");
+
+                this.IngresarFactura();
+            }
+            catch (InsertarFacturaADException e)
+            {
+                //error en la capa de BD
+            }
+            catch (IngresarFacturaLNException e)
+            {
+                //error en la capa LN
+            }
+            catch (Exception e)
+            {
+                //Error aqui
+            }
         }
 
 
