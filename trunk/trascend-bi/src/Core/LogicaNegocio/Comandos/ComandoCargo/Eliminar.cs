@@ -11,18 +11,31 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
     {
         private Cargo _cargo;
 
-
+        #region Constructor
+        /// <summary>
+        /// Constructor del comando
+        /// </summary>
+        /// <param name="cargo">Cargo a eliminar</param>
         public Eliminar(Cargo cargo)
         {
             this._cargo = cargo;
         }
 
+        /// <summary>
+        /// Constructor del comando para que funcione por id del cargo
+        /// </summary>
+        /// <param name="idCargo">el id del cargo</param>
         public Eliminar(int idCargo)
         {
             _cargo = new Cargo();
             _cargo.Id = idCargo;
         }
+        #endregion
 
+        /// <summary>
+        /// Metodo de ejecucion de la eliminacion de cargo
+        /// </summary>
+        /// <returns>true si se elimino correctamente y false si hubo error</returns>
         public bool Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();

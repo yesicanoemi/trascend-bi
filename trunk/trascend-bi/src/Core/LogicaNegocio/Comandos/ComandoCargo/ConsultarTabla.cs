@@ -9,10 +9,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
     public class ConsultarTabla : Comando<Cargo>
     {
+        #region Constructor
         public ConsultarTabla()
-        { 
+        {
         }
+        #endregion
 
+        /// <summary>
+        /// Metodo de ejecucion de busqueda de todos los cargos
+        /// </summary>
+        /// <returns>List de cargos con todos los cargos</returns>
         public List<Cargo> Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
