@@ -86,7 +86,6 @@
     <Compile Include="Interfaces\IDAOPropuesta.cs" />
     <Compile Include="AccesoDatos\SqlServer\FacturaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
-    <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCI.cs" />
