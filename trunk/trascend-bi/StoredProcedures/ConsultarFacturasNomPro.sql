@@ -1,7 +1,7 @@
 set ANSI_NULLS ON
 set QUOTED_IDENTIFIER ON
 GO
-ALTER PROCEDURE [dbo].[ConsultarFacturaNomPro]
+CREATE PROCEDURE [dbo].[ConsultarFacturaNomPro]
 @titulo varchar(50)
 AS
 BEGIN
