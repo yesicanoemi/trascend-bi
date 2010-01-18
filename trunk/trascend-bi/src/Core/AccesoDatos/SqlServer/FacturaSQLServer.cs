@@ -1,0 +1,402 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Core.LogicaNegocio.Entidades;
+using Microsoft.ApplicationBlocks.Data;
+using System.Data.SqlClient;
+using System.Data.Common;
+using System.Data;
+using System.Configuration;
+using System.Xml;
+
+namespace Core.AccesoDatos.SqlServer
+{
+    public class FacturaSQLServer
+    {
+        public FacturaSQLServer()
+        {
+        }
+
+        #region conexion
+        private SqlConnection GetConnection()
+        {
+            XmlDocument xDoc = new XmlDocument();
+
+            xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
+
+            XmlNodeList conexiones = xDoc.GetElementsByTagName("connection");
+
+            string lista = conexiones[0].InnerText;
+
+            SqlConnection connection = new SqlConnection(lista);
+
+            connection.Open();
+
+            return connection;
+        }
+        #endregion
+
+        #region metodos
+
+        public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
+        {
+            IList<Propuesta> propuestas = ConsultarPropuesta();
+
+            List<Factura> facturas = new List<Factura>();
+
+            foreach (Propuesta propuestaAux in propuestas)
+            {
+                if (propuesta.Titulo.Equals(propuestaAux.Titulo))
+                {
+                    int i = 0;
+
+                    SqlParameter[] arParms = new SqlParameter[1];
+
+                    arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+
+                    arParms[0].Value = propuesta.Titulo;
+
+                    DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                            "ConsultarFacturaNomPro", arParms);
+
+                    while (reader.Read())
+                    {
+                        Factura factura = new Factura();
+
+                        factura.Numero = (int)reader["IdFactura"];
+
+                        factura.Titulo = (string)reader["Titulo"];
+
+                        factura.Descripcion = (string)reader["Descripcion"];
+
+                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+
+                        factura.Fechapago = (DateTime)reader["Fecha"];
+
+                        factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                        factura.Estado = (string)reader["Estado"];
+
+                        factura.Prop = propuesta;
+
+                        facturas.Insert(i, factura);
+
+                        //reader.NextResult();
+
+                        i++;
+
+                    }
+                }
+            }
+
+            return facturas;
+        }
+
+
+        public IList<Factura> ConsultarFacturasIDPro(Propuesta propuesta)
+        {
+            IList<Propuesta> propuestas = ConsultarPropuesta();
+
+            List<Factura> facturas = new List<Factura>();
+
+            foreach (Propuesta propuestaAux in propuestas)
+            {
+                Console.WriteLine(propuestaAux.Id);
+
+                if (propuesta.Id == propuestaAux.Id)
+                {
+                    int i = 0;
+
+                    SqlParameter[] arParms = new SqlParameter[1];
+
+                    arParms[0] = new SqlParameter("@idpropuesta", SqlDbType.Int);
+
+                    arParms[0].Value = propuesta.Id;
+
+                    DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                            "ConsultarFacturaIDPro", arParms);
+
+                    while (reader.Read())
+                    {
+                        Factura factura = new Factura();
+
+                        factura.Numero = (int)reader["IdFactura"];
+
+                        factura.Titulo = (string)reader["Titulo"];
+
+                        factura.Descripcion = (string)reader["Descripcion"];
+
+                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+
+                        factura.Fechapago = (DateTime)reader["Fecha"];
+
+                        factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                        factura.Estado = (string)reader["Estado"];
+
+                        factura.Prop = propuesta;
+
+                        facturas.Insert(i, factura);
+                        i++;
+
+                    }
+                }
+            }
+
+            return facturas;
+        }
+
+
+        public IList<Propuesta> ConsultarPropuesta()
+        {
+            return new PropuestaSQLServer().ConsultarPropuesta();
+        }
+
+
+        public Factura ConsultarFacturaID(Factura factura)
+        {            
+            try
+            {
+                factura.Prop = new Propuesta();
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@NumeroFactura", SqlDbType.Int);
+
+                arParms[0].Value = factura.Numero;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarFacturaID", arParms);
+
+                if (reader.Read())
+                {
+                    factura.Numero = (int)reader["IdFactura"];
+
+                    factura.Titulo = (string)reader["Titulo"];
+
+                    factura.Descripcion = (string)reader["Descripcion"];
+
+                    factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+
+                    factura.Fechapago = (DateTime)reader["Fecha"];
+
+                    factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                    factura.Estado = (string)reader["Estado"];
+
+                    factura.Prop.Id = (int)reader["IdPropuesta"];
+                   
+                }
+
+                IList<Propuesta> propuestas = ConsultarPropuesta();
+
+                List<Factura> facturas = new List<Factura>();
+
+                foreach (Propuesta propuestaAux in propuestas)
+                {
+                    if (propuestaAux.Id == factura.Prop.Id)
+                    {
+                        factura.Prop = propuestaAux;
+                    }
+                }
+
+                return factura;
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            return factura;
+        }
+
+        /// <summary>
+        /// Metodo utilizado para generar una lista de facturas parametrizada por un rango de fechas
+        /// y por el tipo de factura
+        /// </summary>
+        /// <param name="desde">Fecha Inicial(DateTime)</param>
+        /// <param name="hasta">Fecha fin(DateTime)</param>
+        /// <param name="cobradas">Si la factura es de tipo "cobrada" true;
+        /// Si es de tipo "por cobrar" false</param>
+        /// <returns>Una lista de facturas</returns>
+        public IList<Factura> ConsultarFacturasPorEstado(DateTime desde, DateTime hasta, Boolean cobradas)
+        {
+            try
+            {
+                DbDataReader reader;
+
+                SqlParameter[] arParms = new SqlParameter[2];
+
+                arParms[0] = new SqlParameter("@Fecha1", SqlDbType.SmallDateTime);
+                arParms[0].Value = desde;
+                arParms[1] = new SqlParameter("@Fecha2", SqlDbType.SmallDateTime);
+                arParms[1].Value = hasta;
+
+                if(cobradas)
+                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas", arParms);
+                else
+                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasPorCobrar", arParms);
+               
+                Factura factura;
+                Propuesta propuesta;
+                IList<Factura> listaFacturas = new List<Factura>();
+                DateTime fecha;
+
+                while (reader.Read())
+                {
+                    factura = new Factura();
+
+                    factura.Numero = int.Parse(reader["IdFactura"].ToString());
+                    factura.Titulo = reader["Titulo"].ToString();
+                    factura.Descripcion = reader["Descripcion"].ToString();
+                    factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                    fecha = DateTime.Parse(reader["Fecha"].ToString());
+                    factura.Fechapago = DateTime.Parse(fecha.ToShortTimeString());
+                    fecha = DateTime.Parse(reader["FechaIngreso"].ToString());
+                    factura.Fechaingreso = DateTime.Parse(reader["FechaIngreso"].ToString());
+                    factura.Estado = reader["Estado"].ToString();
+                    propuesta = new Propuesta();
+                    propuesta.Titulo = reader["NombrePropuesta"].ToString();
+                    propuesta.MontoTotal = float.Parse(reader["Monto"].ToString());
+                    factura.Prop = propuesta;
+
+                    listaFacturas.Add(factura);
+                }
+                return listaFacturas;
+            }
+            catch (SqlException e)
+            {
+                return null;
+            }
+        
+        }
+
+        public Factura IngresarFactura(Factura factura)
+        {
+
+            IList<Propuesta> propuestas = ConsultarPropuesta();
+
+            Boolean valido = false;
+            try
+            {
+                foreach (Propuesta propuestaAux in propuestas)
+                {
+                    if (propuestaAux.Id == factura.Prop.Id)
+                    {
+                        SqlParameter[] arparms = new SqlParameter[7];
+
+                        arparms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+                        arparms[0].Value = factura.Titulo;
+
+                        arparms[1] = new SqlParameter("@descripcion", SqlDbType.VarChar);
+                        arparms[1].Value = factura.Descripcion;
+
+                        arparms[2] = new SqlParameter("@porcentaje", SqlDbType.Float);
+                        arparms[2].Value = factura.Procentajepagado;
+
+                        arparms[3] = new SqlParameter("@fecha", SqlDbType.SmallDateTime);
+                        arparms[3].Value = factura.Fechapago.ToShortDateString();
+
+                        arparms[4] = new SqlParameter("@fechaingreso", SqlDbType.SmallDateTime);
+                        arparms[4].Value = factura.Fechaingreso.ToShortDateString();
+
+                        arparms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
+                        arparms[5].Value = factura.Estado;
+
+                        arparms[6] = new SqlParameter("@idpropuesta", SqlDbType.Int);
+                        arparms[6].Value = factura.Prop.Id;
+
+                        int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarFactura", arparms);
+
+                        valido = true;
+                    }
+                }
+            }catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            if (valido == false)
+                return new Factura();
+            else 
+                return factura;
+        }
+
+        public IList<Factura> ConsultarFacturas()
+        {
+            IList<Factura> facturas = new List<Factura>();
+
+            try
+            {
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarFacturas");
+                
+
+                int i = 0;
+
+                while (reader.Read())
+                {
+                    Factura factura = new Factura();
+
+                    factura.Numero = (int)reader["IdFactura"];
+
+                    factura.Titulo = (string)reader["Titulo"];
+
+                    factura.Descripcion = (string)reader["Descripcion"];
+
+                    factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+
+                    factura.Fechapago = (DateTime)reader["Fecha"];
+
+                    factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+
+                    factura.Estado = (string)reader["Estado"];
+
+                    //factura.Prop = propuesta;
+
+                    facturas.Insert(i, factura);
+                    i++;
+
+                }
+
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+                return new List<Factura>();
+            }
+
+            return facturas;
+        }
+
+        public Factura UpdateFactura(Factura factura)
+        {
+            bool valido = false;
+            try
+            {               
+                SqlParameter[] arparms = new SqlParameter[1];
+
+                arparms[0] = new SqlParameter("@NumeroFactura", SqlDbType.Int);
+                arparms[0].Value = factura.Numero;
+
+                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "UpdateFactura", arparms);
+
+                valido = true;                   
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            if (valido)
+                return factura;
+            else
+                return new Factura();
+        }
+
+
+
+        #endregion
+
+    }
+}
