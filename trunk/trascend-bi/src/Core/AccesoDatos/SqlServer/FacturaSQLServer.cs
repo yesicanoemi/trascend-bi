@@ -210,6 +210,15 @@ namespace Core.AccesoDatos.SqlServer
             return factura;
         }
 
+        /// <summary>
+        /// Metodo utilizado para generar una lista de facturas parametrizada por un rango de fechas
+        /// y por el tipo de factura
+        /// </summary>
+        /// <param name="desde">Fecha Inicial(DateTime)</param>
+        /// <param name="hasta">Fecha fin(DateTime)</param>
+        /// <param name="cobradas">Si la factura es de tipo "cobrada" true;
+        /// Si es de tipo "por cobrar" false</param>
+        /// <returns>Una lista de facturas</returns>
         public IList<Factura> ConsultarFacturasPorEstado(DateTime desde, DateTime hasta, Boolean cobradas)
         {
             try
