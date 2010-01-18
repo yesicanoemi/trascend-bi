@@ -94,7 +94,7 @@ public partial class Paginas_Reportes_ReportesEquipo6 : System.Web.UI.Page, IRep
     {
 
         if (e.Row.RowIndex % 2 == 0)
-            e.Row.BackColor = System.Drawing.Color.FromName( );
+            e.Row.BackColor = System.Drawing.Color.FromName("FFFFCC");
     }
 
     #endregion
