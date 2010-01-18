@@ -9,11 +9,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
     public class AgregarUsuario : Comando<Core.LogicaNegocio.Entidades.Usuario>
     {
+        #region Propiedades
+
         private Core.LogicaNegocio.Entidades.Usuario usuario;
+
+        #endregion  
 
         #region Constructor
 
-        /// <summary>Constructor de la clase 'CosultarCredenciales'.</summary>
+        /// <summary>Constructor de la clase 'Agregar Usuario'.</summary>
 
         public AgregarUsuario()
         { }
@@ -25,13 +29,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         #endregion
 
-        #region Metodos
+        #region Métodos
 
-        /// <summary>Método que implementa la ejecución del comando 'CosultarUsuarios'.</summary>
+        /// <summary>Método que implementa la ejecución del comando 'AgregarUsuario'.</summary>
 
         public void Ejecutar()
         {
-            //Usuario _usuario;
 
             UsuarioSQLServer bd = new UsuarioSQLServer();
 
