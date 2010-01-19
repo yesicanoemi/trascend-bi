@@ -7,6 +7,10 @@ namespace Core.LogicaNegocio.Excepciones
 {
     public class ModificarException : ApplicationException
     {
+        public ModificarException()
+        {
+
+        }
         public ModificarException(string s, Exception e) : base(s, e)
         {
 

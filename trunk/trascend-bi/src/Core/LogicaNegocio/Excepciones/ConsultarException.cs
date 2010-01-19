@@ -7,6 +7,10 @@ namespace Core.LogicaNegocio.Excepciones
 {
     public class ConsultarException : ApplicationException
     {
+        public ConsultarException()
+        {
+
+        }
         public ConsultarException(string s, Exception e)
             : base(s, e)
         {

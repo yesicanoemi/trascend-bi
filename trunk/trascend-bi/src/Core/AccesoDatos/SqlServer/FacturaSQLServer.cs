@@ -41,6 +41,12 @@ namespace Core.AccesoDatos.SqlServer
 
         #region metodos
 
+        /// <summary>
+        /// Metodo que recibe una propuesta y se encarga de buscar las facturas de esa
+        /// propuesta por su nombre
+        /// </summary>
+        /// <param name="fecha">Propuesta con el nombre </param>
+        /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
         public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
         {
             IList<Propuesta> propuestas = ConsultarPropuesta();
@@ -91,12 +97,19 @@ namespace Core.AccesoDatos.SqlServer
                             i++;
 
                         }
+
+                        if (facturas == null)
+                            throw new ConsultarFacturaADException();
                     }
                 }
             }
             catch (SqlException e)
             {
                 throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta en la Base de Datos",e);
+            }
+            catch (ConsultarFacturaADException e)
+            {
+                throw new ConsultarFacturaADException("No se encontraron facturas relacionadas al proyecto "+propuesta.Titulo, e);
             }
             catch (Exception e)
             {

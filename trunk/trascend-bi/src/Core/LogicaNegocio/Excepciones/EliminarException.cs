@@ -7,6 +7,10 @@ namespace Core.LogicaNegocio.Excepciones
 {
     public class EliminarException : ApplicationException
     {
+        public EliminarException()
+        {
+
+        }
         public EliminarException(string s, Exception e) : base(s, e)
         {
 
