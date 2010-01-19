@@ -40,5 +40,25 @@ namespace Core.Pruebas
 
             Assert.AreEqual(Login,usuario.Login);
         }
+
+        [Test]
+        public void TestAgregarUsuario()
+        {
+            Usuario usuario = new Usuario();
+
+            usuario.Login = "UsuarioPrueba";
+            usuario.Password = "123456";
+            usuario.Status = "Activo";
+            usuario.Cedula = 18512200;
+
+            IList<Permiso> listado = new List<Permiso>();
+            Permiso permiso = new Permiso();
+            permiso.IdPermiso = 1;
+            listado.Add(permiso);
+
+            new UsuarioSQLServer().AgregarUsuario(usuario);
+
+            //Assert.AreEqual(Login, usuario.Login);
+        }
     }
 }
