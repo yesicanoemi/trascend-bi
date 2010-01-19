@@ -166,11 +166,44 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            Dirección de Habitación
+                                        <td colspan="2">
+                                            Dirección
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ciudad</td>
                                         <td>
-                                            <asp:TextBox ID="uxDireccion" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="uxCiudad" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Avenida</td>
+                                        <td>
+                                            <asp:TextBox ID="uxAvenida" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Calle</td>
+                                        <td>
+                                            <asp:TextBox ID="uxCalle" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Urbanización</td>
+                                        <td>
+                                            <asp:TextBox ID="uxUrbanizacion" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Edificio o Casa</td>
+                                        <td>
+                                            <asp:TextBox ID="uxEdificio" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Piso o Apartamento</td>
+                                        <td>
+                                            <asp:TextBox ID="uxPiso" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>

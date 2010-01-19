@@ -65,10 +65,40 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         set { uxFechaNac = value; }
     }
 
-    public TextBox DireccionEmpleado
+    public TextBox AvenidaEmpleado
     {
-        get { return uxDireccion; }
-        set { uxDireccion = value; }
+        get { return uxAvenida; }
+        set { uxAvenida = value; }
+    }
+
+    public TextBox CalleEmpleado
+    {
+        get { return uxCalle; }
+        set { uxCalle = value; }
+    }
+
+    public TextBox CiudadEmpleado
+    {
+        get { return uxCiudad; }
+        set { uxCiudad = value; }
+    }
+
+    public TextBox PisoEmpleado
+    {
+        get { return uxPiso; }
+        set { uxPiso = value; }
+    }
+
+    public TextBox EdificioEmpleado
+    {
+        get { return uxEdificio; }
+        set { uxEdificio = value; }
+    }
+
+    public TextBox UrbanizacionEmpleado
+    {
+        get { return uxUrbanizacion; }
+        set { uxUrbanizacion = value; }
     }
 
     public TextBox FechaIngresoEmpleado
