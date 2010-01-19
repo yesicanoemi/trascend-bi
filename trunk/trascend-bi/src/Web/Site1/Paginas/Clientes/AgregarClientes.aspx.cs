@@ -11,7 +11,7 @@ using Presentador.Cliente.Contrato;
 
 
 
-public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarCliente
+public partial class Paginas_Clientes_AgregarClientes : System.Web.UI.Page,IAgregarCliente
 {
     #region Propiedades
     private AgregarClientePresentador _presentador;
@@ -87,30 +87,7 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarClien
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 5)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presentador = new AgregarClientePresentador(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-
+        _presentador = new AgregarClientePresentador(this);
     }
     protected void Page_Load(object sender, EventArgs e)
     {

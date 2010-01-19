@@ -12,7 +12,6 @@ using System.Resources;
 using System.Threading;
 using System.Globalization;
 using System.Configuration;
-using System.Data;
 
 
 namespace Presentador.Reportes.Vistas
@@ -51,19 +50,12 @@ namespace Presentador.Reportes.Vistas
 
             IList<Core.LogicaNegocio.Entidades.Factura> listadoF = FacturasEmitidas(factura);
 
-            _vista.GridViewReporteFactura3b.DataSource = null;
-
-            _vista.GridViewReporteFactura3b.DataBind();
-
             try
             {
                 if (listadoF != null)
                 {
+                    _vista.GetObjectContainerReporteFactura3b.DataSource = listadoF;
 
-                    _vista.GridViewReporteFactura3b.DataSource = listadoF;
-                    
-                    _vista.GridViewReporteFactura3b.DataBind();
-                  
                 }
             }
 

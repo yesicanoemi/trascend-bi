@@ -39,7 +39,7 @@ public partial class Paginas_Reportes_ReportesEquipo8c : System.Web.UI.Page, IRe
     }
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
-        _presenter.onBotonBuscar();
+
     }
 
     protected void uxAnios_SelectedIndexChanged(object sender, EventArgs e)

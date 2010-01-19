@@ -26,6 +26,8 @@ namespace Presentador.Factura.Contrato
 
         #endregion
 
+
+
         #region Facturacion
 
         TextBox MontoPagar { get; set; }
@@ -38,7 +40,5 @@ namespace Presentador.Factura.Contrato
         //Button Aceptar { get; set; }
 
         #endregion
-
-        void Mensaje(string msg);
     }
 }

@@ -11,19 +11,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
     {
         private Cargo _cargo;
    
-        /// <summary>
-        /// Constructor del comando para ingresar cargo
-        /// </summary>
-        /// <param name="cargo">El cargo a ingresar</param>
+        
         public Ingresar(Cargo cargo)
         {
             this._cargo = cargo;
         }
 
-        /// <summary>
-        /// Metodo de ejecucion para agregar cargos
-        /// </summary>
-        /// <returns>true si se logro agregar el cargo y false si hubo error</returns>
         public bool Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();

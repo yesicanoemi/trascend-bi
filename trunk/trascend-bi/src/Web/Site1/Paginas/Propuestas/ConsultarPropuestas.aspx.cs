@@ -7,7 +7,7 @@ using Presentador.Propuesta.Contrato;
 using Presentador.Propuesta.Vistas;
 using Core.LogicaNegocio.Entidades;
 
-public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsultarPropuesta
+public partial class Paginas_Propuestas_ConsultarPropuestas : System.Web.UI.Page, IConsultarPropuesta
 {
     private ConsultarPropuestaPresentador _presenter;
     private Propuesta _propuesta;
@@ -138,30 +138,7 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 26)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presenter = new ConsultarPropuestaPresentador(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-
+        _presenter = new ConsultarPropuestaPresentador(this);
     }
     protected void Page_Load(object sender, EventArgs e)
     {

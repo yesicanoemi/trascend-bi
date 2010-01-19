@@ -7,20 +7,20 @@ using Core.LogicaNegocio.Entidades;
 
 namespace Core.LogicaNegocio.Fabricas
 {
-    public class FabricaComandosUsuario
+	public class FabricaComandosUsuario
     {
-        #region Métodos
+        #region Metodos
 
         /// <summary>
         /// Metodo que fabrica el comando 'ConsultarCredenciales' de la entidad Usuario
         /// </summary>
         /// <param name="entidad">Entidad Usuario con los datos</param>
         /// <returns>Comando ConsultarCredenciales de la entidad Usuario</returns>
-
-        public static ConsultarCredenciales CrearComandoConsultarCredenciales(Usuario entidad)
-        {
-            return new ConsultarCredenciales(entidad);
-        }
+        
+	    public static ConsultarCredenciales CrearComandoConsultarCredenciales(Usuario entidad)
+	    {
+	        return new ConsultarCredenciales(entidad);
+	    }
 
         /// <summary>
         /// Metodo que fabrica el comando "ConsultarUsuario" de la entidad Usuario
@@ -37,46 +37,12 @@ namespace Core.LogicaNegocio.Fabricas
         /// Metodo que fabrica el comando "ConsultarUsuarioStatus" de la entidad Usuario
         /// </summary>
         /// <param name="empleado">Entidad Usuario con los datos</param>
-        /// <returns>Comando ConsultarUsuariosStatus</returns>
+        /// <returns>Comando Consultar de la entidad usuario</returns>
 
         public static ConsultarUsuarioStatus CrearComandoConsultarUsuarioStatus()
         {
             return new ConsultarUsuarioStatus();
         }
-
-        /// <summary>
-        /// Metodo que fabrica el comando "ConsultarPermisos" de la entidad Usuario
-        /// </summary>
-        /// <param name="entidad">Entidad usuario</param>
-        /// <returns>Comando ConsultarPermisos</returns>
-
-        public static ConsultarPermisos CrearComandoConsultarPermisos(Usuario entidad)
-        {
-            return new ConsultarPermisos(entidad);
-        }
-
-        /// <summary>
-        ///  Metodo que fabrica el comando "ModificarUsuario" de la entidad Usuario
-        /// </summary>
-        /// <param name="entidad">Entidad Usuario</param>
-        /// <returns>Comando ModificarUsuario</returns>
-
-        public static ModificarUsuario CrearComandoModificarUsuario(Usuario entidad)
-        {
-            return new ModificarUsuario(entidad);
-        }
-
-        /// <summary>
-        /// Metodo que fabrica el comando "AgregarUsuario" de la entidad Usuario
-        /// </summary>
-        /// <param name="entidad">Entidad Usuario</param>
-        /// <returns>Comando AgregarUsuario</returns>
-
-        public static AgregarUsuario CrearComandoAgregarUsuario(Usuario entidad)
-        {
-            return new AgregarUsuario(entidad);
-        }
-
 
         public static VerificarUsuario CrearComandoVerificarUsuario(Usuario entidad)
         {
@@ -93,6 +59,15 @@ namespace Core.LogicaNegocio.Fabricas
             return new EliminarUsuario(entidad);
         }
 
-        #endregion
-    }
+        public static ConsultarPermisos CrearComandoConsultarPermisos(Usuario entidad)
+        {
+            return new ConsultarPermisos(entidad);
+        }
+
+        public static ModificarUsuario CrearComandoModificarUsuario (Usuario entidad)
+        {
+            return new ModificarUsuario(entidad);
+        }
+#endregion
+	}
 }

@@ -12,24 +12,14 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         private DateTime _FechaInicio;
         private DateTime _FechaFin;
         private bool _tipo;
-
-        #region Constructor
-
         public ConsultarFacturasPorEstado(DateTime FechaInicio, DateTime FechaFin, bool tipo)
         {
             this._FechaInicio = FechaInicio;
             this._FechaFin = FechaFin;
             this._tipo = tipo;
+ 
         }
 
-        #endregion
-
-        #region Metodos
-
-        /// <summary>
-        /// Sobrecarga del metodo ejecutar
-        /// </summary>
-        /// <returns>Una Lista de la entidad factura</returns>
         public IList<Factura> Ejecutar()
         {
 
@@ -39,7 +29,5 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
             return listaFacturas;
 
         }
-
-        #endregion
     }
 }

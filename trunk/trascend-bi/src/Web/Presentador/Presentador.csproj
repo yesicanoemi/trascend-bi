@@ -94,9 +94,7 @@
     <Compile Include="Factura\Vistas\AgregarFacturaPresenter.cs" />
     <Compile Include="Factura\Vistas\ConsultarFacturaPresenter.cs" />
     <Compile Include="Factura\Vistas\ModificarFacturaPresenter.cs" />
-    <Compile Include="Gasto\Contrato\IEliminarGasto.cs" />
     <Compile Include="Gasto\Contrato\IIngresarGasto.cs" />
-    <Compile Include="Gasto\Vistas\EliminarGastoPresenter.cs" />
     <Compile Include="Gasto\Vistas\IngresarGastoPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,10 +118,8 @@
     </Compile>
     <Compile Include="Propuesta\Contrato\IAgregarPropuesta.cs" />
     <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
-    <Compile Include="Propuesta\Contrato\IEliminarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
-    <Compile Include="Propuesta\Vistas\EliminarPropuestaPresentador.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasPorCobrar.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaPorAnoPresenter.cs" />
@@ -131,6 +127,7 @@
     <Compile Include="Reportes\Contrato\IReporteEquipo8b.cs" />
     <Compile Include="Reportes\Contrato\IReporteEquipo8c.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasEmitidas.cs" />
+    <Compile Include="Reportes\Contrato\IReporteGastoAnual.cs" />
     <Compile Include="Reportes\Contrato\IReporteGastoFecha.cs" />
     <Compile Include="Reportes\Contrato\IReporteHorasRol.cs" />
     <Compile Include="Reportes\Vistas\PropuestasIntervaloPresenter.cs" />
@@ -141,9 +138,10 @@
     <Compile Include="Reportes\Vistas\ReporteFacturasCobradasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFacturasPorCobrarPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
+    <Compile Include="Reportes\Vistas\ReporteGastoAnualPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteGastoFechaPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteHorasRolPresenter.cs" />
-    <Compile Include="Usuario\Contrato\IAgregarUsuario.cs" />
+    <Compile Include="Usuario\Contrato\IAgregarUsuarioPresenter.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IModificarUsuario.cs" />

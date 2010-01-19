@@ -6,40 +6,13 @@ using System.Web.UI.WebControls;
 using Presentador.Cargo.Contrato;
 using Presentador.Cargo.Vistas;
 
-public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
+public partial class Paginas_Cargos_AgregarCargos : System.Web.UI.Page, IAgregarCargo
 {
     private AgregarCargoPresenter _presentador;
 
-    protected void Page_Init(object sender, EventArgs e)
-    {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 1)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presentador = new AgregarCargoPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        _presentador = new AgregarCargoPresenter(this);
     }
 
     #region Propiedades
@@ -81,22 +54,13 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
     #endregion
 
 
-    #region Metodos
-    /// <summary>
-    /// Metodo del evento del boton aceptar
-    /// </summary>
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         LabelError.Visible = false;
         if (!_presentador.IngresarCargo())
         {
-            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
-                LabelError.Visible = true;
-            else
-            {
-                LabelError.Text = "Error ingresando el cargo";
-                LabelError.Visible = true;
-            }
+            LabelError.Text = "Error ingresando el cargo";
+            LabelError.Visible = true;
         }
         else
         {
@@ -104,6 +68,5 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
             LabelError.Visible = true;
         }
     }
-    #endregion
-
+     
 }

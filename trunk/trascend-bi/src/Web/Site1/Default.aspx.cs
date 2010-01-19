@@ -24,12 +24,6 @@ public partial class _Default : PaginaBase, IDefaultPresenter
         set { uxContrasena = value; }
     }
 
-    public HttpSessionState Sesion
-    {
-        get { return Session; }
-
-    }
-
     #endregion
 
     #region Métodos
@@ -45,9 +39,9 @@ public partial class _Default : PaginaBase, IDefaultPresenter
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        if (Page.IsValid == true)
+        if(Page.IsValid == true)
         {
-
+ 
             _presenter.OnBotonAceptar();
 
         }
@@ -56,7 +50,7 @@ public partial class _Default : PaginaBase, IDefaultPresenter
     public void IngresarSistema()
     {
         Response.Redirect(paginaPrueba);
-
+        
     }
 
     #endregion

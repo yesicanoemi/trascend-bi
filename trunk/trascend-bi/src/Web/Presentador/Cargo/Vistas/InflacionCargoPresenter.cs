@@ -15,22 +15,19 @@ namespace Presentador.Cargo.Vistas
 
         private IInflacionCargo _vista;
 
-        /// <summary>
-        /// Constructor del Presentador de la pagina de Inflacion
-        /// </summary>
-        /// <param name="laVista">La vista de la interfaz</param>
         public InflacionCargoPresenter(IInflacionCargo laVista)
         {
             _vista = laVista;
             CargarTabla();
         }
 
-        #region Métodos
-        /// <summary>
-        /// Metodo para cargar los elementos de la tabla
-        /// </summary>
         public void CargarTabla()
         {
+  /*          CargoSQLServer bd = new CargoSQLServer();
+            List<Core.LogicaNegocio.Entidades.Cargo> listaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
+            IList<Entidad> listaEntidades = bd.ConsultarCargos();
+            Core.LogicaNegocio.Entidades.Cargo cargo; */
+
             Core.LogicaNegocio.Comandos.ComandoCargo.ConsultarTabla ComandoConsultarTabla;
 
             ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoConsultarTabla();
@@ -39,6 +36,11 @@ namespace Presentador.Cargo.Vistas
 
             for (int i = 0; i < listaCargos.Count; i++)
             {
+           //     cargo = (Core.LogicaNegocio.Entidades.Cargo)listaEntidades[i];
+         //       cargo.SueldoMaximoConInflacion = cargo.SueldoMaximo * (1 + float.Parse(_vista.Inflacion.Text)/100);
+           //     cargo.SueldoMinimoConInflacion = cargo.SueldoMinimo * (1 + float.Parse(_vista.Inflacion.Text)/100);
+    //            listaCargos.Add(cargo);
+
                   listaCargos[i].SueldoMaximoConInflacion = listaCargos[i].SueldoMaximo * (1 + float.Parse(_vista.Inflacion.Text) / 100);
                   listaCargos[i].SueldoMinimoConInflacion = listaCargos[i].SueldoMinimo * (1 + float.Parse(_vista.Inflacion.Text) / 100);
             }
@@ -46,6 +48,5 @@ namespace Presentador.Cargo.Vistas
             _vista.TablaSueldos.DataSource = listaCargos;
             _vista.TablaSueldos.DataBind();
         }
-        #endregion
     }
 }

@@ -27,6 +27,16 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarGastoFecha(fechaini, fechafin);
         }
 
+        public static ConsultarGastoAnual CrearComandoGastosAnuales(Gasto entidad)
+        {
+            return new ConsultarGastoAnual(entidad);
+        }
+
+        public static ConsultarGastoTotal CrearComandoGastoTotal(Gasto entidad)
+        {
+            return new ConsultarGastoTotal(entidad);
+        }
+
         public static ConsultaRol CrearComandoConsultarRol(IList<string> entidad)
         {
             return new ConsultaRol(entidad);
@@ -51,14 +61,6 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultaHora(rol);
         }
 
-        /// <summary>
-        /// Comando utilizado para crear una lista de entidades de tipo factura parametrizada por un
-        /// un rango de fecha y el tipo de factura
-        /// </summary>
-        /// <param name="FechaInicio">Fecha inicial(DateTime)</param>
-        /// <param name="FechaFin">Fecha final(DateTime)</param>
-        /// <param name="tipo">Puede ser "cobrada" o "por cobrar"</param>
-        /// <returns>Devuelve la lista segun el criterio</returns>
         public static ConsultarFacturasPorEstado CrearComandoConsultarFacturasPorEstado(DateTime FechaInicio, DateTime FechaFin, bool tipo)
         {
             return new ConsultarFacturasPorEstado(FechaInicio,FechaFin,tipo);

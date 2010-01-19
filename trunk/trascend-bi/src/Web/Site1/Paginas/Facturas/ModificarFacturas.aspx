@@ -11,6 +11,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarFacturas.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarFacturas.aspx">Consultar<span></span></a></li> 
+    <li><a href="EliminarFacturas.aspx" >Eliminar<span></span></a></li> 
   <li><a href="ModificarFacturas.aspx" class="active">Modificar<span></span></a></li>
 </ul> 
 						

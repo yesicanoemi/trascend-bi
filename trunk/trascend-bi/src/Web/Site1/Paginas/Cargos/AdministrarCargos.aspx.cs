@@ -6,40 +6,13 @@ using System.Web.UI.WebControls;
 using Presentador.Cargo.Vistas;
 using Presentador.Cargo.Contrato;
 
-public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrarCargo
+public partial class Paginas_Cargos_AdministrarCargos : System.Web.UI.Page, IAdministrarCargo
 {
     private AdministrarCargoPresenter _presenter;
 
-    protected void Page_Init(object sender, EventArgs e)
-    {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 3)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presenter = new AdministrarCargoPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        _presenter = new AdministrarCargoPresenter(this);
         LabelError.Visible = false;
         DesactivarBotones();
     }
@@ -82,10 +55,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
     }
     #endregion
 
-    #region Metodos
-    /// <summary>
-    /// Metodo para la accion del boton de busqueda
-    /// </summary>
+
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         LabelError.Visible = false;
@@ -93,9 +63,6 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
         ActivarBotones();
     }
 
-    /// <summary>
-    /// Metodo para la accion del boton de eliminar
-    /// </summary>
     protected void uxBotonEliminar_Click(object sender, EventArgs e)
     {
         if (!_presenter.EliminarCargo())
@@ -107,52 +74,32 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
         {
             LabelError.Text = "Cargo eliminado satisfactoriamente";
             LabelError.Visible = true;
-            DesactivarBotones();
         }
     }
 
-    /// <summary>
-    /// Metodo para la accion del boton de guardar
-    /// </summary>
     protected void uxBotonGuardar_Click(object sender, EventArgs e)
     {
         if (!_presenter.ModificarCargo())
         {
-            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
-            {
-                LabelError.Visible = true;
-                ActivarBotones();
-            }
-            else
-            {
-                LabelError.Text = "Error guardando los cambios";
-                LabelError.Visible = true;
-            }
+            LabelError.Text = "Error guardando los cambios";
+            LabelError.Visible = true;
         }
         else
         {
             LabelError.Text = "Cambios guardos satisfactoriamente";
             LabelError.Visible = true;
-            DesactivarBotones();
         }
     }
 
-    /// <summary>
-    /// Metodo para habilitar los botones
-    /// </summary>
     private void ActivarBotones()
     {
         uxBotonGuardar.Enabled = true;
         uxBotonEliminar.Enabled = true;
     }
 
-    /// <summary>
-    /// Metodo para desabilitar los botones
-    /// </summary>
     private void DesactivarBotones()
     {
         uxBotonGuardar.Enabled = false;
         uxBotonEliminar.Enabled = false;
     }
-    #endregion
 }

@@ -14,7 +14,7 @@ namespace Core.AccesoDatos.SqlServer
 {
     class GastoSQLServer
     {
-
+       
 
         #region Propiedades
 
@@ -46,13 +46,6 @@ namespace Core.AccesoDatos.SqlServer
 
         #region Metodos
 
-        /// <summary>
-        /// Metodo encargado del llamado al procedimiento de insertarGasto de la base de datos.
-        /// Este metodo inserta el gasto que no esta asociado a proyecto.
-        /// </summary>
-        /// <param name="gasto"></param>
-        /// <returns></returns>
-
         public Gasto IngresarGasto(Gasto gasto)
         {
             Gasto _gasto = new Gasto();
@@ -80,6 +73,9 @@ namespace Core.AccesoDatos.SqlServer
                 parametros[5] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[5].Value = gasto.Descripcion;
 
+                //parametros[6] = new SqlParameter("@propuesta", SqlDbType.Int);
+                //parametros[6].Value = int.Parse(gasto.IdPropuesta);
+
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGasto", parametros);
 
             }
@@ -91,19 +87,14 @@ namespace Core.AccesoDatos.SqlServer
             return _gasto;
         }
 
-        /// <summary>
-        /// Metodo encargado del llamado al procedimiento de InsertarGastoPropuesta de la base de datos.
-        /// Este metodo inserta un gasto asociado a un proyecto.
-        /// </summary>
-        /// <param name="gasto"></param>
-        /// <returns></returns>
-
         public Gasto IngresarGastoPropuesta(Gasto gasto)
         {
             Gasto _gasto = new Gasto();
             try
             {
                 SqlParameter[] parametros = new SqlParameter[7];
+
+                // Parametros
 
                 parametros[0] = new SqlParameter("@estado", SqlDbType.VarChar);
                 parametros[0].Value = gasto.Estado;
@@ -122,27 +113,56 @@ namespace Core.AccesoDatos.SqlServer
 
                 parametros[5] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[5].Value = gasto.Descripcion;
-
+                
                 parametros[6] = new SqlParameter("@version", SqlDbType.Int);
                 parametros[6].Value = gasto.IdVersion;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGastoPropuesta", parametros);
-
+                //DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "InsertarGastoPropuesta", parametros);
             }
             catch (SqlException e)
             {
-                //System.Console.Write(e);
-                _gasto.Codigo = -1;
+                System.Console.Write(e);
             }
 
             return _gasto;
         }
 
-        /// <summary>
-        /// Este metodo se encarga de eliminar el gasto de la base de datos accediendo al procedimiento EliminarGasto.
-        /// </summary>
-        /// <param name="gasto"></param>
-        /// <returns></returns>
+        /*public Gasto ConsultarGasto(Gasto gasto)
+        {
+            Gasto _gasto = new Gasto();
+
+            try
+            {
+                SqlParameter parametros = new SqlParameter[5];
+
+                parametros[0] = new SqlParameter("@codigo", SqlDbType.Int);
+                parametros[0].Value = gasto.Codigo;
+
+                parametros[1] = new SqlParameter("@estado", SqlDbType.Int);
+                parametros[1].Value = gasto.Estado;
+
+                parametros[2] = new SqlParameter("@monto", SqlDbType.Float);
+                parametros[2].Value = gasto.Monto;
+
+                parametros[3] = new SqlParameter("@fechaGasto", SqlDbType.DateTime);
+                parametros[3].Value = gasto.FechaGasto;
+
+                parametros[5] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                parametros[5].Value = gasto.Tipo;
+
+                parametros[6] = new SqlParameter("@descripcion", SqlDbType.VarChar);
+                parametros[6].Value = gasto.Descripcion;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGasto", parametros);
+
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            return _gasto;
+        }*/
 
         public Gasto EliminarGasto(Gasto gasto)
         {
@@ -164,7 +184,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             return _gasto;
         }
-
+ 
 
         #endregion
     }

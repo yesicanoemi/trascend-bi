@@ -22,9 +22,9 @@ namespace Presentador.Reportes.Vistas
         #region Constructor
         public ReporteEquipo8cPresenter(IReporteEquipo8c vista)
         {
-            _vista = vista;
+            _vista=vista;
         }
-
+        
         #endregion
 
         public void onBotonBuscar()
@@ -61,8 +61,6 @@ namespace Presentador.Reportes.Vistas
                                         FacturasPorCobrar(Core.LogicaNegocio.Entidades.Factura entidad)
         {
             IList<Core.LogicaNegocio.Entidades.Factura> facturaRetorno = null;
-
-            entidad.Fechapago = Convert.ToDateTime("01/01/" + _vista.Anios.SelectedItem.Text);
 
             Core.LogicaNegocio.Comandos.ComandoReporte.FacturasPorCobrarAnuales comandoFacturasPorCobrar;
 

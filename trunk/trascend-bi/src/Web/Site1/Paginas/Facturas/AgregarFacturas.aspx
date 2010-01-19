@@ -11,7 +11,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarFacturas.aspx" class="active">Agregar<span></span></a></li> 
   <li><a href="ConsultarFacturas.aspx" >Consultar<span></span></a></li> 
-  <li><a href="ModificarFacturas.aspx" >Modificar<span></span></a></li> 
+  <li><a href="EliminarFacturas.aspx" >Eliminar<span></span></a></li> 
    
 </ul> 
 						
@@ -315,8 +315,7 @@
                                             Text="<%$Resources:DSU, PorcentajePagarFact%>"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxPorcentajePagar" runat="server" 
-                                            ontextchanged="uxPorcentajePagar_TextChanged"></asp:TextBox>
+                                        <asp:TextBox ID="uxPorcentajePagar" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -350,10 +349,6 @@
                                 </tr>
                             </table>
                             </form>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
                             <p>
                             </p>
                             <p>

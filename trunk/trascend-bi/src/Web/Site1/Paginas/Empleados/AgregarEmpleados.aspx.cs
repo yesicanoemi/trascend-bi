@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Empleado.Contrato;
 using Presentador.Empleado.Vistas;
 
-public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEmpleado
+public partial class Paginas_Empleados_AgregarEmpleados : System.Web.UI.Page, IAgregarEmpleado
 {
     private AgregarEmpleadoPresenter _presentador;
     #region Propiedades
@@ -105,29 +105,7 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 13)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presentador = new AgregarEmpleadoPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-
+        _presentador = new AgregarEmpleadoPresenter(this);
     }
     protected void Page_Load(object sender, EventArgs e)
     {

@@ -13,7 +13,5 @@ namespace Presentador.Factura.Contrato
         TextBox NombrePropuesta { get; set; }
         TextBox NumeroPropuesta { get; set; }
         TextBox MontoCancelado { get; set; }
-
-        void Mensaje(string msg);
     }
 }

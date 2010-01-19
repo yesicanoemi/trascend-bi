@@ -7,8 +7,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
-using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
-using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+
 
 
 namespace Presentador.Factura.Vistas
@@ -28,124 +27,93 @@ namespace Presentador.Factura.Vistas
         public void OnBotonAceptar()
         {
 
-            InhabilitarCampos();
-            CambiarVista(1);
-            float MontosCancelados = 0;
-            float MontoRestante = 0;
-            float PorcCancelado = 0;
-            int i = 0;
+             InhabilitarCampos();
+             CambiarVista(1);
+             float MontosCancelados = 0;
+             float MontoRestante = 0;
+             float PorcCancelado = 0;
+             int i = 0;
 
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
-               Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
+             Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
-            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
+             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
 
-            try
-            {
-                foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
-                {
-                    if (PropuestaAux.Titulo.Equals(_vista.NombrePropuesta.Text))
-                    {
-                        _propuesta = PropuestaAux;
-                        _vista.MontoTotal.Text = _propuesta.MontoTotal.ToString();
+             foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+             {
+                 if (PropuestaAux.Titulo.Equals(_vista.NombrePropuesta.Text))
+                 {
+                     _propuesta = PropuestaAux;
+                     _vista.MontoTotal.Text = _propuesta.MontoTotal.ToString();
+                     
+                     
+                     Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
 
-
-                        Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
-                   Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
-
-                        IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
+                     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
 
 
-                        foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                        {
-                            MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
-                        }
-                        
-                        _vista.TotalCancelado.Text = MontosCancelados.ToString();
+                     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                     {
+                         MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
+                     }
+                     _vista.TotalCancelado.Text = MontosCancelados.ToString();
 
 
-                        foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                        {
-                            i++;
-                            _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " +
-                                FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
-                        }
+                     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                     {
+                         i++;
+                         _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " + 
+                             FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
+                     }
 
 
-                        PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
-                        _vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
+                     PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
+                     _vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
 
 
+                   
+                     MontoRestante = _propuesta.MontoTotal - MontosCancelados;
+                     _vista.MontoFaltante.Text = MontoRestante.ToString();
 
-                        MontoRestante = _propuesta.MontoTotal - MontosCancelados;
-                        _vista.MontoFaltante.Text = MontoRestante.ToString();
-
-                        _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
+                     _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
 
 
-                        //_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
-                        _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                     //_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
+                     _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
 
 
-                        Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
-                   Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
+                     Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
 
-                        IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
-                        // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
-
-
-                        i = 0;
-                        foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
-                        {
-
-                            if (fact.Numero > i)
-                                i = fact.Numero;
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
+                    // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
 
 
-                        }
+                    i = 0;
+                     foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
+                     {
 
-                        _vista.CodigoFactura.Text = (i + 1).ToString();
+                         if (fact.Numero > i)
+                             i = fact.Numero;
 
 
-                    }
-                }
-            }
-            catch (InsertarFacturaADException e)
-            {
-                _vista.Mensaje(e.Message);
-            }
-            catch (IngresarFacturaLNException e)
-            {
-                _vista.Mensaje(e.Message);
-            }
-            catch (Exception e)
-            {
-                _vista.Mensaje(e.Message);
-            }
+                     }
+                     
+                     _vista.CodigoFactura.Text = (i + 1).ToString();
+
+                          
+                 }
+             }
+
+                
         }
+
 
         public void OnAgregarFactura()
         {
-            try
-            {
-                if (int.Parse(_vista.MontoPagar.Text) > int.Parse(_vista.MontoFaltante.Text))
-                    throw new Exception("No se puede pagar una cantidad de dinero mayor al costo total");
-
-                this.IngresarFactura();
-            }
-            catch (InsertarFacturaADException e)
-            {
-                _vista.Mensaje(e.Message);
-            }
-            catch (IngresarFacturaLNException e)
-            {
-                _vista.Mensaje(e.Message);
-            }
-            catch (Exception e)
-            {
-                _vista.Mensaje(e.Message);
-            }
+            this.IngresarFactura();
         }
 
 

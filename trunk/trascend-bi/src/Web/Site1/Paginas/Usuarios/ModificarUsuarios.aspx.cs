@@ -7,7 +7,7 @@ using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
 
-public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificarUsuario
+public partial class Paginas_Usuarios_ModificarUsuarios : System.Web.UI.Page, IModificarUsuario
 {
 
     #region Propiedades
@@ -16,7 +16,7 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     #endregion
 
-    #region Información Básica
+    #region Informacion Basica
 
     public TextBox NombreUsuario
     {
@@ -90,53 +90,23 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         set { uxCBLEliminar = value; }
     }
 
-    public DropDownList DLStatusUsuario
-    {
-        get { return uxStatusUsuario; }
-        set { uxStatusUsuario = value; }
-    }
-
     #endregion
 
-    #region Métodos
 
     protected void PageChangingUsuarios(object sender, GridViewPageEventArgs e)
     {
-
+        //_presentador.CargarAgenciasCobro();
+        //uxConsultaEmpleado.PageIndex = e.NewPageIndex;
     }
 
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        _presentador.uxObjectConsultaModificarUsuarioSelecting
-                    (uxConsultaModificarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaModificarUsuarioSelecting(uxConsultaModificarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 31)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presentador = new ModificarUsuarioPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-
+        _presentador = new ModificarUsuarioPresenter(this);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -155,11 +125,6 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     }
 
-    protected void StatusUsuario_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-    }
-
-    #endregion
-
+   
 }

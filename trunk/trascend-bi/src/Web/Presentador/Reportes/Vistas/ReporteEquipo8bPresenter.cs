@@ -60,10 +60,7 @@ namespace Presentador.Reportes.Vistas
         public IList<Core.LogicaNegocio.Entidades.Factura>
                                         FacturasCobradas(Core.LogicaNegocio.Entidades.Factura entidad)
         {
-
             IList<Core.LogicaNegocio.Entidades.Factura> facturaRetorno = null;
-
-            entidad.Fechapago = Convert.ToDateTime("01/01/" + _vista.Anios.SelectedItem.Text);
 
             Core.LogicaNegocio.Comandos.ComandoReporte.FacturasCobradasAnuales comandoFacturasCobradas;
 

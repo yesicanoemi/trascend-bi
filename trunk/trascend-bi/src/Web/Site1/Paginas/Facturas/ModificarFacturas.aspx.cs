@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Factura.Contrato;
 using Presentador.Factura.Vistas;
 
-public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificarFactura
+public partial class Paginas_Facturas_ModificarFacturas : System.Web.UI.Page, IModificarFactura
 {
 
     ModificarFacturaPresenter _presenter;
@@ -86,36 +86,8 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        _presenter = new ModificarFacturaPresenter(this);
     }
-
-    protected void Page_Init(object sender, EventArgs e)
-    {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 19)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presenter = new ModificarFacturaPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-    }
-
 
     protected void uxConsultarxNombreProp_Click(object sender, EventArgs e)
     {
@@ -136,12 +108,6 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
         }
     }
 
-    public void Mensaje(string msg)
-    {
-        Label lbl = new Label();
-        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
-        Page.Controls.Add(lbl);
-    }
 
 
     protected void Button3_Click(object sender, EventArgs e)

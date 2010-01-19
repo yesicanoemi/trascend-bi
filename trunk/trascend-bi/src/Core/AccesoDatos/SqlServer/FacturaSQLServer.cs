@@ -9,8 +9,6 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
-using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
-using Core.LogicaNegocio.Excepciones;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -41,176 +39,123 @@ namespace Core.AccesoDatos.SqlServer
 
         #region metodos
 
-        /// <summary>
-        /// Metodo que recibe una propuesta y se encarga de buscar las facturas de esa
-        /// propuesta por su nombre
-        /// </summary>
-        /// <param name="propuesta">Propuesta con el nombre </param>
-        /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
         public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
         {
             IList<Propuesta> propuestas = ConsultarPropuesta();
 
             List<Factura> facturas = new List<Factura>();
 
-            try
+            foreach (Propuesta propuestaAux in propuestas)
             {
-                foreach (Propuesta propuestaAux in propuestas)
+                if (propuesta.Titulo.Equals(propuestaAux.Titulo))
                 {
-                    if (propuesta.Titulo.Equals(propuestaAux.Titulo))
+                    int i = 0;
+
+                    SqlParameter[] arParms = new SqlParameter[1];
+
+                    arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+
+                    arParms[0].Value = propuesta.Titulo;
+
+                    DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                            "ConsultarFacturaNomPro", arParms);
+
+                    while (reader.Read())
                     {
-                        int i = 0;
+                        Factura factura = new Factura();
 
-                        SqlParameter[] arParms = new SqlParameter[1];
+                        factura.Numero = (int)reader["IdFactura"];
 
-                        arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+                        factura.Titulo = (string)reader["Titulo"];
 
-                        arParms[0].Value = propuesta.Titulo;
+                        factura.Descripcion = (string)reader["Descripcion"];
 
-                        DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                                "ConsultarFacturaNomPro", arParms);
+                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
-                        while (reader.Read())
-                        {
-                            Factura factura = new Factura();
+                        factura.Fechapago = (DateTime)reader["Fecha"];
 
-                            factura.Numero = (int)reader["IdFactura"];
+                        factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-                            factura.Titulo = (string)reader["Titulo"];
+                        factura.Estado = (string)reader["Estado"];
 
-                            factura.Descripcion = (string)reader["Descripcion"];
+                        factura.Prop = propuesta;
 
-                            factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                        facturas.Insert(i, factura);
 
-                            factura.Fechapago = (DateTime)reader["Fecha"];
+                        //reader.NextResult();
 
-                            factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+                        i++;
 
-                            factura.Estado = (string)reader["Estado"];
-
-                            factura.Prop = propuesta;
-
-                            facturas.Insert(i, factura);
-
-                            //reader.NextResult();
-
-                            i++;
-
-                        }
-
-                        if (facturas.Count == 0)
-                            throw new ConsultarFacturaADException();
                     }
                 }
-            }
-            catch (SqlException e)
-            {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta en la Base de Datos",e);
-            }
-            catch (ConsultarFacturaADException e)
-            {
-                throw new ConsultarFacturaADException("No se encontraron facturas relacionadas al proyecto "+propuesta.Titulo, e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta en la Base de Datos", e);
             }
 
             return facturas;
         }
 
-        /// <summary>
-        /// Metodo que recibe una propuesta y se encarga de buscar las facturas de esa
-        /// propuesta por su ID
-        /// </summary>
-        /// <param name="propuesta">Propuesta con el ID </param>
-        /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
+
         public IList<Factura> ConsultarFacturasIDPro(Propuesta propuesta)
         {
             IList<Propuesta> propuestas = ConsultarPropuesta();
 
             List<Factura> facturas = new List<Factura>();
 
-            try
+            foreach (Propuesta propuestaAux in propuestas)
             {
-                foreach (Propuesta propuestaAux in propuestas)
+                Console.WriteLine(propuestaAux.Id);
+
+                if (propuesta.Id == propuestaAux.Id)
                 {
-                    Console.WriteLine(propuestaAux.Id);
+                    int i = 0;
 
-                    if (propuesta.Id == propuestaAux.Id)
+                    SqlParameter[] arParms = new SqlParameter[1];
+
+                    arParms[0] = new SqlParameter("@idpropuesta", SqlDbType.Int);
+
+                    arParms[0].Value = propuesta.Id;
+
+                    DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                            "ConsultarFacturaIDPro", arParms);
+
+                    while (reader.Read())
                     {
-                        int i = 0;
+                        Factura factura = new Factura();
 
-                        SqlParameter[] arParms = new SqlParameter[1];
+                        factura.Numero = (int)reader["IdFactura"];
 
-                        arParms[0] = new SqlParameter("@idpropuesta", SqlDbType.Int);
+                        factura.Titulo = (string)reader["Titulo"];
 
-                        arParms[0].Value = propuesta.Id;
+                        factura.Descripcion = (string)reader["Descripcion"];
 
-                        DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                                "ConsultarFacturaIDPro", arParms);
+                        factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
-                        while (reader.Read())
-                        {
-                            Factura factura = new Factura();
+                        factura.Fechapago = (DateTime)reader["Fecha"];
 
-                            factura.Numero = (int)reader["IdFactura"];
+                        factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-                            factura.Titulo = (string)reader["Titulo"];
+                        factura.Estado = (string)reader["Estado"];
 
-                            factura.Descripcion = (string)reader["Descripcion"];
+                        factura.Prop = propuesta;
 
-                            factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                        facturas.Insert(i, factura);
+                        i++;
 
-                            factura.Fechapago = (DateTime)reader["Fecha"];
-
-                            factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
-
-                            factura.Estado = (string)reader["Estado"];
-
-                            factura.Prop = propuesta;
-
-                            facturas.Insert(i, factura);
-                            i++;
-
-                        }
-                        if (facturas.Count == 0)
-                            throw new ConsultarFacturaADException();
                     }
                 }
-            }
-            catch (SqlException e)
-            {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el ID de la propuesta  en la Base de Datos", e);
-            }
-            catch (ConsultarFacturaADException e)
-            {
-                throw new ConsultarFacturaADException("No se encontraron facturas relacionadas al proyecto " + propuesta.Titulo, e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta  en la Base de Datos", e);
             }
 
             return facturas;
         }
 
-        /// <summary>
-        /// Metodo que consulta las propuestas
-        /// </summary> 
-        /// <returns>Lista con las propuestas</returns>
+
         public IList<Propuesta> ConsultarPropuesta()
         {
             return new PropuestaSQLServer().ConsultarPropuesta();
         }
 
-        /// <summary>
-        /// Metodo que recibe una factura con su ID y la busca en la BD
-        /// </summary>
-        /// <param name="factura">Factura a buscar </param>
-        /// <returns>Factura encontrada</returns>
+
         public Factura ConsultarFacturaID(Factura factura)
-        {
+        {            
             try
             {
                 factura.Prop = new Propuesta();
@@ -241,10 +186,8 @@ namespace Core.AccesoDatos.SqlServer
                     factura.Estado = (string)reader["Estado"];
 
                     factura.Prop.Id = (int)reader["IdPropuesta"];
-
+                   
                 }
-                else
-                    throw new ConsultarFacturaADException();
 
                 IList<Propuesta> propuestas = ConsultarPropuesta();
 
@@ -262,28 +205,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las propuestas con el fin de utilizarlas para facturas en la Base de Datos", e);
-            }
-            catch (ConsultarFacturaADException e)
-            {
-                throw new ConsultarFacturaADException("No se consiguio la factura con ID "+factura.Numero, e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarFacturaADException("Error consultando las propuestas con el fin de utilizarlas para facturas en la Base de Datos", e);
+                System.Console.Write(e);
             }
             return factura;
         }
 
-        /// <summary>
-        /// Metodo utilizado para generar una lista de facturas parametrizada por un rango de fechas
-        /// y por el tipo de factura
-        /// </summary>
-        /// <param name="desde">Fecha Inicial(DateTime)</param>
-        /// <param name="hasta">Fecha fin(DateTime)</param>
-        /// <param name="cobradas">Si la factura es de tipo "cobrada" true;
-        /// Si es de tipo "por cobrar" false</param>
-        /// <returns>Una lista de facturas</returns>
         public IList<Factura> ConsultarFacturasPorEstado(DateTime desde, DateTime hasta, Boolean cobradas)
         {
             try
@@ -331,20 +257,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las facturas por estado en la Base de Datos", e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarFacturaADException("Error consultando las facturas por estado en la Base de Datos", e);
+                return null;
             }
         
         }
 
-        /// <summary>
-        /// Metodo que recibe una factura y la ingresa en la BD
-        /// </summary>
-        /// <param name="factura">Factura a ingresar </param>
-        /// <returns>Factura a ingresar</returns>
         public Factura IngresarFactura(Factura factura)
         {
 
@@ -385,14 +302,9 @@ namespace Core.AccesoDatos.SqlServer
                         valido = true;
                     }
                 }
-            }
-            catch (SqlException e)
+            }catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.InsertarFacturaADException("Error de SQL insertando factura en la Base de Datos", e);
-            }
-            catch (Exception e)
-            {
-                throw new InsertarFacturaADException("Error insertando factura en la Base de Datos", e);
+                System.Console.Write(e);
             }
 
             if (valido == false)
@@ -401,10 +313,6 @@ namespace Core.AccesoDatos.SqlServer
                 return factura;
         }
 
-        /// <summary>
-        /// Metodo que consulta las facturas de la BD
-        /// </summary>
-        /// <returns>Una lista con las facturas de la BD</returns>
         public IList<Factura> ConsultarFacturas()
         {
             IList<Factura> facturas = new List<Factura>();
@@ -413,7 +321,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                         "ConsultarFacturas");
-
+                
 
                 int i = 0;
 
@@ -441,32 +349,17 @@ namespace Core.AccesoDatos.SqlServer
                     i++;
 
                 }
-                if (facturas.Count == 0)
-                    throw new ConsultarFacturaADException();
 
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando una factura en la Base de Datos", e);
-            }
-            catch (ConsultarFacturaADException e)
-            {
-                throw new ConsultarFacturaADException("No se encontraron facturas", e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarFacturaADException("Error consultando una factura en la Base de Datos", e);
+                System.Console.Write(e);
+                return new List<Factura>();
             }
 
             return facturas;
         }
 
-        /// <summary>
-        /// Metodo que recibe una factura y la la modifica en la BD
-        /// en este caso modifica el detalle de cobro
-        /// </summary>
-        /// <param name="factura">Factura a modificar </param>
-        /// <returns>Factura modificada</returns>
         public Factura UpdateFactura(Factura factura)
         {
             bool valido = false;
@@ -483,11 +376,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ModificarFacturaADException("Error de SQL modificando una factura en la Base de Datos", e);
-            }
-            catch (Exception e)
-            {
-                throw new ModificarFacturaADException("Error modificando una factura en la Base de Datos", e);
+                System.Console.Write(e);
             }
 
             if (valido)

@@ -7,7 +7,8 @@ namespace Core.LogicaNegocio.Excepciones
         public IngresarException()
         {
         }
-        public IngresarException(string s, Exception e): base(s, e)
+        public IngresarException(string s, Exception e)
+            : base(s, e)
         {
 
         }

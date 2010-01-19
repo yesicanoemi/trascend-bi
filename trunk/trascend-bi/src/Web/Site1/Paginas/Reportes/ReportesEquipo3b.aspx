@@ -75,23 +75,16 @@
              <td>
 
              <asp:GridView runat="server" ID="uxReporteFactura3b" AutoGenerateColumns="false"
-                           PageSize="10" onrowdatabound="uxGridView_RowDataBound">
-             
-             <RowStyle HorizontalAlign="Center" />              
-             
+                           DataKeyNames="Numero" AllowPaging="True" PageSize="10" ShowFooter="true"
+                           DataSourceID="uxObjectReporte3b">
              <Columns>
                                             
-                <asp:BoundField HeaderText="Id Factura" DataField="Numero"/> 
+                <asp:BoundField HeaderText="Id Factura" DataField="Numero" />
                 <asp:BoundField HeaderText="Título" DataField="Titulo" />
                 <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" />
                 <asp:BoundField HeaderText="Estado" DataField="Estado" />
-                <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
-                    <ItemTemplate>
-                    <asp:Label ID="lblTotal42" runat="server" 
-                    Text='<%# DataBinder.Eval(Container, "DataItem.Prop.titulo") %>'></asp:Label>
-                    </ItemTemplate>
-                    </asp:TemplateField> 
+                <asp:BoundField HeaderText="Título Propuesta" DataField="Titulo" />
                                             
              </Columns>
                                             

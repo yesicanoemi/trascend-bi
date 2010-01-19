@@ -4,20 +4,15 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
-
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
     public class ModificarUsuario : Comando<Core.LogicaNegocio.Entidades.Usuario>
     {
-        #region Propiedades
-
         private Core.LogicaNegocio.Entidades.Usuario usuario;
-
-        #endregion
 
         #region Constructor
 
-        /// <summary>Constructor de la clase 'ModificarUsuario'.</summary>
+        /// <summary>Constructor de la clase 'CosultarCredenciales'.</summary>
 
         public ModificarUsuario()
         { }
@@ -29,12 +24,13 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         #endregion
 
-        #region Métodos
+        #region Metodos
 
-        /// <summary>Método que implementa la ejecución del comando 'ModificarUsuario'.</summary>
+        /// <summary>Método que implementa la ejecución del comando 'CosultarUsuarios'.</summary>
 
         public void Ejecutar()
         {
+            //Usuario _usuario;
 
             UsuarioSQLServer bd = new UsuarioSQLServer();
 

@@ -7,23 +7,15 @@ using Core.LogicaNegocio.Comandos.ComandoReporte;
 
 namespace Presentador.Reportes.Vistas
 {
-    public class ReporteFacturasCobradasPresenter
+    public class ReporteFacturasCobradasPresenter 
     {
         private IReporteFacturasPorCobrar _vista;
 
-        #region Constructor
         public ReporteFacturasCobradasPresenter(IReporteFacturasPorCobrar laVista)
         {
             _vista = laVista;
         }
-        #endregion
 
-
-        #region Metodos
-
-        /// <summary>
-        /// Metodo para cargar el GridView
-        /// </summary>
         public void CargarGrid()
         {
 
@@ -54,15 +46,9 @@ namespace Presentador.Reportes.Vistas
             }
         }
 
-        /// <summary>
-        /// Metodo para transformar una fecha en ToShortDate 
-        /// </summary>
-        /// <param name="fecha">fecha que se quiere transformar</param>
-        /// <returns>ToShortDate de una vez en string</returns>
         public string FormatearFechaParaMostrar(DateTime fecha)
         {
             return fecha.ToShortDateString();
         }
-        #endregion
     }
 }

@@ -16,11 +16,6 @@ public partial class Paginas_Reportes_ReportesEquipo6 : System.Web.UI.Page, IRep
 
     ReporteFacturasCobradasPresenter _presenter;
 
-    /// <summary>
-    /// Sobrecarga del metodo Page_Init
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     protected void Page_Init(object sender, EventArgs e)
     {
         _presenter = new ReporteFacturasCobradasPresenter(this);
@@ -58,44 +53,17 @@ public partial class Paginas_Reportes_ReportesEquipo6 : System.Web.UI.Page, IRep
     }
     #endregion
 
-    #region Eventos
-
-    /// <summary>
-    /// Evento del boton buscar on click
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     protected void Button3_Click(object sender, EventArgs e)
     {
         _presenter.CargarGrid();
     }
-
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
 
-    /// <summary>
-    /// Metodo que envia una fecha(DateTime) al presentador para ser transformada en ShortDate
-    /// </summary>
-    /// <param name="fecha">fecha(DateTime) a ser transformada</param>
-    /// <returns>Devuelve una fecha(ShortDate) de una vez en string</returns>
     protected string FormatearFecha(DateTime fecha)
     {
         return _presenter.FormatearFechaParaMostrar(fecha);
     }
-
-    /// <summary>
-    /// Sobrecarga del evento GridView_onRowDataBound para colorear intercalarmente rows con el color FFFFCC
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-
-        if (e.Row.RowIndex % 2 == 0)
-            e.Row.BackColor = System.Drawing.Color.FromName("FFFFCC");
-    }
-
-    #endregion
 }

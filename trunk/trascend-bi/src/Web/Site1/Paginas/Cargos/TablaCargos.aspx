@@ -35,15 +35,10 @@
                         
                     </p>
                      <p class="large">
-                         <asp:GridView 
-                         ID="uxTablaSueldos" 
-                         runat="server" 
-                         AutoGenerateColumns="false"
-                         cellpadding="10"
-                         cellspacing="5" onrowdatabound="uxTablaSueldos_RowDataBound">
-                         <RowStyle HorizontalAlign="Center" />
-                         <Columns >
-                                   <asp:BoundField ItemStyle-HorizontalAlign="Justify" HeaderText="Cargo" DataField="Nombre" />
+                         <asp:GridView ID="uxTablaSueldos" runat="server" AutoGenerateColumns=false>
+                         <Columns>
+                                            
+                                   <asp:BoundField HeaderText="Cargo" DataField="Nombre" />
                                    <asp:BoundField HeaderText="Sueldo Minimo" DataField="SueldoMinimo" />
                                    <asp:BoundField HeaderText="Sueldo Maximo" DataField="SueldoMaximo" /> 
                                    <asp:BoundField HeaderText="Sueldo Minimo(Inflacion)" DataField="SueldoMinimoConInflacion" />

@@ -329,53 +329,6 @@ namespace Core.AccesoDatos.SqlServer
             }
         }
 
-        /// <summary>
-        /// Metodo que Consulta Las Propuestas Y Eliminarlas
-        /// </summary>
-        /// <param name="ListaRecibida">Recibe una Lista que contiene 
-        /// el nombre de la propuesta a eliminar si la lista esta vacia consulta
-        /// las propuestas a eliminar, si esta llena elimina la propuesta que contiene la lista</param>
-        /// <returns>Lista de propuestas a ser eliminadas</returns>
-        public IList<string> ListaEliminar( List<string> ListaRecibida )
-        {
-            if ( ListaRecibida.Count == 0 )
-            {
-                try
-                {
-                    DbDataReader conexion = SqlHelper.ExecuteReader
-                            ( GetConnection(), "ConsultarPropuestaEliminar" );
-                    List<string> lista = new List<string>();
-
-
-                    while ( conexion.Read() )
-                    {
-                        lista.Add( (string)conexion["Titulo"] );
-                    }
-                    return lista;
-                }
-                catch (SqlException e)
-                {
-                    throw new Exception(e.ToString());
-                }
-            }
-            else
-            {
-                try
-                {
-                    string TituloParam = ListaRecibida.ElementAt(0);
-                    SqlParameter titulo = new SqlParameter();
-                    titulo = new SqlParameter("@Titulo", SqlDbType.VarChar);
-                    titulo.Value = TituloParam;
-                    int result = SqlHelper.ExecuteNonQuery(GetConnection(), "UpdateEstadoPropuesta", titulo);
-                    return ListaRecibida;
-                }
-                catch (SqlException e)
-                {
-                    throw new Exception(e.ToString());
-                }
-            }
-        }
-
 #endregion
     }
 }

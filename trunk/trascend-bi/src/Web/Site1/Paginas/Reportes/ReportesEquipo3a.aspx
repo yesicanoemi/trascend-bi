@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo3a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo3" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo3a.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo3a" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <form id="form1" runat="server">
@@ -52,7 +52,8 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Puede quitarse" />
+                        <asp:Button ID="uxBotonConsultar_Click" runat="server" Text="Consultar" 
+                          onclick="uxBotonConsulta_Click" />
                     </td>
                 </tr>
                    <tr>
@@ -74,29 +75,39 @@
         <br />
         <br />
         <br />
+        <asp:GridView runat="server" ID="uxReporteGastos3a"  AutoGenerateColumns="false" 
+                        DataKeyNames="Codigo" AllowPaging="True" PageSize="10" ShowFooter="true"
+                        DataSourceID="uxObjectReporte3a">
+             <Columns>
+                                            
+                <asp:BoundField HeaderText="Id Gasto" DataField="Codigo" />
+                <asp:BoundField HeaderText="Fecha" DataField="fechaGasto" />
+                <asp:BoundField HeaderText="Tipo" DataField="tipo" />
+                  <asp:BoundField HeaderText="Monto" DataField="Monto" />
+      
+                                            
+             </Columns>
+                                            
+        
+                                        
+         </asp:GridView>
+        
+        
+        
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        Total Gastos en el Año:
+        <asp:Label ID="uxTotal" runat="server" Text=""></asp:Label>
     </div> 
 </div>  
 
 				
 			</div> 
 		</div> 
+    <pp:objectcontainerdatasource runat="server" ID="uxObjectReporte3a" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" />
     </form>
-</asp:Content>
+    </asp:Content>

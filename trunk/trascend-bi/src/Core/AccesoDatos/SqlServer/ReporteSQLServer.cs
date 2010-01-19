@@ -90,21 +90,19 @@ namespace Core.AccesoDatos.SqlServer
 
                     Propuesta _propuesta = new Propuesta();
 
-                    _factura.Prop = new Propuesta();
+                    _factura.Numero = (int)reader["IdFactura"];
 
-                    _factura.Numero = (int)reader.GetValue(0);
+                    _factura.Titulo = (string)reader["Titulo"];
 
-                    _factura.Titulo = (string)reader.GetValue(1);
+                    _factura.Descripcion = (string)reader["Descripcion"];
 
-                    _factura.Descripcion = (string)reader.GetValue(2);
+                    _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-                    _factura.Fechaingreso = (DateTime)reader.GetValue(3);
+                    _factura.Estado = (string)reader["Estado"];
 
-                    _factura.Estado = (string)reader.GetValue(4);
+                    _propuesta.Titulo = (string)reader["Titulo"];
 
-                    _propuesta.Titulo = (string)reader.GetValue(5);
-
-                    _factura.Prop.Titulo = _propuesta.Titulo;
+                  //  _factura.Prop.Titulo = _propuesta.Titulo;
 
                     factura.Add(_factura);
                 }
@@ -172,6 +170,108 @@ namespace Core.AccesoDatos.SqlServer
 
             return ListaGasto;
         }
+
+
+        /// <summary>
+        /// Metodo para el reporte de Gastos en un anio (consulta de datos)
+        /// </summary>
+        /// <param name="entidad"></param>
+        /// <returns>Lista de Gastos</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Gasto>
+                                                GastosAnuales(string anio)
+        {
+
+            IList<Core.LogicaNegocio.Entidades.Gasto> gasto =
+                                                new List<Core.LogicaNegocio.Entidades.Gasto>();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Anio", SqlDbType.VarChar);
+
+                arParms[0].Value = anio;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarDatosGastoAnual", arParms);
+
+                while (reader.Read())
+                {
+                    Gasto _gasto = new Gasto();
+
+                    _gasto.Codigo = (int)reader["IdGasto"];
+
+                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
+
+                    _gasto.Tipo = (string)reader["Tipo"];
+
+                    string prueba = (String)reader["Monto"].ToString();
+
+                    _gasto.Monto=float.Parse(prueba); 
+                  
+                    gasto.Add(_gasto);
+                }
+
+                return gasto;
+
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return gasto;
+
+        }
+
+
+
+        /// <summary>
+        /// Metodo para el reporte de Gastos en un anio (total gastos)
+        /// </summary>
+        /// <param name="entidad"></param>
+        /// <returns>Total de Gastos</returns>
+
+        public float TotalGastosAnuales(string anio)
+        {
+            float total = 0;
+
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Anio", SqlDbType.VarChar);
+
+                arParms[0].Value = anio;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "GastoAnual", arParms);
+
+                 while (reader.Read())
+                {
+                string prueba = (String)reader["Monto"].ToString();
+
+                total = float.Parse(prueba); 
+                
+                
+                return total;
+                }
+             }
+               
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return total;
+
+        }
+
+
+
 
         /// <summary>
         /// Metodo que se comunica con la base de datos y realiza la consulta
@@ -254,8 +354,8 @@ namespace Core.AccesoDatos.SqlServer
 
             parametro[0].Value = factura.Fechapago;
 
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasEmitidasAnuales", parametro);
-
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasEmitidasAnuales",parametro);
+          
             int i = 0;
 
             while (reader.Read())
@@ -277,7 +377,9 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
-                _factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
+                //_propuesta.Titulo = (string)reader["Titulo"];
+
+                //_factura.Prop.Titulo = _propuesta.Titulo;
 
                 facturas.Add(_factura);
             }
@@ -292,19 +394,11 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="entidad">Entidad Factura</param>
         /// <returns>Objeto Factura</returns>
         /// 
-        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasCobradas(Factura facturas)
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasCobradas()
         {
             IList<Core.LogicaNegocio.Entidades.Factura> factura =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
-
-            SqlParameter[] parametro = new SqlParameter[1];
-
-            parametro[0] = new SqlParameter("@yearFecha", SqlDbType.DateTime);
-
-            parametro[0].Value = facturas.Fechapago;
-
-
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasCobradasAnuales", parametro);
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasCobradasAnuales");
 
             int i = 0;
 
@@ -315,7 +409,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 Propuesta _propuesta = new Propuesta();
 
-                _factura.Numero = (int)reader["IdFactura"];
+                _factura.Numero = (int)reader["NumeroFactura"];
 
                 _factura.Titulo = (string)reader["Titulo"];
 
@@ -325,9 +419,11 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Estado = (string)reader["Estado"];
 
-                _factura.Fechapago = (DateTime)reader["Fecha"];
+                _factura.Fechapago = (DateTime)reader["FechaPago"];
 
-                _factura.Procentajepagado = (float)reader["Porcentaje"];
+                //_propuesta.Titulo = (string)reader["Titulo"];
+
+                //_factura.Prop.Titulo = _propuesta.Titulo;
 
                 factura.Add(_factura);
             }
@@ -343,18 +439,11 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="entidad">Entidad Factura</param>
         /// <returns>Objeto Factura</returns>
         /// 
-        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasPorCobrar(Factura facturas)
+        public IList<Core.LogicaNegocio.Entidades.Factura> ObtenerFacturasPorCobrar()
         {
             IList<Core.LogicaNegocio.Entidades.Factura> factura =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
-
-            SqlParameter[] parametro = new SqlParameter[1];
-
-            parametro[0] = new SqlParameter("@yearFecha", SqlDbType.DateTime);
-
-            parametro[0].Value = facturas.Fechapago;
-
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasPorCobrarAnuales", parametro);
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasPorCobrarAnuales");
 
             int i = 0;
 
@@ -365,7 +454,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 Propuesta _propuesta = new Propuesta();
 
-                _factura.Numero = (int)reader["IdFactura"];
+                _factura.Numero = (int)reader["NumeroFactura"];
 
                 _factura.Titulo = (string)reader["Titulo"];
 
@@ -375,9 +464,11 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Estado = (string)reader["Estado"];
 
-                _factura.Fechapago = (DateTime)reader["Fecha"];
+                _factura.Fechapago = (DateTime)reader["FechaPago"];
 
-                _factura.Procentajepagado = (float)reader["Porcentaje"];
+                //_propuesta.Titulo = (string)reader["Titulo"];
+
+                //_factura.Prop.Titulo = _propuesta.Titulo;
 
                 factura.Add(_factura);
             }

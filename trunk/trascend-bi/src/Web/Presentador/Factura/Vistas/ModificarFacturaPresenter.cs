@@ -7,8 +7,6 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
-using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
-using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 
 namespace Presentador.Factura.Vistas
 {
@@ -33,64 +31,49 @@ namespace Presentador.Factura.Vistas
              float PorcCancelado = 0;
              int i = 0;
 
-             try
+             Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
+
+             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
+
+             foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
              {
-                 Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
-                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
-
-                 IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
-
-                 foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+                 if (PropuestaAux.Titulo.Equals(_vista.NombrePropuesta.Text))
                  {
-                     if (PropuestaAux.Titulo.Equals(_vista.NombrePropuesta.Text))
+                     _propuesta = PropuestaAux;
+                    
+                     
+                     
+                     Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
+                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
+
+                     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
+
+
+                     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
                      {
-                         _propuesta = PropuestaAux;
-
-
-
-                         Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
-                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
-
-                         IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
-
-
-                         foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                         {
-                             MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
-                         }
-
-                         //Aquí meter en dropdown list
-                         /*  foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                           {
-                               i++;
-                               _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " + 
-                                   FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
-                           }  */
-
-
-                         foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                         {
-                             if (FacturaAux.Estado.Equals("Por Cobrar"))
-                             {
-                                 i++;
-                                 _vista.Facturas.Items.Add(FacturaAux.Titulo.ToString());
-                             }
-                         }
-
+                         MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
                      }
+                   
+                     //Aquí meter en dropdown list
+                   /*  foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                     {
+                         i++;
+                         _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " + 
+                             FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
+                     }  */
+
+                     
+                     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                     {
+                         if (FacturaAux.Estado.Equals("Por Cobrar"))
+                         {
+                             i++;
+                             _vista.Facturas.Items.Add(FacturaAux.Titulo.ToString());
+                         }
+                     }
+                 
                  }
-             }
-             catch (ModificarFacturaADException e)
-             {
-                 _vista.Mensaje(e.Message);
-             }
-             catch (ModificarFacturaLNException e)
-             {
-                 _vista.Mensaje(e.Message);
-             }
-             catch (Exception e)
-             {
-                 _vista.Mensaje(e.Message);
              }
 
                 
@@ -108,65 +91,50 @@ namespace Presentador.Factura.Vistas
             float PorcCancelado = 0;
             int i = 0;
 
-            try
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
+               Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
+
+            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
+
+            foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
             {
-                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
-                   Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
-
-                IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
-
-                foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+                if (PropuestaAux.Id == Convert.ToInt32(_vista.NumeroPropuesta.Text))
                 {
-                    if (PropuestaAux.Id == Convert.ToInt32(_vista.NumeroPropuesta.Text))
+                    _propuesta = PropuestaAux;
+
+
+
+                    Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxIDPro factura =
+               Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxIDPro(_propuesta);
+
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
+
+
+                    foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
                     {
-                        _propuesta = PropuestaAux;
-
-
-
-                        Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxIDPro factura =
-                   Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxIDPro(_propuesta);
-
-                        IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
-
-
-                        foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                        {
-                            MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
-                        }
-
-
-                        //Aquí meter en dropdown list
-                        /* foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                         {
-                             i++;
-                             _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " +
-                                 FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
-                         }   */
-
-
-                        foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                        {
-                            if (FacturaAux.Estado.Equals("Por Cobrar"))
-                            {
-                                i++;
-                                _vista.Facturas.Items.Add(FacturaAux.Titulo.ToString());
-                            }
-                        }
-
+                        MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
                     }
+
+
+                    //Aquí meter en dropdown list
+                   /* foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                    {
+                        i++;
+                        _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " +
+                            FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
+                    }   */
+
+
+                    foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                    {
+                        if (FacturaAux.Estado.Equals("Por Cobrar"))
+                        {
+                            i++;
+                            _vista.Facturas.Items.Add(FacturaAux.Titulo.ToString());
+                        }
+                    }
+
                 }
-            }
-            catch (ModificarFacturaADException e)
-            {
-                _vista.Mensaje(e.Message);
-            }
-            catch (ModificarFacturaLNException e)
-            {
-                _vista.Mensaje(e.Message);
-            }
-            catch (Exception e)
-            {
-                _vista.Mensaje(e.Message);
             }
 
 

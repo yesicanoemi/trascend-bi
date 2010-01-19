@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Factura.Contrato;
 using Presentador.Factura.Vistas;
 
-public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactura
+public partial class Paginas_Facturas_AgregarFacturas : System.Web.UI.Page,IAgregarFactura
 {
     AgregarFacturaPresenter _presenter;
 
@@ -136,7 +136,7 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        _presenter = new AgregarFacturaPresenter(this);
 
     }
 
@@ -159,45 +159,5 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presenter.OnAgregarFactura();
-    }
-
-    public void Mensaje(string msg)
-    {
-        Label lbl = new Label();
-        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
-        Page.Controls.Add(lbl);
-    }
-
-    protected void Page_Init(object sender, EventArgs e)
-    {
-
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        MontoPagar.Text = "0";
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 17)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presenter = new AgregarFacturaPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-
-    }
-    protected void uxPorcentajePagar_TextChanged(object sender, EventArgs e)
-    {
-        MontoPagar.Text = ((int.Parse(MontoTotal.Text) * int.Parse(PorcentajePagar.Text)) / 100).ToString();
     }
 }

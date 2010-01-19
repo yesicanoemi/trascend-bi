@@ -13,10 +13,9 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Ingresar(contacto);
         }
-        public static  Consultar CrearComandoConsultar(IList<Contacto> contacto, string Nombre, string Apellido,
-            int codigo, int numero, int flag)
+        public static  Consultar CrearComandoConsultar(Contacto contacto)
         {
-            return new Consultar(contacto, Nombre, Apellido, codigo, numero, flag);
+            return new Consultar();
         }
         public static Eliminar CrearComandoEliminar(Contacto contacto)
         {

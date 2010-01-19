@@ -50,7 +50,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 
                 
-                SqlParameter[] arParms = new SqlParameter[11];
+                SqlParameter[] arParms = new SqlParameter[10];
                 // Parametros 
                 arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
                 arParms[0].Value = contacto.Nombre;
@@ -70,10 +70,8 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[7].Value = contacto.TelefonoDeTrabajo.Codigoarea;
                 arParms[8] = new SqlParameter("@Tipo", SqlDbType.VarChar);
                 arParms[8].Value = contacto.TelefonoDeTrabajo.Tipo;
-                arParms[9] = new SqlParameter("@IdCliente", SqlDbType.Int);
-                arParms[9].Value = 1;
-                arParms[10] = new SqlParameter("@ID", SqlDbType.Int);
-                arParms[10].Value = 0;
+                arParms[9] = new SqlParameter("@ID", SqlDbType.Int);
+                arParms[9].Value = 0;
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(),"InsertarContacto", arParms);
             }
             catch (SqlException e)
@@ -85,7 +83,7 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
-    /*    public IList<Contacto> Consultar()
+        public IList<Contacto> Consultar()
         {
             IList<Contacto> contacto = null;
             DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarContacto");
@@ -102,13 +100,13 @@ namespace Core.AccesoDatos.SqlServer
                 contacto.Add(_contacto);
             }
             return contacto;
-        } */
+        }
 
 
-        #region ConsultarContacto
+        #region ConsultarUsuario
 
         /// <summary>
-        /// Metodo para consultar el Contacto
+        /// Metodo para consultar el usuario por "Login"
         /// </summary>
         /// <param name="usuario">Criterio de busqueda</param>
         /// <returns>Usuario(s) que coincidan con el criterio</returns>
@@ -123,7 +121,7 @@ namespace Core.AccesoDatos.SqlServer
                 //Parametros de busqueda
 
 
-                SqlParameter[] arParms = new SqlParameter[4];
+                SqlParameter[] arParms = new SqlParameter[3];
 
                 arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
 
@@ -190,10 +188,11 @@ namespace Core.AccesoDatos.SqlServer
                 }
 
 
-                Contacto _contacto = new Contacto();
+
 
                 while (reader.Read())
                 {
+                    Contacto _contacto = new Contacto();
 
                     _contacto.Nombre = (string)reader["NOMBRE"];
 
@@ -227,19 +226,8 @@ namespace Core.AccesoDatos.SqlServer
 
                         _contacto.TelefonoDeTrabajo.Tipo = (string)reader["TIPO"];
                     }
-                    if (contacto.Count == 0)
-                    {
-                        contacto.Add(_contacto);
-                        _contacto = new Contacto();
-                    }
-                    if (contacto.Last().Nombre!=_contacto.Nombre ||
-                        contacto.Last().Apellido!=_contacto.Apellido ||
-                        contacto.Last().AreaDeNegocio!=_contacto.AreaDeNegocio ||
-                        contacto.Last().Cargo!=_contacto.Cargo)
-                    {
-                        contacto.Add(_contacto);
-                        _contacto = new Contacto();
-                    }
+
+                    contacto.Add(_contacto);
                 }
 
                 return contacto;
@@ -260,43 +248,7 @@ namespace Core.AccesoDatos.SqlServer
 
          public Contacto Eliminar(Contacto contacto)
         {
-            Contacto _contacto = new Contacto();
-            try
-            {
-
-
-                SqlParameter[] arParms = new SqlParameter[11];
-                // Parametros 
-                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-                arParms[0].Value = contacto.Nombre;
-                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-                arParms[1].Value = contacto.Apellido;
-                arParms[2] = new SqlParameter("@AreaNegocio", SqlDbType.VarChar);
-                arParms[2].Value = contacto.AreaDeNegocio;
-                arParms[3] = new SqlParameter("@Cargo", SqlDbType.VarChar);
-                arParms[3].Value = contacto.Cargo;
-                arParms[4] = new SqlParameter("@TelefonoTrabajo", SqlDbType.Int);
-                arParms[4].Value = contacto.TelefonoDeTrabajo.Numero;
-                arParms[5] = new SqlParameter("@TelefonoCelular", SqlDbType.Int);
-                arParms[5].Value = contacto.TelefonoDeCelular.Numero;
-                arParms[6] = new SqlParameter("@CodigoCel", SqlDbType.Int);
-                arParms[6].Value = contacto.TelefonoDeCelular.Codigocel;
-                arParms[7] = new SqlParameter("@CodigoArea", SqlDbType.Int);
-                arParms[7].Value = contacto.TelefonoDeTrabajo.Codigoarea;
-                arParms[8] = new SqlParameter("@Tipo", SqlDbType.VarChar);
-                arParms[8].Value = contacto.TelefonoDeTrabajo.Tipo;
-                arParms[9] = new SqlParameter("@IdCliente", SqlDbType.Int);
-                arParms[9].Value = 1;
-                arParms[10] = new SqlParameter("@ID", SqlDbType.Int);
-                arParms[10].Value = 0;
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarContacto", arParms);
-            }
-            catch (SqlException e)
-            {
-                System.Console.Write(e);
-            }
-            return _contacto;
-
+            return new Contacto();
         }
    
 

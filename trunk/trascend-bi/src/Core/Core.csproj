@@ -113,10 +113,11 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarPropuestasxEmision.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\PaquetesAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaHora.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarFacturasPorEstado.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoAnual.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoFecha.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoTotal.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaRol.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasCobradasAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasEmitidas.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxNomPro.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Modificar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\AgregarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarPermisos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
@@ -153,18 +153,6 @@
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefono.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\ConsultarException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LogicaNegocio\Excepciones\EliminarException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ConsultarFacturaADException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\InsertarFacturaADException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ModificarFacturaADException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ConsultarFacturaLNException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\IngresarFacturaLNException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ModificarFacturaLNException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\IngresarException.cs" />
-    <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosReporte.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />

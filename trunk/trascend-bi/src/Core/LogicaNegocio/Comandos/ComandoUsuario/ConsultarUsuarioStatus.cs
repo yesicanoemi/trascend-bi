@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         #endregion
 
-        #region Métodos
+        #region Metodos
 
         /// <summary>Método que implementa la ejecución del comando 'ConsultarUsuarioStatus'.
         /// </summary>

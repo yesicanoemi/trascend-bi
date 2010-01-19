@@ -8,7 +8,7 @@ using Presentador.Usuario.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
 
 
-public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultarUsuario
+public partial class Paginas_Usuarios_ConsultarUsuarios : System.Web.UI.Page, IConsultarUsuario
 {
 
     #region Propiedades
@@ -116,29 +116,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
-        bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 30)
-            {
-                i = usuario.PermisoUsu.Count;
-
-                _presentador = new ConsultarUsuarioPresenter(this);
-
-                permiso = true;
-
-            }
-        }
-
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
-
+        _presentador = new ConsultarUsuarioPresenter(this);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -165,13 +143,6 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
     {
         Response.Redirect(paginaConsulta);
 
-    }
-
-    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-
-        if (e.Row.RowIndex % 2 == 0)
-            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 
     #endregion

@@ -7,18 +7,13 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
-    public class ConsultarPermisos : Comando<Core.LogicaNegocio.Entidades.Usuario>
+    public class ConsultarPermisos: Comando<Core.LogicaNegocio.Entidades.Usuario>
     {
-
-        #region Propiedades
-
         private Core.LogicaNegocio.Entidades.Usuario usuario;
-
-        #endregion
 
         #region Constructor
 
-        /// <summary>Constructor de la clase 'ConsultarPermisos'.</summary>
+        /// <summary>Constructor de la clase 'CosultarCredenciales'.</summary>
 
         public ConsultarPermisos()
         { }
@@ -30,12 +25,13 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         #endregion
 
-        #region Métodos
+        #region Metodos
 
-        /// <summary>Método que implementa la ejecución del comando 'ConsultarPermisos'.</summary>
+        /// <summary>Método que implementa la ejecución del comando 'CosultarUsuarios'.</summary>
 
         public IList<Core.LogicaNegocio.Entidades.Permiso> Ejecutar()
         {
+            //Usuario _usuario;
 
             UsuarioSQLServer bd = new UsuarioSQLServer();
 

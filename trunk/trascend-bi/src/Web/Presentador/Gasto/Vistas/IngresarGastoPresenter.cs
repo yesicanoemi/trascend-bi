@@ -18,7 +18,7 @@ namespace Presentador.Gasto.Vistas
         private ConsultarPropuestaPresentador _presentadorPropuesta;
         private IList<Core.LogicaNegocio.Entidades.Propuesta> propuestas;
         private int id_version = 0;
-
+        
 
         #region Constructor
         public IngresarGastoPresenter(IIngresarGasto vista)
@@ -73,7 +73,9 @@ namespace Presentador.Gasto.Vistas
 
                     if (propuestas.ElementAt(i).Titulo.Equals(_vista.PropuestaAsociada.SelectedItem.Text))
 
-                        gasto.IdVersion = Int32.Parse(propuestas.ElementAt(i).Version);
+                        id_version = Int32.Parse(propuestas.ElementAt(i).Version);
+
+                gasto.IdVersion = id_version;
             }
             Ingresar(gasto);
 
@@ -89,15 +91,8 @@ namespace Presentador.Gasto.Vistas
             //fábrica que instancia el comando Ingresar.
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoIngresar(gasto);
 
-            gasto = ingresar.Ejecutar();
-
-            if (gasto.Codigo<0)
-            {
-                _vista.MensajeError.Text = "No se pudo insertar dicho GASTO";
-                _vista.MensajeError.Visible = true;
-            }
-            else limpiar();
-
+            ingresar.Ejecutar();
+            limpiar();
         }
         #endregion
 
@@ -107,14 +102,14 @@ namespace Presentador.Gasto.Vistas
         {
             _presentadorPropuesta = new ConsultarPropuestaPresentador();
 
-            int i = 0;
-            propuestas = _presentadorPropuesta.BuscarPorTitulo();
-            for (i = 0; i < propuestas.Count; i++)
-            {
-                _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);
-
-            }
-            _vista.PropuestaAsociada.DataBind();
+                int i = 0;
+                propuestas = _presentadorPropuesta.BuscarPorTitulo();
+                for (i = 0; i < propuestas.Count; i++)
+                {
+                    _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);
+                    
+                }
+                _vista.PropuestaAsociada.DataBind();
         }
         #endregion
 
