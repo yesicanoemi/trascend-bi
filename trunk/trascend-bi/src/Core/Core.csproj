@@ -102,6 +102,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarE.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarEmpleado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCI.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorNombre.cs" />
