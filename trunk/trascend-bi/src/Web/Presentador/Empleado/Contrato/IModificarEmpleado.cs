@@ -10,6 +10,8 @@ namespace Presentador.Empleado.Contrato
     {
         #region Informacion Basica
         TextBox NombreEmpleado { get; set; }
+        TextBox NombreEmpleadoBus { get; set; }
+        TextBox CedulaEmpleadoBus { get; set; }
         TextBox ApellidoEmpleado { get; set; }
         TextBox CedulaEmpleado { get; set; }
         TextBox CuentaEmpleado { get; set; }

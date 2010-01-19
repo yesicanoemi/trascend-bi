@@ -35,6 +35,18 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         set { uxNombreEmpleado = value; }
     }
 
+    public TextBox NombreEmpleadoBus
+    {
+        get { return uxNombreCon; }
+        set { uxNombreCon = value; }
+    }
+
+    public TextBox CedulaEmpleadoBus
+    {
+        get { return uxCedulaCon; }
+        set { uxCedulaCon = value; }
+    }
+
     public TextBox ApellidoEmpleado
     {
         get { return uxApellidoEmpleado; }
@@ -152,4 +164,8 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
     }
 
 
+    protected void btnBuscar_Click(object sender, EventArgs e)
+    {
+        _presentador.ConsultarEmpleado();
+    }
 }

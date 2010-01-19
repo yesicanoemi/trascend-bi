@@ -28,6 +28,12 @@
                             <p class="large">
                                 <table style="width: 100%;">
                                     <tr>
+                                        <td>Nombre: <asp:TextBox ID="uxNombreCon" runat="server"></asp:TextBox></td>
+                                        <td>Cedula: <asp:TextBox ID="uxCedulaCon" runat="server"></asp:TextBox></td>
+                                    </tr>
+                                    <tr><td colspan="2" align="center"><asp:Button ID="btnBuscar" runat="server" 
+                                            onclick="btnBuscar_Click" /></td></tr>
+                                    <tr>
                                         <td>
                                             Nombre:
                                         </td>

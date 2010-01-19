@@ -51,8 +51,8 @@ namespace Presentador.Empleado.Vistas
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
             try
             {
-                empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
-                empleado.Nombre = _vista.NombreEmpleado.Text;
+                empleado.Cedula = Int32.Parse(_vista.CedulaEmpleadoBus.Text);
+                empleado.Nombre = _vista.NombreEmpleadoBus.Text;
                 ConsultarEmpleado(empleado);
             }
             catch (WebException e)
