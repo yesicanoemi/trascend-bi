@@ -19,6 +19,18 @@ namespace Presentador.Reportes.Contrato
 
         TextBox FechaFin { get; set; }
 
+        #region Dialogo
+
+        bool DialogoVisible { get; set; }
+
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
+
+        bool InformacionVisible { get; set; }
+
+        void PintarInformacion(string mensaje, string estilo);
+
+        #endregion
+
         #endregion
     }
 }

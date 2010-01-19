@@ -6,7 +6,8 @@ using System.Web.UI.WebControls;
 using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
-
+using System.Web.UI.WebControls;
+using Presentador.Aplicacion;
 
 public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultarUsuario
 {
@@ -16,6 +17,38 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
     private ConsultarUsuarioPresenter _presentador;
 
     protected const string paginaConsulta = "~/Paginas/Usuarios/ConsultarUsuarios.aspx";
+
+
+    #region Propiedades del Diálogo
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
+
+    #endregion
+
+    #region Información
+
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
+
+    #endregion
+
 
     #endregion
 

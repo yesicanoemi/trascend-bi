@@ -61,11 +61,74 @@ namespace Presentador {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CON001.
+        /// </summary>
+        internal static string codigoErrorConsultar {
+            get {
+                return ResourceManager.GetString("codigoErrorConsultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GEN001.
+        /// </summary>
+        internal static string codigoErrorGeneral {
+            get {
+                return ResourceManager.GetString("codigoErrorGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WEB001.
+        /// </summary>
+        internal static string codigoErrorWeb {
+            get {
+                return ResourceManager.GetString("codigoErrorWeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No hay datos para el parámetro de búsqueda seleccionado.
+        /// </summary>
+        internal static string MensajeConsulta {
+            get {
+                return ResourceManager.GetString("MensajeConsulta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El Usuario no se encuentra registrado en el sistema.
         /// </summary>
         internal static string MensajeCredenciales {
             get {
                 return ResourceManager.GetString("MensajeCredenciales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un Error Consultando la información..
+        /// </summary>
+        internal static string mensajeErrorConsultar {
+            get {
+                return ResourceManager.GetString("mensajeErrorConsultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un Error no manejado por el sistema..
+        /// </summary>
+        internal static string mensajeErrorGeneral {
+            get {
+                return ResourceManager.GetString("mensajeErrorGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un Error en capa Web..
+        /// </summary>
+        internal static string mensajeErrorWeb {
+            get {
+                return ResourceManager.GetString("mensajeErrorWeb", resourceCulture);
             }
         }
     }

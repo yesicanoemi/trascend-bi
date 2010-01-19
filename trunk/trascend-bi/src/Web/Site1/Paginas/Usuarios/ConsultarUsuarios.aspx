@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" Title="Consultar Usuarios" CodeFile="ConsultarUsuarios.aspx.cs" Inherits="Paginas_Usuarios_ConsultarUsuarios" %>
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
@@ -30,7 +32,7 @@
                         <p class="large"></p>
                             
                         <form id="Form1" action="#" runat="server">
-                    
+                        
                             <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
                           
                                 <asp:View ID="ViewConsulta" runat="server">
@@ -70,6 +72,12 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>
+                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
                                             <td colspan="2">
                                                 <asp:GridView ID="uxConsultaUsuario" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaUsuario"
                                                 AutoGenerateColumns="False" DataKeyNames="login" AutoGenerateSelectButton="True"
@@ -86,16 +94,11 @@
                                                         <asp:BoundField HeaderText="Status Usuario" DataField="Status" /> 
                                                         
                                                     </Columns>
-                                            
-                                                    <EmptyDataTemplate>
-                                                        <center>
-                                                            <span>No hay data cargada </span>
-                                                            </center>
-                                                    </EmptyDataTemplate>
-                                        
+    
                                                  </asp:GridView>
                                             </td>
                                         </tr>
+                                       
                                         
                                     </table>
                                     
@@ -243,6 +246,11 @@
                                 </asp:View>
                             
                             </asp:MultiView> 
+                     <asp:UpdatePanel ID="up2" runat="server">
+                    <ContentTemplate>
+                        <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                       </form>                  
                  </div> 
                  

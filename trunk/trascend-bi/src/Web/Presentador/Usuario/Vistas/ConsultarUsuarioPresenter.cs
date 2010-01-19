@@ -8,11 +8,14 @@ using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Comandos.ComandoUsuario;
 using System.Net;
 using System.Collections;
+using Presentador.Base;
+using System.Resources;
+using Core.LogicaNegocio.Excepciones;
 
 
 namespace Presentador.Usuario.Vistas
 {
-    public class ConsultarUsuarioPresenter
+    public class ConsultarUsuarioPresenter : PresentadorBase
     {
         #region Propiedades
 
@@ -109,17 +112,44 @@ namespace Presentador.Usuario.Vistas
 
             try
             {
-               if (listado != null)
+                if (listado.Count > 0)
                 {
 
                     _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
 
                 }
+                else
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                            ("MensajeConsulta"), "mensajes");
+                    _vista.InformacionVisible = true;
+                
+                }
            }
-
             catch (WebException e)
             {
-                //Mensaje de error al usuario
+
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + 
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + 
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + 
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
             }
         }
 
@@ -142,7 +172,7 @@ namespace Presentador.Usuario.Vistas
                                                new List<Core.LogicaNegocio.Entidades.Usuario>();
             try
             {
-                if ((listado != null) && (user.Status == "Activo"))
+                if ((listado.Count > 0) && (user.Status == "Activo"))
                 {
                     for (int i = 0; i < listado.Count; i++)
                     {
@@ -155,7 +185,7 @@ namespace Presentador.Usuario.Vistas
                     _vista.GetObjectContainerConsultaUsuario.DataSource = listadoActivo;
                 }
 
-                if ((listado != null) && (user.Status == "Inactivo"))
+                if ((listado.Count > 0) && (user.Status == "Inactivo"))
                 {
                     for (int i = 0; i < listado.Count; i++)
                     {
@@ -167,11 +197,37 @@ namespace Presentador.Usuario.Vistas
 
                     _vista.GetObjectContainerConsultaUsuario.DataSource = listadoInactivo;
                 }
+
+                else
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                            ("MensajeConsulta"), "mensajes");
+                    _vista.InformacionVisible = true;
+
+                }
             }
 
             catch (WebException e)
             {
-                //Mensaje de error al usuario
+
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
             }
         }
 

@@ -18,10 +18,6 @@ using System.Net;
 using Presentador.Base;
 using System.Resources;
 
-using System.Threading;
-using System.Globalization;
-using System.Configuration;
-
 namespace Presentador.Aplicacion
 {
     public class DefaultPresenter : PresentadorBase

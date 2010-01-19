@@ -13,11 +13,14 @@ using System.Threading;
 using System.Globalization;
 using System.Configuration;
 using System.Data;
+using Presentador.Base;
+using System.Resources;
+using Core.LogicaNegocio.Excepciones;
 
 
 namespace Presentador.Reportes.Vistas
 {
-    public class ReporteFaturasEmitidasPresenter
+    public class ReporteFaturasEmitidasPresenter : PresentadorBase
     {
         #region Propiedades
 
@@ -57,7 +60,7 @@ namespace Presentador.Reportes.Vistas
 
             try
             {
-                if (listadoF != null)
+                if (listadoF.Count > 0)
                 {
 
                     _vista.GridViewReporteFactura3b.DataSource = listadoF;
@@ -65,11 +68,38 @@ namespace Presentador.Reportes.Vistas
                     _vista.GridViewReporteFactura3b.DataBind();
                   
                 }
-            }
+                else
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                            ("MensajeConsulta"), "mensajes");
+                    _vista.InformacionVisible = true;
 
+                }
+            }
             catch (WebException e)
             {
-                //Mensaje de error al usuario
+
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
             }
         }
 

@@ -1,4 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ReportesEquipo3b.aspx.cs" Inherits="Paginas_Reportes_ReportesEquipo3b" %>
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <form id="form1" runat="server">
     <div class="container subnav"> 
@@ -66,6 +70,11 @@
                 <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                         onclick="uxBotonAceptar_Click" /></td>
              </tr>
+                     <tr>
+                          <td>
+                             <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                          </td>
+                     </tr>
             <tr></tr>
             <tr></tr>
             <tr></tr>
@@ -94,13 +103,7 @@
                     </asp:TemplateField> 
                                             
              </Columns>
-                                            
-             <EmptyDataTemplate>
-                <center>
-                    <span>No hay data cargada </span>
-                </center>
-             </EmptyDataTemplate>
-                                        
+                                                
             </asp:GridView>
             
              
@@ -143,6 +146,11 @@
 
 			</div> 
 		</div> 
+		                <asp:UpdatePanel ID="up2" runat="server">
+                    <ContentTemplate>
+                        <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
     </form>
     <pp:objectcontainerdatasource runat="server" ID="uxObjectReporte3b" DataObjectTypeName="Core.LogicaNegocio.Entidades.Factura" /> 
 </asp:Content>

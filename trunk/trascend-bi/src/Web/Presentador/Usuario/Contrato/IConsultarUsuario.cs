@@ -40,6 +40,19 @@ namespace Presentador.Usuario.Contrato
 
         void CambiarPagina();
 
+
+        #region Dialogo
+
+        bool DialogoVisible { get; set; }
+
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
+
+        bool InformacionVisible { get; set; }
+
+        void PintarInformacion(string mensaje, string estilo);
+
+        #endregion
+
         #endregion
 
     }
