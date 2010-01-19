@@ -321,4 +321,22 @@
   <data name="FaltaRolEquipo1" xml:space="preserve">
     <value>Debe Ingresar el Rol</value>
   </data>
+  <data name="ERMonto" xml:space="preserve">
+    <value>^\d+(,)?\d{1,2}$</value>
+  </data>
+  <data name="ErrorFormatoMonto" xml:space="preserve">
+    <value>Deben de Ser Numeros</value>
+  </data>
+  <data name="ErrorFormatoVersion" xml:space="preserve">
+    <value>Solo Numeros</value>
+  </data>
+  <data name="ERVersion" xml:space="preserve">
+    <value>^([0-9])$</value>
+  </data>
+  <data name="FaltaFechaFin" xml:space="preserve">
+    <value>Introducir la fecha Final</value>
+  </data>
+  <data name="FaltaFechaInicio" xml:space="preserve">
+    <value>Introducir la fecha de Inicio</value>
+  </data>
 </root>

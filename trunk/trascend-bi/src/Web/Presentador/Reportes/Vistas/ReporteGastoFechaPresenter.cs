@@ -42,26 +42,33 @@ namespace Presentador.Reportes.Vistas
         /// <param name="FechaFin">Fecha Fin</param>
         public void ConsultarGastoFecha(DateTime FechaIni, DateTime FechaFin)
         {
-            FechaIni = Convert.ToDateTime(_vista.FechaInicio.Text);
-
-            FechaFin = Convert.ToDateTime(_vista.FechaFin.Text);
-
-            Gastos = Consultar(FechaIni, FechaFin);
-
             try
             {
-                if (Gastos != null)
+
+                FechaIni = Convert.ToDateTime(_vista.FechaInicio.Text);
+
+                FechaFin = Convert.ToDateTime(_vista.FechaFin.Text);
+
+                Gastos = Consultar(FechaIni, FechaFin);
+
+                try
                 {
-                    _vista.ObtenerValorDataSource.DataSource = Gastos;
-                    LimpiarRegistros();
+                    if (Gastos != null)
+                    {
+                        _vista.ObtenerValorDataSource.DataSource = Gastos;
+                        LimpiarRegistros();
+                    }
+
                 }
-
+                catch (WebException e)
+                {
+                    //Mensaje al usuario
+                }
             }
-            catch (WebException e)
+            catch (Exception e)
             {
-                //Mensaje al usuario
+                Console.Write(e);
             }
-
 
         }
 

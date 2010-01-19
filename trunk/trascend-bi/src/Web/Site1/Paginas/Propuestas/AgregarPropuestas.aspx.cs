@@ -47,7 +47,7 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxApellidoReceptor = value; }
     }
 
-    public DropDownList CargoReceptor
+    public TextBox CargoReceptor
     {
         get { return uxCargoReceptor; }
         set { uxCargoReceptor = value; }

@@ -43,6 +43,11 @@
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="uxVersion" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaVersionPropuesta%>" Font-Size="Smaller" Display="Static" />
+                       <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2"
+                                                runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoVersion%>"
+                                                ControlToValidate="uxVersion" ValidationExpression="<%$Resources:DSU, ERVersion%>"
+                                                Font-Size="Smaller">
+                                            </asp:RegularExpressionValidator>
                        </td>
                    </tr>
                    <tr>
@@ -90,8 +95,8 @@
                    <tr>
                        <td>Cargo del receptor:</td>
                        <td>
-                           <asp:DropDownList ID="uxCargoReceptor" runat="server">
-                           </asp:DropDownList>
+                           <asp:TextBox ID="uxCargoReceptor" runat="server">
+                           </asp:TextBox>
                        </td>
                    </tr>
                    <tr>
@@ -174,10 +179,18 @@
                        <td></td>
                        <td></td>
                        </tr>
+                        <tr>
+                       <td></td>
+                       <td></td>
+                       </tr>
                        <tr>
                        <td>Nombre</td>
                        <td><asp:TextBox ID="Nombre2" runat="server"></asp:TextBox></td>
                        <tr>
+                       <td></td>
+                       <td></td>
+                       </tr>
+                        <tr>
                        <td></td>
                        <td></td>
                        </tr>
@@ -186,6 +199,10 @@
                        <td>Apellido</td>
                        <td> <asp:TextBox ID="Apellido2" runat="server"></asp:TextBox></td>
                        <tr>
+                       <td></td>
+                       <td></td>
+                       </tr>
+                        <tr>
                        <td></td>
                        <td></td>
                        </tr>
@@ -209,10 +226,18 @@
                        <td></td>
                        <td></td>
                        </tr>
+                        <tr>
+                       <td></td>
+                       <td></td>
+                       </tr>
                        </tr>
                        <tr>
                        <td>Apellido</td>
                        <td> <asp:TextBox ID="Apellido3" runat="server"></asp:TextBox></td>
+                        <tr>
+                       <td></td>
+                       <td></td>
+                       </tr>
                         <tr>
                        <td></td>
                        <td></td>
@@ -257,6 +282,11 @@
                     <td><asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                                 ControlToValidate="uxMontoTotal" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaMontoPropuesta%>" Font-Size="Smaller" Display="Static" />
+                                <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1"
+                                                runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoMonto%>"
+                                                ControlToValidate="uxMontoTotal" ValidationExpression="<%$Resources:DSU, ERMonto%>"
+                                                Font-Size="Smaller">
+                                            </asp:RegularExpressionValidator>
                        </td>
                    </tr>
                     <tr>
@@ -265,6 +295,7 @@
                        </tr>
                         <tr>
                        <td></td>
+                       
                        < <asp:GridView runat = "server" ID="uxEmpleados" DataSourceID="uxobjectEmpleado" AutoGenerateColumns = "false" 
             DataKeyNames = "Nombre" AllowPaging = "true" PageSize = "4" ShowFooter = "true" Width = "150px" Height="70px"   >
             <Columns>

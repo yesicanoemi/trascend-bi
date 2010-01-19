@@ -23,7 +23,7 @@ namespace Presentador.Propuesta.Contrato
 
         TextBox ApellidoReceptor { get; set; }
 
-        DropDownList CargoReceptor { get; set; }
+        TextBox CargoReceptor { get; set; }
 
         TextBox FechaInicio { get; set; }
 

@@ -10,6 +10,7 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using System.Net;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -18,9 +19,14 @@ namespace Core.AccesoDatos.SqlServer
     /// </summary>
     public class PropuestaSQLServer
     {
+        #region Propiedades
         List<Propuesta> ListaPropuesta = new List<Propuesta>();
+        #endregion
 
         #region Constructor
+
+        //Constructor de la clase PropuestaSQLServer
+
         public PropuestaSQLServer()
         {
 
@@ -28,6 +34,9 @@ namespace Core.AccesoDatos.SqlServer
         #endregion
 
         #region Conexion
+
+        //Metodo que realiza la Conexion con el manejador de base de datos
+
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
@@ -55,7 +64,8 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns></returns>
         public Propuesta IngresarPropuesta(Propuesta propuesta)
         {
-
+            //try
+            //  {
             SqlParameter[] arparmsP = new SqlParameter[2];
 
             SqlParameter[] ParamV = new SqlParameter[6];
@@ -122,6 +132,9 @@ namespace Core.AccesoDatos.SqlServer
                 int result2 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarVersion", ParamV);
 
             }
+            //  else
+            //      throw new IngresarADPropuestaException();
+
             //Consultar el Id del Cargo
 
             Parametros[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
@@ -131,7 +144,7 @@ namespace Core.AccesoDatos.SqlServer
             DbDataReader conex2 = SqlHelper.ExecuteReader(GetConnection(), "ConsultarIdCargo",
                 Parametros);
 
-            while (conex2.Read())
+            if (conex2.Read())
             {
                 int IdCargo;
 
@@ -154,6 +167,9 @@ namespace Core.AccesoDatos.SqlServer
                 int result3 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarReceptor", ParamR);
             }
 
+            // else
+            //   throw new IngresarADPropuestaException();
+
             //Ingresar Equipo
 
             SqlParameter[] Param = new SqlParameter[2];
@@ -171,7 +187,7 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader conex3 = SqlHelper.ExecuteReader(GetConnection(),
                     "ConsultarIdEmpleado", Param);
 
-                while (conex3.Read())
+                if (conex3.Read())
                 {
                     int IdEmpleado;
 
@@ -209,8 +225,12 @@ namespace Core.AccesoDatos.SqlServer
                             "IngresarEquipo", Param2);
 
                     }
+                    //     else
+                    //           throw new IngresarADPropuestaException();
 
                 }
+                //   else
+                //      throw new IngresarADPropuestaException();
             }
 
             if (propuesta.NombreEquipo2 != null)
@@ -228,7 +248,7 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader conex5 = SqlHelper.ExecuteReader(GetConnection(),
                     "ConsultarIdEmpleado", Param3);
 
-                while (conex5.Read())
+                if (conex5.Read())
                 {
                     int IdEmpleado;
 
@@ -266,8 +286,12 @@ namespace Core.AccesoDatos.SqlServer
                             "IngresarEquipo", Param4);
 
                     }
+                    //     else
+                    //          throw new IngresarADPropuestaException();
 
                 }
+                //    else
+                //         throw new IngresarADPropuestaException();
 
 
             }
@@ -286,7 +310,7 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader conex7 = SqlHelper.ExecuteReader(GetConnection(),
                     "ConsultarIdEmpleado", Param5);
 
-                while (conex7.Read())
+                if (conex7.Read())
                 {
                     int IdEmpleado;
 
@@ -324,24 +348,28 @@ namespace Core.AccesoDatos.SqlServer
                             "IngresarEquipo", Param6);
 
                     }
+                    //   else
+                    //       throw new IngresarADPropuestaException();
 
                 }
+                // else
+                //     throw new IngresarADPropuestaException();
 
 
             }
 
-
-
-
-
-            // arparms[8] = new SqlParameter("@TotalHoras", SqlDbType.VarChar);
-            //arparms[8].Value = propuesta.TotalHoras;
-
-
             return propuesta;
 
-
         }
+        /*  catch (SqlException e)
+          {
+              null;           
+          }
+          catch (Exception e)
+          {
+              throw new InsertarFacturaADException("Error ingresando Propuesta en la Base de datos", e);
+          }*/
+        //   }
 
         /// <summary>
         /// Metodo para consultar las propuestas

@@ -41,48 +41,54 @@ namespace Presentador.Propuesta.Vistas
         {
             Core.LogicaNegocio.Entidades.Propuesta propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
 
+            try
+            {
+                propuesta.Titulo = _vista.Titulo.Text;
 
-            propuesta.Titulo = _vista.Titulo.Text;
+                propuesta.Version = _vista.Version.Text;
 
-            propuesta.Version = _vista.Version.Text;
+                propuesta.FechaFirma = Convert.ToDateTime(_vista.FechaFirma.Text);
 
-            propuesta.FechaFirma = Convert.ToDateTime(_vista.FechaFirma.Text);
+                propuesta.NombreReceptor = _vista.NombreReceptor.Text;
 
-            propuesta.NombreReceptor = _vista.NombreReceptor.Text;
+                propuesta.ApellidoReceptor = _vista.ApellidoReceptor.Text;
 
-            propuesta.ApellidoReceptor = _vista.ApellidoReceptor.Text;
+                propuesta.CargoReceptor = _vista.CargoReceptor.Text;
 
-            propuesta.CargoReceptor = _vista.CargoReceptor.Text;
+                propuesta.FechaInicio = Convert.ToDateTime(_vista.FechaInicio.Text);
 
-            propuesta.FechaInicio = Convert.ToDateTime(_vista.FechaInicio.Text);
+                propuesta.FechaFin = Convert.ToDateTime(_vista.FechaFin.Text);
 
-            propuesta.FechaFin = Convert.ToDateTime(_vista.FechaFin.Text);
+                propuesta.MontoTotal = float.Parse(_vista.MontoTotal.Text);
 
-            propuesta.MontoTotal = float.Parse(_vista.MontoTotal.Text);
+                propuesta.NombreEquipo1 = _vista.NombreEquipo1.Text;
 
-            propuesta.NombreEquipo1 = _vista.NombreEquipo1.Text;
+                propuesta.ApellidoEquipo1 = _vista.ApellidoEquipo1.Text;
 
-            propuesta.ApellidoEquipo1 = _vista.ApellidoEquipo1.Text;
+                propuesta.Rol1 = _vista.RolEquipo1.Text;
 
-            propuesta.Rol1 = _vista.RolEquipo1.Text;
+                propuesta.NombreEquipo2 = _vista.NombreEquipo2.Text;
 
-            propuesta.NombreEquipo2 = _vista.NombreEquipo2.Text;
+                propuesta.ApellidoEquipo2 = _vista.ApellidoEquipo2.Text;
 
-            propuesta.ApellidoEquipo2 = _vista.ApellidoEquipo2.Text;
+                propuesta.Rol2 = _vista.RolEquipo2.Text;
 
-            propuesta.Rol2 = _vista.RolEquipo2.Text;
+                propuesta.NombreEquipo3 = _vista.NombreEquipo3.Text;
 
-            propuesta.NombreEquipo3 = _vista.NombreEquipo3.Text;
+                propuesta.ApellidoEquipo3 = _vista.ApellidoEquipo3.Text;
 
-            propuesta.ApellidoEquipo3 = _vista.ApellidoEquipo3.Text;
+                propuesta.Rol3 = _vista.RolEquipo3.Text;
 
-            propuesta.Rol3 = _vista.RolEquipo3.Text;
+                propuesta.TotalHoras = int.Parse(_vista.TotalHoras.Text);
 
-            propuesta.TotalHoras = int.Parse(_vista.TotalHoras.Text);
+                propuesta = Agregar(propuesta);
 
-            propuesta = Agregar(propuesta);
-
-            LimpiarRegistros();
+                LimpiarRegistros();
+            }
+            catch (Exception e)
+            {
+                //Mensaje a usuario
+            }
         }
 
         /// <summary>

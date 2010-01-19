@@ -48,6 +48,12 @@
                                         
                     
                 </td>
+                <tr></tr>
+                <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                ControlToValidate="uxFechaInicio" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaFechaInicio%>" Font-Size="Smaller" Display="Static" />
+                       </td>
+                       <tr><td></td></tr>
                 
                
             </tr>
@@ -65,10 +71,16 @@
                  
                 </td>
                 
+                 <tr></tr>
+                <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                ControlToValidate="uxFechaFin" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaFechaFin%>" Font-Size="Smaller" Display="Static" />
+                       </td>
+                
                 <td><asp:Button ID="uxAceptar" runat="server" Text="Aceptar" OnClick="uxAceptar_Click" /></td>
              <tr>
              <td><asp:GridView runat = "server" ID="uxReporteGastoFecha" DataSourceID="uxobject" AutoGenerateColumns = "false" 
-            DataKeyNames = "Tipo" AllowPaging = "true" PageSize = "8" ShowFooter = "true" Width = "200"   >
+            DataKeyNames = "Tipo" AllowPaging = "true" PageSize = "8" ShowFooter = "true" Width = "400"   >
             <Columns>
             
             
