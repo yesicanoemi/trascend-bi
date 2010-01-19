@@ -52,6 +52,7 @@ namespace Presentador.Empleado.Vistas
             try
             {
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
+                empleado.Nombre = _vista.NombreEmpleado.Text;
                 ConsultarEmpleado(empleado);
             }
             catch (WebException e)
@@ -109,16 +110,16 @@ namespace Presentador.Empleado.Vistas
             modificar.Ejecutar();
         }
         public void ConsultarEmpleado(Core.LogicaNegocio.Entidades.Empleado empleado)
-        {/*
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.Consultar consultar; //objeto del comando Ingresar.
+        {
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
-            consultar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoConsultar(empleado);
+            consultar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoConsultarEmpleado(empleado);
 
             //try
             //{    
             //ejecuta el comando.
-            modificar.Ejecutar();*/
+            LlenarRegistros(consultar.Ejecutar());
         }
         #endregion
     }

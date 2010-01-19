@@ -7,36 +7,30 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
 {
-    public class Consultar : Comando<Empleado>
+    public class ConsultarEmpleado : Comando<Empleado>
     {
         private Empleado empleado;
-        private IList<Empleado> _empleado2;
 
         #region Constructor
 
         /// <summary>Constructor por defecto de la clase 'Ingresar'.</summary>
-        public Consultar()
+        public ConsultarEmpleado()
         { }
 
-        /// <summary>Constructor de la clase 'Ingresar'.</summary>
+        /// <summary>Constructor de la clase 'Consultar Empleado'.</summary>
         /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
-        public Consultar(IList<Empleado> empleado)
-        {
-            _empleado2 = empleado;
-        }
-        public Consultar(Empleado _empleado)
+        public ConsultarEmpleado(Empleado _empleado)
         {
             empleado = _empleado;
         }
         #endregion
 
         #region Metodos
-        public IList<Empleado> Ejecutar()
+        public Empleado Ejecutar()
         {
             EmpleadoSQLServer acceso = new EmpleadoSQLServer();
-            _empleado2 = acceso.ConsultarPorTipoNombre();
-
-            return _empleado2;
+            empleado = acceso.ConsultarPorNomCedula(empleado);
+            return empleado;
         }
         #endregion
     }
