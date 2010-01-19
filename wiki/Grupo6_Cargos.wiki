@@ -20,7 +20,7 @@ Casos de uso para la Gestión de Cargos.
 
 ====*1) Ingresar Cargo*====
 
-http://yfrog.com/59ingresarcargoj
+http://trascend-bi.googlecode.com/files/Ingresar%20Cargo%20grupo%20%236.png
 
 
 
