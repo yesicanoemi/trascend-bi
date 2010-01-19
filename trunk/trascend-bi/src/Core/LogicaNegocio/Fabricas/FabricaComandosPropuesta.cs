@@ -48,5 +48,15 @@ namespace Core.LogicaNegocio.Fabricas
             return new Eliminar(lista);
         }
 
+        public static ConsultarPropuestasModificar CrearComandoConsultarPropuestasModificar(IList<Propuesta> arreglo)
+        {
+            return new ConsultarPropuestasModificar(arreglo);
+        }
+
+        public static ModificarPropuesta CrearComandoModificarPropuesta(Propuesta entidad)
+        {
+            return new ModificarPropuesta(entidad);
+        }
+
     }
 }

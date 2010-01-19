@@ -131,9 +131,11 @@
     <Compile Include="Propuesta\Contrato\IAgregarPropuesta.cs" />
     <Compile Include="Propuesta\Contrato\IConsultarPropuesta.cs" />
     <Compile Include="Propuesta\Contrato\IEliminarPropuesta.cs" />
+    <Compile Include="Propuesta\Contrato\IModificarPropuesta.cs" />
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\EliminarPropuestaPresentador.cs" />
+    <Compile Include="Propuesta\Vistas\ModificarPropuestaPresentador.cs" />
     <Compile Include="RecursosPresentadores.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

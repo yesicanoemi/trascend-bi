@@ -664,6 +664,116 @@ namespace Core.AccesoDatos.SqlServer
             }
         }
 
+         /// <summary>
+        /// Metodo que consulta las propuestas activas que tienen versiones en espera
+        /// se trae la ultima version en espera
+        /// </summary>
+        /// <returns></returns>
+        public IList<Propuesta> ConsultarPropuestaAModificar()
+        {
+            try
+            {
+                DbDataReader conexion = SqlHelper.ExecuteReader
+                    (GetConnection(), "ConsultarPropuestasVersiones");
+
+                int i = 0;
+
+                while (conexion.Read())
+                {
+
+                    Propuesta _Propuesta = new Propuesta();
+                    _Propuesta.Titulo = (string)conexion["Titulo"];
+                    _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                    _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                    _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                    _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                    _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                    _Propuesta.Id = (int)conexion["IdPropuesta"];
+                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+
+                    #region Busqueda del Receptor
+
+                    int j = 0;
+                    List<string> ListR = new List<string>();
+
+                    ListR = BuscarReceptor(_Propuesta.Id);
+
+                    for (j = 0; j < ListR.Count; j++)
+                    {
+                        _Propuesta.NombreReceptor = ListR.ElementAt(j);
+                        j++;
+                        _Propuesta.ApellidoReceptor = ListR.ElementAt(j);
+                        j++;
+                        _Propuesta.CargoReceptor = ListR.ElementAt(j);
+                    }
+
+                    #endregion
+
+                    ListaPropuesta.Insert(i, _Propuesta);
+                    i++;
+
+                }
+
+                return ListaPropuesta;
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }
+
+
+        /// <summary>
+        /// Metodo para modificar propuesta
+        /// </summary>
+        /// <param name="propuesta"></param>
+        /// <returns></returns>
+        /// 
+        public Propuesta ModificarPropuesta(Propuesta PropuestaRecibida)
+        {
+
+            SqlParameter[] arparmsP = new SqlParameter[2];
+
+            SqlParameter[] ParamV = new SqlParameter[6];
+
+            DateTime fechaingreso = DateTime.Now;
+
+            //Se definen los parametros
+            arparmsP[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
+
+            arparmsP[0].Value = PropuestaRecibida.Titulo;
+
+            arparmsP[1] = new SqlParameter("@MontoTotal", SqlDbType.Float);
+
+            arparmsP[1].Value = PropuestaRecibida.MontoTotal;
+
+            int result = SqlHelper.ExecuteNonQuery(GetConnection(), "UpdatePropuesta", arparmsP);
+
+            ParamV[0] = new SqlParameter("@Version", SqlDbType.Int);
+
+            ParamV[0].Value = PropuestaRecibida.Version;
+
+            ParamV[1] = new SqlParameter("@FechaFirma", SqlDbType.DateTime);
+
+            ParamV[1].Value = PropuestaRecibida.FechaFirma;
+
+            ParamV[2] = new SqlParameter("@FechaIngreso", SqlDbType.DateTime);
+
+            ParamV[2].Value = fechaingreso;
+
+            ParamV[3] = new SqlParameter("@FechaInicio", SqlDbType.DateTime);
+
+            ParamV[3].Value = PropuestaRecibida.FechaInicio;
+
+            ParamV[4] = new SqlParameter("@FechaFin", SqlDbType.DateTime);
+
+            ParamV[4].Value = PropuestaRecibida.FechaFin;
+
+            int result2 = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarPropuesta", ParamV);
+
+            return PropuestaRecibida;
+        }
+        
         #endregion
     }
 }
