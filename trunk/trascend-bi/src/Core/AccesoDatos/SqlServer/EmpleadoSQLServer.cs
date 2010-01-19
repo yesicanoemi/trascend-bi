@@ -226,7 +226,7 @@ namespace Core.AccesoDatos.SqlServer
         public IList<string> ConsultarCargos()
         {
             List<string> cargo = new List<string>();
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargos");
+            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargos2");
             while (reader.Read())
             {
                 cargo.Add((string)reader["Nombre"]);
