@@ -27,6 +27,17 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarGastoFecha(fechaini, fechafin);
         }
 
+
+        public static ConsultarGastoAnual CrearComandoGastosAnuales(Gasto entidad)
+        {
+            return new ConsultarGastoAnual(entidad);
+        }
+
+        public static ConsultarGastoTotal CrearComandoGastoTotal(Gasto entidad)
+        {
+            return new ConsultarGastoTotal(entidad);
+        }
+
         public static ConsultaRol CrearComandoConsultarRol(IList<string> entidad)
         {
             return new ConsultaRol(entidad);

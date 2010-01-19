@@ -177,6 +177,11 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
+      
+
+
+
+
         /// <summary>
         /// Metodo que se comunica con la base de datos y realiza la consulta
         /// solicitada
@@ -392,5 +397,108 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
+        #region ReporteGastosAnuales
+
+        /// <summary>
+        /// Metodo para el reporte de Gastos en un anio (consulta de datos)
+        /// </summary>
+        /// <param name="entidad"></param>
+        /// <returns>Lista de Gastos</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Gasto>
+                                                GastosAnuales(string anio)
+        {
+
+            IList<Core.LogicaNegocio.Entidades.Gasto> gasto =
+                                                new List<Core.LogicaNegocio.Entidades.Gasto>();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Anio", SqlDbType.VarChar);
+
+                arParms[0].Value = anio;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarDatosGastoAnual", arParms);
+
+                while (reader.Read())
+                {
+                    Gasto _gasto = new Gasto();
+
+                    _gasto.Codigo = (int)reader["IdGasto"];
+
+                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
+
+                    _gasto.Tipo = (string)reader["Tipo"];
+
+                    string prueba = (String)reader["Monto"].ToString();
+
+                    _gasto.Monto = float.Parse(prueba);
+
+                    gasto.Add(_gasto);
+                }
+
+                return gasto;
+
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return gasto;
+
+        }
+
+
+
+        /// <summary>
+        /// Metodo para el reporte de Gastos en un anio (total gastos)
+        /// </summary>
+        /// <param name="entidad"></param>
+        /// <returns>Total de Gastos</returns>
+
+        public float TotalGastosAnuales(string anio)
+        {
+            float total = 0;
+
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Anio", SqlDbType.VarChar);
+
+                arParms[0].Value = anio;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "GastoAnual", arParms);
+
+                while (reader.Read())
+                {
+                    string prueba = (String)reader["Monto"].ToString();
+
+                    total = float.Parse(prueba);
+
+
+                    return total;
+                }
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return total;
+
+        }
+
+
+
+        #endregion
     }
 }

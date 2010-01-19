@@ -114,6 +114,8 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarPropuestasxEmision.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoAnual.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoTotal.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\PaquetesAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaHora.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarFacturasPorEstado.cs" />
