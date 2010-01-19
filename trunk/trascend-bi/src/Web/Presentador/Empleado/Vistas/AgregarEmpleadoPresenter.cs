@@ -81,12 +81,12 @@ namespace Presentador.Empleado.Vistas
             }
             catch (WebException e)
             {
-                _vista.Pintar("0001", e.ToString(), "Yop", "lol");
+                _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
             catch (Exception e)
             {
-                _vista.Pintar("0001", e.ToString(), "Yop", "lol");
+                _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }

@@ -20,20 +20,29 @@
 				
 			<div class="sub-content"> 
              <div class="features_overview"> 
-                 <div class="features_overview_right"> 
-                    <h3>Modificar Empleado</h3> 
+                 <div class="features_overview_right">
+                 <h3>Modificar Empleado</h3> 
                     <p class="large">
-                        
-                        <form id="Form1" action="#" runat="server">
-                            <p class="large">
-                                <table style="width: 100%;">
+                 <asp:MultiView ID="uxMultiViewEmpleado" runat="server" ActiveViewIndex="0">
+                <asp:View ID="uxConsultarEmpleado" runat="server">
+                    <form runat="server">
+                    <table style="width: 100%;">
                                     <tr>
                                         <td>Nombre: <asp:TextBox ID="uxNombreCon" runat="server"></asp:TextBox></td>
                                         <td>Cedula: <asp:TextBox ID="uxCedulaCon" runat="server"></asp:TextBox></td>
                                     </tr>
                                     <tr><td colspan="2" align="center"><asp:Button ID="btnBuscar" runat="server" 
-                                            onclick="btnBuscar_Click" /></td></tr>
+                                            onclick="btnBuscar_Click" Text="Buscar Empleado" /></td></tr>
+                                            </table>
+                                            </form>
+                </asp:View> 
+                 <asp:View ID="uxModificarEmpleado" runat="server">
+                        
+                        <form id="Form1" action="#" runat="server">
+                            <p class="large">
+                                <table style="width: 100%;">
                                     <tr>
+                                   
                                         <td>
                                             Nombre:
                                         </td>
@@ -113,7 +122,7 @@
                                             Sueldo Base:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="uxSueldoBase" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="uxSueldoBase" runat="server"></asp:TextBox><br /><asp:Label ID="lbRangoSueldo" Visible="false" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -129,7 +138,8 @@
                                             Cargo:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="uxCargoEmpleado" runat="server">
+                                            <asp:DropDownList ID="uxCargoEmpleado" runat="server" 
+                                                onselectedindexchanged="uxCargoEmpleado_SelectedIndexChanged">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -314,6 +324,8 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                             </form>
+                  </asp:View>
+                 </asp:MultiView>
                     </p> 
                  </div> 
               </div>

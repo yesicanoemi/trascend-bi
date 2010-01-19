@@ -9,6 +9,8 @@ namespace Presentador.Empleado.Contrato
     public interface IModificarEmpleado
     {
         #region Informacion Basica
+        string RangoSueldo { get; set; }
+        bool RangoVisible { get; set; }
         TextBox NombreEmpleado { get; set; }
         TextBox NombreEmpleadoBus { get; set; }
         TextBox CedulaEmpleadoBus { get; set; }
@@ -25,6 +27,8 @@ namespace Presentador.Empleado.Contrato
         TextBox PisoEmpleado { get; set; }
         TextBox FechaIngresoEmpleado { get; set; }
         TextBox FechaEgresoEmpleado { get; set; }
+        DropDownList ComboCargos { get; set; }
+        MultiView MultiViewEmpleado { get; set; }
         #endregion
         #region Dialogo
         bool DialogoVisible { get; set; }

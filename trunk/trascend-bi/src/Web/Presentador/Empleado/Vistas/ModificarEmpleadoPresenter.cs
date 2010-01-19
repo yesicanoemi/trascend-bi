@@ -7,6 +7,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
+using System.Web.UI.WebControls;
 
 namespace Presentador.Empleado.Vistas
 {
@@ -59,6 +60,42 @@ namespace Presentador.Empleado.Vistas
             {
             }
         }
+        public void CambiarVista(int index)
+        {
+            _vista.MultiViewEmpleado.ActiveViewIndex = index;
+        }
+        public void ConsultarCargos()
+        {
+            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;
+            IList<Core.LogicaNegocio.Entidades.Cargo> cargo = new List<Core.LogicaNegocio.Entidades.Cargo>();
+            try
+            {
+                DropDownList e = new DropDownList();
+                Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+                cargos = conex.ConsultarCargos();
+                for (int i = 0; i < cargos.Count; i++)
+                {
+                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo)cargos[i]);
+                }
+                _vista.ComboCargos.Items.Clear();
+                _vista.ComboCargos.Items.Add("--");
+                _vista.ComboCargos.Items[0].Value = "0";
+                _vista.ComboCargos.DataSource = cargo;
+                _vista.ComboCargos.DataTextField = "Nombre";
+                _vista.ComboCargos.DataValueField = "Id";
+                _vista.ComboCargos.DataBind();
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+        }
         public void LimpiarRegistros()
         {
             _vista.NombreEmpleado.Text = campoVacio;
@@ -109,6 +146,26 @@ namespace Presentador.Empleado.Vistas
             //ejecuta el comando.
             modificar.Ejecutar();
         }
+        public void ConsultarSueldos()
+        {
+            try
+            {
+                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+                cargo.Nombre = _vista.ComboCargos.SelectedItem.Text;
+                Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+                cargo = (Core.LogicaNegocio.Entidades.Cargo)conex.ConsultarCargo(cargo);
+                _vista.RangoSueldo = "Rango de Sueldo: " + cargo.SueldoMinimo.ToString() + " - " + cargo.SueldoMaximo.ToString();
+                _vista.RangoVisible = true;
+                _vista.SueldoEmpleado.Text = cargo.SueldoMinimo.ToString();
+                _vista.SueldoEmpleado.Enabled = false;
+            }
+            catch (WebException e)
+            {
+            }
+            catch (Exception e)
+            {
+            }
+        }
         public void ConsultarEmpleado(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
             Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar; //objeto del comando Ingresar.
@@ -120,6 +177,7 @@ namespace Presentador.Empleado.Vistas
             //{    
             //ejecuta el comando.
             LlenarRegistros(consultar.Ejecutar());
+            CambiarVista(1);
         }
         #endregion
     }

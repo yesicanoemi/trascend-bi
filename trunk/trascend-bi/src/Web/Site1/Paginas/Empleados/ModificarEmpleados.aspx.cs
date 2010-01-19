@@ -35,6 +35,12 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         set { uxNombreEmpleado = value; }
     }
 
+    public DropDownList ComboCargos
+    {
+        get { return uxCargoEmpleado; }
+        set { uxCargoEmpleado = value; }
+    }
+
     public TextBox NombreEmpleadoBus
     {
         get { return uxNombreCon; }
@@ -76,7 +82,17 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         get { return uxFechaNac; }
         set { uxFechaNac = value; }
     }
+    public string RangoSueldo
+    {
+        get { return lbRangoSueldo.Text; }
+        set { lbRangoSueldo.Text = value; }
+    }
 
+    public bool RangoVisible
+    {
+        get { return lbRangoSueldo.Visible; }
+        set { lbRangoSueldo.Visible = value; }
+    }
     public TextBox AvenidaEmpleado
     {
         get { return uxAvenida; }
@@ -124,12 +140,20 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         get { return uxFechaEgreso; }
         set { uxFechaEgreso = value; }
     }
+    public MultiView MultiViewEmpleado
+    {
+        get { return uxMultiViewEmpleado ; }
+        set { uxMultiViewEmpleado = value; }
+    }
     #endregion
 
     #endregion
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            _presentador.ConsultarCargos();
+        }
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
@@ -167,5 +191,9 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         _presentador.ConsultarEmpleado();
+    }
+    protected void uxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.ConsultarSueldos();
     }
 }
