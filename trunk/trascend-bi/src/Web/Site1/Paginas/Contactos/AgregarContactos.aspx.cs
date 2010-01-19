@@ -69,7 +69,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
     public DropDownList DropDownClientes
     {
         get { return uxDropDownClientes; }
-        set { uxDropDownCliente = value; }
+        set { uxDropDownClientes = value; }
     }
 
     protected void Page_Load(object sender, EventArgs e)
