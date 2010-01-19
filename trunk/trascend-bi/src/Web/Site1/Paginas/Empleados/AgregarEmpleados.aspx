@@ -48,7 +48,7 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxNombreEmpleado"
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxNombreEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
                                     </tr>
@@ -65,7 +65,7 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxApellidoEmpleado"
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxApellidoEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaApellidoEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
                                         </td>
@@ -83,7 +83,7 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxCedulaEmpleado"
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxCedulaEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller" Display="Static" />
                                         </td>
                                     </tr>
@@ -100,10 +100,10 @@
                                             &nbsp;
                                         </td>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxNumCuentaEmpleado"
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxNumCuentaEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaNumCuentaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2"
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2"
                                                 runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoNumCuentaEmpleado%>"
                                                 ControlToValidate="uxNumCuentaEmpleado" ValidationExpression="<%$Resources:DSU, ERNumCuentaEmpleado%>"
                                                 Font-Size="Smaller">
@@ -163,18 +163,25 @@
                                         </td>
                                         <td>
                                             &nbsp;
-                                        </td>
+                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            Dirección
+                                            <b>Dirección</b>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Ciudad</td>
-                                        <td>
+                                        <td>Ciudad                                     <td>
                                             <asp:TextBox ID="uxCiudad" runat="server"></asp:TextBox>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Avenida</td>
@@ -183,10 +190,26 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                         </td>
+                                    </tr>
+                                    <tr>
                                         <td>Calle</td>
                                         <td>
                                             <asp:TextBox ID="uxCalle" runat="server"></asp:TextBox>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Urbanización</td>
@@ -195,10 +218,26 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                         </td>
+                                    </tr>
+                                    <tr>
                                         <td>Edificio o Casa</td>
                                         <td>
                                             <asp:TextBox ID="uxEdificio" runat="server"></asp:TextBox>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Piso o Apartamento</td>
@@ -206,6 +245,7 @@
                                             <asp:TextBox ID="uxPiso" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
+                                    
                                     <tr>
                                         <td>
                                             &nbsp;
@@ -218,10 +258,13 @@
                                         <td>
                                             Fecha de Ingreso
                                         </td>
-                                        <td>
+                                        
+                                         <td>
                                             <asp:TextBox ID="uxFechaIngreso" runat="server"></asp:TextBox>
                                             <asp:Image ID="uxImagenFechaIngreso" runat="server" ImageUrl="~/Images/calendario.png" />
                                         </td>
+                                   
+                                       
                                     </tr>
                                     <tr>
                                         <td>
