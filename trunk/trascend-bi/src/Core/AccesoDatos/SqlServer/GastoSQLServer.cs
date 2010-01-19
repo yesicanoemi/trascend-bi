@@ -81,9 +81,13 @@ namespace Core.AccesoDatos.SqlServer
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGasto", parametros);
 
             }
-            catch (SqlException e)
+            catch (InvalidOperationException e)
             {
-                System.Console.Write(e);
+                _gasto.Codigo = -1;
+            }
+            catch (SqlException)
+            {
+                _gasto.Codigo = -2;
             }
 
             return _gasto;
@@ -127,11 +131,15 @@ namespace Core.AccesoDatos.SqlServer
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGastoPropuesta", parametros);
 
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                //System.Console.Write(e);
                 _gasto.Codigo = -1;
             }
+            catch (SqlException)
+            {
+                _gasto.Codigo = -2;
+            }
+
 
             return _gasto;
         }
@@ -165,10 +173,15 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                System.Console.Write(e);
+                gastos.ElementAt(0).Codigo= -1;
             }
+            catch (SqlException)
+            {
+                gastos.ElementAt(0).Codigo = -2;
+            }
+
 
             return gastos;
         }
@@ -176,7 +189,7 @@ namespace Core.AccesoDatos.SqlServer
         public IList<Gasto> ConsultarGastoPorPropuesta(Core.LogicaNegocio.Entidades.Propuesta propuesta)
         {
             IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
-
+ 
             try
             {
                 SqlParameter[] parametro = new SqlParameter[1];
@@ -201,18 +214,24 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                System.Console.Write(e);
+                gastos.ElementAt(0).Codigo = -1;
+            }
+            catch (SqlException)
+            {
+                gastos.ElementAt(0).Codigo = -2;
             }
 
+
             return gastos;
+
         }
 
         public IList<Gasto> ConsultarGastoPorFecha(Core.LogicaNegocio.Entidades.Gasto gasto)
         {
             IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
-
+            
             try
             {
                 SqlParameter[] parametro = new SqlParameter[1];
@@ -237,10 +256,15 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                System.Console.Write(e);
+                gastos.ElementAt(0).Codigo = -1;
             }
+            catch (SqlException)
+            {
+                gastos.ElementAt(0).Codigo = -2;
+            }
+
 
             return gastos;
         }
@@ -259,10 +283,16 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "EliminarGasto", parametro);
 
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                System.Console.Write(e);
+                _gasto.Codigo = -1;
             }
+            catch (SqlException)
+            {
+                _gasto.Codigo = -2;
+            }
+
+
             return _gasto;
         }
 

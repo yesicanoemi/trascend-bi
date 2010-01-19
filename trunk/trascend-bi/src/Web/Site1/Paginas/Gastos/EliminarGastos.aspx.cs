@@ -127,9 +127,11 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
     }    
     */
 
+    
+
     protected void uxEliminarGasto_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
     {
-        _presenter.eliminarGasto(int.Parse(uxEliminarGasto.DataKeys[e.NewSelectedIndex].Value.ToString()));
+        _presenter.eliminarGasto (int.Parse(uxEliminarGasto.DataKeys[e.NewSelectedIndex].Value.ToString()));
     }
 
     #endregion

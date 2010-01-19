@@ -42,7 +42,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
           
           <div class="features_overview_right"> 
            <h3>Agregar Gastos</h3>
-            <p class="large">Introduzca la informacón a continuación</p> 
+            <p class="large">Introduzca la información a continuación</p> 
             <p class="large">
                 <form id="uxFormGasto" runat="server">
                            <table style="width:100%;">
@@ -96,7 +96,13 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxMontoGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaMontoGasto%>" Font-Size="Smaller" Display="static" /></td>
+                                                ErrorMessage="<%$ Resources:DSU, FaltaMontoGasto%>" Font-Size="Smaller" Display="static" />
+                                                <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator3"
+                                                runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoMontoGasto%>"
+                                                ControlToValidate="uxMontoGasto" ValidationExpression="<%$Resources:DSU, ErrorMontoGasto%>"
+                                                Font-Size="Smaller">
+                                            </asp:RegularExpressionValidator>
+                                                </td>
                                </tr>
                                 <tr>
                                    <td>Estado del gasto: </td>

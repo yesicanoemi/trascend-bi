@@ -29,11 +29,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         /// <summary>
         /// Ejecuta el comando para eliminar el regustro en la base de datos
         /// </summary>
-        public void Ejecutar()
+        public Gasto Ejecutar()
         {
             Gasto _gasto = null;
             GastoSQLServer bd = new GastoSQLServer();
             _gasto = bd.EliminarGasto(gasto);
+            return _gasto;
         }
         #endregion
     }

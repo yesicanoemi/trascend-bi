@@ -363,6 +363,12 @@
   <data name="FaltaFechaInicio" xml:space="preserve">
     <value>Introducir la fecha de Inicio</value>
   </data>
+  <data name="ErrorFormatoMontoGasto" xml:space="preserve">
+    <value>Solo se puede introducir numeros.</value>
+  </data>
+  <data name="ErrorMontoGasto" xml:space="preserve">
+    <value>^\d*(,)?\d{1,2}$</value>
+  </data>
   <data name="ERHoras" xml:space="preserve">
     <value>^([0-9])$</value>
   </data>
