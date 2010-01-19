@@ -128,6 +128,11 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return LabelEquipo; }
         set { LabelEquipo = value; }
     }
+    public Label LabelParam
+    {
+        get { return LabelParametro; }
+        set { LabelParametro = value; }
+    }
 
     public ListBox ListaEmpleados
     {

@@ -19,10 +19,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         #endregion
 
         #region Metodos
-        public IList<string> Ejecutar()
-        { 
+        public IList<string> Ejecutar(DateTime FechaI, DateTime FechaF)
+        {
             ReporteSQLServer acceso = new ReporteSQLServer();
-            _rol = acceso.ObtenerRol();
+            _rol = acceso.ObtenerRol(FechaI, FechaF);
             return _rol;
         }
         #endregion

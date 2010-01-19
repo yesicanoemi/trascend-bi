@@ -41,16 +41,15 @@ public partial class Paginas_Reportes_ReportesEquipo2 : System.Web.UI.Page, IRep
     }
     protected void Page_Init(object sender, EventArgs e)
     {
-        uxBotonAnio.Visible = false;
+        uxBotonRol.Visible = false;
         _presenter = new ReporteHorasRolPresenter(this);
-        _presenter.BuscaRol();
         
     }
 
     
     protected void uxBotonAnio_Click(object sender, EventArgs e)
     {
-        //_presenter.ContarHoras();
+        _presenter.BuscaRol();
     }
     protected void uxBotonRol_Click(object sender, EventArgs e)
     {

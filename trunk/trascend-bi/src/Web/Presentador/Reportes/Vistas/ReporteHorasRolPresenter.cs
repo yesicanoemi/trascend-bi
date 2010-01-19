@@ -32,7 +32,13 @@ namespace Presentador.Reportes.Vistas
         {
             try
             {
-                empleado = BuscarRoles();
+                string anio = _vista.SeleccionAnio.Text;
+                string ConstFechaI = "01/01/" + anio;
+                string ConstFechaF = "31/12/" + anio;
+                DateTime FechaI = Convert.ToDateTime(ConstFechaI);
+                DateTime FechaF = Convert.ToDateTime(ConstFechaF);
+                empleado = BuscarRoles(FechaI, FechaF);
+                
                 int i = 0;
 
                 for ( i = 0; i < empleado.Count; i++ )
@@ -69,17 +75,17 @@ namespace Presentador.Reportes.Vistas
             }
         }
 
-        public IList<string> BuscarRoles()
+        public IList<string> BuscarRoles(DateTime Fecha1, DateTime Fecha2)
         {
             Core.LogicaNegocio.Comandos.ComandoReporte.ConsultaRol consultar;
-            consultar = FabricaComandosReporte.CrearComandoConsultarRol( empleado );
-            empleado = consultar.Ejecutar();
+            consultar = FabricaComandosReporte.CrearComandoConsultarRol(empleado);
+            empleado = consultar.Ejecutar(Fecha1, Fecha2);
             return empleado;
         }
         public int SumaHora( string rol )
         {
             Core.LogicaNegocio.Comandos.ComandoReporte.ConsultaHora consultar;
-            consultar = FabricaComandosReporte.SumaHoraRol( rol );
+            consultar = FabricaComandosReporte.SumaHoraRol(rol);
             _Horas = consultar.Ejecutar();
             return _Horas;
         }

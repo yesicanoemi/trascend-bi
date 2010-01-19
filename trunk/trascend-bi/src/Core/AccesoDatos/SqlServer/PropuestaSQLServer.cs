@@ -10,7 +10,7 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using System.Net;
-using Core.LogicaNegocio.Excepciones;
+using Core.LogicaNegocio.Excepciones.Propuesta.AccesoDatos;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -39,6 +39,9 @@ namespace Core.AccesoDatos.SqlServer
 
         private SqlConnection GetConnection()
         {
+            try
+            {
+
             XmlDocument xDoc = new XmlDocument();
 
             xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
@@ -52,6 +55,15 @@ namespace Core.AccesoDatos.SqlServer
             connection.Open();
 
             return connection;
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarPropuestaBDException("Conexión a la BD Fallida", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPropuestaBDException("Conexión Xml No Encontrada", e);
+            }
         }
         #endregion
 
@@ -419,7 +431,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Exception(e.ToString());
+                throw new ConsultarPropuestaBDException("Error En acceso a Base de Datos", e);
             }
         }
 
@@ -508,7 +520,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Exception(e.ToString());
+                throw new ConsultarPropuestaBDException
+                    ("Error En Acceso a Base de Datos Para Consulta", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPropuestaBDException
+                    ("Error En Consulta de Propuesta", e);
             }
         }
         /// <summary>
@@ -545,7 +563,12 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Exception(e.ToString());
+                throw new ConsultarPropuestaBDException("Erron en Acceso a Bd", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPropuestaBDException
+                    ("Error En Consulta de Empleado En Propuesta", e);
             }
 
         }
@@ -581,7 +604,12 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Exception(e.ToString());
+                throw new Exception("Error En Acceso a Bd", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPropuestaBDException
+                    ("Error En Consulta de Receptor de Propuesta", e);
             }
         }
 
@@ -611,7 +639,11 @@ namespace Core.AccesoDatos.SqlServer
                 }
                 catch (SqlException e)
                 {
-                    throw new Exception(e.ToString());
+                    throw new Exception("Error en Acceso a Bd", e);
+                }
+                catch (Exception e)
+                {
+                    throw new EliminarPropuestaBDException("No Existen Objeto Propuesta a Eliminar", e);
                 }
             }
             else
@@ -627,7 +659,7 @@ namespace Core.AccesoDatos.SqlServer
                 }
                 catch (SqlException e)
                 {
-                    throw new Exception(e.ToString());
+                    throw new Exception("Error Durante Ejecucion de Instruccion a la BD", e);
                 }
             }
         }

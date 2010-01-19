@@ -35,8 +35,7 @@
                             </tr>
                             <tr>
                                 <td><asp:Label ID="LabelSeleccion" runat="server" Text = "Seleccione" Visible = "false" /></td>
-                                <td><asp:DropDownList ID="uxSeleccion" runat="server" Visible="false">
-                                    </asp:DropDownList></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -44,15 +43,15 @@
                                         onclick="uxBotonAceptar_Click" /></td>
                             </tr>
                             <tr>
-                                <td>Indique Parámetro de busqueda</td>
-                                <td></td>
+                                <td><asp:Label ID="LabelParametro" runat="server" Text = "Introduzca Parametro" Visible = "false"  /></td>
+                                <td><asp:DropDownList ID="uxSeleccion" runat="server" Visible="false">
+                                    </asp:DropDownList></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><asp:Button ID="uxBotonAceptar2" runat="server" Text="Aceptar" Visible="False" 
                                         onclick="uxBotonAceptar2_Click" /></td>
                             </tr>
-                            <tr></tr>
                             <tr>
                                 <td><asp:Label ID="LabelTitulo" runat="server" Text = "Titulo" Visible ="False"  /></td>
                                 <td><asp:Label ID="LabelTituloPropuesta" runat="server" Visible ="False" /></td>    

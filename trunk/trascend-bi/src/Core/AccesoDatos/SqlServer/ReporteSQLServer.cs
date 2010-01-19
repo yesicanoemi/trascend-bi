@@ -182,7 +182,7 @@ namespace Core.AccesoDatos.SqlServer
         /// solicitada
         /// </summary>
         /// <returns>Retorna una Lista de string q contiene el rol</returns>
-        public IList<string> ObtenerRol()
+        public IList<string> ObtenerRol(DateTime FechaI, DateTime FechaF)
         {
             try
             {

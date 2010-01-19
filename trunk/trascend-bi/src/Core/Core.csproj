@@ -166,6 +166,11 @@
     <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ModificarFacturaLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\IngresarException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ConsultarPropuestaBDException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\EliminarPropuestaBDException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ReportePropuestaBdException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Propuesta\LogicaNegocio\ConsultarPropuestaLogicaNException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\ReportesException.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosReporte.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />

@@ -36,10 +36,10 @@
             
             
             
-            <table style="width: 100%">
+             <table style="width: 100%">
              <tr>
                     <td>
-                        <asp:DropDownList ID="uxRol" runat="server">
+                        <asp:DropDownList ID="uxRol" runat="server" Visible="false">
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:DropDownList ID="uxAnio" runat="server" Visible = "false">
+                        <asp:DropDownList ID="uxAnio" runat="server">
                             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
                             <asp:ListItem Value="2010">2010</asp:ListItem>
                             <asp:ListItem Value="2009">2009</asp:ListItem>
