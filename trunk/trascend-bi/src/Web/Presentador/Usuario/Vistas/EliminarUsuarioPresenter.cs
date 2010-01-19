@@ -22,7 +22,7 @@ namespace Presentador.Usuario.Vistas
 
         }
 
-        
+
 
         public void OnBotonEliminar()
         {
@@ -36,17 +36,18 @@ namespace Presentador.Usuario.Vistas
             {
                 user.Status = "Inactivo";
                 user = EliminarUsuario(user);
-                _vista.Volver();
-               
+                _vista.Mensaje("Se ha desactivado el usuario, si desea activarlo de nuevo debe ir al modulo de Modificar Usuario");
+                //  _vista.Volver();
+
             }
 
             else
             {
-                //Mensaje de error el usuario no existe en el sistema
+                //  _vista.Mensaje("El usuario ya se encuentra inactivo");
             }
 
 
-         }
+        }
 
 
 
@@ -56,7 +57,7 @@ namespace Presentador.Usuario.Vistas
             IList<Core.LogicaNegocio.Entidades.Usuario> listaUsuarios;
 
             listaUsuarios = ListarUsuarios(user);
-            
+
             _vista.UsuarioEliminar.Items.Clear();
             _vista.UsuarioEliminar.Items.Add(" -- ");
             _vista.UsuarioEliminar.Items[0].Value = "0";
@@ -69,7 +70,7 @@ namespace Presentador.Usuario.Vistas
 
 
 
-        public IList<Core.LogicaNegocio.Entidades.Usuario> 
+        public IList<Core.LogicaNegocio.Entidades.Usuario>
             ListarUsuarios(Core.LogicaNegocio.Entidades.Usuario entidad)
         {
 
@@ -85,7 +86,7 @@ namespace Presentador.Usuario.Vistas
         }
 
 
-     
+
         public Core.LogicaNegocio.Entidades.Usuario VerificarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {
@@ -102,7 +103,7 @@ namespace Presentador.Usuario.Vistas
         }
 
 
-        
+
         public Core.LogicaNegocio.Entidades.Usuario EliminarUsuario
                 (Core.LogicaNegocio.Entidades.Usuario entidad)
         {

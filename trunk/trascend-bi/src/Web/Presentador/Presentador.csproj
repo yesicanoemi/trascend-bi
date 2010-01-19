@@ -148,6 +148,7 @@
     <Compile Include="Reportes\Contrato\IReporteEquipo8b.cs" />
     <Compile Include="Reportes\Contrato\IReporteEquipo8c.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasEmitidas.cs" />
+    <Compile Include="Reportes\Contrato\IReporteGastoAnual.cs" />
     <Compile Include="Reportes\Contrato\IReporteGastoFecha.cs" />
     <Compile Include="Reportes\Contrato\IReporteHorasRol.cs" />
     <Compile Include="Reportes\Vistas\PropuestasIntervaloPresenter.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Reportes\Vistas\ReporteFacturasCobradasPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFacturasPorCobrarPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteFaturasEmitidasPresenter.cs" />
+    <Compile Include="Reportes\Vistas\ReporteGastoAnualPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteGastoFechaPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteHorasRolPresenter.cs" />
     <Compile Include="Usuario\Contrato\IAgregarUsuario.cs" />

@@ -22,6 +22,14 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
 
     #endregion
 
+
+    public void Mensaje(string msg)
+    {
+        Label lbl = new Label();
+        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        Page.Controls.Add(lbl);
+    }
+
     protected void Page_Init(object sender, EventArgs e)
     {
 
@@ -49,12 +57,12 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
         }
 
     }
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
             _presenter.CargarUsuarios();
-            _presenter.OnBotonEliminar();
+        _presenter.OnBotonEliminar();
 
 
     }

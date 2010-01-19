@@ -51,6 +51,18 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultaHora(rol);
         }
 
+        public static ConsultarGastoAnual CrearComandoGastosAnuales(Gasto entidad)
+        {
+            return new ConsultarGastoAnual(entidad);
+        }
+
+        public static ConsultarGastoTotal CrearComandoGastoTotal(Gasto entidad)
+        {
+            return new ConsultarGastoTotal(entidad);
+        }
+
+
+
         /// <summary>
         /// Comando utilizado para crear una lista de entidades de tipo factura parametrizada por un
         /// un rango de fecha y el tipo de factura

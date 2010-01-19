@@ -9,7 +9,8 @@ namespace Presentador.Usuario.Contrato
     public interface IEliminarUsuario
     {
         DropDownList UsuarioEliminar { get; set; }
+        void Mensaje(string msg);
         void Volver();
     }
-   
+
 }
