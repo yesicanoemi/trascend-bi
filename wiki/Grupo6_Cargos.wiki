@@ -24,21 +24,22 @@ http://trascend-bi.googlecode.com/files/Ingresar%20Cargo%20grupo%20%236.png
 
 
 
-
-====*2) Consultar Cargos*====
-
-http://trascend-bi.googlecode.com/files/Consultar%20Cargo%20grupo%20%236.png
-
-
-
-====*3) Modificar Cargos*====
+====*2) Modificar Cargos*====
 
 http://trascend-bi.googlecode.com/files/Modificar%20Cargo%20grupo%20%236.png
 
 
-====*4) Eliminar Cargos*====
+
+====*3) Eliminar Cargos*====
 
 http://trascend-bi.googlecode.com/files/Eliminar%20Cargo%20grupo%20%236.png
+
+
+
+====*4) Consultar Cargos*====
+
+http://trascend-bi.googlecode.com/files/Consultar%20Cargo%20grupo%20%236.png
+
 <br>
 <br>
 *Reportes:*
