@@ -55,15 +55,21 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns></returns>
         public Propuesta IngresarPropuesta(Propuesta propuesta)
         {
-            //Propuesta _propuesta = new Propuesta();
 
             SqlParameter[] arparmsP = new SqlParameter[2];
 
             SqlParameter[] ParamV = new SqlParameter[6];
 
+            SqlParameter[] ParamR = new SqlParameter[3];
+
+            SqlParameter[] Parametros = new SqlParameter[1];
+
+            //Ingresar Propuesta
+
             DateTime fechaingreso = DateTime.Now;
 
             //Se definen los parametros
+
             arparmsP[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
 
             arparmsP[0].Value = propuesta.Titulo;
@@ -74,13 +80,20 @@ namespace Core.AccesoDatos.SqlServer
 
             int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarPropuesta", arparmsP);
 
+            // Consulta IdPropuesta
+
             DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarIdPropuesta");
 
             if (conexion.Read())
             {
+
                 int IdPropuesta;
 
+
                 IdPropuesta = (int)conexion["maximo"];
+
+
+                //Insert Version
 
                 ParamV[0] = new SqlParameter("@Version", SqlDbType.Int);
 
@@ -107,14 +120,229 @@ namespace Core.AccesoDatos.SqlServer
                 ParamV[5].Value = IdPropuesta;
 
                 int result2 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarVersion", ParamV);
+
             }
+            //Consultar el Id del Cargo
+
+            Parametros[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+            Parametros[0].Value = propuesta.CargoReceptor;
+
+            DbDataReader conex2 = SqlHelper.ExecuteReader(GetConnection(), "ConsultarIdCargo",
+                Parametros);
+
+            while (conex2.Read())
+            {
+                int IdCargo;
+
+                IdCargo = (int)conex2["IdCargo"];
+
+                // Ingresar Receptor
+
+                ParamR[0] = new SqlParameter("@NombreReceptor", SqlDbType.VarChar);
+
+                ParamR[0].Value = propuesta.NombreReceptor;
+
+                ParamR[1] = new SqlParameter("@ApellidoReceptor", SqlDbType.VarChar);
+
+                ParamR[1].Value = propuesta.ApellidoReceptor;
+
+                ParamR[2] = new SqlParameter("@IdCargo", SqlDbType.Int);
+
+                ParamR[2].Value = IdCargo;
+
+                int result3 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarReceptor", ParamR);
+            }
+
+            //Ingresar Equipo
+
+            SqlParameter[] Param = new SqlParameter[2];
+
+            if (propuesta.NombreEquipo1 != null)
+            {
+                Param[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                Param[0].Value = propuesta.NombreEquipo1;
+
+                Param[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+
+                Param[1].Value = propuesta.ApellidoEquipo1;
+
+                DbDataReader conex3 = SqlHelper.ExecuteReader(GetConnection(),
+                    "ConsultarIdEmpleado", Param);
+
+                while (conex3.Read())
+                {
+                    int IdEmpleado;
+
+                    IdEmpleado = (int)conex3["IdEmpleado"];
+
+                    DbDataReader conex4 = SqlHelper.ExecuteReader(GetConnection(),
+                        "ConsultarIdVersion");
+
+                    if (conex4.Read())
+                    {
+
+                        int IdVersion;
+
+                        IdVersion = (int)conex4["maximo"];
+
+                        SqlParameter[] Param2 = new SqlParameter[4];
+
+                        Param2[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+
+                        Param2[0].Value = IdEmpleado;
+
+                        Param2[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
+
+                        Param2[1].Value = IdVersion;
+
+                        Param2[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
+
+                        Param2[2].Value = propuesta.Rol1;
+
+                        Param2[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
+
+                        Param2[3].Value = propuesta.TotalHoras;
+
+                        int result3 = SqlHelper.ExecuteNonQuery(GetConnection(),
+                            "IngresarEquipo", Param2);
+
+                    }
+
+                }
+            }
+
+            if (propuesta.NombreEquipo2 != null)
+            {
+                SqlParameter[] Param3 = new SqlParameter[2];
+
+                Param3[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                Param3[0].Value = propuesta.NombreEquipo2;
+
+                Param3[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+
+                Param3[1].Value = propuesta.ApellidoEquipo2;
+
+                DbDataReader conex5 = SqlHelper.ExecuteReader(GetConnection(),
+                    "ConsultarIdEmpleado", Param3);
+
+                while (conex5.Read())
+                {
+                    int IdEmpleado;
+
+                    IdEmpleado = (int)conex5["IdEmpleado"];
+
+                    DbDataReader conex6 = SqlHelper.ExecuteReader(GetConnection(),
+                        "ConsultarIdVersion");
+
+                    if (conex6.Read())
+                    {
+
+                        int IdVersion;
+
+                        IdVersion = (int)conex6["maximo"];
+
+                        SqlParameter[] Param4 = new SqlParameter[4];
+
+                        Param4[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+
+                        Param4[0].Value = IdEmpleado;
+
+                        Param4[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
+
+                        Param4[1].Value = IdVersion;
+
+                        Param4[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
+
+                        Param4[2].Value = propuesta.Rol2;
+
+                        Param4[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
+
+                        Param4[3].Value = propuesta.TotalHoras;
+
+                        int result4 = SqlHelper.ExecuteNonQuery(GetConnection(),
+                            "IngresarEquipo", Param4);
+
+                    }
+
+                }
+
+
+            }
+            if (propuesta.NombreEquipo3 != null)
+            {
+                SqlParameter[] Param5 = new SqlParameter[2];
+
+                Param5[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                Param5[0].Value = propuesta.NombreEquipo3;
+
+                Param5[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+
+                Param5[1].Value = propuesta.ApellidoEquipo3;
+
+                DbDataReader conex7 = SqlHelper.ExecuteReader(GetConnection(),
+                    "ConsultarIdEmpleado", Param5);
+
+                while (conex7.Read())
+                {
+                    int IdEmpleado;
+
+                    IdEmpleado = (int)conex7["IdEmpleado"];
+
+                    DbDataReader conex8 = SqlHelper.ExecuteReader(GetConnection(),
+                        "ConsultarIdVersion");
+
+                    if (conex8.Read())
+                    {
+
+                        int IdVersion;
+
+                        IdVersion = (int)conex8["maximo"];
+
+                        SqlParameter[] Param6 = new SqlParameter[4];
+
+                        Param6[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+
+                        Param6[0].Value = IdEmpleado;
+
+                        Param6[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
+
+                        Param6[1].Value = IdVersion;
+
+                        Param6[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
+
+                        Param6[2].Value = propuesta.Rol3;
+
+                        Param6[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
+
+                        Param6[3].Value = propuesta.TotalHoras;
+
+                        int result5 = SqlHelper.ExecuteNonQuery(GetConnection(),
+                            "IngresarEquipo", Param6);
+
+                    }
+
+                }
+
+
+            }
+
+
+
+
+
+            // arparms[8] = new SqlParameter("@TotalHoras", SqlDbType.VarChar);
+            //arparms[8].Value = propuesta.TotalHoras;
 
 
             return propuesta;
 
 
         }
-        
+
         /// <summary>
         /// Metodo para consultar las propuestas
         /// </summary>
@@ -124,20 +352,20 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                DbDataReader conexion = SqlHelper.ExecuteReader( GetConnection(), "ConsultarPropuesta" );
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuesta");
                 int i = 0;
 
-                while ( conexion.Read() )
+                while (conexion.Read())
                 {
 
-                     Propuesta _Propuesta    = new Propuesta();
-                    _Propuesta.Titulo        = ( string )conexion["Titulo"];
-                    _Propuesta.Version       = ( string )conexion["NumeroVersion"].ToString();
-                    _Propuesta.FechaFirma    = ( DateTime )conexion["FechaFirma"];
-                    _Propuesta.FechaInicio   = ( DateTime )conexion["FechaInicio"];
-                    _Propuesta.FechaFin      = ( DateTime )conexion["FechaFin"];
-                    _Propuesta.MontoTotal    = float.Parse(conexion["Monto"].ToString());
-                    _Propuesta.Id            = ( int )conexion["IdPropuesta"];
+                    Propuesta _Propuesta = new Propuesta();
+                    _Propuesta.Titulo = (string)conexion["Titulo"];
+                    _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                    _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                    _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                    _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                    _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                    _Propuesta.Id = (int)conexion["IdPropuesta"];
                     _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
 
                     #region Busqueda del Receptor
@@ -154,16 +382,16 @@ namespace Core.AccesoDatos.SqlServer
                     }
 
                     #endregion
-                    ListaPropuesta.Insert( i, _Propuesta );
+                    ListaPropuesta.Insert(i, _Propuesta);
                     i++;
 
                 }
 
                 return ListaPropuesta;
             }
-            catch ( SqlException e )
+            catch (SqlException e)
             {
-                throw new Exception( e.ToString() );
+                throw new Exception(e.ToString());
             }
         }
 
@@ -181,14 +409,14 @@ namespace Core.AccesoDatos.SqlServer
             while (conexion.Read())
             {
 
-                 Propuesta _Propuesta  =  new Propuesta();
-                _Propuesta.Titulo      = ( string )conexion["Titulo"];
-                _Propuesta.Version     = ( string )conexion["NumeroVersion"].ToString();
-                _Propuesta.FechaFirma  = ( DateTime )conexion["FechaFirma"];
-                _Propuesta.FechaInicio = ( DateTime )conexion["FechaInicio"];
-                _Propuesta.FechaFin    = ( DateTime )conexion["FechaFin"];
-                _Propuesta.MontoTotal  = float.Parse(conexion["Monto"].ToString());
-                _Propuesta.Id          = ( int )conexion["IdPropuesta"];
+                Propuesta _Propuesta = new Propuesta();
+                _Propuesta.Titulo = (string)conexion["Titulo"];
+                _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                _Propuesta.Id = (int)conexion["IdPropuesta"];
 
                 ListaPropuesta.Insert(i, _Propuesta);
                 i++;
@@ -208,22 +436,22 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
                 DbDataReader conexion = SqlHelper.ExecuteReader
-                    ( GetConnection(), "ConsultarPropuestaEspera" );
+                    (GetConnection(), "ConsultarPropuestaEspera");
 
                 int i = 0;
 
-                while ( conexion.Read() )
+                while (conexion.Read())
                 {
 
-                    Propuesta _Propuesta     = new Propuesta();
-                    _Propuesta.Titulo        = ( string )conexion["Titulo"];
-                    _Propuesta.Version       = ( string )conexion["NumeroVersion"].ToString();
-                    _Propuesta.FechaFirma    = ( DateTime )conexion["FechaFirma"];
-                    _Propuesta.FechaInicio   = ( DateTime )conexion["FechaInicio"];
-                    _Propuesta.FechaFin      = ( DateTime )conexion["FechaFin"];
-                    _Propuesta.MontoTotal    = float.Parse(conexion["Monto"].ToString());
-                    _Propuesta.Id            = ( int )conexion["IdPropuesta"];
-                    _Propuesta.EquipoTrabajo = BuscarEmpleado( _Propuesta.Id );
+                    Propuesta _Propuesta = new Propuesta();
+                    _Propuesta.Titulo = (string)conexion["Titulo"];
+                    _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                    _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                    _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                    _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                    _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                    _Propuesta.Id = (int)conexion["IdPropuesta"];
+                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
 
                     #region Busqueda del Receptor
 
@@ -243,64 +471,64 @@ namespace Core.AccesoDatos.SqlServer
 
                     #endregion
 
-                    ListaPropuesta.Insert( i, _Propuesta );
+                    ListaPropuesta.Insert(i, _Propuesta);
                     i++;
 
                 }
 
                 return ListaPropuesta;
             }
-            catch ( SqlException e )
+            catch (SqlException e)
             {
-                throw new Exception( e.ToString() );
+                throw new Exception(e.ToString());
             }
         }
         /// <summary>
         /// Metodo que se encarga de buscar Los empleados de una propuesta en específico
         /// </summary>
         /// <returns></returns>
-        private List<Empleado> BuscarEmpleado( int IdPropuesta )
+        private List<Empleado> BuscarEmpleado(int IdPropuesta)
         {
-            
+
             List<Empleado> ListaEmpleado = new List<Empleado>();
 
             try
             {
                 SqlParameter ParamIdPropuesta = new SqlParameter();
-                ParamIdPropuesta = new SqlParameter( "@IdPropuesta", SqlDbType.Int );
+                ParamIdPropuesta = new SqlParameter("@IdPropuesta", SqlDbType.Int);
                 ParamIdPropuesta.Value = IdPropuesta;
 
                 DbDataReader conexionempleado =
                     SqlHelper.ExecuteReader
-                    ( GetConnection(), "ConsultarEmpleadoVersion", ParamIdPropuesta );
+                    (GetConnection(), "ConsultarEmpleadoVersion", ParamIdPropuesta);
 
                 int j = 0;
-                while ( conexionempleado.Read() )
+                while (conexionempleado.Read())
                 {
                     Empleado empleado = new Empleado();
-                    empleado.Nombre   = ( string )conexionempleado["Nombre"];
+                    empleado.Nombre = (string)conexionempleado["Nombre"];
 
-                    ListaEmpleado.Insert( j, empleado );
+                    ListaEmpleado.Insert(j, empleado);
                     j++;
                 }
 
                 return ListaEmpleado;
 
             }
-            catch ( SqlException e )
+            catch (SqlException e)
             {
-                throw new Exception( e.ToString() );
+                throw new Exception(e.ToString());
             }
-         
+
         }
-        
+
         /// <summary>
         /// Metodo que consulta el Receptor de la propuesta
         /// </summary>
         /// <param name="IdPropuesta"> Se envia el id de la propuesta</param>
         /// <returns>Retorna una lista de string que contiene los 3 campos Nombre Apellido y Receptor
         /// la lista es de tipo string ya que no existe la entidad receptor como tal</returns>
-        private List<string> BuscarReceptor( int IdPropuesta )
+        private List<string> BuscarReceptor(int IdPropuesta)
         {
             List<string> ListaReceptor = new List<string>();
 
@@ -313,19 +541,19 @@ namespace Core.AccesoDatos.SqlServer
                 ParamIdPropuestaR.Value = IdPropuesta;
                 DbDataReader conexionReceptor =
                     SqlHelper.ExecuteReader
-                        ( GetConnection(), "ConsultarReceptorVersion", ParamIdPropuestaR );
+                        (GetConnection(), "ConsultarReceptorVersion", ParamIdPropuestaR);
 
-                while ( conexionReceptor.Read( ))
+                while (conexionReceptor.Read())
                 {
-                    ListaReceptor.Add( (string)conexionReceptor["NombreReceptor"] );
-                    ListaReceptor.Add( (string)conexionReceptor["Apellido"] );
-                    ListaReceptor.Add( (string)conexionReceptor["Nombre"] );
+                    ListaReceptor.Add((string)conexionReceptor["NombreReceptor"]);
+                    ListaReceptor.Add((string)conexionReceptor["Apellido"]);
+                    ListaReceptor.Add((string)conexionReceptor["Nombre"]);
                 }
                 return ListaReceptor;
             }
             catch (SqlException e)
             {
-                throw new Exception( e.ToString() );
+                throw new Exception(e.ToString());
             }
         }
 
@@ -336,20 +564,20 @@ namespace Core.AccesoDatos.SqlServer
         /// el nombre de la propuesta a eliminar si la lista esta vacia consulta
         /// las propuestas a eliminar, si esta llena elimina la propuesta que contiene la lista</param>
         /// <returns>Lista de propuestas a ser eliminadas</returns>
-        public IList<string> ListaEliminar( List<string> ListaRecibida )
+        public IList<string> ListaEliminar(List<string> ListaRecibida)
         {
-            if ( ListaRecibida.Count == 0 )
+            if (ListaRecibida.Count == 0)
             {
                 try
                 {
                     DbDataReader conexion = SqlHelper.ExecuteReader
-                            ( GetConnection(), "ConsultarPropuestaEliminar" );
+                            (GetConnection(), "ConsultarPropuestaEliminar");
                     List<string> lista = new List<string>();
 
 
-                    while ( conexion.Read() )
+                    while (conexion.Read())
                     {
-                        lista.Add( (string)conexion["Titulo"] );
+                        lista.Add((string)conexion["Titulo"]);
                     }
                     return lista;
                 }
@@ -376,6 +604,6 @@ namespace Core.AccesoDatos.SqlServer
             }
         }
 
-#endregion
+        #endregion
     }
 }

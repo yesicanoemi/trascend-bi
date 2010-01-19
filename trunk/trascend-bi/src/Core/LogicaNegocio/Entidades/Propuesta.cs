@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Entidades
 {
-   public class Propuesta
+    public class Propuesta
     {
         private string titulo;
         private string version;
@@ -19,6 +19,15 @@ namespace Core.LogicaNegocio.Entidades
         private int totalHoras;
         private float montoTotal;
         private int ID;
+        private string Nombreequipo1;
+        private string Nombreequipo2;
+        private string Nombreequipo3;
+        private string Apellidoequipo1;
+        private string Apellidoequipo2;
+        private string Apellidoequipo3;
+        private string rol1;
+        private string rol2;
+        private string rol3;
 
         public virtual int Id
         {
@@ -34,10 +43,11 @@ namespace Core.LogicaNegocio.Entidades
 
         public virtual string Titulo
         {
-            get {
+            get
+            {
                 return titulo;
             }
-            set 
+            set
             {
                 titulo = value;
             }
@@ -46,8 +56,8 @@ namespace Core.LogicaNegocio.Entidades
         public virtual string Version
         {
             get
-            { 
-                return version; 
+            {
+                return version;
             }
             set
             {
@@ -126,6 +136,7 @@ namespace Core.LogicaNegocio.Entidades
                 fechaFin = value;
             }
         }
+
         public virtual IList<Empleado> EquipoTrabajo
         {
             get
@@ -159,6 +170,114 @@ namespace Core.LogicaNegocio.Entidades
             set
             {
                 montoTotal = value;
+            }
+        }
+
+        public virtual string NombreEquipo1
+        {
+            get
+            {
+                return Nombreequipo1;
+            }
+            set
+            {
+                Nombreequipo1 = value;
+            }
+        }
+
+        public virtual string NombreEquipo2
+        {
+            get
+            {
+                return Nombreequipo2;
+            }
+            set
+            {
+                Nombreequipo2 = value;
+            }
+        }
+
+        public virtual string NombreEquipo3
+        {
+            get
+            {
+                return Nombreequipo3;
+            }
+            set
+            {
+                Nombreequipo3 = value;
+            }
+        }
+
+        public virtual string ApellidoEquipo1
+        {
+            get
+            {
+                return Apellidoequipo1;
+            }
+            set
+            {
+                Apellidoequipo1 = value;
+            }
+        }
+
+        public virtual string ApellidoEquipo2
+        {
+            get
+            {
+                return Apellidoequipo2;
+            }
+            set
+            {
+                Apellidoequipo2 = value;
+            }
+        }
+
+        public virtual string ApellidoEquipo3
+        {
+            get
+            {
+                return Apellidoequipo3;
+            }
+            set
+            {
+                Apellidoequipo3 = value;
+            }
+        }
+
+        public virtual string Rol1
+        {
+            get
+            {
+                return rol1;
+            }
+            set
+            {
+                rol1 = value;
+            }
+        }
+
+        public virtual string Rol2
+        {
+            get
+            {
+                return rol2;
+            }
+            set
+            {
+                rol2 = value;
+            }
+        }
+
+        public virtual string Rol3
+        {
+            get
+            {
+                return rol3;
+            }
+            set
+            {
+                rol3 = value;
             }
         }
 

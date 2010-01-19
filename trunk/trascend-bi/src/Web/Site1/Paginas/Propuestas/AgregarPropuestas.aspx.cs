@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Propuesta.Contrato;
 using Presentador.Propuesta.Vistas;
 
@@ -59,12 +65,6 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxFechaFin = value; }
     }
 
-    /* public TextBox EquipoTrabajo
-     {
-         get { }
-         set { }
-     }*/
-
     public TextBox TotalHoras
     {
         get { return uxTotalHoras; }
@@ -75,6 +75,72 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
     {
         get { return uxMontoTotal; }
         set { uxMontoTotal = value; }
+    }
+
+    public GridView GridViewEmpleado
+    {
+        get { return uxEmpleados; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public ObjectContainerDataSource ObtenerValorDataSource
+    {
+        get { return uxobjectEmpleado; }
+        set { uxobjectEmpleado = value; }
+    }
+
+    public TextBox NombreEquipo1
+    {
+        get { return Nombre1; }
+        set { Nombre1 = value; }
+    }
+
+    public TextBox ApellidoEquipo1
+    {
+        get { return Apellido1; }
+        set { Apellido1 = value; }
+    }
+
+    public TextBox RolEquipo1
+    {
+        get { return Rol1; }
+        set { Rol1 = value; }
+    }
+
+    public TextBox NombreEquipo2
+    {
+        get { return Nombre2; }
+        set { Nombre2 = value; }
+    }
+
+    public TextBox ApellidoEquipo2
+    {
+        get { return Apellido2; }
+        set { Apellido2 = value; }
+    }
+
+    public TextBox RolEquipo2
+    {
+        get { return Rol2; }
+        set { Rol2 = value; }
+    }
+
+    public TextBox NombreEquipo3
+    {
+        get { return Nombre3; }
+        set { Nombre3 = value; }
+    }
+
+    public TextBox ApellidoEquipo3
+    {
+        get { return Apellido3; }
+        set { Apellido3 = value; }
+    }
+
+    public TextBox RolEquipo3
+    {
+        get { return Rol3; }
+        set { Rol3 = value; }
     }
     #endregion
 
@@ -93,6 +159,8 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
                 i = usuario.PermisoUsu.Count;
 
                 _presentador = new AgregarPropuestaPresenter(this);
+
+                _presentador.ConsultarEmpleados();
 
                 permiso = true;
 

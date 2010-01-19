@@ -22,7 +22,7 @@ namespace Core.AccesoDatos.SqlServer
         public EmpleadoSQLServer()
         {
         }
-        #endregion 
+        #endregion
         #region Conexion a Base de Datos
         private SqlConnection GetConnection()
         {
@@ -133,6 +133,23 @@ namespace Core.AccesoDatos.SqlServer
             {
             }
             return resultado;
+        }
+
+        public IList<Persona> ConsultarNombreApellido()
+        {
+            List<Persona> Empleados = new List<Persona>();
+            DbDataReader conex = SqlHelper.ExecuteReader(GetConnection(), "ConsultENC");
+            while (conex.Read())
+            {
+                Persona _persona = new Persona();
+
+                _persona.Nombre = (string)conex["Nombre"];
+                _persona.Apellido = (string)conex["Apellido"];
+                //_empleado.Cargo = (string)conex["Expr1"];
+
+                Empleados.Add(_persona);
+            }
+            return Empleados;
         }
         #endregion
     }

@@ -22,6 +22,11 @@ namespace Core.LogicaNegocio.Fabricas
         public static Consultar CrearComandoConsultar(IList<Empleado> empleado)
         {
             return new Consultar(empleado);
-        }   
+        }
+
+        public static ConsultarE CrearComandoConsultarE(IList<Persona> empleado)
+        {
+            return new ConsultarE(empleado);
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Web;
@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
+using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 
@@ -28,6 +29,18 @@ public partial class Paginas_Reportes_ReportesEquipo2b : System.Web.UI.Page, IRe
     {
         get { return uxFechaFin; }
         set { uxFechaFin = value; }
+    }
+
+    public GridView GridViewGastoFecha
+    {
+        get { return uxReporteGastoFecha; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public ObjectContainerDataSource ObtenerValorDataSource
+    {
+        get { return uxobject; }
+        set { uxobject = value; }
     }
     #endregion
 

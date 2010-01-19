@@ -312,4 +312,13 @@
   <data name="FaltaTipoGasto" xml:space="preserve">
     <value>Debe introducir el tipo del gasto</value>
   </data>
+  <data name="FaltaApellidoEquipo1" xml:space="preserve">
+    <value>Debe Ingresar el Apellido</value>
+  </data>
+  <data name="FaltaNombreEquipo1" xml:space="preserve">
+    <value>Debe de Ingresar por los menos un Nombre</value>
+  </data>
+  <data name="FaltaRolEquipo1" xml:space="preserve">
+    <value>Debe Ingresar el Rol</value>
+  </data>
 </root>

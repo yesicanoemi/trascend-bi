@@ -64,7 +64,24 @@
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
+                
                 <td><asp:Button ID="uxAceptar" runat="server" Text="Aceptar" OnClick="uxAceptar_Click" /></td>
+             <tr>
+             <td><asp:GridView runat = "server" ID="uxReporteGastoFecha" DataSourceID="uxobject" AutoGenerateColumns = "false" 
+            DataKeyNames = "Tipo" AllowPaging = "true" PageSize = "8" ShowFooter = "true" Width = "200"   >
+            <Columns>
+            
+            
+                <asp:BoundField HeaderText="Tipo" DataField="Tipo"  />
+                <asp:BoundField HeaderText="Fecha" DataField="FechaGasto" />
+                <asp:BoundField HeaderText="Descripción" DataField="Descripcion"  />
+                <asp:BoundField HeaderText="Monto" DataField="Monto" />
+                
+            </Columns>
+            
+            </asp:GridView></td>
+             
+             </tr>
              </tr>
               
         </table>
@@ -104,4 +121,5 @@
 			</div> 
 		</div> 
     </form>
+    <pp:objectcontainerdatasource runat="server" ID="uxobject" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" />
 </asp:Content>

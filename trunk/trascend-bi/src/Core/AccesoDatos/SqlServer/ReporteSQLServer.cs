@@ -15,11 +15,11 @@ namespace Core.AccesoDatos.SqlServer
 {
     class ReporteSQLServer
     {
-        List<Gasto> ListaGasto = new List<Gasto>();
-
         #region Propiedades
 
         List<string> ListaRoles = new List<string>();
+
+        List<Gasto> ListaGasto = new List<Gasto>();
 
         #endregion
 
@@ -61,8 +61,8 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="entidad">fechas de entidad Factura</param>
         /// <returns>Objeto Factura</returns>
-     
-        public IList<Core.LogicaNegocio.Entidades.Factura> 
+
+        public IList<Core.LogicaNegocio.Entidades.Factura>
                                                 FacturasEmitidas(Factura entidad)
         {
 
@@ -122,7 +122,9 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
-        #endregion 
+        #endregion
+
+        #region ReporteGastoxFecha
 
         /// <summary>
         /// Metodo que se encarga de Consultar todos los gastos comprendidos entre dos fechas
@@ -130,8 +132,7 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="fechai">Fecha de Inicio</param>
         /// <param name="fechaf">Fecha Final</param>
         /// <returns></returns>
-        
-        
+
         public IList<Gasto> ConsultarGastoFecha(DateTime fechai, DateTime fechaf)
         {
             //Se declaran los parametros
@@ -146,6 +147,7 @@ namespace Core.AccesoDatos.SqlServer
 
             Parametros[1].Value = fechaf;
 
+            //Se realiza la conexion con los Parametros definidos anteriormente
 
             DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(),
             "ConsultarGastoxFecha", Parametros);
@@ -163,7 +165,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _gasto.FechaGasto = (DateTime)conexion["Fecha"];
 
-                _gasto.Monto = (float)conexion["Monto"];
+                _gasto.Monto = float.Parse(conexion["Monto"].ToString());
 
                 ListaGasto.Insert(i, _gasto);
                 i++;
@@ -172,6 +174,8 @@ namespace Core.AccesoDatos.SqlServer
 
             return ListaGasto;
         }
+
+        #endregion
 
         /// <summary>
         /// Metodo que se comunica con la base de datos y realiza la consulta
@@ -182,32 +186,32 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                DbDataReader conexion = SqlHelper.ExecuteReader( GetConnection(), "ConsultarRol" );
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarRol");
                 int i = 0;
 
-                while ( conexion.Read() )
+                while (conexion.Read())
                 {
 
                     string Rol;
                     string HorasParticipadas;
-                    Rol = ( string )conexion["Rol"];
-                    ListaRoles.Add( Rol );
+                    Rol = (string)conexion["Rol"];
+                    ListaRoles.Add(Rol);
                     i++;
 
                 }
 
                 return ListaRoles;
             }
-            catch ( SqlException e )
+            catch (SqlException e)
             {
-                throw new Exception( e.ToString() );
+                throw new Exception(e.ToString());
             }
         }
         /// <summary>
         /// Metodo que consulta las Horas del Rol Seleccionado
         /// </summary>
         /// <returns>Retorna Entero que representa la suma de las horas del rol</returns>
-        public int SumaHora( string rol )
+        public int SumaHora(string rol)
         {
             int HorasParticipadas = 0;
             try
@@ -217,21 +221,21 @@ namespace Core.AccesoDatos.SqlServer
 
                 ParametroRol.Value = rol; ;
 
-                DbDataReader conexion = 
-                    SqlHelper.ExecuteReader( GetConnection(), "ConsultarHorasRol", ParametroRol );
+                DbDataReader conexion =
+                    SqlHelper.ExecuteReader(GetConnection(), "ConsultarHorasRol", ParametroRol);
 
                 int i = 0;
 
-                while ( conexion.Read() )
-                    {
-                        HorasParticipadas = ( int )conexion["TotalHoras"];
-                    }
+                while (conexion.Read())
+                {
+                    HorasParticipadas = (int)conexion["TotalHoras"];
+                }
 
                 return HorasParticipadas;
             }
-            catch ( SqlException e )
+            catch (SqlException e)
             {
-                throw new Exception( e.ToString() );
+                throw new Exception(e.ToString());
             }
         }
 
