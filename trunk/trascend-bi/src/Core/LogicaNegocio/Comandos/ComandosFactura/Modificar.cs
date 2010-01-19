@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
+using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -28,7 +31,14 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         {
             Factura _factura = null;
             FacturaSQLServer bdpropuestas = new FacturaSQLServer();
-            _factura = bdpropuestas.UpdateFactura(factura);
+            try
+            {
+                if (factura == null) { throw new ModificarFacturaLNException(); }
+                _factura = bdpropuestas.UpdateFactura(factura);
+            }
+            catch (ModificarFacturaADException e) { }
+            catch (ModificarFacturaLNException e) { throw new IngresarFacturaLNException("Se esta recibiendo una factura vacia", e); }
+            catch (Exception e) { throw new IngresarFacturaLNException("Error al Modificar", e); }
             return _factura;
         }
 

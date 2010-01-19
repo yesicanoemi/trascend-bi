@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
+using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+using Core.LogicaNegocio.Excepciones;
+
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -13,7 +17,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
     /// </summary>
     public class ConsultarxIDPro : Comando<Factura>
     {
-        private Propuesta propuesta;
+        private Propuesta _propuesta;
         #region Constructor
 
         /// <summary>Constructor por defecto de la clase 'ConsultarxIDPro'.</summary>
@@ -24,7 +28,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <param name="Factura">Entidad sobre la cual se aplicará el comando.</param>
         public ConsultarxIDPro(Propuesta propuesta)
         {
-            this.propuesta = propuesta;
+            this._propuesta = propuesta;
         }
 
 
@@ -37,8 +41,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         {
             IList<Factura> _facturas = null;
             FacturaSQLServer bdfactura = new FacturaSQLServer();
-            
-            _facturas = bdfactura.ConsultarFacturasIDPro(propuesta);
+            try
+            {
+                if (_propuesta == null) { throw new ConsultarFacturaLNException(); }
+                _facturas = bdfactura.ConsultarFacturasIDPro(_propuesta);
+
+            }
+            catch (ConsultarFacturaADException e) { }
+            catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Se recibio una propuesta vacia", e); }
+            catch (Exception e) { throw new ConsultarFacturaLNException("Error al Consultar", e); }
             return _facturas;
         }
         #endregion

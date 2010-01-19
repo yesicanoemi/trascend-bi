@@ -30,10 +30,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             {
                 facturas = bdpropuestas.ConsultarFacturas();
             }
-            catch (ConsultarFacturaADException e) {  }
-            catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Error en la Consulta",e); }
-            catch (Exception e) { throw new ConsultarFacturaLNException("Error en la Consulta", e);} 
-           
+            catch (ConsultarFacturaADException e) { }
+            catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Error en la Consulta", e); }
+            catch (Exception e) { throw new ConsultarFacturaLNException("Error en la Consulta", e); }
+
             return facturas;
         }
 

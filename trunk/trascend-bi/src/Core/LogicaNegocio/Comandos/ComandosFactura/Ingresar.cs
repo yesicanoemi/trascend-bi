@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
+using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
     public class Ingresar : Comando<Factura>
     {
-        private Factura factura;
+        private Factura _factura;
 
 
         #region Constructor
@@ -22,7 +25,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <param name="factura">Entidad sobre la cual se aplicará el comando.</param>
         public Ingresar(Factura factura)
         {
-            this.factura = factura;
+            this._factura = factura;
         }
 
         #endregion
@@ -31,10 +34,17 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'Ingresar'.</summary>
         public Factura Ejecutar()
         {
-            Factura _factura = null;
+            Factura factura = null;
             FacturaSQLServer bdfactura = new FacturaSQLServer();
-            _factura = bdfactura.IngresarFactura(factura);
-            return _factura;
+            try
+            {
+                if (_factura == null) { throw new IngresarFacturaLNException(); }
+                factura = bdfactura.IngresarFactura(_factura);
+            }
+            catch (InsertarFacturaADException e) { }
+            catch (IngresarFacturaLNException e) { throw new IngresarFacturaLNException("Se esta recibiendo una factura vacía", e); }
+            catch (Exception e) { throw new IngresarFacturaLNException("Error al Insertar", e); }
+            return factura;
         }
         #endregion
     }

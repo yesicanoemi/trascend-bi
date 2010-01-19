@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
+using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -13,7 +16,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
     /// </summary>
     public class ConsultarxNomPro : Comando<Factura>
     {
-        private Propuesta propuesta;
+        private Propuesta _propuesta;
         #region Constructor
 
         /// <summary>Constructor por defecto de la clase 'ConsultarxNomPro'.</summary>
@@ -24,7 +27,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <param name="Factura">Entidad sobre la cual se aplicará el comando.</param>
         public ConsultarxNomPro(Propuesta propuesta)
         {
-            this.propuesta = propuesta;
+            this._propuesta = propuesta;
         }
 
 
@@ -35,11 +38,17 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'ConsultarxNomPro'.</summary>
         public IList<Factura> Ejecutar()
         {
-            IList<Factura> _facturas = null;
+            IList<Factura> facturas = null;
             FacturaSQLServer bdfactura = new FacturaSQLServer();
-           
-            _facturas = bdfactura.ConsultarFacturasNomPro(propuesta);
-            return _facturas;
+            try
+            {
+                if (_propuesta == null) { throw new ConsultarFacturaLNException(); }
+                facturas = bdfactura.ConsultarFacturasNomPro(_propuesta);
+            }
+            catch (ConsultarFacturaADException e) { }
+            catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Se recibio una propuesta vacia", e); }
+            catch (Exception e) { throw new ConsultarFacturaLNException("Error al Consultar", e); }
+            return facturas;
         }
         #endregion
     }
