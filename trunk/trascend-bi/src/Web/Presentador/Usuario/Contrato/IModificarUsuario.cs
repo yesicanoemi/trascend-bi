@@ -35,6 +35,8 @@ namespace Presentador.Usuario.Contrato
 
         DropDownList DLStatusUsuario { get; set; }
 
+        CheckBoxList CBLReporte { get; set; }
+
         #region Dialogo
 
         bool DialogoVisible { get; set; }

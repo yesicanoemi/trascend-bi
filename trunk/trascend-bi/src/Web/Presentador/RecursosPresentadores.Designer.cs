@@ -151,6 +151,15 @@ namespace Presentador {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Usuario agregado con exito.
+        /// </summary>
+        internal static string mensajeUsuarioAgregado {
+            get {
+                return ResourceManager.GetString("mensajeUsuarioAgregado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El Usuario ya existe. Debe intentar con otro nombre de Usuario.
         /// </summary>
         internal static string mensajeUsuarioExiste {

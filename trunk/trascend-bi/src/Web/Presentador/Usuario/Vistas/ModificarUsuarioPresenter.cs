@@ -106,6 +106,15 @@ namespace Presentador.Usuario.Vistas
                         _vista.CBLEliminar.Items[j].Selected = true;
                     }
 
+
+                    for (int k = 0; k < 13; k++)
+                    {
+                        //Revisa el CheckBoxList de Reportes
+                        if (_vista.CBLReporte.Items[k].Value == permiso[i].IdPermiso.ToString())
+                        {
+                            _vista.CBLReporte.Items[k].Selected = true;
+                        }
+                    }
                 }
             }
         }
@@ -135,6 +144,34 @@ namespace Presentador.Usuario.Vistas
             }
             return _permiso;
         }
+
+
+        /// <summary>
+        /// Modifica los checkbox de reportes que cambia el usuario
+        /// </summary>
+        /// <param name="CBL">Lista de checkbox de reporte cargada con los permisos</param>
+        /// <returns>Nuevos permisos</returns>
+
+        private IList<Core.LogicaNegocio.Entidades.Permiso>
+                                ModificarCheckBoxReporte(System.Web.UI.WebControls.CheckBoxList CBL)
+        {
+            IList<Core.LogicaNegocio.Entidades.Permiso> _permiso =
+                                new List<Core.LogicaNegocio.Entidades.Permiso>();
+
+            for (int j = 0; j < 13; j++)
+            {
+                if (CBL.Items[j].Selected == true)
+                {
+                    Core.LogicaNegocio.Entidades.Permiso permiso = new Permiso();
+
+                    permiso.IdPermiso = Int32.Parse(CBL.Items[j].Value);
+
+                    _permiso.Add(permiso);
+                }
+            }
+            return _permiso;
+        }
+
 
         /// <summary>
         /// Acción del botón buscar
@@ -302,7 +339,9 @@ namespace Presentador.Usuario.Vistas
         {
             Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
 
-            usuario.PermisoUsu = ModificarCheckBox(_vista.CBLAgregar);
+            usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
+
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar),usuario.PermisoUsu);
 
             usuario.PermisoUsu =
                         UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);

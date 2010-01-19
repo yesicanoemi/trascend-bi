@@ -252,6 +252,35 @@
                                                         </tr>
                                            
                                                     </table>
+                                                    
+                                                    <table style="width: 100%; border: 1px solid #799CBE">
+                                                    <tr>
+                                                            <td>&nbsp;</td>
+                                                          
+                                                        </tr>
+                                                        
+                                                          <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td>Reportes</td>
+                                                           <td align="center"> 
+                                                                <asp:CheckBoxList ID="uxCBLReporte" runat="server">
+                                                                    <asp:ListItem Value="33" Text="Paquete Anual" ></asp:ListItem>
+                                                                    <asp:ListItem Value="34" Text="Total Anual" ></asp:ListItem>
+                                                                    <asp:ListItem Value="35" Text="Total de Horas Anuales"></asp:ListItem>
+                                                                    <asp:ListItem Value="36" Text="Gastos"></asp:ListItem>
+                                                                    <asp:ListItem Value="37" Text="Gastos Anuales" ></asp:ListItem>
+                                                                    <asp:ListItem Value="38" Text="Facturas Emitidas" ></asp:ListItem>
+                                                                    <asp:ListItem Value="39" Text="Facturas Cobradas" ></asp:ListItem>
+                                                                    <asp:ListItem Value="40" Text="Facturas Por Cobrar" ></asp:ListItem>
+                                                                    <asp:ListItem Value="41" Text="Total Facturas Emitidas" ></asp:ListItem>
+                                                                    <asp:ListItem Value="42" Text="Total Facturas Cobradas" ></asp:ListItem>
+                                                                    <asp:ListItem Value="43" Text="Total Facturas Por Cobrar" ></asp:ListItem>
+                                                                    <asp:ListItem Value="44" Text="Propuestas Emitidas" ></asp:ListItem>
+                                                                    <asp:ListItem Value="45" Text="Total de Propuestas Emitidas" ></asp:ListItem>
+                                                                </asp:CheckBoxList> 
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 
                                                 </td>
                                            </tr>
@@ -274,7 +303,7 @@
                                             
                                         
                                         </table>
-                                    
+                                        
                                     <!--/form-->
                                 
                                 </asp:View>

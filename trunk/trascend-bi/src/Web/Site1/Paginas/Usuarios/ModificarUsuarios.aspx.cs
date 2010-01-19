@@ -115,6 +115,12 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         set { uxCBLEliminar = value; }
     }
 
+    public CheckBoxList CBLReporte
+    {
+        get { return uxCBLReporte; }
+        set { uxCBLReporte = value; }
+    }
+
     public DropDownList DLStatusUsuario
     {
         get { return uxStatusUsuario; }

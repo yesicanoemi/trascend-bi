@@ -87,6 +87,33 @@ namespace Presentador.Usuario.Vistas
         }
 
         /// <summary>
+        /// Modifica los checkbox de reportes que cambia el usuario
+        /// </summary>
+        /// <param name="CBL">Lista de checkbox de reporte cargada con los permisos</param>
+        /// <returns>Nuevos permisos</returns>
+
+        private IList<Core.LogicaNegocio.Entidades.Permiso>
+                                ModificarCheckBoxReporte(System.Web.UI.WebControls.CheckBoxList CBL)
+        {
+            IList<Core.LogicaNegocio.Entidades.Permiso> _permiso =
+                                new List<Core.LogicaNegocio.Entidades.Permiso>();
+
+            for (int j = 0; j < 13; j++)
+            {
+                if (CBL.Items[j].Selected == true)
+                {
+                    Core.LogicaNegocio.Entidades.Permiso permiso = new Permiso();
+
+                    permiso.IdPermiso = Int32.Parse(CBL.Items[j].Value);
+
+                    _permiso.Add(permiso);
+                }
+            }
+            return _permiso;
+        }
+
+
+        /// <summary>
         /// Acción del botón buscar 
         /// </summary>
 
@@ -335,7 +362,9 @@ namespace Presentador.Usuario.Vistas
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
 
 
-            usuario.PermisoUsu = ModificarCheckBox(_vista.CBLAgregar);
+            usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
+
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar),usuario.PermisoUsu);
 
             usuario.PermisoUsu =
                 UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
@@ -360,11 +389,16 @@ namespace Presentador.Usuario.Vistas
                 if (ConsultarUsuario(usuario).Count == 0)
                 {
                     AgregarUsuario(usuario);
+
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                ("mensajeUsuarioAgregado"), "mensajes");
+                    _vista.InformacionVisibleBotonAceptar = true;
+
                 }
                 else
                 {
                     _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                ("mensajeRegistroExiste"), "mensajes");
+                                ("mensajeUsuarioExiste"), "mensajes");
                     _vista.InformacionVisibleBotonAceptar = true;
 
                 }

@@ -149,6 +149,12 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
         set { uxCBLEliminar = value; }
     }
 
+    public CheckBoxList CBLReporte
+    {
+        get { return uxCBLReporte; }
+        set { uxCBLReporte = value; }
+    }
+
     #endregion
 
     #region Métodos
