@@ -45,9 +45,14 @@ http://trascend-bi.googlecode.com/files/Eliminar%20Cargo%20grupo%20%236.png
 http://trascend-bi.googlecode.com/files/Consultar%20Cargo.jpg
 http://trascend-bi.googlecode.com/files/Consultar%20Cargo%20grupo%20%236.png
 
+
+
 ====*5) Crear Tabla Inflacionaria*====
 
 http://trascend-bi.googlecode.com/files/Crear%20Tabla%20Inflacionaria.jpg
+http://trascend-bi.googlecode.com/files/Tabla%20Inflacionaria%20grupo%20%236.png
+
+
 
 == Diagrama de Clases ==
 
