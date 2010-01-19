@@ -7,7 +7,7 @@ using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Gasto.Contrato
 {
-    public interface IEliminarGasto
+    public interface IModifcarGasto
     {
         #region Datos del Gasto
 
@@ -17,8 +17,8 @@ namespace Presentador.Gasto.Contrato
         DropDownList SeleccionDato { get; set; }
         Label LFechaGasto { get; set; }
         TextBox FechaGasto { get; set; }
-        GridView GridViewEliminarGasto { get; set; }
-        ObjectContainerDataSource GetObjectContainerEliminarGasto { get; set; }
+        GridView GridViewModificarGasto { get; set; }
+        ObjectContainerDataSource GetObjectContainerModificarGasto { get; set; }
 
         #endregion
     }

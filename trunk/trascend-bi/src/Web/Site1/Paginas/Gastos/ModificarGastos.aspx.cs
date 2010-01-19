@@ -3,13 +3,66 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Presentador.Gasto.Contrato;
+using Presentador.Gasto.Vistas;
+using Core.LogicaNegocio.Entidades;
+using Microsoft.Practices.Web.UI.WebControls;
 
-public partial class Paginas_Gastos_ModificarGastos : PaginaBase
+public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+    private ModificarGastoPresenter _presenter;
 
+    #region Propiedades de la Pagina
+
+    public Label LTipoConsulta
+    {
+        get { return LabelTipoConsulta; }
+        set { LabelTipoConsulta = value; }
     }
+
+    public DropDownList TipoConsulta
+    {
+        get { return uxTipoConsulta; }
+        set { uxTipoConsulta = value; }
+    }
+
+    public Label LSeleccion
+    {
+        get { return LabelSeleccion; }
+        set { LabelSeleccion = value; }
+    }
+
+    public DropDownList SeleccionDato
+    {
+        get { return uxSeleccion; }
+        set { uxSeleccion = value; }
+    }
+
+    public Label LFechaGasto
+    {
+        get { return LabelFechaGasto; }
+        set { LabelFechaGasto = value; }
+    }
+
+    public TextBox FechaGasto
+    {
+        get { return uxFechaGasto; }
+        set { uxFechaGasto = value; }
+    }
+
+    public GridView GridViewModificarGasto
+    {
+        get { return uxModificarGasto; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerModificarGasto
+    {
+        get { return uxObjectModificarGasto; }
+        set { uxObjectModificarGasto = value; }
+    }
+
+    #endregion
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -26,6 +79,7 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase
                 i = usuario.PermisoUsu.Count;
 
                 //aqui va la instancia del presentador
+                _presenter = new ModificarGastoPresenter(this);
 
                 permiso = true;
 
@@ -37,4 +91,38 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase
             Response.Redirect(paginaSinPermiso);
         }
     }
+
+    #region Eventos
+
+    protected void uxBotonBuscar_Click(object sender, EventArgs e)
+    {
+        uxBotonBuscar.Enabled = false;
+        int opcion = _presenter.OpcionSeleccion();
+
+        if ((opcion == 0) || (opcion == 1))
+        {
+            uxBotonBuscar2.Enabled = true;
+        }
+        if (opcion == 2)
+        {
+            uxBotonBuscar3.Enabled = true;
+        }
+    }
+    protected void uxBotonBuscar2_Click(object sender, EventArgs e)
+    {
+        uxBotonBuscar2.Enabled = false;
+        _presenter.BuscarInformacion();
+    }
+    protected void uxBotonBuscar3_Click(object sender, EventArgs e)
+    {
+        uxBotonBuscar3.Enabled = false;
+        _presenter.BuscarInformacion();
+    }
+    protected void uxModificarGasto_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+
+    }
+
+    #endregion
 }

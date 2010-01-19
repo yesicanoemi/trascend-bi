@@ -20,7 +20,7 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[EliminarGasto]
 	-- Add the parameters for the stored procedure here
-	@codigo int
+	@IdGasto int
 
 AS
 BEGIN
@@ -29,7 +29,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	DELETE from dbo.Gasto where IdGasto = @codigo
+	DELETE from dbo.Gasto where IdGasto = @IdGasto
 
 END
 GO

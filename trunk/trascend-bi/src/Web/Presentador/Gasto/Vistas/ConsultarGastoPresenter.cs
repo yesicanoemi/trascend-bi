@@ -13,16 +13,14 @@ using Presentador.Propuesta.Vistas;
 using System.Net;
 using System.Collections;
 
-
 namespace Presentador.Gasto.Vistas
 {
-    public class EliminarGastoPresenter
+    public class ConsultarGastoPresenter
     {
-        private IEliminarGasto _vista;
+        private IConsultarGasto _vista;
         private Core.LogicaNegocio.Entidades.Propuesta propuesta;
         private Core.LogicaNegocio.Entidades.Gasto gasto;
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGasto;
-        private Core.LogicaNegocio.Entidades.Gasto gastoAux;
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGastoAux;
         private IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
         private ConsultarPropuestaPresentador _presentadorPropuesta;
@@ -30,18 +28,9 @@ namespace Presentador.Gasto.Vistas
 
         #region Constructor
 
-        public EliminarGastoPresenter(IEliminarGasto vista)
+        public ConsultarGastoPresenter(IConsultarGasto vista)
         {
             _vista = vista;
-        }
-
-        #endregion
-
-        #region Limpieza de Pagina
-
-        public void limpiar()
-        {
-
         }
 
         #endregion
@@ -123,7 +112,7 @@ namespace Presentador.Gasto.Vistas
                 {
                     if (listaGasto != null)
                     {
-                        _vista.GetObjectContainerEliminarGasto.DataSource = listaGasto;
+                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                     }
                 }
 
@@ -153,7 +142,7 @@ namespace Presentador.Gasto.Vistas
                             }
 
                         }
-                        _vista.GetObjectContainerEliminarGasto.DataSource = listaGastoAux;
+                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGastoAux;
                     }
                 }
 
@@ -177,7 +166,7 @@ namespace Presentador.Gasto.Vistas
                 {
                     if (listaGasto != null)
                     {
-                        _vista.GetObjectContainerEliminarGasto.DataSource = listaGasto;
+                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                     }
                 }
 
@@ -186,29 +175,6 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-        }
-
-        public void eliminarGasto(int codigo)
-        {
-            Core.LogicaNegocio.Entidades.Gasto gasto = new Core.LogicaNegocio.Entidades.Gasto();
-
-            gasto.Codigo = codigo;
-
-            Eliminar(gasto);
-        }
-
-        #endregion
-
-        #region Comando
-
-        public void Eliminar(Core.LogicaNegocio.Entidades.Gasto gasto)
-        {
-            Core.LogicaNegocio.Comandos.ComandoGasto.EliminarGasto eliminar; //objeto del comando Ingresar.
-
-            //fábrica que instancia el comando Eliminar.
-            eliminar = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoEliminar(gasto);
-
-            eliminar.Ejecutar();
         }
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorTipo()
@@ -245,6 +211,7 @@ namespace Presentador.Gasto.Vistas
         }
 
         #endregion
-
     }
 }
+
+

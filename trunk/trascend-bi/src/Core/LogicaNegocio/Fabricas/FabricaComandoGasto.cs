@@ -25,7 +25,17 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarGasto(gasto);
         }
-
-     
+        public static ConsultarGastoPorTipo CrearComandoConsultarPorTipo(IList<Gasto> listaGasto)
+        {
+            return new ConsultarGastoPorTipo(listaGasto);
+        }
+        public static ConsultarGastoPorPropuesta CrearComandoConsultarPorPropuesta(Propuesta propuesta)
+        {
+            return new ConsultarGastoPorPropuesta(propuesta);
+        }
+        public static ConsultarGastoPorFecha CrearComandoConsultarPorFecha(Gasto gasto)
+        {
+            return new ConsultarGastoPorFecha(gasto);
+        }
     }
 }
