@@ -38,7 +38,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'ConsultarxFacturaID'.</summary>
         public Factura Ejecutar()
         {
-            Factura factura = null;
+            Factura factura = new Factura();
             FacturaSQLServer bdfactura = new FacturaSQLServer();
             try
             {

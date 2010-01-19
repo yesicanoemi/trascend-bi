@@ -29,7 +29,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
         public Factura Ejecutar()
         {
-            Factura _factura = null;
+            Factura _factura = new Factura();
             FacturaSQLServer bdpropuestas = new FacturaSQLServer();
             try
             {

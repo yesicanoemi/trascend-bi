@@ -39,7 +39,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'ConsultarxIDPro'.</summary>
         public IList<Factura> Ejecutar()
         {
-            IList<Factura> _facturas = null;
+            IList<Factura> _facturas = new List<Factura>();
             FacturaSQLServer bdfactura = new FacturaSQLServer();
             try
             {

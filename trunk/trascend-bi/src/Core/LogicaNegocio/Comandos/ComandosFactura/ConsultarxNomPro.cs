@@ -38,7 +38,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'ConsultarxNomPro'.</summary>
         public IList<Factura> Ejecutar()
         {
-            IList<Factura> facturas = null;
+            IList<Factura> facturas = new List<Factura>();
             FacturaSQLServer bdfactura = new FacturaSQLServer();
             try
             {

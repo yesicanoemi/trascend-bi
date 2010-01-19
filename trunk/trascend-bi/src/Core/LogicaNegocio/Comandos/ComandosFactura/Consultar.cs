@@ -24,7 +24,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
         public IList<Factura> Ejecutar()
         {
-            IList<Factura> facturas = null;
+            IList<Factura> facturas = new List<Factura>();
             FacturaSQLServer bdpropuestas = new FacturaSQLServer();
             try
             {
