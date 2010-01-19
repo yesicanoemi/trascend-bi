@@ -273,6 +273,26 @@ namespace Presentador.Usuario.Vistas
         }
 
         /// <summary>
+        /// Método para el comando ConsultarUsuario
+        /// </summary>
+        /// <param name="entidad">Entidad Usuario a consultar (por nombre de usuario)</param>
+        /// <returns>Lista de usuarios que cumplan con el parámetro de búsqueda</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuario
+                                                (Core.LogicaNegocio.Entidades.Usuario entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuario comando;
+
+            comando = FabricaComandosUsuario.CrearComandoConsultarUsuario(entidad);
+
+            usuario1 = comando.Ejecutar();
+
+            return usuario1;
+        }
+
+        /// <summary>
         /// Acción del botón Aceptar
         /// </summary>
 
@@ -297,7 +317,14 @@ namespace Presentador.Usuario.Vistas
 
             usuario.IdUsuario = int.Parse(_vista.CedulaEmp.Text);
 
-            AgregarUsuario(usuario);
+            if (ConsultarUsuario(usuario).Count == 0)
+            {
+                AgregarUsuario(usuario);
+            }
+            else
+            { 
+                //mostrar error
+            }
 
         }
         
