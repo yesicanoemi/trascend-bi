@@ -37,6 +37,12 @@ namespace Presentador.Empleado.Vistas
                 empleado.FechaIngreso = DateTime.Parse(_vista.FechaIngresoEmpleado.Text);
                 empleado.FechaEgreso = DateTime.Parse(_vista.FechaEgresoEmpleado.Text);
                 empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.Text);
+                empleado.Direccion.Avenida =_vista.AvenidaEmpleado.Text;
+                empleado.Direccion.Calle = _vista.CalleEmpleado.Text ;
+                empleado.Direccion.Ciudad = _vista.CiudadEmpleado.Text;
+                empleado.Direccion.Edif_Casa = _vista.EdificioEmpleado.Text;
+                empleado.Direccion.Piso_apto = _vista.PisoEmpleado.Text;
+                empleado.Direccion.Urbanizacion = _vista.UrbanizacionEmpleado.Text;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
                 Ingresar(empleado);
                 LimpiarRegistros();
@@ -108,7 +114,12 @@ namespace Presentador.Empleado.Vistas
         {
             _vista.NombreEmpleado.Text = campoVacio;
             _vista.SueldoEmpleado.Text = campoVacio;
-            _vista.DireccionEmpleado.Text = campoVacio;
+            _vista.AvenidaEmpleado.Text = campoVacio;
+            _vista.CalleEmpleado.Text = campoVacio;
+            _vista.CiudadEmpleado.Text = campoVacio;
+            _vista.EdificioEmpleado.Text = campoVacio;
+            _vista.PisoEmpleado.Text = campoVacio;
+            _vista.UrbanizacionEmpleado.Text = campoVacio;
             _vista.CuentaEmpleado.Text = campoVacio;
             _vista.CedulaEmpleado.Text = campoVacio;
             _vista.ApellidoEmpleado.Text = campoVacio;

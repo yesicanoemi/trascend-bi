@@ -15,7 +15,12 @@ namespace Presentador.Empleado.Contrato
         TextBox CuentaEmpleado { get; set; }
         TextBox SueldoEmpleado { get; set; }
         TextBox FechaNacEmpleado { get; set; }
-        TextBox DireccionEmpleado { get; set; }
+        TextBox AvenidaEmpleado { get; set; }
+        TextBox CalleEmpleado { get; set; }
+        TextBox CiudadEmpleado { get; set; }
+        TextBox UrbanizacionEmpleado { get; set; }
+        TextBox EdificioEmpleado { get; set; }
+        TextBox PisoEmpleado { get; set; }
         TextBox FechaIngresoEmpleado { get; set; }
         TextBox FechaEgresoEmpleado { get; set; }
         #endregion

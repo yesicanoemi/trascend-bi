@@ -62,7 +62,12 @@ namespace Presentador.Empleado.Vistas
         {
             _vista.NombreEmpleado.Text = campoVacio;
             _vista.SueldoEmpleado.Text = campoVacio;
-            _vista.DireccionEmpleado.Text = campoVacio;
+            _vista.AvenidaEmpleado.Text = campoVacio;
+            _vista.CalleEmpleado.Text = campoVacio;
+            _vista.CiudadEmpleado.Text = campoVacio;
+            _vista.EdificioEmpleado.Text = campoVacio;
+            _vista.PisoEmpleado.Text = campoVacio;
+            _vista.UrbanizacionEmpleado.Text = campoVacio;
             _vista.CuentaEmpleado.Text = campoVacio;
             _vista.CedulaEmpleado.Text = campoVacio;
             _vista.ApellidoEmpleado.Text = campoVacio;
@@ -75,7 +80,12 @@ namespace Presentador.Empleado.Vistas
         {
             _vista.NombreEmpleado.Text = empleado.Nombre;
             _vista.SueldoEmpleado.Text =empleado.SueldoBase.ToString();
-            _vista.DireccionEmpleado.Text = "";
+            _vista.AvenidaEmpleado.Text = empleado.Direccion.Avenida;
+            _vista.CalleEmpleado.Text = empleado.Direccion.Calle;
+            _vista.CiudadEmpleado.Text = empleado.Direccion.Ciudad;
+            _vista.EdificioEmpleado.Text = empleado.Direccion.Edif_Casa;
+            _vista.PisoEmpleado.Text = empleado.Direccion.Piso_apto;
+            _vista.UrbanizacionEmpleado.Text = empleado.Direccion.Urbanizacion;
             _vista.CuentaEmpleado.Text = empleado.Cuenta.ToString();
             _vista.CedulaEmpleado.Text = empleado.Cedula.ToString();
             _vista.ApellidoEmpleado.Text = empleado.Apellido;

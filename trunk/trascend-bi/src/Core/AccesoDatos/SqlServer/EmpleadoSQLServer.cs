@@ -86,17 +86,17 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
                 arParms[0].Value = empleado.Cedula;
                 arParms[1] = new SqlParameter("@avenida", SqlDbType.VarChar);
-                arParms[1].Value = empleado.Direcciones.Avenida;
+                arParms[1].Value = empleado.Direccion.Avenida;
                 arParms[2] = new SqlParameter("@calle", SqlDbType.VarChar);
-                arParms[2].Value = empleado.Direcciones.Calle;
+                arParms[2].Value = empleado.Direccion.Calle;
                 arParms[3] = new SqlParameter("@ciudad", SqlDbType.VarChar);
-                arParms[3].Value = empleado.Direcciones.Ciudad;
+                arParms[3].Value = empleado.Direccion.Ciudad;
                 arParms[4] = new SqlParameter("@edif", SqlDbType.VarChar);
-                arParms[4].Value = empleado.Direcciones.Edif_Casa;
+                arParms[4].Value = empleado.Direccion.Edif_Casa;
                 arParms[5] = new SqlParameter("@piso", SqlDbType.VarChar);
-                arParms[5].Value = empleado.Direcciones.Piso_apto;
+                arParms[5].Value = empleado.Direccion.Piso_apto;
                 arParms[6] = new SqlParameter("@urbanizacion", SqlDbType.VarChar);
-                arParms[6].Value = empleado.Direcciones.Urbanizacion;
+                arParms[6].Value = empleado.Direccion.Urbanizacion;
                 SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarDireccionEmpleado", arParms);
             }
             catch(SqlException e)
@@ -149,7 +149,7 @@ namespace Core.AccesoDatos.SqlServer
                     dir.Piso_apto = (string)reader["PisoApto"];
                     dir.Urbanizacion = (string)reader["Urbanizacion"];
                 }
-                empleado.Direcciones = dir;
+                empleado.Direccion = dir;
             }
             catch(SqlException e)
             {
@@ -173,7 +173,7 @@ namespace Core.AccesoDatos.SqlServer
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
                 _empleado.Estado = (string)reader["Estado"];
                 _empleado.Cargo = (string)reader["Expr1"];
-                _empleado.Direccion = (string)reader["Calle"] + ", " + (string)reader["Avenida"] + ", " + (string)reader["Urbanizacion"] + ", " + (string)reader["EdifCasa"] + ", " + (string)reader["PisoApto"] + ", " + (string)reader["Ciudad"];
+                //_empleado.Direccion = (string)reader["Calle"] + ", " + (string)reader["Avenida"] + ", " + (string)reader["Urbanizacion"] + ", " + (string)reader["EdifCasa"] + ", " + (string)reader["PisoApto"] + ", " + (string)reader["Ciudad"];
                 empleado.Add(_empleado);
             }
             return empleado;
@@ -211,10 +211,22 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                SqlParameter[] arParms = new SqlParameter[1];
+                SqlParameter[] arParms = new SqlParameter[7];
                 // Parametros 
                 arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
                 arParms[0].Value = empleado.Cedula;
+                arParms[1] = new SqlParameter("@avenida", SqlDbType.VarChar);
+                arParms[1].Value = empleado.Direccion.Avenida;
+                arParms[2] = new SqlParameter("@calle", SqlDbType.VarChar);
+                arParms[2].Value = empleado.Direccion.Calle;
+                arParms[3] = new SqlParameter("@ciudad", SqlDbType.VarChar);
+                arParms[3].Value = empleado.Direccion.Ciudad;
+                arParms[4] = new SqlParameter("@edif", SqlDbType.VarChar);
+                arParms[4].Value = empleado.Direccion.Edif_Casa;
+                arParms[5] = new SqlParameter("@piso", SqlDbType.VarChar);
+                arParms[5].Value = empleado.Direccion.Piso_apto;
+                arParms[6] = new SqlParameter("@urbanizacion", SqlDbType.VarChar);
+                arParms[6].Value = empleado.Direccion.Urbanizacion;
                 SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarDireccion", arParms);
             }
             catch(SqlException e)

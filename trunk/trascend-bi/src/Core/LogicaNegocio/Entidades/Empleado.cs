@@ -29,17 +29,6 @@ namespace Core.LogicaNegocio.Entidades
                 cedula = value;
             }
         }
-        public virtual Direccion Direcciones
-        {
-            get
-            {
-                return direccion;
-            }
-            set
-            {
-                direccion = value;
-            }
-        }
         public virtual string Cuenta
         {
             get
