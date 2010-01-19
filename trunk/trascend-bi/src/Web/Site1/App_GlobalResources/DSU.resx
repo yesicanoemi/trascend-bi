@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ERAnioReportes" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ERLogin" xml:space="preserve">
+    <value>^([a-zA-Z](?:(?:(?:\w[\._]?)*)\w)+)([a-zA-Z0-9])$</value>
+  </data>
+  <data name="ERNumCuentaEmpleado" xml:space="preserve">
+    <value>^\d{1,7}$</value>
+  </data>
+  <data name="ERPassword" xml:space="preserve">
+    <value>^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&amp;+=]).*$</value>
+  </data>
+  <data name="ErrorFechaEgresoEmpleado" xml:space="preserve">
+    <value>La fecha egreso debe ser mayor a la fecha de ingreso</value>
+  </data>
+  <data name="ErrorFechaFinPropuesta" xml:space="preserve">
+    <value>La fecha fin debe ser mayor a la fecha inicio</value>
+  </data>
+  <data name="ErrorFormatoLogin" xml:space="preserve">
+    <value>El nombre de usuario no posee el formato adecuado</value>
+  </data>
+  <data name="ErrorFormatoNumCuentaEmpleado" xml:space="preserve">
+    <value>Error en en el formato del numero de cuenta (Solo numeros)</value>
+  </data>
+  <data name="ErrorFormatoPassword" xml:space="preserve">
+    <value>Error en el formato de la contraseña</value>
+  </data>
+  <data name="FaltaAnioReportes" xml:space="preserve">
+    <value>Seleccione un año</value>
+  </data>
+  <data name="FaltaApellidoContacto" xml:space="preserve">
+    <value>Debe introducir el apellido del contacto</value>
+  </data>
+  <data name="FaltaApellidoEmpleado" xml:space="preserve">
+    <value>Debe introducir el apellido del empleado</value>
+  </data>
+  <data name="FaltaApellidoReceptorPropuesta" xml:space="preserve">
+    <value>Debe introducir el apellido del receptor de la propuesta</value>
+  </data>
+  <data name="FaltaApellidoUsuario" xml:space="preserve">
+    <value>Debe introducir el apellido del usuario</value>
+  </data>
+  <data name="FaltaCelularContacto" xml:space="preserve">
+    <value>Debe introducir el numero de celular del contacto</value>
+  </data>
+  <data name="FaltaCIEmpleado" xml:space="preserve">
+    <value>Debe introducir la cedula de identidad del empleado</value>
+  </data>
+  <data name="FaltaCIFind" xml:space="preserve">
+    <value>Debe introducir la cedula de identidad para la busqueda</value>
+  </data>
+  <data name="FaltaCiudadCliente" xml:space="preserve">
+    <value>Debe introducir la ciudad del cliente</value>
+  </data>
+  <data name="FaltaContrasena" xml:space="preserve">
+    <value>Falta la contraseña</value>
+  </data>
+  <data name="FaltaContrasenaUsuario" xml:space="preserve">
+    <value>Debe introducir la contraseña del usuario</value>
+  </data>
+  <data name="FaltaDireccion1Cliente" xml:space="preserve">
+    <value>Debe introducir direccion del cliente</value>
+  </data>
+  <data name="FaltaFechaFinPropuesta" xml:space="preserve">
+    <value>Debe introducir la fecha de fin de la propuesta</value>
+  </data>
+  <data name="FaltaFechaFirmaPropuesta" xml:space="preserve">
+    <value>Debe introducir la fecha de la firma de la propuesta</value>
+  </data>
+  <data name="FaltaFechaInicioPropuesta" xml:space="preserve">
+    <value>Debe introducir fecha de inicio de la propuesta</value>
+  </data>
+  <data name="FaltaNombreCargo" xml:space="preserve">
+    <value>Debe introducir el nombre del cargo</value>
+  </data>
+  <data name="FaltaNombreCliente" xml:space="preserve">
+    <value>Debe introducir el nombre del cliente</value>
+  </data>
+  <data name="FaltaNombreContacto" xml:space="preserve">
+    <value>Debe introducir el nombre del contacto</value>
+  </data>
+  <data name="FaltaNombreEmpleado" xml:space="preserve">
+    <value>Debe introducir el nombre del empleado</value>
+  </data>
+  <data name="FaltaNombreReceptorPropuesta" xml:space="preserve">
+    <value>Debe introducir el nombre del receptor de la propuesta</value>
+  </data>
+  <data name="FaltaNombreUsuario" xml:space="preserve">
+    <value>Debe introducir el nombre del usuario</value>
+  </data>
+  <data name="FaltaNumCuentaEmpleado" xml:space="preserve">
+    <value>Debe introducir el numero de cuenta del empleado</value>
+  </data>
+  <data name="FaltaRangoSueldo" xml:space="preserve">
+    <value>Debe introducir un rango de sueldo</value>
+  </data>
+  <data name="FaltaRIFCliente" xml:space="preserve">
+    <value>Debe introducir el R.I.F. del cliente</value>
+  </data>
+  <data name="FaltaTelefonoCliente" xml:space="preserve">
+    <value>Debe introducir el telefono del cliente</value>
+  </data>
+  <data name="FaltaTituloPropuesta" xml:space="preserve">
+    <value>Debe introducir el titulo de la propuesta</value>
+  </data>
+  <data name="FaltaTotalHorasPropuesta" xml:space="preserve">
+    <value>Debe introducir las horas totales de la propuesta</value>
+  </data>
+  <data name="FaltaUserName" xml:space="preserve">
+    <value>Debe introducir el nombre de usuario a utilizar</value>
+  </data>
+  <data name="FaltaVersionPropuesta" xml:space="preserve">
+    <value>Debe introducir la version de la propuesta</value>
+  </data>
+  <data name="FaltaMontoPropuesta" xml:space="preserve">
+    <value>Debe Introducir el monto total de la Propuesta</value>
+  </data>
+  <data name="NombreUsuario" xml:space="preserve">
+    <value>Nombre de Usuario:</value>
+  </data>
+  <data name="FaltaDescripcionGasto" xml:space="preserve">
+    <value>Debe introducir una breve descripcion del gasto</value>
+  </data>
+  <data name="FaltaEstadoGasto" xml:space="preserve">
+    <value>Debe introducir el gasto</value>
+  </data>
+  <data name="FaltaFecha" xml:space="preserve">
+    <value>Debe introducir una fecha</value>
+  </data>
+  <data name="FaltaMontoGasto" xml:space="preserve">
+    <value>Debe introducir el monto</value>
+  </data>
+  <data name="FaltaNombreGasto" xml:space="preserve">
+    <value>Debe introducir el nombre del gasto</value>
+  </data>
+  <data name="CanceladoPropuestaFact" xml:space="preserve">
+    <value>Cancelado:</value>
+  </data>
+  <data name="CodifoFactPropuesta" xml:space="preserve">
+    <value>Código Factura:</value>
+  </data>
+  <data name="CodigoPropuestaFactura" xml:space="preserve">
+    <value>Código:</value>
+  </data>
+  <data name="DescripcionPropuestaFactura" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="MontoFaltantePropFact" xml:space="preserve">
+    <value>Monto Restante:</value>
+  </data>
+  <data name="MontoPagarPropFact" xml:space="preserve">
+    <value>Monto a Pagar:</value>
+  </data>
+  <data name="MontosCanceladosPropFact" xml:space="preserve">
+    <value>Montos Cancelados:</value>
+  </data>
+  <data name="MontoTotalPropuestaFact" xml:space="preserve">
+    <value>Monto Total:</value>
+  </data>
+  <data name="NombrePropuestaFactura" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="PorcentajeCanceladoPropFact" xml:space="preserve">
+    <value>Porcentaje Cancelado:</value>
+  </data>
+  <data name="PorcentajeFaltantePropFact" xml:space="preserve">
+    <value>Porcentaje Restante:</value>
+  </data>
+  <data name="PorcentajePagarFact" xml:space="preserve">
+    <value>* Porcentaje a Pagar:</value>
+  </data>
+  <data name="NumPropFact" xml:space="preserve">
+    <value>Número:</value>
+  </data>
+  <data name="TituloFactPropuesta" xml:space="preserve">
+    <value>* Titulo:</value>
+  </data>
+  <data name="TotalCanceladoFact" xml:space="preserve">
+    <value>Total Cancelado:</value>
+  </data>
+  <data name="FaltaAreaContacto" xml:space="preserve">
+    <value>Debe introducir el area de trabajo del contacto</value>
+  </data>
+  <data name="FaltaCargoContacto" xml:space="preserve">
+    <value>Debe introducir el Cargo del contacto</value>
+  </data>
+  <data name="FaltaCodTelefono" xml:space="preserve">
+    <value>Debe introducir el codigo de area del telefono</value>
+  </data>
+  <data name="FaltaNumTelefono" xml:space="preserve">
+    <value>Debe introducir el telefono</value>
+  </data>
+  <data name="FaltaTipoGasto" xml:space="preserve">
+    <value>Debe introducir el tipo del gasto</value>
+  </data>
+</root>
