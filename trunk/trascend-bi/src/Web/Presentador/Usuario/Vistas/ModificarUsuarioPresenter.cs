@@ -56,15 +56,15 @@ namespace Presentador.Usuario.Vistas
 
             _vista.ApellidoEmp.Text = usuario.Apellido;
 
-            _vista.UsuarioU.Text = usuario.Status;
+            _vista.DLStatusUsuario.Items.Add(usuario.Status);
 
             if (usuario.Status == "Activo")
             {
-                _vista.DLStatusUsuario.Items.FindByValue("Activo");
+                _vista.DLStatusUsuario.Items.Add("Inactivo");
             }
             else
             {
-                _vista.DLStatusUsuario.Items.FindByValue("Inactivo");
+                _vista.DLStatusUsuario.Items.Add("Activo");
             }
         }
 
@@ -277,9 +277,11 @@ namespace Presentador.Usuario.Vistas
 
             usuario.Login = _vista.NombreUsu.Text;
 
-            usuario.Status = _vista.DLStatusUsuario.SelectedValue;
+            usuario.Status = _vista.DLStatusUsuario.SelectedItem.Text;
 
             ModificarUsuario(usuario);
+
+
 
         }
 

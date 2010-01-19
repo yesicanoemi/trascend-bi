@@ -25,8 +25,6 @@ namespace Presentador.Usuario.Contrato
 
         Label ApellidoEmp { get; set; }
 
-        Label UsuarioU { get; set; }
-
         CheckBoxList CBLAgregar { get; set; }
 
         CheckBoxList CBLConsultar { get; set; }

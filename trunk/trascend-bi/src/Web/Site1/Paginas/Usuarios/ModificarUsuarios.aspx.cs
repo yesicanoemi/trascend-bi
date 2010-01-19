@@ -60,12 +60,6 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         set { uxApellidoEmp = value; }
     }
 
-    public Label UsuarioU
-    {
-        get { return uxStatusU; }
-        set { uxStatusU = value; }
-    }
-
     public CheckBoxList CBLAgregar
     {
         get { return uxCBLAgregar; }
@@ -152,6 +146,7 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.OnBotonAceptar();
+        Response.Redirect("~/Paginas/Usuarios/ModificarUsuarios.aspx");
 
     }
 

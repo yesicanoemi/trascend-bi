@@ -106,8 +106,14 @@
 
                                             </tr>
                                             <tr>
-                                                <td><b>Status:</b></td>
-                                                <td><asp:Label ID="uxStatusU" runat="server" Text=""></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="StatusUsua" runat="server" Text = "Status Usuario" />
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="uxStatusUsuario" runat="server" 
+                                                        onselectedindexchanged="StatusUsuario_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;</td>
@@ -195,21 +201,10 @@
                                             </tr>
 
                                             <tr>
-                                            <tr>
                                                 <td>
-                                                    <asp:Label ID="LabelTipoConsulta" runat="server" Text = "Status Usuario" />
+                                                    <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                                    onclick="uxBotonAceptar_Click" />
                                                 </td>
-                                                <td>
-                                                    <asp:DropDownList ID="uxStatusUsuario" runat="server" 
-                                                        onselectedindexchanged="StatusUsuario_SelectedIndexChanged">
-                                                        <asp:ListItem Value="Activo">Activo</asp:ListItem>
-                                                        <asp:ListItem Value="Inactivo">Inactivo</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </td>
-                                            </tr>
-                                            <td>
-                                                <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                                onclick="uxBotonAceptar_Click" /></td>
                                             </tr>
 
 
