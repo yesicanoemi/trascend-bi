@@ -83,9 +83,13 @@ namespace Core.AccesoDatos.SqlServer
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGasto", parametros);
 
             }
-            catch (SqlException e)
+            catch (InvalidOperationException e)
             {
-                System.Console.Write(e);
+                _gasto.Codigo = -1;
+            }
+            catch (SqlException)
+            {
+                _gasto.Codigo = -2;
             }
 
             return _gasto;
@@ -129,11 +133,15 @@ namespace Core.AccesoDatos.SqlServer
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGastoPropuesta", parametros);
 
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                //System.Console.Write(e);
                 _gasto.Codigo = -1;
             }
+            catch (SqlException)
+            {
+                _gasto.Codigo = -1;
+            }
+            
 
             return _gasto;
         }
@@ -270,6 +278,7 @@ namespace Core.AccesoDatos.SqlServer
 
 
         #endregion
+
     }
 }
 

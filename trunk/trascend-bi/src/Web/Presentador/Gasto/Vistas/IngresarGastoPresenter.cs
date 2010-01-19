@@ -91,12 +91,22 @@ namespace Presentador.Gasto.Vistas
 
             gasto = ingresar.Ejecutar();
 
-            if (gasto.Codigo<0)
+            if (gasto.Codigo == -1)
             {
-                _vista.MensajeError.Text = "No se pudo insertar dicho GASTO";
+                _vista.MensajeError.Text = "No se localiza el procedimiento de InsertarGasto en la base de datos.";
                 _vista.MensajeError.Visible = true;
             }
-            else limpiar();
+            else if (gasto.Codigo == -2) 
+            {
+                _vista.MensajeError.Text = "Error en el intento de insercion del gasto, SqlException.";
+                _vista.MensajeError.Visible = true;
+            }
+            else 
+            {
+                limpiar();
+                _vista.MensajeError.Text = "El gasto se ha insertado correctamente!!!";
+                _vista.MensajeError.Visible = true;
+            }
 
         }
         #endregion

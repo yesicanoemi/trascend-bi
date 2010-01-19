@@ -42,7 +42,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
           
           <div class="features_overview_right"> 
            <h3>Agregar Gastos</h3>
-            <p class="large">Introduzca la informacón a continuación</p> 
+            <p class="large">Introduzca la información a continuación</p> 
             <p class="large">
                 <form id="uxFormGasto" runat="server">
                            <table style="width:100%;">
