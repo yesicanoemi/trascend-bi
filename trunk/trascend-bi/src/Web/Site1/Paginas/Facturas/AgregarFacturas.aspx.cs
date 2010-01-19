@@ -161,6 +161,13 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         _presenter.OnAgregarFactura();
     }
 
+    public void Mensaje(string msg)
+    {
+        Label lbl = new Label();
+        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        Page.Controls.Add(lbl);
+    }
+
     protected void Page_Init(object sender, EventArgs e)
     {
 
@@ -169,6 +176,7 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
         bool permiso = false;
 
+        MontoPagar.Text = "0";
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
             if (usuario.PermisoUsu[i].IdPermiso == 17)
@@ -186,5 +194,10 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         {
             Response.Redirect(paginaSinPermiso);
         }
+
+    }
+    protected void uxPorcentajePagar_TextChanged(object sender, EventArgs e)
+    {
+        MontoPagar.Text = ((int.Parse(MontoTotal.Text) * int.Parse(PorcentajePagar.Text)) / 100).ToString();
     }
 }

@@ -76,7 +76,7 @@ namespace Core.AccesoDatos.SqlServer
 
                             factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
-                            factura.Fechapago = (DateTime)reader["echa"];
+                            factura.Fechapago = (DateTime)reader["Fecha"];
 
                             factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
@@ -96,11 +96,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta ",e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta en la Base de Datos",e);
             }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta", e);
+                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta en la Base de Datos", e);
             }
 
             return facturas;
@@ -161,11 +161,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el ID de la propuesta",e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el ID de la propuesta  en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta", e);
+                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta  en la Base de Datos", e);
             }
 
             return facturas;
@@ -229,11 +229,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las propuestas con el fin de utilizarlas para facturas", e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las propuestas con el fin de utilizarlas para facturas en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando las propuestas con el fin de utilizarlas para facturas", e);
+                throw new ConsultarFacturaADException("Error consultando las propuestas con el fin de utilizarlas para facturas en la Base de Datos", e);
             }
             return factura;
         }
@@ -294,11 +294,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las facturas por estado", e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las facturas por estado en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando las facturas por estado", e);
+                throw new ConsultarFacturaADException("Error consultando las facturas por estado en la Base de Datos", e);
             }
         
         }
@@ -346,11 +346,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.InsertarFacturaADException("Error de SQL insertando factura", e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.InsertarFacturaADException("Error de SQL insertando factura en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new InsertarFacturaADException("Error insertando factura", e);
+                throw new InsertarFacturaADException("Error insertando factura en la Base de Datos", e);
             }
 
             if (valido == false)
@@ -399,11 +399,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando una factura", e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando una factura en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando una factura", e);
+                throw new ConsultarFacturaADException("Error consultando una factura en la Base de Datos", e);
             }
 
             return facturas;
@@ -425,11 +425,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ModificarFacturaADException("Error de SQL modificando una factura", e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ModificarFacturaADException("Error de SQL modificando una factura en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ModificarFacturaADException("Error modificando una factura", e);
+                throw new ModificarFacturaADException("Error modificando una factura en la Base de Datos", e);
             }
 
             if (valido)

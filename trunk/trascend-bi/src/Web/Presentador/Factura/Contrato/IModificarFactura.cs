@@ -23,5 +23,7 @@ namespace Presentador.Factura.Contrato
          TextBox Porcentaje { get; set; }
          TextBox MontoTotal { get; set; }
          TextBox FechaPago { get; set; }
+
+         void Mensaje(string msg);
     }
 }

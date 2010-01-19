@@ -86,6 +86,12 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         }
     }
 
+    public void Mensaje(string msg)
+    {
+        Label lbl = new Label();
+        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        Page.Controls.Add(lbl);
+    }
 
     protected void uxConsultarxNumProp_Click(object sender, EventArgs e)
     {

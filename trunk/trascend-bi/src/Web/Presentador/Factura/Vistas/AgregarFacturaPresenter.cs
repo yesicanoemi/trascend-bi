@@ -113,15 +113,15 @@ namespace Presentador.Factura.Vistas
             }
             catch (InsertarFacturaADException e)
             {
-                //error en la capa de BD
+                _vista.Mensaje(e.Message);
             }
             catch (IngresarFacturaLNException e)
             {
-                //error en la capa LN
+                _vista.Mensaje(e.Message);
             }
             catch (Exception e)
             {
-                //Error aqui
+                _vista.Mensaje(e.Message);
             }
         }
 
@@ -136,15 +136,15 @@ namespace Presentador.Factura.Vistas
             }
             catch (InsertarFacturaADException e)
             {
-                //error en la capa de BD
+                _vista.Mensaje(e.Message);
             }
             catch (IngresarFacturaLNException e)
             {
-                //error en la capa LN
+                _vista.Mensaje(e.Message);
             }
             catch (Exception e)
             {
-                //Error aqui
+                _vista.Mensaje(e.Message);
             }
         }
 

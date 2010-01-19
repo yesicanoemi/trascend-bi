@@ -315,7 +315,8 @@
                                             Text="<%$Resources:DSU, PorcentajePagarFact%>"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxPorcentajePagar" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxPorcentajePagar" runat="server" 
+                                            ontextchanged="uxPorcentajePagar_TextChanged"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -349,6 +350,10 @@
                                 </tr>
                             </table>
                             </form>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             <p>
                             </p>
                             <p>

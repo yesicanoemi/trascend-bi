@@ -136,6 +136,12 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
         }
     }
 
+    public void Mensaje(string msg)
+    {
+        Label lbl = new Label();
+        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        Page.Controls.Add(lbl);
+    }
 
 
     protected void Button3_Click(object sender, EventArgs e)

@@ -82,15 +82,15 @@ namespace Presentador.Factura.Vistas
              }
              catch (ModificarFacturaADException e)
              {
-                 //error en la capa de BD
+                 _vista.Mensaje(e.Message);
              }
              catch (ModificarFacturaLNException e)
              {
-                 //error en la capa LN
+                 _vista.Mensaje(e.Message);
              }
              catch (Exception e)
              {
-                 //Error aqui
+                 _vista.Mensaje(e.Message);
              }
 
                 
@@ -158,15 +158,15 @@ namespace Presentador.Factura.Vistas
             }
             catch (ModificarFacturaADException e)
             {
-                //error en la capa de BD
+                _vista.Mensaje(e.Message);
             }
             catch (ModificarFacturaLNException e)
             {
-                //error en la capa LN
+                _vista.Mensaje(e.Message);
             }
             catch (Exception e)
             {
-                //Error aqui
+                _vista.Mensaje(e.Message);
             }
 
 
