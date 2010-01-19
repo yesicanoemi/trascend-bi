@@ -48,6 +48,11 @@ http://trascend-bi.googlecode.com/files/Consultar%20Cargo%20grupo%20%236.png
 ====*5) Crear Tabla Inflacionaria*====
 
 http://trascend-bi.googlecode.com/files/Crear%20Tabla%20Inflacionaria.jpg
+
+== Diagrama de Clases ==
+
+http://trascend-bi.googlecode.com/files/Diagrama%20de%20Clases%20%28Cargo%29.jpg
+
 <br>
 <br>
 *Reportes:*
