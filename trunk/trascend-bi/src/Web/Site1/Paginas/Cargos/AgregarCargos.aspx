@@ -12,7 +12,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarCargos.aspx" class="active">Agregar<span></span></a></li> 
   <li><a href="AdministrarCargos.aspx" >Administrar<span></span></a></li> 
-  <li><a href="TablaCargos.aspx" >Tabla<span></span></a></li>
+  <li><a href="TablaCargos.aspx" >Tabla de Inflacion<span></span></a></li>
 </ul> 
 						
 				</div> 

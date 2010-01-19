@@ -12,7 +12,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarCargos.aspx">Agregar<span></span></a></li> 
   <li><a href="AdministrarCargos.aspx" class="active">Administrar<span></span></a></li> 
-  <li><a href="TablaCargos.aspx" >Tabla<span></span></a></li>
+  <li><a href="TablaCargos.aspx" >Tabla de Inflacion<span></span></a></li>
 </ul> 
 	</div> 
     	<div class="sub-content"> 
@@ -27,7 +27,8 @@
                                    <td>
                                        <asp:DropDownList ID="uxNombre" runat="server"  >
                                        </asp:DropDownList>
-                                                             <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" OnClick="uxBotonBuscar_Click" />
+                                                             </td>
+                                   <td><asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" OnClick="uxBotonBuscar_Click" />
                                                              </td>
                                    
                                </tr>
