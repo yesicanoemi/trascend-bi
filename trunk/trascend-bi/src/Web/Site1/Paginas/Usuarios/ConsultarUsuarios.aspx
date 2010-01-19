@@ -283,7 +283,7 @@
                     <ContentTemplate>
                         <uc1:DialogoError ID="uxDialogoError" runat="server" />
                     </ContentTemplate>
-                </asp:UpdatePanel>
+                    </asp:UpdatePanel>
                       </form>                  
                  </div> 
                  

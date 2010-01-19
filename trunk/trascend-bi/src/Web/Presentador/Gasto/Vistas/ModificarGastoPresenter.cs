@@ -158,7 +158,7 @@ namespace Presentador.Gasto.Vistas
                 _vista.FechaGasto.Enabled = false;
 
                 gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.FechaGasto = DateTime.Parse(_vista.FechaGasto.Text);
+                gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
 
                 listaGasto = ConsultarPorFecha(gasto);
                 //listaGasto.Add(gasto);
@@ -176,6 +176,43 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
+        }
+
+        public void CambiarVista(int index)
+        {
+
+            _vista.MultiViewConsultar.ActiveViewIndex = index;
+        }
+
+        public void uxObjectModificarGastoSelecting(int codigo)
+        {
+            gasto = new Core.LogicaNegocio.Entidades.Gasto();
+
+            gasto.Codigo = codigo;
+            gasto.Descripcion = _vista.DescripcionGasto.Text;
+            gasto.Estado = _vista.EstadoGasto.Text;
+            gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
+            gasto.FechaIngreso = DateTime.Now;
+            gasto.Monto = float.Parse(_vista.MontoGasto.Text);
+            gasto.Tipo = _vista.TipoGasto.Text;
+
+            if (_vista.AsociarPropuestaGasto.Checked)
+            {
+                int i = 0;
+
+                if (listaPropuesta.Count == 0)
+                    gasto.IdVersion = 0;
+
+                for (i = 0; i < listaPropuesta.Count; i++)
+
+                    if (listaPropuesta.ElementAt(i).Titulo.Equals(_vista.PropuestaAsociada.SelectedItem.Text))
+
+                        gasto.IdVersion = Int32.Parse(listaPropuesta.ElementAt(i).Version);
+            }
+
+            ModificarGastoPorCodigo(gasto);
+            CambiarVista(1);
+            
         }
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorTipo()
@@ -211,6 +248,15 @@ namespace Presentador.Gasto.Vistas
             return listaGasto;
         }
 
+        public void ModificarGastoPorCodigo(Core.LogicaNegocio.Entidades.Gasto _gasto)
+        {
+            Core.LogicaNegocio.Comandos.ComandoGasto.ModificarGasto _ModificaGastoPorCodigo;
+
+            _ModificaGastoPorCodigo = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoModificar(_gasto);
+
+            _ModificaGastoPorCodigo.Ejecutar();   
+            
+        }
 
         #endregion
 

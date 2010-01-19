@@ -135,5 +135,4 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
     #endregion
 
 
-
 }

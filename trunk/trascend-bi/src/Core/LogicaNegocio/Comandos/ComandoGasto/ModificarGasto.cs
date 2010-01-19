@@ -28,9 +28,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         #region Metodos
         public void Ejecutar()
         {
-            //Gasto _gasto = null;
-            //GastoSQLServer bd = new GastoSQLServer();
-            //_gasto = bd.ModificarGasto(gasto);
+            Gasto _gasto = null;
+            GastoSQLServer bd = new GastoSQLServer();
+            _gasto = bd.ModificarGasto(gasto);
         }
         #endregion
     }

@@ -74,7 +74,7 @@
 			                    <td colspan="2">
 			                        <asp:GridView ID="uxEliminarGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectEliminarGasto"
                                                     AutoGenerateColumns="false" DataKeyNames="codigo" AutoGenerateSelectButton="true"
-                                                    Width="130%" Font-Names="Verdana" Font-Size="X-Small">
+                                                    Width="130%" Font-Names="Verdana" Font-Size="X-Small" OnSelectedIndexChanging="uxEliminarGasto_SelectedIndexChanged">
                                                                                      
                                                 <Columns>
                                                     <asp:BoundField HeaderText="Codigo" DataField="codigo" />

@@ -7,10 +7,13 @@ using Presentador.Gasto.Contrato;
 using Presentador.Gasto.Vistas;
 using Core.LogicaNegocio.Entidades;
 using Microsoft.Practices.Web.UI.WebControls;
+using Presentador.Aplicacion;
 
 public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
 {
     private ModificarGastoPresenter _presenter;
+
+    protected const string paginaConsulta = "~/Paginas/Usuarios/ModificarGastos.aspx";
 
     #region Propiedades de la Pagina
 
@@ -50,6 +53,12 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { uxFechaGasto = value; }
     }
 
+    public MultiView MultiViewConsultar
+    {
+        get { return uxModificarMultiView; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     public GridView GridViewModificarGasto
     {
         get { return uxModificarGasto; }
@@ -62,8 +71,67 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { uxObjectModificarGasto = value; }
     }
 
+    public TextBox DescripcionGasto
+    {
+        get { return uxDescripcionGasto; }
+        set { uxDescripcionGasto = value; }
+    }
+
+    public TextBox FechaGasto2
+    {
+        get { return uxFechaGasto2; }
+        set { uxFechaGasto2 = value; }
+    }
+
+    public TextBox MontoGasto
+    {
+        get { return uxMontoGasto; }
+        set { uxMontoGasto = value; }
+    }
+
+    public TextBox EstadoGasto
+    {
+        get { return uxEstadoGasto; }
+        set { uxEstadoGasto = value; }
+    }
+
+    public TextBox TipoGasto
+    {
+        get { return uxTipoGasto; }
+        set { uxTipoGasto = value; }
+    }
+
+    public DropDownList PropuestaAsociada
+    {
+        get { return uxProyectosGasto; }
+        set { uxProyectosGasto = value; }
+    }
+
+    public CheckBox AsociarPropuestaGasto
+    {
+        get { return uxCheckProyectoGasto; }
+        set { uxCheckProyectoGasto = value; }
+    }
+
+    public Label MensajeError
+    {
+        get { return LabelMensajeError; }
+        set { LabelMensajeError = value; }
+    }
+
+    
+
     #endregion
 
+    protected void PageChangingGasto(object sender, GridViewPageEventArgs e)
+    {
+
+    }
+    protected void SeleccionarModificarGasto(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.uxObjectModificarGastoSelecting(int.Parse(uxModificarGasto.DataKeys[e.NewSelectedIndex].Value.ToString()));
+        
+    }   
     protected void Page_Init(object sender, EventArgs e)
     {
 
@@ -118,11 +186,31 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         uxBotonBuscar3.Enabled = false;
         _presenter.BuscarInformacion();
     }
-    protected void uxModificarGasto_SelectedIndexChanged(object sender, EventArgs e)
+    
+    protected void uxCheckProyectoGasto_CheckedChanged1(object sender, EventArgs e)
     {
 
+    }
+    protected void uxProyectosGasto_SelectedIndexChanged(object sender, EventArgs e)
+    {
 
+    }
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        //_presenter.ModificarGasto();
+    }
+    public void CambiarPagina()
+    {
+        Response.Redirect(paginaConsulta);
+
+    }
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 
     #endregion
+    
 }
