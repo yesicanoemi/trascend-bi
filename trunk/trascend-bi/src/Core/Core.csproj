@@ -219,6 +219,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Pruebas\PrubaCliente.cs" />
+    <Compile Include="Pruebas\PruebaEliminarUsuario.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebasCargo.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
