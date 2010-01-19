@@ -31,7 +31,7 @@ public partial class Paginas_Clientes_EliminarClientes : PaginaBase, IEliminarCl
     protected void Page_Load(object sender, EventArgs e)
     {
         bool o = false;
-        _Presentador = new EliminarClientePresentador(this);
+
         _Presentador.LlenarLista(o);
     }
 
@@ -49,7 +49,7 @@ public partial class Paginas_Clientes_EliminarClientes : PaginaBase, IEliminarCl
             {
                 i = usuario.PermisoUsu.Count;
 
-                //Deben colocar aqui la instancia del presentador a usar 
+                _Presentador = new EliminarClientePresentador(this);
 
                 permiso = true;
 
