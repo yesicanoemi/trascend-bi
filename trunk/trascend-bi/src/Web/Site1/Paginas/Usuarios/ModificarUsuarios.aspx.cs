@@ -47,6 +47,17 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         set { uxMensajeInformacion.Visible = value; }
     }
 
+    public void PintarInformacionBotonAceptar(string mensaje, string estilo)
+    {
+        uxMensajeInformacionBotonAceptar.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisibleBotonAceptar
+    {
+        get { return uxMensajeInformacionBotonAceptar.Visible; }
+        set { uxMensajeInformacionBotonAceptar.Visible = value; }
+    }
+
     #endregion
 
     public TextBox NombreUsuario
@@ -183,7 +194,7 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.OnBotonAceptar();
-        Response.Redirect("~/Paginas/Usuarios/ModificarUsuarios.aspx");
+        //Response.Redirect("~/Paginas/Usuarios/ModificarUsuarios.aspx");
 
     }
 

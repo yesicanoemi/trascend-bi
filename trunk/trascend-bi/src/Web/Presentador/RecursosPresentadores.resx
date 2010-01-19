@@ -153,4 +153,7 @@
   <data name="mensajeUsuarioAgregado" xml:space="preserve">
     <value>Usuario agregado con exito</value>
   </data>
+  <data name="mensajeUsuarioModificado" xml:space="preserve">
+    <value>El Usuario se modifico con exito</value>
+  </data>
 </root>

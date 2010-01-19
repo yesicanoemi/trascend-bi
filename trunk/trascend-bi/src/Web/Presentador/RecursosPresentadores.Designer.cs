@@ -167,5 +167,14 @@ namespace Presentador {
                 return ResourceManager.GetString("mensajeUsuarioExiste", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El Usuario se modifico con exito.
+        /// </summary>
+        internal static string mensajeUsuarioModificado {
+            get {
+                return ResourceManager.GetString("mensajeUsuarioModificado", resourceCulture);
+            }
+        }
     }
 }

@@ -358,6 +358,11 @@ namespace Presentador.Usuario.Vistas
 
             ModificarUsuario(usuario);
 
+            _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                ("mensajeUsuarioModificado"), "mensajes");
+            _vista.InformacionVisibleBotonAceptar = true;
+
+
 
 
         }

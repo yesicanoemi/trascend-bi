@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" Title="Modificar Usuarios" AutoEventWireup="true" CodeFile="ModificarUsuarios.aspx.cs" Inherits="Paginas_Usuarios_ModificarUsuarios" %>
 <%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
 <%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacionBotonAceptar" TagPrefix="uc3" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="container subnav"> 
@@ -244,6 +245,12 @@
                                                     onclick="uxBotonAceptar_Click" />
                                                 </td>
                                             </tr>
+                                            
+                                            <tr>
+                                            <td>
+                                                <uc3:MensajeInformacionBotonAceptar ID="uxMensajeInformacionBotonAceptar" runat="server" Visible="false" />
+                                            </td>
+                                        </tr>
 
 
                                         </table>
