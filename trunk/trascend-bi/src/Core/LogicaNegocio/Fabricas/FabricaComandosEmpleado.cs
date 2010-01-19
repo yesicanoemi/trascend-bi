@@ -19,14 +19,29 @@ namespace Core.LogicaNegocio.Fabricas
             return new Modificar(empleado);
         }
 
-        public static Consultar CrearComandoConsultar(IList<Empleado> empleado)
-        {
-            return new Consultar(empleado);
-        }
-
+      
         public static ConsultarE CrearComandoConsultarE(IList<Persona> empleado)
         {
             return new ConsultarE(empleado);
+        }
+        public static ConsultarPorNombre CrearComandoConsultarPorNombre(Empleado empleado)
+        {
+            return new ConsultarPorNombre(empleado);
+        }
+
+        public static ConsultarCargo CrearComandoConsultarCargo(IList<string> cargo)
+        {
+            return new ConsultarCargo(cargo);
+        }
+
+        public static ConsultarPorCI CrearComandoConsultarPorCI(Empleado empleado)
+        {
+            return new ConsultarPorCI(empleado);
+        }
+
+        public static ConsultarPorCargo CrearComandoConsultarPorCargo(Empleado empleado)
+        {
+            return new ConsultarPorCargo(empleado);
         }
     }
 }

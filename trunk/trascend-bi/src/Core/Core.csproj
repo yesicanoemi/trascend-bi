@@ -100,8 +100,11 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Consultar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarE.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCI.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorNombre.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGasto.cs" />

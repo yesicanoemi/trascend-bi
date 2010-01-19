@@ -97,7 +97,7 @@ namespace Presentador.Usuario.Vistas
 
             empleado.Apellido = _vista.EmpleadoBuscar.Text;
 
-            IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleado(empleado);
+            IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleadoPorNombre(empleado);
 
             try
             {
@@ -150,7 +150,7 @@ namespace Presentador.Usuario.Vistas
         /// <param name="entidad">Entidad empleado</param>
         /// <returns>Entidad empleado</returns>
 
-        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleado
+        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleadoPorNombre
                                             (Core.LogicaNegocio.Entidades.Empleado entidad)
         {
             IList<Core.LogicaNegocio.Entidades.Empleado> entidad1 =
@@ -158,9 +158,9 @@ namespace Presentador.Usuario.Vistas
 
             IList<Core.LogicaNegocio.Entidades.Empleado> empleado = null;
 
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.Consultar comando;
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre comando;
 
-            comando = FabricaComandosEmpleado.CrearComandoConsultar(entidad1);
+            comando = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
 
             empleado = comando.Ejecutar();
 
