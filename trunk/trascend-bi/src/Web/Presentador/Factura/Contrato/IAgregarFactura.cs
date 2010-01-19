@@ -35,8 +35,10 @@ namespace Presentador.Factura.Contrato
         DropDownList EstadoFactura { get; set; }
         TextBox FechaPagoFact { get; set; }
         TextBox FechaIngreso { get; set; }
-        //Button Aceptar { get; set; }
-
+        Button CalculaMonto { get; set; }
+        Button InsertarFactura { get; set; }
+        TextBox NumeroPropuesta { get; set; }
+       
         #endregion
 
         void Mensaje(string msg);

@@ -65,7 +65,39 @@
                                 </table>
                                
                                
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label1" runat="server" Text="<%$Resources:DSU, NumPropFact%>"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="uxNumProp" runat="server"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="Button2" runat="server" onclick="uxConsultarxNumProp_Click" 
+                                                Text="Button" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>
+                                            &nbsp;</td>
+                                    </tr>
+                                </table>
+                               
+                               
                             </form>
+                            
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             
                             <p>
                             </p>
@@ -95,6 +127,8 @@
                                         &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -104,8 +138,12 @@
                                     <td>
                                         <asp:TextBox ID="uxMontoTotal" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -119,8 +157,12 @@
                                     <td>
                                         <asp:TextBox ID="uxMontoCancelado" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -134,8 +176,12 @@
                                     <td>
                                         <asp:TextBox ID="uxTotalCancelado" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -149,8 +195,12 @@
                                     <td>
                                         <asp:TextBox ID="uxPorcentajeCancelado" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -164,8 +214,12 @@
                                     <td>
                                         <asp:TextBox ID="uxMontoFaltante" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -179,8 +233,72 @@
                                     <td>
                                         <asp:TextBox ID="uxPorcFaltante" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <AjaxControlToolkit:CalendarExtender ID="uxFechaPag" runat="server" 
+                                            Animated="true" CssClass="ajax__calendar" Format="dd/MM/yyyy" 
+                                            PopupButtonID="uxImagenFechaPago" TargetControlID="uxFechaPago"></AjaxControlToolkit:CalendarExtender>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div style="background-color:InfoBackground">
+                                            Facturación</div>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha Ingreso:</td>
+                                    <td>
+                                        <asp:TextBox ID="uxFechaIngresoFactProp" runat="server"></asp:TextBox>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -195,54 +313,12 @@
                                         <asp:Image ID="uxImagenFechaPago" runat="server" 
                                             ImageUrl="~/Images/calendario.png" />
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <AjaxControlToolkit:CalendarExtender ID="uxFechaPag" runat="server" 
-                                            Animated="true" CssClass="ajax__calendar" Format="dd/MM/yyyy" 
-                                            PopupButtonID="uxImagenFechaPago" TargetControlID="uxFechaPago"></AjaxControlToolkit:CalendarExtender>
-                                    </td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div style="background-color:InfoBackground">
-                                            Facturación</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Fecha Ingreso:</td>
-                                    <td>
-                                        <asp:TextBox ID="uxFechaIngresoFactProp" runat="server"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -256,8 +332,12 @@
                                     <td>
                                         <asp:TextBox ID="uxTituloFactura" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -271,8 +351,12 @@
                                     <td>
                                         <asp:TextBox ID="uxDescProp" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -287,8 +371,12 @@
                                             <asp:ListItem>Por Cobrar</asp:ListItem>
                                         </asp:DropDownList>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -302,8 +390,12 @@
                                     <td>
                                         <asp:TextBox ID="uxCodigoFactura" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -318,8 +410,12 @@
                                         <asp:TextBox ID="uxPorcentajePagar" runat="server" 
                                             ontextchanged="uxPorcentajePagar_TextChanged"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -333,8 +429,14 @@
                                     <td>
                                         <asp:TextBox ID="uxMontoPagar" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        <asp:Button ID="uxCalcMonto" runat="server" Text="Calcular Monto" 
+                                            onclick="uxCalcMonto_Click" />
+                                    </td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        &nbsp;</td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
@@ -345,11 +447,25 @@
                                         &nbsp;</td>
                                     <td>
                                         <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                            onclick="uxBotonAceptar_Click" />
+                                            onclick="uxBotonAceptar_Click" Visible="False" />
                                     </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                             </table>
                             </form>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
                             <p>
                             </p>
                             <p>

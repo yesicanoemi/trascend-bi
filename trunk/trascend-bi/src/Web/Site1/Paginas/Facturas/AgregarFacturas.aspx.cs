@@ -76,6 +76,12 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         set { this.uxTituloPropuesta = value; }
     }
 
+    public TextBox NumeroPropuesta
+    {
+        get { return this.uxNumProp; }
+        set { this.uxNumProp = value; }
+    }
+
     #endregion
 
 
@@ -124,11 +130,18 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         set { this.uxFechaPago = value; }
     }
 
-    /*public Button Aceptar
+    public Button CalculaMonto
     {
-        get { return this.uxAceptar; }
-        set { this.uxAceptar = value; }
-    }*/
+        get { return this.uxCalcMonto; }
+        set { this.uxCalcMonto = value; }
+    }
+
+    public Button InsertarFactura
+    {
+        get { return this.uxBotonAceptar; }
+        set { this.uxBotonAceptar = value; }
+    }
+
 
     #endregion
 
@@ -199,5 +212,26 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
     protected void uxPorcentajePagar_TextChanged(object sender, EventArgs e)
     {
         MontoPagar.Text = ((int.Parse(MontoTotal.Text) * int.Parse(PorcentajePagar.Text)) / 100).ToString();
+    }
+
+    protected void uxCalcMonto_Click(object sender, EventArgs e)
+    {
+        _presenter.OnCalcularMonto();
+
+    }
+    protected void uxConsultarxNumProp_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid == true)
+        {
+            // if (uxTituloPropuesta.Text == "propuesta1")
+
+            _presenter.OnBotonAceptar();
+
+            /*else
+            {
+                Response.Redirect();
+            }*/
+
+        }
     }
 }

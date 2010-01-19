@@ -49,6 +49,11 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
         public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
         {
+            if (propuesta == null)
+                throw new ConsultarFacturaADException();
+            else if (propuesta.Titulo.Equals(""))
+                throw new ConsultarFacturaADException();
+
             IList<Propuesta> propuestas = ConsultarPropuesta();
 
             List<Factura> facturas = new List<Factura>();
@@ -98,8 +103,8 @@ namespace Core.AccesoDatos.SqlServer
 
                         }
 
-                        if (facturas.Count == 0)
-                            throw new ConsultarFacturaADException();
+                        //if (facturas.Count == 0)
+                        //    throw new ConsultarFacturaADException();
                     }
                 }
             }
@@ -109,7 +114,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (ConsultarFacturaADException e)
             {
-                throw new ConsultarFacturaADException("No se encontraron facturas relacionadas al proyecto "+propuesta.Titulo, e);
+                throw new ConsultarFacturaADException("No se pudo realizar la consulta, se recibio un parametro de busqueda vacio, en este caso, el nombre de la propuesta", e);
             }
             catch (Exception e)
             {
@@ -127,6 +132,11 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
         public IList<Factura> ConsultarFacturasIDPro(Propuesta propuesta)
         {
+            if (propuesta == null)
+                throw new ConsultarFacturaADException();
+            else if (propuesta.Id == 0)
+                throw new ConsultarFacturaADException();
+
             IList<Propuesta> propuestas = ConsultarPropuesta();
 
             List<Factura> facturas = new List<Factura>();
@@ -174,8 +184,8 @@ namespace Core.AccesoDatos.SqlServer
                             i++;
 
                         }
-                        if (facturas.Count == 0)
-                            throw new ConsultarFacturaADException();
+                        //if (facturas.Count == 0)
+                        //    throw new ConsultarFacturaADException();
                     }
                 }
             }
@@ -185,7 +195,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (ConsultarFacturaADException e)
             {
-                throw new ConsultarFacturaADException("No se encontraron facturas relacionadas al proyecto " + propuesta.Titulo, e);
+                throw new ConsultarFacturaADException("No se pudo realizar la consulta, se recibio un parametro de busqueda vacio, en este caso, el ID la propuesta", e);
             }
             catch (Exception e)
             {
@@ -213,6 +223,11 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
+                if (factura == null)
+                    throw new ConsultarFacturaADException();
+                else if (factura.Numero == 0)
+                    throw new ConsultarFacturaADException();
+
                 factura.Prop = new Propuesta();
 
                 SqlParameter[] arParms = new SqlParameter[1];
@@ -266,7 +281,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (ConsultarFacturaADException e)
             {
-                throw new ConsultarFacturaADException("No se consiguio la factura con ID "+factura.Numero, e);
+                throw new ConsultarFacturaADException("No se consiguio la factura", e);
             }
             catch (Exception e)
             {

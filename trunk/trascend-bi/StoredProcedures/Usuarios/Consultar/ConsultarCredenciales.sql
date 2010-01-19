@@ -3,7 +3,7 @@
 -- Create date: <10/01/2010>
 -- Description:	<Consulta de Credenciales de Usuario>
 -- =============================================
-ALTER PROCEDURE [dbo].[ConsultarCredenciales]
+CREATE PROCEDURE [dbo].[ConsultarCredenciales]
 
 	-- Add the parameters for the stored procedure here
 
