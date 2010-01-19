@@ -95,10 +95,14 @@
     <Compile Include="Factura\Vistas\AgregarFacturaPresenter.cs" />
     <Compile Include="Factura\Vistas\ConsultarFacturaPresenter.cs" />
     <Compile Include="Factura\Vistas\ModificarFacturaPresenter.cs" />
+    <Compile Include="Gasto\Contrato\IConsultarGasto.cs" />
     <Compile Include="Gasto\Contrato\IEliminarGasto.cs" />
     <Compile Include="Gasto\Contrato\IIngresarGasto.cs" />
+    <Compile Include="Gasto\Contrato\IModifcarGasto.cs" />
+    <Compile Include="Gasto\Vistas\ConsultarGastoPresenter.cs" />
     <Compile Include="Gasto\Vistas\EliminarGastoPresenter.cs" />
     <Compile Include="Gasto\Vistas\IngresarGastoPresenter.cs" />
+    <Compile Include="Gasto\Vistas\ModificarGastoPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

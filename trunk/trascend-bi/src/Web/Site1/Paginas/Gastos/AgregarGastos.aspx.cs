@@ -11,7 +11,6 @@ public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
 {
     private IngresarGastoPresenter _presentadorGasto;
 
-
     #region Informacion Basica
 
     public TextBox DescripcionGasto
