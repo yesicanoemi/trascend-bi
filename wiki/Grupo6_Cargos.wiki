@@ -33,7 +33,7 @@ http://trascend-bi.googlecode.com/files/Ingresar%20Cargo%20grupo%20%236.png
 
 ====*3) Modificar Cargos*====
 
-
+http://trascend-bi.googlecode.com/files/Modificar%20Cargo%20grupo%20%236.png
 
 
 ====*4) Eliminar Cargos*====
