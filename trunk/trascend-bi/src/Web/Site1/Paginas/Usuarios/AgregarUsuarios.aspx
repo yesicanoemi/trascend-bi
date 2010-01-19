@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarUsuarios.aspx.cs" Inherits="Paginas_Usuarios_AgregarUsuarios" %>
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 
@@ -52,6 +54,12 @@
                                             <td><asp:TextBox ID="uxNombreEmpleadoBuscar" runat="server"></asp:TextBox></td>
                                             <td>
                                                 <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" onclick="uxBotonBuscar_Click"/>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
                                             </td>
                                         </tr>
                                
@@ -265,7 +273,11 @@
                                 </asp:View>
                             
                             </asp:MultiView> 
-                       
+                           <asp:UpdatePanel ID="up2" runat="server">
+                                <ContentTemplate>
+                                    <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         
                         
 

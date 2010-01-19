@@ -8,10 +8,13 @@ using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Comandos.ComandoUsuario;
 using System.Net;
 using System.Collections;
+using Presentador.Base;
+using System.Resources;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Presentador.Usuario.Vistas
 {
-    public class AgregarUsuarioPresenter
+    public class AgregarUsuarioPresenter : PresentadorBase
     {
         #region Propiedades
 
@@ -96,17 +99,48 @@ namespace Presentador.Usuario.Vistas
 
             IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleado(empleado);
 
-            if (listado != null)
+            try
+            {
+                if (listado.Count > 0)
+                {
+
+                    _vista.GetObjectContainerConsultaEmpleado.DataSource = listado;
+
+                }
+
+                else
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                                ("MensajeConsulta"), "mensajes");
+                    _vista.InformacionVisible = true;
+                }
+            }
+            catch (WebException e)
             {
 
-                _vista.GetObjectContainerConsultaEmpleado.DataSource = listado;
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
 
             }
 
-            else
-            {
-                //Mensaje de error al usuario
-            }
 
         }
 
