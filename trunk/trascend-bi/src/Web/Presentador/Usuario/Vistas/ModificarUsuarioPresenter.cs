@@ -60,6 +60,7 @@ namespace Presentador.Usuario.Vistas
 
             if (usuario.Status == "Activo")
             {
+                _vista.DLStatusUsuario.Enabled = false;
                 _vista.DLStatusUsuario.Items.Add("Inactivo");
             }
             else
