@@ -24,10 +24,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// Metodo de ejecucion para agregar cargos
         /// </summary>
         /// <returns>true si se logro agregar el cargo y false si hubo error</returns>
-        public bool Ejecutar()
+        public void Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
-            return bd.IngresarCargo( _cargo );
+            bd.IngresarCargo( _cargo );
         }
     }
 }

@@ -16,5 +16,9 @@ namespace Presentador.Cargo.Contrato
         TextBox VigenciaSueldo { get; set; }
         Label LabelError { get; set; }
         #endregion
+
+        #region Metodos
+        void Mensaje(string mensaje);
+        #endregion
     }
 }

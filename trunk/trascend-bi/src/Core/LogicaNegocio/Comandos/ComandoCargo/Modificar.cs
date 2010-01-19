@@ -24,10 +24,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// Metodo de ejecucion de modificacion de cargo
         /// </summary>
         /// <returns>El cargo con valores modificados</returns>
-        public bool Ejecutar()
+        public void Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
-            return bd.ModificarCargo(_cargo);
+            bd.ModificarCargo(_cargo);
         }
     }
 }

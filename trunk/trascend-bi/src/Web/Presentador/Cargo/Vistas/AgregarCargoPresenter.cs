@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using Presentador.Cargo.Contrato;
 using Core.LogicaNegocio;
-using System.Text.RegularExpressions;
+using Core.LogicaNegocio.Excepciones;
+using System.Net;
 
 
 namespace Presentador.Cargo.Vistas
@@ -33,36 +34,49 @@ namespace Presentador.Cargo.Vistas
         /// Metodo para ingresar cargo nuevo
         /// </summary>
         /// <returns>true si fue correcto y false si hubo error</returns>
-        public bool IngresarCargo()
+        public void IngresarCargo()
         {
+
             if (ValidarCampos())
             {
-                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
 
-                cargo.Nombre = _vista.NombreCargo.Text;
-                cargo.Descripcion = _vista.DescripcionCargo.Text;
-                cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
-                cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
-                cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
-
-                Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
-
-                ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
-
-                if (ComandoIngresar.Ejecutar())
+                try
                 {
+                    Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+
+                    cargo.Nombre = _vista.NombreCargo.Text;
+                    cargo.Descripcion = _vista.DescripcionCargo.Text;
+                    cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+                    cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
+                    cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
+
+                    Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
+
+                    ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
+
                     LimpiarFormulario();
-                    return true;
+                    
+                    
                 }
-                else
-                    return false;
+                catch(FormatException e)
+                {
+                    _vista.Mensaje("Error en el formato de campos");
+                }
+                catch(IngresarException e)
+                {
+                    _vista.Mensaje(e.Message);
+                }
+                catch(Exception e)
+                {
+                    _vista.Mensaje(e.Message);
+                }
             }
             else
             {
-                _vista.LabelError.Text = "Debe rellenar todos los campos";
-                return false;
+                _vista.Mensaje("Debe rellenar todos los campos");
             }
         }
+        
 
         /// <summary>
         /// Metodo para limpiar los elementos de la interfaz

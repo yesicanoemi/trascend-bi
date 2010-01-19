@@ -5,6 +5,7 @@ using System.Text;
 using Presentador.Cargo.Contrato;
 using Core.LogicaNegocio.Entidades;
 using System.Data;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Presentador.Cargo.Vistas
 {
@@ -40,20 +41,36 @@ namespace Presentador.Cargo.Vistas
         /// </summary>
         private void LlenarDDLCargos()
         {
-            Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
-            IList<Entidad> ListaEntidadesCargos = bd.ConsultarCargos();
-
-            List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
-
-            for (int i = 0; i < ListaEntidadesCargos.Count; i++)
+            try
             {
-                ListaCargos.Add((Core.LogicaNegocio.Entidades.Cargo)ListaEntidadesCargos.ElementAt(i));
+                Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+                IList<Entidad> ListaEntidadesCargos = bd.ConsultarCargos();
+
+                List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
+
+                for (int i = 0; i < ListaEntidadesCargos.Count; i++)
+                {
+                    ListaCargos.Add((Core.LogicaNegocio.Entidades.Cargo)ListaEntidadesCargos.ElementAt(i));
+                }
+
+                _vista.NombreCargo.DataSource = ListaCargos;
+                _vista.NombreCargo.DataTextField = "Nombre";
+                _vista.NombreCargo.DataValueField = "Id";
+                _vista.NombreCargo.DataBind();
+            }
+            catch (FormatException e)
+            {
+                _vista.Mensaje("Error en el formato de campos");
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+            catch(Exception e)
+            {
+                _vista.Mensaje(e.Message);
             }
 
-            _vista.NombreCargo.DataSource = ListaCargos;
-            _vista.NombreCargo.DataTextField = "Nombre";
-            _vista.NombreCargo.DataValueField = "Id";
-            _vista.NombreCargo.DataBind();
         }
 
         /// <summary>
@@ -63,84 +80,125 @@ namespace Presentador.Cargo.Vistas
         {
             LimpiarFormulario();
 
-            Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-            cargo.Nombre = _vista.NombreCargo.SelectedItem.ToString();
+            try
+            {
 
-            Core.LogicaNegocio.Comandos.ComandoCargo.Consultar ComandoConsultar;
+                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+                cargo.Nombre = _vista.NombreCargo.SelectedItem.ToString();
 
-            ComandoConsultar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoConsultar(cargo);
+                Core.LogicaNegocio.Comandos.ComandoCargo.Consultar ComandoConsultar;
 
-            Core.LogicaNegocio.Entidades.Cargo cargoRetorno = ComandoConsultar.Ejecutar();
+                ComandoConsultar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoConsultar(cargo);
 
-            //_vista.NombreCargo.Text = cargoRetorno.Nombre;
-            _vista.DescripcionCargo.Text = cargoRetorno.Descripcion;
-            _vista.SueldoMinimo.Text = cargoRetorno.SueldoMinimo.ToString();
-            _vista.SueldoMaximo.Text = cargoRetorno.SueldoMaximo.ToString();
-            _vista.VigenciaSueldo.Text = cargoRetorno.Vigencia.ToShortDateString().ToString();
+                Core.LogicaNegocio.Entidades.Cargo cargoRetorno = ComandoConsultar.Ejecutar();
 
-            ActivarCampos();
+                //_vista.NombreCargo.Text = cargoRetorno.Nombre;
+                _vista.DescripcionCargo.Text = cargoRetorno.Descripcion;
+                _vista.SueldoMinimo.Text = cargoRetorno.SueldoMinimo.ToString();
+                _vista.SueldoMaximo.Text = cargoRetorno.SueldoMaximo.ToString();
+                _vista.VigenciaSueldo.Text = cargoRetorno.Vigencia.ToShortDateString().ToString();
+
+                ActivarCampos();
+            }
+            catch (FormatException e)
+            {
+                _vista.Mensaje("Error en el formato de campos");
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+            catch (Exception e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+
         }
 
         /// <summary>
         /// Metodo del boton para eliminar el cargo
         /// </summary>
         /// <returns>True para correcto y false si hubo error</returns>
-        public bool EliminarCargo()
+        public void EliminarCargo()
         {
-
-            Core.LogicaNegocio.Comandos.ComandoCargo.Eliminar ComandoEliminar;
-
-            ComandoEliminar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoEliminar(
-                                                        int.Parse(_vista.NombreCargo.SelectedValue));
-
-            if (ComandoEliminar.Ejecutar())
+            try
             {
-                LimpiarFormulario();
-                LlenarDDLCargos();
-                DesactivarCampos();
-                return true;
+
+                Core.LogicaNegocio.Comandos.ComandoCargo.Eliminar ComandoEliminar;
+
+                ComandoEliminar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoEliminar(
+                                                            int.Parse(_vista.NombreCargo.SelectedValue));
+
+
+
+                    LimpiarFormulario();
+                    LlenarDDLCargos();
+                    DesactivarCampos();
+
             }
-            else
-                return false;
+            catch (FormatException e)
+            {
+                _vista.Mensaje("Error en el formato de campos");
+            }
+            catch (EliminarException e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+            catch(Exception e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+
         }
 
         /// <summary>
         /// Metodo para la modificacion del cargo buscado
         /// </summary>
         /// <returns>True si no hubo errores y false si hubo error</returns>
-        public bool ModificarCargo()
+        public void ModificarCargo()
         {
             if (ValidarCampos())
             {
-                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-
-                cargo.Id = int.Parse(_vista.NombreCargo.SelectedValue);
-                cargo.Nombre = _vista.NombreCargo.SelectedItem.Text;
-                cargo.Descripcion = _vista.DescripcionCargo.Text;
-                cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
-                cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
-                cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
-
-                Core.LogicaNegocio.Comandos.ComandoCargo.Modificar ComandoModificar;
-
-                ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar(cargo);
-
-                if (ComandoModificar.Ejecutar())
+                try
                 {
-                    LimpiarFormulario();
-                    int i = _vista.NombreCargo.SelectedIndex;
-                    LlenarDDLCargos();
-                    _vista.NombreCargo.SelectedIndex = i;
-                    DesactivarCampos();
-                    return true;
+
+                    Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+
+                    cargo.Id = int.Parse(_vista.NombreCargo.SelectedValue);
+                    cargo.Nombre = _vista.NombreCargo.SelectedItem.Text;
+                    cargo.Descripcion = _vista.DescripcionCargo.Text;
+                    cargo.SueldoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+                    cargo.SueldoMaximo = float.Parse(_vista.SueldoMaximo.Text);
+                    cargo.Vigencia = DateTime.Parse(_vista.VigenciaSueldo.Text);
+
+                    Core.LogicaNegocio.Comandos.ComandoCargo.Modificar ComandoModificar;
+
+                    ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar(cargo);
+
+                    
+                        LimpiarFormulario();
+                        int i = _vista.NombreCargo.SelectedIndex;
+                        LlenarDDLCargos();
+                        _vista.NombreCargo.SelectedIndex = i;
+                        DesactivarCampos();
+
                 }
-                else
-                    return false;
+                catch (FormatException e)
+                {
+                    _vista.Mensaje("Error en el formato de campos");
+                }
+                catch (ModificarException e)
+                {
+                    _vista.Mensaje(e.Message);
+                }
+                catch (Exception e)
+                {
+                    _vista.Mensaje(e.Message);
+                }
             }
             else
             {
-                _vista.LabelError.Text = "Debe rellenar todos los campos";
-                return false;
+                _vista.Mensaje("Debe rellenar todos los campos");
             }
 
         }

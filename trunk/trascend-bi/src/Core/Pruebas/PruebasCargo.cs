@@ -21,6 +21,7 @@ namespace Core.Pruebas
         {
         }
 
+        /*
         [Test]
         public void PruebaAIngresarCargo()
         {
@@ -89,7 +90,7 @@ namespace Core.Pruebas
             Assert.AreEqual(comandoEliminar.Ejecutar(), true);
 
         }
-
+        */
        
     }
 }

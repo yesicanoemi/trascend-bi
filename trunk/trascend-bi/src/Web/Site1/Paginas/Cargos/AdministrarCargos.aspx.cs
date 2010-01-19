@@ -98,17 +98,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
     /// </summary>
     protected void uxBotonEliminar_Click(object sender, EventArgs e)
     {
-        if (!_presenter.EliminarCargo())
-        {
-            LabelError.Text = "Error eliminando el cargo";
-            LabelError.Visible = true;
-        }
-        else
-        {
-            LabelError.Text = "Cargo eliminado satisfactoriamente";
-            LabelError.Visible = true;
-            DesactivarBotones();
-        }
+        _presenter.EliminarCargo();
     }
 
     /// <summary>
@@ -116,25 +106,13 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
     /// </summary>
     protected void uxBotonGuardar_Click(object sender, EventArgs e)
     {
-        if (!_presenter.ModificarCargo())
-        {
-            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
-            {
-                LabelError.Visible = true;
-                ActivarBotones();
-            }
-            else
-            {
-                LabelError.Text = "Error guardando los cambios";
-                LabelError.Visible = true;
-            }
-        }
-        else
-        {
-            LabelError.Text = "Cambios guardos satisfactoriamente";
-            LabelError.Visible = true;
-            DesactivarBotones();
-        }
+        _presenter.ModificarCargo();
+    }
+
+    public void Mensaje(string mensaje)
+    {
+        LabelError.Text = mensaje;
+        LabelError.Visible = true;
     }
 
     /// <summary>

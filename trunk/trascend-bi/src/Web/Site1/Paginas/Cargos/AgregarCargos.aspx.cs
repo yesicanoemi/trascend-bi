@@ -88,21 +88,13 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         LabelError.Visible = false;
-        if (!_presentador.IngresarCargo())
-        {
-            if (LabelError.Text.Equals("Debe rellenar todos los campos"))
-                LabelError.Visible = true;
-            else
-            {
-                LabelError.Text = "Error ingresando el cargo";
-                LabelError.Visible = true;
-            }
-        }
-        else
-        {
-            LabelError.Text = "Cargo ingresado =)";
-            LabelError.Visible = true;
-        }
+        _presentador.IngresarCargo();
+    }
+
+    public void Mensaje(string mensaje)
+    {
+        LabelError.Text = mensaje;
+        LabelError.Visible = true;
     }
     #endregion
 

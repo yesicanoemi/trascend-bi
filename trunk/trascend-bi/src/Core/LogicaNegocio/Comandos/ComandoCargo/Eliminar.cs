@@ -36,10 +36,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// Metodo de ejecucion de la eliminacion de cargo
         /// </summary>
         /// <returns>true si se elimino correctamente y false si hubo error</returns>
-        public bool Ejecutar()
+        public void Ejecutar()
         {
             CargoSQLServer bd = new CargoSQLServer();
-            return bd.EliminarCargo(_cargo.Id);
+            bd.EliminarCargo(_cargo.Id);
         }
     }
 }
