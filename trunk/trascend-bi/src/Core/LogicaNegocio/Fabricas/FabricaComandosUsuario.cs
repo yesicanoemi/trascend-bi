@@ -93,6 +93,17 @@ namespace Core.LogicaNegocio.Fabricas
             return new EliminarUsuario(entidad);
         }
 
+        /// <summary>
+        /// Metodo que fabrica el comando "ConsultarEmpleadoConUsuario" de la entidad Usuario
+        /// </summary>
+        /// <param name="entidad">Entidad Usuario</param>
+        /// <returns>Comando ConsultarEmpleadoConUsuario</returns>
+
+        public static ConsultarEmpleadoConUsuario CrearComandoConsultarEmpleadoConUsuario(Empleado entidad)
+        {
+            return new ConsultarEmpleadoConUsuario(entidad);
+        }
+
         #endregion
     }
 }

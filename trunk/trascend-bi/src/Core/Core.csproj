@@ -140,6 +140,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\AgregarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarEmpleadoConUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarPermisos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuarioStatus.cs" />

@@ -97,7 +97,7 @@ namespace Presentador.Usuario.Vistas
 
             empleado.Apellido = _vista.EmpleadoBuscar.Text;
 
-            IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleadoPorNombre(empleado);
+            IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleado(empleado);
 
             try
             {
@@ -150,21 +150,53 @@ namespace Presentador.Usuario.Vistas
         /// <param name="entidad">Entidad empleado</param>
         /// <returns>Entidad empleado</returns>
 
-        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleadoPorNombre
+        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleado
                                             (Core.LogicaNegocio.Entidades.Empleado entidad)
         {
+
+            Core.LogicaNegocio.Entidades.Empleado emplea1 = new Core.LogicaNegocio.Entidades.Empleado();
+            Core.LogicaNegocio.Entidades.Empleado emplea2 = new Core.LogicaNegocio.Entidades.Empleado();
+
+
             IList<Core.LogicaNegocio.Entidades.Empleado> entidad1 =
                                             new List<Core.LogicaNegocio.Entidades.Empleado>();
 
+            emplea1.Cedula = 18612200;
+            emplea1.Apellido = "Trejo";
+            emplea1.Nombre = "Daniel";
+            emplea1.Estado = "Activo";
+
+            entidad1.Add(emplea1);
+
+            emplea2.Cedula = 16460698;
+            emplea2.Apellido = "Rojas";
+            emplea2.Nombre = "Dina";
+            emplea2.Estado = "Activo";
+
+            entidad1.Add(emplea2);
+
+            return entidad1;
+        }
+
+        /// <summary>
+        /// Consultar el empleado al que se le desea asignar usuario
+        /// </summary>
+        /// <param name="entidad">Entidad empleado</param>
+        /// <returns>Entidad empleado</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleadoConUsuario
+                                            (Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
             IList<Core.LogicaNegocio.Entidades.Empleado> empleado = null;
 
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre comando;
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarEmpleadoConUsuario comando;
 
-            comando = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
+            comando = FabricaComandosUsuario.CrearComandoConsultarEmpleadoConUsuario(entidad);
 
             empleado = comando.Ejecutar();
 
             return empleado;
+
         }
 
         /// <summary>
@@ -300,6 +332,9 @@ namespace Presentador.Usuario.Vistas
         {
             Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
 
+            Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
+
+
             usuario.PermisoUsu = ModificarCheckBox(_vista.CBLAgregar);
 
             usuario.PermisoUsu =
@@ -317,20 +352,32 @@ namespace Presentador.Usuario.Vistas
 
             usuario.IdUsuario = int.Parse(_vista.CedulaEmp.Text);
 
-            if (ConsultarUsuario(usuario).Count == 0)
+            empleado.Cedula = int.Parse(_vista.CedulaEmp.Text);
+
+            if (ConsultarEmpleadoConUsuario(empleado).Count == 0)
             {
-                AgregarUsuario(usuario);
+
+                if (ConsultarUsuario(usuario).Count == 0)
+                {
+                    AgregarUsuario(usuario);
+                }
+                else
+                {
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                ("mensajeRegistroExiste"), "mensajes");
+                    _vista.InformacionVisibleBotonAceptar = true;
+
+                }
             }
             else
             {
-                _vista.PintarInformacion(ManagerRecursos.GetString
-                                            ("mensajeRegistroExiste"), "mensajes");
-                _vista.InformacionVisible = true;
-
+                _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                ("mensajeEmpleadoTieneUsuario"), "mensajes");
+                _vista.InformacionVisibleBotonAceptar = true;
             }
 
         }
-        
+
         #endregion
 
     }

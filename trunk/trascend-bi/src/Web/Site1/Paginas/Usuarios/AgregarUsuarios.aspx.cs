@@ -49,6 +49,17 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
         set { uxMensajeInformacion.Visible = value; }
     }
 
+    public void PintarInformacionBotonAceptar(string mensaje, string estilo)
+    {
+        uxMensajeInformacionBotonAceptar.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisibleBotonAceptar
+    {
+        get { return uxMensajeInformacionBotonAceptar.Visible; }
+        set { uxMensajeInformacionBotonAceptar.Visible = value; }
+    }
+
     #endregion
 
 

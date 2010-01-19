@@ -144,4 +144,10 @@
   <data name="mensajeRegistroExiste" xml:space="preserve">
     <value>La Entidad ya esta registrada en el sistema. Debe ir al módulo Modificar para realizar cualquier operación sobre la misma.</value>
   </data>
+  <data name="mensajeEmpleadoTieneUsuario" xml:space="preserve">
+    <value>Este Empleado ya posee un Usuario</value>
+  </data>
+  <data name="mensajeUsuarioExiste" xml:space="preserve">
+    <value>El Usuario ya existe. Debe intentar con otro nombre de Usuario</value>
+  </data>
 </root>

@@ -393,6 +393,60 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
+        #region ConsultarEmpleadoConUsuario
+
+        /// <summary>
+        /// Metodo para consultar el usuario por "Login"
+        /// </summary>
+        /// <param name="usuario">Criterio de busqueda</param>
+        /// <returns>Usuario(s) que coincidan con el criterio</returns>
+
+
+        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleadoConUsuario(Empleado entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Empleado> empleado =
+                                            new List<Core.LogicaNegocio.Entidades.Empleado>();
+
+            try
+            {
+                //Parametros de busqueda
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
+
+                arParms[0].Value = entidad.Cedula;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarEmpleadoConUsuario", arParms);
+
+                while (reader.Read())
+                {
+                    Empleado _empleado = new Empleado();
+
+                    _empleado.Nombre = (string)reader["Nombre"];
+
+                    _empleado.Apellido = (string)reader["Apellido"];
+
+
+                    empleado.Add(_empleado);
+                }
+
+                return empleado;
+
+            }
+
+            catch (SqlException e)
+            {
+
+            }
+
+            return empleado;
+
+        }
+
+        #endregion
+
 
 
         /// <summary>

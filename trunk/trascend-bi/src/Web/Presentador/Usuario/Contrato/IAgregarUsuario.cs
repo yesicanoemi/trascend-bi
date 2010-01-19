@@ -49,7 +49,11 @@ namespace Presentador.Usuario.Contrato
 
         bool InformacionVisible { get; set; }
 
+        bool InformacionVisibleBotonAceptar { get; set; }
+
         void PintarInformacion(string mensaje, string estilo);
+
+        void PintarInformacionBotonAceptar(string mensaje, string estilo);
 
         #endregion
 
