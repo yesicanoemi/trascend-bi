@@ -13,8 +13,6 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
 {
     private ModificarGastoPresenter _presenter;
 
-    protected const string paginaConsulta = "~/Paginas/Usuarios/ModificarGastos.aspx";
-
     #region Propiedades de la Pagina
 
     public Label LTipoConsulta
@@ -51,18 +49,6 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     {
         get { return uxFechaGasto; }
         set { uxFechaGasto = value; }
-    }
-
-    public MultiView MultiViewConsultar
-    {
-        get { return uxModificarMultiView; }
-        set { throw new System.NotImplementedException(); }
-    }
-
-    public GridView GridViewModificarGasto
-    {
-        get { return uxModificarGasto; }
-        set { throw new System.NotImplementedException(); }
     }
 
     public ObjectContainerDataSource GetObjectContainerModificarGasto
@@ -119,19 +105,16 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { LabelMensajeError = value; }
     }
 
-    
+    public Label CodigoGasto
+    {
+        get { return uxCodigoGasto; }
+        set { uxCodigoGasto = value; }
+
+    }    
 
     #endregion
 
-    protected void PageChangingGasto(object sender, GridViewPageEventArgs e)
-    {
-
-    }
-    protected void SeleccionarModificarGasto(object sender, GridViewSelectEventArgs e)
-    {
-        _presenter.uxObjectModificarGastoSelecting(int.Parse(uxModificarGasto.DataKeys[e.NewSelectedIndex].Value.ToString()));
-        
-    }   
+      
     protected void Page_Init(object sender, EventArgs e)
     {
 
@@ -186,6 +169,13 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         uxBotonBuscar3.Enabled = false;
         _presenter.BuscarInformacion();
     }
+
+    protected void SeleccionarModificarGasto(object sender, GridViewSelectEventArgs e)
+    {
+        uxBotonAceptar.Enabled = true;
+        _presenter.uxObjectModificarGastoSelecting(uxModificarGasto.DataKeys[e.NewSelectedIndex].Value.ToString());
+
+    }
     
     protected void uxCheckProyectoGasto_CheckedChanged1(object sender, EventArgs e)
     {
@@ -198,17 +188,13 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presenter.ModificarGasto();
-    }
-    public void CambiarPagina()
-    {
-        Response.Redirect(paginaConsulta);
+    }  
 
-    }
     protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowIndex % 2 == 0)
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
-    }
+    }   
 
     #endregion
     

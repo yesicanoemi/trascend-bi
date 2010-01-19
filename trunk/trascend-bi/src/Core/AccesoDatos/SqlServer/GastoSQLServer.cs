@@ -301,7 +301,7 @@ namespace Core.AccesoDatos.SqlServer
             Gasto _gasto = new Gasto();
             try
             {
-                SqlParameter[] parametros = new SqlParameter[6];
+                SqlParameter[] parametros = new SqlParameter[7];
 
                 parametros[0] = new SqlParameter("@IdGasto", SqlDbType.VarChar);
                 parametros[0].Value = gasto.Codigo;

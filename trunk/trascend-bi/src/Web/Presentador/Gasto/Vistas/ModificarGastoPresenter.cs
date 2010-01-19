@@ -121,7 +121,6 @@ namespace Presentador.Gasto.Vistas
                 {
                     //Mensaje de error al usuario
                 }
-
             }
 
             if (_vista.TipoConsulta.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
@@ -178,20 +177,24 @@ namespace Presentador.Gasto.Vistas
             }
         }      
 
-        public void uxObjectModificarGastoSelecting(int codigo)
+        public void uxObjectModificarGastoSelecting(string codigo)
         {
-            CambiarVista(1);
-            _vista.CambiarPagina();
+            _vista.CodigoGasto.Text = codigo;
+            _vista.TipoGasto.Enabled = true;
+            _vista.DescripcionGasto.Enabled = true;
+            _vista.FechaGasto2.Enabled = true;
+            _vista.MontoGasto.Enabled = true;
+            _vista.EstadoGasto.Enabled = true;
+            _vista.PropuestaAsociada.Enabled = true;
+            _vista.AsociarPropuestaGasto.Enabled = true;
             
-        }
-        public void CambiarVista(int index)
-        {
-            _vista.MultiViewConsultar.ActiveViewIndex = index;
-        }
+        }       
+
         public void ModificarGasto()
         {
             gasto = new Core.LogicaNegocio.Entidades.Gasto();
 
+            gasto.Codigo = Int32.Parse(_vista.CodigoGasto.Text);
             gasto.Descripcion = _vista.DescripcionGasto.Text;
             gasto.Estado = _vista.EstadoGasto.Text;
             gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
@@ -259,7 +262,6 @@ namespace Presentador.Gasto.Vistas
             _ModificaGastoPorCodigo.Ejecutar();   
             
         }
-
         #endregion
 
     }

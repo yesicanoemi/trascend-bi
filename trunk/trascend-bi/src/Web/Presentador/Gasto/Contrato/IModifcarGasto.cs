@@ -16,11 +16,10 @@ namespace Presentador.Gasto.Contrato
         Label LSeleccion { get; set; }
         DropDownList SeleccionDato { get; set; }
         Label LFechaGasto { get; set; }
-        TextBox FechaGasto { get; set; }
-        MultiView MultiViewConsultar { get; set; }
-        GridView GridViewModificarGasto { get; set; }
-        ObjectContainerDataSource GetObjectContainerModificarGasto { get; set; }
+        TextBox FechaGasto { get; set; }      
+        ObjectContainerDataSource GetObjectContainerModificarGasto { get; set; }     
 
+        Label CodigoGasto { get; set; }
         TextBox DescripcionGasto { get; set; }
         TextBox FechaGasto2 { get; set; }
         TextBox MontoGasto { get; set; }
@@ -28,9 +27,7 @@ namespace Presentador.Gasto.Contrato
         TextBox TipoGasto { get; set; }
         DropDownList PropuestaAsociada { get; set; }
         CheckBox AsociarPropuestaGasto { get; set; }
-        Label MensajeError { get; set; }
-
-        void CambiarPagina();
+        Label MensajeError { get; set; }        
 
         #endregion
     }

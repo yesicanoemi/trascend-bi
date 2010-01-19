@@ -37,9 +37,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                         <p class="large">Busqueda del Gasto</p>
                          <form id="form1" runat="server">
 			                            
-                            <asp:MultiView ID="uxModificarMultiView" runat="server" ActiveViewIndex="0">
                             
-                            <asp:View ID="ViewConsultaVista1" runat="server">
                             <table>
                                 <tr>
 		                            <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>
@@ -76,12 +74,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
 		                            <td>&nbsp;</td>
 		                            <td><asp:Button ID="uxBotonBuscar3" Text="Buscar" runat="server" Enabled="false" 
                                                 onclick="uxBotonBuscar3_Click"/></td>		        
-		                        </tr>
-        		                <tr>
-		                            <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxMsjFechaGasto"
-                                                        Format="dd/MM/yy" TargetControlID="uxFechaGasto" PopupButtonID="uxImagenFechaGasto" >
-                                        </AjaxControlToolkit:CalendarExtender></td>                             
-        		                </tr>		                      		                
+		                        </tr>        		                		                      		                
         		                <tr>
 		                            <td>&nbsp;</td>
 		                            <td>&nbsp;</td>
@@ -112,11 +105,14 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                                         </EmptyDataTemplate>                                                 
                                         </asp:GridView>
 			                        </td>
-			                    </tr>                                
+			                    </tr>
+			                    <tr>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>
+        		                    <td>&nbsp;</td>
+		                        </tr>                               
                             </table>
-                            </asp:View>
-                            
-                            <asp:View ID="ViewConsultaVista2" runat="server">        		            
+                                  		            
         		            
         		                <table style="width:100%;">
                                 <tr>
@@ -130,50 +126,51 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                            </table>
                            <table style="width:100%;">
                                <tr>
+                                   <td>Codigo: </td>
+                                   <td><asp:Label ID="uxCodigoGasto" runat="server"  Enabled="false"/></td>
+                               </tr>
+                               <tr>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>        		               
+		                        </tr>
+                               <tr>
                                    <td>Tipo: </td>
-                                   <td><asp:TextBox ID="uxTipoGasto" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxTipoGasto" runat="server" Enabled="false"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxTipoGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaTipoGasto%>" Font-Size="Smaller" Display="static" /></td>
+                                   <td>&nbsp;;</td>
                                </tr>
                                 <tr>
                                    <td>Descripcion: </td>
-                                   <td><asp:TextBox ID="uxDescripcionGasto" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxDescripcionGasto" runat="server" Enabled="false"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxDescripcionGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaDescripcionGasto%>" Font-Size="Smaller" Display="static" /></td>
+                                   <td>&nbsp;</td>
                                </tr>
                                <tr>
                                    <td>Fecha del gasto: </td>
                                    <td>
-                                       <asp:TextBox ID="uxFechaGasto2" runat="server"></asp:TextBox>
-                                       <asp:Image ID="uxImagenFechaGasto2" runat="server" ImageUrl="~/Images/calendario.png" />
-                                            
+                                       <asp:TextBox ID="uxFechaGasto2" runat="server" Enabled="false"></asp:TextBox>
+                                       <asp:Image ID="uxImagenFechaGasto2" runat="server" ImageUrl="~/Images/calendario.png"/>                                            
                                    </td>
                                </tr>
                                <tr>
-                                   <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxMsjFechaGastos"
-                                                Format="dd/MM/yy" TargetControlID="uxFechaGastos" PopupButtonID="uxImagenFechaGastos" >
-                                       </AjaxControlToolkit:CalendarExtender></td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxFechaGastos"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaFecha%>" Font-Size="Smaller" Display="static" /></td>
+                                   
+                                   <td></td>
                                </tr>
                                 <tr>
                                    <td>Monto: </td>
-                                   <td><asp:TextBox ID="uxMontoGasto" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxMontoGasto" runat="server" Enabled="false"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxMontoGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaMontoGasto%>" Font-Size="Smaller" Display="static" /></td>
+                                   <td>&nbsp;</td>
                                </tr>
                                 <tr>
                                    <td>Estado del gasto: </td>
-                                   <td><asp:TextBox ID="uxEstadoGasto" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxEstadoGasto" runat="server" Enabled="false"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -183,7 +180,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                    <td>Asociado a un proyecto:
                                        <asp:CheckBox ID="uxCheckProyectoGasto" runat="server" 
                                            onClick="actualizarEstadoDDLGasto(this);" 
-                                           oncheckedchanged="uxCheckProyectoGasto_CheckedChanged1" />
+                                           oncheckedchanged="uxCheckProyectoGasto_CheckedChanged1" Enabled="false"/>
                                             
                                     </td>
                                    <td>
@@ -199,13 +196,11 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Modificar" 
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Modificar" Enabled="false"
                                             onclick="uxBotonAceptar_Click" />                                           
                                    </td>
                                 </tr>
-                            </table>
-        		            </asp:View>                     
-                            </asp:MultiView>
+                            </table>        		            
                         </form>                        
                     </div> 
                 </div>
@@ -213,6 +208,5 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
         </div>
     </div>	
 <pp:objectcontainerdatasource runat="server" ID="uxObjectModificarGasto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" /> 	 
-                         
-                    </asp:Content>
+</asp:Content>
 
