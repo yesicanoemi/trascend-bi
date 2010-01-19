@@ -97,7 +97,7 @@ namespace Presentador.Empleado.Vistas
                     _vista.LabeApellido.Text = empleado.ElementAt(i).Apellido;
                     _vista.LabeNumCuenta.Text = empleado.ElementAt(i).Cuenta.ToString();
                     _vista.LabeFechaNac.Text = empleado.ElementAt(i).FechaNacimiento.ToShortDateString();
-                    _vista.LabelDireccion.Text = empleado.ElementAt(i).Direccion;
+                    //_vista.LabelDireccion.Text = empleado.ElementAt(i).Direccion;
                     _vista.LabelCargo.Text = empleado.ElementAt(i).Cargo;
                     _vista.LabelEstado.Text = empleado.ElementAt(i).Estado;
                     

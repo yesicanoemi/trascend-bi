@@ -81,8 +81,9 @@
                                             <td colspan="2">
                                                 <asp:GridView ID="uxConsultaUsuario" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaUsuario"
                                                 AutoGenerateColumns="False" DataKeyNames="login" AutoGenerateSelectButton="True"
-                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
-                                                OnSelectedIndexChanging="SelectUsuarios" onrowdatabound="uxGridView_RowDataBound">
+                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller"
+                                                OnSelectedIndexChanging="SelectUsuarios" 
+                                                    onrowdatabound="uxGridView_RowDataBound">
                                                     
                                                     <RowStyle HorizontalAlign="Center" />  
                                                     
@@ -98,6 +99,8 @@
                                                  </asp:GridView>
                                             </td>
                                         </tr>
+                                        
+                                                                              
                                        
                                         
                                     </table>

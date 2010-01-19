@@ -26,7 +26,7 @@ public abstract class PaginaBase : System.Web.UI.Page
 
     protected const string paginaInicial = "~/Paginas/Usuarios/DefaultUsuarios.aspx";
 
-    protected const string paginaSinPermiso = "~/Paginas/Usuarios/DefaultUsuarios.aspx";
+    protected const string paginaSinPermiso = "~/Paginas/Usuarios/SinAcceso.aspx";
 
     protected const string paginaDefault = "~/Default.aspx";
 
