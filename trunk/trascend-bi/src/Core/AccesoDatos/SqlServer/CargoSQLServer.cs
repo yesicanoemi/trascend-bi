@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -56,7 +57,7 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="cargo">cargo que se va a ingresar</param>
         /// <returns></returns>
-        public Boolean IngresarCargo(Cargo cargo)
+        public void IngresarCargo(Cargo cargo)
         {
             //   Cargo _cargo = new Cargo();
             try
@@ -77,10 +78,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                return false;
+                throw new IngresarException("Error SQL al ingresar el cargo", e);
                 //System.Console.Write(e);
             }
-            return true;
+            catch (Exception e)
+            {
+                throw new IngresarException("Error al ingresar el cargo", e);
+            }
         }
 
         /// <summary>
@@ -112,12 +116,16 @@ namespace Core.AccesoDatos.SqlServer
                     _cargo.Vigencia = DateTime.Parse(reader["VigenciaAnual"].ToString());
                 }
 
-                return _cargo;
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarException("Error SQL al consultar un cargo", e);
             }
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar un cargo", e);
+            }
+                
             return _cargo;
 
         }
@@ -128,11 +136,11 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Una IList de entidades que contienen todos los cargos</returns>
         public IList<Entidad> ConsultarCargos()
         {
+            IList<Entidad> listaCargos = new List<Entidad>();
             try
             {
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargos");
                 Cargo cargo;
-                IList<Entidad> listaCargos = new List<Entidad>();
 
                 while (reader.Read())
                 {
@@ -145,13 +153,18 @@ namespace Core.AccesoDatos.SqlServer
 
                     listaCargos.Add(cargo);
                 }
-                return listaCargos;
+
             }
             catch (SqlException e)
             {
-                return null;
+                throw new ConsultarException("Error SQL al consultar la lista de los cargos", e);
             }
-        
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar la lista de los cargos", e);
+            }
+
+            return listaCargos;
         }
 
         /// <summary>
@@ -159,7 +172,7 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="IdCargo">Identificador del cargo</param>
         /// <returns>True si se elimino y false si hubo error</returns>
-        public Boolean EliminarCargo(int IdCargo)
+        public void EliminarCargo(int IdCargo)
         {
             try
             {
@@ -172,10 +185,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                return false;
+                throw new EliminarException("Error SQL al eliminar el cargo", e);
                 //System.Console.Write(e);
             }
-            return true;
+            catch (Exception e)
+            {
+                throw new EliminarException("Error al eliminar el cargo", e);
+            }
 
         }
 
@@ -184,7 +200,7 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="cargo">El cargo con sus modificaciones</param>
         /// <returns>True si se modifico y false si hubo error</returns>
-        public Boolean ModificarCargo(Cargo cargo)
+        public void ModificarCargo(Cargo cargo)
         {
             try
             {
@@ -207,10 +223,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                return false;
+                throw new ModificarException("Error SQL al modificar el cargo", e);
                 //System.Console.Write(e);
             }
-            return true;
+            catch (Exception e)
+            {
+                throw new ModificarException("Error al modificar el cargo", e);
+            }
         }
 
 
