@@ -67,6 +67,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void LlenarClientes()
         {
+   //         Core.LogicaNegocio.Comandos.ComandoCliente.Consultar
         }
      }
     
