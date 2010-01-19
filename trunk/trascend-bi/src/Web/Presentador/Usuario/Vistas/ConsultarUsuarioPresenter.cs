@@ -211,11 +211,11 @@ namespace Presentador.Usuario.Vistas
 
                     _vista.InformacionVisible = false;
 
-                    _vista.GetObjectContainerConsultaUsuario.DataSource = listadoActivo;
+                    _vista.GetObjectContainerConsultaUsuario.DataSource = listadoInactivo;
 
                 }
 
-                else
+                else 
                 {
                     _vista.PintarInformacion(ManagerRecursos.GetString
                                             ("MensajeConsulta"), "mensajes");
