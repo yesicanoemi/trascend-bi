@@ -57,6 +57,8 @@ namespace Presentador.Propuesta.Contrato
 
         TextBox RolEquipo3 { get; set; }
 
+        void Mensaje(string msg);
+
         #endregion
 
     }

@@ -339,4 +339,10 @@
   <data name="FaltaFechaInicio" xml:space="preserve">
     <value>Introducir la fecha de Inicio</value>
   </data>
+  <data name="ERHoras" xml:space="preserve">
+    <value>^([0-9])$</value>
+  </data>
+  <data name="ErrorFormatoHoras" xml:space="preserve">
+    <value>Total Horas deben de ser Numeros</value>
+  </data>
 </root>

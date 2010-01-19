@@ -47,5 +47,16 @@ namespace Core.Pruebas
             propuesta = new PropuestaSQLServer().ListaEliminar( parametro );
             Assert.AreEqual( parametro.Count, 1 );
         }
+
+        [Test]
+        public void TestConsultarGastoxFecha()
+        {
+            Gasto gasto = new Gasto();
+            DateTime fechai = Convert.ToDateTime("01/01/2010");
+            DateTime fechaf = Convert.ToDateTime("30/01/2010");
+            IList<Gasto> gastos = new ReporteSQLServer().ConsultarGastoFecha(fechai, fechaf);
+            Assert.AreEqual(gastos.Count, 1);
+        }
+
     }
 }

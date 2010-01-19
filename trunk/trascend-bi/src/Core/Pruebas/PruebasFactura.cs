@@ -83,6 +83,8 @@ namespace Core.Pruebas
             Assert.AreEqual(facturas.Count, 47);
         }
 
+        
+
         [Test]
         public void TestIngresarFactura()
         {

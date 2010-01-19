@@ -87,7 +87,7 @@ namespace Presentador.Propuesta.Vistas
             }
             catch (Exception e)
             {
-                //Mensaje a usuario
+                _vista.Mensaje(e.Message);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Presentador.Propuesta.Vistas
             }
             catch (WebException e)
             {
-                //Mensaje al usuario
+                _vista.Mensaje(e.Message);
             }
         }
 

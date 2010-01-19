@@ -186,4 +186,11 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         uxBotonAceptar.Visible = true;
         _presentador.AgregarPropuesta();
     }
+
+    public void Mensaje(string msg)
+    {
+        Label lbl = new Label();
+        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        Page.Controls.Add(lbl);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarPropuestas.aspx.cs" Inherits="Paginas_Propuestas_AgregarPropuestas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+   
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -21,7 +22,8 @@
           <h3>Agregar Propuesta</h3>
             <p class="large">Introduzca la información a continuación</p>  
           <p class="large">
-            <form id="Form1" action="#" runat="server">
+          
+           <form id="Form1" action="#" runat="server">
                <table style="width:100%;">
                    <tr>
                        <td>Titulo:</td>
@@ -75,7 +77,18 @@
                        <td><asp:TextBox ID="uxNombreReceptor" runat="server"></asp:TextBox></td>
                    </tr>
                    <tr>
-                       <td>&nbsp;</td>
+                       <td> <asp:GridView runat = "server" ID="uxEmpleados" DataSourceID="uxobjectEmpleado" AutoGenerateColumns = "false" 
+            DataKeyNames = "Nombre" AllowPaging = "true" PageSize = "4" ShowFooter = "true" Width = "150px" Height="70px"   >
+            <Columns>
+            
+            
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre"  />
+                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                
+                
+            </Columns>
+            </asp:GridView>
+                       </td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                 ControlToValidate="uxNombreReceptor" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaNombreReceptorPropuesta%>" Font-Size="Smaller" Display="Static" />
@@ -267,6 +280,7 @@
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
                                 ControlToValidate="uxTotalHoras" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaTotalHorasPropuesta%>" Font-Size="Smaller" Display="Static" />
+                               
                        </td>
                    </tr>
                    
@@ -296,17 +310,7 @@
                         <tr>
                        <td></td>
                        
-                       < <asp:GridView runat = "server" ID="uxEmpleados" DataSourceID="uxobjectEmpleado" AutoGenerateColumns = "false" 
-            DataKeyNames = "Nombre" AllowPaging = "true" PageSize = "4" ShowFooter = "true" Width = "150px" Height="70px"   >
-            <Columns>
-            
-            
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre"  />
-                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                
-                
-            </Columns>
-            </asp:GridView>
+                       < 
             </td>
                        </tr>
                    <tr>
@@ -320,8 +324,7 @@
                                    
                                 </tr>
                    </table>
-                </form>
-          
+                          
           </p> 
        </div> 
         </div> 
@@ -329,5 +332,7 @@
    </div> 
 </div>
 <pp:objectcontainerdatasource runat="server" ID="uxobjectEmpleado" DataObjectTypeName="Core.LogicaNegocio.Entidades.Persona" /> 
+ 
+    </form>
  
 </asp:Content>

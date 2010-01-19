@@ -76,8 +76,8 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns></returns>
         public Propuesta IngresarPropuesta(Propuesta propuesta)
         {
-            //try
-            //  {
+            try
+              {
             SqlParameter[] arparmsP = new SqlParameter[2];
 
             SqlParameter[] ParamV = new SqlParameter[6];
@@ -144,8 +144,8 @@ namespace Core.AccesoDatos.SqlServer
                 int result2 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarVersion", ParamV);
 
             }
-            //  else
-            //      throw new IngresarADPropuestaException();
+              else
+                 throw new IngresarPropuestaBDException();
 
             //Consultar el Id del Cargo
 
@@ -179,8 +179,8 @@ namespace Core.AccesoDatos.SqlServer
                 int result3 = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarReceptor", ParamR);
             }
 
-            // else
-            //   throw new IngresarADPropuestaException();
+             else
+               throw new IngresarPropuestaBDException();
 
             //Ingresar Equipo
 
@@ -237,15 +237,15 @@ namespace Core.AccesoDatos.SqlServer
                             "IngresarEquipo", Param2);
 
                     }
-                    //     else
-                    //           throw new IngresarADPropuestaException();
+                         else
+                               throw new IngresarPropuestaBDException();
 
                 }
-                //   else
-                //      throw new IngresarADPropuestaException();
+                   else
+                      throw new IngresarPropuestaBDException();
             }
 
-            if (propuesta.NombreEquipo2 != null)
+            if (propuesta.NombreEquipo2 != "")
             {
                 SqlParameter[] Param3 = new SqlParameter[2];
 
@@ -298,16 +298,16 @@ namespace Core.AccesoDatos.SqlServer
                             "IngresarEquipo", Param4);
 
                     }
-                    //     else
-                    //          throw new IngresarADPropuestaException();
+                         else
+                              throw new IngresarPropuestaBDException();
 
                 }
-                //    else
-                //         throw new IngresarADPropuestaException();
+                    else
+                         throw new IngresarPropuestaBDException();
 
 
             }
-            if (propuesta.NombreEquipo3 != null)
+            if (propuesta.NombreEquipo3 != "")
             {
                 SqlParameter[] Param5 = new SqlParameter[2];
 
@@ -360,28 +360,30 @@ namespace Core.AccesoDatos.SqlServer
                             "IngresarEquipo", Param6);
 
                     }
-                    //   else
-                    //       throw new IngresarADPropuestaException();
+                       else
+                           throw new IngresarPropuestaBDException();
 
                 }
-                // else
-                //     throw new IngresarADPropuestaException();
+                 else
+                     throw new IngresarPropuestaBDException();
 
 
             }
 
-            return propuesta;
+           
 
         }
-        /*  catch (SqlException e)
+                 
+          catch (SqlException e)
           {
-              null;           
+              throw new IngresarPropuestaBDException("Error Ingresando en la Base de datos",e);           
           }
           catch (Exception e)
           {
-              throw new InsertarFacturaADException("Error ingresando Propuesta en la Base de datos", e);
-          }*/
-        //   }
+              throw new IngresarPropuestaBDException("Error ingresando Propuesta", e);
+          }
+            return propuesta;
+           }
 
         /// <summary>
         /// Metodo para consultar las propuestas

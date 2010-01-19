@@ -9,11 +9,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
 {
     public class ConsultarGastoFecha : Comando<Gasto>
     {
+        #region Propiedades
+
         private DateTime _fechainicio;
 
         private DateTime _fechafin;
 
         private IList<Gasto> _listagasto;
+
+        #endregion
 
         #region Constructor
         public ConsultarGastoFecha(DateTime fechaini, DateTime fechafin)

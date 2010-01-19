@@ -10,6 +10,7 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using System.Net;
+using Core.LogicaNegocio.Excepciones.Propuesta.AccesoDatos;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -135,41 +136,53 @@ namespace Core.AccesoDatos.SqlServer
 
         public IList<Gasto> ConsultarGastoFecha(DateTime fechai, DateTime fechaf)
         {
-            //Se declaran los parametros
-
-            SqlParameter[] Parametros = new SqlParameter[2];
-
-            Parametros[0] = new SqlParameter("@FechaInicio", SqlDbType.DateTime);
-
-            Parametros[0].Value = fechai;
-
-            Parametros[1] = new SqlParameter("@FechaFin", SqlDbType.DateTime);
-
-            Parametros[1].Value = fechaf;
-
-            //Se realiza la conexion con los Parametros definidos anteriormente
-
-            DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(),
-            "ConsultarGastoxFecha", Parametros);
-
-            int i = 0;
-
-            while (conexion.Read())
+            try
             {
 
-                Gasto _gasto = new Gasto();
+                //Se declaran los parametros
 
-                _gasto.Tipo = (string)conexion["Tipo"];
+                SqlParameter[] Parametros = new SqlParameter[2];
 
-                _gasto.Descripcion = (string)conexion["Descripcion"];
+                Parametros[0] = new SqlParameter("@FechaInicio", SqlDbType.DateTime);
 
-                _gasto.FechaGasto = (DateTime)conexion["Fecha"];
+                Parametros[0].Value = fechai;
 
-                _gasto.Monto = float.Parse(conexion["Monto"].ToString());
+                Parametros[1] = new SqlParameter("@FechaFin", SqlDbType.DateTime);
 
-                ListaGasto.Insert(i, _gasto);
-                i++;
+                Parametros[1].Value = fechaf;
 
+                //Se realiza la conexion con los Parametros definidos anteriormente
+
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(),
+                "ConsultarGastoxFecha", Parametros);
+
+                int i = 0;
+
+                while (conexion.Read())
+                {
+
+                    Gasto _gasto = new Gasto();
+
+                    _gasto.Tipo = (string)conexion["Tipo"];
+
+                    _gasto.Descripcion = (string)conexion["Descripcion"];
+
+                    _gasto.FechaGasto = (DateTime)conexion["Fecha"];
+
+                    _gasto.Monto = float.Parse(conexion["Monto"].ToString());
+
+                    ListaGasto.Insert(i, _gasto);
+                    i++;
+
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new ReportePropuestaBdException("Conexión a la BD Fallida", e);
+            }
+            catch (Exception e)
+            {
+                throw new ReportePropuestaBdException("No se pudieron Consultar los gastos", e);
             }
 
             return ListaGasto;

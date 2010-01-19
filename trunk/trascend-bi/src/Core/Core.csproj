@@ -177,6 +177,7 @@
     <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ConsultarPropuestaBDException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\EliminarPropuestaBDException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\IngresarPropuestaBDException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ReportePropuestaBdException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\LogicaNegocio\ConsultarPropuestaLogicaNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ReportesException.cs" />

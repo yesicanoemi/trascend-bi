@@ -84,4 +84,11 @@ public partial class Paginas_Reportes_ReportesEquipo2b : PaginaBase, IReporteGas
         _presentador.ConsultarGastoFecha(_fechaini, _fechafin);
 
     }
+
+    public void Mensaje(string msg)
+    {
+        Label lbl = new Label();
+        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        Page.Controls.Add(lbl);
+    }
 }

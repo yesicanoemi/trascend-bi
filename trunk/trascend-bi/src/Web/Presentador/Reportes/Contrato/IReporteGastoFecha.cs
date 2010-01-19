@@ -20,6 +20,9 @@ namespace Presentador.Reportes.Contrato
 
         ObjectContainerDataSource ObtenerValorDataSource { get; set; }
 
+        void Mensaje(string msg);
+
+
         #endregion
     }
 }

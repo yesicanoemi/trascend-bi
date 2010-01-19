@@ -62,12 +62,12 @@ namespace Presentador.Reportes.Vistas
                 }
                 catch (WebException e)
                 {
-                    //Mensaje al usuario
+                    _vista.Mensaje(e.Message);
                 }
             }
             catch (Exception e)
             {
-                Console.Write(e);
+                _vista.Mensaje(e.Message);
             }
 
         }
