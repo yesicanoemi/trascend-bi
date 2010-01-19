@@ -130,11 +130,12 @@ namespace Presentador.Cargo.Vistas
                                                             int.Parse(_vista.NombreCargo.SelectedValue));
 
 
-
+                ComandoEliminar.Ejecutar();
                     LimpiarFormulario();
                     LlenarDDLCargos();
                     DesactivarCampos();
 
+                    _vista.Mensaje("Se elimino con exito =)");
             }
             catch (FormatException e)
             {
@@ -175,12 +176,14 @@ namespace Presentador.Cargo.Vistas
 
                     ComandoModificar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoModificar(cargo);
 
-                    
+                    ComandoModificar.Ejecutar();
                         LimpiarFormulario();
                         int i = _vista.NombreCargo.SelectedIndex;
                         LlenarDDLCargos();
                         _vista.NombreCargo.SelectedIndex = i;
                         DesactivarCampos();
+
+                        _vista.Mensaje("Se modifico con exito =)");
 
                 }
                 catch (FormatException e)
