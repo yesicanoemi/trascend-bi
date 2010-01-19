@@ -44,7 +44,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	Insert into [BddProy2].[dbo].[Contacto] (Nombre,Apellido,AreaNegocio,Cargo,IdCliente) values
-	(@Nombre,@Apellido,@AreaNegocio,@Cargo,1);
+	(@Nombre,@Apellido,@AreaNegocio,@Cargo,@IdCliente);
 
 Select @ID=IdContacto 
 from [BddProy2].[dbo].[Contacto] as C
@@ -53,7 +53,7 @@ where C.Nombre=@Nombre and C.Apellido=@Apellido and C.Cargo=@Cargo;
 
 INSERT INTO [BddProy2].[dbo].[Telefono] (CodigoArea,Numero,Tipo,IdContacto)
      VALUES
-           (@CodigoCel,@TelefonoCelular,'Celular',@ID);
+           (@CodigoCel,@TelefonoCelular,'celular',@ID);
 
 
 INSERT INTO [BddProy2].[dbo].[Telefono] (CodigoArea,Numero,Tipo,IdContacto)

@@ -126,11 +126,11 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td>
-                                       <asp:DropDownList ID="uxDropDownClientes" runat="server">
-                                       </asp:DropDownList>
+                                   <td> Cliente: 
+                                       
                                    </td>
-                                   <td>&nbsp;</td>
+                                   <td><asp:DropDownList ID="uxDropDownClientes" runat="server">
+                                       </asp:DropDownList></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>

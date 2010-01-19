@@ -57,7 +57,14 @@ namespace Presentador.Contacto.ContactoPresentador
             Core.LogicaNegocio.Comandos.ComandoContacto.Ingresar ingresar;
 
             //fábrica que instancia el comando Ingresar.
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
+
+            Core.LogicaNegocio.Comandos.ComandoCliente.Consultar ConsultarClientes;
+            IList<Core.LogicaNegocio.Entidades.Cliente> Clientes = new List<Core.LogicaNegocio.Entidades.Cliente>();
+            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar(Clientes);
+            Clientes = ConsultarClientes.ejecutar();
+
+            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar
+                (_contacto,Clientes.ElementAt(_vista.DropDownClientes.SelectedIndex).IdCliente);
 
             //try
             //{    
@@ -67,7 +74,16 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void LlenarClientes()
         {
-   //         Core.LogicaNegocio.Comandos.ComandoCliente.Consultar
+            Core.LogicaNegocio.Comandos.ComandoCliente.Consultar ConsultarClientes;
+            IList<Core.LogicaNegocio.Entidades.Cliente> Clientes = new List<Core.LogicaNegocio.Entidades.Cliente>();
+            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar(Clientes);
+            Clientes=ConsultarClientes.ejecutar();
+            int i=0;
+            while (i<Clientes.Count())
+            {
+                _vista.DropDownClientes.Items.Add(Clientes.ElementAt(i).Nombre);
+                i++;
+            }
         }
      }
     

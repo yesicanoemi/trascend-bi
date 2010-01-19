@@ -10,6 +10,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
     public class Ingresar : Comando<Contacto>
     {
         private Contacto contacto;
+        private int idCliente;
 
         #region Constructor
 
@@ -19,9 +20,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         /// <summary>Constructor de la clase 'Ingresar'.</summary>
         /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
-        public Ingresar(Contacto contacto)
+        public Ingresar(Contacto contacto, int idCliente)
         {
             this.contacto = contacto;
+            this.idCliente = idCliente;
         }
 
         #endregion
@@ -31,7 +33,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         {
             Contacto _contacto = null;
             ContactoSQLServer bd = new ContactoSQLServer();
-            _contacto = bd.Ingresar(contacto);
+            _contacto = bd.Ingresar(contacto,idCliente);
 
             return _contacto;
         }

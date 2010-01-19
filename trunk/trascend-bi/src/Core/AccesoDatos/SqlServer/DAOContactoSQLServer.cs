@@ -43,7 +43,7 @@ namespace Core.AccesoDatos.SqlServer
         }
 
         #region Metodos
-        public Contacto Ingresar(Contacto contacto)
+        public Contacto Ingresar(Contacto contacto,int idCliente)
         {
             Contacto _contacto = new Contacto();
             try
@@ -71,7 +71,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[8] = new SqlParameter("@Tipo", SqlDbType.VarChar);
                 arParms[8].Value = contacto.TelefonoDeTrabajo.Tipo;
                 arParms[9] = new SqlParameter("@IdCliente", SqlDbType.Int);
-                arParms[9].Value = 1;
+                arParms[9].Value = idCliente;
                 arParms[10] = new SqlParameter("@ID", SqlDbType.Int);
                 arParms[10].Value = 0;
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(),"InsertarContacto", arParms);

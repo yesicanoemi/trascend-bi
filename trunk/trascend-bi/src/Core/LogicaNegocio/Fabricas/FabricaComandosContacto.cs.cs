@@ -9,9 +9,9 @@ namespace Core.LogicaNegocio.Fabricas
 {
     public class FabricaComandosContacto
     {
-       public static Ingresar CrearComandoIngresar(Contacto contacto)
+       public static Ingresar CrearComandoIngresar(Contacto contacto, int idCliente)
         {
-            return new Ingresar(contacto);
+            return new Ingresar(contacto,idCliente);
         }
         public static  Consultar CrearComandoConsultar(IList<Contacto> contacto, string Nombre, string Apellido,
             int codigo, int numero, int flag)
