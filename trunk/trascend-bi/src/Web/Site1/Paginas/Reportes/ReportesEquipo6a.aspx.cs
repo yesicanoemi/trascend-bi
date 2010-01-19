@@ -119,5 +119,11 @@ public partial class Paginas_Reportes_ReportesEquipo6 : PaginaBase, IReporteFact
             e.Row.BackColor = System.Drawing.Color.FromName("FFFFCC");
     }
 
+    public void Mensaje(string mensaje)
+    {
+        uxMensaje.Text = mensaje;
+        uxMensaje.Visible = true;
+    }
+
     #endregion
 }

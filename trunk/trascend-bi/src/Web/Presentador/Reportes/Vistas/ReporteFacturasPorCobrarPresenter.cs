@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Presentador.Reportes.Contrato;
 using Core.LogicaNegocio.Comandos.ComandoReporte;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Presentador.Reportes.Vistas
 {
@@ -26,6 +27,8 @@ namespace Presentador.Reportes.Vistas
         /// </summary>
         public void CargarGrid()
         {
+            try
+            {
 
             _vista.Grid.DataSource = null;
             _vista.Grid.DataBind();
@@ -51,6 +54,15 @@ namespace Presentador.Reportes.Vistas
             {
                 _vista.Grid.DataSource = lista;
                 _vista.Grid.DataBind();
+            }
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+            catch (Exception e)
+            {
+                _vista.Mensaje(e.Message);
             }
         }
 

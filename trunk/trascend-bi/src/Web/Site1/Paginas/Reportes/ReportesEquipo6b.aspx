@@ -42,7 +42,7 @@
                     <asp:Image ID="uxFechaInicioImg" runat="server" ImageUrl="~/Images/calendario.png" />
                     
                     <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"
-                                        Format="dd/MM/yy" TargetControlID="uxFechaInicio" PopupButtonID="uxFechaInicioImg" >
+                                        Format="dd/MM/yyyy" TargetControlID="uxFechaInicio" PopupButtonID="uxFechaInicioImg" >
                     </AjaxControlToolkit:CalendarExtender>                      
                                         
                     
@@ -59,7 +59,7 @@
                     <asp:Image ID="uxFechaFinImg" runat="server" ImageUrl="~/Images/calendario.png" />
                     
                     <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="CalendarExtender2"
-                                        Format="dd/MM/yy" TargetControlID="uxFechaFin" PopupButtonID="uxFechaFinImg" >
+                                        Format="dd/MM/yyyy" TargetControlID="uxFechaFin" PopupButtonID="uxFechaFinImg" >
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
@@ -123,6 +123,7 @@
         <br />
         <br />
         <br />
+        <asp:Label ID="uxMensaje" runat="server" Text=""></asp:Label>
     </div> 
 </div>  
 

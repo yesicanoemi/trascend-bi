@@ -14,5 +14,7 @@ namespace Presentador.Reportes.Contrato
         Button Boton { get; set; }
         GridView Grid { get; set; }
         #endregion
+
+        void Mensaje(string mensaje);
     }
 }

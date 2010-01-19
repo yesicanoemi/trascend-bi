@@ -95,6 +95,12 @@ public partial class Paginas_Reportes_ReportesEquipo6b : PaginaBase, IReporteFac
 
     }
 
+    public void Mensaje(string mensaje)
+    {
+        uxMensaje.Text = mensaje;
+        uxMensaje.Visible = true;
+    }
+
     /// <summary>
     /// Metodo que envia una fecha(DateTime) al presentador para ser transformada en ShortDate
     /// </summary>

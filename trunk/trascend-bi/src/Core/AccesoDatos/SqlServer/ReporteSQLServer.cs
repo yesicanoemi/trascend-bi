@@ -10,7 +10,9 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using System.Net;
+using Core.LogicaNegocio.Excepciones;
 using Core.LogicaNegocio.Excepciones.Propuesta.AccesoDatos;
+
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -324,6 +326,9 @@ namespace Core.AccesoDatos.SqlServer
         {
             IList<Core.LogicaNegocio.Entidades.Factura> factura =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
+            try
+            {
+            
 
             SqlParameter[] parametro = new SqlParameter[1];
 
@@ -359,6 +364,15 @@ namespace Core.AccesoDatos.SqlServer
 
                 factura.Add(_factura);
             }
+            }
+            catch (ConsultarException e)
+            {
+                throw new ConsultarException("Error al consultar",e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("error",e);
+            }
 
             return factura;
         }
@@ -375,6 +389,9 @@ namespace Core.AccesoDatos.SqlServer
         {
             IList<Core.LogicaNegocio.Entidades.Factura> factura =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
+            try
+            {
+            
 
             SqlParameter[] parametro = new SqlParameter[1];
 
@@ -409,7 +426,15 @@ namespace Core.AccesoDatos.SqlServer
 
                 factura.Add(_factura);
             }
-
+            }
+            catch (ConsultarException e)
+            {
+                throw new ConsultarException("Error al consultar",e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("error", e);
+            }
             return factura;
         }
         #endregion
