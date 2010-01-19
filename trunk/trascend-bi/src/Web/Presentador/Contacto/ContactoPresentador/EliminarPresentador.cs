@@ -12,7 +12,7 @@ namespace Presentador.Contacto.ContactoPresentador
     {
 
         private IEliminarContacto _vista;
-        private IList<Core.LogicaNegocio.Entidades.Contacto> _ListaContactos;
+    //    private IList<Core.LogicaNegocio.Entidades.Contacto> _ListaContactos;
 
         public EliminarPresentador(IEliminarContacto vista)
         {
@@ -21,12 +21,44 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void OnClickBusqueda()
         {
+
+            #region busqueda
+
+            string Lnombre = " ";
+            string Lapellido = " ";
+            string LcodTelf = "0";
+            string LnumTelf = "0";
+
+            int flag = 0;
+            if (_vista.CheckBoxNombre.Checked)
+            {
+                flag = flag + 100;
+                Lnombre = _vista.TextBoxNombre.Text;
+            }
+            if (_vista.CheckBoxApellido.Checked)
+            {
+                flag = flag + 10;
+                Lapellido = _vista.TextBoxApellido.Text;
+            }
+            if (_vista.CheckBoxTelefono.Checked)
+            {
+                flag = flag + 1;
+                LcodTelf = _vista.TextBoxCodTelefono.Text;
+                LnumTelf = _vista.TextBoxNumTelefono.Text;
+            }
+
+            #endregion 
+
+            IList<Core.LogicaNegocio.Entidades.Contacto> NvaListaContactos = new List<Core.LogicaNegocio.Entidades.Contacto>(); 
+            
+            NvaListaContactos= Consultar(NvaListaContactos, Lnombre, Lapellido, int.Parse(LcodTelf), int.Parse(LnumTelf), flag);
+
             if (int.Parse(_vista.TextBoxBusqueda.Text)>=0 &&
-                int.Parse(_vista.TextBoxBusqueda.Text)<_ListaContactos.Count)
+                int.Parse(_vista.TextBoxBusqueda.Text)<=NvaListaContactos.Count)
             {
                 CambiarVista(1);
-                _vista.LabelConfirmar.Text = _ListaContactos.ElementAt(int.Parse(_vista.TextBoxBusqueda.Text)).Nombre +
-                    " " + _ListaContactos.ElementAt(int.Parse(_vista.TextBoxBusqueda.Text)).Apellido;
+                _vista.LabelConfirmar.Text = NvaListaContactos.ElementAt(int.Parse(_vista.TextBoxBusqueda.Text)-1).Nombre +
+                    " " + NvaListaContactos.ElementAt(int.Parse(_vista.TextBoxBusqueda.Text)-1).Apellido;
             }
         }
 
@@ -38,11 +70,43 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void Eliminar()
         {
+            #region busqueda
+
+            string Lnombre = " ";
+            string Lapellido = " ";
+            string LcodTelf = "0";
+            string LnumTelf = "0";
+
+            int flag = 0;
+            if (_vista.CheckBoxNombre.Checked)
+            {
+                flag = flag + 100;
+                Lnombre = _vista.TextBoxNombre.Text;
+            }
+            if (_vista.CheckBoxApellido.Checked)
+            {
+                flag = flag + 10;
+                Lapellido = _vista.TextBoxApellido.Text;
+            }
+            if (_vista.CheckBoxTelefono.Checked)
+            {
+                flag = flag + 1;
+                LcodTelf = _vista.TextBoxCodTelefono.Text;
+                LnumTelf = _vista.TextBoxNumTelefono.Text;
+            }
+
+            #endregion 
+
+            IList<Core.LogicaNegocio.Entidades.Contacto> NvaListaContactos = new List<Core.LogicaNegocio.Entidades.Contacto>();
+
+            NvaListaContactos = Consultar(NvaListaContactos, Lnombre, Lapellido, int.Parse(LcodTelf), int.Parse(LnumTelf), flag);
+
             Core.LogicaNegocio.Comandos.ComandoContacto.Eliminar eliminacion;
 
-            //fábrica que instancia el comando Ingresar.
+            //fábrica que instancia el comando Eliminar.
+
             eliminacion = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.
-                CrearComandoEliminar(_ListaContactos.ElementAt(int.Parse(_vista.TextBoxBusqueda.Text)));
+                CrearComandoEliminar(NvaListaContactos.ElementAt(int.Parse(_vista.TextBoxBusqueda.Text)-1));
 
 
             //ejecuta el comando.

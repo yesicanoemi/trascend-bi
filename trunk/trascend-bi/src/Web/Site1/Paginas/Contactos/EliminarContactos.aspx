@@ -109,7 +109,7 @@
                            </tr>
                            <tr>
                                         Esta seguro que quiere elminar a: 
-                                       <asp:Label ID="uxLabelConfirmacion" runat="server" Text=" "></asp:Label>
+                                       <asp:Label ID="uxLabelConfirmacion" runat="server" Text=" "></asp:Label> <br />
                                        <asp:Button ID="uxBotonEliminar" runat="server" Text="Eliminar" OnClick="ConfirmarClick" />
                                    </tr>
                         </table>

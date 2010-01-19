@@ -41,7 +41,7 @@ namespace Presentador.Contacto.ContactoPresentador
                 }
                 else
                 {
-                    contacto.TelefonoDeTrabajo.Tipo = "Oficina";
+                    contacto.TelefonoDeTrabajo.Tipo = "Trabajo";
                 }
 
                 Ingresar(contacto);

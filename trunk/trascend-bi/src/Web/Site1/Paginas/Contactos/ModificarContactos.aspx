@@ -26,11 +26,84 @@
                         
                         
                         Busqueda por Nombre</p>
-                     <form id="Form3" runat="server">
+                     <asp:MultiView ID="uxMultiViewModificar" runat="server" ActiveViewIndex="0">
+                     <asp:View ID="uxViewBusquedaModificar" runat="server">
+                        <form id="Form3" runat="server">
+                               <table style="width:100%;">
+                                   <tr>
+                                       <td>Nombre: </td>
+                                       <td>
+                                            <asp:TextBox ID="uxConsultaNombreContacto" runat="server"></asp:TextBox>
+                                            <asp:CheckBox ID="uxCheckBoxNombre" runat="server" />
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>&nbsp;</td>
+                                       <td>&nbsp;</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Apellido: </td>
+                                       <td>
+                                            <asp:TextBox ID="uxConsultaApellidoContacto" runat="server"></asp:TextBox>
+                                            <asp:CheckBox ID="uxChecBoxApellido" runat="server" />
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>&nbsp;</td>
+                                       <td>&nbsp;</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Telefono</td>
+                                       <td>
+                                            <asp:TextBox ID="uxConsultaCodigoContacto" runat="server" Width="40"></asp:TextBox>
+                                            <asp:TextBox ID="uxConsultaTelefonoContacto" runat="server" Width="150"></asp:TextBox>
+                                           <asp:CheckBox ID="uxCheckBoxTelefono" runat="server" />
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>&nbsp;</td>
+                                       <td>&nbsp;</td>
+                                   </tr>
+                                    <tr>
+                                       <td>&nbsp;</td>
+                                       <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                       <td>&nbsp;</td>
+                                       <td>
+                                           <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="Aceptar_Click"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp</td>
+                                        <asp:Table ID="uxTablaResultado" runat="server" GridLines="Both"
+                                         CellSpacing="30" CellPadding="30" BorderColor="Black" BorderStyle="Solid" 
+                                            BorderWidth="1px">
+                                        </asp:Table>
+                                        <br />
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp</td>
+                                        <td>&nbsp</td>
+                                    </tr>
+                                    <tr>
+                                        <td><asp:Label ID="uxLabelBusqueda" runat="server" Text="Elija su opcion: " Visible= "false"></asp:Label>
+                                            <asp:TextBox ID="uxTextBoxOpcion" runat="server" Visible="false"></asp:TextBox>  </td>
+                                        <td align= "center"> 
+                                            <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" OnClick="BuscarClick" Visible="false"/>
+                                        </td>
+                                    </tr>
+                               </table>
+                         </form>
+                     </asp:View>
+                     <asp:View ID="View1" runat="server">
+                      <form id="form2" runat="server" >
                            <table style="width:100%;">
                                <tr>
                                    <td>Nombre: </td>
-                                   <td><asp:TextBox ID="uxModificarNombreContacto" runat="server"></asp:TextBox></td>
+                                   <td>
+                                        <asp:TextBox ID="uxNombreModificar" runat="server"></asp:TextBox>
+                                   </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -38,22 +111,63 @@
                                </tr>
                                <tr>
                                    <td>Apellido: </td>
-                                   <td><asp:TextBox ID="uxModificarApellidoContacto" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
-                               </tr>
-                               <tr>
-                                   <td>Cedula</td>
                                    <td>
-                                       <asp:TextBox ID="uxModificarCedulaContacto" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxApellidoModificar" runat="server"></asp:TextBox>
                                    </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
+                               <tr>
+                                   <td>Cargo: </td>
+                                   <td>
+                                       <asp:TextBox ID="uxCargoModificar" runat="server">
+                                       </asp:TextBox>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Area de negocio: </td>
+                                   <td>
+                                       <asp:TextBox ID="uxAreaNegocioModificar" runat="server">
+                                       </asp:TextBox>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Telefono de Oficina: </td>
+                                   <td>
+                                        <asp:TextBox ID="uxCodOficinaModificar" runat="server" Width="40"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfOficinaModificar" runat="server" Width="150"></asp:TextBox>
+                                        Fax: <asp:CheckBox ID="uxFaxModificar" runat="server" />
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Telefono de Celular: </td>
+                                   <td>
+                                        <asp:TextBox ID="uxCodCelModificar" runat="server" Width="40"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfCelularModificar" runat="server" Width="150"></asp:TextBox>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
@@ -61,20 +175,13 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="Aceptar_Click"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        <asp:Table ID="uxTablaResultados" runat="server" >
-                                        </asp:Table>
+                                       <asp:Button ID="uxBotoModificar" runat="server" Text="Aceptar" OnClick="ModificarClick" />
                                     </td>
                                 </tr>
                            </table>
-                     </form>
+                      </form>
+                     </asp:View>
+                     </asp:MultiView>
                      
                  </div> 
               </div>

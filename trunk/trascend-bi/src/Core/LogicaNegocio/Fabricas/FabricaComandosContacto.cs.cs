@@ -22,9 +22,9 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Eliminar(contacto);
         }
-        public static Modificar CrearComandoModificar(Contacto contacto)
+        public static Modificar CrearComandoModificar(Contacto contacto1,Contacto contacto2)
         {
-            return new Modificar(contacto);
+            return new Modificar(contacto1,contacto2);
         } 
 
 
