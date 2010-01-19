@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageHeader.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+      <title>DSU</title>
+    <link href="../Estilos/base.css" rel="stylesheet" type="text/css" />
+    <link href="../Estilos/type.css" rel="stylesheet" type="text/css" />
+    <link href="../Estilos/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../Estilos/Otros.css" rel="stylesheet" type="text/css" />
+  
+</head>
+<body id="interior">
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="false">
+    </asp:ScriptManager>
+<!-- \\\ START GLOBAL HEADER  /// -->
+<div id="header_full">	
+	
+    <div id="global_header">
+		    <div id="header_main">
+			    <h1 id="logo"><a href="../Home/Home.aspx">dsu</a></h1>
+    					
+			   
+		    </div>
+    		
+		    <ul id="global_nav">
+		    
+			    <li class="features"><a href="../Usuarios/DefaultUsuarios.aspx">Usuarios</a></li>
+			    <li class="pricing"><a href="../Cargos/DefaultCargos.aspx">Cargos</a></li>
+			    <li class="customers"><a href="../Empleados/DefaultEmpleados.aspx">Empleados</a></li>
+			    <li class="resources"><a href="../Propuestas/DefaultPropuestas.aspx">Propuesta</a></li>
+
+			    <li class="support"><a  href="../Clientes/DefaultClientes.aspx">Clientes</a></li>
+			    <li class="about"><a  href="../Contactos/DefaultContactos.aspx">Contactos</a></li>
+			    <li class="blog"><a href="../Gastos/DefaultGastos.aspx">Gastos</a></li>
+			    <li class="facturas"><a href="../Facturas/DefaultFacturas.aspx">Facturas</a></li>
+			    <li class="reportes"><a href="../Reportes/InicioReportes.aspx">Reportes</a></li>
+		    </ul>
+    		
+	    </div>	
+
+</div>
+<!-- \\\ END GLOBAL HEADER  /// -->
+<!-- \\\ START INTERIOR  /// -->
+<div id="interior_white_bg">
+	<div id="interior_container">
+	    <div id="interior_end_container_subnav">
+	        <div class="container subnav">  
+	            <div class="content">  
+	                 <asp:ContentPlaceHolder id="head" runat="server">
+                     </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
