@@ -23,7 +23,7 @@
                  <div class="features_overview_right"> 
                     <h3>Tabla de cargos</h3> 
                     <p class="large">
-                        lol
+                        
                         
                     </p>
                      <p class="large">

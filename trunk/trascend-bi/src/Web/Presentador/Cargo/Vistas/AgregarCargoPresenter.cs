@@ -53,10 +53,10 @@ namespace Presentador.Cargo.Vistas
                     Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar ComandoIngresar;
 
                     ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
-
+                    ComandoIngresar.Ejecutar();
                     LimpiarFormulario();
-                    
-                    
+
+                    _vista.Mensaje("Se agrego el cargo con exito =)");
                 }
                 catch(FormatException e)
                 {

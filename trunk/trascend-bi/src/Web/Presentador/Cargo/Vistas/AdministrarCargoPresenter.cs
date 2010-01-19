@@ -39,7 +39,7 @@ namespace Presentador.Cargo.Vistas
         /// <summary>
         /// Metodo para cargar los elementos del dropDownList de los nombres de los cargos
         /// </summary>
-        private void LlenarDDLCargos()
+        public void LlenarDDLCargos()
         {
             try
             {

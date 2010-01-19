@@ -118,7 +118,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
     /// <summary>
     /// Metodo para habilitar los botones
     /// </summary>
-    private void ActivarBotones()
+    public void ActivarBotones()
     {
         uxBotonGuardar.Enabled = true;
         uxBotonEliminar.Enabled = true;
@@ -127,7 +127,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
     /// <summary>
     /// Metodo para desabilitar los botones
     /// </summary>
-    private void DesactivarBotones()
+    public void DesactivarBotones()
     {
         uxBotonGuardar.Enabled = false;
         uxBotonEliminar.Enabled = false;
