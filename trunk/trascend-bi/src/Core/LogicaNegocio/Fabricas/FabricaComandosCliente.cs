@@ -14,18 +14,24 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Ingresar(cliente);
         }
-        public static Consultar CrearComandoConsultar(Cliente cliente)
+        public static Consultar CrearComandoConsultar(IList<Cliente> cliente)
         {
             return new Consultar(cliente);
         }
+
+        public static ConsultarAreaNegocio CrearComandoConsultarAreaNegocio(IList<Cliente> cliente)
+        {
+            return new ConsultarAreaNegocio(cliente);
+        }
+
         public static Modificar CrearComandoModificar(Cliente cliente)
         {
             return new Modificar(cliente);
         }
-        /*public static Eliminar CrearComandoEliminar(Cliente cliente)
+
+        public static Eliminar CrearComandoEliminar(IList<string> lista)
         {
-            return new Eliminar(cliente);
-        }*/
-   
+            return new Eliminar(lista);
+        }
     }
 }

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Presentador.Cliente.ClienteInterface;
-using Presentador.Cliente.ClientePresentador;
+//using Presentador.Cliente.ClienteInterface;
+//using Presentador.Cliente.ClientePresentador;
 using Presentador.Cliente.Vistas;
 using Presentador.Cliente.Contrato;
 
 
 
 
-public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarCliente
+public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarCliente
 {
     #region Propiedades
     private AgregarClientePresentador _presentador;
-    
+
     #endregion
 
     #region Informacion Basica se guardan las variables
@@ -63,17 +63,17 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarClien
         set { uxciudad = value; }
     }
 
-    
 
-    public TextBox AreaNegocioCliente
+
+    public DropDownList AreaNegocioCliente
     {
         get { return uxAreaNegocioCliente; }
         set { uxAreaNegocioCliente = value; }
     }
-    
+
     public TextBox TelefonoTrabajoCliente
     {
-        get {return uxTelefonoTrabajo;}
+        get { return uxTelefonoTrabajo; }
         set { uxTelefonoTrabajo = value; }
     }
 
@@ -82,12 +82,12 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarClien
         get { return uxCodTrabajo; }
         set { uxCodTrabajo = value; }
     }
-    
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
+        #region agrego trejo
         Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -110,6 +110,9 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarClien
         {
             Response.Redirect(paginaSinPermiso);
         }
+        #endregion
+
+
 
     }
     protected void Page_Load(object sender, EventArgs e)
@@ -119,7 +122,7 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase,IAgregarClien
     {
         _presentador.IngersarCliente();
         //esponse.Redirect(paginaPrueba);
-        
+
     }
 
 }

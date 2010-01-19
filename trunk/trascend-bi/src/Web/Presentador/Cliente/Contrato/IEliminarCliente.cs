@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace Presentador.Cliente.ClienteInterface
+namespace Presentador.Cliente.Contrato
 {
     public interface IEliminarCliente
     {
-
-        TextBox TextBoxNombre { get; set; }
-        TextBox TextBoxApellido { get; set; }
-        TextBox TextBoxRif { get; set; }
-
+        Label LabelEliminar { get; set; }
+        DropDownList ListaCliente { get; set; }
+        Label LabelEliminarCompletado { get; set; }
     }
 }

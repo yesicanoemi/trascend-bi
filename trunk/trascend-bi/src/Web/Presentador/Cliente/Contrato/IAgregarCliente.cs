@@ -16,7 +16,7 @@ namespace Presentador.Cliente.Contrato
         TextBox EdificioCasaCliente { get; set; }
         TextBox PisoApartamentoCliente { get; set; }
         DropDownList CiudadCliente { get; set; }
-        TextBox AreaNegocioCliente { get; set; }
+        DropDownList AreaNegocioCliente { get; set; }
         TextBox TelefonoTrabajoCliente { get; set; }
         TextBox CodigoTrabajoCliente { get; set; }
         

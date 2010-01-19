@@ -321,6 +321,30 @@
   <data name="FaltaRolEquipo1" xml:space="preserve">
     <value>Debe Ingresar el Rol</value>
   </data>
+  <data name="ERFormatoCodigoTelefono" xml:space="preserve">
+    <value>^\d{3}$</value>
+  </data>
+  <data name="ERFormatoTelefono" xml:space="preserve">
+    <value>^\d{7}$</value>
+  </data>
+  <data name="FaltaCodigoTelefono" xml:space="preserve">
+    <value>Debe de introducir el codigo telefónico</value>
+  </data>
+  <data name="FaltaTelefonoCliente1" xml:space="preserve">
+    <value>Debe introducir el telefono del cliente</value>
+  </data>
+  <data name="LLenarCampo" xml:space="preserve">
+    <value>Este campo no puede ser vacio</value>
+  </data>
+  <data name="FaltaTelfono" xml:space="preserve">
+    <value>Debe de introducir el Número telefónico</value>
+  </data>
+  <data name="FormatoCodigoIncorrecto" xml:space="preserve">
+    <value>El formato del codigo telefonico es incorrecto</value>
+  </data>
+  <data name="FormatoTelefonicoIncorrecto" xml:space="preserve">
+    <value>El formato telefonico es incorrecto</value>
+  </data>
   <data name="ERMonto" xml:space="preserve">
     <value>^\d+(,)?\d{1,2}$</value>
   </data>

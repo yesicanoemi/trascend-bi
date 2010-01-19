@@ -23,7 +23,24 @@
                  <div class="features_overview_right"> 
                     <h3>Eliminar Clientes</h3> 
                     <p class="large">
-                        
+                       <form id="Form1" action="#" runat="server">
+                            <table>
+                                <tr>
+                                    <td><asp:Label ID="uxLabelEliminar" runat="server" Text = "Seleccione el Cliente" Visible = "false" /></td>
+                                    <td><asp:DropDownList ID="uxSeleccionCliente" runat="server" Visible="false">
+                                    </asp:DropDownList></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><asp:Button ID="uxBotonEliminar" runat="server" Text="Eliminar" Visible="true" 
+                                            onclick="uxBotonEliminar_Click"/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><asp:Label ID="uxLabelCompletado" runat="server" Visible = "false" /></td>
+                                </tr>
+                            </table>
+                        </form>     
                         
                     </p> 
                  </div> 

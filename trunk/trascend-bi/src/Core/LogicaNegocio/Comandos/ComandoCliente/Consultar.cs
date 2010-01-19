@@ -9,41 +9,41 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
     public class Consultar : Comando<Cliente>
     {
-        private Cliente cliente;
+        private Cliente _cliente;
+        private IList<Cliente> _cliente2;
 
         #region Constructor
 
-        /// <summary>Constructor por defecto de la clase 'Ingresar'.</summary>
-        public Consultar()
-        { }
+           
+            public Consultar()
+            { }
 
-        /// <summary>Constructor de la clase 'Ingresar'.</summary>
-        /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
-        public Consultar(Cliente cliente)
-        {
-            this.cliente = cliente;
-        }
+           
 
+            public Consultar(Cliente cliente)
+            {
+                _cliente = cliente;
+            }
+            
+            public Consultar(IList<Cliente> cliente)
+            {
+                _cliente2 = cliente;
+            }
+
+        
         #endregion
 
 
         #region Metodos
 
-        /// <summary>Método que implementa la ejecución del comando 'CosultarClientes'.</summary>
-        /*
-                public Cliente Ejecutar()
-                {
-                    Cliente _cliente;
+            public IList<Cliente> ejecutar()
+            {
+                DAOClienteSQLServer acceso = new DAOClienteSQLServer();
 
-                     UsuarioSQLServer bd = new UsuarioSQLServer();
-
-                    _cliente = bd.ConsultarCliente(cliente);
-
-                    return _cliente; 
-
-                }
-                */
-
+                _cliente2 = acceso.ConsultarNombre();
+                
+                return _cliente2;
+            }
         #endregion
     }
 }

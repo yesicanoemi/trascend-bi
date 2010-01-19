@@ -6,7 +6,7 @@ namespace Core.LogicaNegocio.Entidades
 
     public class Cliente
     {
-
+        private int idCliente;
         private string rif;
         private string nombre;
         private string calleAvenidad;
@@ -15,9 +15,36 @@ namespace Core.LogicaNegocio.Entidades
         private string pisoApartamento;
         private string ciudad;
         private string areaNegocio;
-        private string telefonoTrabajo;
+        private string telefonoTrabajo; 
         private string codigoTrabajo;
+        private IList<Contacto> contacto;
 
+        public virtual int IdCliente
+        {
+            get
+            {
+                return idCliente;
+            }
+
+            set
+            {
+                idCliente = value;
+            }
+        }
+
+
+        public virtual IList<Contacto> Contacto // es una lista de contacto no un string
+        {
+            get
+            {
+                return contacto;
+            }
+
+            set
+            {
+                contacto = value;
+            }
+        }
 
         public virtual string Rif
         {

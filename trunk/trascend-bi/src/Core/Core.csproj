@@ -93,6 +93,8 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Consultar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarAreaNegocio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarNombre.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Modificar.cs" />
@@ -151,11 +153,11 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ModificarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\VerificarUsuario.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
+    <Compile Include="LogicaNegocio\Entidades\Cliente.cs" />
     <Compile Include="LogicaNegocio\Entidades\Entidad.cs" />
     <Compile Include="LogicaNegocio\Entidades\Permiso.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonoceular.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonotrabajo.cs" />
-    <Compile Include="LogicaNegocio\Entidades\Cliente.cs" />
     <Compile Include="LogicaNegocio\Entidades\Contacto.cs" />
     <Compile Include="LogicaNegocio\Entidades\Direccion.cs" />
     <Compile Include="LogicaNegocio\Entidades\Empleado.cs" />
@@ -165,6 +167,8 @@
     <Compile Include="LogicaNegocio\Entidades\Propuesta.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefono.cs" />
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Cliente\AccesoDatos\ConsultarClienteBDExcepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Cliente\AccesoDatos\IngresarClienteBDExepciones.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ConsultarException.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -177,6 +181,7 @@
     <Compile Include="LogicaNegocio\Excepciones\Facturas\LogicaNegocio\ModificarFacturaLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\IngresarException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosCliente.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ConsultarPropuestaBDException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\EliminarPropuestaBDException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\IngresarPropuestaBDException.cs" />
@@ -187,7 +192,6 @@
     <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoGasto.cs" />
-    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosCliente.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosFactura.cs" />
@@ -214,6 +218,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pruebas\PrubaCliente.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebasCargo.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
@@ -221,6 +226,9 @@
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestasIntervalo.cs" />
     <Compile Include="Pruebas\PruebasUsuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LogicaNegocio\Excepciones\Cliente\LogicaNegocio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

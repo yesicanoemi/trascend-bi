@@ -68,11 +68,9 @@
     <Compile Include="Cliente\Contrato\IAgregarCliente.cs" />
     <Compile Include="Cliente\Contrato\IConsultarCliente.cs" />
     <Compile Include="Cliente\Contrato\IEliminarCliente.cs" />
-    <Compile Include="Cliente\Contrato\IModificarCliente.cs" />
     <Compile Include="Cliente\Vistas\AgregarClientePresentador.cs" />
     <Compile Include="Cliente\Vistas\ConsultarClientePresentador.cs" />
     <Compile Include="Cliente\Vistas\EliminarClientePresentador.cs" />
-    <Compile Include="Cliente\Vistas\ModificarClientePresentador.cs" />
     <Compile Include="Contacto\ContactoInterface\IAgregarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IConsultarContacto.cs" />
     <Compile Include="Contacto\ContactoInterface\IEliminarContacto.cs" />

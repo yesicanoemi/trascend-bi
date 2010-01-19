@@ -3,8 +3,8 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Presentador.Cliente.ClienteInterface;
-using Presentador.Cliente.ClientePresentador;
+
+//using Presentador.Cliente.ClientePresentador;
 using Presentador.Cliente.Vistas;
 using Presentador.Cliente.Contrato;
 using Core.LogicaNegocio.Entidades;
@@ -70,6 +70,7 @@ namespace Presentador.Cliente.Vistas
             _vista.rifCliente.Text = campoVacio;
             _vista.UrbanizacionCliente.Text = campoVacio;
             _vista.TelefonoTrabajoCliente.Text = campoVacio;
+            _vista.CodigoTrabajoCliente.Text = campoVacio;
                                     
         }
 
