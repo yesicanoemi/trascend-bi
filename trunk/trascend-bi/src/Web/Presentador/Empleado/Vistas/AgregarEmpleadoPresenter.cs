@@ -33,10 +33,12 @@ namespace Presentador.Empleado.Vistas
                 empleado.Apellido = _vista.ApellidoEmpleado.Text;
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
                 empleado.Cuenta = _vista.CuentaEmpleado.Text;
+                empleado.Cargo = _vista.ComboCargos.SelectedValue.ToString();
                 empleado.Estado = "Activo";
                 empleado.FechaIngreso = DateTime.Parse(_vista.FechaIngresoEmpleado.Text);
                 empleado.FechaEgreso = DateTime.Parse(_vista.FechaEgresoEmpleado.Text);
                 empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.Text);
+                empleado.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
                 empleado.Direccion.Avenida =_vista.AvenidaEmpleado.Text;
                 empleado.Direccion.Calle = _vista.CalleEmpleado.Text ;
                 empleado.Direccion.Ciudad = _vista.CiudadEmpleado.Text;

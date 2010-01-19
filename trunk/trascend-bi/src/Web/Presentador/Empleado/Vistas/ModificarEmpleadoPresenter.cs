@@ -39,6 +39,14 @@ namespace Presentador.Empleado.Vistas
                 empleado.FechaIngreso = DateTime.Now;
                 empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
+                empleado.Cargo = _vista.ComboCargos.SelectedValue.ToString();
+                empleado.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
+                empleado.Direccion.Avenida = _vista.AvenidaEmpleado.Text;
+                empleado.Direccion.Calle = _vista.CalleEmpleado.Text;
+                empleado.Direccion.Ciudad = _vista.CiudadEmpleado.Text;
+                empleado.Direccion.Edif_Casa = _vista.EdificioEmpleado.Text;
+                empleado.Direccion.Piso_apto = _vista.PisoEmpleado.Text;
+                empleado.Direccion.Urbanizacion = _vista.UrbanizacionEmpleado.Text;
                 Modificar(empleado);
                 LimpiarRegistros();
             }
