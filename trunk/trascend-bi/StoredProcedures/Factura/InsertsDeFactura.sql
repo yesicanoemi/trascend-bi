@@ -1,2 +1,0 @@
-insert into factura ( titulo, descripcion, porcentaje, fecha, fechaingreso, estado, idpropuesta) values ('Pago de la primera cuota', 'Esta cuota fue pagada, que bien no? jojojo', 20, '12/12/2000', '12/12/2000', 'Por Cobrar', 1)
-insert into factura ( titulo, descripcion, porcentaje, fecha, fechaingreso, estado, idpropuesta) values ('Pago de la segunda cuota', 'Esta cuota fue pagada tarde, que mal no? jojojo', 20, null, '12/12/2001', 'Cobrado', 1)
