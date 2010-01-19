@@ -12,5 +12,18 @@ namespace Presentador.Aplicacion
         HttpSessionState Sesion { get; }
 
         void IngresarSistema();
+
+        #region Dialogo
+
+        bool DialogoVisible { get; set; }
+
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
+
+        bool InformacionVisible { get; set; }
+
+        void PintarInformacion(string mensaje, string estilo);
+
+        #endregion
+
     }
 }

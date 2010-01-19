@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DefaultPresenter.cs" />
     <Compile Include="Aplicacion\IDefaultPresenter.cs" />
+    <Compile Include="Base\PresentadorBase.cs" />
     <Compile Include="Cargo\Contrato\IAdministrarCargo.cs" />
     <Compile Include="Cargo\Contrato\IAgregarCargo.cs" />
     <Compile Include="Cargo\Contrato\IInflacionCargo.cs" />
@@ -105,6 +106,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RecursosPresentadores.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosPresentadores.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -124,6 +130,11 @@
     <Compile Include="Propuesta\Vistas\AgregarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\ConsultarPropuestaPresentador.cs" />
     <Compile Include="Propuesta\Vistas\EliminarPropuestaPresentador.cs" />
+    <Compile Include="RecursosPresentadores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosPresentadores.resx</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\Contrato\IReporteFacturasPorCobrar.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaPorAnoPresenter.cs" />

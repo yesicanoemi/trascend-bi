@@ -14,10 +14,17 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.IO;
 using System.Web.SessionState;
+using System.Net;
+using Presentador.Base;
+using System.Resources;
+
+using System.Threading;
+using System.Globalization;
+using System.Configuration;
 
 namespace Presentador.Aplicacion
 {
-    public class DefaultPresenter
+    public class DefaultPresenter : PresentadorBase
     {
         #region Propiedades
 
@@ -68,7 +75,10 @@ namespace Presentador.Aplicacion
 
             else
             {
-                //Mensaje de error al usuario
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                                            ("MensajeCredenciales"), "mensajes");
+                _vista.InformacionVisible = true;
+
             }
 
         }

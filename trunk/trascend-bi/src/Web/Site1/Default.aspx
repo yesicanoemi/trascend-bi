@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
-
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +13,8 @@
 
 <body id="interior">
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
 <div id="header_full">	
     <div id="global_header">
 	    <div id="header_main">
@@ -29,6 +31,10 @@
                         <h3>Inicio de Sesion</h3>
                                 <p class="large">
                                 
+                                        
+                 
+                                    &nbsp;<uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible = "false" /><p>
+              
                                 <asp:Label ID="uxNombreLogin" runat="server" Text="Nombre de usuario"></asp:Label>
                                 &nbsp;
                                 <asp:TextBox ID="uxLogin" runat="server" Width="150px"></asp:TextBox><br />
@@ -70,6 +76,11 @@
         </div>
     </div>
 </div>
+    <asp:UpdatePanel ID="up2" runat="server">
+        <ContentTemplate>
+            <uc1:DialogoError ID="uxDialogoError" runat="server" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
  </form>
 </body>
 </html>
