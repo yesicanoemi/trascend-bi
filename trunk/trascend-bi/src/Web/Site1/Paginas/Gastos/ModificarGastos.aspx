@@ -36,28 +36,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                         <h3>Modificar Gasto</h3> 
                         <p class="large">Busqueda del Gasto</p>
                          <form id="form1" runat="server">
-			                            <asp:GridView ID="uxModificarGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectModificarGasto"
-                                                        AutoGenerateColumns="false" DataKeyNames="codigo" AutoGenerateSelectButton="true"
-                                                        Width="130%" Font-Names="Verdana" Font-Size="X-Small" onrowdatabound="uxGridView_RowDataBound" 
-                                                        OnSelectedIndexChanging="SeleccionarModificarGasto">
-                                                
-                                                        <Columns>
-                                                                <asp:BoundField HeaderText="Codigo" DataField="codigo" />
-                                                                <asp:BoundField HeaderText="Estado" DataField="estado" />                                            
-                                                                <asp:BoundField HeaderText="Tipo" DataField="tipo" />
-                                                                <asp:BoundField HeaderText="Estado" DataField="estado" />
-                                                                <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />  
-                                                                <asp:BoundField HeaderText="Monto" DataField="monto" />                                                         
-                                                                <asp:BoundField HeaderText="Fecha Gasto" DataField="fechaGasto" />
-                                                                <asp:BoundField HeaderText="Fecha Ingreso" DataField="fechaIngreso" />
-                                                        </Columns>
-                                                        
-                                                        <EmptyDataTemplate>
-                                                                <center>
-                                                                    <span>No hay data cargada</span>
-                                                                </center>
-                                                        </EmptyDataTemplate>                                                 
-                                        </asp:GridView>
+			                            
                             <asp:MultiView ID="uxModificarMultiView" runat="server" ActiveViewIndex="0">
                             
                             <asp:View ID="ViewConsultaVista1" runat="server">
@@ -110,7 +89,29 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
 		                        </tr>
 		                        <tr>
 			                        <td colspan="2">
-			                            &nbsp;</td>
+			                        <asp:GridView ID="uxModificarGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectModificarGasto"
+                                                        AutoGenerateColumns="false" DataKeyNames="codigo" AutoGenerateSelectButton="true"
+                                                        Width="130%" Font-Names="Verdana" Font-Size="X-Small" onrowdatabound="uxGridView_RowDataBound" 
+                                                        OnSelectedIndexChanging="SeleccionarModificarGasto">
+                                                
+                                                        <Columns>
+                                                                <asp:BoundField HeaderText="Codigo" DataField="codigo" />
+                                                                <asp:BoundField HeaderText="Estado" DataField="estado" />                                            
+                                                                <asp:BoundField HeaderText="Tipo" DataField="tipo" />
+                                                                <asp:BoundField HeaderText="Estado" DataField="estado" />
+                                                                <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />  
+                                                                <asp:BoundField HeaderText="Monto" DataField="monto" />                                                         
+                                                                <asp:BoundField HeaderText="Fecha Gasto" DataField="fechaGasto" />
+                                                                <asp:BoundField HeaderText="Fecha Ingreso" DataField="fechaIngreso" />
+                                                        </Columns>
+                                                        
+                                                        <EmptyDataTemplate>
+                                                                <center>
+                                                                    <span>No hay data cargada</span>
+                                                                </center>
+                                                        </EmptyDataTemplate>                                                 
+                                        </asp:GridView>
+			                        </td>
 			                    </tr>                                
                             </table>
                             </asp:View>

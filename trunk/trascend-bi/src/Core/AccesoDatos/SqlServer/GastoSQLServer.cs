@@ -303,25 +303,26 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] parametros = new SqlParameter[6];
 
-                // Parametros
+                parametros[0] = new SqlParameter("@IdGasto", SqlDbType.VarChar);
+                parametros[0].Value = gasto.Codigo;
 
-                parametros[0] = new SqlParameter("@estado", SqlDbType.VarChar);
-                parametros[0].Value = gasto.Estado;
+                parametros[1] = new SqlParameter("@estado", SqlDbType.VarChar);
+                parametros[1].Value = gasto.Estado;
 
-                parametros[1] = new SqlParameter("@monto", SqlDbType.Float);
-                parametros[1].Value = gasto.Monto;
+                parametros[2] = new SqlParameter("@monto", SqlDbType.Float);
+                parametros[2].Value = gasto.Monto;
 
-                parametros[2] = new SqlParameter("@fechaGasto", SqlDbType.DateTime);
-                parametros[2].Value = gasto.FechaGasto;
+                parametros[3] = new SqlParameter("@fechaGasto", SqlDbType.DateTime);
+                parametros[3].Value = gasto.FechaGasto;
 
-                parametros[3] = new SqlParameter("@fechaIngreso", SqlDbType.DateTime);
-                parametros[3].Value = gasto.FechaIngreso;
+                parametros[4] = new SqlParameter("@fechaIngreso", SqlDbType.DateTime);
+                parametros[4].Value = gasto.FechaIngreso;
 
-                parametros[4] = new SqlParameter("@tipo", SqlDbType.VarChar);
-                parametros[4].Value = gasto.Tipo;
+                parametros[5] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                parametros[5].Value = gasto.Tipo;
 
-                parametros[5] = new SqlParameter("@descripcion", SqlDbType.VarChar);
-                parametros[5].Value = gasto.Descripcion;
+                parametros[6] = new SqlParameter("@descripcion", SqlDbType.VarChar);
+                parametros[6].Value = gasto.Descripcion;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarGastoPorCodigo", parametros);
 
@@ -333,8 +334,6 @@ namespace Core.AccesoDatos.SqlServer
 
             return _gasto;
         }
-
-
 
         #endregion
     }

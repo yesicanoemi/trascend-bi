@@ -197,7 +197,7 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        //_presenter.ModificarGasto();
+        _presenter.ModificarGasto();
     }
     public void CambiarPagina()
     {
@@ -206,7 +206,6 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     }
     protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-
         if (e.Row.RowIndex % 2 == 0)
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }

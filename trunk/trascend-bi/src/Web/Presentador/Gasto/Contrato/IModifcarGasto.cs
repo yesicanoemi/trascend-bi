@@ -30,6 +30,8 @@ namespace Presentador.Gasto.Contrato
         CheckBox AsociarPropuestaGasto { get; set; }
         Label MensajeError { get; set; }
 
+        void CambiarPagina();
+
         #endregion
     }
 }

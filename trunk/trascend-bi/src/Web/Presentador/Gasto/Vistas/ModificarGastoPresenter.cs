@@ -176,19 +176,22 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-        }
-
-        public void CambiarVista(int index)
-        {
-
-            _vista.MultiViewConsultar.ActiveViewIndex = index;
-        }
+        }      
 
         public void uxObjectModificarGastoSelecting(int codigo)
         {
+            CambiarVista(1);
+            _vista.CambiarPagina();
+            
+        }
+        public void CambiarVista(int index)
+        {
+            _vista.MultiViewConsultar.ActiveViewIndex = index;
+        }
+        public void ModificarGasto()
+        {
             gasto = new Core.LogicaNegocio.Entidades.Gasto();
 
-            gasto.Codigo = codigo;
             gasto.Descripcion = _vista.DescripcionGasto.Text;
             gasto.Estado = _vista.EstadoGasto.Text;
             gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
@@ -211,9 +214,8 @@ namespace Presentador.Gasto.Vistas
             }
 
             ModificarGastoPorCodigo(gasto);
-            CambiarVista(1);
-            
         }
+
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorTipo()
         {
