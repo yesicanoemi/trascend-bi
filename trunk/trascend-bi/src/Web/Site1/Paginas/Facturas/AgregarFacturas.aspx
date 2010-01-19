@@ -57,10 +57,7 @@
                                     <tr>
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                                ControlToValidate="uxTituloPropuesta" Display="Static" 
-                                                ErrorMessage="<%$ Resources:DSU, FaltaTituloPropuesta%>" Font-Size="Smaller" />
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                 </table>
                                
