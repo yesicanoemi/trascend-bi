@@ -97,6 +97,7 @@ namespace Presentador.Cargo.Vistas
             {
                 LimpiarFormulario();
                 LlenarDDLCargos();
+                DesactivarCampos();
                 return true;
             }
             else
@@ -130,6 +131,7 @@ namespace Presentador.Cargo.Vistas
                     int i = _vista.NombreCargo.SelectedIndex;
                     LlenarDDLCargos();
                     _vista.NombreCargo.SelectedIndex = i;
+                    DesactivarCampos();
                     return true;
                 }
                 else
@@ -138,7 +140,6 @@ namespace Presentador.Cargo.Vistas
             else
             {
                 _vista.LabelError.Text = "Debe rellenar todos los campos";
-                ActivarCampos();
                 return false;
             }
 
@@ -179,6 +180,11 @@ namespace Presentador.Cargo.Vistas
             _vista.VigenciaSueldo.Enabled = false;
         }
 
+        /// <summary>
+        /// Metodo que valida que ningun campo sea vacio
+        /// </summary>
+        /// <returns>(true) si los campos son validos;
+        /// (false) si algun campo es vacio</returns>
         private bool ValidarCampos()
         {
             bool b = true;

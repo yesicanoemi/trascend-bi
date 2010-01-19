@@ -78,6 +78,11 @@ namespace Presentador.Cargo.Vistas
             _vista.LabelError.Visible = false;
         }
 
+        /// <summary>
+        /// Metodo para validar que ningun campo sea vacio
+        /// </summary>
+        /// <returns>(true) si los campos estan correctos
+        /// (false) si algun campo es vacio</returns>
         private bool ValidarCampos()
         {
             bool b = true;
