@@ -14,7 +14,7 @@ namespace Core.LogicaNegocio.Entidades
         private DateTime fechaIngreso;
         private DateTime fechaEgreso;
         private string estado;
-        private string direccion;
+        private Direccion direccion;
         private string cargo;
 
         public virtual int Cedula
@@ -29,7 +29,17 @@ namespace Core.LogicaNegocio.Entidades
                 cedula = value;
             }
         }
-
+        public virtual Direccion Direcciones
+        {
+            get
+            {
+                return direccion;
+            }
+            set
+            {
+                direccion = value;
+            }
+        }
         public virtual string Cuenta
         {
             get
@@ -108,7 +118,7 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual string Direccion
+        public virtual Direccion Direccion
         {
             get
             {

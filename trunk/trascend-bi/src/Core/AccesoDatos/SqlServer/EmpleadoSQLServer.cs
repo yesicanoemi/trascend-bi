@@ -155,6 +155,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 throw new Exception(e.ToString());
             }
+            return empleado;
         }
 
 
@@ -197,6 +198,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
                 arParms[5].Value = empleado.Estado;
                 resultado = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarEmpleado", arParms);
+                ModificarDireccion(empleado);
                 return resultado;
             }
             catch (SqlException e)
@@ -209,6 +211,11 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
+                SqlParameter[] arParms = new SqlParameter[1];
+                // Parametros 
+                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
+                arParms[0].Value = empleado.Cedula;
+                SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarDireccion", arParms);
             }
             catch(SqlException e)
             {
