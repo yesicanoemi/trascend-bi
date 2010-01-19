@@ -131,5 +131,14 @@ namespace Presentador {
                 return ResourceManager.GetString("mensajeErrorWeb", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La Entidad ya esta registrada en el sistema. Debe ir al módulo Modificar para realizar cualquier operación sobre la misma..
+        /// </summary>
+        internal static string mensajeRegistroExiste {
+            get {
+                return ResourceManager.GetString("mensajeRegistroExiste", resourceCulture);
+            }
+        }
     }
 }

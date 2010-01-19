@@ -141,4 +141,7 @@
   <data name="mensajeErrorWeb" xml:space="preserve">
     <value>Ha ocurrido un Error en capa Web.</value>
   </data>
+  <data name="mensajeRegistroExiste" xml:space="preserve">
+    <value>La Entidad ya esta registrada en el sistema. Debe ir al módulo Modificar para realizar cualquier operación sobre la misma.</value>
+  </data>
 </root>

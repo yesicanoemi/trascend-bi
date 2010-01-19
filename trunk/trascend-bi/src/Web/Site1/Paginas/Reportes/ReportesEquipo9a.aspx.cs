@@ -11,7 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using Presentador.Reportes.Vistas;
 using Presentador.Reportes.Contrato;
 
-public partial class Paginas_Reportes_ReportesEquipo9 : System.Web.UI.Page, IPropuestaIntervalo
+public partial class Paginas_Reportes_ReportesEquipo9 : PaginaBase, IPropuestaIntervalo
 {
 
     public GridView Grid
@@ -48,7 +48,29 @@ public partial class Paginas_Reportes_ReportesEquipo9 : System.Web.UI.Page, IPro
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presenter = new PropuestasIntervaloPresenter(this);
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                          (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 44)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new PropuestasIntervaloPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)

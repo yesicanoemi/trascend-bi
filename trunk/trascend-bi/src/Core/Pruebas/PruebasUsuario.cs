@@ -16,7 +16,29 @@ namespace Core.Pruebas
         [Test]
         public void TestConsultarUsuario()
         {
+            Usuario usuario = new Usuario();
 
+            string Login = "usuario";
+
+            usuario.Login = Login;
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> listadoUsuarios = 
+                                    new UsuarioSQLServer().ConsultarUsuario(usuario);
+
+            for (int i = 0; i < listadoUsuarios.Count; i++)
+            {
+                if (listadoUsuarios[i].Login == "usuario")
+                {
+                    usuario = listadoUsuarios[i];
+                }
+                else
+                {
+                    usuario = null;
+
+                }  
+            }
+
+            Assert.AreEqual(Login,usuario.Login);
         }
     }
 }

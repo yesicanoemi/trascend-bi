@@ -12,7 +12,7 @@ using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
 
-public partial class Paginas_Reportes_ReportesEquipo8b : System.Web.UI.Page, IReporteEquipo8b
+public partial class Paginas_Reportes_ReportesEquipo8b : PaginaBase, IReporteEquipo8b
 {
     public DropDownList Anios
     {
@@ -34,7 +34,34 @@ public partial class Paginas_Reportes_ReportesEquipo8b : System.Web.UI.Page, IRe
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presenter = new ReporteEquipo8bPresenter(this);
+
+    }
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 42)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new ReporteEquipo8bPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {

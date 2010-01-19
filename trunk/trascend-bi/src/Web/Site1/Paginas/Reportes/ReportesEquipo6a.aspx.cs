@@ -11,7 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 
-public partial class Paginas_Reportes_ReportesEquipo6 : System.Web.UI.Page, IReporteFacturasPorCobrar
+public partial class Paginas_Reportes_ReportesEquipo6 : PaginaBase, IReporteFacturasPorCobrar
 {
 
     ReporteFacturasCobradasPresenter _presenter;
@@ -23,7 +23,29 @@ public partial class Paginas_Reportes_ReportesEquipo6 : System.Web.UI.Page, IRep
     /// <param name="e"></param>
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presenter = new ReporteFacturasCobradasPresenter(this);
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 39)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new ReporteFacturasCobradasPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
     }
 
     protected void Page_Load(object sender, EventArgs e)

@@ -131,6 +131,12 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         set { uxCBLEliminar = value; }
     }
 
+    public CheckBoxList CBLReporte
+    {
+        get { return uxCBLReporte; }
+        set { uxCBLReporte = value; }
+    }
+    
     #endregion
 
     #region Métodos

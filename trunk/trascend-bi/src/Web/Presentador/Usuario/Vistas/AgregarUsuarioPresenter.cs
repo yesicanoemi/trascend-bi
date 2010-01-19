@@ -322,8 +322,11 @@ namespace Presentador.Usuario.Vistas
                 AgregarUsuario(usuario);
             }
             else
-            { 
-                //mostrar error
+            {
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                                            ("mensajeRegistroExiste"), "mensajes");
+                _vista.InformacionVisible = true;
+
             }
 
         }

@@ -95,6 +95,16 @@ namespace Presentador.Usuario.Vistas
                      }
 
                  }
+
+                 for (int k = 0; k < 13; k++)
+
+                 {
+                     //Revisa el CheckBoxList de Reportes
+                     if (_vista.CBLReporte.Items[k].Value == permiso[i].IdPermiso.ToString())
+                     {
+                         _vista.CBLReporte.Items[k].Selected = true;
+                     }
+                 }
              }
          }
 

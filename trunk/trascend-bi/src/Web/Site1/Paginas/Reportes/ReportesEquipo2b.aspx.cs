@@ -12,7 +12,7 @@ using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 
-public partial class Paginas_Reportes_ReportesEquipo2b : System.Web.UI.Page, IReporteGastoFecha
+public partial class Paginas_Reportes_ReportesEquipo2b : PaginaBase, IReporteGastoFecha
 {
     private ReporteGastoFechaPresenter _presentador;
     private DateTime _fechaini;
@@ -46,7 +46,30 @@ public partial class Paginas_Reportes_ReportesEquipo2b : System.Web.UI.Page, IRe
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        _presentador = new ReporteGastoFechaPresenter(this);
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 36)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presentador = new ReporteGastoFechaPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
+
+
     }
 
     protected void Page_Load(object sender, EventArgs e)

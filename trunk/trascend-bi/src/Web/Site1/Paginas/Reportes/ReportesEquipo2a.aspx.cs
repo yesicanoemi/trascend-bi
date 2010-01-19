@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 
-public partial class Paginas_Reportes_ReportesEquipo2 : System.Web.UI.Page, IReporteHorasRol 
+public partial class Paginas_Reportes_ReportesEquipo2 : PaginaBase, IReporteHorasRol 
 {
     private ReporteHorasRolPresenter _presenter;
     #region Propiedades de la Pagina
@@ -41,8 +41,31 @@ public partial class Paginas_Reportes_ReportesEquipo2 : System.Web.UI.Page, IRep
     }
     protected void Page_Init(object sender, EventArgs e)
     {
-        uxBotonRol.Visible = false;
-        _presenter = new ReporteHorasRolPresenter(this);
+        
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 35)
+            {
+                i = usuario.PermisoUsu.Count;
+
+
+                uxBotonRol.Visible = false;
+                _presenter = new ReporteHorasRolPresenter(this);
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
         
     }
 

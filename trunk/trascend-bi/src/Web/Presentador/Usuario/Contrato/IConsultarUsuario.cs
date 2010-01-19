@@ -38,6 +38,8 @@ namespace Presentador.Usuario.Contrato
 
         CheckBoxList CBLEliminar { get; set; }
 
+        CheckBoxList CBLReporte { get; set; }
+
         void CambiarPagina();
 
 
