@@ -66,6 +66,12 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         set { uxFax = value; }
     }
 
+    public DropDownList DropDownClientes
+    {
+        get { return uxDropDownClientes; }
+        set { uxDropDownCliente = value; }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -91,6 +97,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
                 i = usuario.PermisoUsu.Count;
 
                 _presentador = new AgregarPresentador(this);
+                _presentador.LlenarClientes();
 
                 permiso = true;
 

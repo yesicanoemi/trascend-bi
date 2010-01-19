@@ -64,6 +64,10 @@ namespace Presentador.Contacto.ContactoPresentador
             //ejecuta el comando.
             ingresar.Ejecutar();
         }
+
+        public void LlenarClientes()
+        {
+        }
      }
     
 }

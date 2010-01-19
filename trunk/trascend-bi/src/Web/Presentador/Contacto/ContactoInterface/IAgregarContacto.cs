@@ -18,5 +18,6 @@ namespace Presentador.Contacto.ContactoInterface
             TextBox TextBoxCodOficina { get; set; }
             TextBox TextBoxCodCelular { get; set; }
             CheckBox CheckBoxFax { get; set; }
+            DropDownList DropDownClientes { get; set; }
     }
 }
