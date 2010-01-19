@@ -108,7 +108,9 @@ namespace Presentador.Gasto.Vistas
             _presentadorPropuesta = new ConsultarPropuestaPresentador();
 
             int i = 0;
-            propuestas = _presentadorPropuesta.BuscarPorTitulo();
+            string estado = "Aprobada";
+           
+            propuestas = _presentadorPropuesta.BuscarPorTitulo(estado);
             for (i = 0; i < propuestas.Count; i++)
             {
                 _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);

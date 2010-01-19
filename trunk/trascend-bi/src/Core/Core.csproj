@@ -117,7 +117,6 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\IngresarGasto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ModificarGasto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Consultar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarEnEspera.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarPropuestasModificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarPropuestasxEmision.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
@@ -215,6 +214,7 @@
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebasCargo.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
+    <Compile Include="Pruebas\PruebasPropuestaGrupo2.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestasIntervalo.cs" />
     <Compile Include="Pruebas\PruebasUsuario.cs" />

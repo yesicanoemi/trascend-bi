@@ -73,6 +73,9 @@ public partial class Paginas_Reportes_ReportesEquipo2 : PaginaBase, IReporteHora
     protected void uxBotonAnio_Click(object sender, EventArgs e)
     {
         _presenter.BuscaRol();
+        uxBotonAnio.Visible = false;
+        uxBotonRol.Visible = true;
+        uxAnio.Visible = false;
     }
     protected void uxBotonRol_Click(object sender, EventArgs e)
     {

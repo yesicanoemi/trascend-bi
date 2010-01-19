@@ -6,6 +6,7 @@ using Presentador.Propuesta.Contrato;
 using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Fabricas;
 using System.Net;
+using Core.LogicaNegocio.Excepciones.Propuesta.LogicaNegocio;
 
 namespace Presentador.Propuesta.Vistas
 {
@@ -66,10 +67,11 @@ namespace Presentador.Propuesta.Vistas
 
             if ( _vista.opcion.SelectedIndex == 0 ) // PROPUESTA EN ESPERA
             {
+                string estado = "En Espera";
                 try
                 {
                     int i = 0;
-                    propuesta = BuscarEstadoEspera();
+                    propuesta = BuscarPorTitulo(estado);
 
                     for ( i = 0; i < propuesta.Count; i++ )
                     {
@@ -80,16 +82,17 @@ namespace Presentador.Propuesta.Vistas
                 }
                 catch ( WebException e )
                 {
-                    //MANEJO DE EXEPCIONES
+                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
                 }
             }
 
             if (_vista.opcion.SelectedIndex == 1)// PROPUESTA APROBADA
             {
+                string estado = "Aprobada";
                 try
                 {
                     int i = 0;
-                    propuesta = BuscarPorTitulo();
+                    propuesta = BuscarPorTitulo(estado);
                     for ( i = 0; i < propuesta.Count; i++ )
                     {
 
@@ -99,14 +102,30 @@ namespace Presentador.Propuesta.Vistas
                     _vista.SeleccionOpcion.DataBind();
                 }
                 catch (WebException e)
-                { 
-                    //MANEJO DE EXEPCIONES
+                {
+                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
                 }
             }
 
             if (_vista.opcion.SelectedIndex == 2)// PROPUESTA RECHAZADA
             {
+                string estado = "Rechazada";
+                try
+                {
+                    int i = 0;
+                    propuesta = BuscarPorTitulo(estado);
+                    for (i = 0; i < propuesta.Count; i++)
+                    {
 
+                        _vista.SeleccionOpcion.Items.Add(propuesta.ElementAt(i).Titulo);
+
+                    }
+                    _vista.SeleccionOpcion.DataBind();
+                }
+                catch (WebException e)
+                {
+                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
+                }
             }
 
             #endregion
@@ -136,8 +155,6 @@ namespace Presentador.Propuesta.Vistas
             _vista.LabelRecep.Visible       = true;
             _vista.LabelRecepP.Visible      = true;
             _vista.LabelT.Visible           = true;
-            _vista.LabelTotalHoras.Visible  = true;
-            _vista.LabelTotalHorasP.Visible = true;
             _vista.LabelTP.Visible          = true;
             _vista.LabelV.Visible           = true;
             _vista.LabelVP.Visible          = true;
@@ -163,12 +180,13 @@ namespace Presentador.Propuesta.Vistas
 
                 try
                 {
-                    propuesta = BuscarEstadoEspera();
+                    string estado = "En Espera";
+                    propuesta = BuscarPorTitulo(estado);
                     CargaDatosPagina( propuesta );  
                 }
                 catch (WebException e)
-                { 
-                    //MANEJO DE EXCEPCIONES
+                {
+                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
                 }
                 
             }
@@ -179,19 +197,29 @@ namespace Presentador.Propuesta.Vistas
             {
                 try
                 {
-                    propuesta = BuscarPorTitulo();
+                    string estado = "Aprobada";
+                    propuesta = BuscarPorTitulo(estado);
                     CargaDatosPagina(propuesta);
                 }
                 catch (WebException e)
-                { 
-                
+                {
+                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
                 }
             }
 
             #region Otra Consulta
-            if (_vista.opcion.SelectedIndex == 3) // ES BUSQUEDA POR FECHA
+            if (_vista.opcion.SelectedIndex == 3) // ES RECHAZADA
             {
-              
+                try
+                {
+                    string estado = "Rechazada";
+                    propuesta = BuscarPorTitulo(estado);
+                    CargaDatosPagina(propuesta);
+                }
+                catch (WebException e)
+                {
+                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
+                }
             }
             #endregion
 
@@ -235,12 +263,12 @@ namespace Presentador.Propuesta.Vistas
         /// Metodo que busca las propuestas
         /// </summary>
         /// <returns>devuelve objeto de tipo lista de propuestas</returns>
-        public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo()
+        public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo(string estado)
         {
 
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
 
-            consultar = FabricaComandosPropuesta.CrearComandoConsultar( propuesta );
+            consultar = FabricaComandosPropuesta.CrearComandoConsultar( estado );
 
             propuesta = consultar.Ejecutar();
 
@@ -248,18 +276,6 @@ namespace Presentador.Propuesta.Vistas
 
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarEstadoEspera()
-        {
-
-            Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarEnEspera consultar;
-
-            consultar = FabricaComandosPropuesta.CrearComandoConsultarEspera( propuesta );
-
-            propuesta = consultar.Ejecutar();
-
-            return propuesta;
-
-        }
         #endregion
     }
 }

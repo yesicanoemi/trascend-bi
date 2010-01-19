@@ -49,8 +49,9 @@ namespace Presentador.Gasto.Vistas
                 _vista.LTipoConsulta.Enabled = false;
                 _vista.SeleccionDato.Enabled = true;
                 _vista.LSeleccion.Enabled = true;
-
-                listaPropuesta = _presentadorPropuesta.BuscarPorTitulo();
+                string estado = "Aprobada";
+               
+                listaPropuesta = _presentadorPropuesta.BuscarPorTitulo(estado);
 
                 for (int i = 0; i < listaPropuesta.Count; i++)
                 {

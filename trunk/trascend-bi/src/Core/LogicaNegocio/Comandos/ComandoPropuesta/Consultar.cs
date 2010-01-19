@@ -11,6 +11,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
     {
         private Propuesta _propuesta;
         private IList<Propuesta> _propuesta2;
+        private string _estado;
 
         #region Constructor
         public Consultar()
@@ -24,6 +25,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         {
             _propuesta2 = arreglo;
         }
+        public Consultar(string estado)
+        {
+            _estado = estado;
+        }
         #endregion
 
         #region Metodos
@@ -32,7 +37,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         {
 
             PropuestaSQLServer acceso = new PropuestaSQLServer();
-            _propuesta2 = acceso.ConsultarPropuesta();
+            _propuesta2 = acceso.ConsultarPropuesta(_estado);
             
             return _propuesta2;
         }

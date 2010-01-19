@@ -177,6 +177,7 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
+        #region Reporte#1 Grupo 2
         /// <summary>
         /// Metodo que se comunica con la base de datos y realiza la consulta
         /// solicitada
@@ -186,7 +187,16 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarRol");
+                SqlParameter[] Parametros = new SqlParameter[2];
+
+                Parametros[0] = new SqlParameter("@FechaI", SqlDbType.DateTime);
+
+                Parametros[0].Value = FechaI;
+
+                Parametros[1] = new SqlParameter("@FechaF", SqlDbType.DateTime);
+
+                Parametros[1].Value = FechaF;
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarHorasRolFecha", Parametros);
                 int i = 0;
 
                 while (conexion.Read())
@@ -204,7 +214,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Exception(e.ToString());
+                throw new Exception("Error en Acceso a BD",e);
             }
         }
         /// <summary>
@@ -238,6 +248,7 @@ namespace Core.AccesoDatos.SqlServer
                 throw new Exception(e.ToString());
             }
         }
+        #endregion
 
 
         #region ReporteFacturasEmitidasAnuales

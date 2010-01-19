@@ -158,7 +158,7 @@ namespace Presentador.Propuesta.Vistas
 
             propuesta.Version = _vista.TextBoxVP.Text;
 
-            propuesta.FechaFirma = Convert.ToDateTime(_vista.TextBoxFFirmP);
+            propuesta.FechaFirma = Convert.ToDateTime(_vista.TextBoxFFirmP.Text);
 
             propuesta.FechaInicio = Convert.ToDateTime(_vista.TextBoxFechaIP.Text);
 

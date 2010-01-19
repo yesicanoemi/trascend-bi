@@ -7,7 +7,7 @@ using Presentador.Propuesta.Contrato;
 using Presentador.Propuesta.Vistas;
 using Core.LogicaNegocio.Entidades;
 
-public partial class Paginas_Propuestas_ModificarPropuestas : System.Web.UI.Page, IModificarPropuesta
+public partial class Paginas_Propuestas_ModificarPropuestas : PaginaBase, IModificarPropuesta
 {
     private ModificarPropuestaPresentador _presenter;
 
@@ -161,9 +161,25 @@ public partial class Paginas_Propuestas_ModificarPropuestas : System.Web.UI.Page
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        _presenter = new ModificarPropuestaPresentador(this);
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+        (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 27)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                _presenter = new ModificarPropuestaPresentador(this);
+
+                permiso = true;
+
+            }
+        }
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 

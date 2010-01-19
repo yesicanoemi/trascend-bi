@@ -37,6 +37,8 @@ namespace Presentador.Reportes.Vistas
                 string ConstFechaF = "31/12/" + anio;
                 DateTime FechaI = Convert.ToDateTime(ConstFechaI);
                 DateTime FechaF = Convert.ToDateTime(ConstFechaF);
+               
+                
                 empleado = BuscarRoles(FechaI, FechaF);
                 
                 int i = 0;
@@ -75,11 +77,11 @@ namespace Presentador.Reportes.Vistas
             }
         }
 
-        public IList<string> BuscarRoles(DateTime Fecha1, DateTime Fecha2)
+        public IList<string> BuscarRoles(DateTime FechaI, DateTime FechaF)
         {
             Core.LogicaNegocio.Comandos.ComandoReporte.ConsultaRol consultar;
-            consultar = FabricaComandosReporte.CrearComandoConsultarRol(empleado);
-            empleado = consultar.Ejecutar(Fecha1, Fecha2);
+            consultar = FabricaComandosReporte.CrearComandoConsultarRol(FechaI,FechaF);
+            empleado = consultar.Ejecutar();
             return empleado;
         }
         public int SumaHora( string rol )

@@ -28,9 +28,9 @@
                                 <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
                                 <td><asp:DropDownList ID="opcion1" runat="server" 
                                         onselectedindexchanged="opcion1_SelectedIndexChanged">
-                                    <asp:ListItem>Propuesta En Espera</asp:ListItem>
-                                    <asp:ListItem>Propuesta Aprobada</asp:ListItem>
-                                    <asp:ListItem>Busqueda por Fecha</asp:ListItem>
+                                    <asp:ListItem>Propuesta Version En Espera</asp:ListItem>
+                                    <asp:ListItem>Propuesta Version Aprobada</asp:ListItem>
+                                    <asp:ListItem>Propuesta Version Rechazada</asp:ListItem>
                                     </asp:DropDownList></td>
                             </tr>
                             <tr>

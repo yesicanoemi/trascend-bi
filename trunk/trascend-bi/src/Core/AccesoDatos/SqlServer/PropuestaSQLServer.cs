@@ -388,46 +388,53 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="propuesta"></param>
         /// <returns>Lista de Propuesta</returns>
-        public IList<Propuesta> ConsultarPropuesta()
+        public IList<Propuesta> ConsultarPropuesta(string estado)
         {
             try
             {
-                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuesta");
-                int i = 0;
+                    SqlParameter EstadoP = new SqlParameter();
 
-                while (conexion.Read())
-                {
+                    EstadoP = new SqlParameter("@Estado", SqlDbType.VarChar);
 
-                    Propuesta _Propuesta = new Propuesta();
-                    _Propuesta.Titulo = (string)conexion["Titulo"];
-                    _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
-                    _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
-                    _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
-                    _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
-                    _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
-                    _Propuesta.Id = (int)conexion["IdPropuesta"];
-                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
-
-                    #region Busqueda del Receptor
-                    int j = 0;
-                    List<string> ListR = new List<string>();
-                    ListR = BuscarReceptor(_Propuesta.Id);
-                    for (j = 0; j < ListR.Count; j++)
+                    EstadoP.Value = estado;
+                
+                    DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuesta",EstadoP);
+                    int i = 0;
+           
+                    while (conexion.Read())
                     {
-                        _Propuesta.NombreReceptor = ListR.ElementAt(j);
-                        j++;
-                        _Propuesta.ApellidoReceptor = ListR.ElementAt(j);
-                        j++;
-                        _Propuesta.CargoReceptor = ListR.ElementAt(j);
+
+                        Propuesta _Propuesta = new Propuesta();
+                        _Propuesta.Titulo = (string)conexion["Titulo"];
+                        _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                        _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                        _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                        _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                        _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                        _Propuesta.Id = (int)conexion["IdPropuesta"];
+                        _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+
+                        #region Busqueda del Receptor
+                        int j = 0;
+                        List<string> ListR = new List<string>();
+                        ListR = BuscarReceptor(_Propuesta.Id);
+                        for (j = 0; j < ListR.Count; j++)
+                        {
+                            _Propuesta.NombreReceptor = ListR.ElementAt(j);
+                            j++;
+                            _Propuesta.ApellidoReceptor = ListR.ElementAt(j);
+                            j++;
+                            _Propuesta.CargoReceptor = ListR.ElementAt(j);
+                        }
+
+                        #endregion
+                        ListaPropuesta.Insert(i, _Propuesta);
+                        i++;
+
                     }
 
-                    #endregion
-                    ListaPropuesta.Insert(i, _Propuesta);
-                    i++;
-
-                }
-
-                return ListaPropuesta;
+                    return ListaPropuesta;
+                
             }
             catch (SqlException e)
             {
@@ -466,69 +473,6 @@ namespace Core.AccesoDatos.SqlServer
             return ListaPropuesta;
         }
 
-        /// <summary>
-        /// Metodo que consulta las propuestas que Tiene Versiones en espera
-        /// de Aprobacion o Rechazo
-        /// </summary>
-        /// <returns>Lista de Propuestas que cumplen con la condicion</returns>
-        public IList<Propuesta> ConsultarPropuestaEnEspera()
-        {
-            try
-            {
-                DbDataReader conexion = SqlHelper.ExecuteReader
-                    (GetConnection(), "ConsultarPropuestaEspera");
-
-                int i = 0;
-
-                while (conexion.Read())
-                {
-
-                    Propuesta _Propuesta = new Propuesta();
-                    _Propuesta.Titulo = (string)conexion["Titulo"];
-                    _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
-                    _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
-                    _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
-                    _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
-                    _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
-                    _Propuesta.Id = (int)conexion["IdPropuesta"];
-                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
-
-                    #region Busqueda del Receptor
-
-                    int j = 0;
-                    List<string> ListR = new List<string>();
-
-                    ListR = BuscarReceptor(_Propuesta.Id);
-
-                    for (j = 0; j < ListR.Count; j++)
-                    {
-                        _Propuesta.NombreReceptor = ListR.ElementAt(j);
-                        j++;
-                        _Propuesta.ApellidoReceptor = ListR.ElementAt(j);
-                        j++;
-                        _Propuesta.CargoReceptor = ListR.ElementAt(j);
-                    }
-
-                    #endregion
-
-                    ListaPropuesta.Insert(i, _Propuesta);
-                    i++;
-
-                }
-
-                return ListaPropuesta;
-            }
-            catch (SqlException e)
-            {
-                throw new ConsultarPropuestaBDException
-                    ("Error En Acceso a Base de Datos Para Consulta", e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarPropuestaBDException
-                    ("Error En Consulta de Propuesta", e);
-            }
-        }
         /// <summary>
         /// Metodo que se encarga de buscar Los empleados de una propuesta en específico
         /// </summary>
@@ -659,6 +603,7 @@ namespace Core.AccesoDatos.SqlServer
                 }
                 catch (SqlException e)
                 {
+                    ListaRecibida = null;
                     throw new Exception("Error Durante Ejecucion de Instruccion a la BD", e);
                 }
             }

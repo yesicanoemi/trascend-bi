@@ -211,7 +211,8 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Lista con las propuestas</returns>
         public IList<Propuesta> ConsultarPropuesta()
         {
-            return new PropuestaSQLServer().ConsultarPropuesta();
+            string estado = "Aprobada";
+            return new PropuestaSQLServer().ConsultarPropuesta(estado);
         }
 
         /// <summary>
