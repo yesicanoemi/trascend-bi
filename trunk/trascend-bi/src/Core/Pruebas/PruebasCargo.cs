@@ -21,7 +21,7 @@ namespace Core.Pruebas
         {
         }
 
-        /*
+        
         [Test]
         public void PruebaAIngresarCargo()
         {
@@ -33,8 +33,10 @@ namespace Core.Pruebas
             cargo.Vigencia = DateTime.Today;
             Core.LogicaNegocio.Comandos.ComandoCargo.Ingresar comandoIngresar;
             comandoIngresar = FabricaComandoCargo.CrearComandoIngresar( cargo );
-            Assert.AreEqual(comandoIngresar.Ejecutar(),true);
-          
+            comandoIngresar.Ejecutar();
+            Core.LogicaNegocio.Comandos.ComandoCargo.Consultar comandoBusqueda =
+                                                    FabricaComandoCargo.CrearComandoConsultar(cargo);
+            Assert.AreEqual(comandoBusqueda.Ejecutar().Descripcion, "Esto es una prueba");
         }
 
 
@@ -62,7 +64,9 @@ namespace Core.Pruebas
             cargo2.Descripcion = "El Probador fue probado";
             Core.LogicaNegocio.Comandos.ComandoCargo.Modificar comandoModificar = 
                                                     FabricaComandoCargo.CrearComandoModificar(cargo2);
-            Assert.AreEqual(comandoModificar.Ejecutar(),true);
+            comandoModificar.Ejecutar();
+            
+            Assert.AreEqual(comandoBusqueda.Ejecutar().Descripcion,"El Probador fue probado" );
    
         }
 
@@ -87,10 +91,12 @@ namespace Core.Pruebas
 
             Core.LogicaNegocio.Comandos.ComandoCargo.Eliminar comandoEliminar;
             comandoEliminar = FabricaComandoCargo.CrearComandoEliminar(comandoBusqueda.Ejecutar());
-            Assert.AreEqual(comandoEliminar.Ejecutar(), true);
+            comandoEliminar.Ejecutar();
+            Assert.AreEqual(comandoBusqueda.Ejecutar().Nombre, null);
+
 
         }
-        */
+        
        
     }
 }
