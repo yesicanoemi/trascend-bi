@@ -37,6 +37,8 @@ http://trascend-bi.googlecode.com/files/Modificar%20Cargo%20grupo%20%236.png
 
 
 ====*4) Eliminar Cargos*====
+
+http://trascend-bi.googlecode.com/files/Eliminar%20Cargo%20grupo%20%236.png
 <br>
 <br>
 *Reportes:*
