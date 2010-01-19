@@ -27,11 +27,17 @@
                         
                     </p>
                      <p class="large">
-                         Inflación:
-                         <asp:TextBox ID="uxInflacion" runat="server"></asp:TextBox>
-                         %&nbsp;
-                         <asp:Button ID="uxBotonCargar" runat="server" Text="Cargar" 
-                             onclick="uxBotonCargar_Click" />
+                         <table>
+                        <tr>
+                            <td>Inflación:</td>
+                            <td><asp:TextBox ID="uxInflacion" runat="server"></asp:TextBox>
+                         %&nbsp;</td>
+                         <td> <asp:Button ID="uxBotonCargar" runat="server" Text="Cargar" 
+                             onclick="uxBotonCargar_Click" /> </td>
+                        
+                        </tr>
+                     
+                     </table>
                         
                     </p>
                      <p class="large">

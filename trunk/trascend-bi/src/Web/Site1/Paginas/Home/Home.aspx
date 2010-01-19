@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Paginas_Home_Home" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" Title="Bienvenidos" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Paginas_Home_Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="container subnav"> 
@@ -22,4 +22,3 @@
 			
 		</div> 
 </asp:Content>
-

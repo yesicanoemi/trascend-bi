@@ -87,10 +87,12 @@
                                    <td>&nbsp;</td>
                                </tr>
                                 <tr>
-                                   <td>&nbsp;</td>
+                               
+                                   
+                                   <td><asp:Button ID="uxBotonGuardar" runat="server" Text="Guardar" 
+                                           onclick="uxBotonGuardar_Click" /></td>
                                    <td>
-                                       <asp:Button ID="uxBotonGuardar" runat="server" Text="Guardar" 
-                                           onclick="uxBotonGuardar_Click" />
+                                       
                                        <asp:Button ID="uxBotonEliminar" runat="server" Text="Eliminar" 
                                            onclick="uxBotonEliminar_Click" />
                                     </td>

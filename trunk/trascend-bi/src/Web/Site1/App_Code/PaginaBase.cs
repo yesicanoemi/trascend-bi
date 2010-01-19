@@ -22,7 +22,7 @@ public abstract class PaginaBase : System.Web.UI.Page
 
     public const string SesionUsuario = "SesionUsuario";
 
-    protected const string paginaPrueba = "~/Paginas/Usuarios/DefaultUsuarios.aspx";
+    protected const string paginaPrueba = "~/Paginas/Home/Home.aspx";
 
     protected const string paginaInicial = "~/Paginas/Usuarios/DefaultUsuarios.aspx";
 
