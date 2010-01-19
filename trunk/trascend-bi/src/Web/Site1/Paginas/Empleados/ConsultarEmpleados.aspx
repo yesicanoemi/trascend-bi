@@ -11,6 +11,8 @@
 					<ul id="subnav"> 
   <li><a href="AgregarEmpleados.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarEmpleados.aspx" class="active">Consultar<span></span></a></li> 
+      <li><a href="EliminarEmpleados.aspx">Eliminar<span></span></a></li>
+                    <li><a href="ModificarEmpleados.aspx">Modificar<span></span></a></li>
 </ul> 
 						
 				</div> 
@@ -42,6 +44,9 @@
                                 <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                         onclick="uxBotonAceptar_Click" /></td>
                             </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
                                                     
                        <tr>
                                    <td><asp:Label ID="LabelParametroB" runat="server" Text = "Introduzca" 
@@ -55,21 +60,24 @@
                             </td>
                                </tr>
                                <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                               <tr>
+                                
                                 <td><asp:Label ID="LabelSeleccion" runat="server" Text = "Seleccione Cargo:" Visible = "false" /></td>
                                 <td><asp:DropDownList ID="uxSeleccion" runat="server" Visible="False">
                                     </asp:DropDownList></td>
                                  <td><asp:Button ID="uxBotonBuscar2" runat="server" Text="Buscar" 
                                         onclick="uxBotonBuscar_Click" Visible="False" /></td>   
-                            </tr>
-
+                               </tr>
                                <tr>
                                 <td></td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                         ControlToValidate="uxParametro" 
-                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
+                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="None" />
                                     </td>
                                </tr>
-              <tr>
+                                <tr>
                                     <td colspan="2">
                                 
                                         <asp:GridView ID="uxConsultarEmpleado" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultarEmpleado"

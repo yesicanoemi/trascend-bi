@@ -20,7 +20,7 @@
 				<div class="sub-content"> 
              <div class="features_overview"> 
                  <div class="features_overview_right"> 
-                    <h3>Consultar cargos</h3> 
+                    <h3>Eliminar Empleados</h3> 
                     <p class="large">
                         
                         
