@@ -19,12 +19,15 @@ namespace Presentador.Propuesta.Vistas
         private IAgregarPropuesta _vista;
         private IAgregarPropuesta _vista2;
         private IList<Core.LogicaNegocio.Entidades.Persona> Persona;
+        private IList<string[]> lista;
+        private IList<string[]> lista2;
         #endregion
 
         #region Constructor
 
         public AgregarPropuestaPresenter(IAgregarPropuesta vista)
         {
+           
             _vista = vista;
             _vista2 = vista;
 
@@ -61,27 +64,22 @@ namespace Presentador.Propuesta.Vistas
 
                 propuesta.MontoTotal = float.Parse(_vista.MontoTotal.Text);
 
-                propuesta.NombreEquipo1 = _vista.NombreEquipo1.Text;
-
-                propuesta.ApellidoEquipo1 = _vista.ApellidoEquipo1.Text;
+               
 
                 propuesta.Rol1 = _vista.RolEquipo1.Text;
 
-                propuesta.NombreEquipo2 = _vista.NombreEquipo2.Text;
-
-                propuesta.ApellidoEquipo2 = _vista.ApellidoEquipo2.Text;
-
-                propuesta.Rol2 = _vista.RolEquipo2.Text;
-
-                propuesta.NombreEquipo3 = _vista.NombreEquipo3.Text;
-
-                propuesta.ApellidoEquipo3 = _vista.ApellidoEquipo3.Text;
-
-                propuesta.Rol3 = _vista.RolEquipo3.Text;
-
+  
                 propuesta.TotalHoras = int.Parse(_vista.TotalHoras.Text);
 
-                propuesta = Agregar(propuesta);
+               // propuesta.Equipo = _vista.TrabajoEquipo.SelectedItem;
+
+                //string[] nombre = propuesta.Equipo.Split(' ');
+
+                lista2 = SeleccionEquipo(lista);
+
+                propuesta = Agregar(propuesta,lista2);
+
+              
 
                 LimpiarRegistros();
             }
@@ -104,8 +102,18 @@ namespace Presentador.Propuesta.Vistas
             {
                 if (Persona != null)
                 {
-                    _vista2.ObtenerValorDataSource.DataSource = Persona;
-                    // LimpiarRegistros();
+                    
+               // _vista2.ObtenerValorDataSource.DataSource = Persona;
+                //    LimpiarRegistros();
+                    //_vista2.TrabajoEquipo.DataSource. = Persona;
+              //      _vista2.TrabajoEquipo.DataBind();
+            int i;      
+            for (i = 0; i < Persona.Count; i++)
+            {
+                _vista.TrabajoEquipo.Items.Add(Persona.ElementAt(i).Nombre+" "+Persona.ElementAt(i).Apellido);
+
+            }
+           _vista.TrabajoEquipo.DataBind();
                 }
 
             }
@@ -114,6 +122,36 @@ namespace Presentador.Propuesta.Vistas
                 _vista.Mensaje(e.Message);
             }
         }
+
+             public IList<string[]>  SeleccionEquipo(IList<string[]> lista)
+             {
+                 string seleccion;
+                string[] nombre;
+                 String s = "Selected items:<br>";
+                lista = new List<string[]>();
+
+           for (int i = 0; i < _vista.TrabajoEquipo.Items.Count; i++)
+           {
+             if (_vista.TrabajoEquipo.Items[i].Selected)
+             {
+                 seleccion = _vista.TrabajoEquipo.Items[i].Text;
+                 nombre = seleccion.Split(' ');
+                 lista.Add(nombre);
+                 // List the selected items
+             //  s = s + Check1.Items[i].Text;
+              // s = s + "<br>";
+             }
+            
+           }
+           
+                 return lista;
+           
+         }
+                 
+      
+             
+
+
 
         /// <summary>
         /// Metodo que se encarga de limpiar todos los campos de la Interfaz Agregar Propuesta
@@ -138,23 +176,10 @@ namespace Presentador.Propuesta.Vistas
 
             _vista.NombreReceptor.Text = "";
 
-            _vista.NombreEquipo1.Text = "";
-
-            _vista.NombreEquipo2.Text = "";
-
-            _vista.NombreEquipo3.Text = "";
-
-            _vista.ApellidoEquipo1.Text = "";
-
-            _vista.ApellidoEquipo2.Text = "";
-
-            _vista.ApellidoEquipo3.Text = "";
-
+            
             _vista.RolEquipo1.Text = "";
 
-            _vista.RolEquipo2.Text = "";
-
-            _vista.RolEquipo3.Text = "";
+        
 
             _vista.TotalHoras.Text = "";
         }
@@ -168,11 +193,11 @@ namespace Presentador.Propuesta.Vistas
         /// <param name="propuesta">Entidad de tipo Propuesta</param>
         /// <returns></returns>
 
-        public Core.LogicaNegocio.Entidades.Propuesta Agregar(Core.LogicaNegocio.Entidades.Propuesta propuesta)
+        public Core.LogicaNegocio.Entidades.Propuesta Agregar(Core.LogicaNegocio.Entidades.Propuesta propuesta,IList<string[]> equipo)
         {
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Ingresar ingresar;
 
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoIngresar(propuesta);
+            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoIngresar(propuesta,equipo);
 
             return ingresar.Ejecutar();
 

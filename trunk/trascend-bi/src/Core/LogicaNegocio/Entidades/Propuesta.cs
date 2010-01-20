@@ -28,7 +28,20 @@ namespace Core.LogicaNegocio.Entidades
         private string rol1;
         private string rol2;
         private string rol3;
+        private string equipo;
 
+        public virtual string Equipo
+        {
+            get
+            {
+                return equipo;
+            }
+            set
+            {
+                equipo = value;
+            }
+        }
+        
         public virtual int Id
         {
             get
@@ -173,77 +186,16 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual string NombreEquipo1
-        {
-            get
-            {
-                return Nombreequipo1;
-            }
-            set
-            {
-                Nombreequipo1 = value;
-            }
-        }
+       
 
-        public virtual string NombreEquipo2
-        {
-            get
-            {
-                return Nombreequipo2;
-            }
-            set
-            {
-                Nombreequipo2 = value;
-            }
-        }
+      
 
-        public virtual string NombreEquipo3
-        {
-            get
-            {
-                return Nombreequipo3;
-            }
-            set
-            {
-                Nombreequipo3 = value;
-            }
-        }
+    
 
-        public virtual string ApellidoEquipo1
-        {
-            get
-            {
-                return Apellidoequipo1;
-            }
-            set
-            {
-                Apellidoequipo1 = value;
-            }
-        }
+      
 
-        public virtual string ApellidoEquipo2
-        {
-            get
-            {
-                return Apellidoequipo2;
-            }
-            set
-            {
-                Apellidoequipo2 = value;
-            }
-        }
 
-        public virtual string ApellidoEquipo3
-        {
-            get
-            {
-                return Apellidoequipo3;
-            }
-            set
-            {
-                Apellidoequipo3 = value;
-            }
-        }
+      
 
         public virtual string Rol1
         {
@@ -257,29 +209,8 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual string Rol2
-        {
-            get
-            {
-                return rol2;
-            }
-            set
-            {
-                rol2 = value;
-            }
-        }
 
-        public virtual string Rol3
-        {
-            get
-            {
-                return rol3;
-            }
-            set
-            {
-                rol3 = value;
-            }
-        }
+      
 
     }
 }

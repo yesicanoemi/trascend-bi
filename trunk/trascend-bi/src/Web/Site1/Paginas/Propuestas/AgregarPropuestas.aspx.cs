@@ -15,6 +15,9 @@ using Presentador.Propuesta.Vistas;
 public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregarPropuesta
 {
     private AgregarPropuestaPresenter _presentador;
+    private AgregarPropuestaPresenter _presentador2;
+    string _seleccion;
+    IList<string[]> _lista;
 
     #region Propiedades
     public TextBox Titulo
@@ -77,10 +80,15 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxMontoTotal = value; }
     }
 
-    public GridView GridViewEmpleado
+   
+
+    
+
+    public CheckBoxList TrabajoEquipo
     {
-        get { return uxEmpleados; }
-        set { throw new System.NotImplementedException(); }
+        get { return uxEquipo; }
+        set {uxEquipo = value;}
+    
     }
 
     public ObjectContainerDataSource ObtenerValorDataSource
@@ -89,17 +97,11 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxobjectEmpleado = value; }
     }
 
-    public TextBox NombreEquipo1
-    {
-        get { return Nombre1; }
-        set { Nombre1 = value; }
-    }
+    
 
-    public TextBox ApellidoEquipo1
-    {
-        get { return Apellido1; }
-        set { Apellido1 = value; }
-    }
+   
+
+   
 
     public TextBox RolEquipo1
     {
@@ -107,46 +109,27 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { Rol1 = value; }
     }
 
-    public TextBox NombreEquipo2
-    {
-        get { return Nombre2; }
-        set { Nombre2 = value; }
-    }
+  
 
-    public TextBox ApellidoEquipo2
-    {
-        get { return Apellido2; }
-        set { Apellido2 = value; }
-    }
+    
 
-    public TextBox RolEquipo2
-    {
-        get { return Rol2; }
-        set { Rol2 = value; }
-    }
+   
 
-    public TextBox NombreEquipo3
-    {
-        get { return Nombre3; }
-        set { Nombre3 = value; }
-    }
+    
 
-    public TextBox ApellidoEquipo3
-    {
-        get { return Apellido3; }
-        set { Apellido3 = value; }
-    }
+   
 
-    public TextBox RolEquipo3
-    {
-        get { return Rol3; }
-        set { Rol3 = value; }
-    }
+   
+
+  
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
     {
 
+        _lista  = new List<string[]>();
+        _presentador2 = new AgregarPropuestaPresenter(this);
+        
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -178,14 +161,17 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        
 
-    }
+    }  
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         uxBotonAceptar.Visible = true;
         _presentador.AgregarPropuesta();
     }
+
+   
 
     public void Mensaje(string msg)
     {

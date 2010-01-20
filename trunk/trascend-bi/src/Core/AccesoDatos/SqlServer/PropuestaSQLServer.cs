@@ -74,7 +74,7 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="propuesta">Entidad Propuesta</param>
         /// <returns></returns>
-        public Propuesta IngresarPropuesta(Propuesta propuesta)
+        public Propuesta IngresarPropuesta(Propuesta propuesta,IList<string[]> listaequipo)
         {
             try
               {
@@ -183,196 +183,73 @@ namespace Core.AccesoDatos.SqlServer
                throw new IngresarPropuestaBDException();
 
             //Ingresar Equipo
-
-            SqlParameter[] Param = new SqlParameter[2];
-
-            if (propuesta.NombreEquipo1 != null)
+            foreach (string[] nombre in listaequipo)
             {
-                Param[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-
-                Param[0].Value = propuesta.NombreEquipo1;
-
-                Param[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-
-                Param[1].Value = propuesta.ApellidoEquipo1;
-
-                DbDataReader conex3 = SqlHelper.ExecuteReader(GetConnection(),
-                    "ConsultarIdEmpleado", Param);
-
-                if (conex3.Read())
+                for (int i = 0; i < listaequipo.Count; i++)
                 {
-                    int IdEmpleado;
+                    string Nombre = nombre.ElementAt(i);
+                    string Apellido = nombre.ElementAt(i + 1);
+                    SqlParameter[] Param = new SqlParameter[2];
+                    Param[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
 
-                    IdEmpleado = (int)conex3["IdEmpleado"];
+                    Param[0].Value = Nombre;
 
-                    DbDataReader conex4 = SqlHelper.ExecuteReader(GetConnection(),
-                        "ConsultarIdVersion");
+                    Param[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
 
-                    if (conex4.Read())
+                    Param[1].Value = Apellido;
+
+                    DbDataReader conex3 = SqlHelper.ExecuteReader(GetConnection(),
+                        "ConsultarIdEmpleado", Param);
+
+                    if (conex3.Read())
                     {
+                        int IdEmpleado;
 
-                        int IdVersion;
+                        IdEmpleado = (int)conex3["IdEmpleado"];
 
-                        IdVersion = (int)conex4["maximo"];
+                        DbDataReader conex4 = SqlHelper.ExecuteReader(GetConnection(),
+                            "ConsultarIdVersion");
 
-                        SqlParameter[] Param2 = new SqlParameter[4];
+                        if (conex4.Read())
+                        {
 
-                        Param2[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+                            int IdVersion;
 
-                        Param2[0].Value = IdEmpleado;
+                            IdVersion = (int)conex4["maximo"];
 
-                        Param2[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
+                            SqlParameter[] Param2 = new SqlParameter[4];
 
-                        Param2[1].Value = IdVersion;
+                            Param2[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
 
-                        Param2[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
+                            Param2[0].Value = IdEmpleado;
 
-                        Param2[2].Value = propuesta.Rol1;
+                            Param2[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
 
-                        Param2[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
+                            Param2[1].Value = IdVersion;
 
-                        Param2[3].Value = propuesta.TotalHoras;
+                            Param2[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
 
-                        int result3 = SqlHelper.ExecuteNonQuery(GetConnection(),
-                            "IngresarEquipo", Param2);
+                            Param2[2].Value = propuesta.Rol1;
+
+                            Param2[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
+
+                            Param2[3].Value = propuesta.TotalHoras;
+
+                            int result3 = SqlHelper.ExecuteNonQuery(GetConnection(),
+                                "IngresarEquipo", Param2);
+                            i++;
+
+                        }
+                        else
+                            throw new IngresarPropuestaBDException();
 
                     }
-                         else
-                               throw new IngresarPropuestaBDException();
-
-                }
-                   else
-                      throw new IngresarPropuestaBDException();
-            }
-
-            if (propuesta.NombreEquipo2 != "")
-            {
-                SqlParameter[] Param3 = new SqlParameter[2];
-
-                Param3[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-
-                Param3[0].Value = propuesta.NombreEquipo2;
-
-                Param3[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-
-                Param3[1].Value = propuesta.ApellidoEquipo2;
-
-                DbDataReader conex5 = SqlHelper.ExecuteReader(GetConnection(),
-                    "ConsultarIdEmpleado", Param3);
-
-                if (conex5.Read())
-                {
-                    int IdEmpleado;
-
-                    IdEmpleado = (int)conex5["IdEmpleado"];
-
-                    DbDataReader conex6 = SqlHelper.ExecuteReader(GetConnection(),
-                        "ConsultarIdVersion");
-
-                    if (conex6.Read())
-                    {
-
-                        int IdVersion;
-
-                        IdVersion = (int)conex6["maximo"];
-
-                        SqlParameter[] Param4 = new SqlParameter[4];
-
-                        Param4[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
-
-                        Param4[0].Value = IdEmpleado;
-
-                        Param4[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
-
-                        Param4[1].Value = IdVersion;
-
-                        Param4[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
-
-                        Param4[2].Value = propuesta.Rol2;
-
-                        Param4[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
-
-                        Param4[3].Value = propuesta.TotalHoras;
-
-                        int result4 = SqlHelper.ExecuteNonQuery(GetConnection(),
-                            "IngresarEquipo", Param4);
-
-                    }
-                         else
-                              throw new IngresarPropuestaBDException();
-
-                }
                     else
-                         throw new IngresarPropuestaBDException();
-
-
-            }
-            if (propuesta.NombreEquipo3 != "")
-            {
-                SqlParameter[] Param5 = new SqlParameter[2];
-
-                Param5[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
-
-                Param5[0].Value = propuesta.NombreEquipo3;
-
-                Param5[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
-
-                Param5[1].Value = propuesta.ApellidoEquipo3;
-
-                DbDataReader conex7 = SqlHelper.ExecuteReader(GetConnection(),
-                    "ConsultarIdEmpleado", Param5);
-
-                if (conex7.Read())
-                {
-                    int IdEmpleado;
-
-                    IdEmpleado = (int)conex7["IdEmpleado"];
-
-                    DbDataReader conex8 = SqlHelper.ExecuteReader(GetConnection(),
-                        "ConsultarIdVersion");
-
-                    if (conex8.Read())
-                    {
-
-                        int IdVersion;
-
-                        IdVersion = (int)conex8["maximo"];
-
-                        SqlParameter[] Param6 = new SqlParameter[4];
-
-                        Param6[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
-
-                        Param6[0].Value = IdEmpleado;
-
-                        Param6[1] = new SqlParameter("@IdVersion", SqlDbType.Int);
-
-                        Param6[1].Value = IdVersion;
-
-                        Param6[2] = new SqlParameter("@Rol", SqlDbType.VarChar);
-
-                        Param6[2].Value = propuesta.Rol3;
-
-                        Param6[3] = new SqlParameter("@HorasParticipadas", SqlDbType.Int);
-
-                        Param6[3].Value = propuesta.TotalHoras;
-
-                        int result5 = SqlHelper.ExecuteNonQuery(GetConnection(),
-                            "IngresarEquipo", Param6);
-
-                    }
-                       else
-                           throw new IngresarPropuestaBDException();
-
+                        throw new IngresarPropuestaBDException();
                 }
-                 else
-                     throw new IngresarPropuestaBDException();
-
-
             }
-
-           
-
-        }
+            
+       }
                  
           catch (SqlException e)
           {

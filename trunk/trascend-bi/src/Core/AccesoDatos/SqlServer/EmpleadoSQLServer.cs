@@ -346,7 +346,7 @@ namespace Core.AccesoDatos.SqlServer
             while (conex.Read())
             {
                 Persona _persona = new Persona();
-
+                
                 _persona.Nombre = (string)conex["Nombre"];
                 _persona.Apellido = (string)conex["Apellido"];
                 //_empleado.Cargo = (string)conex["Expr1"];

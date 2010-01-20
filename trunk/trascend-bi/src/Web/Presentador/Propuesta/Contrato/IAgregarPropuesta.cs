@@ -35,29 +35,21 @@ namespace Presentador.Propuesta.Contrato
 
         TextBox MontoTotal { get; set; }
 
-        GridView GridViewEmpleado { get; set; }
+      
 
         ObjectContainerDataSource ObtenerValorDataSource { get; set; }
 
-        TextBox NombreEquipo1 { get; set; }
 
-        TextBox ApellidoEquipo1 { get; set; }
 
-        TextBox RolEquipo1 { get; set; }
 
-        TextBox NombreEquipo2 { get; set; }
 
-        TextBox ApellidoEquipo2 { get; set; }
+        TextBox RolEquipo1 { get; set; }    
 
-        TextBox RolEquipo2 { get; set; }
-
-        TextBox NombreEquipo3 { get; set; }
-
-        TextBox ApellidoEquipo3 { get; set; }
-
-        TextBox RolEquipo3 { get; set; }
+        
 
         void Mensaje(string msg);
+
+        CheckBoxList TrabajoEquipo { get; set; }
 
         #endregion
 

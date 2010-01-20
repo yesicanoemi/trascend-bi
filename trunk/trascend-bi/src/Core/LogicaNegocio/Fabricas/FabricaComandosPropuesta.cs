@@ -18,9 +18,9 @@ namespace Core.LogicaNegocio.Fabricas
         /// </summary>
         /// <param name="entidad">Entidad propuesta con los datos de ingreso</param>
         /// <returns>Comando ingresar de la entidad propuesta</returns>
-        public static Ingresar CrearComandoIngresar(Propuesta entidad)
+        public static Ingresar CrearComandoIngresar(Propuesta entidad,IList<string[]> equipo)
         {
-            return new Ingresar(entidad);
+            return new Ingresar(entidad,equipo);
         }
 
         /// <summary>

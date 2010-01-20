@@ -10,6 +10,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
     public class Ingresar : Comando<Propuesta>
     {
         private Propuesta propuesta;
+        private IList<string[]> equitra;
 
         #region Constructor
 
@@ -24,9 +25,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         /// Constructor de la clase que recibe la entidad propuesta como parametro 
         /// </summary>
         /// <param name="entidad">Endtidad de tipoPropuesta</param>
-        public Ingresar(Propuesta entidad)
+        public Ingresar(Propuesta entidad,IList<string[]> equipo)
         {
             propuesta = entidad;
+            equitra = equipo;
         }
         #endregion
 
@@ -39,7 +41,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         {
             Propuesta _propuesta;
             PropuestaSQLServer conex = new PropuestaSQLServer();
-            _propuesta = conex.IngresarPropuesta(propuesta);
+            _propuesta = conex.IngresarPropuesta(propuesta,equitra);
             return _propuesta;
         }
         #endregion

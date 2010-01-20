@@ -12,6 +12,22 @@ namespace Core.LogicaNegocio.Entidades
 
         private string apellido;
 
+        private bool estado = true;
+
+        public virtual bool Estado 
+        {
+            get 
+            {
+                return estado;
+            }
+            set 
+            
+           {
+               estado = value;
+            }
+        }
+
+        
         public virtual string Nombre
         {
             get

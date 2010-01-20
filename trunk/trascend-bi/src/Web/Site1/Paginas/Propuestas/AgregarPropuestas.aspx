@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
    
+    <form id="form2" runat="server">
+   
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -23,10 +25,9 @@
             <p class="large">Introduzca la información a continuación</p>  
           <p class="large">
           
-           <form id="Form1" action="#" runat="server">
                <table style="width:100%;">
                    <tr>
-                       <td>Titulo:</td>
+                       <td> Titulo:</td>
                        <td><asp:TextBox ID="uxTitulo" runat="server"></asp:TextBox></td>
                    </tr>
                    <tr>
@@ -77,18 +78,7 @@
                        <td><asp:TextBox ID="uxNombreReceptor" runat="server"></asp:TextBox></td>
                    </tr>
                    <tr>
-                       <td> <asp:GridView runat = "server" ID="uxEmpleados" DataSourceID="uxobjectEmpleado" AutoGenerateColumns = "false" 
-            DataKeyNames = "Nombre" AllowPaging = "true" PageSize = "4" ShowFooter = "true" Width = "150px" Height="70px"   >
-            <Columns>
-            
-            
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre"  />
-                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                
-                
-            </Columns>
-            </asp:GridView>
-                       </td>
+                       <td> &nbsp;</td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                 ControlToValidate="uxNombreReceptor" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaNombreReceptorPropuesta%>" Font-Size="Smaller" Display="Static" />
@@ -106,6 +96,7 @@
                        </td>
                    </tr>
                    <tr>
+            
                        <td>Cargo del receptor:</td>
                        <td>
                            <asp:TextBox ID="uxCargoReceptor" runat="server">
@@ -158,26 +149,8 @@
                    <tr>
                        <td>Integrantes:</td>
                        <td>&nbsp;</td>
-                       <tr>
-                       <td>Nombre</td>
-                       <td><asp:TextBox ID="Nombre1" runat="server"></asp:TextBox></td>
-                       </tr>
-                        <tr>
-                       <td></td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
-                                ControlToValidate="Nombre1" 
-                                ErrorMessage="<%$ Resources:DSU, FaltaNombreEquipo1%>" Font-Size="Smaller" Display="Static" /></td>
-                       </tr>
-                        <tr>
-                       <td>Apellido</td>
-                       <td> <asp:TextBox ID="Apellido1" runat="server"></asp:TextBox></td>
-                       </tr>
-                        <tr>
-                       <td></td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
-                                ControlToValidate="Apellido1" 
-                                ErrorMessage="<%$ Resources:DSU, FaltaApellidoEquipo1%>" Font-Size="Smaller" Display="Static" /></td>
-                       </tr>
+                      
+                     
                         <tr>
                        <td>Rol</td>
                        <td><asp:TextBox ID="Rol1" runat="server"></asp:TextBox></td>
@@ -190,80 +163,27 @@
                        </tr>
                         <tr>
                        <td></td>
-                       <td></td>
+                       <td>
+                       <asp:CheckBoxList id="uxEquipo" Width="400px" runat="server"  
+                                   />
+
+                  
+                       
+                       </td>
                        </tr>
                         <tr>
                        <td></td>
                        <td></td>
                        </tr>
-                       <tr>
-                       <td>Nombre</td>
-                       <td><asp:TextBox ID="Nombre2" runat="server"></asp:TextBox></td>
-                       <tr>
-                       <td></td>
-                       <td></td>
+                       
+                      
                        </tr>
-                        <tr>
-                       <td></td>
-                       <td></td>
+                       
                        </tr>
-                       </tr>
-                       <tr>
-                       <td>Apellido</td>
-                       <td> <asp:TextBox ID="Apellido2" runat="server"></asp:TextBox></td>
-                       <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                        <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       </tr>
-                       <tr>
-                       <td>Rol</td>
-                       <td> <asp:TextBox ID="Rol2" runat="server"></asp:TextBox></td>
-                       <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       </tr>
-                       <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       <tr>
-                       <td>Nombre</td>
-                       <td><asp:TextBox ID="Nombre3" runat="server"></asp:TextBox></td>
-                        <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                        <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       </tr>
-                       <tr>
-                       <td>Apellido</td>
-                       <td> <asp:TextBox ID="Apellido3" runat="server"></asp:TextBox></td>
-                        <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                        <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       </tr>
-                       <tr>
-                       <td>Rol</td>
-                       <td> <asp:TextBox ID="Rol3" runat="server"></asp:TextBox></td>
-                        <tr>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       </tr>
+                     
+                       
+                       
+                     
                         <tr>
                        <td></td>
                        <td></td>
@@ -332,6 +252,8 @@
    </div> 
 </div>
 <pp:objectcontainerdatasource runat="server" ID="uxobjectEmpleado" DataObjectTypeName="Core.LogicaNegocio.Entidades.Persona" /> 
+ 
+    </form>
  
     </form>
  
