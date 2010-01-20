@@ -63,7 +63,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[4].Value = empleado.FechaNacimiento.ToShortDateString();
                 arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
                 arParms[5].Value = empleado.Estado;
-                arParms[6] = new SqlParameter("@sueldo", SqlDbType.VarChar);
+                arParms[6] = new SqlParameter("@sueldo", SqlDbType.Float);
                 arParms[6].Value = empleado.SueldoBase;
                 arParms[7] = new SqlParameter("@cargo", SqlDbType.Int);
                 arParms[7].Value = empleado.Cargo;
@@ -139,6 +139,7 @@ namespace Core.AccesoDatos.SqlServer
                     empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
                     empleado.Estado = (string)reader["Estado"];
                     empleado.Cargo = reader["IdCargo"].ToString();
+                    empleado.SueldoBase = (float)reader["Sueldo"];
                 }
                 arParms = new SqlParameter[1];
                 arParms[0] = new SqlParameter("@idEmpleado", SqlDbType.Int);
