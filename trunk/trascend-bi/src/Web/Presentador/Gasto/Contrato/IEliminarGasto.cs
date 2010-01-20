@@ -12,13 +12,11 @@ namespace Presentador.Gasto.Contrato
         #region Datos del Gasto
 
         Label LTipoConsulta { get; set; }
-        DropDownList TipoConsulta { get; set; }
-        Label LSeleccion { get; set; }
-        DropDownList SeleccionDato { get; set; }
-        Label LFechaGasto { get; set; }
-        TextBox FechaGasto { get; set; }
-        GridView GridViewEliminarGasto { get; set; }
-        ObjectContainerDataSource GetObjectContainerEliminarGasto { get; set; }
+        TextBox BusquedaConsulta { get; set; }
+        RadioButtonList CheckOpcionBuscar { get; set; }
+        Button BotonBuscarDatos { get; set; }
+        GridView GridViewConsultaGasto { get; set; }
+        ObjectContainerDataSource GetObjectContainerConsultaGasto { get; set; }
 
         #endregion
     }

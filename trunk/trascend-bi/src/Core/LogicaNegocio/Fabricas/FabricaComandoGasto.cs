@@ -37,5 +37,9 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarGastoPorFecha(gasto);
         }
+        public static ConsultarGastoPorEstado CrearComandoConsultarPorEstado(Gasto gasto)
+        {
+            return new ConsultarGastoPorEstado(gasto);
+        }
     }
 }

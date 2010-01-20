@@ -21,34 +21,25 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { LabelTipoConsulta = value; }
     }
 
-    public DropDownList TipoConsulta
+    public TextBox BusquedaConsulta
     {
-        get { return uxTipoConsulta; }
-        set { uxTipoConsulta = value; }
+        get { return uxBusquedaConsulta; }
+        set { uxBusquedaConsulta = value; }
     }
-
-    public Label LSeleccion
+    public RadioButtonList CheckOpcionBuscar
     {
-        get { return LabelSeleccion; }
-        set { LabelSeleccion = value; }
+        get { return uxCheckOpcionBuscar; }
+        set { uxCheckOpcionBuscar = value; }
     }
-
-    public DropDownList SeleccionDato
+    public Button BotonBuscarDatos
     {
-        get { return uxSeleccion; }
-        set { uxSeleccion = value; }
+        get { return uxBotonBuscarDatos; }
+        set { uxBotonBuscarDatos = value; }
     }
-
-    public Label LFechaGasto
+    public GridView GridViewModificarGasto
     {
-        get { return LabelFechaGasto; }
-        set { LabelFechaGasto = value; }
-    }
-
-    public TextBox FechaGasto
-    {
-        get { return uxFechaGasto; }
-        set { uxFechaGasto = value; }
+        get { return uxModificarGasto; }
+        set { throw new System.NotImplementedException(); }
     }
 
     public ObjectContainerDataSource GetObjectContainerModificarGasto
@@ -56,7 +47,6 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         get { return uxObjectModificarGasto; }
         set { uxObjectModificarGasto = value; }
     }
-
     public TextBox DescripcionGasto
     {
         get { return uxDescripcionGasto; }
@@ -145,31 +135,7 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
 
     #region Eventos
 
-    protected void uxBotonBuscar_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar.Enabled = false;
-        int opcion = _presenter.OpcionSeleccion();
-
-        if ((opcion == 0) || (opcion == 1))
-        {
-            uxBotonBuscar2.Enabled = true;
-        }
-        if (opcion == 2)
-        {
-            uxBotonBuscar3.Enabled = true;
-        }
-    }
-    protected void uxBotonBuscar2_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar2.Enabled = false;
-        _presenter.BuscarInformacion();
-    }
-    protected void uxBotonBuscar3_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar3.Enabled = false;
-        _presenter.BuscarInformacion();
-    }
-
+    
     protected void SeleccionarModificarGasto(object sender, GridViewSelectEventArgs e)
     {
         uxBotonAceptar.Enabled = true;
@@ -185,11 +151,12 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     {
 
     }
+    
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presenter.ModificarGasto();
     }  
-
+    
     protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowIndex % 2 == 0)

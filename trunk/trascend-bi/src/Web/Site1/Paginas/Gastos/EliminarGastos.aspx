@@ -20,48 +20,43 @@
                         <h3>Eliminar Gasto</h3> 
                         <p class="large">Busqueda del Gasto</p>
                         <form id="form1" action="#" runat="server">
-		                <table>
-    		                <tr>
-	    	                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>
-		                        <td><asp:DropDownList ID="uxTipoConsulta" runat="server">
-		                                <asp:ListItem>Por Propuesta</asp:ListItem>
-		                                <asp:ListItem>Por tipo de Gasto</asp:ListItem>
-		                                <asp:ListItem>Por Fecha de gasto</asp:ListItem>
-		                            </asp:DropDownList></td>
-    		                    <td>&nbsp;</td>
-	    	                    <td><asp:Button ID="uxBotonBuscar" Text="Buscar" runat="server" 
-                                            onclick="uxBotonBuscar_Click" /></td>
-		                    </tr>
+		                    <table>
+		                <tr>		                    
+		                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                </tr>
+		                <tr>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>	
+		                    <td>&nbsp;</td>                    
+		                </tr>    
 		                    <tr>
+	    	                    <td>
+                                    <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
+                                    Font-Size="X-Small" RepeatDirection="Horizontal" RepeatLayout="Flow" 
+                                    TextAlign="Left" AutoPostBack="True">                                    
+                                        <asp:ListItem Value="0">Por Propuesta</asp:ListItem>
+                                        <asp:ListItem Value="1">Por Tipo</asp:ListItem>
+                                        <asp:ListItem Value="2">Por Estado</asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </td>
+                                <td>&nbsp;</td>
+		                        <td><asp:TextBox ID="uxBusquedaConsulta" runat="server"></asp:TextBox></td>
 		                        <td>&nbsp;</td>
-		                        <td>&nbsp;</td>
-		                        <td>&nbsp;</td>
-    		                </tr>
-	    	                <tr>
-		                        <td><asp:Label ID="LabelSeleccion" runat="server" Text="Seleccione: " Enabled="false"/></td>
-		                        <td><asp:DropDownList ID="uxSeleccion" runat="server" Enabled="false"></asp:DropDownList></td>
-		                        <td>&nbsp;</td>
-		                        <td><asp:Button ID="uxBotonBuscar2" Text="Buscar" runat="server" Enabled="false" 
-                                            onclick="uxBotonBuscar2_Click" /></td>
-		                    </tr>
-    		                <tr>
-	    	                    <td>&nbsp;</td>
-		                        <td>&nbsp;</td>
-		                        <td>&nbsp;</td>
-		                    </tr>
-		                    <tr>
-    		                    <td><asp:Label ID="LabelFechaGasto" Text="Indique Fecha:" runat="server" Enabled="false" /></td>
-	    	                    <td><asp:TextBox ID="uxFechaGasto" runat="server" Enabled="false"></asp:TextBox>
-		                            <asp:Image ID="uxImagenFechaGasto" runat="server" ImageUrl="~/Images/calendario.png"/></td>
-		                        <td>&nbsp;</td>
-		                        <td><asp:Button ID="uxBotonBuscar3" Text="Buscar" runat="server" Enabled="false" 
-                                            onclick="uxBotonBuscar3_Click"/></td>		        
-		                    </tr>
-    		                <tr>
-	    	                    <td><AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxMsjFechaGasto"
-                                                   Format="dd/MM/yy" TargetControlID="uxFechaGasto" PopupButtonID="uxImagenFechaGasto" >
-                                    </AjaxControlToolkit:CalendarExtender></td>                             
-		                    </tr>
+	    	                    <td><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" onclick="uxBotonBuscar_Click" /></td>
+    		                </tr>		                		                
+        		                <tr>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>	                    
+        		                </tr>
+		                    </table>
+		                    
+		                    <table>
 		                    <tr>
 		                        <td><h3>Datos del Gasto</h3></td>
 			                </tr>

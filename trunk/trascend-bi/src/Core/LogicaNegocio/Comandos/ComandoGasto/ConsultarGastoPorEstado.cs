@@ -7,32 +7,33 @@ using Core.AccesoDatos.SqlServer;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
-    public class ConsultarGasto : Comando<Gasto>
+    public class ConsultarGastoPorEstado
     {
         private Gasto gasto;
-        private IList<Gasto> listagastos = null;
+        private IList<Gasto> listaGasto;
 
         #region Constructor
 
-        /// <summary> Conructor de la Clase 'ConsultarGasto' </summary>
-        public ConsultarGasto()
-        { }
-
-        /// <summary>Constructor de la clase 'Consultar'.</summary>
-        public ConsultarGasto(Gasto gasto)
+        public ConsultarGastoPorEstado(Gasto _gasto)
         {
-            this.gasto = gasto;
+            gasto = _gasto;
+        }
+
+        public ConsultarGastoPorEstado(IList<Gasto> _listaGasto)
+        {
+            listaGasto = _listaGasto;
         }
 
         #endregion
 
-        #region Metodos
+        #region Metodo
+
         public IList<Gasto> Ejecutar()
         {
             GastoSQLServer bd = new GastoSQLServer();
-            listagastos = bd.ConsultarGasto(gasto);
+            listaGasto = bd.ConsultarGastoPorEstado(gasto);
 
-            return listagastos;
+            return listaGasto;
         }
         #endregion
     }

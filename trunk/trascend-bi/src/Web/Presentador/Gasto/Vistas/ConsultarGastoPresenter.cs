@@ -23,8 +23,7 @@ namespace Presentador.Gasto.Vistas
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGasto;
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGastoAux;
         private IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
-        private ConsultarPropuestaPresentador _presentadorPropuesta;
-        private int opcion;
+        private ConsultarPropuestaPresentador _presentadorPropuesta;        
 
         #region Constructor
 
@@ -37,18 +36,15 @@ namespace Presentador.Gasto.Vistas
 
         #region Metodos
 
+        /*
         public int OpcionSeleccion()
         {
-
             _presentadorPropuesta = new ConsultarPropuestaPresentador();
             listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
 
-            if (_vista.TipoConsulta.SelectedIndex == 0) // Busqueda por propuesta
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // Busqueda por propuesta
             {
-                _vista.TipoConsulta.Enabled = false;
-                _vista.LTipoConsulta.Enabled = false;
-                _vista.SeleccionDato.Enabled = true;
-                _vista.LSeleccion.Enabled = true;
+              
                 string estado = "Aprobada";
                
                 listaPropuesta = _presentadorPropuesta.BuscarPorTitulo(estado);
@@ -59,17 +55,14 @@ namespace Presentador.Gasto.Vistas
                 }
 
                 _vista.SeleccionDato.DataBind();
+                 
 
                 opcion = 0;
             }
 
-            if (_vista.TipoConsulta.SelectedIndex == 1) // Busqueda por Tipo
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // Busqueda por Tipo
             {
-                _vista.TipoConsulta.Enabled = false;
-                _vista.LTipoConsulta.Enabled = false;
-                _vista.SeleccionDato.Enabled = true;
-                _vista.LSeleccion.Enabled = true;
-
+                
                 listaGasto = ConsultarPorTipo();
 
                 for (int i = 0; i < listaGasto.Count; i++)
@@ -78,34 +71,28 @@ namespace Presentador.Gasto.Vistas
                 }
 
                 _vista.SeleccionDato.DataBind();
+                
 
                 opcion = 1;
             }
 
-            if (_vista.TipoConsulta.SelectedIndex == 2) // Busqueda por Fecha del Gasto
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // Busqueda por Estado
             {
-                _vista.TipoConsulta.Enabled = false;
-                _vista.LTipoConsulta.Enabled = false;
-                _vista.LFechaGasto.Enabled = true;
-                _vista.FechaGasto.Enabled = true;
-
                 opcion = 2;
             }
             return opcion;
         }
+        */
 
         public void BuscarInformacion()
         {
             listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
             listaGastoAux = new List<Core.LogicaNegocio.Entidades.Gasto>();
 
-            if (_vista.TipoConsulta.SelectedIndex == 0) // La Seleccion fue por Propuesta
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // La Seleccion fue por Propuesta
             {
-                _vista.SeleccionDato.Enabled = false;
-                _vista.LSeleccion.Enabled = false;
-
                 propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
-                propuesta.Titulo = _vista.SeleccionDato.SelectedItem.Text;
+                propuesta.Titulo = _vista.BusquedaConsulta.Text;
 
                 listaGasto = ConsultarPorPropuesta(propuesta);
 
@@ -124,12 +111,12 @@ namespace Presentador.Gasto.Vistas
 
             }
 
-            if (_vista.TipoConsulta.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
             {
-                _vista.SeleccionDato.Enabled = false;
-                _vista.LSeleccion.Enabled = false;
+                gasto = new Core.LogicaNegocio.Entidades.Gasto();
+                gasto.Tipo = _vista.BusquedaConsulta.Text;
 
-                listaGasto = ConsultarPorTipo();
+                listaGasto = ConsultaGasto(gasto);
 
                 try
                 {
@@ -137,7 +124,7 @@ namespace Presentador.Gasto.Vistas
                     {
                         for (int i = 0; i < listaGasto.Count; i++)
                         {
-                            if (listaGasto.ElementAt(i).Tipo.Equals(_vista.SeleccionDato.SelectedItem.Text))
+                            if (listaGasto.ElementAt(i).Tipo.Equals(_vista.BusquedaConsulta.Text))
                             {
                                 listaGastoAux.Add(listaGasto.ElementAt(i));
                             }
@@ -152,15 +139,12 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-            if (_vista.TipoConsulta.SelectedIndex == 2) // La Seleccion fue por Fecha
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por Estado
             {
-                _vista.LFechaGasto.Enabled = false;
-                _vista.FechaGasto.Enabled = false;
-
                 gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.FechaGasto = DateTime.Parse(_vista.FechaGasto.Text);
+                gasto.Estado = _vista.BusquedaConsulta.Text;
 
-                listaGasto = ConsultarPorFecha(gasto);
+                listaGasto = ConsultarPorEstado(gasto);
                 //listaGasto.Add(gasto);
 
                 try
@@ -178,7 +162,19 @@ namespace Presentador.Gasto.Vistas
             }
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorTipo()
+        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(Core.LogicaNegocio.Entidades.Gasto _gasto)
+        {
+            Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGasto _consultaGasto;
+
+            _consultaGasto = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultar(_gasto);
+
+            listaGasto = _consultaGasto.Ejecutar();
+
+            return listaGasto;
+        }
+
+
+        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorTipo(Core.LogicaNegocio.Entidades.Gasto _gasto)
         {
             Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGastoPorTipo _consultaPorTipo;
 
@@ -207,6 +203,16 @@ namespace Presentador.Gasto.Vistas
             _ConsultaPorFecha = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultarPorFecha(_gasto);
 
             listaGasto = _ConsultaPorFecha.Ejecutar();
+
+            return listaGasto;
+        }
+        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorEstado(Core.LogicaNegocio.Entidades.Gasto _gasto)
+        {
+            Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGastoPorEstado _ConsultaPorEstado;
+
+            _ConsultaPorEstado = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultarPorEstado(_gasto);
+
+            listaGasto = _ConsultaPorEstado.Ejecutar();
 
             return listaGasto;
         }

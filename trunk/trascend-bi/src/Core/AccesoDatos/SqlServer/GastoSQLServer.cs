@@ -150,6 +150,47 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="gasto"></param>
         /// <returns></returns>
 
+        public IList<Gasto> ConsultarGasto(Core.LogicaNegocio.Entidades.Gasto gasto)
+        {
+            IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
+
+            try
+            {
+                SqlParameter[] parametro = new SqlParameter[1];
+
+                parametro[0] = new SqlParameter("@Tipo", SqlDbType.VarChar);
+                parametro[0].Value = gasto.Tipo;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorTipo", parametro);
+
+                while (reader.Read())
+                {
+                    Gasto _gasto = new Gasto();
+
+                    _gasto.Codigo = (int)reader["IdGasto"];
+                    _gasto.Estado = (string)reader["Estado"];
+                    _gasto.Monto = float.Parse(reader["Monto"].ToString());
+                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
+                    _gasto.FechaIngreso = (DateTime)reader["FechaIngreso"];
+                    _gasto.Tipo = (string)reader["Tipo"];
+                    _gasto.Descripcion = (string)reader["Descripcion"];
+
+                    gastos.Add(_gasto);
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                gastos.ElementAt(0).Codigo = -1;
+            }
+            catch (SqlException)
+            {
+                gastos.ElementAt(0).Codigo = -2;
+            }
+
+
+            return gastos;
+        }
+
         public IList<Gasto> ConsultarGastoPorTipo()
         {
             IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
@@ -173,13 +214,9 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo= -1;
-            }
-            catch (SqlException)
-            {
-                gastos.ElementAt(0).Codigo = -2;
+                System.Console.Write(e);
             }
 
 
@@ -240,6 +277,47 @@ namespace Core.AccesoDatos.SqlServer
                 parametro[0].Value = gasto.FechaGasto;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorFecha", parametro);
+
+                while (reader.Read())
+                {
+                    Gasto _gasto = new Gasto();
+
+                    _gasto.Codigo = (int)reader["IdGasto"];
+                    _gasto.Estado = (string)reader["Estado"];
+                    _gasto.Monto = float.Parse(reader["Monto"].ToString());
+                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
+                    _gasto.FechaIngreso = (DateTime)reader["FechaIngreso"];
+                    _gasto.Tipo = (string)reader["Tipo"];
+                    _gasto.Descripcion = (string)reader["Descripcion"];
+
+                    gastos.Add(_gasto);
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                gastos.ElementAt(0).Codigo = -1;
+            }
+            catch (SqlException)
+            {
+                gastos.ElementAt(0).Codigo = -2;
+            }
+
+
+            return gastos;
+        }
+
+        public IList<Gasto> ConsultarGastoPorEstado(Core.LogicaNegocio.Entidades.Gasto gasto)
+        {
+            IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
+
+            try
+            {
+                SqlParameter[] parametro = new SqlParameter[1];
+
+                parametro[0] = new SqlParameter("@Estado", SqlDbType.VarChar);
+                parametro[0].Value = gasto.Estado;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorEstado", parametro);
 
                 while (reader.Read())
                 {

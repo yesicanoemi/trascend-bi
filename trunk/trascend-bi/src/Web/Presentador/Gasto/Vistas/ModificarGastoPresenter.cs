@@ -38,6 +38,7 @@ namespace Presentador.Gasto.Vistas
 
         #region Metodos
 
+        /*
         public int OpcionSeleccion()
         {
 
@@ -93,19 +94,18 @@ namespace Presentador.Gasto.Vistas
             }
             return opcion;
         }
+        */
 
+        /*
         public void BuscarInformacion()
         {
             listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
             listaGastoAux = new List<Core.LogicaNegocio.Entidades.Gasto>();
 
-            if (_vista.TipoConsulta.SelectedIndex == 0) // La Seleccion fue por Propuesta
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // La Seleccion fue por Propuesta
             {
-                _vista.SeleccionDato.Enabled = false;
-                _vista.LSeleccion.Enabled = false;
-
                 propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
-                propuesta.Titulo = _vista.SeleccionDato.SelectedItem.Text;
+                propuesta.Titulo = _vista.BusquedaConsulta.Text;
 
                 listaGasto = ConsultarPorPropuesta(propuesta);
 
@@ -113,7 +113,7 @@ namespace Presentador.Gasto.Vistas
                 {
                     if (listaGasto != null)
                     {
-                        _vista.GetObjectContainerModificarGasto.DataSource = listaGasto;
+                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                     }
                 }
 
@@ -121,14 +121,15 @@ namespace Presentador.Gasto.Vistas
                 {
                     //Mensaje de error al usuario
                 }
+
             }
 
-            if (_vista.TipoConsulta.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
             {
-                _vista.SeleccionDato.Enabled = false;
-                _vista.LSeleccion.Enabled = false;
+                gasto = new Core.LogicaNegocio.Entidades.Gasto();
+                gasto.Tipo = _vista.BusquedaConsulta.Text;
 
-                listaGasto = ConsultarPorTipo();
+                listaGasto = ConsultaGasto(gasto);
 
                 try
                 {
@@ -136,13 +137,13 @@ namespace Presentador.Gasto.Vistas
                     {
                         for (int i = 0; i < listaGasto.Count; i++)
                         {
-                            if (listaGasto.ElementAt(i).Tipo.Equals(_vista.SeleccionDato.SelectedItem.Text))
+                            if (listaGasto.ElementAt(i).Tipo.Equals(_vista.BusquedaConsulta.Text))
                             {
                                 listaGastoAux.Add(listaGasto.ElementAt(i));
                             }
 
                         }
-                        _vista.GetObjectContainerModificarGasto.DataSource = listaGastoAux;
+                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGastoAux;
                     }
                 }
 
@@ -151,22 +152,19 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-            if (_vista.TipoConsulta.SelectedIndex == 2) // La Seleccion fue por Fecha
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por Estado
             {
-                _vista.LFechaGasto.Enabled = false;
-                _vista.FechaGasto.Enabled = false;
-
                 gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
+                gasto.Estado = _vista.BusquedaConsulta.Text;
 
-                listaGasto = ConsultarPorFecha(gasto);
+                listaGasto = ConsultarPorEstado(gasto);
                 //listaGasto.Add(gasto);
 
                 try
                 {
                     if (listaGasto != null)
                     {
-                        _vista.GetObjectContainerModificarGasto.DataSource = listaGasto;
+                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                     }
                 }
 
@@ -175,7 +173,8 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-        }      
+        }
+         * */
 
         public void uxObjectModificarGastoSelecting(string codigo)
         {
@@ -197,7 +196,7 @@ namespace Presentador.Gasto.Vistas
             gasto.Codigo = Int32.Parse(_vista.CodigoGasto.Text);
             gasto.Descripcion = _vista.DescripcionGasto.Text;
             gasto.Estado = _vista.EstadoGasto.Text;
-            gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
+            //gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
             gasto.FechaIngreso = DateTime.Now;
             gasto.Monto = float.Parse(_vista.MontoGasto.Text);
             gasto.Tipo = _vista.TipoGasto.Text;

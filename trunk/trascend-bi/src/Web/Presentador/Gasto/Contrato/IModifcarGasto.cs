@@ -9,16 +9,10 @@ namespace Presentador.Gasto.Contrato
 {
     public interface IModifcarGasto
     {
-        #region Datos del Gasto
-
-        Label LTipoConsulta { get; set; }
-        DropDownList TipoConsulta { get; set; }
-        Label LSeleccion { get; set; }
-        DropDownList SeleccionDato { get; set; }
-        Label LFechaGasto { get; set; }
-        TextBox FechaGasto { get; set; }      
-        ObjectContainerDataSource GetObjectContainerModificarGasto { get; set; }     
-
+        #region Datos del Gasto   
+     
+        GridView GridViewModificarGasto { get; set; }          
+        ObjectContainerDataSource GetObjectContainerModificarGasto { get; set; }  
         Label CodigoGasto { get; set; }
         TextBox DescripcionGasto { get; set; }
         TextBox FechaGasto2 { get; set; }
@@ -27,7 +21,8 @@ namespace Presentador.Gasto.Contrato
         TextBox TipoGasto { get; set; }
         DropDownList PropuestaAsociada { get; set; }
         CheckBox AsociarPropuestaGasto { get; set; }
-        Label MensajeError { get; set; }        
+        Label MensajeError { get; set; }
+        
 
         #endregion
     }

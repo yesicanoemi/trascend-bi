@@ -20,43 +20,28 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
         set { LabelTipoConsulta = value; }
     }
 
-    public DropDownList TipoConsulta
+    public TextBox BusquedaConsulta
     {
-        get { return uxTipoConsulta; }
-        set { uxTipoConsulta = value; }
+        get { return uxBusquedaConsulta; }
+        set { uxBusquedaConsulta = value; }
     }
-
-    public Label LSeleccion
+    public RadioButtonList CheckOpcionBuscar
     {
-        get { return LabelSeleccion; }
-        set { LabelSeleccion = value; }
+        get { return uxCheckOpcionBuscar; }
+        set { uxCheckOpcionBuscar = value; }
     }
-
-    public DropDownList SeleccionDato
+    public Button BotonBuscarDatos
     {
-        get { return uxSeleccion; }
-        set { uxSeleccion = value; }
+        get { return uxBotonBuscarDatos; }
+        set { uxBotonBuscarDatos = value; }
     }
-
-    public Label LFechaGasto
-    {
-        get { return LabelFechaGasto; }
-        set { LabelFechaGasto = value; }
-    }
-
-    public TextBox FechaGasto
-    {
-        get { return uxFechaGasto; }
-        set { uxFechaGasto = value; }
-    }
-
-    public GridView GridViewEliminarGasto
+    public GridView GridViewConsultaGasto
     {
         get { return uxEliminarGasto; }
         set { throw new System.NotImplementedException(); }
     }
 
-    public ObjectContainerDataSource GetObjectContainerEliminarGasto
+    public ObjectContainerDataSource GetObjectContainerConsultaGasto
     {
         get { return uxObjectEliminarGasto; }
         set { uxObjectEliminarGasto = value; }
@@ -96,38 +81,8 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
-        uxBotonBuscar.Enabled = false;
-        int opcion = _presenter.OpcionSeleccion();
-
-        if ((opcion == 0) || (opcion == 1))
-        {
-            uxBotonBuscar2.Enabled = true;
-        }
-        if (opcion == 2)
-        {
-            uxBotonBuscar3.Enabled = true;
-        }
-    }
-    protected void uxBotonBuscar2_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar2.Enabled = false;
         _presenter.BuscarInformacion();
-    }
-    protected void uxBotonBuscar3_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar3.Enabled = false;
-        _presenter.BuscarInformacion();
-    }
-
-    /*
-    protected void EliminarGasto(object sender, GridViewSelectEventArgs e)
-    {
-        _presenter.eliminarGasto(uxEliminarGasto.DataKeys[e.NewSelectedIndex].Value.ToString());
-
     }    
-    */
-
-    
 
     protected void uxEliminarGasto_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
     {

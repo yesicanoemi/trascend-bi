@@ -20,36 +20,21 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         set { LabelTipoConsulta = value; }
     }
 
-    public DropDownList TipoConsulta
+    public TextBox BusquedaConsulta
     {
-        get { return uxTipoConsulta; }
-        set { uxTipoConsulta = value; }
+        get { return uxBusquedaConsulta; }
+        set { uxBusquedaConsulta = value; }
     }
-
-    public Label LSeleccion
+    public RadioButtonList CheckOpcionBuscar
     {
-        get { return LabelSeleccion; }
-        set { LabelSeleccion = value; }
-    }
-
-    public DropDownList SeleccionDato
+        get { return uxCheckOpcionBuscar; }
+        set { uxCheckOpcionBuscar = value; }
+    }    
+    public Button BotonBuscarDatos
     {
-        get { return uxSeleccion; }
-        set { uxSeleccion = value; }
+        get { return uxBotonBuscarDatos; }
+        set { uxBotonBuscarDatos = value; }
     }
-
-    public Label LFechaGasto
-    {
-        get { return LabelFechaGasto; }
-        set { LabelFechaGasto = value; }
-    }
-
-    public TextBox FechaGasto
-    {
-        get { return uxFechaGasto; }
-        set { uxFechaGasto = value; }
-    }
-
     public GridView GridViewConsultaGasto
     {
         get { return uxConsultaGasto; }
@@ -61,6 +46,7 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         get { return uxObjectConsultaGasto; }
         set { uxObjectConsultaGasto = value; }
     }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -95,28 +81,9 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
-        uxBotonBuscar.Enabled = false;
-        int opcion = _presenter.OpcionSeleccion();
-
-        if ((opcion == 0) || (opcion == 1))
-        {
-            uxBotonBuscar2.Enabled = true;
-        }
-        if (opcion == 2)
-        {
-            uxBotonBuscar3.Enabled = true;
-        }
-    }
-    protected void uxBotonBuscar2_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar2.Enabled = false;
         _presenter.BuscarInformacion();
     }
-    protected void uxBotonBuscar3_Click(object sender, EventArgs e)
-    {
-        uxBotonBuscar3.Enabled = false;
-        _presenter.BuscarInformacion();
-    }
-
-    #endregion
+    
+    #endregion    
+    
 }
