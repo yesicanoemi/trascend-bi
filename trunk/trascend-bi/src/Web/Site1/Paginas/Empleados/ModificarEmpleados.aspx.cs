@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Empleado.Vistas;
 using Presentador.Empleado.Contrato;
+using Microsoft.Practices.Web.UI.WebControls;
 
 public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificarEmpleado
 {
@@ -34,13 +35,31 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         get { return uxNombreEmpleado; }
         set { uxNombreEmpleado = value; }
     }
-
+    public GridView GridViewConsultarEmpleado
+    {
+        get { return gvwConsultarEmpleado; }
+        set { throw new System.NotImplementedException(); }
+    }
+    public ObjectContainerDataSource GetOCConsultarEmp
+    {
+        get { return gvwObjectConsultarEmpleado; }
+        set { gvwObjectConsultarEmpleado = value; }
+    }
     public DropDownList ComboCargos
     {
         get { return uxCargoEmpleado; }
         set { uxCargoEmpleado = value; }
     }
-
+    public DropDownList ComboBusqueda
+    {
+        get { return ddlTipoBusqueda; }
+        set { ddlTipoBusqueda = value; }
+    }
+    public DropDownList SeleccionCargo
+    {
+        get { return ddlSeleccionCargo; }
+        set { ddlSeleccionCargo = value; }
+    }
     public TextBox NombreEmpleadoBus
     {
         get { return uxNombreCon; }
@@ -87,7 +106,11 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         get { return lbRangoSueldo.Text; }
         set { lbRangoSueldo.Text = value; }
     }
-
+    public string Id
+    {
+        get { return lbId.Text; }
+        set { lbId.Text = value; }
+    }
     public bool RangoVisible
     {
         get { return lbRangoSueldo.Visible; }
@@ -154,6 +177,10 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         {
             _presentador.ConsultarCargos();
         }
+        else
+        {
+            
+        }
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
@@ -195,5 +222,37 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
     protected void uxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
     {
         _presentador.ConsultarSueldos();
+    }
+    protected void ddlTipoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CambiarVista(Int32.Parse(ddlTipoBusqueda.SelectedValue));
+    }
+    protected void btnCambiar_Click(object sender, EventArgs e)
+    {
+        _presentador.CambiarVista(0);
+    }
+    protected void btnCambiar2_Click(object sender, EventArgs e)
+    {
+        _presentador.CambiarVista(0);
+    }
+    protected void btnCambiar3_Click(object sender, EventArgs e)
+    {
+        _presentador.CambiarVista(0);
+    }
+    protected void btnSubmit1_Click(object sender, EventArgs e)
+    {
+        _presentador.ConsultarEmpleado();
+    }
+    protected void btnSubmit2_Click(object sender, EventArgs e)
+    {
+        _presentador.ConsultarEmpleado();
+    }
+    protected void ddlSeleccionCargo_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.ConsultarEmpleado();
+    }
+    protected void gvwConsultarEmpleado_SelectedIndexChanged1(object sender, EventArgs e)
+    {
+        _presentador.Consultar();
     }
 }

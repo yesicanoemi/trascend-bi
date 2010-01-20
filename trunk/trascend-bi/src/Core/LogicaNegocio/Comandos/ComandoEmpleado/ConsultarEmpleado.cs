@@ -29,7 +29,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         public Empleado Ejecutar()
         {
             EmpleadoSQLServer acceso = new EmpleadoSQLServer();
-            empleado = acceso.ConsultarPorNomCedula(empleado);
+            empleado = acceso.ConsultarId(empleado);
             return empleado;
         }
         #endregion

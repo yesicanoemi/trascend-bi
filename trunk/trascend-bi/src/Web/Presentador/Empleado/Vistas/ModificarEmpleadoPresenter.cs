@@ -8,6 +8,7 @@ using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
 using System.Web.UI.WebControls;
+using Core.LogicaNegocio.Fabricas;
 
 namespace Presentador.Empleado.Vistas
 {
@@ -16,6 +17,9 @@ namespace Presentador.Empleado.Vistas
         #region Propiedades
         private IModificarEmpleado _vista;
         private string campoVacio = "";
+        private IList<string> cargo;
+        private IList<Core.LogicaNegocio.Entidades.Empleado> empleado;
+        Core.LogicaNegocio.Entidades.Empleado emp;
         #endregion
         #region Constructor
         public ModificarEmpleadoPresenter(IModificarEmpleado vista)
@@ -31,6 +35,7 @@ namespace Presentador.Empleado.Vistas
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
             try
             {
+                empleado.Id = Int32.Parse(_vista.Id);
                 empleado.Nombre = _vista.NombreEmpleado.Text;
                 empleado.Apellido = _vista.ApellidoEmpleado.Text;
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
@@ -57,16 +62,62 @@ namespace Presentador.Empleado.Vistas
         }
         public void ConsultarEmpleado()
         {
-            Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
-            try
+            #region Solicitud Servicio
+            emp = new Core.LogicaNegocio.Entidades.Empleado();
+
+            if (Int32.Parse(_vista.ComboBusqueda.SelectedValue) == 1)//cedula
             {
-                empleado.Cedula = Int32.Parse(_vista.CedulaEmpleadoBus.Text);
-                empleado.Nombre = _vista.NombreEmpleadoBus.Text;
-                ConsultarEmpleado(empleado);
+                emp.Cedula = Int32.Parse(_vista.CedulaEmpleadoBus.Text);
+                Core.LogicaNegocio.Entidades.Empleado empleado = BuscarPorCedula(emp);
+                IList<Core.LogicaNegocio.Entidades.Empleado> listado = new List<Core.LogicaNegocio.Entidades.Empleado>();
+                listado.Add(empleado);
+
+                try
+                {
+                    if (listado != null)
+                    {
+                        _vista.GetOCConsultarEmp.DataSource = listado;
+                    }
+                }
+                catch (WebException e)
+                {
+
+                }
             }
-            catch (WebException e)
+            if (Int32.Parse(_vista.ComboBusqueda.SelectedValue) == 2)//nombre
             {
+                emp.Nombre = _vista.NombreEmpleadoBus.Text;
+                IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
+                try
+                {
+                    if (listado != null)
+                    {
+                        _vista.GetOCConsultarEmp.DataSource = listado;
+                        CambiarVista(4);
+                    }
+                }
+                catch (WebException e)
+                {
+
+                }
             }
+            if (Int32.Parse(_vista.ComboBusqueda.SelectedValue) == 3)//cargo
+            {
+                emp.Cargo = _vista.SeleccionCargo.SelectedItem.Text;
+                IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(emp);
+                try
+                {
+                    if (listado != null)
+                    {
+                        _vista.GetOCConsultarEmp.DataSource = listado;
+                    }
+                }
+                catch (WebException e)
+                {
+
+                }
+            }
+            #endregion
         }
         public void CambiarVista(int index)
         {
@@ -104,6 +155,12 @@ namespace Presentador.Empleado.Vistas
                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
+        public void Consultar()
+        {
+            emp = new Core.LogicaNegocio.Entidades.Empleado();
+            emp.Id = Int32.Parse(_vista.GridViewConsultarEmpleado.SelectedValue.ToString());
+            ConsultarEmpleadoId(emp);
+        }
         public void LimpiarRegistros()
         {
             _vista.NombreEmpleado.Text = campoVacio;
@@ -121,9 +178,9 @@ namespace Presentador.Empleado.Vistas
             _vista.FechaIngresoEmpleado.Text = DateTime.Now.ToString();
             _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
         }
-
         public void LlenarRegistros(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
+            _vista.Id = empleado.Id.ToString();
             _vista.NombreEmpleado.Text = empleado.Nombre;
             _vista.SueldoEmpleado.Text =empleado.SueldoBase.ToString();
             _vista.AvenidaEmpleado.Text = empleado.Direccion.Avenida;
@@ -139,6 +196,15 @@ namespace Presentador.Empleado.Vistas
             _vista.FechaIngresoEmpleado.Text = empleado.FechaIngreso.ToShortDateString();
             _vista.FechaNacEmpleado.Text = empleado.FechaNacimiento.ToShortDateString();
         }
+        public void LlenarComboCargos()
+        {
+            cargo = BuscarCargos();
+            for (int i = 0; i < cargo.Count; i++)
+            {
+                _vista.SeleccionCargo.Items.Add(cargo.ElementAt(i));
+            }
+            _vista.SeleccionCargo.DataBind();
+        }
         #endregion
 
         #region Comando
@@ -153,6 +219,57 @@ namespace Presentador.Empleado.Vistas
             //{    
             //ejecuta el comando.
             modificar.Ejecutar();
+        }
+        public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorNombre(Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre consultar;
+
+            consultar = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
+
+            empleado1 = consultar.Ejecutar();
+
+            return empleado1;
+
+        }
+
+        public Core.LogicaNegocio.Entidades.Empleado BuscarPorCedula(Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
+
+            Core.LogicaNegocio.Entidades.Empleado empleado1 = new Core.LogicaNegocio.Entidades.Empleado();
+
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCI consultar;
+
+            consultar = FabricaComandosEmpleado.CrearComandoConsultarPorCI(entidad);
+            empleado1 = consultar.Ejecutar();
+
+            return empleado1;
+        }
+
+        public IList<string> BuscarCargos()
+        {
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarCargo consultar;
+
+            consultar = FabricaComandosEmpleado.CrearComandoConsultarCargo(cargo);
+
+            cargo = consultar.Ejecutar();
+
+            return cargo;
+        }
+
+        public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorCargo(Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCargo consultar;
+
+            consultar = FabricaComandosEmpleado.CrearComandoConsultarPorCargo(entidad);
+
+            empleado1 = consultar.Ejecutar();
+
+            return empleado1;
+
         }
         public void ConsultarSueldos()
         {
@@ -174,18 +291,17 @@ namespace Presentador.Empleado.Vistas
             {
             }
         }
-        public void ConsultarEmpleado(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public void ConsultarEmpleadoId(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar; //objeto del comando Ingresar.
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar;
 
-            //fábrica que instancia el comando Ingresar.
-            consultar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoConsultarEmpleado(empleado);
+            consultar = FabricaComandosEmpleado.CrearComandoConsultarEmpleado(empleado);
 
-            //try
-            //{    
-            //ejecuta el comando.
-            LlenarRegistros(consultar.Ejecutar());
-            CambiarVista(1);
+            empleado = consultar.Ejecutar();
+
+            LlenarRegistros(empleado);
+
+            CambiarVista(5);
         }
         #endregion
     }

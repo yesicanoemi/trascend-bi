@@ -67,8 +67,11 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[6].Value = empleado.SueldoBase;
                 arParms[7] = new SqlParameter("@cargo", SqlDbType.Int);
                 arParms[7].Value = empleado.Cargo;
-                SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarEmpleado", arParms);
-                InsertarDireccion(empleado);
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "InsertarEmpleado", arParms);
+                if (reader.Read())
+                {
+                    InsertarDireccion(empleado,Int32.Parse(reader[0].ToString()));
+                }
             }
             catch (SqlException e)
             {
@@ -77,14 +80,14 @@ namespace Core.AccesoDatos.SqlServer
             return _empleado;
 
         }
-        public void InsertarDireccion (Core.LogicaNegocio.Entidades.Empleado empleado)
+        public void InsertarDireccion (Core.LogicaNegocio.Entidades.Empleado empleado,int id)
         {
             try
             {
                  SqlParameter[] arParms = new SqlParameter[7];
                 // Parametros 
-                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
-                arParms[0].Value = empleado.Cedula;
+                arParms[0] = new SqlParameter("@id", SqlDbType.Int);
+                arParms[0].Value = id;
                 arParms[1] = new SqlParameter("@avenida", SqlDbType.VarChar);
                 arParms[1].Value = empleado.Direccion.Avenida;
                 arParms[2] = new SqlParameter("@calle", SqlDbType.VarChar);
@@ -117,17 +120,15 @@ namespace Core.AccesoDatos.SqlServer
             return empleado;
         }
 
-        public Core.LogicaNegocio.Entidades.Empleado ConsultarPorNomCedula(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public Core.LogicaNegocio.Entidades.Empleado ConsultarId(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
             try
             {
-                SqlParameter[] arParms = new SqlParameter[2];
+                SqlParameter[] arParms = new SqlParameter[1];
                 Direccion dir = new Direccion();
                 // Parametros 
-                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
-                arParms[0].Value = empleado.Cedula;
-                arParms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
-                arParms[1].Value = empleado.Nombre;
+                arParms[0] = new SqlParameter("@id", SqlDbType.Int);
+                arParms[0].Value = empleado.Id;
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),"ConsultarNomEmpleadoCedula",arParms);
                 if(reader.Read())
                 {
@@ -140,8 +141,8 @@ namespace Core.AccesoDatos.SqlServer
                     empleado.Cargo = reader["IdCargo"].ToString();
                 }
                 arParms = new SqlParameter[1];
-                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
-                arParms[0].Value = empleado.Cedula;
+                arParms[0] = new SqlParameter("@idEmpleado", SqlDbType.Int);
+                arParms[0].Value = empleado.Id;
                 reader = SqlHelper.ExecuteReader(GetConnection(),"ConsultarDireccionEmpleado",arParms);
                 if(reader.Read())
                 {
@@ -170,7 +171,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[8];
                 // Parametros 
-                arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
+                arParms[0] = new SqlParameter("@id", SqlDbType.Int);
                 arParms[0].Value = empleado.Cedula;
                 arParms[1] = new SqlParameter("@nombreEmpleado", SqlDbType.VarChar);
                 arParms[1].Value = empleado.Nombre;
@@ -211,6 +212,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 Empleado _empleado = new Empleado();
                 Direccion _direccion = new Direccion();
+                _empleado.Id = (int)reader["IdEmpleado"];
                 _empleado.Cedula = (int)reader["CIEmpleado"];
                 _empleado.Nombre = (string)reader["Nombre"];
                 _empleado.Apellido = (string)reader["Apellido"];

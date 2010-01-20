@@ -7,6 +7,7 @@ namespace Core.LogicaNegocio.Entidades
 
     public class Empleado : Persona
     {
+        private int id;
         private int cedula;
         private string cuenta;
         private float sueldoBase;
@@ -17,6 +18,17 @@ namespace Core.LogicaNegocio.Entidades
         private Direccion direccion;
         private string cargo;
 
+        public virtual int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
         public virtual int Cedula
         {
             get

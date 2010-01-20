@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Empleado.Contrato
 {
@@ -27,7 +28,12 @@ namespace Presentador.Empleado.Contrato
         TextBox PisoEmpleado { get; set; }
         TextBox FechaIngresoEmpleado { get; set; }
         TextBox FechaEgresoEmpleado { get; set; }
+        string Id { get; set; }
         DropDownList ComboCargos { get; set; }
+        DropDownList ComboBusqueda { get; set; }
+        DropDownList SeleccionCargo { get; set; }
+        GridView GridViewConsultarEmpleado { get; set; }
+        ObjectContainerDataSource GetOCConsultarEmp { get; set; }
         MultiView MultiViewEmpleado { get; set; }
         #endregion
         #region Dialogo
