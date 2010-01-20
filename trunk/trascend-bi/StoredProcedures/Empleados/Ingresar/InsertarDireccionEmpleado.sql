@@ -18,9 +18,9 @@ GO
 -- Create date: <19/01/10>
 -- Description:	<Insertar la direccion del empleado>
 -- =============================================
-CREATE PROCEDURE InsertarDireccionEmpleado 
+ALTER PROCEDURE InsertarDireccionEmpleado 
 	-- Add the parameters for the stored procedure here
-	@cedula int,
+	@id int,
 	@avenida varchar(50),
 	@calle varchar(10),
 	@ciudad varchar(50),
@@ -34,6 +34,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO dbo.Direccion (Calle,Avenida,Urbanizacion,EdifCasa,PisoApto,Ciudad,IdEmpleado) VALUES (@calle,@avenida,@urbanizacion,@edif,@piso,@ciudad,@cedula)
+	INSERT INTO dbo.Direccion (Calle,Avenida,Urbanizacion,EdifCasa,PisoApto,Ciudad,IdEmpleado) VALUES (@calle,@avenida,@urbanizacion,@edif,@piso,@ciudad,@id)
 END
 GO

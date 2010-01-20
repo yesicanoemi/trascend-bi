@@ -18,10 +18,9 @@ GO
 -- Create date: <19/01/10>
 -- Description:	<Consultar un empleado por su cedula y nombre>
 -- =============================================
-CREATE PROCEDURE ConsultarNomEmpleadoCedula 
+alter PROCEDURE ConsultarNomEmpleadoCedula 
 	-- Add the parameters for the stored procedure here
-	@cedula int, 
-	@nombre varchar(50)
+	@id int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -29,6 +28,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,IdCargo from dbo.Empleado where CIEmpleado = @cedula and Nombre = @nombre
+	SELECT CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,IdCargo from dbo.Empleado where IdEmpleado = @id
 END
 GO

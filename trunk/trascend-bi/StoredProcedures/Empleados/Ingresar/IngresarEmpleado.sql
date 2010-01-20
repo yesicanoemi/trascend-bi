@@ -18,7 +18,7 @@ GO
 -- Create date: <19/01/10>
 -- Description:	<Ingresar Empleado>
 -- =============================================
-CREATE PROCEDURE InsertarEmpleado 
+ALTER PROCEDURE InsertarEmpleado 
 	-- Add the parameters for the stored procedure here
 	@cedula int,
 	@nombreEmpleado varchar(50),
@@ -36,5 +36,6 @@ BEGIN
 
     -- Insert statements for procedure here
 	INSERT INTO dbo.Empleado (CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,Sueldo,IdCargo) VALUES (@cedula,@nombreEmpleado,@apellidoEmpleado,@numeroCta,@fechaNac,@estado,@cedula,@cargo)
+	SELECT @@identity
 END
 GO

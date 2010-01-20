@@ -20,7 +20,7 @@ GO
 -- =============================================
 CREATE PROCEDURE ConsultarDireccionEmpleado
 	-- Add the parameters for the stored procedure here
-	@cedula int
+	@idEmpleado int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -28,6 +28,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT Avenida,Calle,Ciudad,EdifCasa,Urbanizacion,PisoApto FROM dbo.Direccion where IdEmpleado = @cedula
+	SELECT Avenida,Calle,Ciudad,EdifCasa,Urbanizacion,PisoApto FROM dbo.Direccion where IdEmpleado = @idEmpleado
 END
 GO
