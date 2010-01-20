@@ -80,6 +80,8 @@ namespace Core.AccesoDatos.SqlServer
                     _usuario.Status = (string)reader["Status"];
 
                     _usuario.Login = (string)reader["LoginUsuario"];
+
+                    _usuario.IdUsuario = (int)reader["IdUsuario"];
                 }
 
                 return _usuario;
@@ -279,9 +281,9 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                arParms[0] = new SqlParameter("@IdUsuario", SqlDbType.VarChar);
 
-                arParms[0].Value = entidad.Login;
+                arParms[0].Value = entidad.IdUsuario;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                         "ConsultarPermisos", arParms);
