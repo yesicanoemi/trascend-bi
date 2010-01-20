@@ -241,7 +241,7 @@
     <value>Debe introducir una breve descripcion del gasto</value>
   </data>
   <data name="FaltaEstadoGasto" xml:space="preserve">
-    <value>Debe introducir el gasto</value>
+    <value>Debe introducir el estado del gasto</value>
   </data>
   <data name="FaltaFecha" xml:space="preserve">
     <value>Debe introducir una fecha</value>

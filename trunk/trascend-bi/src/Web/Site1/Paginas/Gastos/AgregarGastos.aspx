@@ -58,21 +58,23 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                            <table style="width:100%;">
                                <tr>
                                    <td>Tipo: </td>
-                                   <td><asp:TextBox ID="uxTipoGasto" runat="server"></asp:TextBox></td>
+                                   <td><asp:DropDownList ID="uxTipoGasto" runat="server" 
+                                           onselectedindexchanged="uxTipoGasto_SelectedIndexChanged">
+                                       <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
+                                       <asp:ListItem>Almuerzo</asp:ListItem>
+                                       <asp:ListItem>Cena</asp:ListItem>
+                                       <asp:ListItem>Desayuno</asp:ListItem>
+                                       <asp:ListItem>Obsequio</asp:ListItem>
+                                       <asp:ListItem>Reunion</asp:ListItem>
+                                       </asp:DropDownList></td>
                                </tr>
                                <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxTipoGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaTipoGasto%>" Font-Size="Smaller" Display="static" /></td>
-                               </tr>
-                                <tr>
-                                   <td>Descripcion: </td>
-                                   <td><asp:TextBox ID="uxDescripcionGasto" runat="server"></asp:TextBox></td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxDescripcionGasto"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaDescripcionGasto%>" Font-Size="Smaller" Display="static" /></td>
+                               <td>&nbsp;</td>
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RangeValidator MaximumValue="Reunion" MinimumValue="Almuerzo" Display="Static" ID="RegularExpressionValidator1" runat="server"
+                                    ErrorMessage="<%$Resources:DSU, FaltaTipoGasto %>" ControlToValidate="uxTipoGasto"
+                                    Font-Size="Smaller"></asp:RangeValidator>
+                             
+                                    </td>
                                </tr>
                                <tr>
                                    <td>Fecha del gasto: </td>
@@ -106,7 +108,33 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                </tr>
                                 <tr>
                                    <td>Estado del gasto: </td>
-                                   <td><asp:TextBox ID="uxEstadoGasto" runat="server"></asp:TextBox></td>
+                                   <td><asp:DropDownList ID="uxEstadoGasto" runat="server">
+                                       <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
+                                       <asp:ListItem>Aceptado</asp:ListItem>
+                                       <asp:ListItem>Cancelado</asp:ListItem>
+                                       <asp:ListItem>Pagado</asp:ListItem>
+                                       </asp:DropDownList></td>
+                               </tr>
+                               <tr>
+                               <td>&nbsp;</td>
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RangeValidator MaximumValue="Pagado" MinimumValue="Aceptado" Display="Static" ID="RangeValidator1" runat="server"
+                                    ErrorMessage="<%$Resources:DSU, FaltaEstadoGasto %>" ControlToValidate="uxEstadoGasto"
+                                    Font-Size="Smaller"></asp:RangeValidator>
+                             
+                                    </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                   <td>Descripcion:</td>
+                                   <td><asp:TextBox TextMode="MultiLine" ID="uxDescripcionGasto" runat="server"></asp:TextBox></td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxDescripcionGasto"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaDescripcionGasto%>" Font-Size="Smaller" Display="static" /></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -120,9 +148,8 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                             
                                     </td>
                                    <td>
-                                       <asp:DropDownList ID="uxProyectosGasto" runat="server" Enabled="false" 
-                                           onselectedindexchanged="uxProyectosGasto_SelectedIndexChanged">
-                                       </asp:DropDownList>
+                                    <asp:ListBox ID="uxProyectosGasto" runat="server" Rows="4" SelectionMode="Multiple" ></asp:ListBox>
+                                       
                                     </td>
                                 </tr>
                                  <tr>

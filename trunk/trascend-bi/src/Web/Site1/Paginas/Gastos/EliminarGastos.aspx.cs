@@ -47,6 +47,12 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
         set { uxObjectEliminarGasto = value; }
     }
 
+    public Label MensajeError
+    {
+        get { return LabelMensajeError; }
+        set { LabelMensajeError = value; }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)

@@ -123,6 +123,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarPropuestasModificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarPropuestasxEmision.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ConsultarProyecto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ModificarPropuesta.cs" />

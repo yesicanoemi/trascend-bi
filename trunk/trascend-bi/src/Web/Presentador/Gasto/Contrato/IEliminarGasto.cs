@@ -17,6 +17,7 @@ namespace Presentador.Gasto.Contrato
         Button BotonBuscarDatos { get; set; }
         GridView GridViewConsultaGasto { get; set; }
         ObjectContainerDataSource GetObjectContainerConsultaGasto { get; set; }
+        Label MensajeError { get; set; }
 
         #endregion
     }

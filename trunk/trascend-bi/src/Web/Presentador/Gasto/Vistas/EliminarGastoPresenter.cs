@@ -206,6 +206,18 @@ namespace Presentador.Gasto.Vistas
             eliminar = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoEliminar(gasto);
 
             eliminar.Ejecutar();
+           
+            if (gasto.Codigo <= 0)
+            {
+                _vista.MensajeError.Text = "No se pudo eliminar de la base de datos.";
+                _vista.MensajeError.Visible = true;
+            }
+            else
+            {
+                limpiar();
+                _vista.MensajeError.Text = "El gasto se ha eliminado correctamente!!!";
+                _vista.MensajeError.Visible = true;
+            }
         }
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(Core.LogicaNegocio.Entidades.Gasto _gasto)

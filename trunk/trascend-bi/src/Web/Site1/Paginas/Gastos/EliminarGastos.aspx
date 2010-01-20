@@ -20,6 +20,16 @@
                         <h3>Eliminar Gasto</h3> 
                         <p class="large">Busqueda del Gasto</p>
                         <form id="form1" action="#" runat="server">
+		                    <table style="width:100%;">
+                                <tr>
+                                    <td align="center">
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                           </table>
 		                    <table>
 		                <tr>		                    
 		                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>

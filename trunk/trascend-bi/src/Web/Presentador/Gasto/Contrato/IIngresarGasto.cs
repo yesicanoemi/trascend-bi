@@ -12,9 +12,9 @@ namespace Presentador.Gasto.Contrato
         TextBox DescripcionGasto { get; set; }
         TextBox FechaGasto { get; set; }
         TextBox MontoGasto { get; set; }
-        TextBox EstadoGasto { get; set; }
-        TextBox TipoGasto { get; set; }
-        DropDownList PropuestaAsociada { get; set; }
+        DropDownList EstadoGasto { get; set; }
+        DropDownList TipoGasto { get; set; }
+        ListBox PropuestaAsociada { get; set; }
         CheckBox AsociarPropuestaGasto { get; set; }
         Label MensajeError { get; set; }
         #endregion

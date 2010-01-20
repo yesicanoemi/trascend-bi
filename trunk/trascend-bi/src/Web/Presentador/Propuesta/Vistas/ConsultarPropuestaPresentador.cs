@@ -160,14 +160,14 @@ namespace Presentador.Propuesta.Vistas
         /// <returns>devuelve objeto de tipo lista de propuestas</returns>
         public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo(string estado)
         {
-            /*
-            Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
+            
+            Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarProyecto consultar;
 
-            consultar = FabricaComandosPropuesta.CrearComandoConsultar( estado );
+            consultar = FabricaComandosPropuesta.CrearComandoConsultarProyecto( estado );
 
             propuesta = consultar.Ejecutar();
-            */
-            return null; //propuesta;
+            
+            return propuesta;
 
         }
 

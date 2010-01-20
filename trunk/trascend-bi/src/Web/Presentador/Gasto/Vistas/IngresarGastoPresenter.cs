@@ -32,12 +32,13 @@ namespace Presentador.Gasto.Vistas
         public void limpiar()
         {
 
-            _vista.TipoGasto.Text = "";
+            _vista.TipoGasto.SelectedIndex = 0;
             _vista.DescripcionGasto.Text = "";
             _vista.FechaGasto.Text = "";
             _vista.MontoGasto.Text = "";
-            _vista.EstadoGasto.Text = "";
+            _vista.EstadoGasto.SelectedIndex = 0;
             _vista.AsociarPropuestaGasto.Checked = false;
+            _vista.PropuestaAsociada.Enabled = false;
 
         }
 
@@ -52,7 +53,7 @@ namespace Presentador.Gasto.Vistas
 
             gasto.Descripcion = _vista.DescripcionGasto.Text;
 
-            gasto.Estado = _vista.EstadoGasto.Text;
+            gasto.Estado = _vista.EstadoGasto.SelectedItem.Text;
 
             gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
 
@@ -60,7 +61,7 @@ namespace Presentador.Gasto.Vistas
 
             gasto.Monto = float.Parse(_vista.MontoGasto.Text);
 
-            gasto.Tipo = _vista.TipoGasto.Text;
+            gasto.Tipo = _vista.TipoGasto.SelectedItem.Text;
 
             if (_vista.AsociarPropuestaGasto.Checked)
             {
@@ -124,9 +125,7 @@ namespace Presentador.Gasto.Vistas
             for (i = 0; i < propuestas.Count; i++)
             {
                 _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);
-
             }
-            _vista.PropuestaAsociada.DataBind();
         }
         #endregion
 

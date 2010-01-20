@@ -178,13 +178,10 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo = -1;
-            }
-            catch (SqlException)
-            {
-                gastos.ElementAt(0).Codigo = -2;
+                gastos.ElementAt(0).Codigo= -1;
+                System.Console.Write(e);
             }
 
 
@@ -251,13 +248,9 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo = -1;
-            }
-            catch (SqlException)
-            {
-                gastos.ElementAt(0).Codigo = -2;
+                System.Console.Write(e);
             }
 
 
@@ -293,13 +286,9 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo = -1;
-            }
-            catch (SqlException)
-            {
-                gastos.ElementAt(0).Codigo = -2;
+                System.Console.Write(e);
             }
 
 
@@ -349,7 +338,6 @@ namespace Core.AccesoDatos.SqlServer
 
         public Gasto EliminarGasto(Gasto gasto)
         {
-            Gasto _gasto = new Gasto();
 
             try
             {
@@ -363,15 +351,15 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (InvalidOperationException)
             {
-                _gasto.Codigo = -1;
+                gasto.Codigo = -1;
             }
             catch (SqlException)
             {
-                _gasto.Codigo = -2;
+                gasto.Codigo = -2;
             }
 
 
-            return _gasto;
+            return gasto;
         }
 
         public Gasto ModificarGasto(Gasto gasto)
@@ -405,9 +393,13 @@ namespace Core.AccesoDatos.SqlServer
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarGastoPorCodigo", parametros);
 
             }
-            catch (SqlException e)
+            catch (InvalidOperationException)
             {
-                System.Console.Write(e);
+                _gasto.Codigo = -1; 
+            }
+            catch (SqlException)
+            {
+                _gasto.Codigo = -2;
             }
 
             return _gasto;
