@@ -20,7 +20,28 @@
     <div id="global_header">
 		    <div id="header_main">
 			    <h1 id="logo"><a href="../Home/Home.aspx">dsu</a></h1>
+    					<ul id="global_login">
+    					<li class="login"></li>
+    					<table>
+    					<tr>
+    					    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					        &nbsp;
+    					        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					        &nbsp;
+    					        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					        &nbsp;
+    					        &nbsp;&nbsp;
+    					        
+    					    </td>
+    					      					    <td><a href="../Logout/Logout.aspx"><li class="login">Cerrar Sesion</li></a></td>
     					
+    					</tr>
+    					</table>
+    					
+				    
+			    </ul>
 			   
 		    </div>
     		
