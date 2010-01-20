@@ -34,7 +34,7 @@ public partial class Paginas_Reportes_ReportesEquipo1 : PaginaBase, IReporteEqui
 
     protected void Page_Init(object sender, EventArgs e)
     {
-  /*      Core.LogicaNegocio.Entidades.Usuario usuario =
+        Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
@@ -56,7 +56,5 @@ public partial class Paginas_Reportes_ReportesEquipo1 : PaginaBase, IReporteEqui
         {
             Response.Redirect(paginaSinPermiso);
         }
-        */
-        _presentador = new PresentadorReporteEquipo1a(this);
-    }
+     }
 }
