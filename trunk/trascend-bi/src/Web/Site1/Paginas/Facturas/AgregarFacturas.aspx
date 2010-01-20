@@ -52,8 +52,8 @@
                 
                 
             </div>
-
-
+              <asp:Label ID="Label1" runat="server" Text="Propuestas:" Font-Bold="True"></asp:Label>
+            <div>
             <asp:GridView ID="uxGridPropuesta" runat="server"
                 AutoGenerateColumns="false"
                          cellpadding="10"
@@ -64,14 +64,25 @@
                                    <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
                                    <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" />                                                         
                          </Columns>
+                         <EmptyDataTemplate>
+                               <center>
+                                    <span>No hay data cargada</span>
+                               </center>
+                         </EmptyDataTemplate>   
                 </asp:GridView>
  
-
-
+                </div>
+                
+                <div>
+                    <asp:Label ID="Label2" runat="server" Text="Facturas Emitidas:" 
+                        Font-Bold="True"></asp:Label>
+                </div>
+                
+                <div>
                 <asp:GridView ID="uxGridFacturas" runat="server"
                 AutoGenerateColumns="false"
                          cellpadding="10"
-                         cellspacing="5" >
+                         cellspacing="5" Font-Size=Smaller>
                          
                          <Columns >
                                    <asp:BoundField HeaderText="Numero Factura" DataField="Numero" />
@@ -83,8 +94,37 @@
                                    <asp:BoundField HeaderText="Estado" DataField="Estado"/> 
                                                                                      
                          </Columns>
+                         <EmptyDataTemplate>
+                               <center>
+                                    <span>No hay data cargada</span>
+                               </center>
+                         </EmptyDataTemplate>    
                 </asp:GridView>
+                  </div>
+                  <div>
+                <asp:Label ID="Label3" runat="server" Text="Porcentaje Pagado: "></asp:Label>
              
+              <asp:Label ID="uxLabelPorcentajePagado" runat="server" Text=""></asp:Label>
+              </div>
+              <div>
+                <asp:Label ID="Label4" runat="server" Text="Total Pagado: "></asp:Label>
+             
+              <asp:Label ID="uxLabelTotalPagado" runat="server" Text=""></asp:Label>
+              </div>
+              
+              <div>
+                <asp:Label ID="Label5" runat="server" Text="Porcentaje Restante: "></asp:Label>
+             
+              <asp:Label ID="uxLabelPorcentajeRestante" runat="server" Text=""></asp:Label>
+              </div>
+              <div>
+                <asp:Label ID="Label7" runat="server" Text="Monto Restante: "></asp:Label>
+             
+              <asp:Label ID="uxLabelMontoRestante" runat="server" Text=""></asp:Label>
+              </div>
+                  
+              
+              
           </div> 
         </div> 
 	</div> 

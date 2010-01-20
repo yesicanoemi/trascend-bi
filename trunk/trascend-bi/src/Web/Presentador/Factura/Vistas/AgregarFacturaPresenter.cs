@@ -236,14 +236,16 @@ namespace Presentador.Factura.Vistas
                     float PorcCancelado = 0;
                     float MontoRestante  = 0;
 
-                    //PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
+                    PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
                     //_vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
+                    _vista.PorcentajeTotal.Text = PorcCancelado.ToString();
 
-                    //MontoRestante = _propuesta.MontoTotal - MontosCancelados;
+                    MontoRestante = _propuesta.MontoTotal - MontosCancelados;
                     //_vista.MontoFaltante.Text = MontoRestante.ToString();
+                    _vista.MontoFaltante.Text = MontoRestante.ToString();
 
                     //_vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
-
+                    _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
 
                     ////_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
                     //_vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");

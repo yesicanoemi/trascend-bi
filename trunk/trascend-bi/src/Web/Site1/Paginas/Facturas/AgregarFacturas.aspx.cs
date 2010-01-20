@@ -42,6 +42,30 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         set { this.uxBusquedaBoton = value; }
     }
 
+    public Label MontoTotal
+    {
+        get { return this.uxLabelTotalPagado; }
+        set { this.uxLabelTotalPagado = value; }
+    }
+
+    public Label PorcentajeTotal
+    {
+        get { return this.uxLabelPorcentajePagado; }
+        set { this.uxLabelPorcentajePagado = value; }
+    }
+
+    public Label MontoFaltante
+    {
+        get { return this.uxLabelMontoRestante; }
+        set { this.uxLabelMontoRestante = value; }
+    }
+
+    public Label PorcentajeFaltante
+    {
+        get { return this.uxLabelPorcentajeRestante; }
+        set { this.uxLabelPorcentajeRestante = value; }
+    }
+
     #endregion
 
 

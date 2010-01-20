@@ -19,6 +19,10 @@ namespace Presentador.Factura.Contrato
         GridView ResultadoPropuesta { get; set; }
         GridView ResultadoFacturas { get; set; }
         Button BotonBusqueda { get; set; }
+        Label MontoTotal { get; set; }
+        Label PorcentajeTotal { get; set; }
+        Label MontoFaltante { get; set; }
+        Label PorcentajeFaltante { get; set; }
 
         #endregion
 

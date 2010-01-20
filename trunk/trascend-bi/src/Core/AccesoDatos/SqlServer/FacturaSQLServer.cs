@@ -95,7 +95,7 @@ namespace Core.AccesoDatos.SqlServer
 
                             factura.Prop = propuesta;
 
-                            facturas.Insert(i, factura);
+                            facturas.Add(factura);
 
                             //reader.NextResult();
 
