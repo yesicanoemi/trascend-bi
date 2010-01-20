@@ -185,12 +185,12 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[6] = new SqlParameter("@sueldo", SqlDbType.VarChar);
                 arParms[6].Value = empleado.Estado;
                 arParms[7] = new SqlParameter("@cargo", SqlDbType.Int);
-                arParms[7].Value = empleado.Estado;
+                arParms[7].Value = empleado.Cargo;
                 resultado = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarEmpleado", arParms);
                 ModificarDireccion(empleado);
                 return resultado;
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
                 throw new Exception(e.ToString());
             }
@@ -308,10 +308,22 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                SqlParameter[] arParms = new SqlParameter[1];
                 // Parametros 
+                SqlParameter[] arParms = new SqlParameter[7];
                 arParms[0] = new SqlParameter("@cedula", SqlDbType.Int);
                 arParms[0].Value = empleado.Cedula;
+                arParms[1] = new SqlParameter("@avenida", SqlDbType.VarChar);
+                arParms[1].Value = empleado.Direccion.Avenida;
+                arParms[2] = new SqlParameter("@calle", SqlDbType.VarChar);
+                arParms[2].Value = empleado.Direccion.Calle;
+                arParms[3] = new SqlParameter("@ciudad", SqlDbType.VarChar);
+                arParms[3].Value = empleado.Direccion.Ciudad;
+                arParms[4] = new SqlParameter("@edif", SqlDbType.VarChar);
+                arParms[4].Value = empleado.Direccion.Edif_Casa;
+                arParms[5] = new SqlParameter("@piso", SqlDbType.VarChar);
+                arParms[5].Value = empleado.Direccion.Piso_apto;
+                arParms[6] = new SqlParameter("@urbanizacion", SqlDbType.VarChar);
+                arParms[6].Value = empleado.Direccion.Urbanizacion;
                 SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarDireccion", arParms);
             }
             catch(SqlException e)
