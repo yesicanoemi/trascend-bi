@@ -184,7 +184,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     protected void Page_Init(object sender, EventArgs e)
     {
-     /*   #region trejo
+       #region trejo
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -209,8 +209,8 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
         }
         #endregion
 
-        */
-        _presentador = new ConsultarClientePresentador(this);
+        
+        //_presentador = new ConsultarClientePresentador(this);
     }
 
 

@@ -90,7 +90,7 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
     protected void Page_Init(object sender, EventArgs e)
     {
         #region agrego trejo
-        /*Core.LogicaNegocio.Entidades.Usuario usuario =
+        Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
@@ -111,10 +111,10 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         if (permiso == false)
         {
             Response.Redirect(paginaSinPermiso);
-        }*/
+        }
         #endregion
 
-        _presentador = new AgregarClientePresentador(this);
+        //_presentador = new AgregarClientePresentador(this);
 
     }
     protected void Page_Load(object sender, EventArgs e)
