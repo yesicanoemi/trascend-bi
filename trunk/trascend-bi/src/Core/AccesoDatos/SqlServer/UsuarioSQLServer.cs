@@ -289,7 +289,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 while (reader.Read())
                 {
-                    usuario.IdUsuario = (int)reader["IdEmpleado"];
+                    usuario.Id = (int)reader["IdEmpleado"];
                 }
 
                 #endregion
@@ -312,21 +312,47 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[3] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
 
-                arParms[3].Value = usuario.IdUsuario;
+                arParms[3].Value = usuario.Id;
 
                 SqlHelper.ExecuteNonQuery(GetConnection(),
                                         "AgregarUsuario", arParms);
                 #endregion
 
+
+
+                SqlParameter[] arParms1 = new SqlParameter[1];
+
+                arParms1[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+
+                arParms1[0].Value = usuario.Login;
+
+                DbDataReader reader1 = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarUsuario", arParms1);
+
+                IList<Usuario> usuario2 = new List<Usuario>();
+
+                while (reader1.Read())
+                {
+                    Usuario _usuario = new Usuario();
+
+                    _usuario.IdUsuario = (int)reader1["IdUsuario"];
+
+                    usuario2.Add(_usuario);
+                }
+
+
+
+
+
                 #region Agregar Permisos al usuario registrado
 
                 SqlParameter[] arParmsAgregarPermisos = new SqlParameter[2];
 
-                arParmsAgregarPermisos[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                arParmsAgregarPermisos[0] = new SqlParameter("@IdUsuario", SqlDbType.VarChar);
 
-                arParmsAgregarPermisos[0].Value = usuario.Login;
+                arParmsAgregarPermisos[0].Value = usuario2[0].IdUsuario;
 
-                arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.VarChar);
+                arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.Int);
 
 
                 for (int i = 0; i < usuario.PermisoUsu.Count; i++)
@@ -365,24 +391,39 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
                 //Parametros de busqueda
+                #region Busca el Id del empleado
 
-                SqlParameter[] arParms = new SqlParameter[1];
+                SqlParameter[] arParmsIdEmp = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
+                arParmsIdEmp[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
 
-                arParms[0].Value = entidad.Cedula;
+                arParmsIdEmp[0].Value = entidad.Cedula;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                        "ConsultarEmpleadoConUsuario", arParms);
+                                        "BuscarIDEmpleado", arParmsIdEmp);
 
                 while (reader.Read())
                 {
+                    entidad.Id = (int)reader["IdEmpleado"];
+                }
+
+                #endregion
+                
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+
+                arParms[0].Value = entidad.Id;
+
+                DbDataReader reader2 = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarEmpleadoConUsuario", arParms);
+
+                while (reader2.Read())
+                {
                     Empleado _empleado = new Empleado();
 
-                    _empleado.Nombre = (string)reader["Nombre"];
-
-                    _empleado.Apellido = (string)reader["Apellido"];
-
+                    _empleado.Id = (int)reader2["IdEmpleado"];
 
                     empleado.Add(_empleado);
                 }
