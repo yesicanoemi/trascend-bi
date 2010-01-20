@@ -112,18 +112,6 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
         set { uxUrbanizacion = value; }
     }
 
-    public TextBox FechaIngresoEmpleado
-    {
-        get { return uxFechaIngreso; }
-        set { uxFechaIngreso = value; }
-    }
-
-    public TextBox FechaEgresoEmpleado
-    {
-        get { return uxFechaEgreso; }
-        set { uxFechaEgreso = value; }
-    }
-
     public DropDownList ComboCargos
     {
         get { return uxCargoEmpleado; }

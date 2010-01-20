@@ -35,8 +35,6 @@ namespace Presentador.Empleado.Vistas
                 empleado.Cuenta = _vista.CuentaEmpleado.Text;
                 empleado.Cargo = _vista.ComboCargos.SelectedValue.ToString();
                 empleado.Estado = "Activo";
-                empleado.FechaIngreso = DateTime.Parse(_vista.FechaIngresoEmpleado.Text);
-                empleado.FechaEgreso = DateTime.Parse(_vista.FechaEgresoEmpleado.Text);
                 empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.Text);
                 empleado.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
                 empleado.Direccion.Avenida =_vista.AvenidaEmpleado.Text;
@@ -125,8 +123,6 @@ namespace Presentador.Empleado.Vistas
             _vista.CuentaEmpleado.Text = campoVacio;
             _vista.CedulaEmpleado.Text = campoVacio;
             _vista.ApellidoEmpleado.Text = campoVacio;
-            _vista.FechaEgresoEmpleado.Text = DateTime.Now.ToString();
-            _vista.FechaIngresoEmpleado.Text = DateTime.Now.ToString();
             _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
         }
         #endregion
@@ -134,15 +130,23 @@ namespace Presentador.Empleado.Vistas
         #region Comando
         public void Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
 
-            //fábrica que instancia el comando Ingresar.
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresar(empleado);
+                //fábrica que instancia el comando Ingresar.
+                ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoIngresar(empleado);
 
-            //try
-            //{    
-            //ejecuta el comando.
-            ingresar.Ejecutar();
+                //try
+                //{    
+                //ejecuta el comando.
+                ingresar.Ejecutar();
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0001", "Error Ingresando Empleado", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
         }
         #endregion
       

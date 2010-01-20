@@ -371,60 +371,6 @@
                                                     &nbsp;
                                                 </td>
                                                 <td>
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Fecha de Ingreso
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox ID="uxFechaIngreso" runat="server"></asp:TextBox>
-                                                    <asp:Image ID="uxImagenFechaIngreso" runat="server" ImageUrl="~/Images/calendario.png" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
-                                                        ID="uxFechaIngres" Format="dd/MM/yy" TargetControlID="uxFechaIngreso" PopupButtonID="uxImagenFechaIngreso">
-                                                    </AjaxControlToolkit:CalendarExtender>
-                                                </td>
-                                                <td>
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Fecha de Egreso
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox ID="uxFechaEgreso" runat="server"></asp:TextBox>
-                                                    <asp:Image ID="uxImagenFechaEgreso" runat="server" ImageUrl="~/Images/calendario.png" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
-                                                        ID="uxFechaEgres" Format="dd/MM/yy" TargetControlID="uxFechaEgreso" PopupButtonID="uxImagenFechaEgreso">
-                                                    </AjaxControlToolkit:CalendarExtender>
-                                                </td>
-                                                <td>
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;
-                                                </td>
-                                                <td>
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    &nbsp;
-                                                </td>
-                                                <td>
                                                     <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="uxBotonAceptar_Click" />
                                                 </td>
                                             </tr>

@@ -21,8 +21,6 @@ namespace Presentador.Empleado.Contrato
         TextBox UrbanizacionEmpleado { get; set; }
         TextBox EdificioEmpleado { get; set; }
         TextBox PisoEmpleado { get; set; }
-        TextBox FechaIngresoEmpleado { get; set; }
-        TextBox FechaEgresoEmpleado { get; set; }
         string RangoSueldo { get; set; }
         bool RangoVisible { get; set; }
         DropDownList ComboCargos { get; set; }

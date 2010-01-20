@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
+using Core.LogicaNegocio.Excepciones;
 using Microsoft.ApplicationBlocks.Data;
 using System.Data.SqlClient;
 using System.Data.Common;
@@ -70,10 +71,14 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "InsertarEmpleado", arParms);
                 if (reader.Read())
                 {
-                    InsertarDireccion(empleado,Int32.Parse(reader[0].ToString()));
+                    InsertarDireccion(empleado, Int32.Parse(reader[0].ToString()));
                 }
             }
             catch (SqlException e)
+            {
+                throw new IngresarException("Error ingresando en la base de datos",e);
+            }
+            catch (Exception e)
             {
                 throw new Exception(e.ToString());
             }

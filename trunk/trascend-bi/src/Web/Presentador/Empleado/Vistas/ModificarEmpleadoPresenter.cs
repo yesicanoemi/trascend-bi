@@ -174,8 +174,6 @@ namespace Presentador.Empleado.Vistas
             _vista.CuentaEmpleado.Text = campoVacio;
             _vista.CedulaEmpleado.Text = campoVacio;
             _vista.ApellidoEmpleado.Text = campoVacio;
-            _vista.FechaEgresoEmpleado.Text = DateTime.Now.ToString();
-            _vista.FechaIngresoEmpleado.Text = DateTime.Now.ToString();
             _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
         }
         public void LlenarRegistros(Core.LogicaNegocio.Entidades.Empleado empleado)
@@ -192,8 +190,6 @@ namespace Presentador.Empleado.Vistas
             _vista.CuentaEmpleado.Text = empleado.Cuenta.ToString();
             _vista.CedulaEmpleado.Text = empleado.Cedula.ToString();
             _vista.ApellidoEmpleado.Text = empleado.Apellido;
-            _vista.FechaEgresoEmpleado.Text = empleado.FechaEgreso.ToShortDateString();
-            _vista.FechaIngresoEmpleado.Text = empleado.FechaIngreso.ToShortDateString();
             _vista.FechaNacEmpleado.Text = empleado.FechaNacimiento.ToShortDateString();
         }
         public void LlenarComboCargos()
@@ -210,15 +206,23 @@ namespace Presentador.Empleado.Vistas
         #region Comando
         public void Modificar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.Modificar modificar; //objeto del comando Ingresar.
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoEmpleado.Modificar modificar; //objeto del comando Ingresar.
 
-            //fábrica que instancia el comando Ingresar.
-            modificar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoModificar(empleado);
+                //fábrica que instancia el comando Ingresar.
+                modificar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoModificar(empleado);
 
-            //try
-            //{    
-            //ejecuta el comando.
-            modificar.Ejecutar();
+                //try
+                //{    
+                //ejecuta el comando.
+                modificar.Ejecutar();
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0004", "Error Modificando al Empleado", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
         }
         public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorNombre(Core.LogicaNegocio.Entidades.Empleado entidad)
         {
@@ -293,15 +297,23 @@ namespace Presentador.Empleado.Vistas
         }
         public void ConsultarEmpleadoId(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar;
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar;
 
-            consultar = FabricaComandosEmpleado.CrearComandoConsultarEmpleado(empleado);
+                consultar = FabricaComandosEmpleado.CrearComandoConsultarEmpleado(empleado);
 
-            empleado = consultar.Ejecutar();
+                empleado = consultar.Ejecutar();
 
-            LlenarRegistros(empleado);
+                LlenarRegistros(empleado);
 
-            CambiarVista(5);
+                CambiarVista(5);
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0003", "Error Consultando Empleado", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
         }
         #endregion
     }
