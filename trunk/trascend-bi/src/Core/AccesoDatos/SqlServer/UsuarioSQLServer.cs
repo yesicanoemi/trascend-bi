@@ -43,7 +43,7 @@ namespace Core.AccesoDatos.SqlServer
         }
 
         #endregion
-
+        
         #region Metodos
 
         #region ConsultarCredenciales
@@ -327,7 +327,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParmsIdEmp[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
 
-                arParmsIdEmp[0].Value = usuario.IdUsuario;
+                arParmsIdEmp[0].Value = usuario.Cedula;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
                                         "BuscarIDEmpleado", arParmsIdEmp);

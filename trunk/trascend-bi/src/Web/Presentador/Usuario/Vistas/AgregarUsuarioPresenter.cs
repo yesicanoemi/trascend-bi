@@ -379,7 +379,7 @@ namespace Presentador.Usuario.Vistas
 
             usuario.Password = _vista.ContrasenaUsuario.Text;
 
-            usuario.IdUsuario = int.Parse(_vista.CedulaEmp.Text);
+            usuario.Cedula = int.Parse(_vista.CedulaEmp.Text);
 
             empleado.Cedula = int.Parse(_vista.CedulaEmp.Text);
 

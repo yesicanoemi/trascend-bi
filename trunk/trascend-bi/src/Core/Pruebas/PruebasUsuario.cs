@@ -22,18 +22,22 @@ namespace Core.Pruebas
 
             usuario.Login = Login;
 
-            IList<Core.LogicaNegocio.Entidades.Usuario> listadoUsuarios = 
-                                    new UsuarioSQLServer().ConsultarUsuario(usuario);
+            UsuarioSQLServer bd = new UsuarioSQLServer();
+
+            IList<Usuario> listadoUsuarios = new List<Usuario>();
+
+            listadoUsuarios = bd.ConsultarUsuario(usuario);
 
             for (int i = 0; i < listadoUsuarios.Count; i++)
             {
                 if (listadoUsuarios[i].Login == "usuario")
                 {
-                    usuario = listadoUsuarios[i];
+                    usuario.Login = listadoUsuarios[i].Login;
+                    i = listadoUsuarios.Count;
                 }
                 else
                 {
-                    usuario = null;
+                    usuario.Login = "null";
 
                 }  
             }
@@ -49,16 +53,66 @@ namespace Core.Pruebas
             usuario.Login = "UsuarioPrueba";
             usuario.Password = "123456";
             usuario.Status = "Activo";
-            usuario.Cedula = 18512200;
+            usuario.Cedula = 13776256;
 
             IList<Permiso> listado = new List<Permiso>();
             Permiso permiso = new Permiso();
             permiso.IdPermiso = 1;
             listado.Add(permiso);
 
-            new UsuarioSQLServer().AgregarUsuario(usuario);
+            UsuarioSQLServer bd = new UsuarioSQLServer();
+                bd.AgregarUsuario(usuario);
+            IList<Usuario> listadoUsu = new List<Usuario>();
+                listadoUsu = bd.ConsultarUsuario(usuario);
 
-            //Assert.AreEqual(Login, usuario.Login);
+            Assert.AreEqual(listadoUsu[0].Login, usuario.Login);
+        }
+
+        [Test]
+        public void ReporteFactura()
+        {
+            Factura factura = new Factura();
+
+            factura.Fechaingreso = Convert.ToDateTime("01/01/2010");
+
+            factura.Fechapago = Convert.ToDateTime("29/01/2010");
+
+            ReporteSQLServer bd = new ReporteSQLServer();
+
+            IList<Factura> listadoFactura = new List<Factura>();
+
+            listadoFactura = bd.FacturasEmitidas(factura);
+
+            int j= 0;
+
+            for (int i = 0; i < listadoFactura.Count; i++)
+            {
+                if (listadoFactura[i].Titulo == "PruebaUnitario")
+                {
+                    j = i;
+                    i = listadoFactura.Count;
+
+                }
+                
+            }
+
+            Assert.AreEqual("PruebaUnitaria", listadoFactura[j].Titulo);
+
+
+        }
+
+        [Test]
+        public void IsNul()
+        {
+            object nada = null;
+
+            // Classic syntax
+            Assert.IsNull(nada);
+
+            // Helper syntax
+            Assert.That(nada, Is.Null);
+
+            
         }
     }
 }
