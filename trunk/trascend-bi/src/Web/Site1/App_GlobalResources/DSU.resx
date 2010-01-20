@@ -375,4 +375,19 @@
   <data name="ErrorFormatoHoras" xml:space="preserve">
     <value>Total Horas deben de ser Numeros</value>
   </data>
+  <data name="FaltaAvenidaEmpleado" xml:space="preserve">
+    <value>Debe colocar una avenida</value>
+  </data>
+  <data name="FaltaCiudadEmpleado" xml:space="preserve">
+    <value>Debe colocar una ciudad</value>
+  </data>
+  <data name="FaltaFechaNacEmpleado" xml:space="preserve">
+    <value>Debe proporcionar una fecha de nacimiento</value>
+  </data>
+  <data name="FaltaSueldoEmpleado" xml:space="preserve">
+    <value>Debe seleccionar un cargo para obtener un salario</value>
+  </data>
+  <data name="FaltaUrbEmpleado" xml:space="preserve">
+    <value>Debe introducir una urbanizacion</value>
+  </data>
 </root>

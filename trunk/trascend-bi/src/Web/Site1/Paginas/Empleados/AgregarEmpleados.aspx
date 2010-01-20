@@ -44,12 +44,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxNombreEmpleado"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller" Display="Static" />
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxNombreEmpleado"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender6" TargetControlID="uxNombreEmpleado" FilterType="LowercaseLetters, 
+                                            UppercaseLetters"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
@@ -61,13 +61,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxApellidoEmpleado"
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxApellidoEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaApellidoEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender7" TargetControlID="uxApellidoEmpleado" FilterType="LowercaseLetters, 
+                                            UppercaseLetters"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
@@ -79,12 +78,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxCedulaEmpleado"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller" Display="Static" />
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxCedulaEmpleado"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender8" TargetControlID="uxAvenida" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
@@ -96,14 +95,11 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxNumCuentaEmpleado"
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxNumCuentaEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaNumCuentaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2"
+                                            <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator2"
                                                 runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoNumCuentaEmpleado%>"
                                                 ControlToValidate="uxNumCuentaEmpleado" ValidationExpression="<%$Resources:DSU, ERNumCuentaEmpleado%>"
                                                 Font-Size="Smaller">
@@ -115,15 +111,15 @@
                                             Sueldo Base:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="uxSueldoBase" runat="server"></asp:TextBox><br /><asp:Label ID="lbRangoSueldo" Visible="false" runat="server"></asp:Label>
+                                            <asp:TextBox ID="uxSueldoBase" Enabled="false" runat="server"></asp:TextBox><br /><asp:Label ID="lbRangoSueldo" Visible="false" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="uxAvenida"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaSueldoEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender9" TargetControlID="uxAvenida" FilterType="Numbers"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
@@ -158,30 +154,34 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="uxceFechaNac"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaFechaNacEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
                                             <b>Dirección</b>
                                         </td>
                                     </tr>
+                                    <tr><td colspan="2">&nbsp;</td></tr>
                                     <tr>
                                         <td>Ciudad                                     <td>
                                             <asp:TextBox ID="uxCiudad" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="uxCiudad"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaCiudadEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender runat="server" ID="ajFiltered1" TargetControlID="uxCiudad" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Avenida</td>
@@ -190,12 +190,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="uxAvenida"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender1" TargetControlID="uxAvenida" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Calle</td>
@@ -204,12 +205,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="uxCalle"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender2" TargetControlID="uxCalle" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Urbanización</td>
@@ -218,12 +220,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="uxUrbanizacion"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaUrbEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender3" TargetControlID="uxUrbanizacion" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Edificio o Casa</td>
@@ -232,17 +235,27 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            &nbsp;
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="uxEdificio"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender4" TargetControlID="uxEdificio" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Piso o Apartamento</td>
                                         <td>
                                             <asp:TextBox ID="uxPiso" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="left">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="uxPiso"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
+                                                Display="Static" />
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender5" TargetControlID="uxPiso" FilterType="LowercaseLetters, 
+                                            UppercaseLetters,Numbers,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
