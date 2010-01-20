@@ -67,7 +67,7 @@ public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        /*Core.LogicaNegocio.Entidades.Usuario usuario =
+        Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
@@ -76,13 +76,13 @@ public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
         {
             if (usuario.PermisoUsu[i].IdPermiso == 21)
             {
-                i = usuario.PermisoUsu.Count;*/
+                i = usuario.PermisoUsu.Count;
 
                 _presentadorGasto = new IngresarGastoPresenter(this);
                 
                 _presentadorGasto.BuscarPropuesta();
 
-       /*         permiso = true;
+                permiso = true;
 
             }
         }
@@ -90,7 +90,7 @@ public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
         if (permiso == false)
         {
             Response.Redirect(paginaSinPermiso);
-        }*/
+        }
 
     }
 
