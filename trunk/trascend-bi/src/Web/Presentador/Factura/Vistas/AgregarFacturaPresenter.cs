@@ -392,7 +392,25 @@ namespace Presentador.Factura.Vistas
                 }
             }
             else
-                BuscarProcPorID(ListaPropuestas);
+            {
+                foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+                {
+                    if (PropuestaAux.Id == int.Parse(_vista.PropuestaBuscar.Text))
+                    {
+                        Core.LogicaNegocio.Entidades.Factura NewFactura = new Core.LogicaNegocio.Entidades.Factura();
+
+                        NewFactura.Titulo = _vista.Titulo.Text;
+                        NewFactura.Descripcion = _vista.Descripcion.Text;
+                        NewFactura.Procentajepagado = float.Parse(_vista.PorcentajePagar.Text);
+                        NewFactura.Fechapago = DateTime.Parse(_vista.FechaPago.Text);
+                        NewFactura.Fechaingreso = DateTime.Parse(_vista.FechaEmision.Text);
+                        NewFactura.Estado = _vista.Estado.Text;
+                        NewFactura.Prop = PropuestaAux;
+
+                        Ingresar(NewFactura);
+                    }
+                }
+            }
 
             
         }
