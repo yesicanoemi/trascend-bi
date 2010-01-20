@@ -108,6 +108,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCI.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorNombre.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\EliminarEmpleado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGasto.cs" />

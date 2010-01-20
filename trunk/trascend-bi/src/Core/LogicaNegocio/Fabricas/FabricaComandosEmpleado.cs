@@ -48,5 +48,11 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarEmpleado(empleado);
         }
+
+        public static EliminarEmpleado CrearComandoEliminarEmpleado(Empleado empleado)
+        {
+            return new EliminarEmpleado(empleado);
+        }
+
     }
 }

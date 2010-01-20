@@ -92,10 +92,40 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
         set { uxEstadoE = value; }
     }
 
-    public Label LabelDireccion
+    public Label LabelDirCalle
     {
-        get { return uxDirEmp; }
-        set { uxDirEmp = value; }
+        get { return uxDirCalleEmp; }
+        set { uxDirCalleEmp = value; }
+    }
+
+    public Label LabelDirAve
+    {
+        get { return uxDirAveEmp; }
+        set { uxDirAveEmp = value; }
+    }
+
+    public Label LabelDirUrb
+    {
+        get { return uxDirUrbEmp; }
+        set { uxDirUrbEmp = value; }
+    }
+
+    public Label LabelDirEdifCasa
+    {
+        get { return uxDirEdCasaEmp; }
+        set { uxDirEdCasaEmp = value; }
+    }
+
+    public Label LabelDirPisoApto
+    {
+        get { return uxDirPisAptoEmp; }
+        set { uxDirPisAptoEmp = value; }
+    }
+
+    public Label LabelDirCiudad
+    {
+        get { return uxDirCiudadEmp; }
+        set { uxDirCiudadEmp = value; }
     }
 
     public Label LabelCargo

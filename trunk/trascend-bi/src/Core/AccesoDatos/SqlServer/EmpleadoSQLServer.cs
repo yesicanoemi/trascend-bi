@@ -218,7 +218,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 Empleado _empleado = new Empleado();
                 Direccion _direccion = new Direccion();
-                _empleado.Id = (int)reader["IdEmpleado"];
+                //_empleado.Id = (int)reader["IdEmpleado"];
                 _empleado.Cedula = (int)reader["CIEmpleado"];
                 _empleado.Nombre = (string)reader["Nombre"];
                 _empleado.Apellido = (string)reader["Apellido"];
@@ -354,6 +354,30 @@ namespace Core.AccesoDatos.SqlServer
                 Empleados.Add(_persona);
             }
             return Empleados;
+        }
+
+        public int EliminarEmpleado(Empleado emp)
+        {
+            int result = 0;
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Cedula", SqlDbType.VarChar);
+                arParms[0].Value = emp.Cedula;
+                result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarEmpleado", arParms);
+            }
+            catch (SqlException e)
+            {
+                throw new  Core.LogicaNegocio.Excepciones.EliminarException("Error SQL al eliminar el cargo", e);
+                //System.Console.Write(e);
+            }
+            catch (Exception e)
+            {
+                throw new Core.LogicaNegocio.Excepciones.EliminarException("Error al eliminar el cargo", e);
+            }
+            return result;
         }
         #endregion
     }

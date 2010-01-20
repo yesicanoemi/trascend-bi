@@ -9,15 +9,15 @@ using Core.LogicaNegocio.Fabricas;
 
 namespace Presentador.Empleado.Vistas
 {
-    public class ConsultarEmpleadoPresenter
+    public class EliminarEmpleadoPresenter
     {
-        private IConsultarEmpleado _vista;
+        private IEliminarEmpleado _vista;
         private IList<Core.LogicaNegocio.Entidades.Empleado> empleado;
         private IList<string> cargo;
         Core.LogicaNegocio.Entidades.Empleado emp;
 
         #region Constructor
-        public ConsultarEmpleadoPresenter(IConsultarEmpleado vista)
+        public EliminarEmpleadoPresenter(IEliminarEmpleado vista)
         {
             _vista = vista;
         }
@@ -25,26 +25,7 @@ namespace Presentador.Empleado.Vistas
 
         #region Metodos
 
-        public void CambiarVista(int index)
-        {
-            _vista.MultiViewConsultar.ActiveViewIndex = index;
-        }
-
-        private void CargarDatos(Core.LogicaNegocio.Entidades.Empleado empleado)
-        {
-            _vista.LabelNombre.Text = empleado.Nombre;
-            _vista.LabelApellido.Text = empleado.Apellido;
-            _vista.LabelCI.Text = empleado.Cedula.ToString();
-            _vista.LabelNumCuenta.Text = empleado.Cuenta;
-            _vista.LabelFechaNac.Text = empleado.FechaNacimiento.ToShortDateString();
-            _vista.LabelEstado.Text = empleado.Estado;
-            _vista.LabelDirAve.Text = empleado.Direccion.Avenida;
-            _vista.LabelDirUrb.Text = empleado.Direccion.Urbanizacion;
-            _vista.LabelDirEdifCasa.Text = empleado.Direccion.Edif_Casa;
-            _vista.LabelDirPisoApto.Text = empleado.Direccion.Piso_apto;
-            _vista.LabelDirCiudad.Text = empleado.Direccion.Ciudad;
-            _vista.LabelCargo.Text = empleado.Cargo;
-        }
+        
         /// <summary>
         /// Metodo que ejecuta la accion de Selección de tipo de Consulta
         /// </summary>
@@ -79,7 +60,7 @@ namespace Presentador.Empleado.Vistas
         /// Metodo que ejcuta la Accion de realizar la consulta por parámetro indicado
         /// y presenta la propuesta seleccionada
         /// </summary>
-        public void BotonAccionConsulta()
+        public void BotonAccionEliminar()
         {
             #region Atributos de la Pagina
             #region Activar Campos
@@ -149,16 +130,15 @@ namespace Presentador.Empleado.Vistas
             #endregion
         }
 
-        public void uxObjectConsultaUsuariosSelecting(string nombre)
+        public void uxObjectConsultaUsuariosSelecting(string cedula)
         {
             Core.LogicaNegocio.Entidades.Empleado emp = new Core.LogicaNegocio.Entidades.Empleado();
-            emp.Nombre = nombre;
+            emp.Cedula = Int32.Parse(cedula);
 
-            IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
-            emp = null;
-            emp = listado[0];
-            CargarDatos(emp);
-            CambiarVista(1);
+            int result = EliminarEmpleado(emp);
+
+            //lanzar un ventana de confirmacion si result es 1 o una de error si result es 0
+
         }
 
         /// <summary>
@@ -217,6 +197,20 @@ namespace Presentador.Empleado.Vistas
 
         }
 
+        public int EliminarEmpleado(Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
+
+            int resultado = 0;
+
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.EliminarEmpleado eliminar;
+            
+            eliminar = FabricaComandosEmpleado.CrearComandoEliminarEmpleado(entidad);
+            
+            resultado = eliminar.Ejecutar();
+            
+            return resultado;
+
+        }
         #endregion
     }
 }

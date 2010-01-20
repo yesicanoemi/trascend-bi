@@ -7,7 +7,7 @@ using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Empleado.Contrato
 {
-    public interface IConsultarEmpleado
+    public interface IEliminarEmpleado
     {
         DropDownList opcion { get; set; }
         DropDownList SeleccionCargo { get; set; }
@@ -17,19 +17,5 @@ namespace Presentador.Empleado.Contrato
         TextBox TextBoxParametro { get; set; }
         Label LabelSelec { get; set; }
         Label LabelParametro { get; set; }
-        Label LabelCI { get; set; }
-        Label LabelNombre { get; set; }
-        Label LabelApellido { get; set; }
-        Label LabelNumCuenta { get; set; }
-        Label LabelFechaNac { get; set; }
-        Label LabelDirCalle { get; set; }
-        Label LabelDirAve { get; set; }
-        Label LabelDirUrb { get; set; }
-        Label LabelDirEdifCasa { get; set; }
-        Label LabelDirPisoApto { get; set; }
-        Label LabelDirCiudad { get; set; }
-        Label LabelCargo { get; set; }
-        Label LabelEstado { get; set; }
     }
 }
-

@@ -164,16 +164,70 @@
                                        </tr>
                                         <tr>
                                            <td><b>Direccion:</b></td>
-                                           <td><asp:Label ID="uxDirEmp" runat="server" Text=""></asp:Label></td>
+                                           
                                         </tr>
                                         <tr>
                                            <td>&nbsp;</td>
                                            
                                        </tr>
+                                       <tr>
+                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calle:</b></td>
+                                           <td><asp:Label ID="uxDirCalleEmp" runat="server" Text=""></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                                       <tr>
+                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avenida:</b></td>
+                                           <td><asp:Label ID="uxDirAveEmp" runat="server" Text=""></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                                       <tr>
+                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urbanizacion:</b></td>
+                                           <td><asp:Label ID="uxDirUrbEmp" runat="server" Text=""></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                                       <tr>
+                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edificio o Casa:</b></td>
+                                           <td><asp:Label ID="uxDirEdCasaEmp" runat="server" Text=""></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                                       <tr>
+                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Piso/Apto:</b></td>
+                                           <td><asp:Label ID="uxDirPisAptoEmp" runat="server" Text=""></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                                       <tr>
+                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ciudad:</b></td>
+                                           <td><asp:Label ID="uxDirCiudadEmp" runat="server" Text=""></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                          
                                         <tr>
                                            <td><b>Cargo:</b></td>
                                            <td><asp:Label ID="uxCargoEmp" runat="server" Text=""></asp:Label></td>
                                         </tr>
+                                        <tr>
+                                           <td>&nbsp;</td>
+                                           
+                                       </tr>
+                                       
                                      </table>
                                  </form>
                                  </asp:View>
@@ -185,6 +239,6 @@
 			</div> 
 		</div>
 		<pp:Objectcontainerdatasource runat= "server" ID = "uxObjectConsultarEmpleado" DataObjectTypeName = "Core.LogicaNegocio.Entidades.Empleado"
-		 /> 
+		 />  
 </asp:Content>
 
