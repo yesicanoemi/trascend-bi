@@ -76,7 +76,7 @@
                                             <td colspan="2">
                                                 <asp:GridView ID="uxConsultaEmpleado" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaEmpleado"
                                                 AutoGenerateColumns="False" DataKeyNames="cedula" AutoGenerateSelectButton="True"
-                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
+                                                Width="150%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
                                                 OnSelectedIndexChanging="SelectEmpleados">
                                             
                                                     <Columns>

@@ -84,7 +84,7 @@
              <td>
 
              <asp:GridView runat="server" ID="uxReporteFactura3b" AutoGenerateColumns="false"
-                           PageSize="10" onrowdatabound="uxGridView_RowDataBound">
+                           PageSize="10" onrowdatabound="uxGridView_RowDataBound" Width="150%">
              
              <RowStyle HorizontalAlign="Center" />              
              

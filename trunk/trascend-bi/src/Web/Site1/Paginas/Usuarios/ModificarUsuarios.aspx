@@ -63,7 +63,7 @@
 
                                                 <asp:GridView ID="uxConsultaModificarUsuario" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaModificarUsuario"
                                                 AutoGenerateColumns="False" DataKeyNames="login" AutoGenerateSelectButton="True"
-                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
+                                                Width="150%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
                                                 OnSelectedIndexChanging="SelectUsuarios">
 
                                                     <Columns>
