@@ -52,7 +52,7 @@ namespace Core.Pruebas
             Propuesta propuesta = new Propuesta();
             propuesta.Titulo = "Automatizacion de la Certificacion de Empleados";
             IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasNomPro(propuesta);
-            Assert.AreEqual(facturas.Count, 5);
+            Assert.AreEqual(facturas.Count, 2);
         }
 
         [Test]

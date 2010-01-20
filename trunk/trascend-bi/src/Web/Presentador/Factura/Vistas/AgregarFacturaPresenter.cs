@@ -188,7 +188,11 @@ namespace Presentador.Factura.Vistas
                 {
                     if (PropuestaAux.Titulo.Equals(_vista.PropuestaBuscar.Text))
                     {
-                        _vista.ResultadoPropuesta.DataSource = PropuestaAux;
+                        IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasN = new List<Core.LogicaNegocio.Entidades.Propuesta>();
+
+                        ListaPropuestasN.Add(PropuestaAux);
+
+                        _vista.ResultadoPropuesta.DataSource = ListaPropuestasN;
 
                         _vista.ResultadoPropuesta.DataBind();
                         //     _propuesta = PropuestaAux;
