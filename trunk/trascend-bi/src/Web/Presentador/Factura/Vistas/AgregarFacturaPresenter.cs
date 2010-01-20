@@ -232,6 +232,7 @@ namespace Presentador.Factura.Vistas
                     }
 
                     //_vista.TotalCancelado.Text = MontosCancelados.ToString();
+                    _vista.MontoTotal.Text = MontosCancelados.ToString();
 
                     float PorcCancelado = 0;
                     float MontoRestante  = 0;
@@ -270,7 +271,8 @@ namespace Presentador.Factura.Vistas
 
                     }
 
-                    //_vista.CodigoFactura.Text = (i + 1).ToString();
+                    _vista.FechaEmision.Text = DateTime.Today.ToString();
+                    _vista.NumeroFactura.Text = (i + 1).ToString();
 
 
                 }

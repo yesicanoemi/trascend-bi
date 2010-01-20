@@ -66,6 +66,55 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         set { this.uxLabelPorcentajeRestante = value; }
     }
 
+    public Label FechaEmision
+    {
+        get { return this.uxFechaEmision; }
+        set { this.uxFechaEmision = value; }
+    }
+
+    public Label NumeroFactura
+    {
+        get { return this.uxNumeroFactura; }
+        set { this.uxNumeroFactura = value; }
+    }
+
+    public TextBox Titulo
+    {
+        get { return this.uxTitulo; }
+        set { this.uxTitulo = value; }
+    }
+
+    public TextBox Descripcion
+    {
+        get { return this.uxDescripcion; }
+        set { this.uxDescripcion = value; }
+    }
+
+    public TextBox PorcentajePagar
+    {
+        get { return this.PorcentajePagar; }
+        set { this.PorcentajePagar = value; }
+    }
+
+    public TextBox FechaPago
+    {
+        get { return this.uxFechaPago; }
+        set { this.uxFechaPago = value; }
+    }
+
+    public TextBox Estado
+    {
+        get { return this.Estado; }
+        set { this.Estado = value; }
+    }
+
+    public TextBox MontoCalculado
+    {
+        get { return this.MontoCalculado; }
+        set { this.MontoCalculado = value; }
+    }
+
+
     #endregion
 
 
@@ -115,5 +164,15 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
         _presenter.CargarGrid();
+    }
+    protected void uxEstado_TextChanged(object sender, EventArgs e)
+    {
+       
+    }
+    protected void uxPorcentajeAPagar_TextChanged(object sender, EventArgs e)
+    {
+        //int montoTotal = int.Parse(this.MontoTotal.Text);
+        //int porcentaje = int.Parse(this.PorcentajePagar.Text);
+        //this.MontoCalculado.Text = ((porcentaje * montoTotal) / 100).ToString();
     }
 }

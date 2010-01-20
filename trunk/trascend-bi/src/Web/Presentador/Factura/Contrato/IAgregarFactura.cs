@@ -23,6 +23,15 @@ namespace Presentador.Factura.Contrato
         Label PorcentajeTotal { get; set; }
         Label MontoFaltante { get; set; }
         Label PorcentajeFaltante { get; set; }
+        
+        Label FechaEmision { get; set; }
+        Label NumeroFactura { get; set; }
+        TextBox Titulo { get; set; }
+        TextBox Descripcion { get; set; }
+        TextBox PorcentajePagar { get; set; }
+        TextBox FechaPago { get; set; }
+        TextBox Estado { get; set; }
+        TextBox MontoCalculado { get; set; }
 
         #endregion
 

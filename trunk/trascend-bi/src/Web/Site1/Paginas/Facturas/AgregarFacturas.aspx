@@ -123,6 +123,40 @@
               <asp:Label ID="uxLabelMontoRestante" runat="server" Text=""></asp:Label>
               </div>
                   
+                  <table>
+                  <tr><th> 
+                      <asp:Label ID="Label6" runat="server" Text="Fecha: "></asp:Label><asp:Label ID="uxFechaEmision"
+                          runat="server" Text=""></asp:Label></th><th>
+                          <asp:Label ID="Label8" runat="server" Text="Numero de Factura: "></asp:Label> 
+                              <asp:Label ID="uxNumeroFactura" runat="server" Text=""></asp:Label></th></tr>
+                              
+                              <tr><th> 
+                      <asp:Label ID="Label10" runat="server" Text="Introduzca los Siguientes Datos:" 
+                                      Font-Bold="True"></asp:Label> </th><th>
+                          </th></tr>
+                           <tr><th> 
+                      <asp:Label ID="Label9" runat="server" Text="Tìtulo:"></asp:Label> </th><th>
+                          <asp:TextBox ID="uxTitulo" runat="server"></asp:TextBox></th></tr>
+                          <tr><th> 
+                      <asp:Label ID="Label11" runat="server" Text="Descripción:"></asp:Label> </th><th>
+                          <asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox></th></tr>
+                          <tr><th> 
+                      <asp:Label ID="Label12" runat="server" Text="Porcentaje a Pagar:"></asp:Label> </th><th>
+                          <asp:TextBox ID="uxPorcentajeAPagar" runat="server" 
+                                      ontextchanged="uxPorcentajeAPagar_TextChanged"></asp:TextBox></th></tr>
+                          <tr><th> 
+                      <asp:Label ID="Label13" runat="server" Text="Fecha de Pago:"></asp:Label> </th><th>
+                          <asp:TextBox ID="uxFechaPago" runat="server"></asp:TextBox></th></tr>
+                          <tr><th> 
+                      <asp:Label ID="Label14" runat="server" Text="Estado:"></asp:Label> </th><th>
+                          <asp:TextBox ID="uxEstado" runat="server" ontextchanged="uxEstado_TextChanged"></asp:TextBox></th></tr>
+                          <tr><th> 
+                              <asp:Label ID="Label15" runat="server" Text="Monto a Pagar: "></asp:Label>
+                                  <asp:Label ID="uxMontoCalculado" runat="server" Text=""></asp:Label>
+                       </th><th>
+                           <asp:Button ID="Button1" runat="server" Text="Button" />
+                          </th></tr>
+                  </table>
               
               
           </div> 
