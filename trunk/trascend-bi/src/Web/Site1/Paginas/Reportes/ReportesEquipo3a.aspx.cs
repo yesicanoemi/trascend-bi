@@ -69,7 +69,7 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 38)
+            if (usuario.PermisoUsu[i].IdPermiso == 37)
             {
                 i = usuario.PermisoUsu.Count;
 

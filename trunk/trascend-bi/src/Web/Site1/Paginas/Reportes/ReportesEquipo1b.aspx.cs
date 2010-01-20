@@ -11,7 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 
-public partial class Paginas_Reportes_ReportesEquipo1b : System.Web.UI.Page, IReportePaqueteCargoAnual
+public partial class Paginas_Reportes_ReportesEquipo1b : PaginaBase, IReportePaqueteCargoAnual
 {
     private Presentador.Reportes.ReporteEmpleadoPaquetePresenter _presentador;
 
@@ -30,10 +30,31 @@ public partial class Paginas_Reportes_ReportesEquipo1b : System.Web.UI.Page, IRe
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        uxAceptar.Visible = false;
-        _presentador = new Presentador.Reportes.ReporteEmpleadoPaquetePresenter(this);
-        _presentador.BuscaCargo();
-        uxAceptar.Visible = true;
+        Core.LogicaNegocio.Entidades.Usuario usuario =
+                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+
+        bool permiso = false;
+
+        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        {
+            if (usuario.PermisoUsu[i].IdPermiso == 34)
+            {
+                i = usuario.PermisoUsu.Count;
+
+                uxAceptar.Visible = false;
+                _presentador = new Presentador.Reportes.ReporteEmpleadoPaquetePresenter(this);
+                _presentador.BuscaCargo();
+                uxAceptar.Visible = true;
+
+                permiso = true;
+
+            }
+        }
+
+        if (permiso == false)
+        {
+            Response.Redirect(paginaSinPermiso);
+        }
 
     }
 
