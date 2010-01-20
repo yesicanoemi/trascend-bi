@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Propuesta.Contrato
 {
@@ -35,6 +36,11 @@ namespace Presentador.Propuesta.Contrato
         //Label LabelParam { get; set; }
         ListBox ListaEmpleados { get; set; }
         TextBox TextParametro { get; set; }
+        GridView GridPropuesta { get; set; }
+        ObjectContainerDataSource ObtenerValorDataSource { get; set; }
+        GridView GridPropuestaMuest { get; set; }
+        ObjectContainerDataSource ObtenerValorMuestra { get; set; }
+
 
        
     }

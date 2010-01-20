@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Propuesta.Contrato;
 using Presentador.Propuesta.Vistas;
 using Core.LogicaNegocio.Entidades;
+using Microsoft.Practices.Web.UI.WebControls;
 
 public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsultarPropuesta
 {
@@ -150,6 +151,26 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return uxParametro; }
         set { uxParametro = value; }
     }
+    public GridView GridPropuesta
+    {
+        get { return uxPropuestaConsultada; }
+        set { throw new System.NotImplementedException(); }
+    }
+    public GridView GridPropuestaMuest
+    {
+        get { return uxPropuestaMuestra; }
+        set { throw new System.NotImplementedException(); }
+    }
+    public ObjectContainerDataSource ObtenerValorDataSource
+    {
+        get { return uxObject; }
+        set { uxObject = value; }
+    }
+    public ObjectContainerDataSource ObtenerValorMuestra
+    {
+        get { return uxObject2; }
+        set { uxObject2 = value; }
+    }
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -186,19 +207,14 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         uxBotonAceptar.Visible = false;
-       // uxBotonAceptar2.Visible = true;
-        _presenter.BotonSeleccionTipo();    
+        _presenter.AccionBusqueda();   
     }
     protected void uxBotonAceptar2_Click(object sender, EventArgs e)
     {
         _presenter.BotonAccionConsulta();
     }
-
-    protected void VerFecha(object sender, EventArgs e)
+    protected void Consult(object sender, GridViewSelectEventArgs e)
     {
-        if (uxListaOpciones.SelectedItem.Value.Equals('2'))// es fecha
-        { 
-            
-        }
+        _presenter.CargaDatosPagina(int.Parse(uxPropuestaConsultada.DataKeys[e.NewSelectedIndex].Value.ToString()));
     }
 }

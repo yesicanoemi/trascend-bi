@@ -7,7 +7,6 @@ using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Fabricas;
 using System.Net;
 using Core.LogicaNegocio.Excepciones.Propuesta.LogicaNegocio;
-
 namespace Presentador.Propuesta.Vistas
 {
     public class ConsultarPropuestaPresentador
@@ -33,109 +32,13 @@ namespace Presentador.Propuesta.Vistas
         /// </summary>
         public void BotonSeleccionTipo()
         {
-            #region AtributosDeLaPagina
-            /*
-            if (_vista.opcion.SelectedIndex == 0)
-            {
-
-                _vista.opcion.Visible = false;
-                _vista.LabelTipoC.Visible = false;
-                //_vista.SeleccionOpcion.Visible = true;
-                _vista.LabelSelec.Visible = true;
-
-            }
-
-            if (_vista.opcion.SelectedIndex == 1)
-            {
-
-                _vista.opcion.Visible = false;
-                //_vista.SeleccionOpcion.Visible = true;
-
-            }
-
-            if (_vista.opcion.SelectedIndex == 2)
-            {
-                //uxTitulo.Text = "Opcion 2";
-                //uxSeleccion.Visible = true;
-                //uxBotonAceptar2.Visible = true;
-                //uxBotonAceptar.Visible = false;
-                //uxTitulo.Visible = false;
-            }
-              */
-            #endregion
 
             #region Atributos De La Pagina 2
 
             #endregion
 
-            #region SolicitudServicios
-            /*
-
-            if ( _vista.opcion.SelectedIndex == 0 ) // PROPUESTA EN ESPERA
-            {
-                string estado = "En Espera";
-                try
-                {
-                    int i = 0;
-                    propuesta = BuscarPorTitulo(estado);
-
-                    for ( i = 0; i < propuesta.Count; i++ )
-                    {
-                        _vista.SeleccionOpcion.Items.Add( propuesta.ElementAt( i ).Titulo );
-
-                    }
-                    _vista.SeleccionOpcion.DataBind();
-                }
-                catch ( WebException e )
-                {
-                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
-                }
-            }
-
-            if (_vista.opcion.SelectedIndex == 1)// PROPUESTA APROBADA
-            {
-                string estado = "Aprobada";
-                try
-                {
-                    int i = 0;
-                    propuesta = BuscarPorTitulo(estado);
-                    for ( i = 0; i < propuesta.Count; i++ )
-                    {
-
-                        _vista.SeleccionOpcion.Items.Add( propuesta.ElementAt(i).Titulo );
-
-                    }
-                    _vista.SeleccionOpcion.DataBind();
-                }
-                catch (WebException e)
-                {
-                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
-                }
-            }
-
-            if (_vista.opcion.SelectedIndex == 2)// PROPUESTA RECHAZADA
-            {
-                string estado = "Rechazada";
-                try
-                {
-                    int i = 0;
-                    propuesta = BuscarPorTitulo(estado);
-                    for (i = 0; i < propuesta.Count; i++)
-                    {
-
-                        _vista.SeleccionOpcion.Items.Add(propuesta.ElementAt(i).Titulo);
-
-                    }
-                    _vista.SeleccionOpcion.DataBind();
-                }
-                catch (WebException e)
-                {
-                    throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
-                }
-            }*/
-
-            #endregion
-            #region Solicitud Servicios 2
+           
+            #region Solicitud Servicios 
 
 
             #endregion
@@ -240,35 +143,16 @@ namespace Presentador.Propuesta.Vistas
         /// <summary>
         /// Método que se encarga de Dibujar en la página los resultados obtenidos
         /// </summary>
-        private void CargaDatosPagina(IList<Core.LogicaNegocio.Entidades.Propuesta> propuesta)
-        {/*
-            int i = 0;
-            int j = 0;
-            for ( i = 0; i < propuesta.Count; i++ )
-            {
-                if ( propuesta.ElementAt(i).Titulo.Equals( _vista.SeleccionOpcion.SelectedItem.Text ) )
-                {
-                    // Se Llenan Los Campos
-                    _vista.LabelCargP.Text       = propuesta.ElementAt(i).CargoReceptor;
-                    _vista.LabelFechaFiP.Text    = propuesta.ElementAt(i).FechaFin.ToString();
-                    _vista.LabelFechaIP.Text     = propuesta.ElementAt(i).FechaInicio.ToString();
-                    _vista.LabelFFirmP.Text      = propuesta.ElementAt(i).FechaFirma.ToString();
-                    _vista.LabelMontP.Text       = propuesta.ElementAt(i).MontoTotal.ToString();
-                    _vista.LabelRecepP.Text      = string.Concat(propuesta.ElementAt(i).NombreReceptor + " ",
-                                                                      propuesta.ElementAt(i).ApellidoReceptor);
-                    _vista.LabelTotalHorasP.Text = propuesta.ElementAt(i).TotalHoras.ToString();
-                    _vista.LabelTP.Text          = propuesta.ElementAt(i).Titulo;
-                    _vista.LabelVP.Text          = propuesta.ElementAt(i).Version;
+        public void CargaDatosPagina(int IdPropuesta)
+        {
+            int Opcion = 2;
+            string parametro = Convert.ToString(IdPropuesta);
+            propuesta = LlenarListaParametro(Opcion, parametro);
+            _vista.ObtenerValorMuestra.DataSource = propuesta;
+            _vista.GridPropuesta.Visible = false;
 
-                    for ( j = 0; j < propuesta.ElementAt(i).EquipoTrabajo.Count; j++ )
-                    {
-                        _vista.ListaEmpleados.Items.Add
-                            ( propuesta.ElementAt(i).EquipoTrabajo.ElementAt(j).Nombre );
-                    }
-
-                }
-            }
-        */}
+           
+        }
 
         /// <summary>
         /// Metodo que busca las propuestas
@@ -289,9 +173,16 @@ namespace Presentador.Propuesta.Vistas
 
         public void AccionBusqueda()
         {
-            int OpcionSeleccion;
-            OpcionSeleccion = _vista.ListOpcion.SelectedIndex;
-            string parametro = _vista.TextParametro.Text;
+                string opciont = _vista.ListOpcion.SelectedItem.Value;
+                int Opcion = Convert.ToInt32(opciont);
+                string Parametro = _vista.TextParametro.Text;
+                propuesta = LlenarListaParametro(Opcion, Parametro);   
+            if(propuesta!=null)
+            {
+                _vista.ObtenerValorDataSource.DataSource = propuesta;
+            }
+            _vista.ListOpcion.Visible = false;
+            _vista.TextParametro.Visible = false;
         }
 
         private IList<Core.LogicaNegocio.Entidades.Propuesta>
@@ -299,9 +190,11 @@ namespace Presentador.Propuesta.Vistas
         {
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
             consultar = FabricaComandosPropuesta.CrearComandoConsultar(Opcion, parametro);
-               propuesta = consultar.Ejecutar();
-               return propuesta;
+            propuesta = consultar.Ejecutar();
+            return propuesta;
         }
+
+        
 
         #endregion
     }

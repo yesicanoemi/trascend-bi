@@ -26,7 +26,7 @@
                         <table>
                             <tr>
                                 <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
-                                <td><asp:DropDownList ID="opcion1" runat="server">
+                                <td><asp:DropDownList ID="opcion1" runat="server" Visible="false">
                                     <asp:ListItem>Propuesta Version En Espera</asp:ListItem>
                                     <asp:ListItem>Propuesta Version Aprobada</asp:ListItem>
                                     <asp:ListItem>Propuesta Version Rechazada</asp:ListItem>
@@ -41,19 +41,52 @@
                                 <td><asp:TextBox ID="uxParametro" runat="server"></asp:TextBox></td>
                             </tr>
                             <tr>
-                                <td><asp:RadioButtonList id="uxListaOpciones" runat="server" OnSelectedIndexChanged="VerFecha">
+                                <td><asp:RadioButtonList id="uxListaOpciones" runat="server">
                                         <asp:ListItem Value="1">Nombre Propuesta</asp:ListItem>
-                                        <asp:ListItem Value="2">Intervalo De Fecha</asp:ListItem>
+                                        <asp:ListItem Value="2">Codigo de Propuesta</asp:ListItem>
                                         <asp:ListItem Value="3">Rif Cliente</asp:ListItem>
                                         <asp:ListItem Value="4">Nombre Cliente</asp:ListItem>
-                                        <asp:ListItem>Identificador Cliente</asp:ListItem>
+                                        
                                     </asp:RadioButtonList>
                                 </td>
-                                <td><asp:TextBox ID="uxFechaI" runat="server"></asp:TextBox>
-                                    <asp:TextBox ID="uxFechaF" runat="server"></asp:TextBox>
+                                <td><asp:TextBox ID="uxFechaI" runat="server" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="uxFechaF" runat="server" Visible="false"></asp:TextBox>
                                     <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                        onclick="uxBotonAceptar_Click" /></td>
-                            </tr>
+                                        onclick="uxBotonAceptar_Click" />
+                                </td>
+                           </tr>
+                           <tr>
+                                  <td><asp:GridView runat = "server" ID="uxPropuestaConsultada" DataSourceID="uxObject" AutoGenerateColumns = "false" 
+                                    DataKeyNames = "ID" AutoGenerateSelectButton="true" AllowPaging = "true" PageSize = "8" ShowFooter = "true" Width = "400" OnSelectedIndexChanging = "Consult"   >
+                                        <Columns>
+                                                
+                                                <asp:BoundField HeaderText="ID" DataField="ID" Visible="false" />
+                                                 <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText="    "  />
+                                                <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+                                                 <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText="    "  />
+                                                <asp:BoundField HeaderText="Monto"  DataField="MontoTotal"   />
+                
+                                        </Columns>
+                                         <EmptyDataTemplate>
+                                                    <center>
+                                                        <span>No hay data cargada</span>
+                                                    </center>
+                                                </EmptyDataTemplate>             
+            
+                                    </asp:GridView>
+                                </td>
+                           </tr>
+                           <tr></tr>
+                           <tr>
+                           <td></td>
+                           </tr>
+             
+            
+                           
                             <tr>
                                 <td><asp:Label ID="LabelTitulo" runat="server" Text = "Titulo" Visible ="False"  /></td>
                                 <td><asp:Label ID="LabelTituloPropuesta" runat="server" Visible ="False" /></td>    
@@ -95,8 +128,41 @@
                                 <td><asp:Listbox ID="ListEquipoP" runat="server" Visible ="False" /></td>
                             </tr>
                         </table>
+                        <asp:GridView runat = "server" ID="uxPropuestaMuestra" DataSourceID="uxObject2" AutoGenerateColumns = "false" 
+                                    DataKeyNames = "ID" AutoGenerateSelectButton="false" AllowPaging = "true" PageSize = "8" ShowFooter = "true" Width = "400" >
+                                        <Columns>
+                                                
+                                                <asp:BoundField HeaderText="ID" DataField="ID" Visible="false" />
+                                                <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+                                                <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText=" Ult Version"  DataField="Version"   />
+                                                <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText=" Firma"  DataField="FechaFirma"   />
+                                                <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText=" Receptor"  DataField="nombreReceptor"   />
+                                                
+                                                <asp:BoundField HeaderText=""  DataField="apellidoReceptor"   />
+                                                <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText=" Fecha Inicio"  DataField="fechaInicio"   />
+                                                <asp:BoundField />
+                                                <asp:BoundField />
+                                                <asp:BoundField HeaderText=" Fecha Fin"  DataField="fechaFin"   />
+                
+                                        </Columns>
+                                         <EmptyDataTemplate>
+                                                    <center>
+                                                        <span>No hay data cargada</span>
+                                                    </center>
+                                                </EmptyDataTemplate>             
+            
+                                    </asp:GridView>
                      </form>
-                        
+                         <pp:objectcontainerdatasource runat="server" ID="uxObject" DataObjectTypeName="Core.LogicaNegocio.Entidades.Propuesta" />
+                         <pp:objectcontainerdatasource runat="server" ID="uxObject2" DataObjectTypeName="Core.LogicaNegocio.Entidades.Propuesta" />
                     </p> 
                  </div> 
               </div>

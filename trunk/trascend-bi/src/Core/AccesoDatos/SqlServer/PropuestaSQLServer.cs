@@ -471,15 +471,15 @@ namespace Core.AccesoDatos.SqlServer
                      conexion = SqlHelper.ExecuteReader
                         (GetConnection(), "CpIdProp", ParametroBusqueda);
                 }
-                if (Opcion == 3)// Nombre Cliente
+                if (Opcion == 3)// Rif Cliente
                 {
                      conexion = SqlHelper.ExecuteReader
-                        (GetConnection(), "ConsultarPropuesta", ParametroBusqueda);
+                        (GetConnection(), "CPCliente", ParametroBusqueda);
                 }
                 if (Opcion == 4)// Id Cliente
                 {
                      conexion = SqlHelper.ExecuteReader
-                        (GetConnection(), "ConsultarPropuesta", ParametroBusqueda);
+                        (GetConnection(), "CpNomCli", ParametroBusqueda);
                 }
                 int i = 0;
                     while (conexion.Read())
