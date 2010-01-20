@@ -230,6 +230,7 @@
     <Compile Include="Pruebas\PrubaCliente.cs" />
     <Compile Include="Pruebas\PruebaEliminarUsuario.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
+    <Compile Include="Pruebas\PruebaReporteGartoAnual.cs" />
     <Compile Include="Pruebas\PruebasCargo.cs" />
     <Compile Include="Pruebas\PruebasEmpleado.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
