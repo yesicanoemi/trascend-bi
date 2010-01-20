@@ -15,6 +15,7 @@ namespace Presentador.Cargo.Contrato
         TextBox SueldoMaximo { get; set; }
         TextBox VigenciaSueldo { get; set; }
         Label LabelError { get; set; }
+        GridView VistaCargo { get; set; }
         #endregion
 
         #region Metodos

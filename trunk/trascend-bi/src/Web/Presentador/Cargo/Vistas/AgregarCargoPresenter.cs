@@ -54,9 +54,8 @@ namespace Presentador.Cargo.Vistas
 
                     ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
                     ComandoIngresar.Ejecutar();
-                    LimpiarFormulario();
-
-                    _vista.Mensaje("Se agrego el cargo con exito =)");
+                    
+                    _vista.Mensaje("El cargo se ingreso satisfactoriamente con los siguientes datos:");
                 }
                 catch(FormatException e)
                 {
@@ -76,7 +75,47 @@ namespace Presentador.Cargo.Vistas
                 _vista.Mensaje("Debe rellenar todos los campos");
             }
         }
-        
+
+        /// <summary>
+        /// Metodo para carga el cargo introducido en el gridview
+        /// </summary>
+        public void CargarVistaCargo()
+        {
+            try
+            {
+                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
+                cargo.Nombre = _vista.NombreCargo.Text;
+
+                Core.LogicaNegocio.Comandos.ComandoCargo.Consultar ComandoConsultar;
+
+                ComandoConsultar =
+                    Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoConsultar(cargo);
+
+                Core.LogicaNegocio.Entidades.Cargo cargoRetorno = ComandoConsultar.Ejecutar();
+
+                List<Core.LogicaNegocio.Entidades.Cargo> listaCargo = new List<Core.LogicaNegocio.Entidades.Cargo>();
+
+                listaCargo.Add(cargoRetorno);
+
+                _vista.VistaCargo.DataSource = listaCargo;
+                _vista.VistaCargo.DataBind();
+
+                LimpiarFormulario();
+            }
+            catch (FormatException e)
+            {
+                _vista.Mensaje("Error en el formato de campos");
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+            catch (Exception e)
+            {
+                _vista.Mensaje(e.Message);
+            }
+
+        }
 
         /// <summary>
         /// Metodo para limpiar los elementos de la interfaz
@@ -88,8 +127,6 @@ namespace Presentador.Cargo.Vistas
             _vista.SueldoMinimo.Text = campoVacio;
             _vista.SueldoMaximo.Text = campoVacio;
             _vista.VigenciaSueldo.Text = campoVacio;
-            _vista.LabelError.Text = campoVacio;
-            _vista.LabelError.Visible = false;
         }
 
         /// <summary>
@@ -114,6 +151,16 @@ namespace Presentador.Cargo.Vistas
                 b = false;
 
             return b;
+        }
+
+        /// <summary>
+        /// Metodo para transformar una fecha en ToShortDate 
+        /// </summary>
+        /// <param name="fecha">fecha que se quiere transformar</param>
+        /// <returns>ToShortDate de una vez en string</returns>
+        public string FormatearFechaParaMostrar(DateTime fecha)
+        {
+            return fecha.ToShortDateString();
         }
         #endregion
     }

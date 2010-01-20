@@ -78,6 +78,12 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
         get { return uxLabelError; }
         set { uxLabelError = value; }
     }
+
+    public GridView VistaCargo
+    {
+        get { return uxVistaCargo; }
+        set { uxVistaCargo = value; }
+    }
     #endregion
 
 
@@ -89,12 +95,35 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
     {
         LabelError.Visible = false;
         _presentador.IngresarCargo();
+        _presentador.CargarVistaCargo();
     }
 
     public void Mensaje(string mensaje)
     {
         LabelError.Text = mensaje;
         LabelError.Visible = true;
+    }
+
+    protected void uxVistaCargo_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.DataItem != null)
+        {
+            string s = e.Row.DataItem.ToString();
+
+            uxVistaCargo.Columns[0].ItemStyle.Width = s.Length;
+            uxVistaCargo.Columns[0].ItemStyle.Wrap = false;
+        }
+
+    }
+
+    /// <summary>
+    /// Metodo que envia una fecha(DateTime) al presentador para ser transformada en ShortDate
+    /// </summary>
+    /// <param name="fecha">fecha(DateTime) a ser transformada</param>
+    /// <returns>Devuelve una fecha(ShortDate) de una vez en string</returns>
+    protected string FormatearFecha(DateTime fecha)
+    {
+        return _presentador.FormatearFechaParaMostrar(fecha);
     }
     #endregion
 
