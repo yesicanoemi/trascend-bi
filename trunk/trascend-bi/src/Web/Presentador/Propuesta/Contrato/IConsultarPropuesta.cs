@@ -9,7 +9,8 @@ namespace Presentador.Propuesta.Contrato
     public interface IConsultarPropuesta
     {
         DropDownList opcion { get; set; }
-        DropDownList SeleccionOpcion { get; set; }
+        RadioButtonList ListOpcion { get; set; }
+        //DropDownList SeleccionOpcion { get; set; }
         Label LabelSelec { get; set; }
         Label LabelTipoC { get; set; }
         Label LabelT { get; set; }
@@ -31,8 +32,9 @@ namespace Presentador.Propuesta.Contrato
         Label LabelMont { get; set; }
         Label LabelMontP { get; set; }
         Label LabelEquip { get; set; }
-        Label LabelParam { get; set; }
+        //Label LabelParam { get; set; }
         ListBox ListaEmpleados { get; set; }
+        TextBox TextParametro { get; set; }
 
        
     }

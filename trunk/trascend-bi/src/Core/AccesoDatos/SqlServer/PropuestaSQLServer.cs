@@ -385,24 +385,103 @@ namespace Core.AccesoDatos.SqlServer
             return propuesta;
            }
 
+
+        /// <summary>
+        /// Metodo Anterior de Consulta de Propuesta Usado Por Factura y Gasto
+        /// </summary>
+        /// <param name="estado">Estado Aprobada de La Version</param>
+        /// <returns>Lista de Propeusta con version Aprobada</returns>
+        public IList<Propuesta> ConsultarPropuesta(string estado)
+        {
+            try
+            {
+                SqlParameter EstadoP = new SqlParameter();
+
+                EstadoP = new SqlParameter("@Estado", SqlDbType.VarChar);
+
+                EstadoP.Value = estado;
+
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuesta", EstadoP);
+                int i = 0;
+
+                while (conexion.Read())
+                {
+
+                    Propuesta _Propuesta = new Propuesta();
+                    _Propuesta.Titulo = (string)conexion["Titulo"];
+                    _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
+                    _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
+                    _Propuesta.FechaInicio = (DateTime)conexion["FechaInicio"];
+                    _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
+                    _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
+                    _Propuesta.Id = (int)conexion["IdPropuesta"];
+                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+
+                    #region Busqueda del Receptor
+                    int j = 0;
+                    List<string> ListR = new List<string>();
+                    ListR = BuscarReceptor(_Propuesta.Id);
+                    for (j = 0; j < ListR.Count; j++)
+                    {
+                        _Propuesta.NombreReceptor = ListR.ElementAt(j);
+                        j++;
+                        _Propuesta.ApellidoReceptor = ListR.ElementAt(j);
+                        j++;
+                        _Propuesta.CargoReceptor = ListR.ElementAt(j);
+                    }
+
+                    #endregion
+                    ListaPropuesta.Insert(i, _Propuesta);
+                    i++;
+
+                }
+
+                return ListaPropuesta;
+
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarPropuestaBDException("Error En acceso a Base de Datos", e);
+            }
+        }
+
         /// <summary>
         /// Metodo para consultar las propuestas
         /// </summary>
         /// <param name="propuesta"></param>
         /// <returns>Lista de Propuesta</returns>
-        public IList<Propuesta> ConsultarPropuesta(string estado)
+        public IList<Propuesta> ConsultarPropuestaNueva(int Opcion, string parametro)
         {
             try
             {
-                    SqlParameter EstadoP = new SqlParameter();
+                SqlParameter ParametroBusqueda = new SqlParameter();
 
-                    EstadoP = new SqlParameter("@Estado", SqlDbType.VarChar);
+                ParametroBusqueda = new SqlParameter("@Parametro", SqlDbType.VarChar);
 
-                    EstadoP.Value = estado;
-                
-                    DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarPropuesta",EstadoP);
-                    int i = 0;
-           
+                ParametroBusqueda.Value = parametro;
+                DbDataReader conexion = null;
+
+                if (Opcion == 1) // Nombre de la Propuesta
+                {
+                     conexion = SqlHelper.ExecuteReader
+                        (GetConnection(), "CPNombre", ParametroBusqueda);  
+                }
+                if (Opcion == 2) // Id de la Propuesta
+                {
+                     conexion = SqlHelper.ExecuteReader
+                        (GetConnection(), "CpIdProp", ParametroBusqueda);
+                }
+                if (Opcion == 3)// Nombre Cliente
+                {
+                     conexion = SqlHelper.ExecuteReader
+                        (GetConnection(), "ConsultarPropuesta", ParametroBusqueda);
+                }
+                if (Opcion == 4)// Id Cliente
+                {
+                     conexion = SqlHelper.ExecuteReader
+                        (GetConnection(), "ConsultarPropuesta", ParametroBusqueda);
+                }
+                int i = 0;
                     while (conexion.Read())
                     {
 

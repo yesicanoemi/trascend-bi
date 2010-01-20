@@ -26,8 +26,7 @@
                         <table>
                             <tr>
                                 <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
-                                <td><asp:DropDownList ID="opcion1" runat="server" 
-                                        onselectedindexchanged="opcion1_SelectedIndexChanged">
+                                <td><asp:DropDownList ID="opcion1" runat="server">
                                     <asp:ListItem>Propuesta Version En Espera</asp:ListItem>
                                     <asp:ListItem>Propuesta Version Aprobada</asp:ListItem>
                                     <asp:ListItem>Propuesta Version Rechazada</asp:ListItem>
@@ -38,19 +37,22 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                <td><asp:Label ID="uxOpcionCheckBox" runat="server" Text = "Seleccione" /></td>
+                                <td><asp:TextBox ID="uxParametro" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td><asp:RadioButtonList id="uxListaOpciones" runat="server" OnSelectedIndexChanged="VerFecha">
+                                        <asp:ListItem Value="1">Nombre Propuesta</asp:ListItem>
+                                        <asp:ListItem Value="2">Intervalo De Fecha</asp:ListItem>
+                                        <asp:ListItem Value="3">Rif Cliente</asp:ListItem>
+                                        <asp:ListItem Value="4">Nombre Cliente</asp:ListItem>
+                                        <asp:ListItem>Identificador Cliente</asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </td>
+                                <td><asp:TextBox ID="uxFechaI" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="uxFechaF" runat="server"></asp:TextBox>
+                                    <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                         onclick="uxBotonAceptar_Click" /></td>
-                            </tr>
-                            <tr>
-                                <td><asp:Label ID="LabelParametro" runat="server" Text = "Introduzca Parametro" Visible = "false"  /></td>
-                                <td><asp:DropDownList ID="uxSeleccion" runat="server" Visible="false">
-                                    </asp:DropDownList></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><asp:Button ID="uxBotonAceptar2" runat="server" Text="Aceptar" Visible="False" 
-                                        onclick="uxBotonAceptar2_Click" /></td>
                             </tr>
                             <tr>
                                 <td><asp:Label ID="LabelTitulo" runat="server" Text = "Titulo" Visible ="False"  /></td>

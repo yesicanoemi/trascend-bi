@@ -28,9 +28,9 @@ namespace Core.LogicaNegocio.Fabricas
         /// </summary>
         /// <param name="entidad">Entidad Propuesta con los datos de consulta</param>
         /// <returns>Comando Consultar de la entidad propuesta</returns>
-        public static Consultar CrearComandoConsultar(string estado)
+        public static Consultar CrearComandoConsultar(int Opcion, string parametro)
         {
-            return new Consultar(estado);
+            return new Consultar(Opcion,parametro);
         }
 
         public static ConsultarPropuestasxEmision CrearComandoConsultarPropuestasxEmision()

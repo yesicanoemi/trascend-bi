@@ -18,11 +18,17 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return opcion1; } 
         set { opcion1 = value; }
     }
-    public DropDownList SeleccionOpcion
+    public RadioButtonList ListOpcion
+    {
+        get { return uxListaOpciones;  }
+        set { uxListaOpciones = value; }
+    }
+   
+    /*public DropDownList SeleccionOpcion
     {
         get { return uxSeleccion; }
         set { uxSeleccion = value; }
-    }
+    }*/
     public Label LabelSelec
     {
         get { return LabelSeleccion; }
@@ -128,16 +134,21 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return LabelEquipo; }
         set { LabelEquipo = value; }
     }
-    public Label LabelParam
+    /*public Label LabelParam
     {
         get { return LabelParametro; }
         set { LabelParametro = value; }
-    }
+    }*/
 
     public ListBox ListaEmpleados
     {
         get { return ListEquipoP; }
         set { ListEquipoP = value; }
+    }
+    public TextBox TextParametro
+    {
+        get { return uxParametro; }
+        set { uxParametro = value; }
     }
     #endregion
 
@@ -175,15 +186,19 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         uxBotonAceptar.Visible = false;
-        uxBotonAceptar2.Visible = true;
+       // uxBotonAceptar2.Visible = true;
         _presenter.BotonSeleccionTipo();    
     }
     protected void uxBotonAceptar2_Click(object sender, EventArgs e)
     {
         _presenter.BotonAccionConsulta();
     }
-    protected void opcion1_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
+    protected void VerFecha(object sender, EventArgs e)
+    {
+        if (uxListaOpciones.SelectedItem.Value.Equals('2'))// es fecha
+        { 
+            
+        }
     }
 }

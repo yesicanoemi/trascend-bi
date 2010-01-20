@@ -34,13 +34,13 @@ namespace Presentador.Propuesta.Vistas
         public void BotonSeleccionTipo()
         {
             #region AtributosDeLaPagina
-
+            /*
             if (_vista.opcion.SelectedIndex == 0)
             {
 
                 _vista.opcion.Visible = false;
                 _vista.LabelTipoC.Visible = false;
-                _vista.SeleccionOpcion.Visible = true;
+                //_vista.SeleccionOpcion.Visible = true;
                 _vista.LabelSelec.Visible = true;
 
             }
@@ -49,7 +49,7 @@ namespace Presentador.Propuesta.Vistas
             {
 
                 _vista.opcion.Visible = false;
-                _vista.SeleccionOpcion.Visible = true;
+                //_vista.SeleccionOpcion.Visible = true;
 
             }
 
@@ -61,9 +61,15 @@ namespace Presentador.Propuesta.Vistas
                 //uxBotonAceptar.Visible = false;
                 //uxTitulo.Visible = false;
             }
+              */
+            #endregion
+
+            #region Atributos De La Pagina 2
+
             #endregion
 
             #region SolicitudServicios
+            /*
 
             if ( _vista.opcion.SelectedIndex == 0 ) // PROPUESTA EN ESPERA
             {
@@ -126,7 +132,11 @@ namespace Presentador.Propuesta.Vistas
                 {
                     throw new ConsultarPropuestaLogicaNException("Error en Capa de Negocio", e);
                 }
-            }
+            }*/
+
+            #endregion
+            #region Solicitud Servicios 2
+
 
             #endregion
         }
@@ -136,7 +146,7 @@ namespace Presentador.Propuesta.Vistas
         /// y presenta la propuesta seleccionada
         /// </summary>
         public void BotonAccionConsulta()
-        {
+        {/*
             #region Atributos de la Pagina
             #region Activar Campos
 
@@ -224,13 +234,14 @@ namespace Presentador.Propuesta.Vistas
             #endregion
 
             #endregion
+        */
         }
 
         /// <summary>
         /// Método que se encarga de Dibujar en la página los resultados obtenidos
         /// </summary>
         private void CargaDatosPagina(IList<Core.LogicaNegocio.Entidades.Propuesta> propuesta)
-        {
+        {/*
             int i = 0;
             int j = 0;
             for ( i = 0; i < propuesta.Count; i++ )
@@ -257,7 +268,7 @@ namespace Presentador.Propuesta.Vistas
 
                 }
             }
-        }
+        */}
 
         /// <summary>
         /// Metodo que busca las propuestas
@@ -265,15 +276,31 @@ namespace Presentador.Propuesta.Vistas
         /// <returns>devuelve objeto de tipo lista de propuestas</returns>
         public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo(string estado)
         {
-
+            /*
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
 
             consultar = FabricaComandosPropuesta.CrearComandoConsultar( estado );
 
             propuesta = consultar.Ejecutar();
+            */
+            return null; //propuesta;
 
-            return propuesta;
+        }
 
+        public void AccionBusqueda()
+        {
+            int OpcionSeleccion;
+            OpcionSeleccion = _vista.ListOpcion.SelectedIndex;
+            string parametro = _vista.TextParametro.Text;
+        }
+
+        private IList<Core.LogicaNegocio.Entidades.Propuesta>
+            LlenarListaParametro(int Opcion , string parametro)
+        {
+            Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
+            consultar = FabricaComandosPropuesta.CrearComandoConsultar(Opcion, parametro);
+               propuesta = consultar.Ejecutar();
+               return propuesta;
         }
 
         #endregion
