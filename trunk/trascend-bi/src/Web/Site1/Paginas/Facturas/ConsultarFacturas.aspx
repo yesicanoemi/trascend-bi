@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarFacturas.aspx.cs" Inherits="Paginas_Facturas_ConsultarFacturas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -27,211 +28,109 @@
          
  
           <div class="features_overview_right"> 
-            <h3>Consultar Facturas</h3>
-            <p class="large">Introduzca la informacion a continuación</p>
-            <asp:MultiView ID="uxMultiViewPropuesta" runat="server" ActiveViewIndex="0">
-                <asp:View ID="uxConsultarPropuesta" runat="server">
-                    <p><div style="background-color:InfoBackground">Consultar Factura</div>
-                        <p>&nbsp;</p>
-                        <p>Introduzca nombre o Código de Propuesta:</p>
-                        <p>
-                            <form id="Form1" runat="server">
-                                <table>
-                                    <tr>
-                                        <td> 
-                                            <asp:Label ID="uxLabelNomProp" runat="server" 
-                                                Text="<%$Resources:DSU, NombrePropuestaFactura%>"></asp:Label>
-                                        </td>
-                                        <td> 
-                                            <asp:TextBox ID="uxTituloPropuesta" runat="server"></asp:TextBox>
-                                        </td>
-                                       
-                                           
-                                        <td>
-                                            <asp:Button ID="Button1" runat="server" Text="Button" onclick="uxConsultarxNombreProp_Click" />
-                                        </td>
-                                       
-                                           
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>
-                                            &nbsp;</td>
-                                    </tr>
-                                </table>
-                               
-                              <table>
-                                    <tr>
-                                        <td> 
-                                            <asp:Label ID="Label1" runat="server" 
-                                                Text="<%$Resources:DSU, NumPropFact%>"></asp:Label>
-                                        </td>
-                                        <td> 
-                                            <asp:TextBox ID="uxNumProp" runat="server"></asp:TextBox>
-                                        </td>
-                                       
-                                           
-                                        <td>
-                                            <asp:Button ID="Button2" runat="server" Text="Button" onclick="uxConsultarxNumProp_Click" />
-                                        </td>
-                                       
-                                           
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>
-                                            &nbsp;</td>
-                                    </tr>
-                                </table> 
-                            </form>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            
-                        </p>
-                        
-                       
-                    </p>
+            <h3>Agregar Facturas</h3>
+            <p class="large">Introduzca la informacion de la propuesta a buscar:</p>
+            <div>
+                <table width="448">
+                    <asp:radiobuttonlist id="uxRadioButton" runat="server" TextAlign ="Right">
+
+                      <asp:listitem id="PorNombre" runat="server" value="Buscar por Nombre" />
+
+                      <asp:listitem id="PorID" runat="server" value="Buscar por ID" />
+
+                    </asp:radiobuttonlist>
+
+                </table>
+                
+                
+                
+                <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
+                <asp:Button ID="uxBusquedaBoton"
+                    runat="server" Text="Buscar" onclick="uxBusquedaBoton_Click" />
                     
-                </asp:View>
-                <asp:View ID="uxAgregarFactura" runat="server">
-                    <p>
-                        <p>
-                        </p>
-                        <p class="large">
-                            <form ID="Form2" runat="server">
-                            <table style="width:100%;">
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div style="background-color:InfoBackground">
-                                            Facturación</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="uxLabelDescProp" runat="server" 
-                                            Text="<%$Resources:DSU, DescripcionPropuestaFactura%>"></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="uxDescProp" runat="server" TextMode="MultiLine"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;</td>
-                                    <td>
-                                        &nbsp;</td>
-                                </tr>
-                            </table>
-                            </form>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                        </p>
-                    </p>
-                </asp:View>
-            </asp:MultiView>
-            
-            
-                           
+                    
+                
+                
+            </div>
+              <asp:Label ID="Label1" runat="server" Text="Propuestas:" Font-Bold="True"></asp:Label>
+            <div>
+            <asp:GridView ID="uxGridPropuesta" runat="server"
+                AutoGenerateColumns="false"
+                         cellpadding="10"
+                         cellspacing="5" >
+                         <RowStyle HorizontalAlign="Center" />
+                         <Columns >
+                                   <asp:BoundField HeaderText="ID" DataField="ID" />
+                                   <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+                                   <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" />                                                         
+                         </Columns>
+                         <EmptyDataTemplate>
+                               <center>
+                                    <span>No hay data cargada</span>
+                               </center>
+                         </EmptyDataTemplate>   
+                </asp:GridView>
+ 
+                </div>
+                
+                <div>
+                    <asp:Label ID="Label2" runat="server" Text="Facturas Emitidas:" 
+                        Font-Bold="True"></asp:Label>
+                </div>
+                
+                <div>
+                <asp:GridView ID="uxGridFacturas" runat="server"
+                AutoGenerateColumns="false"
+                         cellpadding="10"
+                         cellspacing="5" Font-Size=Smaller>
+                         
+                         <Columns >
+                                   <asp:BoundField HeaderText="Numero Factura" DataField="Numero" />
+                                   <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+                                   <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />       
+                                   <asp:BoundField HeaderText="Porcentaje Pagado" DataField="Procentajepagado" />                                    
+                                   <asp:BoundField HeaderText="Fecha de Ingresp" DataField="Fechaingreso" /> 
+                                   <asp:BoundField HeaderText="Fecha de Pago" DataField="Fechapago" /> 
+                                   <asp:BoundField HeaderText="Estado" DataField="Estado"/> 
+                                                                                     
+                         </Columns>
+                         <EmptyDataTemplate>
+                               <center>
+                                    <span>No hay data cargada</span>
+                               </center>
+                         </EmptyDataTemplate>    
+                </asp:GridView>
+                  </div>
+                  <div>
+                <asp:Label ID="Label3" runat="server" Text="Porcentaje Pagado: "></asp:Label>
+             
+              <asp:Label ID="uxLabelPorcentajePagado" runat="server" Text=""></asp:Label>
+              </div>
+              <div>
+                <asp:Label ID="Label4" runat="server" Text="Total Pagado: "></asp:Label>
+             
+              <asp:Label ID="uxLabelTotalPagado" runat="server" Text=""></asp:Label>
+              </div>
+              
+              <div>
+                <asp:Label ID="Label5" runat="server" Text="Porcentaje Restante: "></asp:Label>
+             
+              <asp:Label ID="uxLabelPorcentajeRestante" runat="server" Text=""></asp:Label>
+              </div>
+              <div>
+                <asp:Label ID="Label7" runat="server" Text="Monto Restante: "></asp:Label>
+             
+              <asp:Label ID="uxLabelMontoRestante" runat="server" Text=""></asp:Label>
+              </div>
+                  
+              
+              
           </div> 
         </div> 
               </div>
         </div> 
 			</div> 
 		</div> 
+    </form>
 </asp:Content>
 

@@ -11,29 +11,58 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
 
     ConsultarFacturaPresenter _presenter;
 
-    public MultiView MultiViewPropuesta
+    public RadioButtonList RadioButtons
     {
-        get { return uxMultiViewPropuesta; }
-        set { throw new System.NotImplementedException(); }
+        get { return this.uxRadioButton; }
+        set { this.uxRadioButton = value; }
     }
 
-    public TextBox NombrePropuesta
+    public TextBox PropuestaBuscar
     {
-        get { return this.uxTituloPropuesta; }
-        set { this.uxTituloPropuesta = value; }
+        get { return this.uxBusqueda; }
+        set { this.uxBusqueda = value; }
     }
 
-    public TextBox NumeroPropuesta
+    public GridView ResultadoFacturas
     {
-        get { return this.uxNumProp; }
-        set { this.uxNumProp = value; }
+        get { return this.uxGridFacturas; }
+        set { this.uxGridFacturas = value; }
     }
 
-
-    public TextBox MontoCancelado
+    public GridView ResultadoPropuesta
     {
-        get { return this.uxDescProp; }
-        set { this.uxDescProp = value; }
+        get { return this.uxGridPropuesta; }
+        set { this.uxGridPropuesta = value; }
+    }
+
+    public Button BotonBusqueda
+    {
+        get { return this.uxBusquedaBoton; }
+        set { this.uxBusquedaBoton = value; }
+    }
+
+    public Label MontoTotal
+    {
+        get { return this.uxLabelTotalPagado; }
+        set { this.uxLabelTotalPagado = value; }
+    }
+
+    public Label PorcentajeTotal
+    {
+        get { return this.uxLabelPorcentajePagado; }
+        set { this.uxLabelPorcentajePagado = value; }
+    }
+
+    public Label MontoFaltante
+    {
+        get { return this.uxLabelMontoRestante; }
+        set { this.uxLabelMontoRestante = value; }
+    }
+
+    public Label PorcentajeFaltante
+    {
+        get { return this.uxLabelPorcentajeRestante; }
+        set { this.uxLabelPorcentajeRestante = value; }
     }
 
 
@@ -53,7 +82,7 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 18)
+            if (usuario.PermisoUsu[i].IdPermiso == 17)
             {
                 i = usuario.PermisoUsu.Count;
 
@@ -70,21 +99,21 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         }
     }
 
-    protected void uxConsultarxNombreProp_Click(object sender, EventArgs e)
-    {
-        if (Page.IsValid == true)
-        {
-            // if (uxTituloPropuesta.Text == "propuesta1")
+    //protected void uxConsultarxNombreProp_Click(object sender, EventArgs e)
+    //{
+    //    if (Page.IsValid == true)
+    //    {
+    //        // if (uxTituloPropuesta.Text == "propuesta1")
 
-            _presenter.OnBotonAceptar();
+    //        _presenter.OnBotonAceptar();
 
-            /*else
-            {
-                Response.Redirect();
-            }*/
+    //        /*else
+    //        {
+    //            Response.Redirect();
+    //        }*/
 
-        }
-    }
+    //    }
+    //}
 
     public void Mensaje(string msg)
     {
@@ -93,13 +122,8 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         Page.Controls.Add(lbl);
     }
 
-    protected void uxConsultarxNumProp_Click(object sender, EventArgs e)
+    protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
-        if (Page.IsValid == true)
-        {
-           
-            _presenter.OnBotonAceptar_2();
-
-        }
+        _presenter.CargarGrid();
     }
 }
