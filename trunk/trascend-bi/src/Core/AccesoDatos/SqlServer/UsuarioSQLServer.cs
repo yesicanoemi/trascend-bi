@@ -285,7 +285,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParmsIdEmp[0].Value = usuario.Cedula;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                        "BuscarIDEmpleado", arParmsIdEmp);
+                                        "BuscarCIEmpleado", arParmsIdEmp);
 
                 while (reader.Read())
                 {
@@ -400,7 +400,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParmsIdEmp[0].Value = entidad.Cedula;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                        "BuscarIDEmpleado", arParmsIdEmp);
+                                        "BuscarCIEmpleado", arParmsIdEmp);
 
                 while (reader.Read())
                 {
