@@ -17,8 +17,9 @@ namespace Presentador.Factura.Vistas
     {
         IAgregarFactura _vista;
         FacturaController _controller = new FacturaController();
-        Core.LogicaNegocio.Entidades.Propuesta _propuesta;
+        Core.LogicaNegocio.Entidades.Propuesta _propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
         Core.LogicaNegocio.Entidades.Factura _factura;
+        int _id = 0;
 
         public AgregarFacturaPresenter(IAgregarFactura vista)
         {
@@ -204,6 +205,7 @@ namespace Presentador.Factura.Vistas
             {
                 if (PropuestaAux.Titulo.Equals(_vista.PropuestaBuscar.Text))
                 {
+
                     IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasN = new List<Core.LogicaNegocio.Entidades.Propuesta>();
 
                     ListaPropuestasN.Add(PropuestaAux);
@@ -276,7 +278,7 @@ namespace Presentador.Factura.Vistas
 
                     Core.LogicaNegocio.Entidades.Factura NewFactura = new Core.LogicaNegocio.Entidades.Factura();
 
-                    
+                    break;
                 }
             }
         }
@@ -364,30 +366,35 @@ namespace Presentador.Factura.Vistas
 
         public void RecogerDatosFactura()
         {
-            Core.LogicaNegocio.Entidades.Factura NewFactura = new Core.LogicaNegocio.Entidades.Factura();
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
+               Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
-            NewFactura.Titulo = _vista.Titulo.Text;
-            NewFactura.Descripcion = _vista.Descripcion.Text;
-            NewFactura.Procentajepagado = float.Parse(_vista.PorcentajePagar.Text);
-            NewFactura.Fechapago = DateTime.Parse(_vista.FechaPago.Text);
-            NewFactura.Fechaingreso = DateTime.Parse(_vista.FechaEmision.Text);
-            NewFactura.Estado = _vista.Estado.Text;
-            NewFactura.Prop = _propuesta;
+            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
 
-            Ingresar(NewFactura);
+            if (_vista.RadioButtons.SelectedItem.Text.Equals("Buscar por Nombre"))
+            {
+                foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+                {
+                    if (PropuestaAux.Titulo.Equals(_vista.PropuestaBuscar.Text))
+                    {
+                        Core.LogicaNegocio.Entidades.Factura NewFactura = new Core.LogicaNegocio.Entidades.Factura();
 
-            //Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
+                        NewFactura.Titulo = _vista.Titulo.Text;
+                        NewFactura.Descripcion = _vista.Descripcion.Text;
+                        NewFactura.Procentajepagado = float.Parse(_vista.PorcentajePagar.Text);
+                        NewFactura.Fechapago = DateTime.Parse(_vista.FechaPago.Text);
+                        NewFactura.Fechaingreso = DateTime.Parse(_vista.FechaEmision.Text);
+                        NewFactura.Estado = _vista.Estado.Text;
+                        NewFactura.Prop = PropuestaAux;
 
-            //factura.Numero = 0;
-            //factura.Titulo = "Pago de la enesima cuota LULZ!!!";
-            //factura.Descripcion = "Imaginate tu!";
-            //factura.Procentajepagado = 1.3f;
-            //factura.Fechapago = DateTime.Now;
-            //factura.Fechaingreso = DateTime.Now;
-            //factura.Estado = "Pagado";
-            //factura.Prop = _propuesta;
+                        Ingresar(NewFactura);
+                    }
+                }
+            }
+            else
+                BuscarProcPorID(ListaPropuestas);
 
-            //Ingresar(factura);
+            
         }
 
         /*
