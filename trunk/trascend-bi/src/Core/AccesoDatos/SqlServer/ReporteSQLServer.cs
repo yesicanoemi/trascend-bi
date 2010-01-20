@@ -571,7 +571,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[0].Value = metodo;
 
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ReporteAnualPorEmpleadoCargo", arParms);
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ReporteAnualPorCargo", arParms);
 
 
 
@@ -583,8 +583,6 @@ namespace Core.AccesoDatos.SqlServer
                     _cargo.SueldoMaximo = (int)reader["ANUALMAX"];
 
                     _cargo.SueldoMinimo = (int)reader["ANUALMINIMO"];
-
-
 
                 }
 

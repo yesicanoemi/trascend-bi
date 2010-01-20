@@ -220,6 +220,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pruebas\PruebaModificarContacto.cs" />
+    <Compile Include="Pruebas\PruebaEliminarContacto.cs" />
+    <Compile Include="Pruebas\PruebaContactoIngresar.cs" />
     <Compile Include="Pruebas\PrubaCliente.cs" />
     <Compile Include="Pruebas\PruebaEliminarUsuario.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />

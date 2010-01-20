@@ -34,7 +34,7 @@
              <table style="width: 100%">
             <tr>
                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Fecha inicio"></asp:Label>
+                    <asp:Label ID="Cargo" runat="server" Text="Cargo"></asp:Label>
                     
                     <asp:DropDownList ID="uxCargo" runat="server">
                     </asp:DropDownList>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
               
-                <td><asp:Button ID="uxAceptar" runat="server" Text="Aceptar" /></td>
+                <td><asp:Button ID="uxAceptar" runat="server" Text="Aceptar" OnClick="uxAceptar_Click"/></td>
              </tr>
               <tr>
                 <td>
