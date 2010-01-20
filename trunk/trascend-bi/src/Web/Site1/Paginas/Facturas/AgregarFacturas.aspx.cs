@@ -92,8 +92,8 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     public TextBox PorcentajePagar
     {
-        get { return this.PorcentajePagar; }
-        set { this.PorcentajePagar = value; }
+        get { return this.uxPorcentajeAPagar; }
+        set { this.uxPorcentajeAPagar = value; }
     }
 
     public TextBox FechaPago
@@ -104,8 +104,8 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     public TextBox Estado
     {
-        get { return this.Estado; }
-        set { this.Estado = value; }
+        get { return this.uxEstado; }
+        set { this.uxEstado = value; }
     }
 
     public TextBox MontoCalculado
@@ -141,23 +141,23 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         bool permiso = false;
 
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 17)
-            {
-                i = usuario.PermisoUsu.Count;
+        //for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        //{
+        //    if (usuario.PermisoUsu[i].IdPermiso == 17)
+        //    {
+        //        i = usuario.PermisoUsu.Count;
 
                 _presenter = new AgregarFacturaPresenter(this);
 
-                permiso = true;
+        //        permiso = true;
 
-            }
-        }
+        //    }
+        //}
 
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
+        //if (permiso == false)
+        //{
+        //    Response.Redirect(paginaSinPermiso);
+        //}
 
     }
 
@@ -174,5 +174,9 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         //int montoTotal = int.Parse(this.MontoTotal.Text);
         //int porcentaje = int.Parse(this.PorcentajePagar.Text);
         //this.MontoCalculado.Text = ((porcentaje * montoTotal) / 100).ToString();
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        _presenter.RecogerDatosFactura();
     }
 }

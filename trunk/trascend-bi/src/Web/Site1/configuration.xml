@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <connection>
-    Data Source=MRZERUEL\SQLEXPRESS;Initial Catalog=BddProy2;Integrated Security=true
+    Data Source=COMPLUS-8C8AD5F\SQLEXPRESS;Initial Catalog=BddProy2;Integrated Security=true
   </connection>
-</configuration>
+</configuration> 

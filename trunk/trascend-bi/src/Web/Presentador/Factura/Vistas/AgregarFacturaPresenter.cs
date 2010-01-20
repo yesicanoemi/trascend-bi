@@ -274,7 +274,9 @@ namespace Presentador.Factura.Vistas
                     _vista.FechaEmision.Text = DateTime.Today.ToString();
                     _vista.NumeroFactura.Text = (i + 1).ToString();
 
+                    Core.LogicaNegocio.Entidades.Factura NewFactura = new Core.LogicaNegocio.Entidades.Factura();
 
+                    
                 }
             }
         }
@@ -283,7 +285,7 @@ namespace Presentador.Factura.Vistas
         {
             foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
             {
-                if (PropuestaAux.Titulo.Equals(_vista.PropuestaBuscar.Text))
+                if (PropuestaAux.Id == int.Parse(_vista.PropuestaBuscar.Text))
                 {
                     IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestasN = new List<Core.LogicaNegocio.Entidades.Propuesta>();
 
@@ -292,72 +294,101 @@ namespace Presentador.Factura.Vistas
                     _vista.ResultadoPropuesta.DataSource = ListaPropuestasN;
 
                     _vista.ResultadoPropuesta.DataBind();
-                    //     _propuesta = PropuestaAux;
-                    //     _vista.MontoTotal.Text = _propuesta.MontoTotal.ToString();
+
+                    _propuesta = PropuestaAux;
+
+                    Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
+                        Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
+
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
+
+                    //llenar la tabla de facturas
+                    _vista.ResultadoFacturas.DataSource = ListaFacturas;
+
+                    _vista.ResultadoFacturas.DataBind();
+
+                    float MontosCancelados = 0;
+
+                    foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                    {
+                        MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
+                    }
+
+                    //_vista.TotalCancelado.Text = MontosCancelados.ToString();
+                    _vista.MontoTotal.Text = MontosCancelados.ToString();
+
+                    float PorcCancelado = 0;
+                    float MontoRestante = 0;
+
+                    PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
+                    //_vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
+                    _vista.PorcentajeTotal.Text = PorcCancelado.ToString();
+
+                    MontoRestante = _propuesta.MontoTotal - MontosCancelados;
+                    //_vista.MontoFaltante.Text = MontoRestante.ToString();
+                    _vista.MontoFaltante.Text = MontoRestante.ToString();
+
+                    //_vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
+                    _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
+
+                    ////_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
+                    //_vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
 
-                    //     Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
-                    //Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
 
-                    //     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
+                    Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
+               Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
 
-
-                    //     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                    //     {
-                    //         MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
-                    //     }
-
-                    //     _vista.TotalCancelado.Text = MontosCancelados.ToString();
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
+                    // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
 
 
-                    //     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                    //     {
-                    //         i++;
-                    //         _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " +
-                    //             FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
-                    //     }
+                    int i = 0;
+
+                    foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
+                    {
+
+                        if (fact.Numero > i)
+                            i = fact.Numero;
 
 
-                    //     PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
-                    //     _vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
+                    }
 
-
-
-                    //     MontoRestante = _propuesta.MontoTotal - MontosCancelados;
-                    //     _vista.MontoFaltante.Text = MontoRestante.ToString();
-
-                    //     _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
-
-
-                    //     //_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
-                    //     _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
-
-
-
-                    //     Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
-                    //Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
-
-                    //     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
-                    //     // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
-
-
-                    //     i = 0;
-                    //     foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
-                    //     {
-
-                    //         if (fact.Numero > i)
-                    //             i = fact.Numero;
-
-
-                    //     }
-
-                    //     _vista.CodigoFactura.Text = (i + 1).ToString();
+                    _vista.FechaEmision.Text = DateTime.Today.ToString();
+                    _vista.NumeroFactura.Text = (i + 1).ToString();
 
 
                 }
             }
         }
 
+        public void RecogerDatosFactura()
+        {
+            Core.LogicaNegocio.Entidades.Factura NewFactura = new Core.LogicaNegocio.Entidades.Factura();
+
+            NewFactura.Titulo = _vista.Titulo.Text;
+            NewFactura.Descripcion = _vista.Descripcion.Text;
+            NewFactura.Procentajepagado = float.Parse(_vista.PorcentajePagar.Text);
+            NewFactura.Fechapago = DateTime.Parse(_vista.FechaPago.Text);
+            NewFactura.Fechaingreso = DateTime.Parse(_vista.FechaEmision.Text);
+            NewFactura.Estado = _vista.Estado.Text;
+            NewFactura.Prop = _propuesta;
+
+            Ingresar(NewFactura);
+
+            //Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
+
+            //factura.Numero = 0;
+            //factura.Titulo = "Pago de la enesima cuota LULZ!!!";
+            //factura.Descripcion = "Imaginate tu!";
+            //factura.Procentajepagado = 1.3f;
+            //factura.Fechapago = DateTime.Now;
+            //factura.Fechaingreso = DateTime.Now;
+            //factura.Estado = "Pagado";
+            //factura.Prop = _propuesta;
+
+            //Ingresar(factura);
+        }
 
         /*
         /// <summary>
@@ -440,7 +471,7 @@ namespace Presentador.Factura.Vistas
 
         }
 
-        /*
+        
         public void Ingresar(Core.LogicaNegocio.Entidades.Factura factura)
         {
             Core.LogicaNegocio.Comandos.ComandoFactura.Ingresar ingresar; //objeto del comando Ingresar.
@@ -454,7 +485,7 @@ namespace Presentador.Factura.Vistas
             ingresar.Ejecutar();
         }
 
-        */
+        
     }
 
 

@@ -154,7 +154,7 @@
                               <asp:Label ID="Label15" runat="server" Text="Monto a Pagar: "></asp:Label>
                                   <asp:Label ID="uxMontoCalculado" runat="server" Text=""></asp:Label>
                        </th><th>
-                           <asp:Button ID="Button1" runat="server" Text="Button" />
+                           <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
                           </th></tr>
                   </table>
               
