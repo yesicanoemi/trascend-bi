@@ -12,140 +12,32 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     #region Propiedades
 
-    public MultiView MultiViewPropuesta
+    public RadioButtonList RadioButtons
     {
-        get { return uxMultiViewPropuesta; }
-        set { throw new System.NotImplementedException(); }
+        get { return this.uxRadioButton; }
+        set { this.uxRadioButton = value; }
     }
 
-   /* public TextBox ProyectoAsociado
+    public TextBox PropuestaBuscar
     {
-        get { return this.uxProyectoAsociado; }
-        set { this.uxProyectoAsociado = value; }
-    }
-    */
-
-    
-    #region InformacionPropuesta
-
-    public TextBox Descripcion
-    {
-        get { return this.uxDescProp; }
-        set { this.uxDescProp = value; }
+        get { return this.uxBusqueda; }
+        set { this.uxBusqueda = value; }
     }
 
-    public TextBox MontoTotal
+    public GridView ResultadoPropuesta
     {
-        get { return this.uxMontoTotal; }
-        set { this.uxMontoTotal = value; }
+        get { return this.uxGridPropuesta; }
+        set { this.uxGridPropuesta = value; }
     }
 
-    public TextBox MontoCancelado
+    public Button BotonBusqueda
     {
-        get { return this.uxMontoCancelado; }
-        set { this.uxMontoCancelado = value; }
-    }
-
-    public TextBox TotalCancelado
-    {
-        get { return this.uxTotalCancelado; }
-        set { this.uxTotalCancelado = value; }
-    }
-
-    public TextBox PorcentajeCancelado
-    {
-        get { return this.uxPorcentajeCancelado; }
-        set { this.uxPorcentajeCancelado = value; }
-    }
-
-    public TextBox MontoFaltante
-    {
-        get { return this.uxMontoFaltante; }
-        set { this.uxMontoFaltante = value; }
-    }
-
-    public TextBox PorcentajeFaltante
-    {
-        get { return this.uxPorcFaltante; }
-        set { this.uxPorcFaltante = value; }
-    }
-
-    public TextBox NombrePropuesta
-    {
-        get { return this.uxTituloPropuesta; }
-        set { this.uxTituloPropuesta = value; }
-    }
-
-    public TextBox NumeroPropuesta
-    {
-        get { return this.uxNumProp; }
-        set { this.uxNumProp = value; }
+        get { return this.uxBusquedaBoton; }
+        set { this.uxBusquedaBoton = value; }
     }
 
     #endregion
 
-
-    #region Facturacion
-
-    public TextBox FechaIngreso
-    {
-        get { return this.uxFechaIngresoFactProp; }
-        set { this.uxFechaIngresoFactProp = value; }
-    }
-
-    public TextBox MontoPagar
-    {
-        get { return this.uxMontoPagar; }
-        set { this.uxMontoPagar = value; }
-    }
-
-    public TextBox PorcentajePagar
-    {
-        get { return this.uxPorcentajePagar; }
-        set { this.uxPorcentajePagar = value; }
-    }
-
-    public TextBox CodigoFactura
-    {
-        get { return this.uxCodigoFactura; }
-        set { this.uxCodigoFactura = value; }
-    }
-
-    public TextBox TituloFactura
-    {
-        get { return this.uxTituloFactura; }
-        set { this.uxTituloFactura = value; }
-    }
-
-    public DropDownList EstadoFactura
-    {
-        get { return this.uxEstado; }
-        set { this.uxEstado = value; }
-    }
-
-
-    public TextBox FechaPagoFact
-    {
-        get { return this.uxFechaPago; }
-        set { this.uxFechaPago = value; }
-    }
-
-    public Button CalculaMonto
-    {
-        get { return this.uxCalcMonto; }
-        set { this.uxCalcMonto = value; }
-    }
-
-    public Button InsertarFactura
-    {
-        get { return this.uxBotonAceptar; }
-        set { this.uxBotonAceptar = value; }
-    }
-
-
-    #endregion
-
-    #endregion
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -153,26 +45,6 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     }
 
-    protected void uxBuscarTitulo_Click(object sender, EventArgs e)
-    {
-        if (Page.IsValid == true)
-        {
-           // if (uxTituloPropuesta.Text == "propuesta1")
-            
-                _presenter.OnBotonAceptar();
-            
-            /*else
-            {
-                Response.Redirect();
-            }*/
-
-        }
-
-    }
-    protected void uxBotonAceptar_Click(object sender, EventArgs e)
-    {
-        _presenter.OnAgregarFactura();
-    }
 
     public void Mensaje(string msg)
     {
@@ -189,7 +61,7 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
         bool permiso = false;
 
-        MontoPagar.Text = "0";
+
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
             if (usuario.PermisoUsu[i].IdPermiso == 17)
@@ -209,29 +81,9 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         }
 
     }
-    protected void uxPorcentajePagar_TextChanged(object sender, EventArgs e)
+
+    protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
-        MontoPagar.Text = ((int.Parse(MontoTotal.Text) * int.Parse(PorcentajePagar.Text)) / 100).ToString();
-    }
-
-    protected void uxCalcMonto_Click(object sender, EventArgs e)
-    {
-        _presenter.OnCalcularMonto();
-
-    }
-    protected void uxConsultarxNumProp_Click(object sender, EventArgs e)
-    {
-        if (Page.IsValid == true)
-        {
-            // if (uxTituloPropuesta.Text == "propuesta1")
-
-            _presenter.OnBotonAceptar();
-
-            /*else
-            {
-                Response.Redirect();
-            }*/
-
-        }
+        _presenter.CargarGrid();
     }
 }

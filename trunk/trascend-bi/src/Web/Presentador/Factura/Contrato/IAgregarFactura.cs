@@ -8,37 +8,17 @@ namespace Presentador.Factura.Contrato
 {
     public interface IAgregarFactura
     {
-        MultiView MultiViewPropuesta { get; set; }
-     //   TextBox ProyectoAsociado { get; set; }
-      
+        //MultiView MultiViewPropuesta { get; set; }
+        //   TextBox ProyectoAsociado { get; set; }
+
         #region InformacionPropuesta
 
-       
-        TextBox Descripcion { get; set; }
-        TextBox MontoTotal { get; set; }
-        TextBox MontoCancelado { get; set; }
-        TextBox TotalCancelado { get; set; }
-        TextBox PorcentajeCancelado { get; set; }
-        TextBox MontoFaltante { get; set; }
-        TextBox PorcentajeFaltante { get; set; }
-        TextBox NombrePropuesta { get; set; }
-        
 
-        #endregion
+        RadioButtonList RadioButtons { get; set; }
+        TextBox PropuestaBuscar { get; set; }
+        GridView ResultadoPropuesta { get; set; }
+        Button BotonBusqueda { get; set; }
 
-        #region Facturacion
-
-        TextBox MontoPagar { get; set; }
-        TextBox PorcentajePagar { get; set; }
-        TextBox CodigoFactura { get; set; }
-        TextBox TituloFactura { get; set; }
-        DropDownList EstadoFactura { get; set; }
-        TextBox FechaPagoFact { get; set; }
-        TextBox FechaIngreso { get; set; }
-        Button CalculaMonto { get; set; }
-        Button InsertarFactura { get; set; }
-        TextBox NumeroPropuesta { get; set; }
-       
         #endregion
 
         void Mensaje(string msg);
