@@ -180,29 +180,15 @@ namespace Presentador.Usuario.Vistas
         public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleado
                                             (Core.LogicaNegocio.Entidades.Empleado entidad)
         {
+            IList<Core.LogicaNegocio.Entidades.Empleado> empleado = null;
 
-            Core.LogicaNegocio.Entidades.Empleado emplea1 = new Core.LogicaNegocio.Entidades.Empleado();
-            Core.LogicaNegocio.Entidades.Empleado emplea2 = new Core.LogicaNegocio.Entidades.Empleado();
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre comando;
 
+            comando = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
 
-            IList<Core.LogicaNegocio.Entidades.Empleado> entidad1 =
-                                            new List<Core.LogicaNegocio.Entidades.Empleado>();
+            empleado = comando.Ejecutar();
 
-            emplea1.Cedula = 18612200;
-            emplea1.Apellido = "Trejo";
-            emplea1.Nombre = "Daniel";
-            emplea1.Estado = "Activo";
-
-            entidad1.Add(emplea1);
-
-            emplea2.Cedula = 16460698;
-            emplea2.Apellido = "Rojas";
-            emplea2.Nombre = "Dina";
-            emplea2.Estado = "Activo";
-
-            entidad1.Add(emplea2);
-
-            return entidad1;
+            return empleado;
         }
 
         /// <summary>
@@ -273,14 +259,9 @@ namespace Presentador.Usuario.Vistas
 
             empleado.Cedula = Int32.Parse(cedulaI);
 
-            IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 =
-                                                    ConsultarEmpleadoxCedula(empleado);
+            Core.LogicaNegocio.Entidades.Empleado empleado1 = ConsultarEmpleadoxCedula(empleado);
 
-            empleado = null;
-
-            empleado = empleado1[0];
-
-            CargarDatos(empleado);
+            CargarDatos(empleado1);
 
             CambiarVista(1);
 
@@ -293,23 +274,21 @@ namespace Presentador.Usuario.Vistas
         /// <param name="empleado">Entidad empleado</param>
         /// <returns>Entidad empleado</returns>
 
-        private IList<Core.LogicaNegocio.Entidades.Empleado>
-                    ConsultarEmpleadoxCedula(Core.LogicaNegocio.Entidades.Empleado empleado)
+        private Core.LogicaNegocio.Entidades.Empleado
+                    ConsultarEmpleadoxCedula(Core.LogicaNegocio.Entidades.Empleado entidad)
         {
-            IList<Core.LogicaNegocio.Entidades.Empleado> emplea =
-                                    new List<Core.LogicaNegocio.Entidades.Empleado>();
+            Core.LogicaNegocio.Entidades.Empleado empleado = 
+                                                new Core.LogicaNegocio.Entidades.Empleado();
 
-            empleado.Cedula = 18512200;
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCI comando;
 
-            empleado.Apellido = "trejo";
+            comando = FabricaComandosEmpleado.CrearComandoConsultarPorCI(entidad);
 
-            empleado.Nombre = "daniel";
+            empleado = comando.Ejecutar();
 
-            empleado.Estado = "Activo";
+            return empleado;
 
-            emplea.Add(empleado);
-
-            return emplea;
+            
         }
 
         /// <summary>
