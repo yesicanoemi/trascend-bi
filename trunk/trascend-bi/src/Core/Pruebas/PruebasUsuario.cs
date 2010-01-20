@@ -57,7 +57,7 @@ namespace Core.Pruebas
         {
             Usuario usuario = new Usuario();
 
-            usuario.Login = "UsuarioPrueba";
+            usuario.Login = "UsuarioPrueba12";
             
             usuario.Password = "123456";
             
@@ -72,6 +72,7 @@ namespace Core.Pruebas
             permiso.IdPermiso = 1;
             
             listado.Add(permiso);
+            usuario.PermisoUsu = listado;
 
             UsuarioSQLServer bd = new UsuarioSQLServer();
             
