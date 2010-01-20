@@ -17,6 +17,7 @@ namespace Presentador.Factura.Contrato
         RadioButtonList RadioButtons { get; set; }
         TextBox PropuestaBuscar { get; set; }
         GridView ResultadoPropuesta { get; set; }
+        GridView ResultadoFacturas { get; set; }
         Button BotonBusqueda { get; set; }
 
         #endregion

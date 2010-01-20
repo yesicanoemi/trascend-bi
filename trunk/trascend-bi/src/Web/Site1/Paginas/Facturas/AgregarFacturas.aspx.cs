@@ -24,6 +24,12 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         set { this.uxBusqueda = value; }
     }
 
+    public GridView ResultadoFacturas
+    {
+        get { return this.uxGridFacturas; }
+        set { this.uxGridFacturas = value; }
+    }
+
     public GridView ResultadoPropuesta
     {
         get { return this.uxGridPropuesta; }

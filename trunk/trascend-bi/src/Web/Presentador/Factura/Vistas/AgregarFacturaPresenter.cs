@@ -172,11 +172,6 @@ namespace Presentador.Factura.Vistas
 
             _vista.ResultadoPropuesta.DataBind();
 
-            float MontosCancelados = 0;
-            float MontoRestante = 0;
-            float PorcCancelado = 0;
-            int i = 0;
-
             Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
@@ -216,66 +211,64 @@ namespace Presentador.Factura.Vistas
                     _vista.ResultadoPropuesta.DataSource = ListaPropuestasN;
 
                     _vista.ResultadoPropuesta.DataBind();
-                    //     _propuesta = PropuestaAux;
-                    //     _vista.MontoTotal.Text = _propuesta.MontoTotal.ToString();
+
+                    _propuesta = PropuestaAux;
+
+                    Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
+                        Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
+
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
+
+                    //llenar la tabla de facturas
+                    _vista.ResultadoFacturas.DataSource = ListaFacturas;
+
+                    _vista.ResultadoFacturas.DataBind();
+
+                    float MontosCancelados = 0;
+
+                    foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
+                    {
+                        MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
+                    }
+
+                    //_vista.TotalCancelado.Text = MontosCancelados.ToString();
+
+                    float PorcCancelado = 0;
+                    float MontoRestante  = 0;
+
+                    //PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
+                    //_vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
+
+                    //MontoRestante = _propuesta.MontoTotal - MontosCancelados;
+                    //_vista.MontoFaltante.Text = MontoRestante.ToString();
+
+                    //_vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
 
 
-                    //     Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
-                    //Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
-
-                    //     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
-
-
-                    //     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                    //     {
-                    //         MontosCancelados += CalcularPorcentaje(FacturaAux, _propuesta);
-                    //     }
-
-                    //     _vista.TotalCancelado.Text = MontosCancelados.ToString();
-
-
-                    //     foreach (Core.LogicaNegocio.Entidades.Factura FacturaAux in ListaFacturas)
-                    //     {
-                    //         i++;
-                    //         _vista.MontoCancelado.Text += "Factura " + i.ToString() + ". " + "Fecha: " +
-                    //             FacturaAux.Fechaingreso + " Titulo: " + FacturaAux.Titulo + " Monto: " + CalcularPorcentaje(FacturaAux, _propuesta) + " Estado: " + FacturaAux.Estado + "\n" + "\n";
-                    //     }
-
-
-                    //     PorcCancelado = (MontosCancelados * 100) / _propuesta.MontoTotal;
-                    //     _vista.PorcentajeCancelado.Text = PorcCancelado.ToString();
-
-
-
-                    //     MontoRestante = _propuesta.MontoTotal - MontosCancelados;
-                    //     _vista.MontoFaltante.Text = MontoRestante.ToString();
-
-                    //     _vista.PorcentajeFaltante.Text = (100 - PorcCancelado).ToString();
-
-
-                    //     //_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
-                    //     _vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    ////_vista.CodigoFactura.Text = Convert.ToString(.Count + 1);
+                    //_vista.FechaIngreso.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
 
 
-                    //     Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
-                    //Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
+                    Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
+               Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
 
-                    //     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
-                    //     // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
-
-
-                    //     i = 0;
-                    //     foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
-                    //     {
-
-                    //         if (fact.Numero > i)
-                    //             i = fact.Numero;
+                    IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
+                    // _vista.CodigoFactura.Text = (ListaFacturas2.Count + 1).ToString();
 
 
-                    //     }
+                    int i = 0;
 
-                    //     _vista.CodigoFactura.Text = (i + 1).ToString();
+                    foreach (Core.LogicaNegocio.Entidades.Factura fact in ListaFacturas2)
+                    {
+
+                        if (fact.Numero > i)
+                            i = fact.Numero;
+
+
+                    }
+
+                    //_vista.CodigoFactura.Text = (i + 1).ToString();
 
 
                 }

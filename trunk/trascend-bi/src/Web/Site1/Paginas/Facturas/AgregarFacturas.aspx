@@ -41,13 +41,20 @@
                     </asp:radiobuttonlist>
 
                 </table>
+                
+                
+                
                 <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
                 <asp:Button ID="uxBusquedaBoton"
                     runat="server" Text="Buscar" onclick="uxBusquedaBoton_Click" />
                     
                     
                 
-                <asp:GridView ID="uxGridPropuesta" runat="server"
+                
+            </div>
+
+
+            <asp:GridView ID="uxGridPropuesta" runat="server"
                 AutoGenerateColumns="false"
                          cellpadding="10"
                          cellspacing="5" >
@@ -58,9 +65,26 @@
                                    <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" />                                                         
                          </Columns>
                 </asp:GridView>
-            </div>
-            
-                           
+ 
+
+
+                <asp:GridView ID="uxGridFacturas" runat="server"
+                AutoGenerateColumns="false"
+                         cellpadding="10"
+                         cellspacing="5" >
+                         
+                         <Columns >
+                                   <asp:BoundField HeaderText="Numero Factura" DataField="Numero" />
+                                   <asp:BoundField HeaderText="Titulo" DataField="Titulo" />
+                                   <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />       
+                                   <asp:BoundField HeaderText="Porcentaje Pagado" DataField="Procentajepagado" />                                    
+                                   <asp:BoundField HeaderText="Fecha de Ingresp" DataField="Fechaingreso" /> 
+                                   <asp:BoundField HeaderText="Fecha de Pago" DataField="Fechapago" /> 
+                                   <asp:BoundField HeaderText="Estado" DataField="Estado"/> 
+                                                                                     
+                         </Columns>
+                </asp:GridView>
+             
           </div> 
         </div> 
 	</div> 
