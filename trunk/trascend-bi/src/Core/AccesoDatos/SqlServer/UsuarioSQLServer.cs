@@ -156,55 +156,6 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
-        #region ConsultarUsuarioStatus
-
-        /// <summary>
-        /// Metodo para consultar todos los usuarios
-        /// </summary>
-        /// <returns>Usuario(s) del sistema</returns>
-
-
-        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuarioStatus()
-        {
-            IList<Core.LogicaNegocio.Entidades.Usuario> usuario =
-                                            new List<Core.LogicaNegocio.Entidades.Usuario>();
-
-            try
-            {
-
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
-                                        "ConsultarUsuarioTodos");
-
-                while (reader.Read())
-                {
-                    Usuario _usuario = new Usuario();
-
-                    _usuario.Login = (string)reader["LoginUsuario"];
-
-                    _usuario.Nombre = (string)reader["Nombre"];
-
-                    _usuario.Apellido = (string)reader["Apellido"];
-
-                    _usuario.Status = (string)reader["Status"];
-
-                    usuario.Add(_usuario);
-                }
-
-                return usuario;
-
-            }
-
-            catch (SqlException e)
-            {
-
-            }
-
-            return usuario;
-
-        }
-
-        #endregion
-
         #region ModificarUsuario
 
         /// <summary>

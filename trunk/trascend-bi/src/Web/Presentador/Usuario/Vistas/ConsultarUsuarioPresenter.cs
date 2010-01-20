@@ -335,25 +335,6 @@ namespace Presentador.Usuario.Vistas
             return permiso1;
         }
 
-        /// <summary>
-        /// Método para el comando ConsultarUsuarioStatus
-        /// </summary>
-        /// <param name="entidad">Entidad Usuario a consultar</param>
-        /// <returns>Lista de usuarios del sistema</returns>
-        
-        public IList<Core.LogicaNegocio.Entidades.Usuario> ConsultarUsuarioStatus()
-        {
-            IList<Core.LogicaNegocio.Entidades.Usuario> usuario = null;
-
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarUsuarioStatus comando;
-
-            comando = FabricaComandosUsuario.CrearComandoConsultarUsuarioStatus();
-
-            usuario = comando.Ejecutar();
-
-            return usuario;
-        }
-
         #endregion
     }
 }

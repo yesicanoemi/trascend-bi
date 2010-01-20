@@ -34,17 +34,6 @@ namespace Core.LogicaNegocio.Fabricas
         }
 
         /// <summary>
-        /// Metodo que fabrica el comando "ConsultarUsuarioStatus" de la entidad Usuario
-        /// </summary>
-        /// <param name="empleado">Entidad Usuario con los datos</param>
-        /// <returns>Comando ConsultarUsuariosStatus</returns>
-
-        public static ConsultarUsuarioStatus CrearComandoConsultarUsuarioStatus()
-        {
-            return new ConsultarUsuarioStatus();
-        }
-
-        /// <summary>
         /// Metodo que fabrica el comando "ConsultarPermisos" de la entidad Usuario
         /// </summary>
         /// <param name="entidad">Entidad usuario</param>
