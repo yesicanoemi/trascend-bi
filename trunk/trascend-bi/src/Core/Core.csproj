@@ -227,6 +227,7 @@
     <Compile Include="Pruebas\PruebaEliminarUsuario.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebasCargo.cs" />
+    <Compile Include="Pruebas\PruebasEmpleado.cs" />
     <Compile Include="Pruebas\PruebasFactura.cs" />
     <Compile Include="Pruebas\PruebasPropuestaGrupo2.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
