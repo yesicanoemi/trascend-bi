@@ -65,8 +65,8 @@ namespace Presentador.Usuario.Vistas
 
             if (usuario.Status == "Activo")
             {
-                _vista.DLStatusUsuario.Enabled = false;
                 _vista.DLStatusUsuario.Items.Add("Inactivo");
+                _vista.DLStatusUsuario.Enabled = false;
             }
             else
             {
@@ -302,15 +302,11 @@ namespace Presentador.Usuario.Vistas
 
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
-            user = null;
-
-            user = listado[0];
-
-            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(user);
+            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(listado[0]);
 
             CargarCheckBox(listadoPermiso);
 
-            CargarDatos(user);
+            CargarDatos(listado[0]);
 
             CambiarVista(1);
 
@@ -355,6 +351,8 @@ namespace Presentador.Usuario.Vistas
             usuario.Login = _vista.NombreUsu.Text;
 
             usuario.Status = _vista.DLStatusUsuario.SelectedItem.Text;
+
+            usuario.IdUsuario = ConsultarUsuario(usuario)[0].IdUsuario;
 
             ModificarUsuario(usuario);
 

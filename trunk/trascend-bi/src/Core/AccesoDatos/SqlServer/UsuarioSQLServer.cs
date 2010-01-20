@@ -217,9 +217,9 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                arParms[0] = new SqlParameter("@IdUsuario", SqlDbType.Int);
 
-                arParms[0].Value = usuario.Login;
+                arParms[0].Value = usuario.IdUsuario;
 
                 SqlHelper.ExecuteNonQuery(GetConnection(),
                                         "EliminarPermisos", arParms);
@@ -227,11 +227,11 @@ namespace Core.AccesoDatos.SqlServer
 
                 SqlParameter[] arParmsAgregarPermisos = new SqlParameter[2];
 
-                arParmsAgregarPermisos[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                arParmsAgregarPermisos[0] = new SqlParameter("@IdUsuario", SqlDbType.Int);
 
-                arParmsAgregarPermisos[0].Value = usuario.Login;
+                arParmsAgregarPermisos[0].Value = usuario.IdUsuario;
 
-                arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.VarChar);
+                arParmsAgregarPermisos[1] = new SqlParameter("@IdPermiso", SqlDbType.Int);
 
 
                 for (int i = 0; i < usuario.PermisoUsu.Count; i++)
@@ -254,7 +254,7 @@ namespace Core.AccesoDatos.SqlServer
 
 
                 SqlHelper.ExecuteNonQuery(GetConnection(),
-                                        "ModificarUsuarioStatus", arParmsStatus);
+                                        "ModificarStatusUsuario", arParmsStatus);
 
             }
             catch (SqlException e)
