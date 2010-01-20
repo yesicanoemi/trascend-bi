@@ -24,6 +24,8 @@ namespace Core.AccesoDatos.SqlServer
 
         List<Gasto> ListaGasto = new List<Gasto>();
 
+        List<string> ListaCargos = new List<string>();
+
         #endregion
 
         #region Constructor
@@ -549,6 +551,83 @@ namespace Core.AccesoDatos.SqlServer
 
 
         #endregion
+
+        #region ReporteTransacciones
+        public Cargo ConsultarEmpleadoCargoAnual(string metodo)
+        {
+            Cargo cargo = new Cargo();
+
+            Cargo _cargo = new Cargo();
+
+            try
+            {
+                //Parametros de busqueda
+
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@cargo", SqlDbType.VarChar);
+
+                arParms[0].Value = metodo;
+
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ReporteAnualPorEmpleadoCargo", arParms);
+
+
+
+                while (reader.Read())
+                {
+
+                    _cargo.Nombre = (string)reader["NOMBRE"];
+
+                    _cargo.SueldoMaximo = (int)reader["ANUALMAX"];
+
+                    _cargo.SueldoMinimo = (int)reader["ANUALMINIMO"];
+
+
+
+                }
+
+                return _cargo;
+
+            }
+
+            catch (SqlException e)
+            {
+
+            }
+
+            return _cargo;
+
+        }
+        #endregion
+
+        public IList<string> ObtenerCargo()
+        {
+            try
+            {
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargo");
+                int i = 0;
+
+                while (conexion.Read())
+                {
+
+                    string Cargo;
+
+                    Cargo = (string)conexion["NOMBRE"];
+                    ListaCargos.Add(Cargo);
+                    i++;
+
+                }
+
+                return ListaCargos;
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.ToString());
+            }
+
+        }
 
         #endregion
 

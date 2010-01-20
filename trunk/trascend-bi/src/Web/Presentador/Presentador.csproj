@@ -149,8 +149,10 @@
     <Compile Include="Reportes\Contrato\IReporteGastoAnual.cs" />
     <Compile Include="Reportes\Contrato\IReporteGastoFecha.cs" />
     <Compile Include="Reportes\Contrato\IReporteHorasRol.cs" />
+    <Compile Include="Reportes\Contrato\IReportePaqueteCargoAnual.cs" />
     <Compile Include="Reportes\Vistas\PropuestasIntervaloPresenter.cs" />
     <Compile Include="Reportes\Vistas\PropuestasPorAnoPresenter.cs" />
+    <Compile Include="Reportes\Vistas\ReporteEmpleadoPaquetePresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8aPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8bPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8cPresenter.cs" />

@@ -124,6 +124,8 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoPropuesta\ModificarPropuesta.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaCargo.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarEmpleadoCargoAnual.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoAnual.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoTotal.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\PaquetesAnuales.cs" />

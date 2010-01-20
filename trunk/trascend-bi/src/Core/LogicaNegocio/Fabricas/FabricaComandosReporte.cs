@@ -61,7 +61,10 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarGastoTotal(entidad);
         }
 
-
+        public static ConsultaCargo CrearComandoConsultarCargo(IList<string> entidad)
+        {
+            return new ConsultaCargo(entidad);
+        }
 
         /// <summary>
         /// Comando utilizado para crear una lista de entidades de tipo factura parametrizada por un
@@ -74,6 +77,11 @@ namespace Core.LogicaNegocio.Fabricas
         public static ConsultarFacturasPorEstado CrearComandoConsultarFacturasPorEstado(DateTime FechaInicio, DateTime FechaFin, bool tipo)
         {
             return new ConsultarFacturasPorEstado(FechaInicio,FechaFin,tipo);
+        }
+
+        public static ConsultarEmpleadoCargoAnual CrearConsultarEmpleadoCargoAnual(string cargo)
+        {
+            return new ConsultarEmpleadoCargoAnual(cargo);
         }
 
         #endregion
