@@ -108,6 +108,37 @@ namespace Presentador.Usuario.Vistas
              }
          }
 
+        public void CampoBusqueda_Selected()
+        { 
+            if (_vista.RbCampoBusqueda.SelectedValue == "1")
+            {
+                _vista.NombreUsuario.Visible = true;
+
+                _vista.StatusDdL.Visible = false;
+
+                _vista.BotonBuscar.Visible = true;
+
+                _vista.ValidarNombreVacio.Visible = true;
+
+                _vista.GetObjectContainerConsultaUsuario.DataSource = "";
+            }
+
+            if (_vista.RbCampoBusqueda.SelectedValue == "2")
+            {
+                _vista.NombreUsuario.Visible = false;
+                
+                _vista.StatusDdL.Visible = true;
+
+                _vista.BotonBuscar.Visible = true;
+
+                _vista.ValidarNombreVacio.Visible = false;
+
+                _vista.GetObjectContainerConsultaUsuario.DataSource = "";
+            }
+            
+        }
+
+
         /// <summary>
         /// Acción del Botón Buscar (Por nombre de usuario)
         /// </summary>
@@ -116,27 +147,83 @@ namespace Presentador.Usuario.Vistas
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
-            user.Login = _vista.NombreUsuario.Text;
-
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> listadoActivo = 
+                                                new List<Core.LogicaNegocio.Entidades.Usuario>();
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> listadoInactivo = 
+                                                new List<Core.LogicaNegocio.Entidades.Usuario>();
+            
+            user.Login = _vista.NombreUsuario.Text;
 
             try
             {
-                if (listado.Count > 0)
+                if ((_vista.RbCampoBusqueda.SelectedValue == "1") && (user.Login != ""))
                 {
-                    _vista.InformacionVisible = false;
-                    _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
+                    
+                    listado = ConsultarUsuario(user);
 
+                    if (listado.Count > 0)
+                    {   
+                        _vista.InformacionVisible = false;
+                        
+                        _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
+
+                    }
+                    else
+                    {
+                        _vista.PintarInformacion(ManagerRecursos.GetString
+                                                            ("MensajeConsulta"), "mensajes");
+                        _vista.InformacionVisible = true;
+                           
+                    }
                 }
-                else
+
+                if (_vista.RbCampoBusqueda.SelectedValue == "2")
                 {
-                    _vista.PintarInformacion(ManagerRecursos.GetString
-                                            ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisible = true;
+                    user.Status = _vista.StatusDdL.Text;
 
-                    _vista.GetObjectContainerConsultaUsuario.DataSource = listado;
-                
+                    if ((listado.Count > 0) && (user.Status == "Activo"))
+                    {
+                        for (int i = 0; i < listado.Count; i++)
+                        {
+                            if (listado[i].Status == "Activo")
+                            {
+                                listadoActivo.Add(listado[i]);
+                            }
+                        }
+
+                        _vista.InformacionVisible = false;
+
+                        _vista.GetObjectContainerConsultaUsuario.DataSource = listadoActivo;
+                    }
+
+                    else if ((listado.Count > 0) && (user.Status == "Inactivo"))
+                    {
+                        for (int i = 0; i < listado.Count; i++)
+                        {
+                            if (listado[i].Status == "Inactivo")
+                            {
+                                listadoInactivo.Add(listado[i]);
+                            }
+                        }
+
+                        _vista.InformacionVisible = false;
+
+                        _vista.GetObjectContainerConsultaUsuario.DataSource = listadoInactivo;
+
+                    }
+
+                    else
+                    {
+                        _vista.PintarInformacion(ManagerRecursos.GetString
+                                                ("MensajeConsulta"), "mensajes");
+                        _vista.InformacionVisible = true;
+
+                    }
                 }
+
            }
             catch (WebException e)
             {
@@ -163,92 +250,7 @@ namespace Presentador.Usuario.Vistas
                 _vista.DialogoVisible = true;
 
             }
-        }
-
-        /// <summary>
-        /// Acción del Botón Buscar (Por Status de usuario)
-        /// </summary>
-
-        public void OnBotonBuscarStatus()
-        {
-            Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
-
-            user.Status = _vista.StatusDdL.Text;
-
-            IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuarioStatus();
-
-            IList<Core.LogicaNegocio.Entidades.Usuario> listadoActivo =
-                                                new List<Core.LogicaNegocio.Entidades.Usuario>();
-
-            IList<Core.LogicaNegocio.Entidades.Usuario> listadoInactivo =
-                                               new List<Core.LogicaNegocio.Entidades.Usuario>();
-            try
-            {
-                if ((listado.Count > 0) && (user.Status == "Activo"))
-                {
-                    for (int i = 0; i < listado.Count; i++)
-                    {
-                        if (listado[i].Status == "Activo")
-                        {
-                            listadoActivo.Add(listado[i]);
-                        }
-                    }
-
-                    _vista.InformacionVisible = false;
-                    
-                    _vista.GetObjectContainerConsultaUsuario.DataSource = listadoActivo;
-                }
-
-                else if ((listado.Count > 0) && (user.Status == "Inactivo"))
-                {
-                    for (int i = 0; i < listado.Count; i++)
-                    {
-                        if (listado[i].Status == "Inactivo")
-                        {
-                            listadoInactivo.Add(listado[i]);
-                        }
-                    }
-
-                    _vista.InformacionVisible = false;
-
-                    _vista.GetObjectContainerConsultaUsuario.DataSource = listadoInactivo;
-
-                }
-
-                else 
-                {
-                    _vista.PintarInformacion(ManagerRecursos.GetString
-                                            ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisible = true;
-
-                }
-            }
-
-            catch (WebException e)
-            {
-
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
-                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + 
-                                                                        "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
-            }
-            catch (ConsultarException e)
-            {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
-                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + 
-                                                                        "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
-            }
-            catch (Exception e)
-            {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
-                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + 
-                                                                        "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
-            }
+            
         }
 
         /// <summary>

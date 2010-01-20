@@ -40,6 +40,12 @@ namespace Presentador.Usuario.Contrato
 
         CheckBoxList CBLReporte { get; set; }
 
+        RadioButtonList RbCampoBusqueda { get; set; }
+
+        Button BotonBuscar { get; set; }
+
+        RequiredFieldValidator ValidarNombreVacio { get; set; }
+        
         void CambiarPagina();
 
 

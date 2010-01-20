@@ -136,7 +136,25 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         get { return uxCBLReporte; }
         set { uxCBLReporte = value; }
     }
+
+    public RadioButtonList RbCampoBusqueda
+    {
+        get { return uxRbCampoBusqueda; }
+        set { uxRbCampoBusqueda = value; }
+    }
     
+    public Button BotonBuscar
+    {
+        get { return uxBotonBuscar; }
+        set { uxBotonBuscar = value; }
+    }
+    
+    public RequiredFieldValidator ValidarNombreVacio
+    {
+        get { return uxRequiredFieldValidator; }
+        set { uxRequiredFieldValidator = value; }
+    }
+
     #endregion
 
     #region Métodos
@@ -188,11 +206,6 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
     {
         _presentador.OnBotonBuscar();
     }
-
-    protected void uxBotonBuscarStatus_Click(object sender, EventArgs e)
-    {
-        _presentador.OnBotonBuscarStatus();
-    }
     
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
@@ -214,4 +227,8 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
 
     #endregion
 
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CampoBusqueda_Selected();
+    }
 }

@@ -42,46 +42,50 @@
                                     <p class="large">Introduzca los campos según su tipo de búsqueda</p> 
                     
                                     <table width="100%">
-                                
-                                        <tr>
-                                            <td></td>
-                                            <td><b>Consulta por Nombre</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nombre de Usuario:</td>
-                                            <td><asp:TextBox ID="uxLogin" runat="server"></asp:TextBox></td>
-                                            <td>
-                                                <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" onclick="uxBotonBuscar_Click"/>
+                                          <tr>  
+                                            <td align="right">
+                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Width="" 
+                                                    onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" AutoPostBack="true">
+                                                    <asp:ListItem Value="1" Text="Nombre de Usuario"></asp:ListItem> 
+                                                    <asp:ListItem Value="2" Text="Status de Usuario"></asp:ListItem>
+                                                </asp:RadioButtonList>
+                                            </td>
+                                           
+                                        
+                                            <td align="center">
+                                                <asp:TextBox ID="uxLogin" runat="server" Visible="false">
+                                                </asp:TextBox>
+
+                                                <asp:DropDownList ID="uxStatusDdL" runat="server" Visible="false">
+                                                    <asp:ListItem Value="Activo">Activo</asp:ListItem>
+                                                    <asp:ListItem Value="Inactivo">Inactivo</asp:ListItem>
+                                                </asp:DropDownList>
+
+                                            </td>  
+                                            <td align="left">
+
+                                                <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
+                                                    Text="Buscar" Visible="false" />
+
                                             </td>
                                         </tr>
                                         
                                         <tr>
-                                            <td></td>
-                                            <td><b>Consulta por Status</b></td>
-                                        </tr>
-                                         <tr>
-                                            <td>Status del Usuario</td>
-                                            <td>
-                                                <asp:DropDownList ID="uxStatusDdL" runat="server">
-                                                    <asp:ListItem Value="Activo">Activo</asp:ListItem>
-                                                    <asp:ListItem Value="Inactivo">Inactivo</asp:ListItem>
-                                                </asp:DropDownList>
-                                           </td>
-                                           <td>
-                                                <asp:Button ID="uxBotonBuscarStatus" runat="server" Text="Buscar" onclick="uxBotonBuscarStatus_Click"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>
                                                 <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
                                             </td>
+                                            <td><asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
+                                                ControlToValidate="uxLogin" Visible="false"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
+                                            </td>
+
                                         </tr>
                                         
                                         <tr>
                                             <td colspan="2">
                                                 <asp:GridView ID="uxConsultaUsuario" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaUsuario"
                                                 AutoGenerateColumns="False" DataKeyNames="login" AutoGenerateSelectButton="True"
-                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller"
+                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller" 
                                                 OnSelectedIndexChanging="SelectUsuarios" 
                                                     onrowdatabound="uxGridView_RowDataBound">
                                                     
