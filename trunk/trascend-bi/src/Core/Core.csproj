@@ -131,6 +131,8 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarEmpleadoCargoAnual.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoAnual.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarGastoTotal.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaEmpleadoPaquete.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaEmpleadoPaqueteDat.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\PaquetesAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultaHora.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ConsultarFacturasPorEstado.cs" />

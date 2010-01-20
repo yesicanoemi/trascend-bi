@@ -598,6 +598,170 @@ namespace Core.AccesoDatos.SqlServer
             return _cargo;
 
         }
+        #region Reporte 1a
+
+        public IList<Empleado> ConsultaEmpleadosNombreEmp(string data)
+        {
+            Empleado empleado;
+            IList<Empleado> Empleados;
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                arParms[0].Value = data;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ReporteAnualPorEmpleadoPaquetesNombre", arParms);
+
+                Empleados = new List<Empleado>();
+                while (reader.Read())
+                {
+                    empleado = new Empleado();
+
+                    empleado.Nombre = (string)reader["NOMBRE"];
+                    empleado.Apellido = (string)reader["APELLIDO"];
+                    empleado.Estado = (string)reader["ESTADO"];
+
+                    Empleados.Add(empleado);
+                }
+                return Empleados;
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            catch (Exception e)
+            {
+                System.Console.Write(e);
+            }
+            return null;
+
+        }
+
+        public IList<Cargo> ConsultaEmpleadosNombreCar(string data)
+        {
+            Cargo cargo;
+            IList<Cargo> Cargos;
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                arParms[0].Value = data;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ReporteAnualPorEmpleadoPaquetesNombre", arParms);
+
+                Cargos = new List<Cargo>();
+                cargo = new Cargo();
+
+                while (reader.Read())
+                {
+                    cargo.Nombre = (string)reader["CARGO"];
+                    cargo.SueldoMaximo = (float)reader["ANUALTOTAL"];
+                    cargo.SueldoMinimo = (float)reader["ANUALMINIMO"];
+
+                    Cargos.Add(cargo);
+                }
+                return Cargos;
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            catch (Exception e)
+            {
+                System.Console.Write(e);
+            }
+            return null;
+        }
+
+        public IList<Empleado> ConsultaEmpleadosCIEmp(string data)
+        {
+            Empleado empleado;
+            IList<Empleado> Empleados;
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@CIEmpleado", SqlDbType.VarChar);
+
+                arParms[0].Value = data;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ReporteAnualPorEmpleadoPaquetes", arParms);
+
+                Empleados = new List<Empleado>();
+                while (reader.Read())
+                {
+                    empleado = new Empleado();
+
+                    empleado.Nombre = (string)reader["NOMBRE"];
+                    empleado.Apellido = (string)reader["APELLIDO"];
+                    empleado.Estado = (string)reader["ESTADO"];
+
+                    Empleados.Add(empleado);
+                }
+                return Empleados;
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            catch (Exception e)
+            {
+                System.Console.Write(e);
+            }
+            return null;
+
+        }
+
+        public IList<Cargo> ConsultaEmpleadosCICar(string data)
+        {
+            Cargo cargo;
+            IList<Cargo> Cargos;
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@CIEmpleado", SqlDbType.VarChar);
+
+                arParms[0].Value = data;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ReporteAnualPorEmpleadoPaquetes", arParms);
+
+                Cargos = new List<Cargo>();
+                cargo = new Cargo();
+
+                while (reader.Read())
+                {
+                    cargo.Nombre = (string)reader["CARGO"];
+                    cargo.SueldoMaximo = (float)reader["ANUALTOTAL"];
+                    cargo.SueldoMinimo = (float)reader["ANUALMINIMO"];
+
+                    Cargos.Add(cargo);
+                }
+                return Cargos;
+            }
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            catch (Exception e)
+            {
+                System.Console.Write(e);
+            }
+            return null;
+        }
+
         #endregion
 
         public IList<string> ObtenerCargo()
@@ -626,6 +790,8 @@ namespace Core.AccesoDatos.SqlServer
             }
 
         }
+
+        #endregion
 
         #endregion
 

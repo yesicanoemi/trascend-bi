@@ -31,72 +31,31 @@
         <div class="features_overview_right"> 
             <h3>Reporte Equipo #1 (Paquete Anual Por Empleado)</h3>
             <p>&nbsp;</p>
+            <form id="fomr1" runat="server">
             <table style="width: 100%">
-                <tr>
-                    <form id="fomr1" runat="server">
-                    <td>C.I.:<asp:TextBox ID="uxCedula" runat="server" ValidationGroup="validarCedula"></asp:TextBox>
-                    <br />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxCedula"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller"
-                                                Display="Static" ValidationGroup="validarCedula" /></td>
-                    
-                    <td><br />
-                        <br />
-                        <br />
-                        <asp:Button ID="uxBotonAceptar1" runat="server" Text="Buscar" ValidationGroup="validarCedula" /></td>
-                    
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    
-                    <td>Nombre:<asp:TextBox ID="uxNombre" runat="server" ValidationGroup="validarNombre"></asp:TextBox>
-                    <br />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxNombre"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreEmpleado%>" Font-Size="Smaller"
-                                                Display="Static" ValidationGroup="validarNombre"/>
-                    </td>
-                    <td><br />
-                        <br />
-                        <br /> 
-                        <asp:Button ID="uxBotonAceptar2" runat="server" Text="Buscar" ValidationGroup="validarNombre"/></td>
-                    </form>
-                </tr>
-               
-                 
+            <tr>
+                <td>
+                    <asp:radiobuttonlist id="uxradioButton" runat="server">
+                      <asp:listitem id="Cedula" runat="server" value="Cedula" />
+                      <asp:listitem id="Nombre" runat="server" value="Nombre" />
+                    </asp:radiobuttonlist>
+                </td>
+                <td>
+                    <asp:TextBox ID="uxTextBoxBusqueda" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="BuscarClick"/>
+                </td>
+            </tr>
             </table>
+            </form>
             
                       
              
                                 
                  
             
-         </div> 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-    </div> 
+         </div>     </div> 
 </div>  
 				
 			</div> 

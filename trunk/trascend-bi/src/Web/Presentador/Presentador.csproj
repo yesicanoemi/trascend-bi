@@ -141,6 +141,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosPresentadores.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\Contrato\IReporteEquipo1a.cs" />
     <Compile Include="Reportes\Contrato\IReporteFacturasPorCobrar.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaIntervalo.cs" />
     <Compile Include="Reportes\Contrato\IPropuestaPorAnoPresenter.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Reportes\Contrato\IReportePaqueteCargoAnual.cs" />
     <Compile Include="Reportes\Vistas\PropuestasIntervaloPresenter.cs" />
     <Compile Include="Reportes\Vistas\PropuestasPorAnoPresenter.cs" />
+    <Compile Include="Reportes\Vistas\PresentadorReporteEquipo1a.cs" />
     <Compile Include="Reportes\Vistas\ReporteEmpleadoPaquetePresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8aPresenter.cs" />
     <Compile Include="Reportes\Vistas\ReporteEquipo8bPresenter.cs" />

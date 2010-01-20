@@ -16,7 +16,17 @@ namespace Core.LogicaNegocio.Fabricas
         /// </summary>
         /// <param name="entidad">Entidad Factura con los datos</param>
         /// <returns>Comando FacturasEmitidas de la entidad Factura</returns>
-        
+
+        public static ConsultaEmpleadoPaquete CrearComandoEmpleadoPaquete(string data, string tipo)
+        {
+            return new ConsultaEmpleadoPaquete(data, tipo);
+        }
+
+        public static ConsultaEmpleadoPaqueteDat CrearComandoEmpleadoPaqueteDat(string data, string tipo)
+        {
+            return new ConsultaEmpleadoPaqueteDat(data, tipo);
+        }
+
         public static FacturasEmitidas CrearComandoFacturasEmitidas(Factura entidad)
         {
             return new FacturasEmitidas(entidad);

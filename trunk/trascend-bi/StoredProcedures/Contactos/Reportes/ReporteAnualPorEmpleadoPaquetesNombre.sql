@@ -15,9 +15,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[ReporteAnualPorEmpleadoPaquetes]
+CREATE PROCEDURE [dbo].[ReporteAnualPorEmpleadoPaquetesNombre]
 
-@CIEmpleado int
+@Nombre varchar(20)
 AS
 BEGIN
 
@@ -25,5 +25,5 @@ SET NOCOUNT ON;
 
 SELECT E.NOMBRE AS NOMBRE, E.APELLIDO AS APELLIDO, E.ESTADO AS ESTADO, C.NOMBRE AS CARGO, (12*C.SUELDOMAXIMO) AS ANUALTOTAL, (12*C.SUELDOMINIMO) AS ANUALMINIMO
 	    FROM dbo.Empleado E, dbo.CARGO C
-		WHERE E.Estado='Activo' and E.IdCargo=C.IdCargo and CIEmpleado=@CIEmpleado;
+		WHERE E.Estado='Activo' and E.IdCargo=C.IdCargo and E.NOMBRE=@Nombre;
 END;
