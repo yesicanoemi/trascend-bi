@@ -95,7 +95,7 @@
                                    <td>
                                         <asp:TextBox ID="uxCodOficina" runat="server" Width="40"></asp:TextBox>
                                         <asp:TextBox ID="uxTelfOficina" runat="server" Width="150"></asp:TextBox>
-                                        Fax: <asp:CheckBox ID="uxFax" runat="server" />
+                                        Tipo: <asp:CheckBox ID="uxFax" runat="server" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="uxValidatorCodOficina" runat="server" 
                                         ControlToValidate="uxCodOficina" 

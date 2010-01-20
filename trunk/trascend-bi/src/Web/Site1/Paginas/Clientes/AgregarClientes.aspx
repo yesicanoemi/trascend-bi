@@ -97,56 +97,39 @@
                                </tr>
                                  <tr>
                                    <td>Ciudad:</td>
-                                   <td><asp:DropDownList ID="uxciudad" runat="server" DataValueField="Caracas">
-                                       <asp:ListItem>Caracas</asp:ListItem>
-                                       <asp:ListItem>Maracaibo</asp:ListItem>
-                                       <asp:ListItem>Barquisimeto</asp:ListItem>
-                                       <asp:ListItem>Valencia</asp:ListItem>
-                                       <asp:ListItem>Maracay</asp:ListItem>
-                                       <asp:ListItem>Puerto la Cruz</asp:ListItem>
-                                       <asp:ListItem>Maturín</asp:ListItem>
-                                       <asp:ListItem>Barcelona</asp:ListItem>
-                                       <asp:ListItem>Ciudad Bolívar</asp:ListItem>
-                                       <asp:ListItem>Acarigua-Araure</asp:ListItem>
-                                       <asp:ListItem>Los Teques</asp:ListItem>
-                                       <asp:ListItem>San Cristóbal</asp:ListItem>
-                                       <asp:ListItem>Barinas</asp:ListItem>
-                                       <asp:ListItem>Cabimas</asp:ListItem>
-                                       <asp:ListItem>Cumaná</asp:ListItem>
-                                       <asp:ListItem>Puerto La Cruz</asp:ListItem>
-                                       <asp:ListItem>Punto Fijo</asp:ListItem>
-                                       <asp:ListItem>Guarenas</asp:ListItem>
-                                       <asp:ListItem>Carúpano</asp:ListItem>
-                                       </asp:DropDownList></td>
+                                   <td><asp:TextBox ID="uxciudad" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="uxciudad"
+                                                ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
+                                                Display="Dynamic" /></td>
                                </tr>
                 <tr>
                                    <td>Area de Negocio:</td>
-                                   <td>
-                                       <asp:DropDownList ID="uxAreaNegocioCliente" runat="server" 
-                                           >
-                                           <asp:ListItem>Comercio</asp:ListItem>
-                                           <asp:ListItem>Tecnologia</asp:ListItem>
-                                            <asp:ListItem>Ciencia</asp:ListItem>
-                                            <asp:ListItem>Mercadeo</asp:ListItem>
-                                            <asp:ListItem>Banca</asp:ListItem>
-                                            <asp:ListItem>Telefonia</asp:ListItem>
-                                            <asp:ListItem>Otros</asp:ListItem>
-                                       </asp:DropDownList>
-                                                         </td>
+                                   <td><asp:TextBox ID="uxAreaNegocioCliente" runat="server"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="uxAreaNegocioCliente"
+                                                ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
+                                                Display="Dynamic" /></td>
                                </tr>
                                
                                <tr>
                                    <td>Telefono Trabajo:</td>
                                    <td><asp:TextBox ID="uxCodTrabajo" runat="server" Width="40"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelefonoTrabajo" runat="server" Width="150"></asp:TextBox></td>
+                                        <asp:TextBox ID="uxTelefonoTrabajo" runat="server" Width="150"></asp:TextBox>
+                                       
+                                       <asp:RadioButtonList ID="uxTipoTelefono" runat="server" 
+                                           Height="43px" Width="16px" autoPostBack="true" 
+                                           repeatDirection="horizontal">
+                                           
+                                           <asp:ListItem text="Local" value="Local"/>
+                                           <asp:ListItem text="Fax" value="Fax"/>
+                                       
+                                       </asp:RadioButtonList>
+                                   </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -188,8 +171,18 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
+                                       <table style="width: 100%">
+                                           <tr>
+                                               <td>
                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                            onclick="uxBotonAceptar_Click" />
+                                               </td>
+                                               <td>
+                                       <asp:Button ID="AgregarContacto" runat="server" Text="Agregar Contacto" 
+                                                       onclick="AgregarContacto_Click" />
+                                               </td>
+                                           </tr>
+                                       </table>
                                     </td>
                                 </tr>
                            </table>

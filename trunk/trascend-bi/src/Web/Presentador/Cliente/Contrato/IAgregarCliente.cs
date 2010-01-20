@@ -15,10 +15,12 @@ namespace Presentador.Cliente.Contrato
         TextBox UrbanizacionCliente { get; set; }
         TextBox EdificioCasaCliente { get; set; }
         TextBox PisoApartamentoCliente { get; set; }
-        DropDownList CiudadCliente { get; set; }
-        DropDownList AreaNegocioCliente { get; set; }
+        TextBox CiudadCliente { get; set; }
+        TextBox AreaNegocioCliente { get; set; }
         TextBox TelefonoTrabajoCliente { get; set; }
         TextBox CodigoTrabajoCliente { get; set; }
+        RadioButtonList TipoTelefono { get; set; }
+
         
         #endregion
 

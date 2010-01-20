@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Cliente.Vistas;
 using Presentador.Cliente.Contrato;
 using Core.LogicaNegocio.Entidades;
+using Microsoft.Practices.Web.UI.WebControls;
 
 public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultarCliente
 {
@@ -13,14 +14,38 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     private Cliente _cliente;
 
-    #region propiedades basicas
+    #region propiedades 
 
+    private int width;
+    
+    public GridView Muestra
+    {
+        get { return uxMuestra; }
+        set { uxMuestra = value; }
+    }
+
+    public TextBox Valor
+    {
+        get { return uxValor; }
+        set { uxValor = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerConsultaCliente
+    {
+        get { return uxObjectConsultaCliente; }
+        set { uxObjectConsultaCliente = value; }
+    }
+    public MultiView MultiViewConsulta
+    {
+        get { return uxMultiViewConsultar; }
+        set { uxMultiViewConsultar = value; }
+    }
     public DropDownList opcion
     {
         get { return opcion1; }
         set { opcion1 = value; }
     }
-    public DropDownList SeleccionOpcion
+    /*public DropDownList SeleccionOpcion
     {
         get { return uxSeleccion; }
         set { uxSeleccion = value; }
@@ -149,17 +174,17 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
     {
         get { return ListContactoCliente; }
         set { ListContactoCliente = value; }
-    }
+    }*/
 
     #endregion
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        width = 0;
     }
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        #region trejo
+     /*   #region trejo
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -184,48 +209,80 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
         }
         #endregion
 
-
+        */
+        _presentador = new ConsultarClientePresentador(this);
     }
 
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        uxBotonAceptar.Visible = false;
-        uxBotonAceptar2.Visible = true;
+        //uxBotonAceptar.Visible = false;
+        //uxBotonAceptar2.Visible = true;
         _presentador.BotonSeleccionTipo();
     }
 
-    protected void uxBotonAceptar2_Click(object sender, EventArgs e)
-    {
-        uxBotonAceptar2.Visible = false;
+    /* protected void uxBotonAceptar2_Click(object sender, EventArgs e)
+     {
+         uxBotonAceptar2.Visible = false;
 
-        if (_presentador.opcionBusqueda() == 0)
-        {
-            _presentador.BotonAccionConsultaNombre();
+         if (_presentador.opcionBusqueda() == 0)
+         {
+             _presentador.BotonAccionConsultaNombre();
 
-        }
+         }
 
-        else if (_presentador.opcionBusqueda() == 1)
-        {
+         else if (_presentador.opcionBusqueda() == 1)
+         {
 
-            _presentador.BotonSeleccionCliente();
+             _presentador.BotonSeleccionCliente();
 
-            uxBotonAceptar3.Visible = true;
-        }
+             uxBotonAceptar3.Visible = true;
+         }
 
-    }
+     }
 
-    protected void uxBotonAceptar3_Click(object sender, EventArgs e)
-    {
+     protected void uxBotonAceptar3_Click(object sender, EventArgs e)
+     {
 
-        _presentador.BotonAccionConsulta();
-        uxBotonAceptar3.Visible = false;
-    }
+         _presentador.BotonAccionConsulta();
+         uxBotonAceptar3.Visible = false;
+     }*/
     protected void opcion1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
 
 
+    protected void uxMuestra_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
+    {
+        //_presentador.metodoEnPresendator(int.Parse(uxMuestra.DataKeys[e.NewSelectedIndex].Value.ToString()));
+    
+    }
+
+    protected void uxTablaClientes_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.DataItem != null)
+        {
+            string s = e.Row.DataItem.ToString();
+
+            if (s.Length > width)
+            {
+                width = s.Length;
+                
+                uxMuestra.Columns[0].ItemStyle.Width = s.Length;
+                uxMuestra.Columns[0].ItemStyle.Wrap = false;
+            }
+        }
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+    //protected consultarId(object sender, GridViewSelectEventArgs e)
+    //{
+      //  _presentador.ConsultarDetalles(int.Parse(uxPropuestaConsultada.DataKeys[e.NewSelectedIndex].Value.ToString()));
+
+    //}//
+   
 }
 

@@ -53,6 +53,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
 
     #region Informacion Basica
 
+   
     public TextBox NombreUsuario
     {
         get { return uxLogin; }
@@ -76,7 +77,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         get { return uxConsultaUsuario; }
         set { throw new System.NotImplementedException(); }
     }
-
+    
     public ObjectContainerDataSource GetObjectContainerConsultaUsuario
     {
         get { return uxObjectConsultaUsuario; }

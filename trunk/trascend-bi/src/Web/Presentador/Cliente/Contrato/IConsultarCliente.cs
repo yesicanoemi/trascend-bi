@@ -3,22 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Presentador.Cliente.Contrato
 {
     public interface IConsultarCliente
     {
-        Label CodTelefonoCliente
+        #region Propiedades
+        MultiView MultiViewConsulta
         {
             get;
             set;
         }
-
         DropDownList opcion
         {
             get;
             set;
         }
+
+        TextBox Valor
+        {
+            get;
+            set;
+        }
+        
+        #endregion
+
+        /*Label CodTelefonoCliente
+        {
+            get;
+            set;
+        }
+
+        
 
         DropDownList SeleccionOpcion
         {
@@ -160,6 +177,9 @@ namespace Presentador.Cliente.Contrato
             set;
         }
 
+       
 
+        */
+        ObjectContainerDataSource GetObjectContainerConsultaCliente { get; set; }
     }
 }

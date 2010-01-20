@@ -8,9 +8,6 @@ using System.Web.UI.WebControls;
 using Presentador.Cliente.Vistas;
 using Presentador.Cliente.Contrato;
 
-
-
-
 public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarCliente
 {
     #region Propiedades
@@ -57,15 +54,13 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         set { uxPisoApartamento = value; }
     }
 
-    public DropDownList CiudadCliente
+    public TextBox CiudadCliente
     {
         get { return uxciudad; }
         set { uxciudad = value; }
     }
 
-
-
-    public DropDownList AreaNegocioCliente
+    public TextBox AreaNegocioCliente
     {
         get { return uxAreaNegocioCliente; }
         set { uxAreaNegocioCliente = value; }
@@ -82,13 +77,20 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         get { return uxCodTrabajo; }
         set { uxCodTrabajo = value; }
     }
+    
+    public RadioButtonList TipoTelefono
+    {
+        get { return uxTipoTelefono; }
+        set { uxTipoTelefono = value; }
+    }
+    
 
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
     {
         #region agrego trejo
-        Core.LogicaNegocio.Entidades.Usuario usuario =
+        /*Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
@@ -109,10 +111,10 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         if (permiso == false)
         {
             Response.Redirect(paginaSinPermiso);
-        }
+        }*/
         #endregion
 
-
+        _presentador = new AgregarClientePresentador(this);
 
     }
     protected void Page_Load(object sender, EventArgs e)
@@ -125,4 +127,11 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
 
     }
 
+    protected void AgregarContacto_Click(object sender, EventArgs e)
+    {
+        _presentador.IngersarCliente();
+        
+        Response.Redirect("~/Paginas/Contactos/AgregarContactos.aspx");
+        
+    }
 }

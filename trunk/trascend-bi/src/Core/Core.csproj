@@ -95,6 +95,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarAreaNegocio.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarNombre.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarParametroNombre.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Modificar.cs" />

@@ -34,24 +34,35 @@ namespace Presentador.Cliente.Vistas
                 Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
                 try 
                 {
+                    cliente.Direccion = new Direccion();
+                    
+                    cliente.Telefono = new TelefonoTrabajo();
+                    
                     cliente.Rif = _vista.rifCliente.Text;
+                    
                     cliente.Nombre = _vista.NombreCliente.Text;
-                    cliente.CalleAvenidad = _vista.CalleAvenidaCliente.Text;
-                    cliente.Urbanizacion = _vista.UrbanizacionCliente.Text;
-                    cliente.EdificioCasa = _vista.EdificioCasaCliente.Text;
-                    cliente.PisoApartamento = _vista.PisoApartamentoCliente.Text;
-                    cliente.Ciudad = _vista.CiudadCliente.Text;
+                    
+                    cliente.Direccion.Calle = _vista.CalleAvenidaCliente.Text;
+                    
+                    cliente.Direccion.Urbanizacion = _vista.UrbanizacionCliente.Text;
+                    
+                    cliente.Direccion.Edif_Casa = _vista.EdificioCasaCliente.Text;
+                    
+                    cliente.Direccion.Piso_apto = _vista.PisoApartamentoCliente.Text;
+                    
+                    cliente.Direccion.Ciudad = _vista.CiudadCliente.Text;
+                    
                     cliente.AreaNegocio = _vista.AreaNegocioCliente.Text;
-                    cliente.TelefonoTrabajo = _vista.TelefonoTrabajoCliente.Text;
-                    cliente.CodigoTrabajo = _vista.CodigoTrabajoCliente.Text;
-                    Ingresar(cliente);
-                    limpiarRegistro();
                     
+                    cliente.Telefono.Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
                     
-                    
-                    
+                    cliente.Telefono.Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
 
+                    cliente.Telefono.Tipo = _vista.TipoTelefono.Text;
                     
+                    Ingresar(cliente);
+                    
+                    limpiarRegistro();                                                                                                   
                 }
                 catch(WebException e)
                 {

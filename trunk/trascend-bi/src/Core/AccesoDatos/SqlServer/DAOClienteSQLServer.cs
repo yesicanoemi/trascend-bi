@@ -70,7 +70,7 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[10];
+                SqlParameter[] arParms = new SqlParameter[11];
                 // Parametros 
                 #region Guardando parametros
 
@@ -81,28 +81,31 @@ namespace Core.AccesoDatos.SqlServer
                     arParms[1].Value = cliente.Nombre;
 
                     arParms[2] = new SqlParameter("@calleAv", SqlDbType.VarChar);
-                    arParms[2].Value = cliente.CalleAvenidad;
+                    arParms[2].Value = cliente.Direccion.Calle;
 
                     arParms[3] = new SqlParameter("@urb", SqlDbType.VarChar);
-                    arParms[3].Value = cliente.Urbanizacion;
+                    arParms[3].Value = cliente.Direccion.Urbanizacion;
 
                     arParms[4] = new SqlParameter("@EdiCas", SqlDbType.SmallDateTime);
-                    arParms[4].Value = cliente.EdificioCasa;
+                    arParms[4].Value = cliente.Direccion.Edif_Casa;
 
                     arParms[5] = new SqlParameter("@PisoApto", SqlDbType.VarChar);
-                    arParms[5].Value = cliente.PisoApartamento;
+                    arParms[5].Value = cliente.Direccion.Piso_apto;
 
                     arParms[6] = new SqlParameter("@Ciudad", SqlDbType.VarChar);
-                    arParms[6].Value = cliente.Ciudad;
+                    arParms[6].Value = cliente.Direccion.Ciudad;
 
                     arParms[7] = new SqlParameter("@AreaNeg", SqlDbType.VarChar);
                     arParms[7].Value = cliente.AreaNegocio;
 
                     arParms[8] = new SqlParameter("@Tlf", SqlDbType.VarChar);
-                    arParms[8].Value = cliente.TelefonoTrabajo;
+                    arParms[8].Value = cliente.Telefono.Numero;
 
                     arParms[9] = new SqlParameter("@codTlf", SqlDbType.VarChar);
-                    arParms[9].Value = cliente.CodigoTrabajo;
+                    arParms[9].Value = cliente.Telefono.Codigoarea;
+
+                    arParms[10] = new SqlParameter("@tipoTelf", SqlDbType.VarChar);
+                    arParms[10].Value = cliente.Telefono.Tipo;
 
                 #endregion
 
@@ -143,8 +146,9 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
+
                 DbDataReader conexion = SqlHelper.ExecuteReader
-                    (GetConnection(), "ConsultarClienteNombre");
+                    (GetConnection(), "ConsultarClienteParametroNombre");
 
                 int i = 0;
 
@@ -160,21 +164,21 @@ namespace Core.AccesoDatos.SqlServer
 
                     _Cliente.Rif = (string)conexion["RifCliente"];
 
-                    _Cliente.CalleAvenidad = (string)conexion["CalleAvenidad"];
+                    _Cliente.Direccion.Avenida = (string)conexion["CalleAvenidad"];
 
-                    _Cliente.Urbanizacion = (string)conexion["Urbanizacion"];
+                    _Cliente.Direccion.Urbanizacion = (string)conexion["Urbanizacion"];
 
-                    _Cliente.EdificioCasa = (string)conexion["EdificioCasa"];
+                    _Cliente.Direccion.Edif_Casa = (string)conexion["EdificioCasa"];
 
-                    _Cliente.PisoApartamento = (string)conexion["PisoApartamento"];
+                    _Cliente.Direccion.Piso_apto = (string)conexion["PisoApartamento"];
 
-                    _Cliente.Ciudad = (String)conexion["Ciudad"];
+                    _Cliente.Direccion.Ciudad = (String)conexion["Ciudad"];
 
                     _Cliente.AreaNegocio = (String)conexion["AreaNegocio"];
 
-                    _Cliente.CodigoTrabajo = (string)conexion["CodigoTelefonoTrabajo"];
+                    _Cliente.Telefono.Codigoarea = (int)conexion["CodigoTelefonoTrabajo"];
 
-                    _Cliente.TelefonoTrabajo = (string)conexion["TelefonoTrabajo"];
+                    _Cliente.Telefono.Numero = (int)conexion["TelefonoTrabajo"];
 
                     _Cliente.Contacto = BuscarContacto(_Cliente.IdCliente);
 
@@ -210,7 +214,59 @@ namespace Core.AccesoDatos.SqlServer
 
             
 
-        }// este metodo invoca al buscarContacto
+        }
+
+        public List<Cliente> ConsultarParamtroNombre(Cliente entidad)
+        {
+            List<Cliente> ListaCliente = new List<Cliente>();
+
+            try
+            {
+
+                SqlParameter parametros = new SqlParameter();
+
+                parametros = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                parametros.Value = entidad.Nombre;
+
+                DbDataReader conexion =
+                SqlHelper.ExecuteReader(GetConnection(), "ConsultarClienteParametroNombre", parametros);
+
+                int i = 0;
+
+
+                while (conexion.Read())
+                {
+
+                    Cliente _Cliente = new Cliente();
+
+                    _Cliente.Nombre = (string)conexion["Nombre"];
+                    
+                    _Cliente.Rif=(string)conexion["RifCliente"];
+
+                    _Cliente.AreaNegocio = (string)conexion["AreaNegocio"];
+
+                    ListaCliente.Insert(i, _Cliente);
+                    
+                    i++;
+
+                }
+
+                return ListaCliente;
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("Error en SQL consultando la lista de contacto del cliente", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("Error consultado el la lista de contacto en la base de dato", e);
+            }
+        }
+        
+        // este metodo invoca al buscarContacto       
 
         private List<Contacto> BuscarContacto(int IdCliente)
         {
@@ -300,6 +356,7 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
         }
+      
         public IList<string> ListaEliminar(List<string> ListaRecibida)
         {
             if (ListaRecibida.Count == 0)
