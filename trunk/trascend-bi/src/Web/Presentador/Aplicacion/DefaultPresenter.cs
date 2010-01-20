@@ -18,6 +18,7 @@ using System.Net;
 using Presentador.Base;
 using System.Resources;
 
+
 namespace Presentador.Aplicacion
 {
     public class DefaultPresenter : PresentadorBase
@@ -73,7 +74,6 @@ namespace Presentador.Aplicacion
             {
                 _vista.PintarInformacion(ManagerRecursos.GetString
                                             ("MensajeCredenciales"), "mensajes");
-                _vista.InformacionVisible = true;
 
             }
 

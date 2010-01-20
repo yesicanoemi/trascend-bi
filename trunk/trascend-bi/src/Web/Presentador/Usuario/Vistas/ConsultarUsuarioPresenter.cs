@@ -275,7 +275,7 @@ namespace Presentador.Usuario.Vistas
             
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
-            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(user);
+            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(listado[0]);
 
             user = null;
 

@@ -136,6 +136,8 @@ namespace Core.AccesoDatos.SqlServer
 
                     _usuario.Status = (string)reader["Status"];
 
+                    _usuario.IdUsuario = (int)reader["IdUsuario"];
+                    
                     usuario.Add(_usuario);
                 }
 
