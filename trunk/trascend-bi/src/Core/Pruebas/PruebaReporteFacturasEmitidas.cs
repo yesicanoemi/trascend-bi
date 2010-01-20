@@ -30,9 +30,11 @@ namespace Core.Pruebas
 
             Core.LogicaNegocio.Comandos.ComandoReporte.FacturasEmitidas comando;
 
-            IList<Core.LogicaNegocio.Entidades.Factura> listaFactura = null;
-
-            IList<Core.LogicaNegocio.Entidades.Factura> listaFacturaEmitida = null;
+            IList<Core.LogicaNegocio.Entidades.Factura> listaFactura =
+                                            new List<Core.LogicaNegocio.Entidades.Factura>();
+            
+            IList<Core.LogicaNegocio.Entidades.Factura> listaFacturaEmitida =
+                                            new List<Core.LogicaNegocio.Entidades.Factura>();
 
             factura.Fechaingreso = Convert.ToDateTime(FechaInicio);
 
@@ -42,14 +44,17 @@ namespace Core.Pruebas
 
             listaFactura = comando.Ejecutar();
 
-            foreach (Core.LogicaNegocio.Entidades.Factura facturaTest in listaFactura)
+
+            for (int i = 0; i < listaFactura.Count ; i++)
             {
-                if (facturaTest.Fechaingreso.CompareTo(FechaInicio) >= 0)
+                if (listaFactura[i].Fechaingreso.CompareTo(DateTime.Parse(FechaInicio)) >= 0 )
                 {
-                    if (facturaTest.Fechapago.CompareTo(FechaFin) <= 0)
-                        
-                       listaFacturaEmitida.Add(facturaTest);
+                    if (listaFactura[i].Fechaingreso.CompareTo(DateTime.Parse(FechaFin)) <= 0)
+                    {
+                        listaFacturaEmitida.Add(listaFactura[i]);
+                    }
                 }
+             
             }
 
             Assert.AreNotEqual(listaFacturaEmitida.Count, 0);
@@ -58,3 +63,5 @@ namespace Core.Pruebas
         #endregion
     }
 }
+
+
