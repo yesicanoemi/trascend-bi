@@ -69,36 +69,57 @@ namespace Core.Pruebas
         }
 
         [Test]
-        public void ReporteFactura()
+        public void TestModificarUsuario()
         {
-            Factura factura = new Factura();
+            Usuario usuario = new Usuario();
 
-            factura.Fechaingreso = Convert.ToDateTime("01/01/2010");
+            Usuario usuarioTest = new Usuario();
 
-            factura.Fechapago = Convert.ToDateTime("29/01/2010");
+            UsuarioSQLServer bd = new UsuarioSQLServer();
 
-            ReporteSQLServer bd = new ReporteSQLServer();
+            IList<Usuario> listadoUsuarios = new List<Usuario>();
 
-            IList<Factura> listadoFactura = new List<Factura>();
+            IList<Permiso> listadoPermisos = new List<Permiso>();
 
-            listadoFactura = bd.FacturasEmitidas(factura);
+            //consulta de usuario y sus permisos
+            listadoUsuarios = bd.ConsultarUsuario(usuario);
 
-            int j= 0;
+            usuario = listadoUsuarios[0];
 
-            for (int i = 0; i < listadoFactura.Count; i++)
+            listadoPermisos = bd.ConsultarPermisos(listadoUsuarios[0]);
+
+           /* if (listadoPermisos[0] != null)
             {
-                if (listadoFactura[i].Titulo == "PruebaUnitario")
-                {
-                    j = i;
-                    i = listadoFactura.Count;
+                //asignacion del permiso al usuario
+                usuario.PermisoUsu[0].IdPermiso = listadoPermisos[0].IdPermiso;
 
-                }
-                
+                //modificacion del permiso
+                usuario.PermisoUsu[0].IdPermiso = 5;
+
             }
 
-            Assert.AreEqual("PruebaUnitaria", listadoFactura[j].Titulo);
+            else
+            {
+                //modificacion del permiso
+                usuario.PermisoUsu[0].IdPermiso = 5;
+            
+            }
+*/
+            if (usuario.Status.CompareTo("Inactivo") > 0)
+            {
+                usuario.Status = "Activo";
+            }
 
+            bd.ModificarUsuario(usuario);
 
+            //consulta de permisos y de usuario nuevamente
+            listadoPermisos = bd.ConsultarPermisos(listadoUsuarios[0]);
+            listadoUsuarios = bd.ConsultarUsuario(usuario);
+
+            usuarioTest = listadoUsuarios[0];
+         
+            Assert.AreEqual(5,listadoPermisos[0].IdPermiso);
+            Assert.AreEqual(usuario.Status, usuarioTest.Status);
         }
 
         [Test]
