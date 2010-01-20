@@ -28,6 +28,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,IdCargo from dbo.Empleado where IdEmpleado = @id
+	SELECT CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,IdCargo,Sueldo from dbo.Empleado where IdEmpleado = @id
 END
 GO
