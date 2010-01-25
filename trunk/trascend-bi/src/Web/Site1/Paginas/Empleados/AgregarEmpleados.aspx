@@ -155,7 +155,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="uxceFechaNac"
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="uxFechaNac"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaFechaNacEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
                                         </td>
@@ -186,7 +186,7 @@
                                     <tr>
                                         <td>Avenida</td>
                                         <td>
-                                            <asp:TextBox ID="uxAvenida" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="uxAvenida" runat="server" Enabled=true></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -195,7 +195,7 @@
                                                 ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
                                             <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender1" TargetControlID="uxAvenida" FilterType="LowercaseLetters, 
-                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
+                                            UppercaseLetters"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
