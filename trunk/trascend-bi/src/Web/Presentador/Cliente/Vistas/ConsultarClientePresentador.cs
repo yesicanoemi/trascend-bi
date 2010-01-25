@@ -47,66 +47,18 @@ namespace Presentador.Cliente.Vistas
 
             if (_vista.opcion.SelectedIndex==1)//nombre de area de negocio
             {
-            
-            }
-            
+                Core.LogicaNegocio.Entidades.Cliente cliente = 
+                    new Core.LogicaNegocio.Entidades.Cliente();
                 
-            #region comentado     
-           //_vista.opcion.Visible = false;
+                cliente.AreaNegocio = _vista.Valor.Text;
 
-            
-            /*_vista.TipoConsulta.Visible = false;
-            _vista.Seleccion.Visible = true;
-            _vista.SeleccionOpcion.Visible= true;
-            _vista.SeleccionAreaCliente.Visible = false;
-            _vista.SeleccionArea.Visible = false;*/
-#endregion
+                IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = 
+                    ConsultarClienteAreaNegocio(cliente);
+                
+                _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
 
-            #region SolicitudServicios
-
-            /*if (_vista.opcion.SelectedIndex == 0) // Nombre de cliente
-            {
-                #region buscar por nombre
-                int i = 0;
-
-                  cliente = BuscarNombre(); //busco todo los nombres de cliente
-
-                 for (i = 0; i < cliente.Count; i++)
-                 {
-
-                     _vista.SeleccionOpcion.Items.Add(cliente.ElementAt(i).Nombre);
-
-                 }
-
-                 _vista.SeleccionOpcion.DataBind();
-                #endregion
-            }
-
-
-
-            if (_vista.opcion.SelectedIndex == 1) // Area de Negcocio
-            {
-                #region area de negocio
-
-                int i = 0;
-
-                cliente = BuscarPorAreaNegocio();
-
-                 for (i = 0; i < cliente.Count; i++)
-                 {                                
-                     _vista.SeleccionOpcion.Items.Add(cliente.ElementAt(i).AreaNegocio);
-
-                 }
-                            
-                 _vista.SeleccionOpcion.DataBind();
-
-                #endregion
-            }*/
-
-
-            #endregion
-
-
+                CambiarVista(1);
+            }                                   
 
         }
         
@@ -146,8 +98,10 @@ namespace Presentador.Cliente.Vistas
             #endregion
         }
 
+       
         public IList<Core.LogicaNegocio.Entidades.Cliente> 
             ConsultarClienteNombre(Core.LogicaNegocio.Entidades.Cliente entidad)
+       
         {
             IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
 
@@ -160,6 +114,20 @@ namespace Presentador.Cliente.Vistas
             return listaCliente;
         }
 
+
+        public IList<Core.LogicaNegocio.Entidades.Cliente>
+          ConsultarClienteAreaNegocio(Core.LogicaNegocio.Entidades.Cliente entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
+
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarParametroAreaNegocio comando; //tengo q crear una nueva consulta
+
+            comando = FabricaComandosCliente.CrearComandoConsultarParametroAreaNegocio(entidad);
+
+            listaCliente = comando.ejecutar(entidad);
+
+            return listaCliente;
+        }
 
         /*public void metodoEnPresendator(int Id)
          {

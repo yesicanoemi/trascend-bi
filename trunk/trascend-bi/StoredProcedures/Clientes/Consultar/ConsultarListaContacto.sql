@@ -1,12 +1,24 @@
-USE [BddProy2]
-GO
-
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-create PROCEDURE [dbo].[ConsultarListaContacto]
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+alter PROCEDURE [dbo].[ConsultarListaContacto]
 @IdCliente int
 
 	-- Add the parameters for the stored procedure here
@@ -22,3 +34,4 @@ BEGIN
 		from [bddproy2].[dbo].[contacto] c, [bddproy2].[dbo].[cliente] cl
 		where c.IdCliente=Cl.idCliente and cl.IdCliente = @IdCliente;
 END
+GO

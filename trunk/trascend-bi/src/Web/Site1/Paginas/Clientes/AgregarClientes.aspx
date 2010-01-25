@@ -33,7 +33,8 @@
                            <table style="width:100%;">
                                <tr>
                                    <td>RIF:</td>
-                                   <td><asp:TextBox ID="uxRif" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxRif" runat="server"></asp:TextBox>&nbsp;
+                                       <span style="color: #FF0000">(*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -45,7 +46,8 @@
                                </tr>
                                <tr>
                                    <td>Nombre:</td>
-                                   <td><asp:TextBox ID="uxNombreCliente" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxNombreCliente" runat="server"></asp:TextBox>&nbsp;
+                                       <span style="color: #FF0000">(*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -55,7 +57,8 @@
                                </tr>
                                <tr>
                                    <td>Calle/Avenida</td>
-                                   <td><asp:TextBox ID="uxAvenidaCalle" runat="server"></asp:TextBox><tr>
+                                   <td><asp:TextBox ID="uxAvenidaCalle" runat="server"></asp:TextBox>&nbsp;
+                                       <span style="color: #FF0000">(*)</span><tr>
                                    <td>&nbsp;</td>
                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="uxAvenidaCalle"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
@@ -65,7 +68,8 @@
                                </tr>
                                <tr>
                                    <td>Urbanizacion</td>
-                                   <td><asp:TextBox ID="uxUrbanizacion" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxUrbanizacion" runat="server"></asp:TextBox>&nbsp;
+                                       <span style="color: #FF0000">(*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -76,7 +80,8 @@
                                </tr>
                                <tr>
                                    <td>Edificio/Casa</td>
-                                   <td><asp:TextBox ID="uxEdificioCasa" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxEdificioCasa" runat="server"></asp:TextBox>&nbsp;
+                                       <span style="color: #FF0000">(*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -87,7 +92,8 @@
                                </tr>
                                 <tr>
                                    <td>Piso/Apartamento</td>
-                                   <td><asp:TextBox ID="uxPisoApartamento" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxPisoApartamento" runat="server"></asp:TextBox>&nbsp;
+                                       <span style="color: #FF0000">(*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -97,7 +103,8 @@
                                </tr>
                                  <tr>
                                    <td>Ciudad:</td>
-                                   <td><asp:TextBox ID="uxciudad" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxciudad" runat="server"></asp:TextBox>&nbsp;<span 
+                                           style="color: #FF0000"> (*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -107,7 +114,8 @@
                                </tr>
                 <tr>
                                    <td>Area de Negocio:</td>
-                                   <td><asp:TextBox ID="uxAreaNegocioCliente" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxAreaNegocioCliente" runat="server"></asp:TextBox>&nbsp;<span 
+                                           style="color: #FF0000"> (*)</span></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -121,6 +129,11 @@
                                    <td><asp:TextBox ID="uxCodTrabajo" runat="server" Width="40"></asp:TextBox>
                                         <asp:TextBox ID="uxTelefonoTrabajo" runat="server" Width="150"></asp:TextBox>
                                        
+                                       <span style="color: #FF0000">(*) EJ 123 1234567</span><table 
+                                           style="width: 100%">
+                                           <tr>
+                                               <td>
+                                       
                                        <asp:RadioButtonList ID="uxTipoTelefono" runat="server" 
                                            Height="43px" Width="16px" autoPostBack="true" 
                                            repeatDirection="horizontal">
@@ -129,6 +142,9 @@
                                            <asp:ListItem text="Fax" value="Fax"/>
                                        
                                        </asp:RadioButtonList>
+                                               </td>
+                                           </tr>
+                                       </table>
                                    </td>
                                </tr>
                                <tr>
@@ -162,7 +178,7 @@
                                                     
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                   <td style="color: #FF0000">(*) LOS CAMPOS SON OBLIGATORIO</td>
                                </tr>
                                 <tr>
                                    <td>&nbsp;</td>

@@ -17,7 +17,7 @@ namespace Core.AccesoDatos.SqlServer
     public class DAOClienteSQLServer
     {
         
-        #region Propiedades
+        #region Propiedades        
         
         List<Cliente> listaCliente = new List<Cliente>();
 
@@ -71,7 +71,9 @@ namespace Core.AccesoDatos.SqlServer
             {
 
                 SqlParameter[] arParms = new SqlParameter[11];
+                
                 // Parametros 
+               
                 #region Guardando parametros
 
                     arParms[0] = new SqlParameter("@rif", SqlDbType.Int);
@@ -146,13 +148,15 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
+                IList<Cliente> _listaCliente = new List<Cliente>();
 
                 DbDataReader conexion = SqlHelper.ExecuteReader
                     (GetConnection(), "ConsultarClienteParametroNombre");
 
+
                 int i = 0;
 
-                #region sacamos los valore
+               
                 while (conexion.Read())
                 {
 
@@ -164,38 +168,32 @@ namespace Core.AccesoDatos.SqlServer
 
                     _Cliente.Rif = (string)conexion["RifCliente"];
 
-                    _Cliente.Direccion.Avenida = (string)conexion["CalleAvenidad"];
+                    Direccion buscarDir = new Direccion();
 
-                    _Cliente.Direccion.Urbanizacion = (string)conexion["Urbanizacion"];
+                    buscarDir = buscarDireccion(_Cliente.IdCliente);
 
-                    _Cliente.Direccion.Edif_Casa = (string)conexion["EdificioCasa"];
+                    _Cliente.Direccion = buscarDir;
 
-                    _Cliente.Direccion.Piso_apto = (string)conexion["PisoApartamento"];
+                    IList <Contacto> _listaContacto = new List<Contacto>();
 
-                    _Cliente.Direccion.Ciudad = (String)conexion["Ciudad"];
+                    _listaContacto = BuscarContacto(_Cliente.IdCliente);
 
-                    _Cliente.AreaNegocio = (String)conexion["AreaNegocio"];
-
-                    _Cliente.Telefono.Codigoarea = (int)conexion["CodigoTelefonoTrabajo"];
-
-                    _Cliente.Telefono.Numero = (int)conexion["TelefonoTrabajo"];
-
-                    _Cliente.Contacto = BuscarContacto(_Cliente.IdCliente);
-
-                    listaCliente.Insert(i, _Cliente);
+                    _listaCliente.Insert(i, _Cliente);
 
                     i++;
 
                 }
-                #endregion
+               
 
                 if (listaCliente.Count == 0)
 
                     throw new ConsultarClienteBDExcepciones();
 
                 return listaCliente;
-                
+
             }
+
+            #region Execepciones
             catch (SqlException e)
             {
                 throw new ConsultarClienteBDExcepciones
@@ -211,64 +209,46 @@ namespace Core.AccesoDatos.SqlServer
                 throw new ConsultarClienteBDExcepciones
                     ("No se encontro ninguna informacion del cliente en la base de dato", e);
             }
-
+          #endregion
             
 
-        }
-
-        public List<Cliente> ConsultarParamtroNombre(Cliente entidad)
-        {
-            List<Cliente> ListaCliente = new List<Cliente>();
-
-            try
-            {
-
-                SqlParameter parametros = new SqlParameter();
-
-                parametros = new SqlParameter("@Nombre", SqlDbType.VarChar);
-
-                parametros.Value = entidad.Nombre;
-
-                DbDataReader conexion =
-                SqlHelper.ExecuteReader(GetConnection(), "ConsultarClienteParametroNombre", parametros);
-
-                int i = 0;
 
 
-                while (conexion.Read())
-                {
-
-                    Cliente _Cliente = new Cliente();
-
-                    _Cliente.Nombre = (string)conexion["Nombre"];
-                    
-                    _Cliente.Rif=(string)conexion["RifCliente"];
-
-                    _Cliente.AreaNegocio = (string)conexion["AreaNegocio"];
-
-                    ListaCliente.Insert(i, _Cliente);
-                    
-                    i++;
-
-                }
-
-                return ListaCliente;
-            }
-            catch (SqlException e)
-            {
-                throw new ConsultarClienteBDExcepciones
-                    ("Error en SQL consultando la lista de contacto del cliente", e);
-            }
-            catch (Exception e)
-            {
-                throw new ConsultarClienteBDExcepciones
-                    ("Error consultado el la lista de contacto en la base de dato", e);
-            }
         }
         
-        // este metodo invoca al buscarContacto       
 
-        private List<Contacto> BuscarContacto(int IdCliente)
+        public Direccion buscarDireccion(int idCliente)
+        {
+            SqlParameter arParms = new SqlParameter();
+
+            arParms = new SqlParameter("@idCliente", SqlDbType.Int);
+
+            arParms.Value = idCliente;
+
+            SqlDataReader reader = SqlHelper.ExecuteReader
+                        (GetConnection(), "ConsultarDireccionCliente", arParms);
+
+            Direccion direcccion = new Direccion();
+
+            if (reader.Read())
+            {
+                direcccion.Avenida = (string)reader["Avenida"];
+
+                direcccion.Calle = (string)reader["Calle"];
+
+                direcccion.Ciudad = (string)reader["Ciudad"];
+
+                direcccion.Edif_Casa = (string)reader["EdifCasa"];
+
+                direcccion.Piso_apto = (string)reader["PisoApto"];
+
+                direcccion.Urbanizacion = (string)reader["Urbanizacion"];
+            }
+
+            return direcccion;
+        }
+
+        public List<Contacto> BuscarContacto(int IdCliente)
         {
             List<Contacto> ListaContacto = new List<Contacto>();
 
@@ -304,15 +284,146 @@ namespace Core.AccesoDatos.SqlServer
             catch (SqlException e)
             {
                 throw new ConsultarClienteBDExcepciones
-                    ("Error en SQL consultando la lista de contacto del cliente",e);
+                    ("Error en SQL consultando la lista de contacto del cliente", e);
             }
             catch (Exception e)
             {
                 throw new ConsultarClienteBDExcepciones
-                    ("Error consultado el la lista de contacto en la base de dato",e);
+                    ("Error consultado el la lista de contacto en la base de dato", e);
             }
         }
 
+        public List<Cliente> ConsultarParamtroNombre(Cliente entidad)
+        {
+            List<Cliente> ListaCliente = new List<Cliente>();
+
+            try
+            {
+
+                SqlParameter parametros = new SqlParameter();
+
+                parametros = new SqlParameter("@Nombre", SqlDbType.VarChar);
+
+                parametros.Value = entidad.Nombre;
+
+                DbDataReader conexion =
+                SqlHelper.ExecuteReader(GetConnection(), "ConsultarClienteParametroNombre", parametros);
+
+                int i = 0;
+
+
+                while (conexion.Read())
+                {
+
+                    Cliente _Cliente = new Cliente();
+
+                    _Cliente.IdCliente = (int)conexion["clienteId"];
+
+                    _Cliente.Nombre = (string)conexion["Nombre"];
+                    
+                    _Cliente.Rif=(string)conexion["RifCliente"];
+
+                    _Cliente.AreaNegocio = (string)conexion["AreaNegocio"];
+
+                    Direccion _Direccion = new Direccion();
+
+                    _Cliente.Direccion = buscarDireccion(_Cliente.IdCliente);
+
+                    IList<Contacto> _listaContacto = new List<Contacto>();
+
+                    _listaContacto = BuscarContacto(_Cliente.IdCliente);
+
+                    _Cliente.Contacto = _listaContacto;
+
+                    ListaCliente.Insert(i, _Cliente);
+                    
+                    i++;
+
+                }
+
+                if (ListaCliente.Count == 0)
+
+                    throw new ConsultarClienteBDExcepciones();
+
+
+                return ListaCliente;
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("Error en SQL consultando la lista de contacto del cliente", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("Error consultado el la lista de contacto en la base de dato", e);
+            }
+        }
+
+        public IList<Cliente> ConsultarParamtroAreaNegocio(Cliente cliente)
+        
+
+            {
+                List<Cliente> ListaCliente = new List<Cliente>();
+
+                try
+                {
+
+                    SqlParameter parametros = new SqlParameter();
+
+                    parametros = new SqlParameter("@AreaNegocio", SqlDbType.VarChar);
+
+                    parametros.Value = cliente.AreaNegocio;
+
+                    DbDataReader conexion =
+                    SqlHelper.ExecuteReader(GetConnection(), "ConsultarClienteParametroAreaNegocio", parametros);
+
+                    int i = 0;
+
+
+                    while (conexion.Read())
+                    {
+
+                        Cliente _Cliente = new Cliente();
+
+                        _Cliente.IdCliente = (int)conexion["ClienteId"];
+
+                        _Cliente.Nombre = (string)conexion["Nombre"];
+
+                        _Cliente.Rif = (string)conexion["RifCliente"];
+
+                        _Cliente.AreaNegocio = (string)conexion["AreaNegocio"];
+
+                        Direccion _Direccion = new Direccion();
+
+                        _Cliente.Direccion = buscarDireccion(_Cliente.IdCliente);
+
+                        IList<Contacto> _listaContacto = new List<Contacto>();
+
+                        _listaContacto = BuscarContacto(_Cliente.IdCliente);
+
+                        _Cliente.Contacto = _listaContacto;
+
+                        ListaCliente.Insert(i, _Cliente);
+
+                        i++;                        
+
+                    }
+
+                    return ListaCliente;
+                }
+                catch (SqlException e)
+                {
+                    throw new ConsultarClienteBDExcepciones
+                        ("Error en SQL consultando la lista de contacto del cliente", e);
+                }
+                catch (Exception e)
+                {
+                    throw new ConsultarClienteBDExcepciones
+                        ("Error consultado el la lista de contacto en la base de dato", e);
+                }
+            }
+                                  
         public IList<Cliente> ConsultarAreaNegocio()
         {            
         #region ConsultarAreaNegocio
@@ -321,7 +432,9 @@ namespace Core.AccesoDatos.SqlServer
             {
                 DbDataReader conexion = SqlHelper.ExecuteReader
                     (GetConnection(), "ConsultarClienteAreaNegocio");
+
                 int i = 0;
+
                 while (conexion.Read())
                 {
                     #region guarda Datos
@@ -384,10 +497,15 @@ namespace Core.AccesoDatos.SqlServer
                 try
                 {
                     string NombreParametro = ListaRecibida.ElementAt(0);
+                    
                     SqlParameter nombre = new SqlParameter();
+                    
                     nombre = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                    
                     nombre.Value = NombreParametro;
+                    
                     int result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarCliente", nombre);
+                    
                     return ListaRecibida;
                 }
                 catch (SqlException e)

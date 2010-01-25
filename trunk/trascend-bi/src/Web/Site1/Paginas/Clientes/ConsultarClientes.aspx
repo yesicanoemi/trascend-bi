@@ -46,15 +46,18 @@
                         <asp:View ID="uxViewMostrar" runat="server">
                             <form runat="server">
                                 <asp:GridView ID="uxMuestra" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaCliente"
-                                                AutoGenerateColumns="False" DataKeyNames="IdCliente" AutoGenerateSelectButton="True"
+                                                AutoGenerateColumns="False" DataKeyNames="IdCliente" AutoGenerateSelectButton="true"
                                                 Width="100%" Font-Names="Verdana" Font-Size="Smaller" onrowdatabound="uxTablaClientes_RowDataBound" >
                                                  <RowStyle HorizontalAlign="Center" />  
                                                     
+                                                     <RowStyle HorizontalAlign="Center" />  
+                                                     
                                                     <Columns>
                                             
                                                         <asp:BoundField HeaderText="Rif" DataField="rif" /> 
                                                         <asp:BoundField HeaderText="Nombre Cliente" DataField="Nombre" />
-                                                        <asp:BoundField HeaderText="Area de Negocio" DataField="AreaNegocio" /> 
+                                                        <asp:BoundField HeaderText="Area de Negocio" DataField="AreaNegocio" />                                                         
+                                                         
                                                        
                                                         
                                                     </Columns>

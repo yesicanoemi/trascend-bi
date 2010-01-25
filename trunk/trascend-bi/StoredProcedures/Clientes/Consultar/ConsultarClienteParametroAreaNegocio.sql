@@ -1,5 +1,3 @@
-USE [BddProy2]
-GO
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -20,9 +18,9 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE [dbo].[EliminarCliente] 
+alter PROCEDURE [dbo].[ConsultarClienteParametroAreaNegocio]
 	-- Add the parameters for the stored procedure here
-	@Nombre Varchar(100)
+@AreaNegocio varchar(20)	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -30,7 +28,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-       UPDATE [BddProy2].[dbo].[Cliente] SET Estatus = 0 
-WHERE (Nombre = @Nombre)
+		SELECT  c.IdCliente as ClienteId,c.RifCliente,c.Nombre,c.AreaNegocio, d.Calle as CalleAvenidad,d.Urbanizacion,d.EdifCasa as EdificioCasa, 
+		d.Ciudad,d.PisoApto as PisoApartamento, convert(varchar,t.Numero) as TelefonoTrabajo, convert(varchar,t.codigoArea) as CodigoTelefonoTrabajo
+		from [bddproy2].[dbo].[cliente] c, [bddproy2].[dbo].[direccion] d, [bddproy2].[dbo].[telefono] t
+		where c.IdCliente=d.IdCliente and c.IdCliente=t.IdCliente and c.AreaNegocio like '%'+@AreaNegocio+'%' and c.Estatus=1;
 END
 GO

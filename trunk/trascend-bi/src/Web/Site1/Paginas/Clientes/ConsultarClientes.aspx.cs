@@ -177,6 +177,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
     }*/
 
     #endregion
+   
     protected void Page_Load(object sender, EventArgs e)
     {
         width = 0;
@@ -207,46 +208,16 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
         {
             Response.Redirect(paginaSinPermiso);
         }
-        #endregion
-
-        
-        //_presentador = new ConsultarClientePresentador(this);
+        #endregion                
     }
 
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        //uxBotonAceptar.Visible = false;
-        //uxBotonAceptar2.Visible = true;
+        
         _presentador.BotonSeleccionTipo();
     }
-
-    /* protected void uxBotonAceptar2_Click(object sender, EventArgs e)
-     {
-         uxBotonAceptar2.Visible = false;
-
-         if (_presentador.opcionBusqueda() == 0)
-         {
-             _presentador.BotonAccionConsultaNombre();
-
-         }
-
-         else if (_presentador.opcionBusqueda() == 1)
-         {
-
-             _presentador.BotonSeleccionCliente();
-
-             uxBotonAceptar3.Visible = true;
-         }
-
-     }
-
-     protected void uxBotonAceptar3_Click(object sender, EventArgs e)
-     {
-
-         _presentador.BotonAccionConsulta();
-         uxBotonAceptar3.Visible = false;
-     }*/
+   
     protected void opcion1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -278,11 +249,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 
-    //protected consultarId(object sender, GridViewSelectEventArgs e)
-    //{
-      //  _presentador.ConsultarDetalles(int.Parse(uxPropuestaConsultada.DataKeys[e.NewSelectedIndex].Value.ToString()));
-
-    //}//
+    
    
 }
 
