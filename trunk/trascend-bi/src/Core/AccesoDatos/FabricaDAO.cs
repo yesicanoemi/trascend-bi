@@ -7,7 +7,7 @@ using Core.AccesoDatos.Interfaces;
 
 namespace Core.AccesoDatos
 {
-    public abstract class FabricaDAO : IFabricaDAO
+    public abstract class FabricaDAO
     {
         private static EnumFabrica enumFabrica;
 
@@ -33,32 +33,23 @@ namespace Core.AccesoDatos
 
             return null;
         }
-        
-        #region IFabrica Miembros
-
-            public abstract Core.AccesoDatos.Interfaces.IDAOUsuario AgregarUsuario();
-
-        //    public abstract Core.AccesoDatos.Interfaces.IDAOUsuario EliminarUsuario();
-
-        #endregion
 
         #region metodos abstractos DTA
 
         /// <summary>
-        /// Metodo para devolvier el DTA de cliente de SQL Server
+        /// Metodo para devolvier el DTA de cliente
         /// </summary>
         /// <returns></returns>
         public abstract IDAOCliente ObtenerDAOCliente();
 
+        /// <summary>
+        /// Metodo para devolvier el DTA de usuario
+        /// </summary>
+        /// <returns></returns>
+        public abstract IDAOUsuario ObtenerDAOUsuario();
+
         #endregion
 
-        public static FabricaDAO ObtenerFabricaDAO(String tipo)
-        {
-            if (tipo.Equals("SQLServer"))
-                return new FabricaDAOSQLServer();
-            //else if (tipo.Equals("Oracle"))  //->ejemplo con otro manejador de BD
-            //    return new FabricaDAOOracle();   
-            else return null;
-        }
+       
     }
 }

@@ -12,8 +12,7 @@ namespace Core.AccesoDatos.Fabricas
         // Hay que poner un metodo para crear la conexion... Por definir
         /*public static Connection createConnection()
         {
-            // Use DRIVER and DBURL to create a connection 
-            // Recommend connection pool implementation/usage 
+           
         } */
 
         public override IDAOCliente ObtenerDAOCliente()  //devuelvo el DTA en forma de interfaz para cumplir el contrato
@@ -21,7 +20,7 @@ namespace Core.AccesoDatos.Fabricas
             return new DAOClienteSQLServer();
         }
 
-        public override IDAOUsuario AgregarUsuario()
+        public override IDAOUsuario ObtenerDAOUsuario()
         {
             return new DAOUsuarioSQLServer();
         }
