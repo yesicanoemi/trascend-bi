@@ -18,7 +18,8 @@ namespace Core.AccesoDatos
         }
 
         public abstract IDAOCliente ObtenerDAOCliente();
-
+        // Se utiliza el enum tipo String para saber con que Fabrica
+        // concreta vamos a trabajar
         public static FabricaDAO ObtenerFabricaDAO()
         {
             switch (enumFabrica)
