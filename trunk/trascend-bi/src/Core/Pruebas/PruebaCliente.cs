@@ -86,7 +86,7 @@ namespace Core.Pruebas
 
             foreach (Cliente clienteA in clientes)
             {
-                Console.WriteLine(cliente.Nombre);
+                Console.WriteLine(clienteA.Nombre);
             }
         }
     }

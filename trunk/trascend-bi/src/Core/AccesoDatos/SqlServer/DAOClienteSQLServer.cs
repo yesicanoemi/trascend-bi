@@ -162,12 +162,16 @@ namespace Core.AccesoDatos.SqlServer
 
                 int i = 0;
 
-                cliente.Telefono = new TelefonoTrabajo();
-
-                cliente.Direccion = new Direccion();
+                
                
                 while (conexion.Read())
                 {
+                    cliente = new Cliente();
+
+                    cliente.Telefono = new TelefonoTrabajo();
+
+                    cliente.Direccion = new Direccion();
+
                     cliente.IdCliente = (int)conexion["IdCliente"];
 
                     cliente.Nombre = (string)conexion["Nombre"];
