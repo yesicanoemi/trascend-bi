@@ -11,9 +11,22 @@ namespace Core.LogicaNegocio.Entidades
         private string avenida;
         private string urbanizacion;
         private string edif_casa;
+        private string oficina;
         private string piso_apto;
         private string ciudad;
 
+        public virtual string Oficina
+        {
+            get
+            {
+                return oficina;
+            }
+
+            set
+            {
+                oficina = value;
+            }
+        }
 
         public virtual string Calle
         {

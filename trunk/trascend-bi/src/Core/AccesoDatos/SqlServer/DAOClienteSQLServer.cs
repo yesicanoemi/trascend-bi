@@ -77,38 +77,38 @@ namespace Core.AccesoDatos.SqlServer
                
                 #region Guardando parametros
 
-                    arParms[0] = new SqlParameter("@rif", SqlDbType.Int);
-                    arParms[0].Value = cliente.Rif;
+                arParms[0] = new SqlParameter("@rif", SqlDbType.VarChar);
+                arParms[0].Value = cliente.Rif;
 
-                    arParms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
-                    arParms[1].Value = cliente.Nombre;
+                arParms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
+                arParms[1].Value = cliente.Nombre;
 
-                    arParms[2] = new SqlParameter("@calleAv", SqlDbType.VarChar);
-                    arParms[2].Value = cliente.Direccion.Calle;
+                arParms[3] = new SqlParameter("@urb", SqlDbType.VarChar);
+                arParms[3].Value = cliente.Direccion.Urbanizacion;
 
-                    arParms[3] = new SqlParameter("@urb", SqlDbType.VarChar);
-                    arParms[3].Value = cliente.Direccion.Urbanizacion;
+                arParms[2] = new SqlParameter("@calleAv", SqlDbType.VarChar);
+                arParms[2].Value = cliente.Direccion.Avenida;
 
-                    arParms[4] = new SqlParameter("@EdiCas", SqlDbType.SmallDateTime);
-                    arParms[4].Value = cliente.Direccion.Edif_Casa;
+                arParms[4] = new SqlParameter("@EdiCas", SqlDbType.VarChar);
+                arParms[4].Value = cliente.Direccion.Edif_Casa;
 
-                    arParms[5] = new SqlParameter("@PisoApto", SqlDbType.VarChar);
-                    arParms[5].Value = cliente.Direccion.Piso_apto;
+                arParms[5] = new SqlParameter("@PisoApto", SqlDbType.VarChar);
+                arParms[5].Value = cliente.Direccion.Oficina;
 
-                    arParms[6] = new SqlParameter("@Ciudad", SqlDbType.VarChar);
-                    arParms[6].Value = cliente.Direccion.Ciudad;
+                arParms[6] = new SqlParameter("@Ciudad", SqlDbType.VarChar);
+                arParms[6].Value = cliente.Direccion.Ciudad;
 
-                    arParms[7] = new SqlParameter("@AreaNeg", SqlDbType.VarChar);
-                    arParms[7].Value = cliente.AreaNegocio;
+                arParms[7] = new SqlParameter("@AreaNeg", SqlDbType.VarChar);
+                arParms[7].Value = cliente.AreaNegocio;
 
-                    arParms[8] = new SqlParameter("@Tlf", SqlDbType.VarChar);
-                    arParms[8].Value = cliente.Telefono.Numero;
+                arParms[8] = new SqlParameter("@Tlf", SqlDbType.VarChar);
+                arParms[8].Value = cliente.Telefono.Numero.ToString();
 
-                    arParms[9] = new SqlParameter("@codTlf", SqlDbType.VarChar);
-                    arParms[9].Value = cliente.Telefono.Codigoarea;
+                arParms[9] = new SqlParameter("@codTlf", SqlDbType.VarChar);
+                arParms[9].Value = cliente.Telefono.Codigoarea.ToString();
 
-                    arParms[10] = new SqlParameter("@tipoTelf", SqlDbType.VarChar);
-                    arParms[10].Value = cliente.Telefono.Tipo;
+                arParms[10] = new SqlParameter("@tipoTelf", SqlDbType.VarChar);
+                arParms[10].Value = cliente.Telefono.Tipo;
 
                 #endregion
 
