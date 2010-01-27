@@ -9,7 +9,7 @@ Claudio Melcón
 
 == Llenado de campo ==
 
-En caso seleccionar un campo en donde haya 3 o menos opciones estos se harán con RadioButton....
+En caso seleccionar un campo en donde haya 3 o menos opciones estos se harán con Radio Button.
 
 http://trascend-bi.googlecode.com/files/Busqueda.jpg
 
