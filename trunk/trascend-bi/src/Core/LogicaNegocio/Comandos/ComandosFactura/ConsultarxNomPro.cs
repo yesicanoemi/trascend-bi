@@ -39,7 +39,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         public IList<Factura> Ejecutar()
         {
             IList<Factura> facturas = new List<Factura>();
-            FacturaSQLServer bdfactura = new FacturaSQLServer();
+            DAOFacturaSQLServer bdfactura = new DAOFacturaSQLServer();
             try
             {
                 if (_propuesta == null) { throw new ConsultarFacturaLNException(); }

@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         public Factura Ejecutar()
         {
             Factura _factura = new Factura();
-            FacturaSQLServer bdpropuestas = new FacturaSQLServer();
+            DAOFacturaSQLServer bdpropuestas = new DAOFacturaSQLServer();
             try
             {
                 if (factura == null) { throw new ModificarFacturaLNException(); }

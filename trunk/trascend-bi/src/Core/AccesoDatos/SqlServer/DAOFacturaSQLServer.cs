@@ -11,12 +11,13 @@ using System.Configuration;
 using System.Xml;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    public class FacturaSQLServer
+    public class DAOFacturaSQLServer : IDAOFactura
     {
-        public FacturaSQLServer()
+        public DAOFacturaSQLServer()
         {
         }
 

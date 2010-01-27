@@ -78,6 +78,7 @@
     <Compile Include="AccesoDatos\FabricaDAO.cs" />
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOCliente.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\CargoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
@@ -87,9 +88,8 @@
     <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\ReporteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
-    <Compile Include="Interfaces\IDAOFactura.cs" />
     <Compile Include="Interfaces\IDAOPropuesta.cs" />
-    <Compile Include="AccesoDatos\SqlServer\FacturaSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Consultar.cs" />
@@ -231,10 +231,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pruebas\PruebaCliente.cs" />
     <Compile Include="Pruebas\PruebaModificarContacto.cs" />
     <Compile Include="Pruebas\PruebaEliminarContacto.cs" />
     <Compile Include="Pruebas\PruebaContactoIngresar.cs" />
-    <Compile Include="Pruebas\PrubaCliente.cs" />
     <Compile Include="Pruebas\PruebaEliminarUsuario.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
     <Compile Include="Pruebas\PruebaReporteGartoAnual.cs" />

@@ -32,7 +32,7 @@ namespace Core.Pruebas
         {
             Factura factura = new Factura();
             factura.Numero = 3;
-            factura = new FacturaSQLServer().ConsultarFacturaID(factura);
+            factura = new DAOFacturaSQLServer().ConsultarFacturaID(factura);
             Assert.AreNotEqual(factura, new Factura());
             Assert.AreEqual(factura.Titulo, "Pago de la primera cuota");
             Assert.AreEqual(factura.Prop.Id, 1);
@@ -51,7 +51,7 @@ namespace Core.Pruebas
         {
             Propuesta propuesta = new Propuesta();
             propuesta.Titulo = "Automatizacion de la Certificacion de Empleados";
-            IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasNomPro(propuesta);
+            IList<Factura> facturas = new DAOFacturaSQLServer().ConsultarFacturasNomPro(propuesta);
             Assert.AreEqual(facturas.Count, 2);
         }
 
@@ -61,7 +61,7 @@ namespace Core.Pruebas
             try
             {
                 Propuesta propuesta = null;
-                IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasNomPro(propuesta);
+                IList<Factura> facturas = new DAOFacturaSQLServer().ConsultarFacturasNomPro(propuesta);
                 Assert.AreEqual(facturas.Count, 0);
             }
             catch (ConsultarFacturaADException e)
@@ -79,7 +79,7 @@ namespace Core.Pruebas
         {
             Propuesta propuesta = new Propuesta();
             propuesta.Id = 1;
-            IList<Factura> facturas = new FacturaSQLServer().ConsultarFacturasIDPro(propuesta);
+            IList<Factura> facturas = new DAOFacturaSQLServer().ConsultarFacturasIDPro(propuesta);
             Assert.AreEqual(facturas.Count, 47);
         }
 
@@ -98,7 +98,7 @@ namespace Core.Pruebas
             factura.Estado = "Pagado";
             factura.Prop = new Propuesta();
             factura.Prop.Id = 1;
-            factura = new FacturaSQLServer().IngresarFactura(factura);
+            factura = new DAOFacturaSQLServer().IngresarFactura(factura);
             Assert.AreNotEqual(factura,new Factura());
         }
 
@@ -107,7 +107,7 @@ namespace Core.Pruebas
         {
             Factura factura = new Factura();
             factura.Numero = 1;
-            factura = new FacturaSQLServer().UpdateFactura(factura);
+            factura = new DAOFacturaSQLServer().UpdateFactura(factura);
             Assert.AreNotEqual(factura, new Factura());
         }
     }

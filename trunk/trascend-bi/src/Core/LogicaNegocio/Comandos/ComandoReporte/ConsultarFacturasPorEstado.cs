@@ -34,7 +34,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         {
 
             IList<Factura> listaFacturas;
-            FacturaSQLServer bd = new FacturaSQLServer();
+            DAOFacturaSQLServer bd = new DAOFacturaSQLServer();
             listaFacturas = bd.ConsultarFacturasPorEstado(_FechaInicio,_FechaFin,_tipo);
             return listaFacturas;
 

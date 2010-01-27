@@ -24,7 +24,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         public IList<Propuesta> Ejecutar()
         {
             IList<Propuesta> _propuestas = new List<Propuesta>();
-            FacturaSQLServer bdpropuestas = new FacturaSQLServer();
+            DAOFacturaSQLServer bdpropuestas = new DAOFacturaSQLServer();
             try
             {
                 _propuestas = bdpropuestas.ConsultarPropuesta();
