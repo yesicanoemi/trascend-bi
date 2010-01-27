@@ -80,7 +80,7 @@ http://trascend-bi.googlecode.com/files/MensajeFallo.jpg
 
 ==== Campos con valores incorrectos ====
 
-En caso que un campo de llenado contenga un campo inválido (una cédula con letras), o este se encuentre vacío cuando sa obligatorio, este error debe ser mostrado con un RequiredFieldValidator.
+En caso que un campo de llenado contenga un campo inválido (una cédula con letras), o este se encuentre vacío cuando sa obligatorio, este error debe ser mostrado con un Requiredfieldvalidator.
 
 http://trascend-bi.googlecode.com/files/Validacion.jpg
 
