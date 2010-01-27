@@ -5,21 +5,21 @@
 
 == Introduccion ==
 
-Gestion de Empleados en el Sistema.
+Gestion de Cargos en el Sistema.
 
 
 == Details ==
-  * Ingresar Empleado (CU-E01) _Eduardo Rotundo_
-  * Modificar Empleado (CU-E02) _Eduardo Rotundo_
-  * Consultar Empleado (CU-E03) _Iann Yanes_
-  * Eliminar Empleado (CU-E04) _Iann Yanes_
+  * Ingresar Gasto (CU-C01) _Eduardo Rotundo_
+  * Modificar Empleado (CU-C02) _Iann Yanes_
+  * Consultar Empleado (CU-C03) _Eduardo Rotundo_
+  * Eliminar Empleado (CU-C04) _Iann Yanes_
 
 == Casos de uso ==
 
-====*1) Ingresar Empleado*====
+====*1) Ingresar Cargos*====
 
-|| *Identificador* || *CU-E01* ||
-|| *Caso de Uso* ||Ingresar Empleado ||
+|| *Identificador* || *CU-C01* ||
+|| *Caso de Uso* ||Ingresar Cargo ||
 || *Actores* ||Usuario administrador ||
 || *Tipo* ||Necesario ||
 || *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Empleado al sistema.|| 
@@ -42,10 +42,10 @@ http://trascend-bi.googlecode.com/files/Ingresar%20Empleado%20CU-E01.jpg
 
 http://trascend-bi.googlecode.com/files/Modificar%20Datos%20de%20Empleado%20CU-E02.jpg
 
-====*3) Consultar Empleado*====
+====*3) Consultar Cargo*====
 
-|| *Identificador* || *CU-E03* ||
-|| *Caso de Uso* ||Consultar Empleado ||
+|| *Identificador* || *CU-C03* ||
+|| *Caso de Uso* ||Consultar Cargos ||
 || *Actores* || Usuario Administrador ||
 || *Tipo* ||Necesario ||
 || *Resumen/Propósito*  || El usuario administrador consulta los datos<br> de algun Empleado en el sistema.|| 
