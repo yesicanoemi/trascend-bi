@@ -10,11 +10,12 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 
 namespace Core.AccesoDatos.SqlServer
 {
-    public class DAOClienteSQLServer
+    public class DAOClienteSQLServer : IDAOCliente
     {
         
         #region Propiedades        

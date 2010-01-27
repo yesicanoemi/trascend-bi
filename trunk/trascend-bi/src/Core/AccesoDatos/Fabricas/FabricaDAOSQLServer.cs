@@ -7,19 +7,12 @@ using Core.AccesoDatos.SqlServer;
 namespace Core.AccesoDatos.Fabricas
 {
 
-    public class FabricaDAOSQLServer
+    public class FabricaDAOSQLServer: FabricaDAO
     {
-
-     /*   public static IDAOPropuesta ObtenerDAOPropuesta()
+        public IDAOCliente ObtenerDAOClienteSQLServer()  //devuelvo el DTA en forma de interfaz para cumplir el contrato
         {
-            return new DAOPropuestaSQLServer();
+            return new DAOClienteSQLServer();
         }
-
-        public static IDAOFactura ObtenerDAOFactura()
-        {
-            return new DAOFacturaSQLServer();
-        }
-        */
     }
 }
 

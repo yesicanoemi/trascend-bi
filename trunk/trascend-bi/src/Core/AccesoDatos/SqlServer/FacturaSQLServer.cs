@@ -364,15 +364,14 @@ namespace Core.AccesoDatos.SqlServer
         public Factura IngresarFactura(Factura factura)
         {
 
-            IList<Propuesta> propuestas = ConsultarPropuesta();
+            //IList<Propuesta> propuestas = ConsultarPropuesta();
 
-            Boolean valido = false;
             try
             {
-                foreach (Propuesta propuestaAux in propuestas)
-                {
-                    if (propuestaAux.Id == factura.Prop.Id)
-                    {
+                //foreach (Propuesta propuestaAux in propuestas)
+                //{
+                    //if (propuestaAux.Id == factura.Prop.Id)
+                    //{
                         SqlParameter[] arparms = new SqlParameter[7];
 
                         arparms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
@@ -398,9 +397,9 @@ namespace Core.AccesoDatos.SqlServer
 
                         int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarFactura", arparms);
 
-                        valido = true;
-                    }
-                }
+                    //}
+                //}
+                        return factura;
             }
             catch (SqlException e)
             {
@@ -410,11 +409,6 @@ namespace Core.AccesoDatos.SqlServer
             {
                 throw new InsertarFacturaADException("Error insertando factura en la Base de Datos", e);
             }
-
-            if (valido == false)
-                return new Factura();
-            else 
-                return factura;
         }
 
         /// <summary>
