@@ -9,7 +9,5 @@ namespace Core.AccesoDatos
     public interface IFabricaDAO
     {
         IDAOUsuario AgregarUsuario();
-
-        IDAOCliente ConsultarNombre(); // Consultar Nombre Cliente
     }
 }

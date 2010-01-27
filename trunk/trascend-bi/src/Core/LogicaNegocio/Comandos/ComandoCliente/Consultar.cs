@@ -40,23 +40,22 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 
             public IList<Cliente> ejecutar()
             {
-               
-                //Se define el enum para saber con que fabrica concreta se va a trabajar
-                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-                //Se instancia la fabrica; se crea
-                IFabricaDAO iFabrica = FabricaDAO.ObtenerFabricaDAO();
+                ////Se define el enum para saber con que fabrica concreta se va a trabajar
+                //FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-                //Se instancia los metodos definidos en interfaz DAO de cliente
-                IDAOCliente iDAOCliente = iFabrica.ConsultarNombre();
+                ////Se instancia la fabrica; se crea
+                //IFabricaDAO iFabrica = FabricaDAO.ObtenerFabricaDAO();
 
-                //DAOClienteSQLServer hereda de IDAOCliente
-                _cliente2=iDAOCliente.ConsultarNombre();
+                ////Se instancia los metodos definidos en interfaz DAO de cliente
+                //IDAOCliente iDAOCliente = iFabrica.ConsultarNombre();
 
+                ////DAOClienteSQLServer hereda de IDAOCliente
+                //_cliente2 = iDAOCliente.ConsultarNombre();
 
-//                IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO("SQLServer").ObtenerDAOCliente();
+                IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO("SQLServer").ObtenerDAOCliente();
 
-                //_cliente2 = acceso.ConsultarNombre();
+                _cliente2 = acceso.ConsultarNombre();
                 
                 return _cliente2;
             }

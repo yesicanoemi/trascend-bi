@@ -17,7 +17,12 @@ namespace Core.AccesoDatos
             set { enumFabrica = value; }
         }
 
+        /// <summary>
+        /// Metodo para devolvier el DTA de cliente de SQL Server
+        /// </summary>
+        /// <returns></returns>
         public abstract IDAOCliente ObtenerDAOCliente();
+
         // Se utiliza el enum tipo String para saber con que Fabrica
         // concreta vamos a trabajar
         public static FabricaDAO ObtenerFabricaDAO()
@@ -38,21 +43,18 @@ namespace Core.AccesoDatos
         #region IFabrica Miembros
 
             public abstract Core.AccesoDatos.Interfaces.IDAOUsuario AgregarUsuario();
-           
-            public abstract Core.AccesoDatos.Interfaces.IDAOCliente ConsultarNombre();
 
         //    public abstract Core.AccesoDatos.Interfaces.IDAOUsuario EliminarUsuario();
 
         #endregion
 
-       /* public static FabricaDAO ObtenerFabricaDAO(String tipo)
+        public static FabricaDAO ObtenerFabricaDAO(String tipo)
         {
-            if (tipo.Equals("DAOSQLServer"))
             if (tipo.Equals("SQLServer"))
                 return new FabricaDAOSQLServer();
             //else if (tipo.Equals("Oracle"))  //->ejemplo con otro manejador de BD
-            //return new FabricaDAOOracle();   
+            //    return new FabricaDAOOracle();   
             else return null;
-        }*/
+        }
     }
 }
