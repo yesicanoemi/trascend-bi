@@ -29,7 +29,11 @@ public partial class Paginas_Reportes_ReportesEquipo1b : PaginaBase, IReportePaq
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
+        uxAceptar.Visible = false;
+        _presentador = new Presentador.Reportes.ReporteEmpleadoPaquetePresenter(this);
+        _presentador.BuscaCargo();
+        uxAceptar.Visible = true;
+        /*
         Core.LogicaNegocio.Entidades.Usuario usuario =
                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -55,7 +59,7 @@ public partial class Paginas_Reportes_ReportesEquipo1b : PaginaBase, IReportePaq
         {
             Response.Redirect(paginaSinPermiso);
         }
-
+        */
     }
 
 

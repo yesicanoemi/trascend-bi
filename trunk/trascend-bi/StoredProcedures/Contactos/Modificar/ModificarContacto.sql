@@ -32,7 +32,6 @@ CREATE PROCEDURE [dbo].[ModificarContacto]
 @CodigoCel int,
 @CodigoArea int,
 @Tipo varchar (50),
-@IdCliente int,
 @ID int,
 @NombreM varchar(20),
 @ApellidoM varchar(20),
@@ -42,8 +41,7 @@ CREATE PROCEDURE [dbo].[ModificarContacto]
 @TelefonoCelularM int,
 @CodigoCelM int,
 @CodigoAreaM int,
-@TipoM varchar (50),
-@IdClienteM int
+@TipoM varchar (50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

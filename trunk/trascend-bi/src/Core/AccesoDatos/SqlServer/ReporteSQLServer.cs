@@ -768,7 +768,7 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargo");
+                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargo1");
                 int i = 0;
 
                 while (conexion.Read())
