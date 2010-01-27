@@ -1,10 +1,91 @@
-#summary One-sentence summary of this page.
+#summary Integracion Grupo 1
+= Integrantes =
 
-= Introduction =
-
-Grupo 1, encargado de la integración
-
-Edgar Ruiz
+Edgar Ruiz<br/>
 Claudio Melcón
 
-= Details =
+= Estandares =
+
+
+== LLenado de campo ==
+
+En caso seleccionar un campo en donde haya 3 o menos opciones estos se harán con RadioButton.
+
+http://trascend-bi.googlecode.com/files/Busqueda.jpg
+
+en caso de que la selección tenga mas de 3 campos o no se pueda saber cuantos campos son (por ejemplo que sean obtenidos de la base de datos) esto se hará con un drop down list
+
+http://trascend-bi.googlecode.com/files/dropDown.jpg
+
+en caso de necesitar seleccionar una fecha, utilizar calendarios.
+
+http://trascend-bi.googlecode.com/files/Calendario.jpg
+
+== Llenado de datos ==
+
+En caso de llenado de datos estos deben estar propiamente alineados de manera vertical en dos columnas, la primera indica cual es el contenido del campo a llenar, y a la derecha donde se asigna el valor.
+
+http://trascend-bi.googlecode.com/files/Busqueda_ejemplo.jpg
+
+== Busquedas ==
+
+1) En caso de busquedas, se tiene que elegir que tipo de búsqueda realizar, para esto sigue aplicando las reglas de llenado de campo, si hay 3 o menos opciones radio button, sino drop down.
+
+2) Cuando se seleccione el campo debe aparecer el campo a llenar o seleccionar, dependiendo del caso.
+
+3) Los botones siempre deben salir en la parte inferior de los campos a llenar y centrados con respecto a los campos
+
+
+http://trascend-bi.googlecode.com/files/Busqueda.jpg
+
+http://trascend-bi.googlecode.com/files/Busqueda02.jpg
+
+== Resultados ==
+
+La muestra de resultados se realizará usando GridView, y estos se mostraran debajo de los campos de búsqueda.
+
+Si la búsqueda no devuelve resultados el GridView no debe ser mostrado y un mensaje de error debe estar en su lugar.
+
+http://trascend-bi.googlecode.com/files/Busqueda03_2.jpg
+
+En caso que la busqueda contenga muchos campos, este GridView debe mostrar solo la informacion relevante y contener un campo para seleccionarlo, que al seleccionarlo, utilizando MultiView lleve a una vista en la cual tenga todos los datos respectivos de la selección
+
+http://trascend-bi.googlecode.com/files/dataGrid.jpg
+
+== Modificaciones ==
+
+Se utilizará multiview.
+
+La primera vista realizará una búsqueda, la cual devolverá una lista de resultados en GridView y con un campo para seleccionar, muy similar a una busqueda con muchos datos. Al hacer click a la opción esta llevará a la segunda vista.
+
+La segunda vista mostrará todos los datos modificables al igual que un llenado de datos, pero los datos vendrán con los campos pre-cargados con la información actual
+
+http://trascend-bi.googlecode.com/files/Modificar.jpg
+
+El usuario podrá modificar los campos que tenga permitido, y al hacer click en modificar realizará los cambios pertinentes.
+
+== Mensajes del sistema ==
+
+==== Mensajes de Confirmación ====
+
+Al lograr realizar una operación (ingresar, modificar, eliminar, etc.) este debe redirigir al default de una página y mostrar el mensaje correspondiente en un label.
+
+http://trascend-bi.googlecode.com/files/MensajeExito.jpg
+
+==== Mensajes de Error ====
+
+Al haber un mensaje de error en el sistema, este debe mostrarse en la parte superior de la página en la cual sucedió el error y este mensaje de color rojo, por ejemplo, si al ingresar un usuario este ya existe en la base de datos, este error debe mostrarse en la parte superior de los campos a llenar.
+
+http://trascend-bi.googlecode.com/files/MensajeFallo.jpg
+
+==== Campos con valores incorrectos ====
+
+En caso que un campo de llenado contenga un campo inválido (una cédula con letras), o este se encuentre vacío cuando sa obligatorio, este error debe ser mostrado con un RequiredFieldValidator.
+
+http://trascend-bi.googlecode.com/files/Validacion.jpg
+
+
+
+
+
+_sujeto a cambios_
