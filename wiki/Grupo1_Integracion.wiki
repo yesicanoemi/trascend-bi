@@ -48,7 +48,7 @@ Si la búsqueda no devuelve resultados el GridView no debe ser mostrado y un men
 
 http://trascend-bi.googlecode.com/files/Busqueda03_2.jpg
 
-En caso que la busqueda contenga muchos campos, este GridView debe mostrar solo la informacion relevante y contener un campo para seleccionarlo, que al seleccionarlo, utilizando MultiView lleve a una vista en la cual tenga todos los datos respectivos de la selección
+En caso que la busqueda contenga muchos campos, este Gridview debe mostrar solo la informacion relevante y contener un campo para seleccionarlo, que al seleccionarlo, utilizando Multiview lleve a una vista en la cual tenga todos los datos respectivos de la selección
 
 http://trascend-bi.googlecode.com/files/dataGrid.jpg
 
