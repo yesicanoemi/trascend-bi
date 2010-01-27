@@ -7,6 +7,8 @@ using Core.AccesoDatos.SqlServer;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -34,8 +36,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'Ingresar'.</summary>
         public Factura Ejecutar()
         {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
             Factura factura = new Factura();
-            DAOFacturaSQLServer bdfactura = new DAOFacturaSQLServer();
+
+            IDAOFactura bdfactura = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
+
             try
             {
                 if (_factura == null) { throw new IngresarFacturaLNException(); }

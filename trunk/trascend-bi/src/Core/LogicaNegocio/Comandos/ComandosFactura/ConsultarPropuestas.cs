@@ -7,6 +7,8 @@ using Core.AccesoDatos.SqlServer;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
     public class ConsultarPropuestas : Comando<Propuesta>
@@ -23,8 +25,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
         public IList<Propuesta> Ejecutar()
         {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOFactura bdpropuestas = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
+
             IList<Propuesta> _propuestas = new List<Propuesta>();
-            DAOFacturaSQLServer bdpropuestas = new DAOFacturaSQLServer();
+
             try
             {
                 _propuestas = bdpropuestas.ConsultarPropuesta();

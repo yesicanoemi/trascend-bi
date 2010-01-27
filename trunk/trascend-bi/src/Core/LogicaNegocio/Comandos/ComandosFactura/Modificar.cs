@@ -7,6 +7,8 @@ using Core.AccesoDatos.SqlServer;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -29,8 +31,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
         public Factura Ejecutar()
         {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
             Factura _factura = new Factura();
-            DAOFacturaSQLServer bdpropuestas = new DAOFacturaSQLServer();
+
+            IDAOFactura bdpropuestas = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
+
             try
             {
                 if (factura == null) { throw new ModificarFacturaLNException(); }

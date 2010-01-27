@@ -7,6 +7,8 @@ using Core.AccesoDatos.SqlServer;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
@@ -39,8 +41,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         /// <summary>Método que implementa la ejecución del comando 'ConsultarxIDPro'.</summary>
         public IList<Factura> Ejecutar()
         {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
             IList<Factura> _facturas = new List<Factura>();
-            DAOFacturaSQLServer bdfactura = new DAOFacturaSQLServer();
+
+            IDAOFactura bdfactura = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
+
             try
             {
                 if (_propuesta == null) { throw new ConsultarFacturaLNException(); }
