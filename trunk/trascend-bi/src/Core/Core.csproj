@@ -74,12 +74,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos\EnumFabrica.cs" />
     <Compile Include="AccesoDatos\FabricaDAO.cs" />
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
+    <Compile Include="AccesoDatos\IFabricaDAO.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOCliente.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\CargoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\GastoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\ReporteSQLServer.cs" />

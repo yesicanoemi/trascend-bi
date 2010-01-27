@@ -40,9 +40,26 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 
             public IList<Cliente> ejecutar()
             {
-                IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO("SQLServer").ObtenerDAOCliente();
+                /*Fabrica.EnumFabrica = EnumFabrica.SqlServer;
 
-                _cliente2 = acceso.ConsultarNombre();
+                IFabrica iFabrica = Fabrica.getFabrica();
+
+                IUsuarioDao daoUsuario = iFabrica.getUsuarioDao();
+
+                daoUsuario.save(usuario);*/
+
+                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+                IFabricaDAO iFabrica = FabricaDAO.ObtenerFabricaDAO();
+
+                IDAOCliente iDAOCliente = iFabrica.ConsultarNombre();
+
+                _cliente2=iDAOCliente.ConsultarNombre();
+
+
+//                IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO("SQLServer").ObtenerDAOCliente();
+
+                //_cliente2 = acceso.ConsultarNombre();
                 
                 return _cliente2;
             }
