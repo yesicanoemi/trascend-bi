@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
     public class Ingresar : Comando<Cliente>
     {
-        private Cliente cliente;
+        private Cliente _cliente;
 
         #region Constructor
 
@@ -21,7 +23,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
         public Ingresar(Cliente cliente)
         {
-            this.cliente = cliente;
+            this._cliente = cliente;
         }
 
         #endregion
@@ -29,11 +31,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         #region Metodos
         public Cliente Ejecutar()
         {
-            Cliente _cliente = null;
-            DAOClienteSQLServer bd = new DAOClienteSQLServer();
-            _cliente = bd.Ingresar(cliente);
+            _cliente2 = new Cliente();
 
-            return _cliente;
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            _cliente2 = acceso.Ingresar(_cliente);
+
+            return _cliente2;
         }
         #endregion
     }

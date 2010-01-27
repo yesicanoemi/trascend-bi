@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
@@ -12,38 +14,41 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         private Cliente _cliente;
         private IList<Cliente> _cliente2;
 
-        #region constructor
+        #region Constructor
 
-            public ConsultarAreaNegocio()
-            { }
-            
-            public ConsultarAreaNegocio(Cliente cliente)
-            {
-                _cliente = cliente;
-            }
+        /// <summary>Constructor por defecto de la clase 'ConsultarAreaNegocio'.</summary>
+        public ConsultarAreaNegocio()
+        { }
 
-            public ConsultarAreaNegocio(IList<Cliente> cliente)
-            {
-                _cliente2 = cliente;
-            }
+
+        /// <summary>Constructor de la clase 'ConsultarAreaNegocio'.</summary>
+        public ConsultarAreaNegocio(Cliente cliente)
+        {
+            _cliente = cliente;
+        }
+
+        public ConsultarAreaNegocio(IList<Cliente> cliente)
+        {
+            _cliente2 = cliente;
+        }
+
 
         #endregion
 
-        #region metodos
-            public IList<Cliente> Ejecutar()
-            {
-                #region Llamamos a DAOClientesqlserver y accedemos a los datos
 
-                    DAOClienteSQLServer acceso = new DAOClienteSQLServer();
+        #region Metodos
 
-                    _cliente2 = acceso.ConsultarAreaNegocio();
+        public IList<Cliente> ejecutar()
+        {
 
-                    return _cliente2;
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-                #endregion
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
 
-            }
+            //_cliente2 = acceso.ConsultarxAreaNegocio();
 
+            return _cliente2;
+        }
         #endregion
     }
 }

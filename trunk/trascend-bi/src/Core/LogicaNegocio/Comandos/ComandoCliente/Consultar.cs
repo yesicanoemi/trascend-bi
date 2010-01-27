@@ -16,12 +16,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 
         #region Constructor
 
-           
+            /// <summary>Constructor por defecto de la clase 'Consultar'.</summary>
             public Consultar()
             { }
 
-           
 
+            /// <summary>Constructor de la clase 'Consultar'.</summary>
             public Consultar(Cliente cliente)
             {
                 _cliente = cliente;

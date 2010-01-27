@@ -3,33 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
     public class Eliminar : Comando<Cliente>
     {
-        private IList<string> _lista;
+        private Cliente _cliente;
 
         #region Constructor
+
+        /// <summary>Constructor por defecto de la clase 'Eliminar'.</summary>
         public Eliminar()
+        { }
+
+        /// <summary>Constructor de la clase 'Eliminar'.</summary>
+        /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
+        public Eliminar(Cliente cliente)
         {
+            this._cliente = cliente;
         }
-        public Eliminar(IList<string> lista)
-        {
-            _lista = lista;
-        }
+
         #endregion
 
         #region Metodos
-
-        public IList<string> Ejecutar(List<string> ListaRecibida)
+        public Cliente Ejecutar()
         {
-            DAOClienteSQLServer acceso = new DAOClienteSQLServer();
-            _lista = acceso.ListaEliminar(ListaRecibida);
-            return _lista;
-        }
+            _cliente2 = new Cliente();
 
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            //_cliente2 = acceso.EliminarCliente(_cliente);
+
+            return _cliente2;
+        }
         #endregion
     }
 }
