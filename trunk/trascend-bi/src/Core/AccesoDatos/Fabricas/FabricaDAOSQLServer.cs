@@ -29,7 +29,7 @@ namespace Core.AccesoDatos.Fabricas
         /// Método que génera la fábrica para el DAO de la entidad Factura
         /// </summary>
         /// <returns>Interface del DAO de la entidad Factura</returns>
-        public static IDAOFactura ObtenerDAOFactura()
+        public override IDAOFactura ObtenerDAOFactura()
         {
             return new DAOFacturaSQLServer();
         }

@@ -48,6 +48,9 @@ namespace Core.AccesoDatos
         /// <returns></returns>
         public abstract IDAOUsuario ObtenerDAOUsuario();
 
+
+        public abstract IDAOFactura ObtenerDAOFactura();
+
         #endregion
 
        
