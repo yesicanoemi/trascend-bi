@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
@@ -38,7 +40,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 
             public IList<Cliente> ejecutar()
             {
-                DAOClienteSQLServer acceso = new DAOClienteSQLServer();
+                IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO("SQLServer").ObtenerDAOCliente();
 
                 _cliente2 = acceso.ConsultarNombre();
                 

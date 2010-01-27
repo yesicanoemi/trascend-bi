@@ -9,7 +9,7 @@ namespace Core.AccesoDatos.Fabricas
 
     public class FabricaDAOSQLServer: FabricaDAO
     {
-        public IDAOCliente ObtenerDAOClienteSQLServer()  //devuelvo el DTA en forma de interfaz para cumplir el contrato
+        public override IDAOCliente ObtenerDAOCliente()  //devuelvo el DTA en forma de interfaz para cumplir el contrato
         {
             return new DAOClienteSQLServer();
         }
