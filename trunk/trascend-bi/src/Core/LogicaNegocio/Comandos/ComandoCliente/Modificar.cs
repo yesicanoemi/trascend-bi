@@ -30,16 +30,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         #region Metodos
         public void Ejecutar()
         {
-            _cliente2 = new Cliente();
-
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
             IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
 
-            _cliente2 = acceso.Modificar(_cliente);
-
-            return _cliente2;
-            
+            //_cliente = acceso.Modificar(_cliente);      
         }
         #endregion
     }

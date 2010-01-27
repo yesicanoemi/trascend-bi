@@ -87,7 +87,7 @@ namespace Presentador.Cliente.Vistas
 
             consultar = FabricaComandosCliente.CrearComandoConsultarAreaNegocio(cliente);
 
-            cliente = consultar.Ejecutar();
+            //cliente = consultar.Ejecutar();
 
             _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
 

@@ -45,7 +45,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 
                 IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
               
-                _cliente2 = acceso.ConsultarNombre();
+                _cliente2 = acceso.ConsultarNombre(_cliente);
                 
                 return _cliente2;
             }

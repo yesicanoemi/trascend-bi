@@ -9,14 +9,17 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
     class ConsultarNombre:Consultar
     {
         #region variables
-        
+
+        private Cliente _cliente;
         private IList<Cliente> _cliente2;
         
         #endregion
         #region constructor
 
-        public ConsultarNombre()
-        { }
+        public ConsultarNombre(Cliente cliente)
+        {
+            _cliente = cliente;
+        }
 
                 
         #endregion
@@ -26,7 +29,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         {
             Core.AccesoDatos.SqlServer.DAOClienteSQLServer acceso = new Core.AccesoDatos.SqlServer.DAOClienteSQLServer();
 
-            _cliente2 = acceso.ConsultarNombre();
+            _cliente2 = acceso.ConsultarNombre(_cliente);
             return _cliente2;
 
 

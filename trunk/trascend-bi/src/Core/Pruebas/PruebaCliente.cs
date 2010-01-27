@@ -58,7 +58,7 @@ namespace Core.Pruebas
 
             cliente.Telefono.Tipo = "Local";
                                    
-            cliente.Nombre = "Polar";
+            cliente.Nombre = "aaaaaaaaaaaaaaa";
             
             cliente.Rif = "J-00006372-9";
 
@@ -71,9 +71,23 @@ namespace Core.Pruebas
             cliente = acceso.Ingresar(cliente);
         }
 
-     
+        [Test]
+        public void ConsultarClientesNombre()
+        {
+            Cliente cliente = new Cliente();            
 
+            cliente.Nombre = "a";
 
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            IList<Cliente> clientes = acceso.ConsultarNombre(cliente);
+
+            foreach (Cliente clienteA in clientes)
+            {
+                Console.WriteLine(cliente.Nombre);
+            }
+        }
     }
 }

@@ -44,9 +44,9 @@ namespace Core.LogicaNegocio.Fabricas
             return new Modificar(cliente);
         }
 
-        public static Eliminar CrearComandoEliminar(IList<string> lista)
+        public static Eliminar CrearComandoEliminar(Cliente cliente)
         {
-            return new Eliminar(lista);
+            return new Eliminar(cliente);
         }
     }
 }

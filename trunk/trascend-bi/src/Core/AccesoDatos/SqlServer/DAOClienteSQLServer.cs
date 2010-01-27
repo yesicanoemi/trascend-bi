@@ -43,7 +43,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
 
-                XmlNodeList conexiones = xDoc.GetElementsByTagName("connection");
+                XmlNodeList conexiones = xDoc.GetElementsByTagName("connectionSQLServer");
 
                 string lista = conexiones[0].InnerText;
                 SqlConnection connection = new SqlConnection(lista);
@@ -145,41 +145,58 @@ namespace Core.AccesoDatos.SqlServer
             return resultado;
         }
 
-        public IList<Cliente> ConsultarNombre()
+        public IList<Cliente> ConsultarNombre(Cliente cliente)
         {
             try
             {
-                IList<Cliente> _listaCliente = new List<Cliente>();
+                IList<Cliente> listaCliente = new List<Cliente>();
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
+                arParms[0].Value = cliente.Nombre;
 
                 DbDataReader conexion = SqlHelper.ExecuteReader
-                    (GetConnection(), "ConsultarClienteParametroNombre");
+                    (GetConnection(), "ConsultarClienteParametroNombre", arParms);
 
 
                 int i = 0;
 
+                cliente.Telefono = new TelefonoTrabajo();
+
+                cliente.Direccion = new Direccion();
                
                 while (conexion.Read())
                 {
+                    cliente.IdCliente = (int)conexion["IdCliente"];
 
-                    Cliente _Cliente = new Cliente();
+                    cliente.Nombre = (string)conexion["Nombre"];
 
-                    _Cliente.IdCliente = (int)conexion["IdCliente"];
+                    cliente.Rif = (string)conexion["RifCliente"];
 
-                    _Cliente.Nombre = (string)conexion["Nombre"];
+                    cliente.Direccion.Urbanizacion = (string)conexion["Urbanizacion"];
 
-                    _Cliente.Rif = (string)conexion["RifCliente"];
+                    cliente.Direccion.Avenida = (string)conexion["CalleAvenidad"];
 
-                    Direccion buscarDir = new Direccion();
+                    cliente.Direccion.Edif_Casa = (string)conexion["EdificioCasa"];
 
-                    buscarDir = buscarDireccion(_Cliente.IdCliente);
+                    cliente.Direccion.Oficina = (string)conexion["PisoApartamento"];
 
-                    _Cliente.Direccion = buscarDir;
+                    cliente.Direccion.Ciudad = (string)conexion["Ciudad"];
+
+                    cliente.AreaNegocio = (string)conexion["AreaNegocio"];
+
+                    cliente.Telefono.Numero = int.Parse((string)conexion["TelefonoTrabajo"]);
+
+                    cliente.Telefono.Codigoarea = int.Parse((string)conexion["CodigoTelefonoTrabajo"]);
+
+                    //cliente.Telefono.Tipo = (string)conexion["Tipo"];
 
                     IList <Contacto> _listaContacto = new List<Contacto>();
 
-                    _listaContacto = BuscarContacto(_Cliente.IdCliente);
+                    _listaContacto = BuscarContacto(cliente.IdCliente);
 
-                    _listaCliente.Insert(i, _Cliente);
+                    listaCliente.Add(cliente);
 
                     i++;
 

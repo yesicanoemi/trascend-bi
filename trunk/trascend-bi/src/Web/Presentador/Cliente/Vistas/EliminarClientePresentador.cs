@@ -29,57 +29,58 @@ namespace Presentador.Cliente.Vistas
 
         public void LlenarLista(bool o)
         {
-            List<string> ListaRecibida = new List<string>();
-            if (o == true)
-            // SE SELECCIONO EL CLIENTE SE PROCEDE A ELIMINAR
-            {
-                try
-                {
-                    ListaRecibida.Add(_vista.ListaCliente.SelectedItem.Text);
-                    Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar comando;
-                    comando = FabricaComandosCliente.CrearComandoEliminar(ListaCliente);
-                    ListaCliente = comando.Ejecutar(ListaRecibida);
+        //    List<string> ListaRecibida = new List<string>();
+        //    if (o == true)
+        //    // SE SELECCIONO EL CLIENTE SE PROCEDE A ELIMINAR
+        //    {
+        //        try
+        //        {
+        //            ListaRecibida.Add(_vista.ListaCliente.SelectedItem.Text);
+        //            Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar comando;
+        //            comando = FabricaComandosCliente.CrearComandoEliminar(new Cliente());
+        //            ListaCliente = comando.Ejecutar();
 
-                    int i = 0;
-                    for (i = 0; i < ListaCliente.Count; i++)
-                    {
-                        _vista.ListaCliente.Items.Add(ListaCliente.ElementAt(i));
-                    }
-                    _vista.ListaCliente.DataBind();
-                    _vista.ListaCliente.Visible = false;
-                    _vista.LabelEliminarCompletado.Text = _vista.ListaCliente.SelectedItem.Text + " fue eliminado de la base de datos";
-                    _vista.LabelEliminarCompletado.Visible = true;
-                }
-                catch (WebException e)
-                {
-                    //Excepcipon WEB
-                }
-                catch (NullReferenceException e)
-                {
+        //            int i = 0;
+        //            for (i = 0; i < ListaCliente.Count; i++)
+        //            {
+        //                _vista.ListaCliente.Items.Add(ListaCliente.ElementAt(i));
+        //            }
+        //            _vista.ListaCliente.DataBind();
+        //            _vista.ListaCliente.Visible = false;
+        //            _vista.LabelEliminarCompletado.Text = _vista.ListaCliente.SelectedItem.Text + " fue eliminado de la base de datos";
+        //            _vista.LabelEliminarCompletado.Visible = true;
+        //        }
+        //        catch (WebException e)
+        //        {
+        //            //Excepcipon WEB
+        //        }
+        //        catch (NullReferenceException e)
+        //        {
 
-                }
-            }
-            else
-            {
-                try
-                {
-                    Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar comando;
-                    comando = FabricaComandosCliente.CrearComandoEliminar(ListaCliente);
-                    ListaCliente = comando.Ejecutar(ListaRecibida);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar comando;
+        //            //-------------------FALTA ARREGLARLO---------------------------------//
+        //            comando = FabricaComandosCliente.CrearComandoEliminar(new Cliente());
+        //            ListaCliente = comando.Ejecutar(ListaRecibida);
 
-                    int i = 0;
-                    for (i = 0; i < ListaCliente.Count; i++)
-                    {
-                        _vista.ListaCliente.Items.Add(ListaCliente.ElementAt(i));
-                    }
-                    _vista.ListaCliente.DataBind();
-                    _vista.ListaCliente.Visible = true;
-                }
-                catch
-                {
+        //            int i = 0;
+        //            for (i = 0; i < ListaCliente.Count; i++)
+        //            {
+        //                _vista.ListaCliente.Items.Add(ListaCliente.ElementAt(i));
+        //            }
+        //            _vista.ListaCliente.DataBind();
+        //            _vista.ListaCliente.Visible = true;
+        //        }
+        //        catch
+        //        {
 
-                }
-            }
+        //        }
+        //    }
 
         }
 
