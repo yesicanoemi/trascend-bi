@@ -42,9 +42,9 @@ http://trascend-bi.googlecode.com/files/Busqueda02.jpg
 
 == Resultados ==
 
-La muestra de resultados se realizará usando GridView, y estos se mostraran debajo de los campos de búsqueda.
+La muestra de resultados se realizará usando Gridview, y estos se mostraran debajo de los campos de búsqueda.
 
-Si la búsqueda no devuelve resultados el GridView no debe ser mostrado y un mensaje de error debe estar en su lugar.
+Si la búsqueda no devuelve resultados el Gridview no debe ser mostrado y un mensaje de error debe estar en su lugar.
 
 http://trascend-bi.googlecode.com/files/Busqueda03_2.jpg
 
@@ -56,7 +56,7 @@ http://trascend-bi.googlecode.com/files/dataGrid.jpg
 
 Se utilizará multiview.
 
-La primera vista realizará una búsqueda, la cual devolverá una lista de resultados en GridView y con un campo para seleccionar, muy similar a una busqueda con muchos datos. Al hacer click a la opción esta llevará a la segunda vista.
+La primera vista realizará una búsqueda, la cual devolverá una lista de resultados en Gridview y con un campo para seleccionar, muy similar a una busqueda con muchos datos. Al hacer click a la opción esta llevará a la segunda vista.
 
 La segunda vista mostrará todos los datos modificables al igual que un llenado de datos, pero los datos vendrán con los campos pre-cargados con la información actual
 
