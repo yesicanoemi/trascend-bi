@@ -32,7 +32,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         public Contacto Ejecutar()
         {
             Contacto _contacto = null;
-            ContactoSQLServer bd = new ContactoSQLServer();
+            DAOContactoSQLServer bd = new DAOContactoSQLServer();
             _contacto = bd.Ingresar(contacto,idCliente);
 
             return _contacto;

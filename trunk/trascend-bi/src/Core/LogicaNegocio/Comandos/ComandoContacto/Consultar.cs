@@ -44,8 +44,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         public IList<Contacto> Ejecutar()
         {
-            ContactoSQLServer bd = new ContactoSQLServer();
-            _contactos = bd.Consultar(_nombre,_apellido,_cod,_num,_flag);
+            DAOContactoSQLServer bd = new DAOContactoSQLServer();
+            _contactos = new List<Contacto>(); //bd..Consultar(_nombre,_apellido,_cod,_num,_flag);
             return _contactos;
         }
 

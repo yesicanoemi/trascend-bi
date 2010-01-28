@@ -31,8 +31,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         {
             //int _resultado = 0;
             Contacto _contacto = null;
-            ContactoSQLServer bd = new ContactoSQLServer();
-            _contacto = bd.Eliminar(contacto);
+            DAOContactoSQLServer bd = new DAOContactoSQLServer();
+            bd.Eliminar(contacto);
         }
         #endregion
     }

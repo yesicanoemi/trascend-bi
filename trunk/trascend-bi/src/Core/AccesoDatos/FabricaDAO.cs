@@ -54,6 +54,12 @@ namespace Core.AccesoDatos
         public abstract IDAOFactura ObtenerDAOFactura();
 
         /// <summary>
+        /// Metodo que devuelve el DTA de Contacto
+        /// </summary>
+        /// <returns></returns>
+        public abstract IDAOContacto ObtenerDAOContacto();
+
+        /// <summary>
         /// Metodo que devuelve el DTA de Gasto
         /// </summary>
         /// <returns></returns>

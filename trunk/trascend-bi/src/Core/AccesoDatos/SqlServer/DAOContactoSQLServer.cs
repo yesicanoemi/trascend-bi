@@ -9,21 +9,27 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 
 namespace Core.AccesoDatos.SqlServer
 {
-    public class ContactoSQLServer
+    public class DAOContactoSQLServer: IDAOContacto
     {
         #region Propiedades
+        IConexion _conexion = new FabricaConexion().getConexionSQLServer();
+
 
         #endregion
         #region Constructor
-        public ContactoSQLServer()
+        public DAOContactoSQLServer()
         {
+
         }
         #endregion
 
+        /*
         private SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
@@ -41,6 +47,7 @@ namespace Core.AccesoDatos.SqlServer
 
             return connection;
         }
+        */
 
         #region Metodos
         public Contacto Ingresar(Contacto contacto,int idCliente)
@@ -74,7 +81,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[9].Value = idCliente;
                 arParms[10] = new SqlParameter("@ID", SqlDbType.Int);
                 arParms[10].Value = 0;
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(),"InsertarContacto", arParms);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),"InsertarContacto", arParms);
             }
             catch (SqlException e)
             {
@@ -85,25 +92,7 @@ namespace Core.AccesoDatos.SqlServer
         }
 
 
-    /*    public IList<Contacto> Consultar()
-        {
-            IList<Contacto> contacto = null;
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarContacto");
-            while (reader.Read())
-            {
-                Contacto _contacto = new Contacto();
-                _contacto.Nombre = (string)reader["nombre"];
-                _contacto.Apellido = (string)reader["apellido"];
-                _contacto.AreaDeNegocio = (string)reader["areanegocio"];
-                _contacto.Cargo = (string)reader["cargo"];
-                //    _contacto.TelefonoDeTrabajo = (Int32)reader["telefonotrabajo"];
-                //    _contacto.TelefonoDeCelular = (Int32)reader["telefonocelular"];
-
-                contacto.Add(_contacto);
-            }
-            return contacto;
-        } */
-
+    
 
         #region ConsultarContacto
 
@@ -113,8 +102,8 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="usuario">Criterio de busqueda</param>
         /// <returns>Usuario(s) que coincidan con el criterio</returns>
 
-
-        public IList<Contacto> Consultar(string Nombre,string Apellido,int Area,int Numero, int Zero)
+        #region ConsultarContactoNombreApellido_3
+        public IList<Contacto> ConsultarContactoNombreApellido(Contacto entidad)
         {
             IList<Contacto> contacto = new List<Contacto>();
 
@@ -122,124 +111,42 @@ namespace Core.AccesoDatos.SqlServer
             {
                 //Parametros de busqueda
 
+                SqlParameter[] arParms = new SqlParameter[2];
 
-                SqlParameter[] arParms = new SqlParameter[4];
+                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
 
-                arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
+                arParms[0].Value = "%" + entidad.Nombre + "%";
 
-                arParms[0].Value = Nombre;
+                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
 
-                arParms[1] = new SqlParameter("@apellido", SqlDbType.VarChar);
+                arParms[1].Value = "%" + entidad.Apellido + "%";
 
-                arParms[1].Value = Apellido;
-
-                arParms[2] = new SqlParameter("@codigoArea", SqlDbType.Int);
-
-                arParms[2].Value = Area;
-
-                arParms[3] = new SqlParameter("@Numero", SqlDbType.Int);
-
-                arParms[3].Value = Numero;
-
-                DbDataReader reader = null;
-
-                switch (Zero)
-                {
-                    case 0:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoVacio", arParms);
-
-                        break;
-                    case 1:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoTelefono", arParms);
-                        break;
-                    case 10:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoApellido", arParms);
-                        break;
-                    case 11:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoApellidoTelefono", arParms);
-                        break;
-                    case 100:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoNombre", arParms);
-                        break;
-                    case 101:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoNombreTelefono", arParms);
-
-                        break;
-                    case 110:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoNombreApellido", arParms);
-                        break;
-                    case 111:
-
-                        reader = SqlHelper.ExecuteReader
-                                                (GetConnection(), "ConsultarContactoNombreApellidoTelefono", arParms);
-                        break;
-                }
-
-
-                Contacto _contacto = new Contacto();
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ConsultarContactoNombreApellido_3", arParms);
 
                 while (reader.Read())
                 {
+                    Contacto _contacto = new Contacto();
 
-                    _contacto.Nombre = (string)reader["NOMBRE"];
+                    _contacto.Nombre = (string)reader.GetValue(0);
 
-                    _contacto.Apellido = (string)reader["APELLIDO"];
+                    _contacto.Apellido = (string)reader.GetValue(1);
 
-                    _contacto.AreaDeNegocio = (string)reader["AREA"];
+                    _contacto.AreaDeNegocio = (string)reader.GetValue(2);
 
-                    _contacto.Cargo = (string)reader["CARGO"];
+                    _contacto.Cargo = (string)reader.GetValue(3);
 
-                    if ((string)reader["TIPO"] == "Celular")
-                    {
-                        _contacto.TelefonoDeCelular.Codigocel = (int)reader["CODIGOAREA"];
+                    _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader.GetValue(4);
 
-                        _contacto.TelefonoDeCelular.Numero = (int)reader["NUMERO"];
-                    }
+                    _contacto.TelefonoDeTrabajo.Numero = (int)reader.GetValue(5);
 
-                    if ((string)reader["TIPO"] == "Trabajo")
-                    {
-                        _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader["CODIGOAREA"];
+                    _contacto.TelefonoDeTrabajo.Tipo = (string)reader.GetValue(6);
 
-                        _contacto.TelefonoDeTrabajo.Numero = (int)reader["NUMERO"];
+                    _contacto.IdCliente = (int)reader.GetValue(7);
 
-                        _contacto.TelefonoDeTrabajo.Tipo = (string)reader["TIPO"];
-                    }
-
-                    if ((string)reader["TIPO"] == "Fax")
-                    {
-                        _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader["CODIGOAREA"];
-
-                        _contacto.TelefonoDeTrabajo.Numero = (int)reader["NUMERO"];
-
-                        _contacto.TelefonoDeTrabajo.Tipo = (string)reader["TIPO"];
-                    }
-                    if (contacto.Count == 0)
-                    {
-                        contacto.Add(_contacto);
-                        _contacto = new Contacto();
-                    }
-                    if (contacto.Last().Nombre!=_contacto.Nombre ||
-                        contacto.Last().Apellido!=_contacto.Apellido ||
-                        contacto.Last().AreaDeNegocio!=_contacto.AreaDeNegocio ||
-                        contacto.Last().Cargo!=_contacto.Cargo)
-                    {
-                        contacto.Add(_contacto);
-                        _contacto = new Contacto();
-                    }
+                    _contacto.IdContacto = (int)reader.GetValue(8);
+                  
+                    contacto.Add(_contacto);
                 }
 
                 return contacto;
@@ -254,11 +161,130 @@ namespace Core.AccesoDatos.SqlServer
             return contacto;
 
         }
+        #endregion
+
+        #region ConsultarContactoXTelefono_3
+        public Contacto ConsultarContactoXTelefono(Contacto entidad)
+        {
+            Contacto contacto = new Contacto();
+
+            try
+            {
+                //Parametros de busqueda
+
+                SqlParameter[] arParms = new SqlParameter[2];
+
+                arParms[0] = new SqlParameter("@CodigoArea", SqlDbType.Int);
+
+                arParms[0].Value = entidad.TelefonoDeTrabajo.Codigoarea;
+
+                arParms[1] = new SqlParameter("@Numero", SqlDbType.VarChar);
+
+                arParms[1].Value = entidad.TelefonoDeTrabajo.Numero;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ConsultarContactoXTelefono_3", arParms);
+
+                while (reader.Read())
+                {
+                    Contacto _contacto = new Contacto();
+
+                    _contacto.Nombre = (string)reader.GetValue(0);
+
+                    _contacto.Apellido = (string)reader.GetValue(1);
+
+                    _contacto.AreaDeNegocio = (string)reader.GetValue(2);
+
+                    _contacto.Cargo = (string)reader.GetValue(3);
+
+                    _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader.GetValue(4);
+
+                    _contacto.TelefonoDeTrabajo.Numero = (int)reader.GetValue(5);
+
+                    _contacto.TelefonoDeTrabajo.Tipo = (string)reader.GetValue(6);
+
+                    _contacto.IdCliente = (int)reader.GetValue(7);
+
+                    _contacto.IdContacto = (int)reader.GetValue(8);
+
+                    contacto = _contacto;
+                }
+
+                return contacto;
+
+            }
+
+            catch (SqlException e)
+            {
+
+            }
+
+            return contacto;
+
+        }
+        #endregion
+
+        #region ConsultarContactoXCliente_3
+        public IList<Contacto> ConsultarContactoXCliente(Contacto entidad)
+        {
+            IList<Contacto> contacto = new List<Contacto>();
+
+            try
+            {
+                //Parametros de busqueda
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@NombreCliente", SqlDbType.Int);
+
+                arParms[0].Value = entidad.IdCliente;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ConsultarContactoXCliente_3", arParms);
+
+                while (reader.Read())
+                {
+                    Contacto _contacto = new Contacto();
+
+                    _contacto.Nombre = (string)reader.GetValue(0);
+
+                    _contacto.Apellido = (string)reader.GetValue(1);
+
+                    _contacto.AreaDeNegocio = (string)reader.GetValue(2);
+
+                    _contacto.Cargo = (string)reader.GetValue(3);
+
+                    _contacto.TelefonoDeTrabajo.Codigoarea = (int)reader.GetValue(4);
+
+                    _contacto.TelefonoDeTrabajo.Numero = (int)reader.GetValue(5);
+
+                    _contacto.TelefonoDeTrabajo.Tipo = (string)reader.GetValue(6);
+
+                    _contacto.IdCliente = (int)reader.GetValue(7);
+
+                    _contacto.IdContacto = (int)reader.GetValue(8);
+
+                    contacto.Add(_contacto);
+                }
+
+                return contacto;
+
+            }
+
+            catch (SqlException e)
+            {
+
+            }
+
+            return contacto;
+
+        }
+        #endregion
 
         #endregion
 
-
-         public Contacto Eliminar(Contacto contacto)
+        #region no tocar
+        public void Eliminar(Contacto contacto)
         {
             Contacto _contacto = new Contacto();
             try
@@ -289,18 +315,16 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[9].Value = 1;
                 arParms[10] = new SqlParameter("@ID", SqlDbType.Int);
                 arParms[10].Value = 0;
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "EliminarContacto", arParms);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "EliminarContacto", arParms);
             }
             catch (SqlException e)
             {
                 System.Console.Write(e);
             }
-            return _contacto;
-
         }
    
 
-         public int Modificar(Contacto contacto1,Contacto contacto2)
+         public void Modificar(Contacto contacto1,Contacto contacto2)
         {
             int resultado = 0;
             try
@@ -346,17 +370,21 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[17].Value = contacto2.TelefonoDeTrabajo.Codigoarea;
                 arParms[18] = new SqlParameter("@TipoM", SqlDbType.VarChar);
                 arParms[18].Value = contacto2.TelefonoDeTrabajo.Tipo;
-                resultado = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarContacto", arParms);
-                return resultado;
+                resultado = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarContacto", arParms);
+                
             }
             catch (SqlException )
             {
+
             }
-            return resultado;
+           
         }
         #endregion
 
-        
+
+        #endregion
+
+
     }
 }
 

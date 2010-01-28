@@ -33,8 +33,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         {
             int _resultado = 0;
             //Contacto _contacto;
-            ContactoSQLServer bd = new ContactoSQLServer();
-            _resultado = bd.Modificar(contacto1,contacto2);
+            DAOContactoSQLServer bd = new DAOContactoSQLServer();
+            bd.Modificar(contacto1,contacto2);
         }
         #endregion
     }
