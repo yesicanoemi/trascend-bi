@@ -10,13 +10,14 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.AccesoDatos.SqlServer
 {
     class DAOGastoSQLServer: IDAOGasto
     {
         #region Propiedades
-
+        IConexion _conexion = new FabricaConexion().getConexionSQLServer();
         #endregion
 
         #region Constructor
@@ -79,7 +80,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametros[5] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[5].Value = gasto.Descripcion;
 
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGasto", parametros);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "InsertarGasto", parametros);
 
             }
             catch (InvalidOperationException e)
@@ -129,7 +130,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametros[6] = new SqlParameter("@version", SqlDbType.Int);
                 parametros[6].Value = gasto.IdVersion;
 
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarGastoPropuesta", parametros);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "InsertarGastoPropuesta", parametros);
 
             }
             catch (InvalidOperationException)
@@ -162,7 +163,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametro[0] = new SqlParameter("@Tipo", SqlDbType.VarChar);
                 parametro[0].Value = gasto.Tipo;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorTipo", parametro);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGastoPorTipo", parametro);
 
                 while (reader.Read())
                 {
@@ -195,7 +196,7 @@ namespace Core.AccesoDatos.SqlServer
 
             try
             {
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorTipo");
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGastoPorTipo");
 
                 while (reader.Read())
                 {
@@ -232,7 +233,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametro[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
                 parametro[0].Value = propuesta.Titulo;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorPropuesta", parametro);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGastoPorPropuesta", parametro);
 
                 while (reader.Read())
                 {
@@ -270,7 +271,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametro[0] = new SqlParameter("@Fecha", SqlDbType.DateTime);
                 parametro[0].Value = gasto.FechaGasto;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorFecha", parametro);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGastoPorFecha", parametro);
 
                 while (reader.Read())
                 {
@@ -307,7 +308,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametro[0] = new SqlParameter("@Estado", SqlDbType.VarChar);
                 parametro[0].Value = gasto.Estado;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarGastoPorEstado", parametro);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGastoPorEstado", parametro);
 
                 while (reader.Read())
                 {
@@ -347,7 +348,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametro[0] = new SqlParameter("@IdGasto", SqlDbType.Int);
                 parametro[0].Value = gasto.Codigo;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "EliminarGasto", parametro);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "EliminarGasto", parametro);
 
             }
             catch (InvalidOperationException)
@@ -391,7 +392,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametros[6] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[6].Value = gasto.Descripcion;
 
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarGastoPorCodigo", parametros);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarGastoPorCodigo", parametros);
 
             }
             catch (InvalidOperationException)
