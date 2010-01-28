@@ -6,18 +6,32 @@ namespace Core.LogicaNegocio.Entidades
 
     public class Contacto : Persona
     {
-
+        private int _id;
         private int cedula;
         private string cargo;
         private string areaDeNegocio;
         private TelefonoCelular _telefonoCelular;
         private TelefonoTrabajo _telefonoTrabajo;
+        private int _idCliente;
 
 
         public Contacto()
         {
             _telefonoCelular = new TelefonoCelular();
             _telefonoTrabajo = new TelefonoTrabajo();
+        }
+
+        public virtual int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
         }
 
         public virtual int Cedula
@@ -70,6 +84,19 @@ namespace Core.LogicaNegocio.Entidades
         {
             get { return _telefonoCelular; }
             set { _telefonoCelular = value; }
+        }
+
+        public virtual int IdCliente
+        {
+            get
+            {
+                return _idCliente;
+            }
+
+            set
+            {
+                _idCliente = value;
+            }
         }
 
     }
