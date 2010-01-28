@@ -33,6 +33,12 @@ namespace Core.AccesoDatos.Fabricas
         {
             return new DAOFacturaSQLServer();
         }
+
+
+        public override IDAOGasto ObtenerDAOGasto()
+        {
+            return new DAOGastoSQLServer();
+        }
     }
 
 }

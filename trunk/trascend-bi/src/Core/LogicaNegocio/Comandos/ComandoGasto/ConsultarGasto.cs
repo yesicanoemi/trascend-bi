@@ -29,7 +29,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         #region Metodos
         public IList<Gasto> Ejecutar()
         {
-            GastoSQLServer bd = new GastoSQLServer();
+            DAOGastoSQLServer bd = new DAOGastoSQLServer();
             listagastos = bd.ConsultarGasto(gasto);
 
             return listagastos;

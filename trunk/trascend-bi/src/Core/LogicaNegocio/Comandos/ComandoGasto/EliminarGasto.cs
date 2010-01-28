@@ -32,7 +32,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         public Gasto Ejecutar()
         {
             Gasto _gasto = null;
-            GastoSQLServer bd = new GastoSQLServer();
+            DAOGastoSQLServer bd = new DAOGastoSQLServer();
             _gasto = bd.EliminarGasto(gasto);
             return _gasto;
         }

@@ -13,14 +13,14 @@ using Core.AccesoDatos.Interfaces;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    class GastoSQLServer: IDAOGasto
+    class DAOGastoSQLServer: IDAOGasto
     {
         #region Propiedades
 
         #endregion
 
         #region Constructor
-        public GastoSQLServer()
+        public DAOGastoSQLServer()
         {
         }
         #endregion

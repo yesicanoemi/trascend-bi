@@ -36,7 +36,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         {
             Gasto _gasto = null;
 
-            GastoSQLServer bdGasto = new GastoSQLServer();
+            DAOGastoSQLServer bdGasto = new DAOGastoSQLServer();
 
             if (gasto.IdVersion > 0)
                 // Ingresa el gasto asociado a un proyecto

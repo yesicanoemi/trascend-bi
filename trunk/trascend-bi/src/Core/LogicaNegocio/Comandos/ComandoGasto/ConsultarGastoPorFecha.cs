@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
 
         public IList<Gasto> Ejecutar()
         {
-            GastoSQLServer bd = new GastoSQLServer();
+            DAOGastoSQLServer bd = new DAOGastoSQLServer();
             listaGasto = bd.ConsultarGastoPorFecha(gasto);
 
             return listaGasto;

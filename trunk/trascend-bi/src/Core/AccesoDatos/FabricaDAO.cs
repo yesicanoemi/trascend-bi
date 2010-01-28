@@ -53,6 +53,12 @@ namespace Core.AccesoDatos
 
         public abstract IDAOFactura ObtenerDAOFactura();
 
+        /// <summary>
+        /// Metodo que devuelve el DTA de Gasto
+        /// </summary>
+        /// <returns></returns>
+        public abstract IDAOGasto ObtenerDAOGasto();
+
         #endregion
 
        

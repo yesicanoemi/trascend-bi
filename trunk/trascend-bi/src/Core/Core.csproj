@@ -90,7 +90,7 @@
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />
-    <Compile Include="AccesoDatos\SqlServer\GastoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOGastoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\PropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\ReporteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
