@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Xml;
 using Core.LogicaNegocio.Excepciones;
 using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -33,7 +34,8 @@ namespace Core.AccesoDatos.SqlServer
         /// Llamado a la clase de conexion
         /// </summary>
         /// <returns>devuelve la conexion</returns>
-        Conexion _conexion = new Conexion();
+        IConexion _conexion = new FabricaConexion().getConexionSQLServer();
+
         #endregion
         #region Metodos
 
@@ -59,7 +61,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[3].Value = cargo.SueldoMaximo;
                 arParms[4] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
                 arParms[4].Value = cargo.Vigencia.ToString();
-                int result = SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(), "IngresarCargo", arParms);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "IngresarCargo", arParms);
             }
             catch (SqlException e)
             {
@@ -88,7 +90,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[0] = new SqlParameter("@NombreCargo", SqlDbType.VarChar);
                 arParms[0].Value = cargo.Nombre;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                                 "ConsultarCargo", arParms);
 
                 if (reader.Read())
@@ -124,7 +126,7 @@ namespace Core.AccesoDatos.SqlServer
             IList<Entidad> listaCargos = new List<Entidad>();
             try
             {
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(), "ConsultarCargos");
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarCargos");
                 Cargo cargo;
 
                 while (reader.Read())
@@ -166,7 +168,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[0] = new SqlParameter("@IdCargo", SqlDbType.VarChar);
                 arParms[0].Value = IdCargo;
 
-                int result = SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(), "EliminarCargo", arParms);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "EliminarCargo", arParms);
             }
             catch (SqlException e)
             {
@@ -204,7 +206,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[5] = new SqlParameter("@VigenciaAnual", SqlDbType.SmallDateTime);
                 arParms[5].Value = cargo.Vigencia;
 
-                int result = SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(), "ModificarCargo", arParms);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarCargo", arParms);
             }
             catch (SqlException e)
             {

@@ -10,16 +10,16 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using System.Security.Principal;
+using Core.AccesoDatos.Interfaces;
 
-namespace Core.AccesoDatos.SqlServer
+namespace Core.AccesoDatos.Conexiones
 {
-    public class Conexion
+    public class ConexionSQLServer : IConexion
     {
-       
 
         #region Conexion a la Base de Datos
 
-        public SqlConnection GetSqlServerConnection()
+        public SqlConnection GetConnection()
         {
             XmlDocument xDoc = new XmlDocument();
 
@@ -40,7 +40,7 @@ namespace Core.AccesoDatos.SqlServer
             string lista = "Data Source=" + nombreComputadora + "\\SQLEXPRESS;" + _lista;
 
             #endregion
-           
+
             SqlConnection connection = new SqlConnection(lista);
 
             connection.Open();
@@ -49,6 +49,6 @@ namespace Core.AccesoDatos.SqlServer
         }
 
         #endregion
-        
+
     }
 }

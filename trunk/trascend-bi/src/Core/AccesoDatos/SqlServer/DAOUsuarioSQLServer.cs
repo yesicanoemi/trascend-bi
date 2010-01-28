@@ -10,12 +10,13 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.AccesoDatos.SqlServer
 {
     class DAOUsuarioSQLServer: IDAOUsuario
     {
-        Conexion _conexion = new Conexion();
+        IConexion _conexion = new FabricaConexion().getConexionSQLServer();
 
          #region Constructor
 
@@ -74,7 +75,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[1].Value = usuario.Password;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarCredenciales", arParms);
 
                 if (reader.Read())
@@ -123,7 +124,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = "%" + entidad.Login + "%";
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarUsuario", arParms);
 
                 while (reader.Read())
@@ -174,7 +175,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = usuario.IdUsuario;
 
-                SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(),
+                SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                         "EliminarPermisos", arParms);
 
 
@@ -191,7 +192,7 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     arParmsAgregarPermisos[1].Value = usuario.PermisoUsu[i].IdPermiso;
 
-                    SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(),
+                    SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                             "AgregarPermisoUsuario", arParmsAgregarPermisos);
                 }
 
@@ -206,7 +207,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParmsStatus[1].Value = usuario.Status;
 
 
-                SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(),
+                SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                         "ModificarStatusUsuario", arParmsStatus);
 
             }
@@ -240,7 +241,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = entidad.IdUsuario;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarPermisos", arParms);
 
                 while (reader.Read())
@@ -286,7 +287,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParmsIdEmp[0].Value = usuario.Cedula;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "BuscarCIEmpleado", arParmsIdEmp);
 
                 while (reader.Read())
@@ -316,7 +317,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[3].Value = usuario.Id;
 
-                SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(),
+                SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                         "AgregarUsuario", arParms);
                 #endregion
 
@@ -328,7 +329,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms1[0].Value = usuario.Login;
 
-                DbDataReader reader1 = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader1 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarUsuario", arParms1);
 
                 IList<Usuario> usuario2 = new List<Usuario>();
@@ -361,7 +362,7 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     arParmsAgregarPermisos[1].Value = usuario.PermisoUsu[i].IdPermiso;
 
-                    SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(),
+                    SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                             "AgregarPermisoUsuario", arParmsAgregarPermisos);
                 }
                 #endregion
@@ -401,7 +402,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParmsIdEmp[0].Value = entidad.Cedula;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "BuscarCIEmpleado", arParmsIdEmp);
 
                 while (reader.Read())
@@ -418,7 +419,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = entidad.Id;
 
-                DbDataReader reader2 = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader2 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarEmpleadoConUsuario", arParms);
 
                 while (reader2.Read())
@@ -462,7 +463,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[0];
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ListaUsuarios", arParms);
 
                 while (reader.Read())
@@ -509,7 +510,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = usuario.Login;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarUsuario", arParms);
 
                 if (reader.Read())
@@ -552,7 +553,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[1] = new SqlParameter("@Status", SqlDbType.VarChar);
                 arParms[1].Value = usuario.Status;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                 "EliminarUsuario", arParms);
 
                 if (reader.Read())

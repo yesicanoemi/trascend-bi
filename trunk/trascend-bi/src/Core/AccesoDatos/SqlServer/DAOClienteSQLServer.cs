@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Xml;
 using Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos;
 using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 
 namespace Core.AccesoDatos.SqlServer
@@ -20,6 +21,8 @@ namespace Core.AccesoDatos.SqlServer
         
         #region Propiedades        
         
+        IConexion _conexion = new FabricaConexion().getConexionSQLServer();
+
         List<Cliente> listaCliente = new List<Cliente>();
 
         #endregion
@@ -30,7 +33,7 @@ namespace Core.AccesoDatos.SqlServer
         }
         #endregion
       
-        #region Conexion a Base de Datos
+        #region Conexion a Base de Datos (obsoleto)
         private SqlConnection GetConnection()
         {
             try
@@ -113,7 +116,7 @@ namespace Core.AccesoDatos.SqlServer
                 #endregion
 
 
-                    int result = SqlHelper.ExecuteNonQuery(GetConnection(), "InsertarCliente", arParms);
+                    int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "InsertarCliente", arParms);
                     
                     return _cliente;
                 }

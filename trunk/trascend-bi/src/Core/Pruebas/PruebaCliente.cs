@@ -58,7 +58,7 @@ namespace Core.Pruebas
 
             cliente.Telefono.Tipo = "Local";
                                    
-            cliente.Nombre = "aaaaaaaaaaaaaaa";
+            cliente.Nombre = "joojojoj";
             
             cliente.Rif = "J-00006372-9";
 
@@ -76,7 +76,7 @@ namespace Core.Pruebas
         {
             Cliente cliente = new Cliente();            
 
-            cliente.Nombre = "a";
+            cliente.Nombre = "o";
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 

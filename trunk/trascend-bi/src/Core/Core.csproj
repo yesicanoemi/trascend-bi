@@ -74,16 +74,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos\Conexiones\ConexionOracle.cs" />
+    <Compile Include="AccesoDatos\Conexiones\ConexionSQLServer.cs" />
     <Compile Include="AccesoDatos\EnumFabrica.cs" />
     <Compile Include="AccesoDatos\FabricaDAO.cs" />
+    <Compile Include="AccesoDatos\Fabricas\FabricaConexion.cs" />
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IConexion.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOCargo.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOCliente.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOGasto.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\CargoSQLServer.cs" />
-    <Compile Include="AccesoDatos\SqlServer\Conexion.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />
