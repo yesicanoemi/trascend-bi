@@ -77,6 +77,7 @@
     <Compile Include="AccesoDatos\EnumFabrica.cs" />
     <Compile Include="AccesoDatos\FabricaDAO.cs" />
     <Compile Include="AccesoDatos\Fabricas\FabricaDAOSQLServer.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IDAOCargo.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOCliente.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
