@@ -390,4 +390,10 @@
   <data name="FaltaUrbEmpleado" xml:space="preserve">
     <value>Debe introducir una urbanizacion</value>
   </data>
+  <data name="CampoCedula" xml:space="preserve">
+    <value>Cedula:</value>
+  </data>
+  <data name="NombreEmpleado" xml:space="preserve">
+    <value>* Nombre de Empleado:</value>
+  </data>
 </root>

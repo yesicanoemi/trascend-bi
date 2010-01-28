@@ -205,4 +205,8 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     #endregion
 
+    protected void uxConsultaModificarUsuario_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

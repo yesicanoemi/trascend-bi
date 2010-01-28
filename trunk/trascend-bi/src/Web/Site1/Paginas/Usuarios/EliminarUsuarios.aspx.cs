@@ -6,30 +6,89 @@ using System.Web.UI.WebControls;
 using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using System.Web.SessionState;
+using Microsoft.Practices.Web.UI.WebControls;
 
 
 public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUsuario
 {
-    private EliminarUsuarioPresenter _presenter;
+    private EliminarUsuarioPresenter _presentador;
 
     #region Propiedades
 
-    public DropDownList UsuarioEliminar
+    public TextBox Login
     {
-        get { return uxUsuarioEliminar; }
-        set { uxUsuarioEliminar = value; }
+        get { return uxLogin; }
+        set { uxLogin = value; }
+    }
+    
+    public MultiView MultiViewEliminar
+    { 
+        get { return uxMultiViewEliminar;}
+        set { uxMultiViewEliminar = value;}
+    }
+
+    public GridView GridViewConsultarEliminarUsuario 
+    {
+        get { return uxConsultaEliminarUsuario;}
+        set { uxConsultaEliminarUsuario=value;} 
+    }
+    public ObjectContainerDataSource GetObjectContainerConsultaEliminarUsuario 
+    {
+        get { return uxObjectConsultaEliminarUsuario;}
+        set { uxObjectConsultaEliminarUsuario=value;} 
+    }
+    #endregion
+
+    #region InformacionBasica
+    #region Propiedades del Diálogo
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
     }
 
     #endregion
 
+    #region Información
 
-    public void Mensaje(string msg)
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
+
+    public void PintarInformacionBotonAceptar(string mensaje, string estilo)
+    {
+        //uxMensajeInformacionBotonAceptar.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisibleBotonAceptar
+    {
+       get { return uxMensajeInformacionBotonAceptar.Visible; }
+       set { uxMensajeInformacionBotonAceptar.Visible = value; }
+    }
+
+    #endregion
+
+    #endregion
+    /* public void Mensaje(string msg)
     {
         Label lbl = new Label();
         lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
         Page.Controls.Add(lbl);
-    }
-
+    }*/
+    #region Metodos
     protected void Page_Init(object sender, EventArgs e)
     {
 
@@ -44,7 +103,7 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
             {
                 i = usuario.PermisoUsu.Count;
 
-                _presenter = new EliminarUsuarioPresenter(this);
+                _presentador = new EliminarUsuarioPresenter(this);
 
                 permiso = true;
 
@@ -57,21 +116,24 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
         }
 
     }
+    protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
+    {
+        
+        _presentador.uxObjectConsultaEliminarUsuarioSelecting
+                               (GridViewConsultarEliminarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-            _presenter.CargarUsuarios();
-        _presenter.OnBotonEliminar();
-
 
     }
 
-    public void Volver()
+
+    protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
-        Response.Redirect(paginaInicial);
+        _presentador.OnBotonBuscar();
     }
-
+    #endregion
 }
 
 

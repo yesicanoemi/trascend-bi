@@ -37,9 +37,10 @@
                           
                                 <asp:View ID="ViewConsulta" runat="server">
                           
+                                    <p>Introduzca los campos según su tipo de búsqueda</p> 
+                                    
                                     <br />
-                          
-                                    <p class="large">Introduzca los campos según su tipo de búsqueda</p> 
+                                    
                     
                                     <table width="100%">
                                           <tr>  

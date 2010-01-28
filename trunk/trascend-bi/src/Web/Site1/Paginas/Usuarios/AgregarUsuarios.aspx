@@ -51,7 +51,7 @@
                                     <table width="100%">
                                 
                                         <tr>
-                                            <td>Nombre de Empleado:</td>
+                                            <td><asp:Label runat="server" ID="uxCampoNombreEmpleado" Text="<%$ Resources:DSU, NombreEmpleado %>"></asp:Label></td>
                                             <td><asp:TextBox ID="uxNombreEmpleadoBuscar" runat="server"></asp:TextBox></td>
                                             <td>
                                                 <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" onclick="uxBotonBuscar_Click"/>
@@ -111,7 +111,7 @@
                                         <table style="width:100%;">
                                             
                                             <tr>
-                                                <td><b>Cedula:</b></td>
+                                                <td><b><asp:Label ID="uxCampoCedula" runat="server" Text="<%$ Resources:DSU, CampoCedula%>"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxCedula" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                        
