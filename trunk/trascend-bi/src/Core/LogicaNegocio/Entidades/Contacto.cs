@@ -1,11 +1,12 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+
 namespace Core.LogicaNegocio.Entidades
 {
-    using System;
-    using System.Collections.Generic;
-
     public class Contacto : Persona
     {
+        #region Propiedades
+
         private int _id;
         private int cedula;
         private string cargo;
@@ -18,6 +19,7 @@ namespace Core.LogicaNegocio.Entidades
         public Contacto()
         {
             _telefonoCelular = new TelefonoCelular();
+            
             _telefonoTrabajo = new TelefonoTrabajo();
         }
 
@@ -77,12 +79,14 @@ namespace Core.LogicaNegocio.Entidades
         public virtual TelefonoTrabajo TelefonoDeTrabajo
         {
             get { return _telefonoTrabajo; }
+            
             set { _telefonoTrabajo = value; }
         }
 
         public virtual TelefonoCelular TelefonoDeCelular
         {
             get { return _telefonoCelular; }
+            
             set { _telefonoCelular = value; }
         }
 
@@ -98,6 +102,8 @@ namespace Core.LogicaNegocio.Entidades
                 _idCliente = value;
             }
         }
+
+        #endregion  
 
     }
 }

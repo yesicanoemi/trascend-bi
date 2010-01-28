@@ -121,8 +121,6 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
         set { uxFaxModificar = value; }
     }
 
-    /* 8888888888888888888888888888888888888 */
-
     public Button BotonBuscar
     {
         set { uxBotonBuscar = value; }
@@ -154,17 +152,17 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
-        _presentador.Onclick();
+        //_presentador.Onclick();
     }
 
     protected void BuscarClick(object sender, EventArgs e)
     {
-        _presentador.OnClickBusqueda();
+       // _presentador.OnClickBusqueda();
     }
 
     protected void ModificarClick(object sender, EventArgs e)
     {
-        _presentador.onClickConfirmar();
+        //_presentador.onClickConfirmar();
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -181,7 +179,7 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             {
                 i = usuario.PermisoUsu.Count;
 
-                _presentador = new ModificarPresentador(this);
+               // _presentador = new ModificarPresentador(this);
 
                 permiso = true;
 

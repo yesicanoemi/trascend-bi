@@ -5,12 +5,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Contacto.ContactoInterface;
 using Presentador.Contacto.ContactoPresentador;
+using Microsoft.Practices.Web.UI.WebControls;
+using Presentador.Aplicacion;
 
 public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsultarContacto
 {
-    
 
-        private ConsultarPresentador _presentador;
+    #region Propiedades
+
+    private ConsultarPresentador _presentador;
 
 
         public TextBox TextBoxNombre
@@ -24,7 +27,7 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             get { return uxConsultaApellidoContacto; }
             set { uxConsultaApellidoContacto = value; }
         }
-//////////
+
         public TextBox TextBoxCodTelefono
         {
             get { return uxConsultaCodigoContacto; }
@@ -37,29 +40,45 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             set { uxConsultaTelefonoContacto = value; }
         }
 
-        public CheckBox CheckBoxNombre
+        public DropDownList ClienteDdl
         {
-            get { return uxCheckBoxNombre; }
-            set { uxCheckBoxNombre = value; }
+            get { return uxConsultaClienteContacto; }
+            set { uxConsultaClienteContacto = value; }
         }
 
-        public CheckBox CheckBoxApellido
+        public MultiView MultiViewConsultar
         {
-            get { return uxChecBoxApellido; }
-            set { uxChecBoxApellido = value; }
+            get { return uxMultiViewConsultar; }
+            set { throw new System.NotImplementedException(); }
         }
 
-        public CheckBox CheckBoxTelefono
+        public GridView GridViewConsultaContacto
         {
-            get { return uxCheckBoxTelefono; }
-            set { uxCheckBoxTelefono = value; }
+            get { return uxConsultaContacto; }
+            set { throw new System.NotImplementedException(); }
         }
 
-        public Table TablaResultados
+        public ObjectContainerDataSource GetObjectContainerConsultaContacto
         {
-            get { return uxTablaResultado; }
-            set { uxTablaResultado = value; }
+            get { return uxObjectConsultaContacto; }
+            set { uxObjectConsultaContacto = value; }
         }
+
+        public RadioButtonList RbCampoBusqueda
+        {
+            get { return uxRbCampoBusqueda; }
+            set { uxRbCampoBusqueda = value; }
+        }
+    
+        public Button BotonBuscar
+        {
+            get { return uxBotonBuscar; }
+            set { uxBotonBuscar = value; }
+        }
+
+    #endregion
+
+    #region Métodos
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -68,7 +87,7 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
-        _presentador.Onclick();
+       // _presentador.Onclick();
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -97,4 +116,29 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             Response.Redirect(paginaSinPermiso);
         }
     }
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CampoBusqueda_Selected();
+    }
+
+    protected void uxBotonBuscar_Click(object sender, EventArgs e)
+    {
+        //_presentador.OnBotonBuscar();
+    }
+
+    protected void SelectContacto(object sender, GridViewSelectEventArgs e)
+    {
+        //_presentador.uxObjectConsultaUsuarioSelecting
+                            //(uxConsultaUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+    #endregion
 }

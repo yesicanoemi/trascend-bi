@@ -112,9 +112,11 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoNombreApellido.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoXCliente.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoXTelefono.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Eliminar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarE.cs" />
@@ -208,11 +210,11 @@
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ReportePropuestaBdException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\LogicaNegocio\ConsultarPropuestaLogicaNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ReportesException.cs" />
+    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosReporte.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaTelefono.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoCargo.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandoGasto.cs" />
-    <Compile Include="LogicaNegocio\Fabricas\FabricaComandosContacto.cs.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosEmpleado.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosFactura.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosPropuesta.cs" />

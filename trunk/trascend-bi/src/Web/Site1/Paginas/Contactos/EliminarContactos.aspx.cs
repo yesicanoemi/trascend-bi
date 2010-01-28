@@ -24,7 +24,7 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
         get { return uxConsultaApellidoContacto; }
         set { uxConsultaApellidoContacto = value; }
     }
-    //////////
+    
     public TextBox TextBoxCodTelefono
     {
         get { return uxConsultaCodigoContacto; }
@@ -104,17 +104,17 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
-        _presentador.Onclick();
+        //_presentador.Onclick();
     }
 
     protected void BuscarClick(object sender, EventArgs e)
     {
-        _presentador.OnClickBusqueda();
+        //_presentador.OnClickBusqueda();
     }
 
     protected void ConfirmarClick(object sender, EventArgs e)
     {
-        _presentador.onClickConfirmar();
+       // _presentador.onClickConfirmar();
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -131,7 +131,7 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
             {
                 i = usuario.PermisoUsu.Count;
 
-                _presentador = new EliminarPresentador(this);
+                //_presentador = new EliminarPresentador(this);
 
                 permiso = true;
 

@@ -5,207 +5,278 @@ using System.Text;
 using Presentador.Contacto.ContactoInterface;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Resources;
+using Core.LogicaNegocio.Excepciones;
+using Core.LogicaNegocio.Fabricas;
+
 
 namespace Presentador.Contacto.ContactoPresentador
 {
     public class ConsultarPresentador
     {
-        
-            private IConsultarContacto _vista;
+        #region Propiedades
 
-            public ConsultarPresentador(IConsultarContacto vista)
-            {
-                _vista = vista;
-            }
-            public void Onclick()
-            {
-                string Lnombre = " ";
-                string Lapellido = " ";
-                string LcodTelf = "0";
-                string LnumTelf = "0";
+        private IConsultarContacto _vista;
 
-                int flag = 0;
-                if (_vista.CheckBoxNombre.Checked)
-                {
-                    flag = flag + 100;
-                    Lnombre = _vista.TextBoxNombre.Text;
-                }
-                if (_vista.CheckBoxApellido.Checked)
-                {
-                    flag = flag + 10;
-                    Lapellido = _vista.TextBoxApellido.Text;
-                }
-                if (_vista.CheckBoxTelefono.Checked)
-                {
-                    flag = flag + 1;
-                    LcodTelf = _vista.TextBoxCodTelefono.Text;
-                    LnumTelf = _vista.TextBoxNumTelefono.Text;
-                }
-
-                IList<Core.LogicaNegocio.Entidades.Contacto> ListaContactosTemp= new List<Core.LogicaNegocio.Entidades.Contacto>();
-
-                IList<Core.LogicaNegocio.Entidades.Contacto> ListaContactos =
-                    Consultar(ListaContactosTemp, Lnombre, Lapellido, int.Parse(LcodTelf),
-                        int.Parse(LnumTelf), flag);
-
-   //             _vista.TablaResultados = DibujarTablaContacto(ListaContactos);
-
-
-                /////////////////////////////////////////
-
-
-                if (ListaContactos.Count > 0)
-                {
-                    TableRow r = new TableRow();
-                    TableCell c = new TableCell();
-                    c.Controls.Add(new LiteralControl("ID"));
-                    r.Cells.Add(c);
-                    c = new TableCell();
-                    c.Controls.Add(new LiteralControl("Nombre"));
-                    r.Cells.Add(c);
-                    c = new TableCell();
-                    c.Controls.Add(new LiteralControl("Apellido"));
-                    r.Cells.Add(c);
-                    c = new TableCell();
-                    c.Controls.Add(new LiteralControl("Cargo"));
-                    r.Cells.Add(c);
-                    c = new TableCell();
-                    c.Controls.Add(new LiteralControl("Area de Negocio"));
-                    r.Cells.Add(c);
-                    c = new TableCell();
-                    c.Controls.Add(new LiteralControl("Telefono Celular"));
-                    r.Cells.Add(c);
-                    c = new TableCell();
-                    c.Controls.Add(new LiteralControl("Telefono Local"));
-                    r.Cells.Add(c);
-                    _vista.TablaResultados.Rows.Add(r);
-                    int indice = 0;
-                    int numcells = 7;
-                    foreach (Core.LogicaNegocio.Entidades.Contacto X in ListaContactos)
-                    {
-                        indice++;
-                        r = new TableRow();
-                        for (int i = 0; i < numcells; i++)
-                        {
-                            c = new TableCell();
-                            switch (i)
-                            {
-                                case 0:
-                                    c.Controls.Add(new LiteralControl(indice.ToString()));
-                                    break;
-                                case 1:
-                                    c.Controls.Add(new LiteralControl(X.Nombre));
-                                    break;
-                                case 2:
-                                    c.Controls.Add(new LiteralControl(X.Apellido));
-                                    break;
-                                case 3:
-                                    c.Controls.Add(new LiteralControl(X.Cargo));
-                                    break;
-                                case 4:
-                                    c.Controls.Add(new LiteralControl(X.AreaDeNegocio));
-                                    break;
-                                case 5:
-                                    c.Controls.Add(new LiteralControl("(" + X.TelefonoDeCelular.Codigocel.ToString() + ")"
-                                        + X.TelefonoDeCelular.Numero.ToString() + " "));
-                                    break;
-                                case 6:
-                                    c.Controls.Add(new LiteralControl("(" + X.TelefonoDeTrabajo.Codigoarea.ToString() + ")"
-                                        + X.TelefonoDeTrabajo.Numero.ToString() + " "));
-                                    break;
-
-                            }
-                            r.Cells.Add(c);
-                        }
-                        _vista.TablaResultados.Rows.Add(r);
-                    }
-                }
-
-                /////////////////////////////////////////
-
-
-
-
-
-       }
-
-            public IList<Core.LogicaNegocio.Entidades.Contacto>
-                Consultar(IList<Core.LogicaNegocio.Entidades.Contacto> _contacto, string nombre, string apellido,
-                int codigo, int numero, int flag)
-            {
-                Core.LogicaNegocio.Comandos.ComandoContacto.Consultar consulta;
-
-                //fábrica que instancia el comando Ingresar.
-                consulta = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoConsultar
-                    (_contacto,nombre,apellido,codigo,numero,flag);
-
+        #endregion
   
-                //ejecuta el comando.
-                consulta.Ejecutar();
+        #region Constructor
 
-                return consulta.ListaContactos;
-            }
-        // REVISAR POR QUE NO FUNCIONA AL HACERLO POR EL METODO!
+        public ConsultarPresentador(IConsultarContacto vista)
+        {
+            _vista = vista;
 
-   /*         public static Table DibujarTablaContacto(IList<Core.LogicaNegocio.Entidades.Contacto> contactos)
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// Acción al seleccionar el checkbox
+        /// </summary>
+        
+        public void CampoBusqueda_Selected()
+        {
+            if (_vista.RbCampoBusqueda.SelectedValue == "1")
             {
-                Table Tabla = new Table();
-                if (contactos.Count > 0)
-                {
-                    TableRow r = new TableRow();
-                    TableCell c = new TableCell();
-                    c.Controls.Add(new LiteralControl("ID"));
-                    c.Controls.Add(new LiteralControl("Nombre"));
-                    c.Controls.Add(new LiteralControl("Apellido"));
-                    c.Controls.Add(new LiteralControl("Cargo"));
-                    c.Controls.Add(new LiteralControl("Area de Negocio"));
-                    c.Controls.Add(new LiteralControl("Telefono Celular"));
-                    c.Controls.Add(new LiteralControl("Telefono Local"));
-                    r.Cells.Add(c);
-                    Tabla.Rows.Add(r);
-                    int indice = 0;
-                    int numcells = 7;
-                    foreach (Core.LogicaNegocio.Entidades.Contacto X in contactos)
-                    {
-                        indice++;
-                        r = new TableRow();
-                        for (int i = 0; i < numcells; i++)
-                        {
-                            c = new TableCell();
-                            switch (i)
-                            {
-                                case 0:
-                                    c.Controls.Add(new LiteralControl(indice.ToString()));
-                                    break;
-                                case 1:
-                                    c.Controls.Add(new LiteralControl(X.Nombre));
-                                    break;
-                                case 2:
-                                    c.Controls.Add(new LiteralControl(X.Apellido));
-                                    break;
-                                case 3:
-                                    c.Controls.Add(new LiteralControl(X.Cargo));
-                                    break;
-                                case 4:
-                                    c.Controls.Add(new LiteralControl(X.AreaDeNegocio));
-                                    break;
-                                case 5:
-                                    c.Controls.Add(new LiteralControl("(" + X.TelefonoDeCelular.Codigocel.ToString() + ")"
-                                        + X.TelefonoDeCelular.Numero.ToString()));
-                                    break;
-                                case 6:
-                                    c.Controls.Add(new LiteralControl("(" + X.TelefonoDeTrabajo.Codigoarea.ToString() + ")"
-                                        + X.TelefonoDeTrabajo.Numero.ToString()));
-                                    break;
+                _vista.TextBoxNombre.Visible = true;
 
-                            }
-                            r.Cells.Add(c);
-                        }
-                        Tabla.Rows.Add(r);
+                _vista.TextBoxApellido.Visible = true;
+
+                _vista.TextBoxCodTelefono.Visible = false;
+
+                _vista.TextBoxNumTelefono.Visible = false;
+
+                _vista.ClienteDdl.Visible = false;
+
+                _vista.BotonBuscar.Visible = true;
+
+                //_vista.ValidarNombreVacio.Visible = true;
+
+               _vista.GetObjectContainerConsultaContacto.DataSource = "";
+            }
+
+            if (_vista.RbCampoBusqueda.SelectedValue == "2")
+            {
+                _vista.TextBoxNombre.Visible = false;
+
+                _vista.TextBoxApellido.Visible = false;
+
+                _vista.TextBoxCodTelefono.Visible = true;
+
+                _vista.TextBoxNumTelefono.Visible = true;
+
+                _vista.BotonBuscar.Visible = true;
+
+                _vista.ClienteDdl.Visible = false;
+
+                //_vista.ValidarNombreVacio.Visible = false;
+
+               _vista.GetObjectContainerConsultaContacto.DataSource = "";
+            }
+
+            if (_vista.RbCampoBusqueda.SelectedValue == "3")
+            {
+                _vista.TextBoxNombre.Visible = false;
+
+                _vista.TextBoxApellido.Visible = false;
+
+                _vista.TextBoxCodTelefono.Visible = false;
+
+                _vista.TextBoxNumTelefono.Visible = false;
+
+                _vista.ClienteDdl.Visible = true;
+
+                _vista.BotonBuscar.Visible = true;
+
+                //_vista.ValidarNombreVacio.Visible = false;
+
+                _vista.GetObjectContainerConsultaContacto.DataSource = "";
+            }
+
+        }
+
+        /// <summary>
+        /// Acción del Botón Buscar
+        /// </summary>
+
+        public void OnBotonBuscar()
+        {
+            Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
+
+            IList<Core.LogicaNegocio.Entidades.Contacto> listContac = 
+                                                        new List<Core.LogicaNegocio.Entidades.Contacto>();
+
+            //Llena el objeto contacto con los datos de la consulta
+
+            contacto.Nombre = _vista.TextBoxNombre.Text;
+
+            contacto.Apellido = _vista.TextBoxApellido.Text;
+
+            contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodTelefono.Text);
+
+            contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxNumTelefono.Text);
+
+            contacto.IdCliente = int.Parse(_vista.ClienteDdl.Text);
+
+            try
+            {
+                //Consulta por nombre y apellido
+
+                if ((_vista.RbCampoBusqueda.SelectedValue == "1") && 
+                    ((contacto.Nombre != "") || (contacto.Apellido != "")))
+                {
+                    listContac = null;
+
+                    listContac = ConsultarContactoNombreApellido(contacto);
+                }
+
+                //Consulta por número de tlf
+
+                if (_vista.RbCampoBusqueda.SelectedValue == "2")
+                {
+                    if ((_vista.TextBoxCodTelefono.Text != null) &&
+                        (_vista.TextBoxNumTelefono.Text != null))
+                    {
+                        listContac = null;
+
+                        listContac = ConsultarContactoXTelefono(contacto);
+
+                        //_vista.InformacionVisible = false;
+
+                    }
+
+                    else
+                    {
+                        //debe llenar el codigo y el tlf
+
                     }
                 }
-                return Tabla;
+
+                //Consulta por cliente
+
+                if (_vista.RbCampoBusqueda.SelectedValue == "3")
+                {
+                    listContac = ConsultarContactoXCliente(contacto);
+
+                    //_vista.InformacionVisible = false;
+
+                }
+
+                if (listContac.Count > 0)
+                {
+                    //_vista.InformacionVisible = false;
+
+                    _vista.GetObjectContainerConsultaContacto.DataSource = listContac;
+
+                }
+                else
+                {
+                    //_vista.PintarInformacion(ManagerRecursos.GetString
+                    //("MensajeConsulta"), "mensajes");
+                    //_vista.InformacionVisible = true;
+
+                }
+
             }
-    */    }
+
+            catch (Exception e)
+            {
+
+            }
+
+                /*
+            catch (WebException e)
+            {
+
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }*/
+
+        }
+
+        #region Comandos
+
+        /// <summary>
+        /// Método para el comando ConsultarContactoNombreApellido
+        /// </summary>
+        /// <param name="entidad">Entidad comando a consultar (por nombre y apellido)</param>
+        /// <returns>Lista de contacto que cumplan con el parámetro de búsqueda</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Contacto> ConsultarContactoNombreApellido
+                                                (Core.LogicaNegocio.Entidades.Contacto entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Contacto> contacto1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoNombreApellido comando;
+
+            comando = FabricaComandosContacto.CrearComandoConsultarContactoNombreApellido(entidad);
+
+            contacto1 = comando.Ejecutar();
+
+            return contacto1;
+        }
+
+        /// <summary>
+        /// Método para el comando ConsultarContactoXTelefono
+        /// </summary>
+        /// <param name="entidad">Entidad comando a consultar (por tlf)</param>
+        /// <returns>Lista de contacto que cumplan con el parámetro de búsqueda</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Contacto> ConsultarContactoXTelefono
+                                                (Core.LogicaNegocio.Entidades.Contacto entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Contacto> contacto1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoXTelefono comando;
+
+            comando = FabricaComandosContacto.CrearComandoConsultarContactoXTelefono(entidad);
+
+            contacto1 = comando.Ejecutar();
+
+            return contacto1;
+        }
+
+        /// <summary>
+        /// Método para el comando ConsultarContactoXCliente
+        /// </summary>
+        /// <param name="entidad">Entidad comando a consultar (por cliente)</param>
+        /// <returns>Lista de contacto que cumplan con el parámetro de búsqueda</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Contacto> ConsultarContactoXCliente
+                                                (Core.LogicaNegocio.Entidades.Contacto entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Contacto> contacto1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoXCliente comando;
+
+            comando = FabricaComandosContacto.CrearComandoConsultarContactoXCliente(entidad);
+
+            contacto1 = comando.Ejecutar();
+
+            return contacto1;
+        }
+
+        #endregion
+    }
     
 }
