@@ -21,7 +21,7 @@ namespace Core.LogicaNegocio.Entidades
             _telefonoTrabajo = new TelefonoTrabajo();
         }
 
-        public virtual int Id
+        public virtual int IdContacto
         {
             get
             {
