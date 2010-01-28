@@ -14,7 +14,6 @@ Casos de uso para la gestión de usuario
     * Consultar Usuario (CU-U02) - Por definir 
     * Eliminar Usuario (CU-U03)    - Por definir
     * Modificar Usuario (CU-U04)  - Por definir
-    * Login (CU-U05) - Por definir
  
 == Casos de uso ==
 
