@@ -81,6 +81,7 @@
     <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
     <Compile Include="AccesoDatos\SqlServer\CargoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\Conexion.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />

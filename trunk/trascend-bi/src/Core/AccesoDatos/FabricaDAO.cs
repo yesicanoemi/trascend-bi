@@ -27,6 +27,8 @@ namespace Core.AccesoDatos
                     return new FabricaDAOSQLServer();
                case EnumFabrica.Oracle:
                     break;
+               case EnumFabrica.MySQL:
+                    break;
                default:
                     break;
             }

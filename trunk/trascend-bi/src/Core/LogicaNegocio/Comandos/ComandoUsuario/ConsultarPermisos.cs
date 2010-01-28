@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Fabricas;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+
 
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
@@ -37,9 +41,13 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
         public IList<Core.LogicaNegocio.Entidades.Permiso> Ejecutar()
         {
 
-            UsuarioSQLServer bd = new UsuarioSQLServer();
+            //UsuarioSQLServer bd = new UsuarioSQLServer();
 
-            IList<Core.LogicaNegocio.Entidades.Permiso> _permiso = bd.ConsultarPermisos(usuario);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+
+            IList<Core.LogicaNegocio.Entidades.Permiso> _permiso = iDAOUsuario.ConsultarPermisos(usuario);
 
             return _permiso;
         }

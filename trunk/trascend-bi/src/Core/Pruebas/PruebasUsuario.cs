@@ -109,6 +109,7 @@ namespace Core.Pruebas
             IList<Permiso> listadoPermisosTest = new List<Permiso>();
 
             //consulta de usuario y sus permisos
+
             listadoUsuarios = bd.ConsultarUsuario(usuario);
 
             usuario = listadoUsuarios[0];

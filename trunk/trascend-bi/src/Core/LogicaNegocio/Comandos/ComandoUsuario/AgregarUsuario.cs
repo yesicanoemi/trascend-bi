@@ -44,6 +44,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
             //bd.AgregarUsuario(usuario);
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
+            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+
+            iDAOUsuario.AgregarUsuario(usuario);
+
 
           
          

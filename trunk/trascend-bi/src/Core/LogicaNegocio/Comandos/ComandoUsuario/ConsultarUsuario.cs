@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 {
@@ -35,11 +37,13 @@ namespace Core.LogicaNegocio.Comandos.ComandoUsuario
 
         public IList<Core.LogicaNegocio.Entidades.Usuario> Ejecutar()
         {
-            //Usuario _usuario;
+            
 
-            UsuarioSQLServer bd = new UsuarioSQLServer();
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-            IList<Core.LogicaNegocio.Entidades.Usuario> _usuario = bd.ConsultarUsuario(usuario);
+            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+
+            IList<Core.LogicaNegocio.Entidades.Usuario> _usuario = iDAOUsuario.ConsultarUsuario(usuario);
 
             return _usuario;
         }
