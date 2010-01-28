@@ -1,0 +1,63 @@
+#summary Gestión de Usuario.
+
+*Tabla de Contenido:*
+
+<wiki:toc />
+
+== Introducción ==
+
+Casos de uso para la gestión de usuario
+
+== Detalles ==
+
+    * Agregar Usuario (CU-U01)    - Por definir
+    * Consultar Usuario (CU-U02) - Por definir 
+    * Eliminar Usuario (CU-U03)    - Por definir
+    * Modificar Usuario (CU-U04)  - Por definir
+    * Login (CU-U05) - Por definir
+ 
+== Casos de uso ==
+
+====*1) Agregar Usuario*====
+
+|| *Identificador* || *CU-U01* ||
+|| *Caso de Uso* ||Ingresar usuario ||
+|| *Actores* ||Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>usuario al sistema.|| 
+|| *Precondiciones* || *1)* Debe existir el usuario administrador.||
+|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador selecciona un empleado y si no esta activo le asigna <br>un nombre de usuario y <br> contraseña.<br>*3)* El administrador asigna los permisos al <br> usuario y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
+
+====*2) Consultar Usuario*====
+
+|| *Identificador* || *CU-U02* ||
+|| *Caso de Uso* ||Consultar datos y/o permisos de usuario ||
+|| *Actores* ||Usuario, Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || Permitir consultar la información y/o permisos  <br> de un usuario existente en el sistema||
+|| *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> y permisos del usuario a consultar.||
+|| *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El sistema muestra los datos del usuario <br> (Ci.I., nombre, apellido, estado) <br>*4)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal.||
+
+====*3) Eliminar Usuario*====
+
+|| *Identificador* || *CU-U03* ||
+|| *Caso de Uso* ||Eliminar usuario ||
+|| *Actores* ||Sistema, Usuario, Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || Permitir a un usuario administrador <br>  cambiar el estado <br> de activo a inactivo <br> de un usuario existente en el sistema <br> quedando este inhabilitado||
+|| *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> del usuario a eliminar (desactivar).||
+|| *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br>*2)* El sistema valida el usuario. <br>*3)* El usuario administrador introduce<br> el nombre del usuario a eliminar <br>*4)* El sistema valida el usuario <br>*5)* El sistema muestra los datos del usuario <br>*6)* El usuario administrador selecciona el usuario a desactivar. <br>*7)* El sistema actualiza el estado <br>y deshablita al usuario. <br>*8)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal. <br> *4a)* Se produce un error al <br> encontrar el usuario<br> el sistema vuelve al paso 3) del Flujo <br>Principal. ||
+
+====*4) Modificar Usuario*====
+
+|| *Identificador* || *CU-U04* ||
+|| *Caso de Uso* ||Modificar datos y/o permisos de usuario ||
+|| *Actores* ||Usuario, Usuario administrador ||
+|| *Tipo* ||Necesario ||
+|| *Resumen/Propósito*  || Permitir modificar la información y/o permisos  <br> de un usuario existente en el sistema||
+|| *Precondiciones* || *1)* Usuario debe estar registrado <br>*2)* El sistema debe tener definido los datos <br> y permisos del usuario a modificar.||
+|| *Flujo Principal* || *1)* El usuario ingresa su nombre de usuario <br>y contraseña. <br> *2)* El sistema valida el usuario. <br> *3)* El sistema muestra los datos del usuario <br> (nombre, apellido, nombre de usuario, estado<br> y si desea  cambiar la<br> contraseña) o  los permisos del mismo. <br> *4)* El usuario modifica los datos o permisos <br>(según sea el caso) y pulsa el botón<br> "Guardar". <br> *5)* El sistema actualiza los datos o <br>permisos. <br> *6)* El sistema finaliza el caso de uso.||
+|| *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal.||
