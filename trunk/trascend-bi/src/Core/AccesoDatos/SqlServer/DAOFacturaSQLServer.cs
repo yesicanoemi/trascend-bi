@@ -17,9 +17,13 @@ namespace Core.AccesoDatos.SqlServer
 {
     public class DAOFacturaSQLServer : IDAOFactura
     {
+        Conexion _conexion = new Conexion();
+
+        #region Constructor
         public DAOFacturaSQLServer()
         {
         }
+        #endregion
 
         #region conexion
         private SqlConnection GetConnection()
@@ -73,7 +77,7 @@ namespace Core.AccesoDatos.SqlServer
 
                         arParms[0].Value = propuesta.Titulo;
 
-                        DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                        DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
                                                 "ConsultarFacturaNomPro", arParms);
 
                         while (reader.Read())
@@ -158,7 +162,7 @@ namespace Core.AccesoDatos.SqlServer
 
                         arParms[0].Value = propuesta.Id;
 
-                        DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                        DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
                                                 "ConsultarFacturaIDPro", arParms);
 
                         while (reader.Read())
@@ -212,7 +216,7 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Lista con las propuestas</returns>
         public IList<Propuesta> ConsultarPropuesta()
         {
-            string estado = "Aprobada";
+            string estado = "Activo";
             return new PropuestaSQLServer().ConsultarPropuesta(estado);
         }
 
@@ -238,7 +242,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = factura.Numero;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
                                         "ConsultarFacturaID", arParms);
 
                 if (reader.Read())
@@ -315,9 +319,9 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[1].Value = hasta;
 
                 if(cobradas)
-                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasCobradas", arParms);
+                    reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(), "ConsultarFacturasCobradas", arParms);
                 else
-                    reader = SqlHelper.ExecuteReader(GetConnection(), "ConsultarFacturasPorCobrar", arParms);
+                    reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(), "ConsultarFacturasPorCobrar", arParms);
                
                 Factura factura;
                 Propuesta propuesta;
@@ -396,7 +400,7 @@ namespace Core.AccesoDatos.SqlServer
                         arparms[6] = new SqlParameter("@idpropuesta", SqlDbType.Int);
                         arparms[6].Value = factura.Prop.Id;
 
-                        int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarFactura", arparms);
+                        int result = SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(), "IngresarFactura", arparms);
 
                     //}
                 //}
@@ -422,7 +426,7 @@ namespace Core.AccesoDatos.SqlServer
 
             try
             {
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetSqlServerConnection(),
                                         "ConsultarFacturas");
 
 
@@ -488,7 +492,7 @@ namespace Core.AccesoDatos.SqlServer
                 arparms[0] = new SqlParameter("@NumeroFactura", SqlDbType.Int);
                 arparms[0].Value = factura.Numero;
 
-                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "UpdateFactura", arparms);
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetSqlServerConnection(), "UpdateFactura", arparms);
 
                 valido = true;                   
             }
