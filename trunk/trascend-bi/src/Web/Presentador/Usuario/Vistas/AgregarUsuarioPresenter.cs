@@ -22,6 +22,8 @@ namespace Presentador.Usuario.Vistas
 
         private const int _TamañoLista = 8;
 
+        private IDefaultUsuario _vistaDefault;
+
         #endregion
 
         #region Constructor

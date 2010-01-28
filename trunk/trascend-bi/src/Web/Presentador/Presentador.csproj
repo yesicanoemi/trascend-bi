@@ -170,6 +170,7 @@
     <Compile Include="Reportes\Vistas\ReporteHorasRolPresenter.cs" />
     <Compile Include="Usuario\Contrato\IAgregarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IConsultarUsuario.cs" />
+    <Compile Include="Usuario\Contrato\IDefaultUsuario.cs" />
     <Compile Include="Usuario\Contrato\IEliminarUsuario.cs" />
     <Compile Include="Usuario\Contrato\IModificarUsuario.cs" />
     <Compile Include="Usuario\Vistas\AgregarUsuarioPresenter.cs" />

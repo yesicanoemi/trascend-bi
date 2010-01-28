@@ -22,7 +22,7 @@ namespace Presentador.Usuario.Vistas
 
         private IModificarUsuario _vista;
 
-        private const int _TamañoLista = 8;
+        private const int _TamanoLista = 8;
 
         #endregion
 
@@ -83,7 +83,7 @@ namespace Presentador.Usuario.Vistas
         {
             for (int i = 0; i < permiso.Count; i++)
             {
-                for (int j = 0; j < _TamañoLista; j++)
+                for (int j = 0; j < _TamanoLista; j++)
                 {
                     //Revisa el CheckBoxList de Agregar
                     if (_vista.CBLAgregar.Items[j].Value == permiso[i].IdPermiso.ToString())
@@ -131,7 +131,7 @@ namespace Presentador.Usuario.Vistas
             IList<Core.LogicaNegocio.Entidades.Permiso> _permiso =
                             new List<Core.LogicaNegocio.Entidades.Permiso>();
 
-            for (int j = 0; j < _TamañoLista; j++)
+            for (int j = 0; j < _TamanoLista; j++)
             {
                 if (CBL.Items[j].Selected == true)
                 {
