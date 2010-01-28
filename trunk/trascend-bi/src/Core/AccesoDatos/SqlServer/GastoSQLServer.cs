@@ -9,10 +9,11 @@ using System.Data.Common;
 using System.Data;
 using System.Configuration;
 using System.Xml;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    class GastoSQLServer
+    class GastoSQLServer: IDAOGasto
     {
         #region Propiedades
 
