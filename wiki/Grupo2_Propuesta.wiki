@@ -12,11 +12,11 @@ Add your content here.
 = Details =
 
 
-Ingresar Propuesta - Juan Diego De Abreu
+Ingresar Propuesta - Kozhaya Sleiman Abbas
+
+Consultar Propuesta - Kozhaya Sleiman Abbas
 
 Modificar Propuesta - Jean Paul Benfele
-
-Consultar Propuesta - Akemi Tirado
 
 Eliminar Propuesta - Akemi Tirado
 
