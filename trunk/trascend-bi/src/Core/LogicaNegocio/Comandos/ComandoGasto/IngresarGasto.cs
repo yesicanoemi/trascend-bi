@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
@@ -34,7 +36,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         /// </summary>
         public Gasto Ejecutar()
         {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
             Gasto _gasto = null;
+            IDAOGasto bdgasto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOGasto();
 
             DAOGastoSQLServer bdGasto = new DAOGastoSQLServer();
 

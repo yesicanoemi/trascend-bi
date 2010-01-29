@@ -26,7 +26,7 @@ namespace Core.AccesoDatos.SqlServer
         }
         #endregion
 
-        #region Conexion a Base de Datos
+    /*    #region Conexion a Base de Datos
 
         private SqlConnection GetConnection()
         {
@@ -42,7 +42,7 @@ namespace Core.AccesoDatos.SqlServer
 
             return connection;
         }
-        #endregion
+        #endregion */
 
         #region Metodos
 

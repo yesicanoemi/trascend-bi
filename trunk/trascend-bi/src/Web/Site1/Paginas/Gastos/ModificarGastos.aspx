@@ -53,7 +53,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
 		                            <td>
                                         <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
                                          Font-Size="Small" RepeatDirection="Horizontal" RepeatLayout="Flow" 
-                                         TextAlign="Left">                                    
+                                         TextAlign="Left" >                                    
                                                 <asp:ListItem Value="0">Por Propuesta</asp:ListItem>
                                                 <asp:ListItem Value="1">Por Tipo</asp:ListItem>
                                                 <asp:ListItem Value="2">Por Estado</asp:ListItem>
