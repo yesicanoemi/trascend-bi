@@ -95,6 +95,7 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.ClienteC.Text = contacto.ClienteContac.Nombre;
         }
 
+        #region Radio Buttons
         /// <summary>
         /// Acción al seleccionar el radiobutton
         /// </summary>
@@ -195,6 +196,8 @@ namespace Presentador.Contacto.ContactoPresentador
             }
 
         }
+
+        #endregion 
 
         /// <summary>
         /// Acción del Botón Buscar
