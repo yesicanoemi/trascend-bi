@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public int Ejecutar()
         {
-            EmpleadoSQLServer acceso = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer acceso = new DAOEmpleadoSQLServer();
             _empleado2 = acceso.EliminarEmpleado(empleado);
 
             return _empleado2;

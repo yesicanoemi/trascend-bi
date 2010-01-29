@@ -84,6 +84,7 @@
     <Compile Include="AccesoDatos\Interfaces\IDAOCargo.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOCliente.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOContacto.cs" />
+    <Compile Include="AccesoDatos\Interfaces\IDAOEmpleado.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOFactura.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOGasto.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOPropuesta.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="AccesoDatos\SqlServer\ReporteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
-    <Compile Include="AccesoDatos\SqlServer\EmpleadoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOEmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCargo\ConsultarTabla.cs" />

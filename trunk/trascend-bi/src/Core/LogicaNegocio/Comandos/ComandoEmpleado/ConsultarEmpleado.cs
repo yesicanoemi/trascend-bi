@@ -28,7 +28,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public Empleado Ejecutar()
         {
-            EmpleadoSQLServer acceso = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer acceso = new DAOEmpleadoSQLServer();
             empleado = acceso.ConsultarId(empleado);
             return empleado;
         }

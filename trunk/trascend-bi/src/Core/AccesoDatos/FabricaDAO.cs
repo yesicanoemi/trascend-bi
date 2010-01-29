@@ -71,6 +71,12 @@ namespace Core.AccesoDatos
         /// <returns></returns>
         public abstract IDAOPropuesta ObtenerDAOPropuesta();
 
+        /// <summary>
+        /// Metodo que devuelve el DTA de Empleado
+        /// </summary>
+        /// <returns></returns>
+        public abstract IDAOEmpleado ObtenerDAOEmpleado();
+
         #endregion
 
        

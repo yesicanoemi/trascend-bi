@@ -39,7 +39,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public IList<Persona> Ejecutar()
         {
-            EmpleadoSQLServer conex = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer conex = new DAOEmpleadoSQLServer();
             _Persona = conex.ConsultarNombreApellido();
 
             return _Persona;

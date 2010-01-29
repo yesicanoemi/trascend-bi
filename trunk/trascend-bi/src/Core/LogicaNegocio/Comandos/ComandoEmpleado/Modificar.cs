@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         public void Ejecutar()
         {
             int _resultado= 0;
-            EmpleadoSQLServer bd = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer bd = new DAOEmpleadoSQLServer();
             _resultado = bd.Modificar(empleado);
         }
         #endregion

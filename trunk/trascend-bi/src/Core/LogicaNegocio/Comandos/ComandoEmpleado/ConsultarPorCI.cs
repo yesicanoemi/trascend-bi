@@ -31,7 +31,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public Empleado Ejecutar()
         {
-            EmpleadoSQLServer acceso = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer acceso = new DAOEmpleadoSQLServer();
             _empleado = acceso.ConsultarPorTipoCedula(empleado);
 
             return _empleado;

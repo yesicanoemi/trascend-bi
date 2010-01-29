@@ -29,7 +29,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public IList<string> Ejecutar()
         {
-            EmpleadoSQLServer acceso = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer acceso = new DAOEmpleadoSQLServer();
             _cargo = acceso.ConsultarCargos();
 
             return _cargo;

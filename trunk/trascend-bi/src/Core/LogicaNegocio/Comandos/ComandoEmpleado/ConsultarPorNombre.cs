@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public IList<Empleado> Ejecutar()
         {
-            EmpleadoSQLServer acceso = new EmpleadoSQLServer();
+            DAOEmpleadoSQLServer acceso = new DAOEmpleadoSQLServer();
             _empleado2 = acceso.ConsultarPorTipoNombre(empleado);
 
             return _empleado2;
