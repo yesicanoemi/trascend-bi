@@ -272,13 +272,13 @@ namespace Core.AccesoDatos.SqlServer
         /// </summary>
         /// <param name="estado">Estado Aprobada de La Version</param>
         /// <returns>Lista de Propeusta con version Aprobada</returns>
-        public IList<Propuesta> ConsultarPropuesta(string estado)
+        public IList<Propuesta> ConsultarPropuesta(int estado)
         {
             try
             {
                 SqlParameter EstadoP = new SqlParameter();
 
-                EstadoP = new SqlParameter("@Estado", SqlDbType.VarChar);
+                EstadoP = new SqlParameter("@Estado", SqlDbType.Int);
 
                 EstadoP.Value = estado;
 

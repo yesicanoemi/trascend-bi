@@ -41,7 +41,7 @@ namespace Core.Pruebas
         [Test]
         public void ConsultarPropuesta()
         {
-            string estado = "Aprobada";
+            int estado = 1;
             IList<Propuesta> propuestas = new DAOPropuestaSQLServer().ConsultarPropuesta(estado);
             Assert.AreEqual(propuestas[0].Titulo, "Automatizacion de la Certificacion de Empleados");
         }

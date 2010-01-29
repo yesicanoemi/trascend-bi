@@ -119,7 +119,7 @@ namespace Presentador.Gasto.Vistas
             _presentadorPropuesta = new ConsultarPropuestaPresentador();
 
             int i = 0;
-            string estado = "Aprobada";
+            int estado = 1;
            
             propuestas = _presentadorPropuesta.BuscarPorTitulo(estado);
             for (i = 0; i < propuestas.Count; i++)

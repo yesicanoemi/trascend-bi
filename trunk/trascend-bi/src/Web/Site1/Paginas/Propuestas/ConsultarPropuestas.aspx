@@ -80,7 +80,6 @@
                                     </asp:GridView>
                                 </td>
                            </tr>
-                           <tr></tr>
                            <tr>
                            <td></td>
                            </tr>
@@ -160,6 +159,19 @@
                                                 </EmptyDataTemplate>             
             
                                     </asp:GridView>
+                             <table>
+                             
+                                    <tr>
+                                    <td></td>
+                                    <td></td>
+                                    </tr>
+                             
+                                    <tr>
+                                <td><asp:Label ID="LabelEquipos" runat="server" Text = "Equipo de Trabajo" Visible ="False" /></td>
+                                <td><asp:Listbox ID="ListEquipos" runat="server" Visible ="False" /></td>
+                            </tr>   
+                                    
+                             </table>      
                      </form>
                          <pp:objectcontainerdatasource runat="server" ID="uxObject" DataObjectTypeName="Core.LogicaNegocio.Entidades.Propuesta" />
                          <pp:objectcontainerdatasource runat="server" ID="uxObject2" DataObjectTypeName="Core.LogicaNegocio.Entidades.Propuesta" />

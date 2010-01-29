@@ -10,7 +10,7 @@ namespace Core.AccesoDatos.Interfaces
     {
         Propuesta IngresarPropuesta(Propuesta propuesta, IList<string[]> listaequipo);
 
-        IList<Propuesta> ConsultarPropuesta(string estado);
+        IList<Propuesta> ConsultarPropuesta(int estado);
 
         IList<Propuesta> ConsultarPropuestaNueva(int Opcion, string parametro);
 

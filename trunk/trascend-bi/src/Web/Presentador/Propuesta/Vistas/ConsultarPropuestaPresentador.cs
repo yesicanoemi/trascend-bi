@@ -158,7 +158,7 @@ namespace Presentador.Propuesta.Vistas
         /// Metodo que busca las propuestas
         /// </summary>
         /// <returns>devuelve objeto de tipo lista de propuestas</returns>
-        public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo(string estado)
+        public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo(int estado)
         {
             
             Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarProyecto consultar;

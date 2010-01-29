@@ -14,7 +14,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
     {
         private Propuesta _propuesta;
         private IList<Propuesta> _propuesta2;
-        private string _estado;
+        private int _estado;
 
         #region Constructor
         public ConsultarProyecto()
@@ -28,7 +28,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         {
             _propuesta2 = arreglo;
         }
-        public ConsultarProyecto(string estado)
+        public ConsultarProyecto(int estado)
         {
             _estado = estado;
         }
