@@ -25,7 +25,7 @@ http://trascend-bi.googlecode.com/files/Calendario.jpg
 
 En caso de llenado de datos estos deben estar propiamente alineados de manera vertical en dos columnas, la primera indica cual es el contenido del campo a llenar, y a la derecha donde se asigna el valor.
 
-http://trascend-bi.googlecode.com/files/Busqueda_ejemplo.jpg
+http://trascend-bi.googlecode.com/files/Busqueda_ejemplo2.jpg
 
 == Busquedas ==
 
