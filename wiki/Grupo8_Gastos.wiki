@@ -2,11 +2,10 @@
 
 = Detalles =
 
- * Ingresar Gasto (Kozhaya Sleiman)
- * Consultar Gasto (Jessy Rodriguez)
- * Modificar Gasto (Kozhaya Sleiman)
- * Eliminar Gasto (Ilda Marques)
-
+ * Ingresar Gasto (Jean Paul Benfele)
+ * Consultar Gasto (Juan Diego De Abreu)
+ * Modificar Gasto
+ * Eliminar Gasto (Akemi Tirado)
 
 = *Casos de Usos* =
 
