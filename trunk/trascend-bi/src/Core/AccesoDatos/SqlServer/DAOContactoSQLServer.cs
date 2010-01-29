@@ -29,27 +29,8 @@ namespace Core.AccesoDatos.SqlServer
         }
         #endregion
 
-        /*
-        private SqlConnection GetConnection()
-        {
-            XmlDocument xDoc = new XmlDocument();
+        #region Métodos
 
-            //La ruta del documento XML permite rutas relativas 
-            //respecto del ejecutable!
-
-            xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
-
-            XmlNodeList conexiones = xDoc.GetElementsByTagName("connection");
-
-            string lista = conexiones[0].InnerText;
-            SqlConnection connection = new SqlConnection(lista);
-            connection.Open();
-
-            return connection;
-        }
-        */
-
-        #region Metodos
         public Contacto Ingresar(Contacto contacto,int idCliente)
         {
             Contacto _contacto = new Contacto();
@@ -103,6 +84,7 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Usuario(s) que coincidan con el criterio</returns>
 
         #region ConsultarContactoNombreApellido_3
+
         public IList<Contacto> ConsultarContactoNombreApellido(Contacto entidad)
         {
             IList<Contacto> contacto = new List<Contacto>();
@@ -128,6 +110,8 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     Contacto _contacto = new Contacto();
 
+                    _contacto.ClienteContac = new Cliente();
+
                     _contacto.Nombre = (string)reader.GetValue(0);
 
                     _contacto.Apellido = (string)reader.GetValue(1);
@@ -142,7 +126,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     _contacto.TelefonoDeTrabajo.Tipo = (string)reader.GetValue(6);
 
-                    _contacto.IdCliente = (int)reader.GetValue(7);
+                    _contacto.ClienteContac.Nombre = (string)reader.GetValue(7);
 
                     _contacto.IdContacto = (int)reader.GetValue(8);
                   
@@ -164,6 +148,7 @@ namespace Core.AccesoDatos.SqlServer
         #endregion
 
         #region ConsultarContactoXTelefono_3
+
         public Contacto ConsultarContactoXTelefono(Contacto entidad)
         {
             Contacto contacto = new Contacto();
@@ -189,6 +174,8 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     Contacto _contacto = new Contacto();
 
+                    _contacto.ClienteContac = new Cliente();
+
                     _contacto.Nombre = (string)reader.GetValue(0);
 
                     _contacto.Apellido = (string)reader.GetValue(1);
@@ -203,7 +190,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     _contacto.TelefonoDeTrabajo.Tipo = (string)reader.GetValue(6);
 
-                    _contacto.IdCliente = (int)reader.GetValue(7);
+                    _contacto.ClienteContac.Nombre = (string)reader.GetValue(7);
 
                     _contacto.IdContacto = (int)reader.GetValue(8);
 
@@ -225,6 +212,7 @@ namespace Core.AccesoDatos.SqlServer
         #endregion
 
         #region ConsultarContactoXCliente_3
+
         public IList<Contacto> ConsultarContactoXCliente(Contacto entidad)
         {
             IList<Contacto> contacto = new List<Contacto>();
@@ -235,9 +223,9 @@ namespace Core.AccesoDatos.SqlServer
 
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@NombreCliente", SqlDbType.Int);
+                arParms[0] = new SqlParameter("@IdCliente", SqlDbType.Int);
 
-                arParms[0].Value = entidad.IdCliente;
+                arParms[0].Value = entidad.ClienteContac.IdCliente;
 
                 DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarContactoXCliente_3", arParms);
@@ -245,6 +233,8 @@ namespace Core.AccesoDatos.SqlServer
                 while (reader.Read())
                 {
                     Contacto _contacto = new Contacto();
+
+                    _contacto.ClienteContac = new Cliente();
 
                     _contacto.Nombre = (string)reader.GetValue(0);
 
@@ -260,7 +250,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     _contacto.TelefonoDeTrabajo.Tipo = (string)reader.GetValue(6);
 
-                    _contacto.IdCliente = (int)reader.GetValue(7);
+                    _contacto.ClienteContac.Nombre = (string)reader.GetValue(7);
 
                     _contacto.IdContacto = (int)reader.GetValue(8);
 

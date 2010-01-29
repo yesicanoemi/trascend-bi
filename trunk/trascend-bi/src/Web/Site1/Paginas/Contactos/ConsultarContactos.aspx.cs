@@ -124,7 +124,7 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
-        //_presentador.OnBotonBuscar();
+        _presentador.OnBotonBuscar();
     }
 
     protected void SelectContacto(object sender, GridViewSelectEventArgs e)

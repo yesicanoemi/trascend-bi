@@ -13,7 +13,7 @@ namespace Core.LogicaNegocio.Entidades
         private string areaDeNegocio;
         private TelefonoCelular _telefonoCelular;
         private TelefonoTrabajo _telefonoTrabajo;
-        private int _idCliente;
+        private Cliente _cliente;
 
 
         public Contacto()
@@ -90,16 +90,16 @@ namespace Core.LogicaNegocio.Entidades
             set { _telefonoCelular = value; }
         }
 
-        public virtual int IdCliente
+        public virtual Cliente ClienteContac
         {
             get
             {
-                return _idCliente;
+                return _cliente;
             }
 
             set
             {
-                _idCliente = value;
+                _cliente = value;
             }
         }
 

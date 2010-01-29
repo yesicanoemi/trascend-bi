@@ -36,10 +36,17 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         /// <summary>Método que implementa la ejecución del comando 'ConsultarContactoXTelefono'.
         /// </summary>
 
-        public IList<Core.LogicaNegocio.Entidades.Contacto> Ejecutar()
+        public Core.LogicaNegocio.Entidades.Contacto Ejecutar()
         {
+            Core.AccesoDatos.SqlServer.DAOContactoSQLServer acceso =
+                              new Core.AccesoDatos.SqlServer.DAOContactoSQLServer();
 
-            return null;
+            Core.LogicaNegocio.Entidades.Contacto contacto2 =
+                                            new Core.LogicaNegocio.Entidades.Contacto();
+
+            contacto2 = acceso.ConsultarContactoXTelefono(contacto);
+
+            return contacto2;
         }
 
         #endregion

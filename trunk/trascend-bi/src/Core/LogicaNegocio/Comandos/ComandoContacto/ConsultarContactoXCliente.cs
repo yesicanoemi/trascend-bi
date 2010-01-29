@@ -11,7 +11,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 {
     public class ConsultarContactoXCliente : Comando<Core.LogicaNegocio.Entidades.Contacto>
     {
-         #region Propiedades
+        #region Propiedades
 
         private Core.LogicaNegocio.Entidades.Contacto contacto;
 
@@ -38,8 +38,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         public IList<Core.LogicaNegocio.Entidades.Contacto> Ejecutar()
         {
+            Core.AccesoDatos.SqlServer.DAOContactoSQLServer acceso =
+                                      new Core.AccesoDatos.SqlServer.DAOContactoSQLServer();
 
-            return null;
+            IList<Core.LogicaNegocio.Entidades.Contacto> listaCont =
+                                            new List<Core.LogicaNegocio.Entidades.Contacto>();
+
+            listaCont = acceso.ConsultarContactoXCliente(contacto);
+
+            return listaCont;
         }
 
         #endregion

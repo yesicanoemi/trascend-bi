@@ -31,6 +31,24 @@ namespace Presentador.Contacto.ContactoPresentador
         #endregion
 
 
+        public void CargarClientes()
+        {
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+            
+            IList<Core.LogicaNegocio.Entidades.Cliente> listaClientes;
+
+            //listaClientes = ConsultarClienteParametroNombre() ;
+
+            _vista.ClienteDdl.Items.Clear();
+            _vista.ClienteDdl.Items.Add(" -- ");
+            _vista.ClienteDdl.Items[0].Value = "0";
+           // _vista.ClienteDdl.DataSource = listaClientes;
+            _vista.ClienteDdl.DataValueField = "IdCliente";
+            _vista.ClienteDdl.DataTextField = "Nombre";
+            _vista.ClienteDdl.DataBind();
+
+        }
+
         /// <summary>
         /// Acción al seleccionar el checkbox
         /// </summary>
@@ -102,6 +120,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void OnBotonBuscar()
         {
+            _vista.GetObjectContainerConsultaContacto.DataSource = "";
+
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
 
             IList<Core.LogicaNegocio.Entidades.Contacto> listContac = 
@@ -113,18 +133,11 @@ namespace Presentador.Contacto.ContactoPresentador
 
             contacto.Apellido = _vista.TextBoxApellido.Text;
 
-            contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodTelefono.Text);
-
-            contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxNumTelefono.Text);
-
-            contacto.IdCliente = int.Parse(_vista.ClienteDdl.Text);
-
             try
             {
                 //Consulta por nombre y apellido
 
-                if ((_vista.RbCampoBusqueda.SelectedValue == "1") && 
-                    ((contacto.Nombre != "") || (contacto.Apellido != "")))
+                if (_vista.RbCampoBusqueda.SelectedValue == "1")
                 {
                     listContac = null;
 
@@ -138,9 +151,22 @@ namespace Presentador.Contacto.ContactoPresentador
                     if ((_vista.TextBoxCodTelefono.Text != null) &&
                         (_vista.TextBoxNumTelefono.Text != null))
                     {
+                        contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodTelefono.Text);
+
+                        contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxNumTelefono.Text);
+
                         listContac = null;
 
-                        listContac = ConsultarContactoXTelefono(contacto);
+                        IList<Core.LogicaNegocio.Entidades.Contacto> aux =
+                                                        new List<Core.LogicaNegocio.Entidades.Contacto>();
+
+                        aux.Add(ConsultarContactoXTelefono(contacto));
+
+                        if ((aux[0].TelefonoDeTrabajo.Codigoarea > 0) && (aux[0].TelefonoDeTrabajo.Numero > 0))
+                        {
+                            listContac = aux;
+                        
+                        }
 
                         //_vista.InformacionVisible = false;
 
@@ -157,6 +183,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "3")
                 {
+                    contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
+
                     listContac = ConsultarContactoXCliente(contacto);
 
                     //_vista.InformacionVisible = false;
@@ -168,6 +196,8 @@ namespace Presentador.Contacto.ContactoPresentador
                     //_vista.InformacionVisible = false;
 
                     _vista.GetObjectContainerConsultaContacto.DataSource = listContac;
+
+                    _vista.GetObjectContainerConsultaContacto.DataBind();
 
                 }
                 else
@@ -242,10 +272,10 @@ namespace Presentador.Contacto.ContactoPresentador
         /// <param name="entidad">Entidad comando a consultar (por tlf)</param>
         /// <returns>Lista de contacto que cumplan con el parámetro de búsqueda</returns>
 
-        public IList<Core.LogicaNegocio.Entidades.Contacto> ConsultarContactoXTelefono
+        public Core.LogicaNegocio.Entidades.Contacto ConsultarContactoXTelefono
                                                 (Core.LogicaNegocio.Entidades.Contacto entidad)
         {
-            IList<Core.LogicaNegocio.Entidades.Contacto> contacto1 = null;
+            Core.LogicaNegocio.Entidades.Contacto contacto1 = null;
 
             Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoXTelefono comando;
 

@@ -99,8 +99,8 @@
                                         <tr>
                                             <td colspan="2">
                                                 <asp:GridView ID="uxConsultaContacto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaContacto"
-                                                AutoGenerateColumns="False" DataKeyNames="login" AutoGenerateSelectButton="True"
-                                                Width="150%" Font-Names="Verdana" Font-Size="Smaller" 
+                                                AutoGenerateColumns="False" DataKeyNames="IdContacto" AutoGenerateSelectButton="True"
+                                                Width="135%" Font-Names="Verdana" Font-Size="Smaller" 
                                                 OnSelectedIndexChanging="SelectContacto" 
                                                     onrowdatabound="uxGridView_RowDataBound">
                                                     
@@ -108,9 +108,28 @@
                                                     
                                                     <Columns>
                                             
-                                                        <asp:BoundField HeaderText="Nombre" DataField="Login" />
-                                                        <asp:BoundField HeaderText="Apellido" DataField="Nombre" />
-                                                        <asp:BoundField HeaderText="Teléfono" DataField="Apellido" />  
+                                                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                                        
+                                                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                                                        
+                                                        <asp:TemplateField HeaderText="Teléfono" AccessibleHeaderText="Telefono">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="L1" runat="server" 
+                                                            Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
+                                                       
+                                                            <asp:Label ID="L2" runat="server" 
+                                                            Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Numero") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                        </asp:TemplateField> 
+                                                        
+                                                        <asp:TemplateField HeaderText="Cliente" AccessibleHeaderText="Cliente">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="L1" runat="server" 
+                                                            Text='<%# DataBinder.Eval(Container, "DataItem.ClienteContac.Nombre") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                        </asp:TemplateField> 
+                                                        
+                                                        
                                                         
                                                     </Columns>
     
