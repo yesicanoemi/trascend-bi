@@ -44,7 +44,7 @@ namespace Core.Pruebas
             IList<string> propuesta;
             List<string> parametro = new List<string>();
             parametro.Add(estado);
-            propuesta = new PropuestaSQLServer().ListaEliminar( parametro );
+            propuesta = new DAOPropuestaSQLServer().ListaEliminar( parametro );
             Assert.AreEqual( parametro.Count, 1 );
         }
 

@@ -218,7 +218,7 @@ namespace Core.AccesoDatos.SqlServer
         public IList<Propuesta> ConsultarPropuesta()
         {
             string estado = "Activo";
-            return new PropuestaSQLServer().ConsultarPropuesta(estado);
+            return new DAOPropuestaSQLServer().ConsultarPropuesta(estado);
         }
 
         /// <summary>

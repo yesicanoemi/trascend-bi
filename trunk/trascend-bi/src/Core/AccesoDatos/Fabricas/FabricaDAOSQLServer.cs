@@ -40,6 +40,12 @@ namespace Core.AccesoDatos.Fabricas
             return new DAOGastoSQLServer();
         }
 
+
+        public override IDAOPropuesta ObtenerDAOPropuesta()
+        {
+            return new DAOPropuestaSQLServer();
+        }
+
         public override IDAOContacto ObtenerDAOContacto()
         {
             return new DAOContactoSQLServer();

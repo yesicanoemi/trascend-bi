@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Fabricas;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
 
 namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
 {
@@ -40,8 +43,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         public Propuesta Ejecutar()
         {
             Propuesta _propuesta;
-            PropuestaSQLServer conex = new PropuestaSQLServer();
-            _propuesta = conex.IngresarPropuesta(propuesta,equitra);
+
+            //DAOPropuestaSQLServer conex = new DAOPropuestaSQLServer();
+            //_propuesta = conex.IngresarPropuesta(propuesta,equitra);
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOPropuesta iDAOPropuesta = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOPropuesta();
+
+            _propuesta = iDAOPropuesta.IngresarPropuesta(propuesta, equitra);
+
             return _propuesta;
         }
         #endregion

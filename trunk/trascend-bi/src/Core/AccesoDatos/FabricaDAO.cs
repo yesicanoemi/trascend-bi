@@ -65,6 +65,12 @@ namespace Core.AccesoDatos
         /// <returns></returns>
         public abstract IDAOGasto ObtenerDAOGasto();
 
+        /// <summary>
+        /// Metodo que devuelve el DTA de Propuesta
+        /// </summary>
+        /// <returns></returns>
+        public abstract IDAOPropuesta ObtenerDAOPropuesta();
+
         #endregion
 
        

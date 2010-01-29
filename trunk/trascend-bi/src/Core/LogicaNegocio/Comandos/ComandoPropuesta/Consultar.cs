@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Fabricas;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
 
 namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
 {
@@ -38,8 +41,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         public IList<Propuesta> Ejecutar()
         {
 
-            PropuestaSQLServer acceso = new PropuestaSQLServer();
-            _propuesta2 = acceso.ConsultarPropuestaNueva(_Opcion,_Parametro);
+            //DAOPropuestaSQLServer acceso = new DAOPropuestaSQLServer();
+            //_propuesta2 = acceso.ConsultarPropuestaNueva(_Opcion,_Parametro);
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOPropuesta iDAOPropuesta = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOPropuesta();
+
+            _propuesta2 = iDAOPropuesta.ConsultarPropuestaNueva(_Opcion, _Parametro);
+            
+            
             return _propuesta2;
         }
 
