@@ -15,6 +15,8 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
     private ConsultarPresentador _presentador;
 
+    protected const string paginaConsulta = "~/Paginas/Contactos/ConsultarContactos.aspx";
+
 
         public TextBox TextBoxNombre
         {
@@ -76,6 +78,48 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             set { uxBotonBuscar = value; }
         }
 
+        public Label NombreC
+        {
+            get { return uxNombreC; }
+            set { uxNombreC = value; }
+        }
+
+        public Label ApellidoC
+        {
+            get { return uxApellidoC; }
+            set { uxApellidoC = value; }
+        }
+
+        public Label AreaC
+        {
+            get { return uxArea; }
+            set { uxArea = value; }
+        }
+
+        public Label CargoC
+        {
+            get { return uxCargo; }
+            set { uxCargo = value; }
+        }
+
+        public Label TelefonoC
+        {
+            get { return uxTelefono; }
+            set { uxTelefono = value; }
+        }
+
+        public Label TipoTlfC
+        {
+            get { return uxTipoTlf; }
+            set { uxTipoTlf = value; }
+        }
+
+        public Label ClienteC
+        {
+            get { return uxCliente; }
+            set { uxCliente = value; }
+        }
+
     #endregion
 
     #region Métodos
@@ -83,11 +127,6 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
     protected void Page_Load(object sender, EventArgs e)
     {
 
-    }
-
-    protected void Aceptar_Click(object sender, EventArgs e)
-    {
-       // _presentador.Onclick();
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -129,8 +168,8 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
     protected void SelectContacto(object sender, GridViewSelectEventArgs e)
     {
-        //_presentador.uxObjectConsultaUsuarioSelecting
-                            //(uxConsultaUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaContactoSelecting
+                            (uxConsultaContacto.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -138,6 +177,17 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
         if (e.Row.RowIndex % 2 == 0)
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonAceptar();
+    }
+
+    public void CambiarPagina()
+    {
+        Response.Redirect(paginaConsulta);
+
     }
 
     #endregion

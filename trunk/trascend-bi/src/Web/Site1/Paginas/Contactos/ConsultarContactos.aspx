@@ -134,6 +134,8 @@
                                                     </Columns>
     
                                                  </asp:GridView>
+                                                 
+                                                 
                                             </td>
                                         </tr>
                                         
@@ -144,6 +146,83 @@
                                     
                                 </asp:View>
                                 
+                                 <asp:View ID="ViewContacto" runat="server">
+                        
+                                    <p class="large">Datos del Contacto</p>  
+                            
+                                        <table style="width:100%;">
+                                            
+                                            <tr>
+                                                <td><b>Nombre de Contacto:</b></td>
+                                                <td><asp:Label ID="uxNombreC" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                       
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                       
+                                            <tr>
+                                                <td><b>Apellido de Contacto:</b></td>
+                                                <td><asp:Label ID="uxApellidoC" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                       
+                                            <tr>
+                                                <td><b>Área de negocio:</b></td>
+                                                <td><asp:Label ID="uxArea" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                       
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td><b>Cargo:</b></td>
+                                                <td><asp:Label ID="uxCargo" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                            
+                                             <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Teléfono:</b></td>
+                                                <td><asp:Label ID="uxTelefono" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Tipo teléfono:</b></td>
+                                                <td><asp:Label ID="uxTipoTlf" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Cliente:</b></td>
+                                                <td><asp:Label ID="uxCliente" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                             
+                                                <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                                        onclick="uxBotonAceptar_Click" /></td>
+                                            </tr>
+                                            
+                                            </table>
+                                    </asp:View>
                                 
                             </asp:MultiView>
                                 

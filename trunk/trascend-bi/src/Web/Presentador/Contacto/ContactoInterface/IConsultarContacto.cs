@@ -30,6 +30,21 @@ namespace Presentador.Contacto.ContactoInterface
 
         Button BotonBuscar { get; set; }
 
+        Label ClienteC { get; set; }
+
+        Label TipoTlfC { get; set; }
+
+        Label TelefonoC { get; set; }
+
+        Label CargoC { get; set; }
+
+        Label AreaC { get; set; }
+
+        Label ApellidoC { get; set; }
+
+        Label NombreC { get; set; }
+
+        void CambiarPagina();
             
     }
 }

@@ -30,6 +30,26 @@ namespace Presentador.Contacto.ContactoPresentador
 
         #endregion
 
+        /// <summary>
+        /// Método que redirecciona al usuario a otra página (de consulta)
+        /// </summary>
+
+        public void OnBotonAceptar()
+        {
+            _vista.CambiarPagina();
+        }
+
+        /// <summary>
+        /// Metodo para cambiar la vista 
+        /// </summary>
+        /// <param name="index">Numero de vista</param>
+
+        public void CambiarVista(int index)
+        {
+
+            _vista.MultiViewConsultar.ActiveViewIndex = index;
+        }
+
 
         public void CargarClientes()
         {
@@ -47,6 +67,29 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.ClienteDdl.DataTextField = "Nombre";
             _vista.ClienteDdl.DataBind();
 
+        }
+
+        /// <summary>
+        /// Metodo para cargar los datos por pantalla una vez seleccionado el contacto
+        /// </summary>
+        /// <param name="usuario">Entidad Contacto con sus datos</param>
+
+        private void CargarDatos(Core.LogicaNegocio.Entidades.Contacto contacto)
+        {
+            _vista.NombreC.Text = contacto.Nombre;
+
+            _vista.ApellidoC.Text = contacto.Apellido;
+
+            _vista.CargoC.Text = contacto.Cargo;
+
+            _vista.AreaC.Text = contacto.AreaDeNegocio;
+
+            _vista.TelefonoC.Text = contacto.TelefonoDeTrabajo.Codigoarea.ToString() 
+                                    + contacto.TelefonoDeTrabajo.Numero.ToString();
+
+            _vista.TipoTlfC.Text = contacto.TelefonoDeTrabajo.Tipo;
+
+            _vista.ClienteC.Text = contacto.ClienteContac.Nombre;
         }
 
         /// <summary>
@@ -241,6 +284,39 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.DialogoVisible = true;
 
             }*/
+
+        }
+
+        /// <summary>
+        /// Método de Consulta una vez seleccionado el contacto 
+        /// </summary>
+        /// <param name="idContacto">Id del contacto</param>
+
+        public void uxObjectConsultaContactoSelecting(string idContacto)
+        {
+            Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
+
+            contacto.IdContacto = int.Parse(idContacto);
+
+            contacto.Nombre = "";
+
+            contacto.Apellido = "";
+
+            IList<Core.LogicaNegocio.Entidades.Contacto> listaContac = 
+                                                            ConsultarContactoNombreApellido(contacto);
+
+            for (int i = 0; i < listaContac.Count; i++)
+            {
+                if (listaContac[i].IdContacto == contacto.IdContacto)
+                {
+                    CargarDatos(listaContac[i]);
+
+                    i = listaContac.Count;
+                }
+            
+            }
+
+            CambiarVista(1);
 
         }
 
