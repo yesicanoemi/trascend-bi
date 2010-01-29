@@ -82,9 +82,13 @@ El usuario podrá modificar los campos que tenga permitido, y al hacer click en 
 
 ==== Mensajes de Confirmación ====
 
-Al lograr realizar una operación (ingresar, modificar, eliminar, etc.) este debe redirigir al default de una página y mostrar el mensaje correspondiente en un label.
+Al lograr realizar una operación (ingresar, modificar, eliminar, etc.) este debe redirigir al principio de la página en la cual se realizó la operación y mostrar el mensaje correspondiente. 
 
-http://trascend-bi.googlecode.com/files/MensajeExito.jpg
+Notas:
+  * En caso que hayan campos que llenar estos deben ser vaciados. 
+  * En caso que se maneje multiview en la página este debe redirigir a la primera vista activa.
+
+http://trascend-bi.googlecode.com/files/MensajeExito2.jpg
 
 ==== Mensajes de Error ====
 
