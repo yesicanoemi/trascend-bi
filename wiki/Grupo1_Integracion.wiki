@@ -30,8 +30,8 @@ http://trascend-bi.googlecode.com/files/Busqueda_ejemplo2.jpg
 En caso que la cantidad de campos sean muchos (haya que hacer scrolldown para verlos todos), se tendrá que aplicar multiview, separando los datos en varias pantallas.
 
 Para poder navegar entre estos se debe tener 2 botones:<br />
-   *Anterior*: Llevará a la pantalla anterior de llenado de datos (index--), este boton no puede aparecer en la primera página.<br />
-   *Siguiente*: Llevará a la pantalla siguiente de llenado de datos (index++), este botón no puede aparecer en la última página.<br />
+   * *Anterior*: Llevará a la pantalla anterior de llenado de datos (index--), este boton no puede aparecer en la primera página.<br />
+   * *Siguiente*: Llevará a la pantalla siguiente de llenado de datos (index++), este botón no puede aparecer en la última página.<br />
 Adicionalmente, el botón de Aceptar solo puede estar ubicada en la última de las páginas junto al boton Anterior.
 
 Primera Página<br />
