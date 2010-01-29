@@ -45,9 +45,9 @@
                                     <table width="100%">
                                           <tr>  
                                             <td align="right">
-                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Width="" 
+                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Width=""  
                                                     onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" AutoPostBack="true">
-                                                    <asp:ListItem Value="1" Text="Nombre/Apellido de Contacto"></asp:ListItem> 
+                                                    <asp:ListItem Value="1" Text="Nombre de Contacto"></asp:ListItem> 
                                                     <asp:ListItem Value="2" Text="Teléfono de Contacto"></asp:ListItem>
                                                     <asp:ListItem Value="3" Text="Cliente"></asp:ListItem>
                                                 </asp:RadioButtonList>
@@ -61,23 +61,73 @@
                                                         <td align="right">
                                                             <asp:TextBox ID="uxConsultaNombreContacto" runat="server" Visible="false">
                                                             </asp:TextBox>
-                                                            <asp:TextBox ID="uxConsultaCodigoContacto" MaxLength=4 runat="server" Visible="false" Width="40">
+                                                            <asp:TextBox ID="uxConsultaCodigoContacto" MaxLength=3 runat="server" Visible="false" Width="40">
                                                             </asp:TextBox>
                                                         </td>
                                                         <td align="left">
                                                             <asp:TextBox ID="uxConsultaApellidoContacto" runat="server" Visible="false">
                                                             </asp:TextBox>
                                                             
-                                                            <asp:TextBox ID="uxConsultaTelefonoContacto" runat="server" Visible="false">
+                                                            <asp:TextBox ID="uxConsultaTelefonoContacto" MaxLength=7 runat="server" Visible="false">
                                                             </asp:TextBox>
                                                         </td>
                                                     </tr>
-
+                                                    
+                                                    <tr>
+                                                        <td align="center"><asp:Label ID="uxNombreContacto" runat="server" Visible="false" Text="Nombre del Contacto"></asp:Label></td>
+                                                        <td align="center"><asp:Label ID="uxApellidoContacto" runat="server" Visible="false" Text="Apellido del Contacto"></asp:Label></td>
+                                                    </tr>
+                                                    <tr>
+                                                         <td align="right"><asp:Label ID="uxCodigo" runat="server" Visible="false" Text="Código<br>(Ej.212)"></asp:Label></td>
+                                                        <td align="center"><asp:Label ID="uxTlf" runat="server" Visible="false" Text="Teléfono<br>(Ej. 2386546)"></asp:Label></td>
+                                                    </tr>
+                                                    
+                                                    <tr align="center">
+                                                        <td align="center">
+                                                        <asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
+                                                            ControlToValidate="uxConsultaCodigoContacto" Visible="false"
+                                                            ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller" Display="Static" />
+                                                        </td>
+                                                         <td align="center">
+                                                            <asp:RequiredFieldValidator ID="uxRequiredFieldValidator1" runat="server" 
+                                                            ControlToValidate="uxConsultaTelefonoContacto" Visible="false"
+                                                            ErrorMessage="<%$ Resources:DSU,FaltaTelfono%>" Font-Size="Smaller" Display="Static" />
+                                                    </td> 
+                                                   </tr>
+                                                   
+                                                  
+                                                 <tr align="center">
+                                                 <td align="center">
+                                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxConsultaTelefonoContacto" FilterType="Custom, Numbers"
+                                                            ValidChars="<%$ Resources:DSU,ERFormatoTelefono%>" ID="FilteredTextBoxExtender1"
+                                                            runat="server">
+                                                        </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                     </td>  
+                                                     
+                                                      <td align="center">
+                                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxConsultaCodigoContacto" FilterType="Custom, Numbers"
+                                                            ValidChars="<%$ Resources:DSU,ERFormatoCodigoTelefono%>" ID="FilteredTextBoxExtender2"
+                                                            runat="server">
+                                                        </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                    </td>
+                                                    
+                                                   
+                                                 </tr> 
+                                                
+                                            
                                                 </table>
                                                 
+                                                 
+                                                        <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                                                    
+                                                
+                                                <asp:Label ID="uxNombreCliente" runat="server" Visible="false" Text="Nombre del Cliente"></asp:Label>
                                                 <asp:DropDownList ID="uxConsultaClienteContacto" runat="server" Visible="false" 
                                                     DataTextField="IdContacto" DataValueField="IdContacto" AutoPostBack="false">
                                                 </asp:DropDownList>
+                                                
+                                                <br />
+                                                <br />
                                                 
                                                 <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
                                                             Text="Buscar" Visible="false" />
@@ -85,16 +135,7 @@
                                             </td>
                                         </tr>
                                         
-                                        <tr>
-                                            <td>
-                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
-                                            </td>
-                                            <td><asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
-                                                ControlToValidate="uxLogin" Visible="false"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
-                                            </td>
 
-                                        </tr>
                                         
                                         <tr>
                                             <td colspan="2">

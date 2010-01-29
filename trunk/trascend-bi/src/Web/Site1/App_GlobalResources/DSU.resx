@@ -322,10 +322,10 @@
     <value>Debe Ingresar el Rol</value>
   </data>
   <data name="ERFormatoCodigoTelefono" xml:space="preserve">
-    <value>^\d{3}$</value>
+    <value>^\{3}$</value>
   </data>
   <data name="ERFormatoTelefono" xml:space="preserve">
-    <value>^\d{7}$</value>
+    <value>^\{7}$</value>
   </data>
   <data name="FaltaCodigoTelefono" xml:space="preserve">
     <value>Debe de introducir el codigo telefónico</value>
@@ -395,5 +395,8 @@
   </data>
   <data name="NombreEmpleado" xml:space="preserve">
     <value>* Nombre de Empleado:</value>
+  </data>
+  <data name="FaltaCamposTlf" xml:space="preserve">
+    <value>Debe introducir el número de teléfono</value>
   </data>
 </root>

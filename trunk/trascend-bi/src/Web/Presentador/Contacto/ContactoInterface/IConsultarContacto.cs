@@ -44,6 +44,24 @@ namespace Presentador.Contacto.ContactoInterface
 
         Label NombreC { get; set; }
 
+        Label NombreContacto { get; set; }
+
+        Label ApellidoContacto { get; set; }
+
+        Label CodigoTlf { get; set; }
+        
+        Label Tlf { get; set; }
+
+        Label NombreCliente { get; set; }
+
+        bool InformacionVisible { get; set; }
+
+        void PintarInformacion(string mensaje, string estilo);
+
+        RequiredFieldValidator RequiredFieldValidator { get; set; }
+
+        RequiredFieldValidator RequiredFieldValidator1 { get; set; }
+
         void CambiarPagina();
             
     }

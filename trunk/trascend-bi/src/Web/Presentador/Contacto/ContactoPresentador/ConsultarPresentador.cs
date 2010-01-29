@@ -8,11 +8,14 @@ using System.Web.UI.WebControls;
 using System.Resources;
 using Core.LogicaNegocio.Excepciones;
 using Core.LogicaNegocio.Fabricas;
+using Presentador.Base;
+
+
 
 
 namespace Presentador.Contacto.ContactoPresentador
 {
-    public class ConsultarPresentador
+    public class ConsultarPresentador : PresentadorBase
     {
         #region Propiedades
 
@@ -93,7 +96,7 @@ namespace Presentador.Contacto.ContactoPresentador
         }
 
         /// <summary>
-        /// Acción al seleccionar el checkbox
+        /// Acción al seleccionar el radiobutton
         /// </summary>
         
         public void CampoBusqueda_Selected()
@@ -111,6 +114,18 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.ClienteDdl.Visible = false;
 
                 _vista.BotonBuscar.Visible = true;
+
+                _vista.NombreContacto.Visible = true;
+
+                _vista.ApellidoContacto.Visible = true;
+
+                _vista.CodigoTlf.Visible = false;
+
+                _vista.Tlf.Visible = false;
+
+                _vista.NombreCliente.Visible = false;
+
+                _vista.InformacionVisible = false;
 
                 //_vista.ValidarNombreVacio.Visible = true;
 
@@ -131,6 +146,18 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.ClienteDdl.Visible = false;
 
+                _vista.NombreContacto.Visible = false;
+
+                _vista.ApellidoContacto.Visible = false;
+
+                _vista.CodigoTlf.Visible = true;
+
+                _vista.Tlf.Visible = true;
+
+                _vista.NombreCliente.Visible = false;
+
+                _vista.InformacionVisible = false;
+
                 //_vista.ValidarNombreVacio.Visible = false;
 
                _vista.GetObjectContainerConsultaContacto.DataSource = "";
@@ -150,6 +177,18 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.BotonBuscar.Visible = true;
 
+                _vista.NombreContacto.Visible = false;
+
+                _vista.ApellidoContacto.Visible = false;
+
+                _vista.CodigoTlf.Visible = false;
+
+                _vista.Tlf.Visible = false;
+
+                _vista.NombreCliente.Visible = true;
+
+                _vista.InformacionVisible = false;
+
                 //_vista.ValidarNombreVacio.Visible = false;
 
                 _vista.GetObjectContainerConsultaContacto.DataSource = "";
@@ -164,6 +203,8 @@ namespace Presentador.Contacto.ContactoPresentador
         public void OnBotonBuscar()
         {
             _vista.GetObjectContainerConsultaContacto.DataSource = "";
+
+            bool imprime = true; 
 
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
 
@@ -191,8 +232,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "2")
                 {
-                    if ((_vista.TextBoxCodTelefono.Text != null) &&
-                        (_vista.TextBoxNumTelefono.Text != null))
+                    if ((_vista.TextBoxCodTelefono.Text != "") &&
+                        (_vista.TextBoxNumTelefono.Text != ""))
                     {
                         contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodTelefono.Text);
 
@@ -210,14 +251,15 @@ namespace Presentador.Contacto.ContactoPresentador
                             listContac = aux;
                         
                         }
-
-                        //_vista.InformacionVisible = false;
-
                     }
 
                     else
                     {
-                        //debe llenar el codigo y el tlf
+                        _vista.RequiredFieldValidator.Visible = true;
+
+                        _vista.RequiredFieldValidator1.Visible = true;
+
+                        imprime = false;
 
                     }
                 }
@@ -245,10 +287,12 @@ namespace Presentador.Contacto.ContactoPresentador
                 }
                 else
                 {
-                    //_vista.PintarInformacion(ManagerRecursos.GetString
-                    //("MensajeConsulta"), "mensajes");
-                    //_vista.InformacionVisible = true;
-
+                    if (imprime == true)
+                    {
+                        _vista.PintarInformacion(ManagerRecursos.GetString
+                        ("MensajeConsulta"), "mensajes");
+                        _vista.InformacionVisible = true;
+                    }
                 }
 
             }

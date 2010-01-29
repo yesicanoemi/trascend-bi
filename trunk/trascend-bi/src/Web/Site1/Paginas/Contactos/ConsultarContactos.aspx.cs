@@ -120,6 +120,63 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             set { uxCliente = value; }
         }
 
+        public Label NombreContacto
+        {
+            get { return uxNombreContacto; }
+            set { uxNombreContacto = value; }
+        }
+
+        public Label ApellidoContacto
+        {
+            get { return uxApellidoContacto; }
+            set { uxApellidoContacto = value; }
+        }
+        
+        public Label CodigoTlf
+        {
+            get { return uxCodigo; }
+            set { uxCodigo = value; }
+        }
+
+        public Label Tlf
+        {
+            get { return uxTlf; }
+            set { uxTlf = value; }
+        }
+
+        public Label NombreCliente
+        {
+            get { return uxNombreCliente; }
+            set { uxNombreCliente = value; }
+        }
+
+        public RequiredFieldValidator RequiredFieldValidator
+        {
+            get { return uxRequiredFieldValidator; }
+            set { uxRequiredFieldValidator = value; }
+        }
+
+        public RequiredFieldValidator RequiredFieldValidator1
+        {
+            get { return uxRequiredFieldValidator1; }
+            set { uxRequiredFieldValidator1 = value; }
+        }
+
+        #region Información
+
+        public void PintarInformacion(string mensaje, string estilo)
+        {
+            uxMensajeInformacion.PintarControl(mensaje, estilo);
+        }
+
+        public bool InformacionVisible
+        {
+            get { return uxMensajeInformacion.Visible; }
+            set { uxMensajeInformacion.Visible = value; }
+        }
+
+        #endregion
+
     #endregion
 
     #region Métodos
