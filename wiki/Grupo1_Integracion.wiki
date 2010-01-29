@@ -27,6 +27,20 @@ En caso de llenado de datos estos deben estar propiamente alineados de manera ve
 
 http://trascend-bi.googlecode.com/files/Busqueda_ejemplo2.jpg
 
+En caso que la cantidad de campos sean muchos (haya que hacer scrolldown para verlos todos), se tendrá que aplicar multiview, separando los datos en varias pantallas.
+
+Para poder navegar entre estos se debe tener 2 botones:<br />
+   *Anterior*: Llevará a la pantalla anterior de llenado de datos (index--), este boton no puede aparecer en la primera página.<br />
+   *Siguiente*: Llevará a la pantalla siguiente de llenado de datos (index++), este botón no puede aparecer en la última página.<br />
+Adicionalmente, el botón de Aceptar solo puede estar ubicada en la última de las páginas junto al boton Anterior.
+
+Primera Página<br />
+http://trascend-bi.googlecode.com/files/Siguiente.jpg<br />
+Página Intermedia<br />
+http://trascend-bi.googlecode.com/files/anteriorSiguiente.jpg<br />
+Última página<br />
+http://trascend-bi.googlecode.com/files/anteriorAceptar.jpg<br />
+
 == Busquedas ==
 
 1) En caso de busquedas, se tiene que elegir que tipo de búsqueda realizar, para esto sigue aplicando las reglas de llenado de campo, si hay 3 o menos opciones radio button, sino drop down.
