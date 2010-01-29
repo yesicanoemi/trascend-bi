@@ -36,7 +36,7 @@ namespace Presentador.Cliente.Vistas
                 {
                     cliente.Direccion = new Direccion();
                     
-                    cliente.Telefono = new TelefonoTrabajo();
+                    //cliente.Telefono = new TelefonoTrabajo();
                     
                     cliente.Rif = _vista.rifCliente.Text;
                     
@@ -54,11 +54,11 @@ namespace Presentador.Cliente.Vistas
                     
                     cliente.AreaNegocio = _vista.AreaNegocioCliente.Text;
                     
-                    cliente.Telefono.Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
+                    //cliente.Telefono.Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
                     
-                    cliente.Telefono.Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
+                    //cliente.Telefono.Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
 
-                    cliente.Telefono.Tipo = _vista.TipoTelefono.Text;
+                    //cliente.Telefono.Tipo = _vista.TipoTelefono.Text;
                     
                     Ingresar(cliente);
                     

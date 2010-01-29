@@ -9,7 +9,7 @@ namespace Core.LogicaNegocio.Entidades
         private int idCliente;
         private string rif;
         private string nombre;
-        private TelefonoTrabajo telefono;
+        private TelefonoTrabajo[] telefono = new TelefonoTrabajo[3];
         private Direccion direccion;
         private string areaNegocio;
         /*private string calleAvenidad;
@@ -99,7 +99,7 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual TelefonoTrabajo Telefono
+        public virtual TelefonoTrabajo[] Telefono
         {
             get { return telefono; }
             set { telefono = value; }

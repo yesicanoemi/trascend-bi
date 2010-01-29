@@ -49,18 +49,36 @@ namespace Core.Pruebas
             cliente.Direccion.Edif_Casa = "Piedra Gris";
 
             cliente.Direccion.Oficina = "14-c";
-
-            cliente.Telefono = new TelefonoTrabajo();
-            
-            cliente.Telefono.Codigoarea = 212;
-
-            cliente.Telefono.Numero = 2350592;
-
-            cliente.Telefono.Tipo = "Local";
                                    
             cliente.Nombre = "joojojoj";
             
             cliente.Rif = "J-00006372-9";
+
+            cliente.Telefono = new TelefonoTrabajo[3];
+
+            cliente.Telefono[0] = new TelefonoTrabajo();
+
+            cliente.Telefono[0].Codigoarea = 212;
+
+            cliente.Telefono[0].Numero = 2350592;
+
+            cliente.Telefono[0].Tipo = "Trabajo";
+
+            cliente.Telefono[1] = new TelefonoTrabajo();
+
+            cliente.Telefono[1].Codigoarea = 212;
+
+            cliente.Telefono[1].Numero = 2350593;
+
+            cliente.Telefono[1].Tipo = "Fax";
+
+            cliente.Telefono[2] = new TelefonoTrabajo();
+
+            cliente.Telefono[2].Codigoarea = 414;
+
+            cliente.Telefono[2].Numero = 2350592;
+
+            cliente.Telefono[2].Tipo = "Celular";
 
             #endregion
 
@@ -83,6 +101,21 @@ namespace Core.Pruebas
             IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
 
             IList<Cliente> clientes = acceso.ConsultarNombre(cliente);
+
+            foreach (Cliente clienteA in clientes)
+            {
+                Console.WriteLine(clienteA.Nombre);
+            }
+        }
+
+        [Test]
+        public void ConsultarTodos()
+        {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            IList<Cliente> clientes = acceso.ConsultarTodos();
 
             foreach (Cliente clienteA in clientes)
             {

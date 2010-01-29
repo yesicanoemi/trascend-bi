@@ -25,16 +25,11 @@ namespace Core.AccesoDatos.Interfaces
         /// <returns>Lista con los clientes encontrados</returns>
         IList<Cliente> ConsultarNombre(Cliente cliente);
 
-        Direccion buscarDireccion(int idCliente);
+        /// <summary>
+        /// Consulta todos los clientes
+        /// </summary>
+        /// <returns>Lista con los clientes</returns>
+        IList<Cliente> ConsultarTodos();
 
-        List<Contacto> BuscarContacto(int IdCliente);
-
-        List<Cliente> ConsultarParamtroNombre(Cliente entidad);
-
-        IList<Cliente> ConsultarParamtroAreaNegocio(Cliente cliente);
-
-        IList<Cliente> ConsultarAreaNegocio();
-
-        IList<string> ListaEliminar(List<string> ListaRecibida);
     }
 }
