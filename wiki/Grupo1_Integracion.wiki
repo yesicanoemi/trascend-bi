@@ -23,9 +23,13 @@ http://trascend-bi.googlecode.com/files/Calendario.jpg
 
 == Llenado de datos ==
 
+==== Alineación ====
+
 En caso de llenado de datos estos deben estar propiamente alineados de manera vertical en dos columnas, la primera indica cual es el contenido del campo a llenar, y a la derecha donde se asigna el valor.
 
 http://trascend-bi.googlecode.com/files/Busqueda_ejemplo2.jpg
+
+==== Multiview ====
 
 En caso que la cantidad de campos sean muchos (haya que hacer scrolldown para verlos todos), se tendrá que aplicar multiview, separando los datos en varias pantallas.
 
@@ -40,6 +44,12 @@ Página Intermedia<br />
 http://trascend-bi.googlecode.com/files/anteriorSiguiente.jpg<br />
 Última página<br />
 http://trascend-bi.googlecode.com/files/anteriorAceptar.jpg<br />
+
+==== Campos obligatorios ====
+
+En caso que un campo a llenar sea obligatorio este debe tener un asterisco rojo (R,G,B)=(255,0,0) a la izquierda del nombre del campo.
+
+http://trascend-bi.googlecode.com/files/Obligatorio.jpg
 
 == Busquedas ==
 
