@@ -27,43 +27,46 @@ namespace Presentador.Cliente.Vistas
             _vista = vista;
         }
         
+
+
         public void BotonSeleccionTipo()
         {
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
 
             if (_vista.opcion.SelectedIndex == 0)// nombre de cliente
             {
-                Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-
                 cliente.Nombre = _vista.Valor.Text;
 
-
-              //  IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
-
                 IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+
                 _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
                 _vista.GetObjectContainerConsultaDireccion.DataSource = listaCliente[0].Direccion;
+                _vista.GetObjectContainerConsultaTelefono.DataSource = listaCliente[0].Telefono[0];
+ 
                 CambiarVista(1);
             
             }
 
             if (_vista.opcion.SelectedIndex==1)//nombre de area de negocio
             {
-                Core.LogicaNegocio.Entidades.Cliente cliente = 
-                    new Core.LogicaNegocio.Entidades.Cliente();
                 
-                cliente.AreaNegocio = _vista.Valor.Text;
+                cliente.Rif = _vista.Valor.Text;
 
-                IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = 
-                    ConsultarClienteAreaNegocio(cliente);
-                
-                _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
+                Core.LogicaNegocio.Entidades.Cliente seleccionCliente = ConsultarClienteRif(cliente);
+
+                _vista.GetObjectContainerConsultaCliente.DataSource = seleccionCliente;
+                _vista.GetObjectContainerConsultaDireccion.DataSource = seleccionCliente.Direccion;
+                _vista.GetObjectContainerConsultaTelefono.DataSource = seleccionCliente.Telefono[0];
 
                 CambiarVista(1);
             }                                   
 
         }
+
+ 
+
         
-        public IList<Core.LogicaNegocio.Entidades.Cliente> BuscarNombre()
+     /*   public IList<Core.LogicaNegocio.Entidades.Cliente> BuscarNombre()
         {
             Core.LogicaNegocio.Comandos.ComandoCliente.Consultar consultar;
 
@@ -79,6 +82,7 @@ namespace Presentador.Cliente.Vistas
             return cliente;
 
         }
+    
        
         public IList<Core.LogicaNegocio.Entidades.Cliente> BuscarPorAreaNegocio()
         {
@@ -98,8 +102,8 @@ namespace Presentador.Cliente.Vistas
 
             #endregion
         }
+          */
 
-       
         public IList<Core.LogicaNegocio.Entidades.Cliente> 
             ConsultarClienteNombre(Core.LogicaNegocio.Entidades.Cliente entidad)
        
@@ -116,26 +120,19 @@ namespace Presentador.Cliente.Vistas
         }
 
 
-        public IList<Core.LogicaNegocio.Entidades.Cliente>
-          ConsultarClienteAreaNegocio(Core.LogicaNegocio.Entidades.Cliente entidad)
+        public Core.LogicaNegocio.Entidades.Cliente ConsultarClienteRif(Core.LogicaNegocio.Entidades.Cliente entidad)
         {
-            IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
+            Core.LogicaNegocio.Entidades.Cliente seleccioncliente = new Core.LogicaNegocio.Entidades.Cliente();
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarParametroAreaNegocio comando; //tengo q crear una nueva consulta
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif comando; //tengo q crear una nueva consulta
 
-            comando = FabricaComandosCliente.CrearComandoConsultarParametroAreaNegocio(entidad);
+            comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
 
-            listaCliente = comando.ejecutar(entidad);
+            seleccioncliente = comando.ejecutar();
 
-            return listaCliente;
+            return seleccioncliente;
         }
 
-        /*public void metodoEnPresendator(int Id)
-         {
-         * 
-         * CambiarVista(2);
-         * }
-         */
         public void CambiarVista(int index)
         {
             _vista.MultiViewConsulta.ActiveViewIndex = index;

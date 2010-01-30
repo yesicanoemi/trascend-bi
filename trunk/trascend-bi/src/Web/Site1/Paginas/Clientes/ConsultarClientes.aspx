@@ -75,7 +75,7 @@
                             <form runat="server">
                                 <asp:DetailsView ID="uxMuestraCliente" datasourceid="uxObjectConsultaCliente"
                                 datakeynames="rif" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  HeaderText="Datos de Cliente"
-                                 Width="275px">     <headerstyle backcolor="Navy"            forecolor="White"/>
+                                 Width="275px" Height="85px">     <headerstyle backcolor="#c60"            forecolor="White"/>
 
                                   <Fields>
                                                         <asp:BoundField HeaderText="Rif" DataField="rif" ReadOnly="True"/> 
@@ -84,9 +84,10 @@
                                   </Fields>
                                 </asp:DetailsView>
                                 
-                                <asp:DetailsView ID="uxMuestraDireccion" datasourceid="uxObjectConsultaDireccion" HeaderText="Direccion"
+                                <asp:DetailsView ID="uxMuestraDireccion" 
+                                    datasourceid="uxObjectConsultaDireccion" HeaderText="Direccion"
                                 datakeynames="calle" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  
-                                 Width="275px">  <headerstyle backcolor="Navy"            forecolor="White"/>
+                                 Width="306px">  <headerstyle backcolor="#c60"            forecolor="White"/>
                                   <Fields>
                                                         <asp:BoundField HeaderText="Avenida" DataField="avenida" ReadOnly="True"/> 
                                                         <asp:BoundField HeaderText="Urbanizacion" DataField="urbanizacion" ReadOnly="True"/>
@@ -96,6 +97,20 @@
                                   </Fields>
                                 </asp:DetailsView>
                                 
+
+                                 <asp:DetailsView ID="uxMuestraTelefono" 
+                                    datasourceid="uxObjectConsultaTelefono" HeaderText="Telefonos"
+                                datakeynames="codigoarea" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  
+                                 Width="306px">  <headerstyle backcolor="#c60"            forecolor="White"/>
+                                  <Fields>
+                                                        <asp:BoundField HeaderText="Codigo de Area" DataField="codigoarea" ReadOnly="True"/> 
+                                                        <asp:BoundField HeaderText="Tipo" DataField="tipo" ReadOnly="True"/>
+                                                        <asp:BoundField HeaderText="Numero" DataField="numero" ReadOnly="True"/>
+                                                       
+                                  </Fields>
+                                </asp:DetailsView>
+                                
+
                                 <br />
                                 <asp:UpdatePanel ID="up2" runat="server">
                                     <ContentTemplate>
@@ -103,14 +118,9 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                                 
+
                                 </form>
-                        </asp:View>
-                        <asp:View ID="uxDetalle" runat="server">
-                            <form runat="server">
-                                
-                            
-                            </form>
-                        
+
                         </asp:View>
                    </asp:MultiView>     
                     </p> 
@@ -157,9 +167,7 @@
 			</div> 
 		</div> 
 		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaDireccion" DataObjectTypeName="Core.LogicaNegocio.Entidades.Direccion" />
-		
 		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 
-        
-        <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.Telefono" />  
+        <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.TelefonoTrabajo" />  
 </asp:Content>
 

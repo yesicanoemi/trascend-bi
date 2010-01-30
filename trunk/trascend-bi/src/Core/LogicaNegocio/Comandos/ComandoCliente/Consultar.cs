@@ -11,28 +11,14 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
     public class Consultar : Comando<Cliente>
     {
-        private Cliente _cliente;
-        private IList<Cliente> _cliente2;
+
 
         #region Constructor
 
             /// <summary>Constructor por defecto de la clase 'Consultar'.</summary>
             public Consultar()
             { }
-
-
-            /// <summary>Constructor de la clase 'Consultar'.</summary>
-            public Consultar(Cliente cliente)
-            {
-                _cliente = cliente;
-            }
-            
-            public Consultar(IList<Cliente> cliente)
-            {
-                _cliente2 = cliente;
-            }
-
-        
+  
         #endregion
 
 
@@ -41,13 +27,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
             public IList<Cliente> ejecutar()
             {
 
+
                 FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-                IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+                IDAOCliente bdcliente = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+                IList<Cliente> clientes = new List<Cliente>();
               
-                _cliente2 = acceso.ConsultarNombre(_cliente);
-                
-                return _cliente2;
+                 clientes = bdcliente.ConsultarTodos();
+
+                return clientes;
             }
         #endregion
     }
