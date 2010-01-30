@@ -110,6 +110,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarNombre.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarParametroAreaNegocio.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarParametroNombre.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarRif.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\ConsultarTodos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Eliminar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Ingresar.cs" />

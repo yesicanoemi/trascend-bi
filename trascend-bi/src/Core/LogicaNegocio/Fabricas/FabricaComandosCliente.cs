@@ -14,9 +14,9 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Ingresar(cliente);
         }
-        public static Consultar CrearComandoConsultar(IList<Cliente> cliente)
+        public static Consultar CrearComandoConsultar()
         {
-            return new Consultar(cliente);
+            return new Consultar();
         }
 
         public static ConsultarParametroAreaNegocio CrearComandoConsultarParametroAreaNegocio(Cliente cliente)
@@ -29,10 +29,6 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarParametroNombre(cliente);
         }
 
-        public static Consultar CrearComandoConsultar(Cliente cliente)
-        {
-            return new Consultar(cliente);
-        }
 
         public static ConsultarNombre CrearComandoConsultarNombre(Cliente cliente)
         {
@@ -57,6 +53,12 @@ namespace Core.LogicaNegocio.Fabricas
         public static ConsultarTodos CrearComandoConsultarTodos()
         {
             return new ConsultarTodos();
+        }
+
+
+        public static ConsultarRif CrearComandoConsultarRif(Cliente cliente)
+        {
+            return new ConsultarRif(cliente);
         }
     }
 }
