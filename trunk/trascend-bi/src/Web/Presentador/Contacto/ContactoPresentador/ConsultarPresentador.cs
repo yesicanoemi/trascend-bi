@@ -9,6 +9,8 @@ using System.Resources;
 using Core.LogicaNegocio.Excepciones;
 using Core.LogicaNegocio.Fabricas;
 using Presentador.Base;
+using Core.LogicaNegocio.Comandos.ComandoContacto;
+using System.Net;
 
 namespace Presentador.Contacto.ContactoPresentador
 {
