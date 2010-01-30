@@ -38,6 +38,7 @@ namespace Core.LogicaNegocio.Comandos.ComandosFactura
 
             IDAOFactura bdpropuestas = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
+
             bdpropuestas.ModificarEstadoFactura( _idFactura );
         }
     }

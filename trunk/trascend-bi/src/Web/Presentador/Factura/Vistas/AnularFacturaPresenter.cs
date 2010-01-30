@@ -40,8 +40,7 @@ namespace Presentador.Factura.Vistas
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID( factura );
 
                 factura = comandoConsultar.Ejecutar();
-
-                
+    
             }
             catch (ConsultarException e)
             {
