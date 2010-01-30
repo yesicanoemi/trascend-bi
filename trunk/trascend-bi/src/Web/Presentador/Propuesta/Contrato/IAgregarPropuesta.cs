@@ -23,8 +23,6 @@ namespace Presentador.Propuesta.Contrato
 
         TextBox ApellidoReceptor { get; set; }
 
-        TextBox CargoReceptor { get; set; }
-
         TextBox FechaInicio { get; set; }
 
         TextBox FechaFin { get; set; }
@@ -35,7 +33,7 @@ namespace Presentador.Propuesta.Contrato
 
         TextBox MontoTotal { get; set; }
 
-      
+        DropDownList CargoReceptor { get; set; }
 
         ObjectContainerDataSource ObtenerValorDataSource { get; set; }
 

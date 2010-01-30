@@ -16,7 +16,7 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
 {
     private AgregarPropuestaPresenter _presentador;
     private AgregarPropuestaPresenter _presentador2;
-    string _seleccion;
+   
     IList<string[]> _lista;
 
     #region Propiedades
@@ -50,7 +50,7 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxApellidoReceptor = value; }
     }
 
-    public TextBox CargoReceptor
+    public DropDownList CargoReceptor
     {
         get { return uxCargoReceptor; }
         set { uxCargoReceptor = value; }
@@ -80,9 +80,11 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxMontoTotal = value; }
     }
 
-   
-
-    
+    public MultiView MultiViewPropuesta
+    {
+        get { return uxMultiViewPropuesta; }
+        set { throw new System.NotImplementedException(); }
+    }
 
     public CheckBoxList TrabajoEquipo
     {
@@ -97,31 +99,12 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         set { uxobjectEmpleado = value; }
     }
 
-    
-
-   
-
-   
-
     public TextBox RolEquipo1
     {
         get { return Rol1; }
         set { Rol1 = value; }
     }
-
-  
-
-    
-
    
-
-    
-
-   
-
-   
-
-  
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -155,6 +138,8 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
             Response.Redirect(paginaSinPermiso);
         }
 
+        _presentador.ConsultarCargos();
+
     }
 
 
@@ -162,21 +147,28 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
     protected void Page_Load(object sender, EventArgs e)
     {
         
-
     }  
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         uxBotonAceptar.Visible = true;
+        MultiViewPropuesta.ActiveViewIndex = 0;
         _presentador.AgregarPropuesta();
-    }
 
-   
+    }
 
     public void Mensaje(string msg)
     {
         Label lbl = new Label();
         lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
         Page.Controls.Add(lbl);
+    }
+    protected void uxBotonSiguiente_Click(object sender, EventArgs e)
+    {
+        MultiViewPropuesta.ActiveViewIndex = 1;
+    }
+    protected void uxBotonAtras_Click(object sender, EventArgs e)
+    {
+        MultiViewPropuesta.ActiveViewIndex = 0;
     }
 }

@@ -10,6 +10,8 @@ using System.Resources;
 using System.Threading;
 using System.Globalization;
 using System.Configuration;
+using Core.LogicaNegocio.Fabricas;
+using Presentador.Reportes.Contrato;
 
 namespace Presentador.Propuesta.Vistas
 {
@@ -21,6 +23,8 @@ namespace Presentador.Propuesta.Vistas
         private IList<Core.LogicaNegocio.Entidades.Persona> Persona;
         private IList<string[]> lista;
         private IList<string[]> lista2;
+        private IList<string> cargo;
+
         #endregion
 
         #region Constructor
@@ -182,6 +186,25 @@ namespace Presentador.Propuesta.Vistas
         
 
             _vista.TotalHoras.Text = "";
+        }
+
+        public void ConsultarCargos()
+        {
+
+            Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+            IList<Entidad> Cargos = bd.ConsultarCargos();
+
+            List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
+
+            for (int i = 0; i < Cargos.Count; i++)
+            {
+                ListaCargos.Add((Core.LogicaNegocio.Entidades.Cargo)Cargos.ElementAt(i));
+            }
+
+            _vista.CargoReceptor.DataSource = ListaCargos;
+            _vista.CargoReceptor.DataTextField = "Nombre";
+            _vista.CargoReceptor.DataBind();
+
         }
 
         #endregion
