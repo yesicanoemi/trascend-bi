@@ -34,6 +34,11 @@ namespace Core.LogicaNegocio.Fabricas
             return new Consultar(cliente);
         }
 
+        public static ConsultarNombre CrearComandoConsultarNombre(Cliente cliente)
+        {
+            return new ConsultarNombre(cliente);
+        }
+
         public static ConsultarAreaNegocio CrearComandoConsultarAreaNegocio(IList<Cliente> cliente)
         {
             return new ConsultarAreaNegocio(cliente);

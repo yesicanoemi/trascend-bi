@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCliente
 {
-    class ConsultarNombre:Consultar
+    public class ConsultarNombre: Comando<Cliente>
     {
         #region variables
 
         private Cliente _cliente;
-        private IList<Cliente> _cliente2;
+
         
         #endregion
         #region constructor
@@ -27,10 +29,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         
         public IList<Cliente> ejecutar()
         {
-            Core.AccesoDatos.SqlServer.DAOClienteSQLServer acceso = new Core.AccesoDatos.SqlServer.DAOClienteSQLServer();
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+            IList<Cliente> clientes = new List<Cliente>();
+            IDAOCliente bdcliente = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
 
-            _cliente2 = acceso.ConsultarNombre(_cliente);
-            return _cliente2;
+
+         //   Core.AccesoDatos.SqlServer.DAOClienteSQLServer acceso = new Core.AccesoDatos.SqlServer.DAOClienteSQLServer();
+
+            clientes = bdcliente.ConsultarNombre(_cliente);
+            return clientes;
 
 
         }

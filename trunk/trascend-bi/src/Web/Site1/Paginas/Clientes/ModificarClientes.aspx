@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ModificarClientes.aspx.cs" Inherits="Paginas_Clientes_ModificarClientes" %>
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -21,8 +23,101 @@
                  <div class="features_overview_right"> 
                     <h3>Modificar Clientes</h3> 
                     <p class="large">
+                               
+                        <form id="Form1" action="#" runat="server">
                         
-                        
+                            <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
+                          
+                                <asp:View ID="ViewConsulta" runat="server">
+                          
+                                     <p>Introduzca los campos según su tipo de búsqueda</p> 
+                                    
+                               
+                                    
+                    
+                                    <table width="100%">
+                                          <tr>  
+                                            <td align="right">
+                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Font-Size="Small" RepeatDirection="Horizontal" RepeatLayout="Flow" 
+                                         TextAlign="Left"  Width="250px" 
+                                                    onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" 
+                                                    AutoPostBack="true" Height="16px">
+                                                    <asp:ListItem Value="1" Text="Nombre"></asp:ListItem> 
+                                                    <asp:ListItem Value="2" Text="Area De Negocio"></asp:ListItem>
+                                                </asp:RadioButtonList>
+                                            </td>
+                                           
+                                        
+                                            <td align="center">
+                                                <asp:TextBox ID="uxNombreCliente" runat="server" Visible="false">
+                                                </asp:TextBox>
+
+                                            </td>  
+                                            <td align="left">
+
+                                                <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
+                                                    Text="Buscar" Visible="false" />
+
+                                            </td>
+                                        </tr>
+                                        
+                                          <tr>
+                                            <td>
+                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                                            </td>
+                                            <td><asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
+                                                ControlToValidate="uxLogin" Visible="false"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreCliente%>" Font-Size="Smaller" Display="Static" />
+                                            </td>
+
+                                        </tr>
+                                        
+                                        </table>
+                                           		            
+        		            <table style="width:100%;">
+                                <tr>
+                                    <td align="center">
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                           </table>
+                                </asp:View>
+                                  <asp:View ID="ViewCliente" runat="server">
+
+                                    <p class="large">Datos del Cliente</p>                    
+
+                                    <form id="uxFormConsultarCliente">
+                                        <table style="width:100%;">
+                               <tr>
+                                   <td>Rif: </td>
+                                   <td><asp:TextBox ID="uxRif" runat="server" Enabled="false"></asp:TextBox></td>
+                               </tr>
+                                <tr>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>        		               
+		                        </tr>
+                               <tr>
+                                   <td>Nombre: </td>
+                                   <td><asp:TextBox ID="uxNombre" runat="server" Enabled="false"></asp:TextBox></td>
+                               </tr>
+                                 <tr>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>        		               
+		                        </tr>
+                               <tr>
+                                   <td>Area de Negocio: </td>
+                                   <td><asp:TextBox ID="uxAreaNegocio" runat="server" Enabled="false"></asp:TextBox></td>
+                               </tr> 
+                                      
+                                        </table>
+                                   </form>
+                                 </asp:View>
+                                   
+                            </asp:MultiView>
+                        </form>
                     </p> 
                  </div> 
               </div>

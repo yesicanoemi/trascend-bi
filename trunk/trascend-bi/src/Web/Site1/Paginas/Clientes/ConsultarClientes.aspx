@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarClientes.aspx.cs" Inherits="Paginas_Clientes_ConsultarClientes" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -35,7 +36,24 @@
                                     <asp:ListItem>Nombre</asp:ListItem>
                                     <asp:ListItem>Area de Negocio</asp:ListItem>                                    
                                     </asp:DropDownList></td>
-                                <td><asp:TextBox ID="uxValor" runat="server"></asp:TextBox></td>
+                                    
+                                <td><asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged"> </asp:TextBox></td>
+                                    <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
+                                                 TargetControlID="uxValor"
+                                                 CompletionInterval="1000"
+                                                 CompletionSetCount="20"
+                                                 UseContextKey="false"
+                                                 MinimumPrefixLength="1" 
+                                                 ServiceMethod="GetSuggestionsClienteNombre"
+                                                 DelimiterCharacters="; ,"
+                                                 ServicePath="../../SuggestionNames.asmx"
+                                                 EnableCaching="true"
+                                                 CompletionListCssClass="completionList"
+                                                 CompletionListHighlightedItemCssClass="itemHighlighted"
+                                                 CompletionListItemCssClass="listItem">
+                                              </AjaxControlToolkit:AutoCompleteExtender>
+                                     
+                                
                                 <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                         onclick="uxBotonAceptar_Click" /></td>
                             </tr>
