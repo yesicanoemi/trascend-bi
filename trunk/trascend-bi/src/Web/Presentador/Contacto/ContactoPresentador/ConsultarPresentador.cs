@@ -35,6 +35,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
         #endregion
 
+        #region Métodos
+
         /// <summary>
         /// Método que redirecciona al usuario a otra página (de consulta)
         /// </summary>
@@ -416,6 +418,8 @@ namespace Presentador.Contacto.ContactoPresentador
             CambiarVista(1);
 
         }
+
+        #endregion
 
         #region Comandos
 
