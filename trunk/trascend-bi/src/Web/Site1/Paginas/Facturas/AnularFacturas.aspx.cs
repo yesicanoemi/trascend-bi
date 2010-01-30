@@ -24,7 +24,7 @@ public partial class Paginas_Facturas_EliminarFacturas : PaginaBase, IAnularFact
         }
     }
 
-    public DetailsView DetalleFactura
+    public GridView DetalleFactura
     {
         get
         {

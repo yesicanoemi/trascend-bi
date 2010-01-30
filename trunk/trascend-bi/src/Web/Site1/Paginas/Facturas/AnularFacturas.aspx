@@ -37,8 +37,8 @@
                             </table>
                         </p>
                         <p class="small">
-                            <asp:DetailsView ID="uxDetalleFactura" runat="server" AutoGenerateRows="false">
-                                <Fields>
+                            <asp:GridView ID="uxDetalleFactura" runat="server" AutoGenerateRows="false">
+                                <Columns>
                                     <asp:BoundField DataField="IdFactura" runat="server"></asp:BoundField>
                                     <asp:BoundField DataField="Titulo" runat="server"></asp:BoundField>
                                     <asp:BoundField DataField="Descripcion" runat="server"></asp:BoundField>
@@ -54,8 +54,8 @@
                                             <asp:Label ID="lblmont" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.monto") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                </Fields>
-                            </asp:DetailsView>
+                                </Columns>
+                            </asp:GridView>
                         </p>
                         <p>
                             <br />

@@ -9,6 +9,6 @@ namespace Presentador.Factura.Contrato
     public interface IAnularFactura
     {
         TextBox NumeroFactura { get; set; }
-        DetailsView DetalleFactura { get; set; }
+        GridView DetalleFactura { get; set; }
     }
 }
