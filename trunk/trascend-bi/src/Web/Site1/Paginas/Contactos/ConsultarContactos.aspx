@@ -43,7 +43,7 @@
                                     
                                     <br />
                                     
-                                    <table width="100%">
+                                    <table width="">
                                           <tr>  
                                             <td align="right">
                                                 <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Width=""  
