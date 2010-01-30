@@ -24,6 +24,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         {
         }
 
+        public Anular(int idFactura)
+        {
+            _idFactura = idFactura;
+        }
+
         public Anular(int idFactura, string estado)
         {
             _idFactura = idFactura;
@@ -40,8 +45,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IDAOFactura bdpropuestas = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
-
-            bdpropuestas.ModificarEstadoFactura( _idFactura );
+            bdpropuestas.ModificarEstadoFactura( _idFactura , "Anulada");
         }
     }
 }

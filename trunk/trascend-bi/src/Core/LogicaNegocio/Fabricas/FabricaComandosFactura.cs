@@ -48,7 +48,7 @@ namespace Core.LogicaNegocio.Fabricas
     
         public static Anular CrearComandoAnular(int idFactura)
         {
-            return new Anular();
+            return new Anular(idFactura);
         }
     }
 }

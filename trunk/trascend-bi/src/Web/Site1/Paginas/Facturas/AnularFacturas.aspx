@@ -31,27 +31,27 @@
                                         <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
                                     </td>
                                     <td>
-                                        <asp:Button ID="uxBusquedaBoton" runat="server" Text="Buscar" />
+                                        <asp:Button ID="uxBusquedaBoton" runat="server" Text="Buscar" OnClick="uxBusquedaBoton_Click" />
                                     </td>
                                 </tr>
                             </table>
                         </p>
                         <p class="small">
-                            <asp:GridView ID="uxDetalleFactura" runat="server" AutoGenerateRows="false">
+                            <asp:GridView ID="uxDetalleFactura" runat="server" AutoGenerateRows="false" AutoGenerateColumns="false">
                                 <Columns>
-                                    <asp:BoundField DataField="IdFactura" runat="server"></asp:BoundField>
-                                    <asp:BoundField DataField="Titulo" runat="server"></asp:BoundField>
-                                    <asp:BoundField DataField="Descripcion" runat="server"></asp:BoundField>
-                                    <asp:BoundField DataField="Porcentaje" runat="server"></asp:BoundField>
-                                    <asp:BoundField DataField="FechaIngreso" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="N°" DataField="Numero" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="Titulo" DataField="Titulo" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="%" DataField="Procentajepagado" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" runat="server"></asp:BoundField>
                                     <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblprop" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.titulo") %>'></asp:Label>
+                                            <asp:Label ID="lblprop" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.Titulo") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Monto" AccessibleHeaderText="Monto">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblmont" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.monto") %>'></asp:Label>
+                                            <asp:Label ID="lblmont" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.MontoTotal") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -60,7 +60,7 @@
                         <p>
                             <br />
                             <br />
-                            <asp:Button ID="btAnular" runat="server" Text="Anular" />
+                            <asp:Button ID="btAnular" runat="server" Text="Anular" OnClick="btAnular_Click" />
                         </p>
                         </form>
                     </div>
