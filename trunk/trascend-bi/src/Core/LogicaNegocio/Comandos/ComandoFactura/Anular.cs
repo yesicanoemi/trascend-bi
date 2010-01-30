@@ -6,7 +6,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Interfaces;
 using Core.AccesoDatos;
 
-namespace Core.LogicaNegocio.Comandos.ComandosFactura
+namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
     public class Anular : Comando<Factura>
     {

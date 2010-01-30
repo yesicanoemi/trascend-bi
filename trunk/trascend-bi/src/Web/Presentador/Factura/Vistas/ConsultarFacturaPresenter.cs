@@ -173,7 +173,7 @@ namespace Presentador.Factura.Vistas
 
                 _vista.ResultadoPropuesta.DataBind();
 
-                Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas consulta =
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
                 IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
@@ -255,7 +255,7 @@ namespace Presentador.Factura.Vistas
 
                     _propuesta = PropuestaAux;
 
-                    Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarxNomPro factura =
+                    Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
                         Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
 
                     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
@@ -293,7 +293,7 @@ namespace Presentador.Factura.Vistas
 
 
 
-                    Core.LogicaNegocio.Comandos.ComandosFactura.Consultar factura2 =
+                    Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
 
                     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();
@@ -334,7 +334,7 @@ namespace Presentador.Factura.Vistas
 
                     _propuesta = PropuestaAux;
 
-                    Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarxNomPro factura =
+                    Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
                         Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
 
                     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
@@ -372,7 +372,7 @@ namespace Presentador.Factura.Vistas
 
 
 
-                    Core.LogicaNegocio.Comandos.ComandosFactura.Consultar factura2 =
+                    Core.LogicaNegocio.Comandos.ComandoFactura.Consultar factura2 =
                         Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultar();
 
                     IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas2 = factura2.Ejecutar();

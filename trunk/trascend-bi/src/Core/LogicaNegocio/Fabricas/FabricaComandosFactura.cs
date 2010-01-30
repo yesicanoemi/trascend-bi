@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.LogicaNegocio.Comandos.ComandosFactura;
+using Core.LogicaNegocio.Comandos.ComandoFactura;
 
 namespace Core.LogicaNegocio.Fabricas
 {

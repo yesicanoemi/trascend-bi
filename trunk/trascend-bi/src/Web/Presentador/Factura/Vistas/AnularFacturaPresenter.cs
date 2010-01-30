@@ -36,7 +36,7 @@ namespace Presentador.Factura.Vistas
 
                 factura.Numero = int.Parse(_vista.NumeroFactura.Text);
 
-                Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarxFacturaID comandoConsultar =
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID comandoConsultar =
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID( factura );
 
                 factura = comandoConsultar.Ejecutar();
@@ -54,7 +54,7 @@ namespace Presentador.Factura.Vistas
         {
             try
             {
-                Core.LogicaNegocio.Comandos.ComandosFactura.Anular comandoAnular =
+                Core.LogicaNegocio.Comandos.ComandoFactura.Anular comandoAnular =
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoAnular(
                 int.Parse(_vista.NumeroFactura.Text));
 

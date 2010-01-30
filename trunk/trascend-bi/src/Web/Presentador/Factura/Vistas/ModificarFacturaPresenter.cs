@@ -35,7 +35,7 @@ namespace Presentador.Factura.Vistas
 
              try
              {
-                 Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas consulta =
+                 Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
                  IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
@@ -48,7 +48,7 @@ namespace Presentador.Factura.Vistas
 
 
 
-                         Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarxNomPro factura =
+                         Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
 
                          IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
@@ -110,7 +110,7 @@ namespace Presentador.Factura.Vistas
 
             try
             {
-                Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas consulta =
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
                 IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
@@ -123,7 +123,7 @@ namespace Presentador.Factura.Vistas
 
 
 
-                        Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarxIDPro factura =
+                        Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxIDPro factura =
                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxIDPro(_propuesta);
 
                         IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
@@ -207,7 +207,7 @@ namespace Presentador.Factura.Vistas
                      float PorcCancelado = 0;
                      int i = 0;
 
-                     Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas consulta =
+                     Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas consulta =
                         Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
        
                      IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = consulta.Ejecutar();
@@ -220,7 +220,7 @@ namespace Presentador.Factura.Vistas
                              _vista.MontoTotal.Text = _propuesta.MontoTotal.ToString();
 
 
-                             Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarxNomPro factura =
+                             Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro factura =
                         Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
 
                              IList<Core.LogicaNegocio.Entidades.Factura> ListaFacturas = factura.Ejecutar();
@@ -281,7 +281,7 @@ namespace Presentador.Factura.Vistas
 
         public void Actualizar(Core.LogicaNegocio.Entidades.Factura factura)
         {
-            Core.LogicaNegocio.Comandos.ComandosFactura.Modificar actualizacion; //objeto del comando Ingresar.
+            Core.LogicaNegocio.Comandos.ComandoFactura.Modificar actualizacion; //objeto del comando Ingresar.
 
             //fábrica que instancia el comando Ingresar.
             actualizacion = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoModificar(factura);

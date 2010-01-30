@@ -9,7 +9,7 @@ using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
 using Core.AccesoDatos;
 using Core.AccesoDatos.Interfaces;
-namespace Core.LogicaNegocio.Comandos.ComandosFactura
+namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
     public class ConsultarPropuestas : Comando<Propuesta>
     {

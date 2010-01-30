@@ -50,7 +50,7 @@ namespace Presentador.Reportes.Vistas
 
         public IList<Core.LogicaNegocio.Entidades.Propuesta> GetPropuestasIntervalo(DateTime inicio, DateTime fin)
         {
-            Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas comandoConsulta =
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = comandoConsulta.Ejecutar();
