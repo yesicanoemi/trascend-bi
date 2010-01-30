@@ -185,13 +185,21 @@ namespace Presentador.Gasto.Vistas
                 listaGasto = ConsultaGasto(Id, "Propuesta");
                 _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                 _vista.GridViewParametro.Visible = false;
+                _vista.TablaSeleccionGrid.Visible = true;
             }
             else // Es por Cliente
             {
                 listaGasto = ConsultaGasto(-1, tipoConsulta);
                 _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                 _vista.GridViewParametro.Visible = false;
+                _vista.TablaSeleccionGrid.Visible = true;
             }
+        }
+
+        public void GastoDetalle(int Id)
+
+        {
+            listaGasto.ElementAt(1);
         }
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(int Opcion, string Parametro)

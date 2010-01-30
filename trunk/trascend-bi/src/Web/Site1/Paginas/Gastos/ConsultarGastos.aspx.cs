@@ -143,4 +143,8 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     {
         _presenter.busquedaparametrizado(-1,uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
+    protected void GastoDetallado(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.GastoDetalle(int.Parse(uxConsultaGasto.DataKeys[e.NewSelectedIndex].Value.ToString()));
+    }
 }

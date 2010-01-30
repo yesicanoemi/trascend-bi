@@ -38,7 +38,7 @@
 		                <tr>
 		                    <td>
                                 <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
-                                    Font-Size="X-Small" Height="51px" Width="257px">                                    
+                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="257px">                                    
                                     <asp:ListItem Value="0">Propuesta</asp:ListItem>
                                     <asp:ListItem Value="1">Cliente</asp:ListItem>
                                     <asp:ListItem Value="2">Rif</asp:ListItem>
@@ -58,15 +58,20 @@
 		            </table>
 		            <table id="uxTablaParametros" runat="server" visible="false">
 		                <tr>
-		                    <td><h3>Parametros Coincidentes<asp:GridView ID="uxGridParamCoincidente" runat="server" AllowPaging="True" DataSourceID="uxObjectParamCoinci"
+		                    <td><h3><asp:GridView ID="uxGridParamCoincidente" runat="server" AllowPaging="True" DataSourceID="uxObjectParamCoinci"
                                                 AutoGenerateColumns="false" DataKeyNames="ID" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizado"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" TextAlign="Left">
                                                 
                                                 <Columns>
                                                 
                                                         <asp:BoundField HeaderText="Coincidencias" DataField="Titulo"/>   
                                                                                                              
                                                 </Columns>
+                                                <EmptyDataTemplate>
+                                                        <center>
+                                                            <span>No hay data cargada</span>
+                                                        </center>
+                                                </EmptyDataTemplate>            
                                                 
                             </asp:GridView>
 			                    </h3></td>
@@ -85,7 +90,7 @@
 		                 <tr>
 		                    <td><h3><asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" DataSourceID="uxObjectCliente"
                                                 AutoGenerateColumns="false" DataKeyNames="nombre" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizadocliente"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" TextAlign="Left">
                                                 
                                                 <Columns>
                                                 
@@ -93,6 +98,11 @@
                                                         <asp:BoundField HeaderText="Nombre" DataField="nombre"/>   
                                                                                                              
                                                 </Columns>
+                                                <EmptyDataTemplate>
+                                                        <center>
+                                                            <span>No hay data cargada</span>
+                                                        </center>
+                                                </EmptyDataTemplate>            
                                                 
                             </asp:GridView>
 			                    </h3></td>
@@ -107,20 +117,23 @@
 			                    &nbsp;</td>
 			            </tr>
 		            </table>
-		            <table id="uxTablaSeleccion" runat="server">
+		            <table id="uxTablaSeleccion" runat="server" visible = "false">
 		                <tr>
 		                    <td><h3>Datos del Gasto<asp:GridView ID="uxConsultaGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaGasto"
-                                                AutoGenerateColumns="false" DataKeyNames="codigo" AutoGenerateSelectButton="true"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
+                                                AutoGenerateColumns="false" DataKeyNames="codigo"
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" TextAlign="Center">
                                                 
                                                 <Columns>
-                                                        <asp:BoundField HeaderText="" />
-                                                        <asp:BoundField HeaderText="" />                                          
-                                                        <asp:BoundField HeaderText="Tipo" DataField="tipo"/>                                                        
-                                                        <asp:BoundField HeaderText="" DataField="" /> 
-                                                        <asp:BoundField HeaderText="Monto" DataField="monto" />                                                         
-                                                        <asp:BoundField HeaderText="        " DataField="" />
-                                                        <asp:BoundField HeaderText="        " DataField="" />
+                                                        
+                                                        <asp:BoundField  HeaderText="Codigo de la Version" DataField="idVersion"/>
+                                                                                                 
+                                                        <asp:BoundField  HeaderText="Tipo" DataField="tipo"/>
+                                                                                                                
+                                                        <asp:BoundField  HeaderText="Monto" DataField="monto" />
+                                                                                                                 
+                                                        <asp:BoundField  HeaderText="Gasto Realizado el dia" DataField="fechaGasto" />
+                                                         
+                                                        <asp:BoundField  HeaderText="Ingresó al sistema" DataField="fechaIngreso" />
                                                 </Columns>
                                                 <EmptyDataTemplate>
                                                         <center>

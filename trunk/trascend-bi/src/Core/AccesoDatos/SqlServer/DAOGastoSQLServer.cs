@@ -191,6 +191,7 @@ namespace Core.AccesoDatos.SqlServer
                     gastocons.FechaIngreso = (DateTime)reader["FechaIngreso"];
                     gastocons.Tipo = (string)reader["Tipo"];
                     gastocons.Descripcion = (string)reader["Descripcion"];
+                    gastocons.IdVersion = (int)reader["IdVersion"];
 
                     _ListaGastos.Add(gastocons);
                 }
