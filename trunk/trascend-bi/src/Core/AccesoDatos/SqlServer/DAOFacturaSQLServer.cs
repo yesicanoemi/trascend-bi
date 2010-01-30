@@ -67,10 +67,6 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
         public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
         {
-            if (propuesta == null)
-                throw new ConsultarFacturaADException();
-            else if (propuesta.Titulo.Equals(""))
-                throw new ConsultarFacturaADException();
 
             IList<Propuesta> propuestas = ConsultarPropuesta();
 
@@ -86,7 +82,7 @@ namespace Core.AccesoDatos.SqlServer
 
                         SqlParameter[] arParms = new SqlParameter[1];
 
-                        arParms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+                        arParms[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
 
                         arParms[0].Value = propuesta.Titulo;
 
@@ -97,21 +93,23 @@ namespace Core.AccesoDatos.SqlServer
                         {
                             Factura factura = new Factura();
 
-                            factura.Numero = (int)reader["IdFactura"];
+                            factura.Numero = int.Parse(reader["IdFactura"].ToString());
 
-                            factura.Titulo = (string)reader["Titulo"];
+                            factura.Titulo = reader["Titulo"].ToString();
 
-                            factura.Descripcion = (string)reader["Descripcion"];
+                            factura.Descripcion = reader["Descripcion"].ToString();
 
                             factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
-                            factura.Fechapago = (DateTime)reader["Fecha"];
+                            factura.Fechapago = DateTime.Parse(reader["Fecha"].ToString());
 
-                            factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+                            factura.Fechaingreso = DateTime.Parse(reader["FechaIngreso"].ToString());
 
-                            factura.Estado = (string)reader["Estado"];
+                            factura.Estado = reader["EstadoFactura"].ToString();
 
-                            factura.Prop = propuesta;
+                            factura.Prop.Titulo = reader["TituloPropuesta"].ToString();
+
+                            factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
 
                             facturas.Add(factura);
 
@@ -150,10 +148,6 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns>Lista con las facturas correspondientes a la propuesta</returns>
         public IList<Factura> ConsultarFacturasIDPro(Propuesta propuesta)
         {
-            if (propuesta == null)
-                throw new ConsultarFacturaADException();
-            else if (propuesta.Id == 0)
-                throw new ConsultarFacturaADException();
 
             IList<Propuesta> propuestas = ConsultarPropuesta();
 
@@ -163,7 +157,6 @@ namespace Core.AccesoDatos.SqlServer
             {
                 foreach (Propuesta propuestaAux in propuestas)
                 {
-                    Console.WriteLine(propuestaAux.Id);
 
                     if (propuesta.Id == propuestaAux.Id)
                     {
@@ -242,16 +235,12 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                if (factura == null)
-                    throw new ConsultarFacturaADException();
-                else if (factura.Numero == 0)
-                    throw new ConsultarFacturaADException();
 
                 factura.Prop = new Propuesta();
 
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@NumeroFactura", SqlDbType.Int);
+                arParms[0] = new SqlParameter("@IdFactura", SqlDbType.Int);
 
                 arParms[0].Value = factura.Numero;
 
@@ -260,21 +249,23 @@ namespace Core.AccesoDatos.SqlServer
 
                 if (reader.Read())
                 {
-                    factura.Numero = (int)reader["IdFactura"];
+                    factura.Numero = int.Parse(reader["IdFactura"].ToString());
 
-                    factura.Titulo = (string)reader["Titulo"];
+                    factura.Titulo = reader["Titulo"].ToString();
 
-                    factura.Descripcion = (string)reader["Descripcion"];
+                    factura.Descripcion = reader["Descripcion"].ToString();
 
                     factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
-                    factura.Fechapago = (DateTime)reader["Fecha"];
+                    factura.Fechapago = DateTime.Parse(reader["Fecha"].ToString());
 
-                    factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
+                    factura.Fechaingreso = DateTime.Parse(reader["FechaIngreso"].ToString());
 
-                    factura.Estado = (string)reader["Estado"];
+                    factura.Estado = reader["EstadoFactura"].ToString();
 
-                    factura.Prop.Id = (int)reader["IdPropuesta"];
+                    factura.Prop.Titulo = reader["TituloPropuesta"].ToString();
+
+                    factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
 
                 }
                 else
@@ -392,25 +383,25 @@ namespace Core.AccesoDatos.SqlServer
                     //{
                         SqlParameter[] arparms = new SqlParameter[7];
 
-                        arparms[0] = new SqlParameter("@titulo", SqlDbType.VarChar);
+                        arparms[0] = new SqlParameter("@Titulo", SqlDbType.VarChar);
                         arparms[0].Value = factura.Titulo;
 
-                        arparms[1] = new SqlParameter("@descripcion", SqlDbType.VarChar);
+                        arparms[1] = new SqlParameter("@Descripcion", SqlDbType.VarChar);
                         arparms[1].Value = factura.Descripcion;
 
-                        arparms[2] = new SqlParameter("@porcentaje", SqlDbType.Float);
+                        arparms[2] = new SqlParameter("@Porcentaje", SqlDbType.Float);
                         arparms[2].Value = factura.Procentajepagado;
 
-                        arparms[3] = new SqlParameter("@fecha", SqlDbType.SmallDateTime);
+                        arparms[3] = new SqlParameter("@Fecha", SqlDbType.SmallDateTime);
                         arparms[3].Value = factura.Fechapago.ToShortDateString();
 
-                        arparms[4] = new SqlParameter("@fechaingreso", SqlDbType.SmallDateTime);
+                        arparms[4] = new SqlParameter("@FechaIngreso", SqlDbType.SmallDateTime);
                         arparms[4].Value = factura.Fechaingreso.ToShortDateString();
 
-                        arparms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
+                        arparms[5] = new SqlParameter("@Estado", SqlDbType.VarChar);
                         arparms[5].Value = factura.Estado;
 
-                        arparms[6] = new SqlParameter("@idpropuesta", SqlDbType.Int);
+                        arparms[6] = new SqlParameter("@TituloPropuesta", SqlDbType.VarChar);
                         arparms[6].Value = factura.Prop.Id;
 
                         int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarFactura", arparms);
@@ -524,6 +515,37 @@ namespace Core.AccesoDatos.SqlServer
                 return new Factura();
         }
 
+        public Factura ModificarEstadoFactura(Factura factura)
+        {
+            bool valido = false;
+            try
+            {
+                SqlParameter[] arparms = new SqlParameter[2];
+
+                arparms[0] = new SqlParameter("@IdFactura", SqlDbType.Int);
+                arparms[0].Value = factura.Numero;
+
+                arparms[1] = new SqlParameter("@Estado", SqlDbType.VarChar);
+                arparms[1].Value = factura.Estado;
+
+                int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarEstadoFactura", arparms);
+
+                valido = true;
+            }
+            catch (SqlException e)
+            {
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ModificarFacturaADException("Error de SQL modificando una factura en la Base de Datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ModificarFacturaADException("Error modificando una factura en la Base de Datos", e);
+            }
+
+            if (valido)
+                return factura;
+            else
+                return new Factura();
+        }
 
 
         #endregion
