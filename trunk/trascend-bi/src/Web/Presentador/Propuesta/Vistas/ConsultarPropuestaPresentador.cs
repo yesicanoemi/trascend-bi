@@ -185,7 +185,7 @@ namespace Presentador.Propuesta.Vistas
             _vista.TextParametro.Visible = false;
         }
 
-        private IList<Core.LogicaNegocio.Entidades.Propuesta>
+        public IList<Core.LogicaNegocio.Entidades.Propuesta>
             LlenarListaParametro(int Opcion , string parametro)
         {
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;

@@ -18,7 +18,7 @@ namespace Core.AccesoDatos.Interfaces
         /// </summary>
         /// <param name="propuesta">Entidad con los datos del Gasto</param>
         /// <returns>Lista génerica con las entidades gastos consultadas</returns>
-        IList<Gasto> ConsultarGasto(Gasto gasto);
+        IList<Gasto> ConsultarGasto(int Opcion , string Parametro);
 
         /// <summary>
         /// Firma del método Consultar Gasto,

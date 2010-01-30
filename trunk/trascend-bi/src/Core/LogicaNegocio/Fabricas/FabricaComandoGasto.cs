@@ -21,9 +21,9 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new EliminarGasto(gasto);
         }
-        public static ConsultarGasto CrearComandoConsultar(Gasto gasto)
+        public static ConsultarGasto CrearComandoConsultar( int Opcion, string Parametro )
         {
-            return new ConsultarGasto(gasto);
+            return new ConsultarGasto( Opcion, Parametro );
         }
         public static ConsultarGastoPorTipo CrearComandoConsultarPorTipo(IList<Gasto> listaGasto)
         {
@@ -33,6 +33,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarGastoPorPropuesta(propuesta);
         }
+       /* public static ConsultarGastoPorPropuesta CrearComandoConsultarGasto(int Opcion, string Parametro)
+        {
+            return new ConsultarGastoPorPropuesta( Opcion , Parametro );
+        }*/
         public static ConsultarGastoPorFecha CrearComandoConsultarPorFecha(Gasto gasto)
         {
             return new ConsultarGastoPorFecha(gasto);

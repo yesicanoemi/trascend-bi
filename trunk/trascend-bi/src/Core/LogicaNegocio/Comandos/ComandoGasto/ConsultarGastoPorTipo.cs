@@ -10,6 +10,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
     public class ConsultarGastoPorTipo
     {
         private Gasto gasto;
+        private Propuesta _propuesta;
         private IList<Gasto> listagastos = null;
 
         #region Constructor
@@ -18,6 +19,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         public ConsultarGastoPorTipo(Gasto _gasto)
         {
             gasto = _gasto;
+        }
+        public ConsultarGastoPorTipo(Propuesta propuesta)
+        {
+            _propuesta = propuesta;
         }
 
         /// <summary> Contructor de la Clase 'ConsultarGasto' </summary>

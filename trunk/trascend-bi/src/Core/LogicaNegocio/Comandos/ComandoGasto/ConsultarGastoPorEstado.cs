@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
@@ -11,6 +13,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
     {
         private Gasto gasto;
         private IList<Gasto> listaGasto;
+        private int _Opcion;
+        private string _Parametro;
 
         #region Constructor
 
@@ -23,6 +27,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         {
             listaGasto = _listaGasto;
         }
+        public ConsultarGastoPorEstado(int Opcion , string Parametro)
+        {
+            _Opcion = Opcion;
+            _Parametro = Parametro;
+        }
+
 
         #endregion
 
@@ -30,8 +40,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
 
         public IList<Gasto> Ejecutar()
         {
-            DAOGastoSQLServer bd = new DAOGastoSQLServer();
-            listaGasto = bd.ConsultarGastoPorEstado(gasto);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOGasto bdgastos = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOGasto();
+            listaGasto = bdgastos.ConsultarGastoPorEstado(gasto);
 
             return listaGasto;
         }

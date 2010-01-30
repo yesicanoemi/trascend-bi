@@ -7,6 +7,7 @@ using Presentador.Gasto.Contrato;
 using Presentador.Gasto.Vistas;
 using Core.LogicaNegocio.Entidades;
 using Microsoft.Practices.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGasto
 {
@@ -41,10 +42,51 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         set { throw new System.NotImplementedException(); }
     }
 
+    public GridView GridViewParametro
+    {
+        get { return uxGridParamCoincidente; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public GridView GridViewCliente
+    {
+        get { return uxGridCliente; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     public ObjectContainerDataSource GetObjectContainerConsultaGasto
     {
         get { return uxObjectConsultaGasto; }
         set { uxObjectConsultaGasto = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerConsultaGastoSeleccion
+    {
+        get { return uxObjectParamCoinci; }
+        set { uxObjectParamCoinci = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerCliente
+    {
+        get { return uxObjectCliente; }
+        set { uxObjectCliente = value; }
+    }
+
+    public HtmlTable TablaSeleccionGrid
+    {
+        get { return uxTablaSeleccion; }
+        set { uxTablaSeleccion = value; }
+    }
+    public HtmlTable TablaConsultaParametro
+    {
+        get { return uxTablaParametros; }
+        set { uxTablaParametros = value; }
+    }
+
+    public HtmlTable TablaCliente
+    {
+        get { return uxTablaCliente; }
+        set { uxTablaCliente = value; }
     }
 
     #endregion
@@ -86,4 +128,19 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     
     #endregion    
     
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void parametrizado(object sender, GridViewSelectEventArgs e)
+    {
+        
+        _presenter.busquedaparametrizado(int.Parse(uxGridParamCoincidente.DataKeys[e.NewSelectedIndex].Value.ToString()),"Propuesta");
+    }
+
+    protected void parametrizadocliente(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.busquedaparametrizado(-1,uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
 }

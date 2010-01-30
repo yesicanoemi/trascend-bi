@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Gasto.Contrato;
 using Presentador.Propuesta.Vistas;
+using Presentador.Cliente.Vistas;
 using System.Net;
 using System.Collections;
 
@@ -21,6 +22,7 @@ namespace Presentador.Gasto.Vistas
         private Core.LogicaNegocio.Entidades.Propuesta propuesta;
         private Core.LogicaNegocio.Entidades.Gasto gasto;
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGasto;
+        private IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente;
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGastoAux;
         private IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
         private ConsultarPropuestaPresentador _presentadorPropuesta;        
@@ -84,23 +86,35 @@ namespace Presentador.Gasto.Vistas
         }
         */
 
-        public void BuscarInformacion()
+        public void BuscarInformacion() // 
         {
+            #region Atributos de la pagina
+            _vista.BotonBuscarDatos.Visible = false;
+            _vista.BusquedaConsulta.Visible = false;
+            _vista.CheckOpcionBuscar.Visible = false;
+            _vista.LTipoConsulta.Visible = false;
+           
+
+            #endregion
+
             listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
-            listaGastoAux = new List<Core.LogicaNegocio.Entidades.Gasto>();
+            
+            int Opcion = _vista.CheckOpcionBuscar.SelectedIndex;
+            string Parametro = _vista.BusquedaConsulta.Text;
+           
 
             if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // La Seleccion fue por Propuesta
             {
-                propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
-                propuesta.Titulo = _vista.BusquedaConsulta.Text;
-
-                listaGasto = ConsultarPorPropuesta(propuesta);
+                
+                ConsultarPropuestaPresentador _presentadorPropuesta2 = new ConsultarPropuestaPresentador();
+                listaPropuesta = _presentadorPropuesta2.LlenarListaParametro( 1 , Parametro );
 
                 try
                 {
-                    if (listaGasto != null)
-                    {
-                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                    if (listaPropuesta != null)
+                    { 
+                        _vista.GetObjectContainerConsultaGastoSeleccion.DataSource = listaPropuesta;
+                        _vista.TablaConsultaParametro.Visible = true;
                     }
                 }
 
@@ -111,26 +125,28 @@ namespace Presentador.Gasto.Vistas
 
             }
 
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Nombre Cliente
             {
-                gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.Tipo = _vista.BusquedaConsulta.Text;
+              
+                // Se crea la entidad Cliente que es necesaria para el comando consultar de cliente
+                Core.LogicaNegocio.Entidades.Cliente cliente = 
+                    new Core.LogicaNegocio.Entidades.Cliente();
 
-                listaGasto = ConsultaGasto(gasto);
+                cliente.Nombre = _vista.BusquedaConsulta.Text;
+
+
+                // Instancia del presentador
+                ConsultarClientePresentador _presentadorcliente =
+                    new ConsultarClientePresentador();
+
+                // Llamado al metodo
+                listaCliente = _presentadorcliente.ConsultarClienteNombre(cliente);
 
                 try
                 {
-                    if (listaGasto != null)
-                    {
-                        for (int i = 0; i < listaGasto.Count; i++)
-                        {
-                            if (listaGasto.ElementAt(i).Tipo.Equals(_vista.BusquedaConsulta.Text))
-                            {
-                                listaGastoAux.Add(listaGasto.ElementAt(i));
-                            }
-
-                        }
-                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGastoAux;
+                    if (listaCliente != null)
+                    {   
+                        //_vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                     }
                 }
 
@@ -139,7 +155,7 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por Estado
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por Rif Cliente
             {
                 gasto = new Core.LogicaNegocio.Entidades.Gasto();
                 gasto.Estado = _vista.BusquedaConsulta.Text;
@@ -162,11 +178,27 @@ namespace Presentador.Gasto.Vistas
             }
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(Core.LogicaNegocio.Entidades.Gasto _gasto)
+        public void busquedaparametrizado(int Id, string tipoConsulta)
+        {
+            if (tipoConsulta.Equals("Propuesta")) // Es por Propuesta
+            {
+                listaGasto = ConsultaGasto(Id, "Propuesta");
+                _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                _vista.GridViewParametro.Visible = false;
+            }
+            else // Es por Cliente
+            {
+                listaGasto = ConsultaGasto(-1, tipoConsulta);
+                _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                _vista.GridViewParametro.Visible = false;
+            }
+        }
+
+        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(int Opcion, string Parametro)
         {
             Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGasto _consultaGasto;
 
-            _consultaGasto = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultar(_gasto);
+            _consultaGasto = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultar( Opcion , Parametro);
 
             listaGasto = _consultaGasto.Ejecutar();
 
@@ -185,16 +217,16 @@ namespace Presentador.Gasto.Vistas
             return listaGasto;
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorPropuesta(Core.LogicaNegocio.Entidades.Propuesta _propuesta)
+        /*public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarGastos( int Opcion, string Parametro )
         {
-            Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGastoPorPropuesta _ConsultaPorPropuesta;
+            Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGastoPorPropuesta _ConsultarGastos;
 
-            _ConsultaPorPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultarPorPropuesta(_propuesta);
+            _ConsultarGastos = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultarPorPropuesta(_propuesta);
 
             listaGasto = _ConsultaPorPropuesta.Ejecutar();
 
             return listaGasto;
-        }
+        }*/
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorFecha(Core.LogicaNegocio.Entidades.Gasto _gasto)
         {

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
     public class ConsultarGasto : Comando<Gasto>
     {
-        private Gasto gasto;
+        //private Gasto gasto;
+        private string _Parametro;
+        private int _Opcion;
         private IList<Gasto> listagastos = null;
 
         #region Constructor
@@ -19,9 +22,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         { }
 
         /// <summary>Constructor de la clase 'Consultar'.</summary>
-        public ConsultarGasto(Gasto gasto)
+        public ConsultarGasto( int Opcion, string Parametro )
         {
-            this.gasto = gasto;
+
+            _Opcion = Opcion;
+            _Parametro = Parametro;
+   
         }
 
         #endregion
@@ -29,8 +35,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
         #region Metodos
         public IList<Gasto> Ejecutar()
         {
-            DAOGastoSQLServer bd = new DAOGastoSQLServer();
-            listagastos = bd.ConsultarGasto(gasto);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOGasto bdgastos = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOGasto();
+            listagastos = bdgastos.ConsultarGasto( _Opcion, _Parametro);
 
             return listagastos;
         }

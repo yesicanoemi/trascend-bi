@@ -135,10 +135,12 @@ namespace Presentador.Gasto.Vistas
 
             if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Tipo de Gasto
             {
-                gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.Tipo = _vista.BusquedaConsulta.Text;
+                int Opcion = 0;
+                string Parametro = _vista.BusquedaConsulta.Text;
+                //gasto = new Core.LogicaNegocio.Entidades.Gasto();
+                //gasto.Tipo = _vista.BusquedaConsulta.Text;
 
-                listaGasto = ConsultaGasto(gasto);
+               // listaGasto = ConsultaGasto(Opcion , Parametro);
 
                 try
                 {
@@ -220,11 +222,11 @@ namespace Presentador.Gasto.Vistas
             }
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(Core.LogicaNegocio.Entidades.Gasto _gasto)
+        public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultaGasto(int Opcion , string Parametro)
         {
             Core.LogicaNegocio.Comandos.ComandoGasto.ConsultarGasto _consultaGasto;
 
-            _consultaGasto = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultar(_gasto);
+            _consultaGasto = Core.LogicaNegocio.Fabricas.FabricaComandoGasto.CrearComandoConsultar(Opcion,Parametro);
 
             listaGasto = _consultaGasto.Ejecutar();
 

@@ -570,7 +570,7 @@ namespace Core.AccesoDatos.SqlServer
                 parametros.Value = entidad.Nombre;
 
                 DbDataReader conexion =
-                SqlHelper.ExecuteReader(GetConnection(), "ConsultarClienteParametroNombre", parametros);
+                SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarClienteParametroNombre", parametros);
 
                 int i = 0;
 
@@ -580,7 +580,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     Cliente _Cliente = new Cliente();
 
-                    _Cliente.IdCliente = (int)conexion["clienteId"];
+                    _Cliente.IdCliente = (int)conexion["IdCliente"];
 
                     _Cliente.Nombre = (string)conexion["Nombre"];
                     

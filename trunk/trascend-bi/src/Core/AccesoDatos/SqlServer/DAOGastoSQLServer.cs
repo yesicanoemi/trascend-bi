@@ -18,6 +18,8 @@ namespace Core.AccesoDatos.SqlServer
     {
         #region Propiedades
         IConexion _conexion = new FabricaConexion().getConexionSQLServer();
+        Gasto _gasto = new Gasto();
+        List<Gasto> _ListaGastos = new List<Gasto>();
         #endregion
 
         #region Constructor
@@ -152,42 +154,59 @@ namespace Core.AccesoDatos.SqlServer
         /// <param name="gasto"></param>
         /// <returns></returns>
 
-        public IList<Gasto> ConsultarGasto(Core.LogicaNegocio.Entidades.Gasto gasto)
+        public IList<Gasto> ConsultarGasto( int Opcion , string Parametro )
         {
-            IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
+           
 
             try
             {
-                SqlParameter[] parametro = new SqlParameter[1];
+                SqlParameter[] parametroconsulta = new SqlParameter[1];
+                
+                DbDataReader reader = null;
 
-                parametro[0] = new SqlParameter("@Tipo", SqlDbType.VarChar);
-                parametro[0].Value = gasto.Tipo;
-
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGastoPorTipo", parametro);
-
-                while (reader.Read())
+                if ( Parametro.Equals("Propuesta") ) // Id Propuesta
                 {
-                    Gasto _gasto = new Gasto();
-
-                    _gasto.Codigo = (int)reader["IdGasto"];
-                    _gasto.Estado = (string)reader["Estado"];
-                    _gasto.Monto = float.Parse(reader["Monto"].ToString());
-                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
-                    _gasto.FechaIngreso = (DateTime)reader["FechaIngreso"];
-                    _gasto.Tipo = (string)reader["Tipo"];
-                    _gasto.Descripcion = (string)reader["Descripcion"];
-
-                    gastos.Add(_gasto);
+                    parametroconsulta[0] = new SqlParameter("@Parametro", SqlDbType.Int);
+                    parametroconsulta[0].Value = Opcion;
+                    reader = SqlHelper.ExecuteReader
+                        ( _conexion.GetConnection(), "ConsultarGastoPorPropuesta", parametroconsulta );
                 }
+                if ( Opcion == -1 ) // Nombre Cliente
+                {
+                    parametroconsulta[0] = new SqlParameter("@Parametro", SqlDbType.VarChar);
+                    parametroconsulta[0].Value = Parametro;
+                    reader = SqlHelper.ExecuteReader
+                        ( _conexion.GetConnection(), "ConsultarGastoNomCli", parametroconsulta );
+                }
+               
+      
+
+                while ( reader.Read() )
+                {
+                    Gasto gastocons = new Gasto();
+                    gastocons.Codigo = (int)reader["IdGasto"];
+                    gastocons.Estado = (string)reader["Estado"];
+                    gastocons.Monto = float.Parse(reader["Monto"].ToString());
+                    gastocons.FechaGasto = (DateTime)reader["Fecha"];
+                    gastocons.FechaIngreso = (DateTime)reader["FechaIngreso"];
+                    gastocons.Tipo = (string)reader["Tipo"];
+                    gastocons.Descripcion = (string)reader["Descripcion"];
+
+                    _ListaGastos.Add(gastocons);
+                }
+
+                return _ListaGastos;
             }
+
             catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo= -1;
-                System.Console.Write(e);
+                return null;
+                //_gastos.ElementAt(0).Codigo= -1;
+                //System.Console.Write(e);
             }
 
 
-            return gastos;
+            
         }
 
         public IList<Gasto> ConsultarGastoPorTipo()
