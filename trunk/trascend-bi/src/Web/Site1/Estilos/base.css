@@ -8,7 +8,7 @@ body#home{font-family:"Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-s
 .container{width:928px;margin:0 auto;}
 .content{width:928px;float:left;}
 .hide{display:none;}
-table{width:100%;margin-bottom:1.4em;border-collapse:collapse;border:1px solid #ddd;}
+/*table{width:100%;margin-bottom:1.4em;border-collapse:collapse;border:1px solid #ddd;}*/
 table caption{text-align:center;font-size:1.2em;font-weight:bold;}
 th{border-bottom:1px solid #DAC1A7;font-weight:bold;font-size:110%;background:#fff url(../Images/table-th-bg.gif) repeat-x left bottom;color:#c60;}
 td{color:#5d5d5d;border-bottom:1px solid #cee1f3;}

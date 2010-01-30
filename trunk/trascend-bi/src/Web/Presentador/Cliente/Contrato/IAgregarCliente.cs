@@ -19,8 +19,10 @@ namespace Presentador.Cliente.Contrato
         TextBox AreaNegocioCliente { get; set; }
         TextBox TelefonoTrabajoCliente { get; set; }
         TextBox CodigoTrabajoCliente { get; set; }
-        RadioButtonList TipoTelefono { get; set; }
-
+        TextBox TelefonoCelular { get; set; }
+        TextBox CodCelular { get; set; }
+        TextBox TelefonoFax { get; set; }
+        TextBox CodFax { get; set; }
         
         #endregion
 

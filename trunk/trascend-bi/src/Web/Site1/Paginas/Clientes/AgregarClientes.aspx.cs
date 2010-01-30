@@ -77,13 +77,30 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         get { return uxCodTrabajo; }
         set { uxCodTrabajo = value; }
     }
-    
-    public RadioButtonList TipoTelefono
+
+    public TextBox TelefonoCelular
     {
-        get { return uxTipoTelefono; }
-        set { uxTipoTelefono = value; }
+        get { return uxTelefonoCelular; }
+        set { uxTelefonoCelular = value; }
     }
-    
+
+    public TextBox CodCelular
+    {
+        get { return uxCodCelular; }
+        set { uxCodCelular = value; }
+    }
+
+    public TextBox TelefonoFax
+    {
+        get { return uxTelefonoFax; }
+        set { uxTelefonoFax = value; }
+    }
+
+    public TextBox CodFax
+    {
+        get { return uxCodFax; }
+        set { uxCodFax = value; }
+    }
 
     #endregion
 
@@ -127,11 +144,4 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
 
     }
 
-    protected void AgregarContacto_Click(object sender, EventArgs e)
-    {
-        _presentador.IngersarCliente();
-        
-        Response.Redirect("~/Paginas/Contactos/AgregarContactos.aspx");
-        
-    }
 }

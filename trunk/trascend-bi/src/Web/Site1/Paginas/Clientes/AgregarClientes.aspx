@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarClientes.aspx.cs" Inherits="Paginas_Clientes_AgregarClientes" %>
 
+<%@ Register Src="../../ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+                  <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -29,160 +32,213 @@
             <h3>Agregar Clientes</h3>
             <p class="large">Introduzca la informacón a continuación</p> 
             <p class="large">
-                  <form id="form1" runat="server">
                            <table style="width:100%;">
                                <tr>
-                                   <td>RIF:</td>
-                                   <td><asp:TextBox ID="uxRif" runat="server"></asp:TextBox>&nbsp;
-                                       <span style="color: #FF0000">(*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>RIF:</td>
+                                   <td>
+                                       <asp:DropDownList ID="DropDownList_uxRif" runat="server" Width="40px">
+                                           <asp:ListItem Value="0">--</asp:ListItem>
+                                           <asp:ListItem Value="J">J</asp:ListItem>
+                                           <asp:ListItem Value="G">G</asp:ListItem>
+                                           <asp:ListItem Value="V">V</asp:ListItem>
+                                           <asp:ListItem Value="E">E</asp:ListItem>
+                                       </asp:DropDownList>
+                                       &nbsp;&nbsp; -<asp:TextBox ID="uxRif" runat="server" MaxLength="9" Width="87px"></asp:TextBox>&nbsp;<span style="color: #FF0000"> </span><AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender5" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxRif" >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                   </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxRif"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxRif"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" />
                                                 
                                    </td>
                                </tr>
                                <tr>
-                                   <td>Nombre:</td>
-                                   <td><asp:TextBox ID="uxNombreCliente" runat="server"></asp:TextBox>&nbsp;
-                                       <span style="color: #FF0000">(*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>Nombre:</td>
+                                   <td><asp:TextBox ID="uxNombreCliente" runat="server" MaxLength="32"></asp:TextBox>&nbsp;</td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxNombreCliente"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxNombreCliente"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" /></td>
                                </tr>
                                <tr>
-                                   <td>Calle/Avenida</td>
-                                   <td><asp:TextBox ID="uxAvenidaCalle" runat="server"></asp:TextBox>&nbsp;
-                                       <span style="color: #FF0000">(*)</span><tr>
+                                   <td><span style="color: #FF0000">* </span>Calle/Avenida</td>
+                                   <td><asp:TextBox ID="uxAvenidaCalle" runat="server" MaxLength="32"></asp:TextBox>&nbsp;
+                                       <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="uxAvenidaCalle"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="uxAvenidaCalle"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" />
                                    </td>
                                </tr></td>
                                </tr>
                                <tr>
-                                   <td>Urbanizacion</td>
-                                   <td><asp:TextBox ID="uxUrbanizacion" runat="server"></asp:TextBox>&nbsp;
-                                       <span style="color: #FF0000">(*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>Urbanización</td>
+                                   <td><asp:TextBox ID="uxUrbanizacion" runat="server" MaxLength="32"></asp:TextBox>&nbsp;
+                                       </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="uxUrbanizacion"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="uxUrbanizacion"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" />
                                   </td>
                                </tr>
                                <tr>
-                                   <td>Edificio/Casa</td>
-                                   <td><asp:TextBox ID="uxEdificioCasa" runat="server"></asp:TextBox>&nbsp;
-                                       <span style="color: #FF0000">(*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>Edificio/Casa</td>
+                                   <td><asp:TextBox ID="uxEdificioCasa" runat="server" MaxLength="32"></asp:TextBox>&nbsp;
+                                       </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="uxEdificioCasa"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="uxEdificioCasa"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" />
                                    </td>
                                </tr>
                                 <tr>
-                                   <td>Piso/Apartamento</td>
-                                   <td><asp:TextBox ID="uxPisoApartamento" runat="server"></asp:TextBox>&nbsp;
-                                       <span style="color: #FF0000">(*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>Piso/Apartamento</td>
+                                   <td><asp:TextBox ID="uxPisoApartamento" runat="server" MaxLength="20"></asp:TextBox>&nbsp;
+                                       </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="uxPisoApartamento"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="uxPisoApartamento"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" /></td>
                                </tr>
                                  <tr>
-                                   <td>Ciudad:</td>
-                                   <td><asp:TextBox ID="uxciudad" runat="server"></asp:TextBox>&nbsp;<span 
-                                           style="color: #FF0000"> (*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>Ciudad:</td>
+                                   <td><asp:TextBox ID="uxciudad" runat="server" MaxLength="32"></asp:TextBox>&nbsp;</td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="uxciudad"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="uxciudad"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" /></td>
                                </tr>
                 <tr>
-                                   <td>Area de Negocio:</td>
-                                   <td><asp:TextBox ID="uxAreaNegocioCliente" runat="server"></asp:TextBox>&nbsp;<span 
-                                           style="color: #FF0000"> (*)</span></td>
+                                   <td><span style="color: #FF0000">* </span>Área de Negocio:</td>
+                                   <td><asp:TextBox ID="uxAreaNegocioCliente" runat="server" MaxLength="35"></asp:TextBox>&nbsp;</td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="uxAreaNegocioCliente"
+                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="uxAreaNegocioCliente"
+                                                ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
+                                                Display="Static" /></td>
+                               </tr>
+                               
+                               <tr>
+                                   <td><span style="color: #FF0000">* </span>Teléfono Trabajo:</td>
+                                   <td><asp:TextBox ID="uxCodTrabajo" runat="server" Width="50px" MaxLength="10"></asp:TextBox>
+                                       
+                                       <span style="color: #FF0000"> <AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender6" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxCodTrabajo" ValidChars='+ ()' >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                       <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                                           ControlToValidate="uxCodTrabajo" Display="None" 
+                                           ErrorMessage="<%$Resources:DSU, ErrorFormatoCodTelefono %>" 
+                                           ValidationExpression="<%$Resources:DSU, ERTelefono%>"></asp:RegularExpressionValidator>
+                                       <AjaxControlToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender88" 
+                                           runat="Server" TargetControlID="RegularExpressionValidator3" >
+                                       </AjaxControlToolkit:ValidatorCalloutExtender>
+                                       </span>
+                                        <asp:TextBox ID="uxTelefonoTrabajo" runat="server" Width="90px" MaxLength="7" ></asp:TextBox>
+                                       
+                                       <span style="color: #FF0000">&nbsp; 
+                                       <AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender7" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxTelefonoTrabajo" >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                       </span>
+                                                         </td>
+                               </tr>
+                               <tr>
+                                   <td>&nbsp;</td>
+                                   <td>         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="uxAreaNegocioCliente"
                                                 ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
                                                 Display="Dynamic" /></td>
                                </tr>
                                
-                               <tr>
-                                   <td>Telefono Trabajo:</td>
-                                   <td><asp:TextBox ID="uxCodTrabajo" runat="server" Width="40"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelefonoTrabajo" runat="server" Width="150"></asp:TextBox>
-                                       
-                                       <span style="color: #FF0000">(*) EJ 123 1234567</span><table 
-                                           style="width: 100%">
-                                           <tr>
-                                               <td>
-                                       
-                                       <asp:RadioButtonList ID="uxTipoTelefono" runat="server" 
-                                           Height="43px" Width="16px" autoPostBack="true" 
-                                           repeatDirection="horizontal">
-                                           
-                                           <asp:ListItem text="Local" value="Local"/>
-                                           <asp:ListItem text="Fax" value="Fax"/>
-                                       
-                                       </asp:RadioButtonList>
-                                               </td>
-                                           </tr>
-                                       </table>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>&nbsp;</td>
-                                   <td>         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="uxCodTrabajo"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller"
-                                                Display="Dynamic" />
-                                                
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxTelefonoTrabajo"
-                                                ErrorMessage="<%$ Resources:DSU, FaltaTelfono%>" Font-Size="Smaller"
-                                                Display="Dynamic" />
-                                                
-                                                <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator1"
-                                                runat="server" ErrorMessage="<%$Resources:DSU, FormatoCodigoIncorrecto%>"
-                                                ControlToValidate="uxCodTrabajo" ValidationExpression="<%$Resources:DSU, ERFormatoCodigoTelefono%>"
-                                                Font-Size="Smaller">
-                                            </asp:RegularExpressionValidator>                                            
-                                                
-                                            <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator2"
-                                                runat="server" ErrorMessage="<%$Resources:DSU, FormatoTelefonicoIncorrecto%>"
-                                                ControlToValidate="uxTelefonoTrabajo" ValidationExpression="<%$Resources:DSU, ERFormatoTelefono%>"
-                                                Font-Size="Smaller">
-                                            </asp:RegularExpressionValidator></td>
-                               </tr>
                                
+                               <tr>
+                                   <td><span style="color: #FF0000">* </span>Celular:</td>
+                                   <td><asp:TextBox ID="uxCodCelular" runat="server" Width="50px" MaxLength="3"></asp:TextBox>
+                                       
+                                                         <AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender8" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxCodCelular" >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                       
+                                       <span style="color: #FF0000"> 
+                                       <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" 
+                                           ControlToValidate="uxCodCelular" Display="None" 
+                                           ErrorMessage="<%$Resources:DSU, ErrorFormatoCodTelefono %>" 
+                                           ValidationExpression="<%$Resources:DSU, ERTelefono%>"></asp:RegularExpressionValidator>
+                                       <AjaxControlToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender89" 
+                                           runat="Server" TargetControlID="RegularExpressionValidator4" >
+                                       </AjaxControlToolkit:ValidatorCalloutExtender>
+                                        <asp:TextBox ID="uxTelefonoCelular" runat="server" Width="90px" MaxLength="7"></asp:TextBox>
+                                       
+                                       </span>
+                                       <AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender9" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxTelefonoCelular" >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                       
+                                                         </td>
+                               </tr>
+                                                    
                                
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
                                                     
+                               
+                               <tr>
+                                   <td><span style="color: #FF0000">* </span>Fax:</td>
+                                   <td><asp:TextBox ID="uxCodFax" runat="server" Width="50px" MaxLength="3"></asp:TextBox>
+                                       
+                                                         <AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender10" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxCodFax" >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                       
+                                       <span style="color: #FF0000"> 
+                                       <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" 
+                                           ControlToValidate="uxCodFax" Display="None" 
+                                           ErrorMessage="<%$Resources:DSU, ErrorFormatoCodTelefono %>" 
+                                           ValidationExpression="<%$Resources:DSU, ERTelefono%>"></asp:RegularExpressionValidator>
+                                       <AjaxControlToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender90" 
+                                           runat="Server" TargetControlID="RegularExpressionValidator5" >
+                                       </AjaxControlToolkit:ValidatorCalloutExtender>
+                                        <asp:TextBox ID="uxTelefonoFax" runat="server" Width="90px" MaxLength="7"></asp:TextBox>
+                                       
+                                       </span>
+                                       <AjaxControlToolkit:FilteredTextBoxExtender 
+                                           ID="FilteredTextBoxExtender11" runat="server" FilterType="Custom, Numbers" 
+                                           TargetControlID="uxTelefonoFax" >
+                                       </AjaxControlToolkit:FilteredTextBoxExtender>
+                                       
+                                                         </td>
+                               </tr>
+                                                    
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td style="color: #FF0000">(*) LOS CAMPOS SON OBLIGATORIO</td>
+                                   <td style="color: #FF0000">(*) Campos obligatorios</td>
                                </tr>
                                 <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                   <td>         &nbsp;</td>
                                 </tr>
                                 <tr>
                                    <td>&nbsp;</td>
@@ -193,19 +249,97 @@
                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                            onclick="uxBotonAceptar_Click" />
                                                </td>
-                                               <td>
-                                       <asp:Button ID="AgregarContacto" runat="server" Text="Agregar Contacto" 
-                                                       onclick="AgregarContacto_Click" />
-                                               </td>
                                            </tr>
                                        </table>
                                     </td>
                                 </tr>
                            </table>
-                    </form>
-            </p> 
+                    </p> 
             
           </div> 
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <asp:UpdatePanel ID="up2" runat="server" >
+                          <ContentTemplate>
+                              <uc1:DialogoError ID="uxDialogoError" runat="server"  />
+                          </ContentTemplate>
+                      </asp:UpdatePanel>
         </div> 
  
         
@@ -217,4 +351,5 @@
 				
 			</div> 
 		</div> 
-</asp:Content>
+                    </form>
+            </asp:Content>
