@@ -232,8 +232,8 @@
                                             </tr>
                                             
                                             <tr>
-                                                <td><b>Teléfono:</b></td>
-                                                <td><asp:Label ID="uxTelefono" runat="server" Text=""></asp:Label></td>
+                                                <td><b>Teléfono 1:</b></td>
+                                                <td><asp:Label ID="uxTelefono1" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                             
                                             <tr>
@@ -242,7 +242,25 @@
                                             
                                             <tr>
                                                 <td><b>Tipo teléfono:</b></td>
-                                                <td><asp:Label ID="uxTipoTlf" runat="server" Text=""></asp:Label></td>
+                                                <td><asp:Label ID="uxTipoTlf1" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Teléfono 2:</b></td>
+                                                <td><asp:Label ID="uxTelefono2" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Tipo teléfono:</b></td>
+                                                <td><asp:Label ID="uxTipoTlf2" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                             
                                             <tr>

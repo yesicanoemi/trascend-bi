@@ -7,11 +7,9 @@
 
     public class TelefonoCelular: Telefono
     {
-
         private int codigocel;
-       
-
-
+        
+        private string tipo;
 
         public virtual int Codigocel
         {
@@ -26,23 +24,18 @@
             }
         }
 
-  /*      public override Ingresar llenar(string cod, string num)
+        public virtual string Tipo
         {
-            TelefonoCelular _cel;
-            Ingresar _ingresar= FabricaTelefono.CrearTelefonoCelular(_cel);
-            try
+            get
             {
-                _cel.Codigocel=int.Parse(cod);
-                _cel.Numero=int.Parse(num);
+                return tipo;
             }
-            catch (Exception)
+
+            set
             {
-                throw(new ArgumentException("Los telefonos solo pueden tener caracteres numéricos"));
+                tipo = value;
             }
-            return _ingresar;
         }
-*/
-       
 
     }
 }

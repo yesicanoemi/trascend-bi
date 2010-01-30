@@ -116,6 +116,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoCliente\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoNombreApellido.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoXCliente.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoxId.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ConsultarContactoXTelefono.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Eliminar.cs" />

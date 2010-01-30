@@ -8,11 +8,17 @@ namespace Core.LogicaNegocio.Entidades
         #region Propiedades
 
         private int _id;
+        
         private int cedula;
+        
         private string cargo;
+        
         private string areaDeNegocio;
+        
         private TelefonoCelular _telefonoCelular;
+        
         private TelefonoTrabajo _telefonoTrabajo;
+        
         private Cliente _cliente;
 
 

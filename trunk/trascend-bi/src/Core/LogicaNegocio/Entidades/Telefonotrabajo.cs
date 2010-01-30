@@ -7,10 +7,9 @@
 
     public class TelefonoTrabajo: Telefono
     {
-
         private int codigoArea;
+        
         private string tipo;
-
 
         public virtual int Codigoarea
         {
@@ -38,22 +37,5 @@
                 tipo = value;
             }
         }
-
-/*        public override Ingresar llenar(string cod, string num)
-        {
-            TelefonoTrabajo tele;
-            Ingresar _telefono = FabricaTelefono.CrearTelefonoTrabajo(tele);
-            try
-            {
-                tele.Codigocel=(int.Parse(cod));
-                tele.Numero=(int.Parse(num));
-            }
-            catch (Exception)
-            {
-                throw (new ArgumentException("error en el formato del telefono"));
-            }
-            return _telefono;
-        }
-*/
     }
 }

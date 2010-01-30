@@ -18,15 +18,18 @@ namespace Core.AccesoDatos.SqlServer
     public class DAOContactoSQLServer: IDAOContacto
     {
         #region Propiedades
+        
         IConexion _conexion = new FabricaConexion().getConexionSQLServer();
 
-
         #endregion
+        
         #region Constructor
+        
         public DAOContactoSQLServer()
         {
 
         }
+
         #endregion
 
         #region Métodos
@@ -71,9 +74,6 @@ namespace Core.AccesoDatos.SqlServer
             return _contacto;
 
         }
-
-
-    
 
         #region ConsultarContacto
 
@@ -257,6 +257,105 @@ namespace Core.AccesoDatos.SqlServer
                     contacto.Add(_contacto);
                 }
 
+                return contacto;
+
+            }
+
+            catch (SqlException e)
+            {
+
+            }
+
+            return contacto;
+
+        }
+        #endregion
+
+        #region ConsultarContactoxId
+
+        public Contacto ConsultarContactoxId(Contacto entidad)
+        {
+            Contacto contacto = new Contacto();
+
+            Contacto _contacto = new Contacto();
+
+            IList<Core.LogicaNegocio.Entidades.TelefonoTrabajo> tlf =
+                                            new List<Core.LogicaNegocio.Entidades.TelefonoTrabajo>();
+
+            try
+            {
+                //Parametros de busqueda
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@IdContacto", SqlDbType.VarChar);
+
+                arParms[0].Value = entidad.IdContacto;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ConsultarTelefonoxId_3", arParms);
+
+                while (reader.Read())
+                {
+                    TelefonoTrabajo _tlf = new TelefonoTrabajo ();
+
+                    _tlf.Codigoarea = (int)reader.GetValue(0);
+
+                    _tlf.Numero = (int)reader.GetValue(1);
+
+                    _tlf.Tipo = (string)reader.GetValue(2);
+
+                    tlf.Add(_tlf);
+
+                }
+
+                if (tlf.Count > 0)
+                {
+                    _contacto.TelefonoDeTrabajo.Codigoarea = tlf[0].Codigoarea;
+
+                    _contacto.TelefonoDeTrabajo.Numero = tlf[0].Numero;
+
+                    _contacto.TelefonoDeTrabajo.Tipo = tlf[0].Tipo;
+
+                    if (tlf.Count > 1)
+                    {
+                        _contacto.TelefonoDeCelular.Codigocel = tlf[1].Codigoarea;
+
+                        _contacto.TelefonoDeCelular.Numero = tlf[1].Numero;
+
+                        _contacto.TelefonoDeCelular.Tipo = tlf[1].Tipo;
+                    }
+                }
+
+                SqlParameter[] arParms2 = new SqlParameter[1];
+
+                arParms2[0] = new SqlParameter("@IdContacto", SqlDbType.VarChar);
+
+                arParms2[0].Value = entidad.IdContacto;
+
+                DbDataReader reader2 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ConsultarContactoxId_3", arParms2);
+
+                while (reader2.Read())
+                {
+                    _contacto.ClienteContac = new Cliente();
+
+                    _contacto.Nombre = (string)reader2.GetValue(0);
+
+                    _contacto.Apellido = (string)reader2.GetValue(1);
+
+                    _contacto.AreaDeNegocio = (string)reader2.GetValue(2);
+
+                    _contacto.Cargo = (string)reader2.GetValue(3);
+
+                    _contacto.ClienteContac.Nombre = (string)reader2.GetValue(4);
+
+                    _contacto.IdContacto = (int)reader2.GetValue(5);
+
+                }
+
+                contacto = _contacto;
+                
                 return contacto;
 
             }

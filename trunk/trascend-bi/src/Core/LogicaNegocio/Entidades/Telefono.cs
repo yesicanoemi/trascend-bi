@@ -6,14 +6,7 @@
 
     public abstract class Telefono
     {
-
-
         private int numero;
-       // private string rifCliente;
-        //private string rifContacto;
-
-
-
 
         public virtual int Numero
         {
@@ -27,8 +20,6 @@
                 numero = value;
             }
         }
-
-    //    public abstract Ingresar llenar(string cod,string nom);
 
     }
 }

@@ -101,16 +101,28 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             set { uxCargo = value; }
         }
 
-        public Label TelefonoC
+        public Label TelefonoC1
         {
-            get { return uxTelefono; }
-            set { uxTelefono = value; }
+            get { return uxTelefono1; }
+            set { uxTelefono1 = value; }
         }
 
-        public Label TipoTlfC
+        public Label TipoTlfC1
         {
-            get { return uxTipoTlf; }
-            set { uxTipoTlf = value; }
+            get { return uxTipoTlf1; }
+            set { uxTipoTlf1 = value; }
+        }
+
+        public Label TelefonoC2
+        {
+            get { return uxTelefono2; }
+            set { uxTelefono2 = value; }
+        }
+
+        public Label TipoTlfC2
+        {
+            get { return uxTipoTlf2; }
+            set { uxTipoTlf2 = value; }
         }
 
         public Label ClienteC

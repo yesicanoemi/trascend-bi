@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Presentador.Contacto.ContactoInterface;
+using Core.LogicaNegocio.Entidades;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Resources;
@@ -19,6 +20,8 @@ namespace Presentador.Contacto.ContactoPresentador
         #region Propiedades
 
         private IConsultarContacto _vista;
+
+        private const string campoVacio = "";
 
         #endregion
   
@@ -86,12 +89,32 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.AreaC.Text = contacto.AreaDeNegocio;
 
-            _vista.TelefonoC.Text = contacto.TelefonoDeTrabajo.Codigoarea.ToString() 
+            _vista.TelefonoC1.Text = contacto.TelefonoDeTrabajo.Codigoarea.ToString() 
                                     + contacto.TelefonoDeTrabajo.Numero.ToString();
 
-            _vista.TipoTlfC.Text = contacto.TelefonoDeTrabajo.Tipo;
+            _vista.TipoTlfC1.Text = contacto.TelefonoDeTrabajo.Tipo;
 
+            if (contacto.TelefonoDeCelular.Codigocel > 0)
+            {
+                _vista.TelefonoC2.Text = contacto.TelefonoDeCelular.Codigocel.ToString()
+                            + contacto.TelefonoDeCelular.Numero.ToString();
+
+                _vista.TipoTlfC2.Text = contacto.TelefonoDeCelular.Tipo;
+            }
+            
             _vista.ClienteC.Text = contacto.ClienteContac.Nombre;
+        }
+
+        private void LimpiarFormulario()
+        {
+            _vista.TextBoxNombre.Text = campoVacio;
+
+            _vista.TextBoxApellido.Text = campoVacio;
+
+            _vista.TextBoxCodTelefono.Text = campoVacio;
+
+            _vista.TextBoxNumTelefono.Text = campoVacio;
+
         }
 
         #region Radio Buttons
@@ -102,6 +125,8 @@ namespace Presentador.Contacto.ContactoPresentador
         
         public void CampoBusqueda_Selected()
         {
+            LimpiarFormulario();
+
             if (_vista.RbCampoBusqueda.SelectedValue == "1")
             {
                 _vista.TextBoxNombre.Visible = true;
@@ -348,31 +373,41 @@ namespace Presentador.Contacto.ContactoPresentador
         {
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
 
+            Core.LogicaNegocio.Entidades.Contacto contacto2 = new Core.LogicaNegocio.Entidades.Contacto();
+
             contacto.IdContacto = int.Parse(idContacto);
 
-            contacto.Nombre = "";
+            contacto2 = ConsultarContactoxId(contacto);
 
-            contacto.Apellido = "";
-
-            IList<Core.LogicaNegocio.Entidades.Contacto> listaContac = 
-                                                            ConsultarContactoNombreApellido(contacto);
-
-            for (int i = 0; i < listaContac.Count; i++)
-            {
-                if (listaContac[i].IdContacto == contacto.IdContacto)
-                {
-                    CargarDatos(listaContac[i]);
-
-                    i = listaContac.Count;
-                }
-            
-            }
+            CargarDatos(contacto2);
 
             CambiarVista(1);
 
         }
 
         #region Comandos
+
+
+        /// <summary>
+        /// Método para el comando ConsultarContactoxId
+        /// </summary>
+        /// <param name="entidad">Entidad comando a consultar (por Id)</param>
+        /// <returns>Lista de contacto que cumplan con el parámetro de búsqueda</returns>
+
+        public Core.LogicaNegocio.Entidades.Contacto ConsultarContactoxId
+                                                (Core.LogicaNegocio.Entidades.Contacto entidad)
+        {
+            Core.LogicaNegocio.Entidades.Contacto contacto1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoxId comando;
+
+            comando = FabricaComandosContacto.CrearComandoConsultarContactoxId(entidad);
+
+            contacto1 = comando.Ejecutar();
+
+            return contacto1;
+        }
+
 
         /// <summary>
         /// Método para el comando ConsultarContactoNombreApellido

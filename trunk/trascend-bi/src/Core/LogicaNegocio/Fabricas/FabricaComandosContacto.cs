@@ -11,6 +11,18 @@ namespace Core.LogicaNegocio.Fabricas
         #region Métodos
 
         /// <summary>
+        /// Metodo que fabrica el comando 'ConsultarContactoxId' de la entidad Contacto
+        /// </summary>
+        /// <param name="entidad">Entidad contacto con los datos</param>
+        /// <returns>Comando ConsultarContactoxId de la entidad Contacto</returns>
+
+        public static ConsultarContactoxId
+                                        CrearComandoConsultarContactoxId(Contacto entidad)
+        {
+            return new ConsultarContactoxId(entidad);
+        }
+
+        /// <summary>
         /// Metodo que fabrica el comando 'ConsultarContactoNombreApellido' de la entidad Contacto
         /// </summary>
         /// <param name="entidad">Entidad contacto con los datos</param>

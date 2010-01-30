@@ -33,9 +33,13 @@ namespace Presentador.Contacto.ContactoInterface
 
         Label ClienteC { get; set; }
 
-        Label TipoTlfC { get; set; }
+        Label TipoTlfC1 { get; set; }
 
-        Label TelefonoC { get; set; }
+        Label TelefonoC1 { get; set; }
+
+        Label TipoTlfC2 { get; set; }
+
+        Label TelefonoC2 { get; set; }
 
         Label CargoC { get; set; }
 
