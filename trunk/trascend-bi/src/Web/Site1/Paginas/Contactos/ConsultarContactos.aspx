@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarContactos.aspx.cs" Inherits="Paginas_Contactos_ConsultarContactos" %>
 <%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
 <%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     
@@ -58,6 +59,7 @@
                                               
                                                 <table>
                                                     <tr>
+                                                   
                                                         <td align="right">
                                                             <asp:TextBox ID="uxConsultaNombreContacto" runat="server" Visible="false">
                                                             </asp:TextBox>
@@ -126,6 +128,18 @@
                                                     DataTextField="IdContacto" DataValueField="IdContacto" AutoPostBack="false">
                                                 </asp:DropDownList>
                                                 
+                                                <asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged" Visible="false"> </asp:TextBox>
+                                                 <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
+                                                 TargetControlID="uxValor"
+                                                 CompletionSetCount="20"
+                                                 MinimumPrefixLength="1" 
+                                                 ServiceMethod="GetSuggestionsClienteNombre"
+                                                 DelimiterCharacters="; ,"
+                                                 ServicePath="../../SuggestionNames.asmx">
+                                              </AjaxControlToolkit:AutoCompleteExtender>
+                                              
+                                                <br />
+                                                <br />
                                                 <br />
                                                 <br />
                                                 

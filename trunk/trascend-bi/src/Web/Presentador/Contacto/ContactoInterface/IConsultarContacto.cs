@@ -63,6 +63,8 @@ namespace Presentador.Contacto.ContactoInterface
 
         RequiredFieldValidator RequiredFieldValidator1 { get; set; }
 
+        TextBox Valor { get; set; }
+
         #region Diálogo
 
         bool DialogoVisible { get; set; }

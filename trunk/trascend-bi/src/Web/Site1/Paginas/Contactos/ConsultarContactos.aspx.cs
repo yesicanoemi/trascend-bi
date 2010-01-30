@@ -173,6 +173,12 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
             set { uxRequiredFieldValidator1 = value; }
         }
 
+        public TextBox Valor
+        {
+            get { return uxValor; }
+            set { uxValor = value; }
+        }
+
         #region Información
 
         public void PintarInformacion(string mensaje, string estilo)
@@ -270,6 +276,11 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
     public void CambiarPagina()
     {
         Response.Redirect(paginaConsulta);
+
+    }
+
+    protected void uxValor_TextChanged(object sender, EventArgs e)
+    {
 
     }
 

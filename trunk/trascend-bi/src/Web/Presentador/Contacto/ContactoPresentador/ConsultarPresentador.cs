@@ -55,10 +55,12 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.MultiViewConsultar.ActiveViewIndex = index;
         }
 
+        /*
+
         /// <summary>
         /// Llena la lista de todos los clientes
         /// </summary>
-        
+ 
         public void CargarClientes()
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
@@ -76,6 +78,7 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.ClienteDdl.DataBind();
 
         }
+        */
 
         /// <summary>
         /// Metodo para cargar los datos por pantalla una vez seleccionado el contacto
@@ -118,6 +121,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.TextBoxNumTelefono.Text = campoVacio;
 
+            _vista.Valor.Text = campoVacio;
+
         }
 
         #region Radio Buttons
@@ -154,6 +159,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.NombreCliente.Visible = false;
 
+                _vista.Valor.Visible = false;
+
                 //_vista.InformacionVisible = false;
 
                 //_vista.ValidarNombreVacio.Visible = true;
@@ -185,6 +192,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.NombreCliente.Visible = false;
 
+                _vista.Valor.Visible = false;
+
                 //_vista.InformacionVisible = false;
 
                 //_vista.ValidarNombreVacio.Visible = false;
@@ -202,7 +211,9 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.TextBoxNumTelefono.Visible = false;
 
-                _vista.ClienteDdl.Visible = true;
+                //_vista.ClienteDdl.Visible = true;
+
+                _vista.Valor.Visible = true;
 
                 _vista.BotonBuscar.Visible = true;
 
@@ -220,7 +231,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 //_vista.ValidarNombreVacio.Visible = false;
 
-                CargarClientes();
+                //CargarClientes();
 
                 _vista.GetObjectContainerConsultaContacto.DataSource = "";
             }
@@ -307,9 +318,21 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "3")
                 {
+<<<<<<< .mine
+                    Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+                    
+                    cliente.Nombre = _vista.Valor.Text;
+=======
                     contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
 
                     contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
+>>>>>>> .r846
+
+                    IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+
+                    contacto.ClienteContac = listaCliente[0];
+
+                    //contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
 
                     listContac = ConsultarContactoXCliente(contacto);
 
@@ -478,6 +501,28 @@ namespace Presentador.Contacto.ContactoPresentador
         /// Método para el comando ConsultarClientes
         /// </summary>
         /// <param name="entidad">Entidad comando a consultar (por cliente)</param>
+        /// <returns>El cliente que cumpla con el criterio de búsqueda</returns>
+
+        public IList<Core.LogicaNegocio.Entidades.Cliente>
+                            ConsultarClienteNombre(Core.LogicaNegocio.Entidades.Cliente entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
+
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando;
+
+            comando = FabricaComandosCliente.CrearComandoConsultarNombre(entidad);
+
+            listaCliente = comando.ejecutar();
+
+            return listaCliente;
+        }
+
+        /*
+
+        /// <summary>
+        /// Método para el comando ConsultarClientes
+        /// </summary>
+        /// <param name="entidad">Entidad comando a consultar (por cliente)</param>
         /// <returns>Todos los clientes del sistema</returns>
 
         public IList<Core.LogicaNegocio.Entidades.Cliente> ConsultarCliente()
@@ -488,6 +533,9 @@ namespace Presentador.Contacto.ContactoPresentador
 
             return comando.Ejecutar();
         }
+
+        */
+        
 
         #endregion
     }
