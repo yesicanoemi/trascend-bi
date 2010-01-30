@@ -1,0 +1,14 @@
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.dll
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\Presentador.pdb
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\Core.dll
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.Practices.Web.UI.WebControls.dll
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\nunit.framework.dll
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\Core.pdb
+C:\853\trascend-bi\src\Web\Presentador\bin\Debug\nunit.framework.xml
+C:\853\trascend-bi\src\Web\Presentador\obj\Debug\ResolveAssemblyReference.cache
+C:\853\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.Properties.Resources.resources
+C:\853\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.RecursosPresentadores.resources
+C:\853\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.csproj.GenerateResource.Cache
+C:\853\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.dll
+C:\853\trascend-bi\src\Web\Presentador\obj\Debug\Presentador.pdb
