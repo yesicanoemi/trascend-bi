@@ -10,7 +10,8 @@
 				
 					<ul id="subnav"> 
   <li><a href="AgregarFacturas.aspx">Agregar<span></span></a></li> 
-  <li><a href="ConsultarFacturas.aspx" >Consultar<span></span></a></li> 
+  <li><a href="ConsultarFacturas.aspx" >Consultar<span></span></a></li>
+  <li><a href="EliminarFacturas.aspx" >Anular<span></span></a></li> 
   <li><a href="ModificarFacturas.aspx" >Modificar<span></span></a></li> 
    
 </ul> 

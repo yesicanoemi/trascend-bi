@@ -94,6 +94,7 @@
     <Compile Include="Empleado\Vistas\ModificarEmpleadoPresenter.cs" />
     <Compile Include="Factura\Contrato\IAgregarFactura.cs">
     </Compile>
+    <Compile Include="Factura\Contrato\IAnularFactura.cs" />
     <Compile Include="Factura\Contrato\IConsultarFactura.cs" />
     <Compile Include="Factura\Contrato\IModificarFactura.cs" />
     <Compile Include="Factura\FacturaController.cs" />
