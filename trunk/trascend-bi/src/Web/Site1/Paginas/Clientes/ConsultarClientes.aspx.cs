@@ -17,7 +17,18 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
     #region propiedades 
 
     private int width;
-    
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
+
     public DetailsView MuestraCliente
     {
         get { return uxMuestraCliente; }

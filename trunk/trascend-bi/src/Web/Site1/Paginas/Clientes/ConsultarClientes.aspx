@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarClientes.aspx.cs" Inherits="Paginas_Clientes_ConsultarClientes" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
+<%@ Register Src="../../ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -29,33 +30,42 @@
                         <form id="Form1" action="#" runat="server">
                         <table>
                             <tr>
-                                <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca el Nombre de Cliente" /></td>
+                                <td colspan="2"><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Seleccione e introduzca parámetro de búsqueda de Cliente" />
+                                    <br />
+                                    <br />
+                                </td>
                             </tr>
                             <tr>
-                                <td><asp:DropDownList ID="opcion1" runat="server">
+                                <td><asp:DropDownList ID="opcion1" runat="server" Width="120px">
                                     <asp:ListItem>Nombre</asp:ListItem>
-                                    <asp:ListItem>Area de Negocio</asp:ListItem>                                    
+                                    <asp:ListItem>R.I.F</asp:ListItem>                                    
                                     </asp:DropDownList></td>
                                     
-                                <td><asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged"> </asp:TextBox></td>
-                                    <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
-                                                 TargetControlID="uxValor"
-                                                 CompletionInterval="1000"
-                                                 CompletionSetCount="20"
-                                                 UseContextKey="false"
-                                                 MinimumPrefixLength="1" 
-                                                 ServiceMethod="GetSuggestionsClienteNombre"
-                                                 DelimiterCharacters="; ,"
-                                                 ServicePath="../../SuggestionNames.asmx"
-                                                 EnableCaching="true"
-                                                 CompletionListCssClass="completionList"
-                                                 CompletionListHighlightedItemCssClass="itemHighlighted"
-                                                 CompletionListItemCssClass="listItem">
-                                              </AjaxControlToolkit:AutoCompleteExtender>
+                                <td><asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged" 
+                                        Width="150px"></asp:TextBox></td>
+                                    <td>
+                                        <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" 
+                                            CompletionInterval="1000" CompletionListCssClass="completionList" 
+                                            CompletionListHighlightedItemCssClass="itemHighlighted" 
+                                            CompletionListItemCssClass="listItem" CompletionSetCount="20" 
+                                            DelimiterCharacters="; ," EnableCaching="true" MinimumPrefixLength="1" 
+                                            ServiceMethod="GetSuggestionsClienteNombre" 
+                                            ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor" 
+                                            UseContextKey="false">
+                                        </ajaxToolkit:AutoCompleteExtender>
+                                </td>
                                      
                                 
                                 <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                        onclick="uxBotonAceptar_Click" /></td>
+                                        onclick="uxBotonAceptar_Click" ValidationGroup="valBusquedaNombre" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                                        ControlToValidate="uxValor" Display="None" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaParametroBusqueda%>" 
+                                        ValidationGroup="valBusquedaNombre" />
+                                    
+                                    <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender10" 
+                                        runat="Server" TargetControlID="RequiredFieldValidator9" />
+                                </td>
                             </tr>
                             
                         </table>
@@ -86,6 +96,13 @@
                                   </Fields>
                                 </asp:DetailsView>
                                 
+                                <br />
+                                <asp:UpdatePanel ID="up2" runat="server">
+                                    <ContentTemplate>
+                                        <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                
                                 </form>
                         </asp:View>
                         <asp:View ID="uxDetalle" runat="server">
@@ -98,7 +115,43 @@
                    </asp:MultiView>     
                     </p> 
                  </div> 
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                      <br />
               </div>
+                      
         </div> 
 				
 			</div> 

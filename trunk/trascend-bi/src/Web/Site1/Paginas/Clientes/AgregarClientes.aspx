@@ -234,7 +234,7 @@
                                                     
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td style="color: #FF0000">(*) Campos obligatorios</td>
+                                   <td style="color: #FF0000">&nbsp;</td>
                                </tr>
                                 <tr>
                                    <td>&nbsp;</td>
@@ -257,6 +257,11 @@
                     </p> 
             
           </div> 
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
                       <br />
                       <br />
                       <br />
