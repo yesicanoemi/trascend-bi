@@ -31,10 +31,24 @@ namespace Core.AccesoDatos.Interfaces
         IList<Cliente> ConsultarNombre(Cliente cliente);
 
         /// <summary>
+        /// Consulta un cliente por su RIF
+        /// </summary>
+        /// <param name="cliente">El Cliente a Consultar</param>
+        /// <returns>El cliente resultante</returns>
+        Cliente ConsultarRif(Cliente cliente);
+
+        /// <summary>
         /// Consulta todos los clientes
         /// </summary>
         /// <returns>Lista con los clientes</returns>
         IList<Cliente> ConsultarTodos();
+
+        /// <summary>
+        /// Elimina un cliente logicamente, mas no lo borra de la BD
+        /// </summary>
+        /// <param name="cliente">Cliente a eliminar</param>
+        /// <returns>Cliente Eliminado</returns>
+        Cliente EliminarCliente(Cliente cliente);
 
     }
 }

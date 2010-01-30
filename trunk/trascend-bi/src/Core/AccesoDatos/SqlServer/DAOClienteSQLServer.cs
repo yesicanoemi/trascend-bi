@@ -224,11 +224,11 @@ namespace Core.AccesoDatos.SqlServer
                     {
                         arParms = new SqlParameter[4];
 
-                        arParms[0] = new SqlParameter("@Tlf", SqlDbType.VarChar);
-                        arParms[0].Value = cliente.Telefono[i].Numero.ToString();
+                        arParms[0] = new SqlParameter("@Tlf", SqlDbType.Int);
+                        arParms[0].Value = cliente.Telefono[i].Numero;
 
-                        arParms[1] = new SqlParameter("@codTlf", SqlDbType.VarChar);
-                        arParms[1].Value = cliente.Telefono[i].Codigoarea.ToString();
+                        arParms[1] = new SqlParameter("@codTlf", SqlDbType.Int);
+                        arParms[1].Value = cliente.Telefono[i].Codigoarea;
 
                         int tipotelf = 0;
 
@@ -244,6 +244,8 @@ namespace Core.AccesoDatos.SqlServer
                         {
                             tipotelf = 3;
                         }
+
+                        Console.WriteLine(tipotelf);
 
                         arParms[2] = new SqlParameter("@tipoTelf", SqlDbType.Int);
                         arParms[2].Value = tipotelf;
@@ -776,6 +778,118 @@ namespace Core.AccesoDatos.SqlServer
                     throw new Exception(e.ToString());
                 }
             }
+        }
+
+        public Cliente EliminarCliente(Cliente cliente)
+        {
+            try
+            {
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                // Parametros 
+
+                #region Cliente
+
+                arParms[0] = new SqlParameter("@IdCliente", SqlDbType.Int);
+                arParms[0].Value = cliente.IdCliente;
+
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "EliminarCliente", arParms);
+
+                #endregion
+                
+                return cliente;
+
+            }
+            catch (SqlException e)
+            {
+                throw new IngresarClienteBDExepciones
+                    ("Error de SQL en ingresando el cliente en la Base de Datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new IngresarClienteBDExepciones
+                    ("Error ingresando cliente en la base de datos", e);
+            }
+        }
+
+        public Cliente ConsultarRif(Cliente cliente)
+        {
+            try
+            {
+                IList<Cliente> listaCliente = new List<Cliente>();
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@rif", SqlDbType.VarChar);
+                arParms[0].Value = cliente.Rif;
+
+                DbDataReader conexion = SqlHelper.ExecuteReader
+                    (_conexion.GetConnection(), "ConsultarClienteRif", arParms);
+
+
+                int i = 0;
+
+
+                if (conexion.Read())
+                {
+                    cliente = new Cliente();
+
+                    cliente.Direccion = new Direccion();
+
+                    cliente.IdCliente = (int)conexion["IdCliente"];
+
+                    cliente.Nombre = (string)conexion["Nombre"];
+
+                    cliente.Rif = (string)conexion["RifCliente"];
+
+                    cliente.Direccion.Urbanizacion = (string)conexion["Urbanizacion"];
+
+                    cliente.Direccion.Avenida = (string)conexion["CalleAvenidad"];
+
+                    cliente.Direccion.Edif_Casa = (string)conexion["EdificioCasa"];
+
+                    cliente.Direccion.Oficina = (string)conexion["PisoApartamento"];
+
+                    cliente.Direccion.Ciudad = (string)conexion["Ciudad"];
+
+                    cliente.AreaNegocio = (string)conexion["AreaNegocio"];
+
+                    cliente.Telefono = new TelefonoTrabajo[3];
+
+                    cliente.Telefono = BuscarTelefonos(cliente.IdCliente);
+
+                    //Console.WriteLine(cliente.Telefono[1].Tipo);
+
+                    //IList<Contacto> _listaContacto = new List<Contacto>();
+
+                    //_listaContacto = BuscarContacto(cliente.IdCliente);
+
+                    i++;
+                }
+
+
+                return cliente;
+
+            }
+
+            #region Execepciones
+            catch (SqlException e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("Error en el SQL al consultar el cliente en la base de daot", e);
+            }
+            catch (ConsultarClienteBDExcepciones e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("No se encontro ninguna informacion del cliente en la base de dato", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarClienteBDExcepciones
+                    ("No se encontro ninguna informacion del cliente en la base de dato", e);
+            }
+            #endregion
         }
                 
         #endregion

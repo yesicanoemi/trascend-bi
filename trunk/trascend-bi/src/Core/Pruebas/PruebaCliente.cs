@@ -50,7 +50,7 @@ namespace Core.Pruebas
 
             cliente.Direccion.Oficina = "14-c";
                                    
-            cliente.Nombre = "joojojoj";
+            cliente.Nombre = "Oh L0lz0r";
             
             cliente.Rif = "J-00006372-9";
 
@@ -94,7 +94,7 @@ namespace Core.Pruebas
         {
             Cliente cliente = new Cliente();            
 
-            cliente.Nombre = "";
+            cliente.Nombre = "o";
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
@@ -102,7 +102,10 @@ namespace Core.Pruebas
 
             IList<Cliente> clientes = acceso.ConsultarNombre(cliente);
 
-            Console.WriteLine(clientes[0].Nombre);
+            foreach (Cliente clienteA in clientes)
+            {
+                Console.WriteLine(clienteA.Nombre);
+            }
         }
 
         [Test]
@@ -119,6 +122,99 @@ namespace Core.Pruebas
                 if (clienteA.Telefono[1] != null)
                     Console.WriteLine(clienteA.Telefono[1].Tipo);
             }
+        }
+
+        [Test]
+        public void ModificarCliente()
+        {
+            Cliente cliente = new Cliente();
+
+            #region carga de objeto cliente
+
+            cliente.IdCliente = 6;
+
+            cliente.AreaNegocio = "Reparaciones de Pocetas";
+
+            cliente.Direccion = new Direccion();
+
+            cliente.Direccion.Ciudad = "caracas";
+
+            cliente.Direccion.Urbanizacion = "Los Ruices";
+
+            cliente.Direccion.Avenida = "Avenida Francisco de Miranda";
+
+            cliente.Direccion.Edif_Casa = "Piedra Gris";
+
+            cliente.Direccion.Oficina = "14-c";
+
+            cliente.Nombre = "Oh L0lz0r";
+
+            cliente.Rif = "J-00006372-9";
+
+            cliente.Telefono = new TelefonoTrabajo[3];
+
+            cliente.Telefono[0] = new TelefonoTrabajo();
+
+            cliente.Telefono[0].Codigoarea = 323;
+
+            cliente.Telefono[0].Numero = 5555555;
+
+            cliente.Telefono[0].Tipo = "Trabajo";
+
+            cliente.Telefono[1] = new TelefonoTrabajo();
+
+            cliente.Telefono[1].Codigoarea = 121;
+
+            cliente.Telefono[1].Numero = 1231231;
+
+            cliente.Telefono[1].Tipo = "Fax";
+
+            cliente.Telefono[2] = new TelefonoTrabajo();
+
+            cliente.Telefono[2].Codigoarea = 414;
+
+            cliente.Telefono[2].Numero = 3213213;
+
+            cliente.Telefono[2].Tipo = "Celular";
+
+            #endregion
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            cliente = acceso.Modificar(cliente);
+        }
+
+        [Test]
+        public void EliminarCliente()
+        {
+            Cliente cliente = new Cliente();
+
+            cliente.IdCliente = 6;
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            cliente = acceso.EliminarCliente(cliente);
+        }
+
+        [Test]
+        public void BuscarClienteRif()
+        {
+            Cliente cliente = new Cliente();
+
+            cliente.Rif = "C03758493-1";
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
+
+            cliente = acceso.ConsultarRif(cliente);
+
+            Console.WriteLine(cliente.Nombre);
+            
         }
     }
 }
