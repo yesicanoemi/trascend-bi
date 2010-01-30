@@ -2,7 +2,7 @@ set ANSI_NULLS ON
 set QUOTED_IDENTIFIER ON
 GO
 
-ALTER PROCEDURE [dbo].[ConsultarClienteRif]
+CREATE PROCEDURE [dbo].[ConsultarClienteRif]
 	-- Add the parameters for the stored procedure here
 @rif varchar(20)	
 AS

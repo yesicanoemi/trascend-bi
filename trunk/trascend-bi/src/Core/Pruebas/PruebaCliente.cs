@@ -116,12 +116,6 @@ namespace Core.Pruebas
             IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
 
             IList<Cliente> clientes = acceso.ConsultarTodos();
-
-            foreach (Cliente clienteA in clientes)
-            {
-                if (clienteA.Telefono[1] != null)
-                    Console.WriteLine(clienteA.Telefono[1].Tipo);
-            }
         }
 
         [Test]
@@ -131,7 +125,7 @@ namespace Core.Pruebas
 
             #region carga de objeto cliente
 
-            cliente.IdCliente = 6;
+            cliente.IdCliente = 3;
 
             cliente.AreaNegocio = "Reparaciones de Pocetas";
 
@@ -191,7 +185,7 @@ namespace Core.Pruebas
         {
             Cliente cliente = new Cliente();
 
-            cliente.IdCliente = 6;
+            cliente.IdCliente = 3;
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
