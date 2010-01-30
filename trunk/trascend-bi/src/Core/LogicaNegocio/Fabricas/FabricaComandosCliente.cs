@@ -53,5 +53,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Eliminar(cliente);
         }
+
+        public static ConsultarTodos CrearComandoConsultarTodos()
+        {
+            return new ConsultarTodos();
+        }
     }
 }

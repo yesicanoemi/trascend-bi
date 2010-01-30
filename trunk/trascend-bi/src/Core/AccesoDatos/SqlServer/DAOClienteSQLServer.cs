@@ -210,7 +210,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     cliente.Rif = (string)conexion["RifCliente"];
 
-                    cliente.Direccion.Urbanizacion = (string)conexion["Urbanizacion"];
+                    /*cliente.Direccion.Urbanizacion = (string)conexion["Urbanizacion"];
 
                     cliente.Direccion.Avenida = (string)conexion["CalleAvenidad"];
 
@@ -224,7 +224,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     cliente.Telefono = new TelefonoTrabajo[3];
                     
-                    cliente.Telefono = BuscarTelefonos(cliente.IdCliente);
+                    cliente.Telefono = BuscarTelefonos(cliente.IdCliente);*/
 
                     //Console.WriteLine(cliente.Telefono[1].Tipo);
 
