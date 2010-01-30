@@ -29,7 +29,7 @@
                         <form id="Form1" action="#" runat="server">
                         <table>
                             <tr>
-                                <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
+                                <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca el Nombre de Cliente" /></td>
                             </tr>
                             <tr>
                                 <td><asp:DropDownList ID="opcion1" runat="server">
@@ -63,23 +63,29 @@
                         </asp:View>
                         <asp:View ID="uxViewMostrar" runat="server">
                             <form runat="server">
-                                <asp:GridView ID="uxMuestra" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaCliente"
-                                                AutoGenerateColumns="False" DataKeyNames="IdCliente" AutoGenerateSelectButton="true"
-                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller" onrowdatabound="uxTablaClientes_RowDataBound" >
-                                                 <RowStyle HorizontalAlign="Center" />  
-                                                    
-                                                     <RowStyle HorizontalAlign="Center" />  
-                                                     
-                                                    <Columns>
-                                            
-                                                        <asp:BoundField HeaderText="Rif" DataField="rif" /> 
-                                                        <asp:BoundField HeaderText="Nombre Cliente" DataField="Nombre" />
-                                                        <asp:BoundField HeaderText="Area de Negocio" DataField="AreaNegocio" />                                                         
-                                                         
-                                                       
-                                                        
-                                                    </Columns>
-                                </asp:GridView>
+                                <asp:DetailsView ID="uxMuestraCliente" datasourceid="uxObjectConsultaCliente"
+                                datakeynames="rif" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  HeaderText="Datos de Cliente"
+                                 Width="275px">     <headerstyle backcolor="Navy"            forecolor="White"/>
+
+                                  <Fields>
+                                                        <asp:BoundField HeaderText="Rif" DataField="rif" ReadOnly="True"/> 
+                                                        <asp:BoundField HeaderText="Nombre Cliente" DataField="nombre" ReadOnly="True"/>
+                                                        <asp:BoundField HeaderText="Area de Negocio" DataField="areanegocio" ReadOnly="True"/>        
+                                  </Fields>
+                                </asp:DetailsView>
+                                
+                                <asp:DetailsView ID="uxMuestraDireccion" datasourceid="uxObjectConsultaDireccion" HeaderText="Direccion"
+                                datakeynames="calle" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  
+                                 Width="275px">  <headerstyle backcolor="Navy"            forecolor="White"/>
+                                  <Fields>
+                                                        <asp:BoundField HeaderText="Avenida" DataField="avenida" ReadOnly="True"/> 
+                                                        <asp:BoundField HeaderText="Urbanizacion" DataField="urbanizacion" ReadOnly="True"/>
+                                                        <asp:BoundField HeaderText="Edificio/Casa" DataField="edif_casa" ReadOnly="True"/>  
+                                                        <asp:BoundField HeaderText="Oficina" DataField="oficina" ReadOnly="True"/> 
+                                                        <asp:BoundField HeaderText="Ciudad" DataField="ciudad" ReadOnly="True"/>      
+                                  </Fields>
+                                </asp:DetailsView>
+                                
                                 </form>
                         </asp:View>
                         <asp:View ID="uxDetalle" runat="server">
@@ -97,7 +103,10 @@
 				
 			</div> 
 		</div> 
+		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaDireccion" DataObjectTypeName="Core.LogicaNegocio.Entidades.Direccion" />
+		
 		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 
-
+        
+        <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.Telefono" />  
 </asp:Content>
 

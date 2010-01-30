@@ -127,4 +127,9 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
     {
 
     }
+
+    protected void uxNombreCliente_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

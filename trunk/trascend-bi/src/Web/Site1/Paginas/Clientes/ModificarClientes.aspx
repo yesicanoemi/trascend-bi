@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ModificarClientes.aspx.cs" Inherits="Paginas_Clientes_ModificarClientes" %>
 <%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
 <%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -38,10 +39,11 @@
                                     <table width="100%">
                                           <tr>  
                                             <td align="right">
-                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Font-Size="Small" RepeatDirection="Horizontal" RepeatLayout="Flow" 
-                                         TextAlign="Left"  Width="250px" 
+                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Font-Size="Small" 
+                                                    RepeatDirection="Horizontal" RepeatLayout="Flow" 
+                                         TextAlign="Left"  Width="262px" 
                                                     onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" 
-                                                    AutoPostBack="true" Height="16px">
+                                                    AutoPostBack="true" Height="90px">
                                                     <asp:ListItem Value="1" Text="Nombre"></asp:ListItem> 
                                                     <asp:ListItem Value="2" Text="Area De Negocio"></asp:ListItem>
                                                 </asp:RadioButtonList>
@@ -49,9 +51,24 @@
                                            
                                         
                                             <td align="center">
-                                                <asp:TextBox ID="uxNombreCliente" runat="server" Visible="false">
-                                                </asp:TextBox>
-
+                                               <asp:TextBox ID="uxNombreCliente" runat="server" ontextchanged="uxNombreCliente_TextChanged"> </asp:TextBox></td>
+                                    <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
+                                                 TargetControlID="uxNombreCliente"
+                                                 CompletionInterval="1000"
+                                                 CompletionSetCount="20"
+                                                 UseContextKey="false"
+                                                 MinimumPrefixLength="1" 
+                                                 ServiceMethod="GetSuggestionsClienteNombre"
+                                                 DelimiterCharacters="; ,"
+                                                 ServicePath="../../SuggestionNames.asmx"
+                                                 EnableCaching="true"
+                                                 CompletionListCssClass="completionList"
+                                                 CompletionListHighlightedItemCssClass="itemHighlighted"
+                                                 CompletionListItemCssClass="listItem">
+                                              </AjaxControlToolkit:AutoCompleteExtender>
+                                                
+                                                
+                                                     </td>  
                                             </td>  
                                             <td align="left">
 

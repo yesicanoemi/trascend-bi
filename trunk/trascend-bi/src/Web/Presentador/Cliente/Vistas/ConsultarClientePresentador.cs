@@ -19,7 +19,7 @@ namespace Presentador.Cliente.Vistas
         
         public ConsultarClientePresentador()
         { }
-        
+       
         #endregion
 
         public ConsultarClientePresentador(IConsultarCliente vista)
@@ -36,11 +36,12 @@ namespace Presentador.Cliente.Vistas
 
                 cliente.Nombre = _vista.Valor.Text;
 
+
+              //  IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+
                 IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
-
-
                 _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
-
+                _vista.GetObjectContainerConsultaDireccion.DataSource = listaCliente[0].Direccion;
                 CambiarVista(1);
             
             }
@@ -105,11 +106,11 @@ namespace Presentador.Cliente.Vistas
         {
             IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarParametroNombre comando; //tengo q crear una nueva consulta
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando; //tengo q crear una nueva consulta
 
-            comando = FabricaComandosCliente.CrearComandoConsultarParametroNombre (entidad);
+            comando = FabricaComandosCliente.CrearComandoConsultarNombre(entidad);
 
-            listaCliente = comando.ejecutar(entidad);
+            listaCliente = comando.ejecutar();
 
             return listaCliente;
         }

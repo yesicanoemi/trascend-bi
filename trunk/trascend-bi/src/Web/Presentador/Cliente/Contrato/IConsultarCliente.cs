@@ -181,5 +181,7 @@ namespace Presentador.Cliente.Contrato
 
         */
         ObjectContainerDataSource GetObjectContainerConsultaCliente { get; set; }
+        ObjectContainerDataSource GetObjectContainerConsultaDireccion { get; set; }
+
     }
 }

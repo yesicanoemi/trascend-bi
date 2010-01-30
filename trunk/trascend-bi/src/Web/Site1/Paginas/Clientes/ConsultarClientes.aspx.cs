@@ -12,16 +12,22 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 {
     private ConsultarClientePresentador _presentador;
 
-    private Cliente _cliente;
+   // private Cliente _cliente;
 
     #region propiedades 
 
     private int width;
     
-    public GridView Muestra
+    public DetailsView MuestraCliente
     {
-        get { return uxMuestra; }
-        set { uxMuestra = value; }
+        get { return uxMuestraCliente; }
+        set { uxMuestraCliente = value; }
+    }
+
+    public DetailsView MuestraDireccion
+    {
+        get { return uxMuestraDireccion; }
+        set { uxMuestraDireccion = value; }
     }
 
     public TextBox Valor
@@ -34,6 +40,12 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
     {
         get { return uxObjectConsultaCliente; }
         set { uxObjectConsultaCliente = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerConsultaDireccion
+    {
+        get { return uxObjectConsultaDireccion; }
+        set { uxObjectConsultaDireccion = value; }
     }
     public MultiView MultiViewConsulta
     {
@@ -101,7 +113,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
     
     }
 
-    protected void uxTablaClientes_RowDataBound(object sender, GridViewRowEventArgs e)
+   /* protected void uxTablaClientes_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.DataItem != null)
         {
@@ -111,8 +123,8 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
             {
                 width = s.Length;
                 
-                uxMuestra.Columns[0].ItemStyle.Width = s.Length;
-                uxMuestra.Columns[0].ItemStyle.Wrap = false;
+           //     uxMuestra.Rows[0].ItemStyle.Width = s.Length;
+             //   uxMuestra.Rows[0].ItemStyle.Wrap = false;
             }
         }
 
@@ -120,7 +132,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 
-
+    */
 
     protected void uxValor_TextChanged(object sender, EventArgs e)
     {
