@@ -67,7 +67,7 @@ namespace Presentador.Cliente.Vistas
         {
             Core.LogicaNegocio.Comandos.ComandoCliente.Consultar consultar;
 
-            consultar = FabricaComandosCliente.CrearComandoConsultar(cliente);
+            consultar = FabricaComandosCliente.CrearComandoConsultar();
 
             cliente = consultar.ejecutar();
 

@@ -60,7 +60,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
             Core.LogicaNegocio.Comandos.ComandoCliente.Consultar ConsultarClientes;
             IList<Core.LogicaNegocio.Entidades.Cliente> Clientes = new List<Core.LogicaNegocio.Entidades.Cliente>();
-            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar(Clientes);
+            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar();
             Clientes = ConsultarClientes.ejecutar();
 
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar
@@ -76,7 +76,7 @@ namespace Presentador.Contacto.ContactoPresentador
         {
             Core.LogicaNegocio.Comandos.ComandoCliente.Consultar ConsultarClientes;
             IList<Core.LogicaNegocio.Entidades.Cliente> Clientes = new List<Core.LogicaNegocio.Entidades.Cliente>();
-            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar(Clientes);
+            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar();
             Clientes=ConsultarClientes.ejecutar();
             int i=0;
             while (i<Clientes.Count())
