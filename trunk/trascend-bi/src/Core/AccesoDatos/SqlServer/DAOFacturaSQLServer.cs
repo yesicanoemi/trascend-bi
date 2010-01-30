@@ -55,6 +55,7 @@ namespace Core.AccesoDatos.SqlServer
 
             return connection;
         }
+
         #endregion
 
         #region metodos

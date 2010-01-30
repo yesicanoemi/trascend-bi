@@ -49,7 +49,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             try
             {
                 if (_factura == null) { throw new ConsultarFacturaLNException(); }
-                factura = bdfactura.ConsultarFacturaID(factura);
+                factura = bdfactura.ConsultarFacturaID(_factura);
             }
             catch (ConsultarFacturaADException e) { }
             catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Se recibio una factura vacia", e); }
