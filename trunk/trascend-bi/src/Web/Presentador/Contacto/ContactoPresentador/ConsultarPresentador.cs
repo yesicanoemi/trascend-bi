@@ -111,6 +111,11 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.ClienteC.Text = contacto.ClienteContac.Nombre;
         }
 
+
+        /// <summary>
+        /// Método para limpiar el formulario
+        /// </summary>
+        
         private void LimpiarFormulario()
         {
             _vista.TextBoxNombre.Text = campoVacio;
@@ -323,9 +328,7 @@ namespace Presentador.Contacto.ContactoPresentador
                     
                     cliente.Nombre = _vista.Valor.Text;
 
-                    contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
-
-                    contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
+                    //contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
 
                     IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
 
