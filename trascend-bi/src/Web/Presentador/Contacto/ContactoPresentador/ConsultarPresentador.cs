@@ -128,6 +128,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.Valor.Text = campoVacio;
 
+            _vista.InformacionVisible = false;
+
         }
 
         #region Radio Buttons
