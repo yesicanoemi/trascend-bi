@@ -55,7 +55,10 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.MultiViewConsultar.ActiveViewIndex = index;
         }
 
-
+        /// <summary>
+        /// Llena la lista de todos los clientes
+        /// </summary>
+        
         public void CargarClientes()
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
@@ -304,6 +307,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "3")
                 {
+                    contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
+
                     contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
 
                     listContac = ConsultarContactoXCliente(contacto);
