@@ -32,6 +32,8 @@ namespace Core.LogicaNegocio.Comandos.ComandosFactura
 
         #endregion
 
+
+	//lol
         public void Ejecutar()
         {
             Core.AccesoDatos.FabricaDAO.EnumFabrica = Core.AccesoDatos.EnumFabrica.SqlServer;
