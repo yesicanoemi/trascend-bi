@@ -9,7 +9,8 @@ namespace Presentador.Contacto.ContactoInterface
 {
     public interface IConsultarContacto
     {
-        
+        #region Propiedades
+
         TextBox TextBoxNombre { get; set; }
             
         TextBox TextBoxApellido { get; set; }
@@ -54,15 +55,25 @@ namespace Presentador.Contacto.ContactoInterface
 
         Label NombreCliente { get; set; }
 
-        bool InformacionVisible { get; set; }
-
-        void PintarInformacion(string mensaje, string estilo);
-
         RequiredFieldValidator RequiredFieldValidator { get; set; }
 
         RequiredFieldValidator RequiredFieldValidator1 { get; set; }
 
+        #region Diálogo
+
+        bool DialogoVisible { get; set; }
+
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
+
+        bool InformacionVisible { get; set; }
+
+        void PintarInformacion(string mensaje, string estilo);
+
+        #endregion
+
         void CambiarPagina();
-            
+
+        #endregion  
+
     }
 }

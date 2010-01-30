@@ -10,7 +10,6 @@ using Presentador.Aplicacion;
 
 public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsultarContacto
 {
-
     #region Propiedades
 
     private ConsultarPresentador _presentador;
@@ -173,6 +172,21 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
         {
             get { return uxMensajeInformacion.Visible; }
             set { uxMensajeInformacion.Visible = value; }
+        }
+
+        #endregion
+
+        #region Diálogo
+
+        public void Pintar(string codigo, string mensaje, string actor, string detalles)
+        {
+            uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+        }
+
+        public bool DialogoVisible
+        {
+            get { return uxDialogoError.Visible; }
+            set { uxDialogoError.Visible = value; }
         }
 
         #endregion

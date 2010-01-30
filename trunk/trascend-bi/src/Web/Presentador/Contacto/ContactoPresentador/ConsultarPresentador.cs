@@ -10,9 +10,6 @@ using Core.LogicaNegocio.Excepciones;
 using Core.LogicaNegocio.Fabricas;
 using Presentador.Base;
 
-
-
-
 namespace Presentador.Contacto.ContactoPresentador
 {
     public class ConsultarPresentador : PresentadorBase
@@ -96,6 +93,7 @@ namespace Presentador.Contacto.ContactoPresentador
         }
 
         #region Radio Buttons
+
         /// <summary>
         /// Acción al seleccionar el radiobutton
         /// </summary>
@@ -126,7 +124,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.NombreCliente.Visible = false;
 
-                _vista.InformacionVisible = false;
+                //_vista.InformacionVisible = false;
 
                 //_vista.ValidarNombreVacio.Visible = true;
 
@@ -157,7 +155,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.NombreCliente.Visible = false;
 
-                _vista.InformacionVisible = false;
+                //_vista.InformacionVisible = false;
 
                 //_vista.ValidarNombreVacio.Visible = false;
 
@@ -188,7 +186,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.NombreCliente.Visible = true;
 
-                _vista.InformacionVisible = false;
+                //_vista.InformacionVisible = false;
 
                 //_vista.ValidarNombreVacio.Visible = false;
 
@@ -198,6 +196,8 @@ namespace Presentador.Contacto.ContactoPresentador
         }
 
         #endregion 
+
+        #region Buscar
 
         /// <summary>
         /// Acción del Botón Buscar
@@ -226,9 +226,11 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "1")
                 {
-                    listContac = null;
+                    listContac.Clear();
 
                     listContac = ConsultarContactoNombreApellido(contacto);
+
+                    _vista.InformacionVisible = false;
                 }
 
                 //Consulta por número de tlf
@@ -242,7 +244,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                         contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxNumTelefono.Text);
 
-                        listContac = null;
+                        listContac.Clear();
 
                         IList<Core.LogicaNegocio.Entidades.Contacto> aux =
                                                         new List<Core.LogicaNegocio.Entidades.Contacto>();
@@ -254,6 +256,8 @@ namespace Presentador.Contacto.ContactoPresentador
                             listContac = aux;
                         
                         }
+
+                        _vista.InformacionVisible = false;
                     }
 
                     else
@@ -275,7 +279,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
                     listContac = ConsultarContactoXCliente(contacto);
 
-                    //_vista.InformacionVisible = false;
+                    _vista.InformacionVisible = false;
 
                 }
 
@@ -300,12 +304,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
             }
 
-            catch (Exception e)
-            {
-
-            }
-
-                /*
+           
             catch (WebException e)
             {
 
@@ -330,9 +329,11 @@ namespace Presentador.Contacto.ContactoPresentador
                                                                 "\n " + e.StackTrace);
                 _vista.DialogoVisible = true;
 
-            }*/
+            }
 
         }
+
+        #endregion 
 
         /// <summary>
         /// Método de Consulta una vez seleccionado el contacto 

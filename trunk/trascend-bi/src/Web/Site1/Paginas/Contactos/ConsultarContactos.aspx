@@ -131,13 +131,15 @@
                                                 
                                                 <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
                                                             Text="Buscar" Visible="false" />
-
+                                                <br />
+                                                <br />
                                             </td>
                                         </tr>
                                         
 
                                         
                                         <tr>
+                                          
                                             <td colspan="2">
                                                 <asp:GridView ID="uxConsultaContacto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaContacto"
                                                 AutoGenerateColumns="False" DataKeyNames="IdContacto" AutoGenerateSelectButton="True"
