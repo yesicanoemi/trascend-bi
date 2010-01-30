@@ -222,7 +222,11 @@ namespace Core.AccesoDatos.SqlServer
 
                     cliente.AreaNegocio = (string)conexion["AreaNegocio"];
 
+                    cliente.Telefono = new TelefonoTrabajo[3];
+                    
                     cliente.Telefono = BuscarTelefonos(cliente.IdCliente);
+
+                    //Console.WriteLine(cliente.Telefono[1].Tipo);
 
                     //IList<Contacto> _listaContacto = new List<Contacto>();
 
@@ -268,7 +272,7 @@ namespace Core.AccesoDatos.SqlServer
         /// <returns></returns>
         private TelefonoTrabajo[] BuscarTelefonos(int IdCliente)
         {
-            TelefonoTrabajo[] telefonos = new TelefonoTrabajo[3];
+            TelefonoTrabajo[] telefonosA = new TelefonoTrabajo[3];
 
             SqlParameter[] arParms = new SqlParameter[1];
 
@@ -282,18 +286,24 @@ namespace Core.AccesoDatos.SqlServer
 
             while (conexion.Read())
             {
-                telefonos[i] = new TelefonoTrabajo();
+                //Console.WriteLine(i);
 
-                telefonos[i].Codigoarea = (int)conexion["CodigoArea"];
+                telefonosA[i] = new TelefonoTrabajo();
 
-                telefonos[i].Numero = (int)conexion["Numero"];
+                telefonosA[i].Codigoarea = (int)conexion["CodigoArea"];                
 
-                telefonos[i].Tipo = (string)conexion["Nombre"];
+                telefonosA[i].Numero = (int)conexion["Numero"];
+
+                telefonosA[i].Tipo = (string)conexion["Nombre"];
+
+                //Console.WriteLine(telefonos[i].Tipo);
+
+                //Console.WriteLine("------");
 
                 i++;
             }
 
-            return telefonos;
+            return telefonosA;
         }
 
         public IList<Cliente> ConsultarNombre(Cliente cliente)
@@ -308,7 +318,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[0].Value = cliente.Nombre;
 
                 DbDataReader conexion = SqlHelper.ExecuteReader
-                    (_conexion.GetConnection(), "ConsultarClienteParametroNombre", arParms);
+                    (_conexion.GetConnection(), "ConsultarClienteNombre", arParms);
 
 
                 int i = 0;
@@ -317,9 +327,6 @@ namespace Core.AccesoDatos.SqlServer
                
                 while (conexion.Read())
                 {
-                    cliente = new Cliente();
-
-                    //cliente.Telefono = new TelefonoTrabajo();
 
                     cliente.Direccion = new Direccion();
 
@@ -341,26 +348,21 @@ namespace Core.AccesoDatos.SqlServer
 
                     cliente.AreaNegocio = (string)conexion["AreaNegocio"];
 
-                    //cliente.Telefono.Numero = int.Parse((string)conexion["TelefonoTrabajo"]);
+                    cliente.Telefono = new TelefonoTrabajo[3];
 
-                    //cliente.Telefono.Codigoarea = int.Parse((string)conexion["CodigoTelefonoTrabajo"]);
+                    cliente.Telefono = BuscarTelefonos(cliente.IdCliente);
 
-                    //cliente.Telefono.Tipo = (string)conexion["Tipo"];
+                    //Console.WriteLine(cliente.Telefono[1].Tipo);
 
-                    IList <Contacto> _listaContacto = new List<Contacto>();
+                    //IList<Contacto> _listaContacto = new List<Contacto>();
 
-                    _listaContacto = BuscarContacto(cliente.IdCliente);
+                    //_listaContacto = BuscarContacto(cliente.IdCliente);
 
                     listaCliente.Add(cliente);
 
                     i++;
-
                 }
                
-
-                if (listaCliente.Count == 0)
-
-                    throw new ConsultarClienteBDExcepciones();
 
                 return listaCliente;
 

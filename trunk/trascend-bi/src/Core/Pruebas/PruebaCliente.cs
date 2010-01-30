@@ -119,7 +119,8 @@ namespace Core.Pruebas
 
             foreach (Cliente clienteA in clientes)
             {
-                Console.WriteLine(clienteA.Nombre);
+                if (clienteA.Telefono[1] != null)
+                    Console.WriteLine(clienteA.Telefono[1].Tipo);
             }
         }
     }
