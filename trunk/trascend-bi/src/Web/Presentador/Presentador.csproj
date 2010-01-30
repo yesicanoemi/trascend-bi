@@ -99,6 +99,7 @@
     <Compile Include="Factura\Contrato\IModificarFactura.cs" />
     <Compile Include="Factura\FacturaController.cs" />
     <Compile Include="Factura\Vistas\AgregarFacturaPresenter.cs" />
+    <Compile Include="Factura\Vistas\AnularFacturaPresenter.cs" />
     <Compile Include="Factura\Vistas\ConsultarFacturaPresenter.cs" />
     <Compile Include="Factura\Vistas\ModificarFacturaPresenter.cs" />
     <Compile Include="Gasto\Contrato\IConsultarGasto.cs" />

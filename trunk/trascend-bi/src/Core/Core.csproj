@@ -161,6 +161,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasEmitidas.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasEmitidasAnuales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoReporte\FacturasPorCobrarAnuales.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Anular.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\Consultar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarPropuestas.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandosFactura\ConsultarxFacturaID.cs" />

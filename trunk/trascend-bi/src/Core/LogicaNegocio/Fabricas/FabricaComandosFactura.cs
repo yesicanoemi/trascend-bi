@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.LogicaNegocio.Comandos.ComandoFactura;
+using Core.LogicaNegocio.Comandos.ComandosFactura;
 
 namespace Core.LogicaNegocio.Fabricas
 {
+
     public class FabricaComandosFactura
     {
         public static Ingresar CrearComandoIngresar(Factura factura)
@@ -45,5 +46,9 @@ namespace Core.LogicaNegocio.Fabricas
         }
 
     
+        public static Anular CrearComandoAnular(int idFactura)
+        {
+            return new Anular();
+        }
     }
 }

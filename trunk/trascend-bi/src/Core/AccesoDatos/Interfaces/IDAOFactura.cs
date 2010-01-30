@@ -73,6 +73,6 @@ namespace Core.AccesoDatos.Interfaces
         /// <returns>Entidad factura con los datos modificados</returns>
         Factura UpdateFactura( Factura factura );
 
-        Factura ModificarEstadoFactura(Factura factura);
+        void ModificarEstadoFactura(int idFactura);
     }
 }

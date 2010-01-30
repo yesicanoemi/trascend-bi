@@ -515,7 +515,7 @@ namespace Core.AccesoDatos.SqlServer
                 return new Factura();
         }
 
-        public Factura ModificarEstadoFactura(Factura factura)
+        public void ModificarEstadoFactura(int idFactura)
         {
             bool valido = false;
             try
@@ -523,10 +523,10 @@ namespace Core.AccesoDatos.SqlServer
                 SqlParameter[] arparms = new SqlParameter[2];
 
                 arparms[0] = new SqlParameter("@IdFactura", SqlDbType.Int);
-                arparms[0].Value = factura.Numero;
+                arparms[0].Value = idFactura;
 
                 arparms[1] = new SqlParameter("@Estado", SqlDbType.VarChar);
-                arparms[1].Value = factura.Estado;
+                arparms[1].Value = "Anulada";
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarEstadoFactura", arparms);
 
@@ -540,11 +540,6 @@ namespace Core.AccesoDatos.SqlServer
             {
                 throw new ModificarFacturaADException("Error modificando una factura en la Base de Datos", e);
             }
-
-            if (valido)
-                return factura;
-            else
-                return new Factura();
         }
 
 

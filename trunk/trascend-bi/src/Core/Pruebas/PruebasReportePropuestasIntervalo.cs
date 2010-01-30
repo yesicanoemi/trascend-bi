@@ -16,7 +16,7 @@ namespace Core.Pruebas
             DateTime inicio = DateTime.Parse("1/4/2005");
             DateTime fin = DateTime.Parse("1/5/2009");
 
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
+            Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas comandoConsulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = comandoConsulta.Ejecutar();
@@ -40,7 +40,7 @@ namespace Core.Pruebas
             DateTime inicio = DateTime.Parse("1/5/2009");
             DateTime fin = DateTime.Parse("1/5/2009");
 
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
+            Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas comandoConsulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = comandoConsulta.Ejecutar();
@@ -64,7 +64,7 @@ namespace Core.Pruebas
             DateTime inicio = DateTime.Parse("1/4/2003");
             DateTime fin = DateTime.Parse("1/4/2004");
 
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
+            Core.LogicaNegocio.Comandos.ComandosFactura.ConsultarPropuestas comandoConsulta =
                 Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
             IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = comandoConsulta.Ejecutar();
