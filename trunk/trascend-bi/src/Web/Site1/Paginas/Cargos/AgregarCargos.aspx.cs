@@ -127,4 +127,12 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
     }
     #endregion
 
+    protected void uxSueldoMinimo_TextChanged(object sender, EventArgs e)
+    {
+        _presentador.ValidarMontoMinimo();
+    }
+    protected void uxSueldoMaximo_TextChanged(object sender, EventArgs e)
+    {
+        _presentador.ValidarMontoMaximo();
+    }
 }

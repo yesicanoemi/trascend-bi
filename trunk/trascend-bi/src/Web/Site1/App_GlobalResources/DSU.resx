@@ -405,7 +405,13 @@
   <data name="ERTelefono" xml:space="preserve">
     <value>^(\+\d\d?\d?)?\s?(\(\d{2,3}\))$</value>
   </data>
+<<<<<<< .mine
+  <data name="CampoObligatorio" xml:space="preserve">
+    <value>Los campos marcados con * son de caracter obligatorio</value>
+  </data>
+=======
   <data name="FaltaParametroBusqueda" xml:space="preserve">
     <value>Debe introducir valor de parámetro de búsqueda</value>
   </data>
+>>>>>>> .r856
 </root>

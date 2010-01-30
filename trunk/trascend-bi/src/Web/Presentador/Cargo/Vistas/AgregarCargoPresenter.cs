@@ -162,6 +162,39 @@ namespace Presentador.Cargo.Vistas
         {
             return fecha.ToShortDateString();
         }
+        /// <summary>
+        /// Se valida que el monto minimo no sea negativo
+        /// </summary>
+        public void ValidarMontoMinimo()
+        {
+            float montoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+            if (montoMinimo < 0.00)
+            {
+                _vista.LabelError.Text = "El sueldo minimo no puede ser menor que 0";
+                _vista.LabelError.Visible = true;
+            }
+        }
+        /// <summary>
+        /// Se valida que el monto maximo no sea negativo y que sea menor que el monto minimo
+        /// </summary>
+        public void ValidarMontoMaximo()
+        {
+            float montoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+            float montoMaximo = float.Parse(_vista.SueldoMaximo.Text);
+            if (montoMaximo > 0.00)
+            {
+                if (montoMaximo < montoMinimo)
+                {
+                    _vista.LabelError.Text = "El sueldo maximo no puede ser menor que 0 y menor que el sueldo minimo";
+                    _vista.LabelError.Visible = true;
+                }
+            }
+            else
+            {
+                _vista.LabelError.Text = "El sueldo maximo no puede ser menor que 0.00";
+                _vista.LabelError.Visible = true;
+            }
+        }
         #endregion
     }
 }
