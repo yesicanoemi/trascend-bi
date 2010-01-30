@@ -16,7 +16,12 @@ namespace Core.AccesoDatos.Interfaces
         /// <returns>Cliente ingresado</returns>
         Cliente Ingresar(Cliente cliente);
 
-        int Modificar(Cliente cliente);
+        /// <summary>
+        /// Modifica un valor de un cliente
+        /// </summary>
+        /// <param name="cliente">Cliente a modificar</param>
+        /// <returns>Cliente modificado</returns>
+        Cliente Modificar(Cliente cliente);
 
         /// <summary>
         /// Consulta los clientes por el nombre

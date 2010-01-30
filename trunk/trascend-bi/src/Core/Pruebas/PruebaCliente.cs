@@ -94,7 +94,7 @@ namespace Core.Pruebas
         {
             Cliente cliente = new Cliente();            
 
-            cliente.Nombre = "o";
+            cliente.Nombre = "";
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
@@ -102,10 +102,7 @@ namespace Core.Pruebas
 
             IList<Cliente> clientes = acceso.ConsultarNombre(cliente);
 
-            foreach (Cliente clienteA in clientes)
-            {
-                Console.WriteLine(clienteA.Nombre);
-            }
+            Console.WriteLine(clientes[0].Nombre);
         }
 
         [Test]

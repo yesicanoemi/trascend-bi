@@ -174,17 +174,104 @@ namespace Core.AccesoDatos.SqlServer
             
         }
          
-        public int Modificar(Cliente cliente)
+        public Cliente Modificar(Cliente cliente)
         {
-            int resultado = 0;
             try
             {
-                return resultado;
+
+                SqlParameter[] arParms = new SqlParameter[9];
+
+                // Parametros 
+
+                #region Cliente
+
+                arParms[0] = new SqlParameter("@rif", SqlDbType.VarChar);
+                arParms[0].Value = cliente.Rif;
+
+                arParms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
+                arParms[1].Value = cliente.Nombre;
+
+                arParms[3] = new SqlParameter("@urb", SqlDbType.VarChar);
+                arParms[3].Value = cliente.Direccion.Urbanizacion;
+
+                arParms[2] = new SqlParameter("@calleAv", SqlDbType.VarChar);
+                arParms[2].Value = cliente.Direccion.Avenida;
+
+                arParms[4] = new SqlParameter("@EdiCas", SqlDbType.VarChar);
+                arParms[4].Value = cliente.Direccion.Edif_Casa;
+
+                arParms[5] = new SqlParameter("@PisoApto", SqlDbType.VarChar);
+                arParms[5].Value = cliente.Direccion.Oficina;
+
+                arParms[6] = new SqlParameter("@Ciudad", SqlDbType.VarChar);
+                arParms[6].Value = cliente.Direccion.Ciudad;
+
+                arParms[7] = new SqlParameter("@AreaNeg", SqlDbType.VarChar);
+                arParms[7].Value = cliente.AreaNegocio;
+
+                arParms[8] = new SqlParameter("@IdCliente", SqlDbType.Int);
+                arParms[8].Value = cliente.IdCliente;
+
+                int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarCliente", arParms);
+
+                #endregion
+
+                #region Telefonos
+
+                for (int i = 0; i < 3; i++)
+                {
+                    if (cliente.Telefono[i] != null)
+                    {
+                        arParms = new SqlParameter[4];
+
+                        arParms[0] = new SqlParameter("@Tlf", SqlDbType.VarChar);
+                        arParms[0].Value = cliente.Telefono[i].Numero.ToString();
+
+                        arParms[1] = new SqlParameter("@codTlf", SqlDbType.VarChar);
+                        arParms[1].Value = cliente.Telefono[i].Codigoarea.ToString();
+
+                        int tipotelf = 0;
+
+                        if (cliente.Telefono[i].Tipo.Equals("Trabajo"))
+                        {
+                            tipotelf = 1;
+                        }
+                        else if (cliente.Telefono[i].Tipo.Equals("Celular"))
+                        {
+                            tipotelf = 2;
+                        }
+                        else if (cliente.Telefono[i].Tipo.Equals("Fax"))
+                        {
+                            tipotelf = 3;
+                        }
+
+                        arParms[2] = new SqlParameter("@tipoTelf", SqlDbType.Int);
+                        arParms[2].Value = tipotelf;
+
+                        arParms[3] = new SqlParameter("@idCliente", SqlDbType.Int);
+                        arParms[3].Value = cliente.IdCliente;
+
+                        result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarTelefono", arParms);
+                    }
+                }
+
+                #endregion
+
+
+
+                return cliente;
+
             }
             catch (SqlException e)
             {
+                throw new IngresarClienteBDExepciones
+                    ("Error de SQL en ingresando el cliente en la Base de Datos", e);
             }
-            return resultado;
+            catch (Exception e)
+            {
+                throw new IngresarClienteBDExepciones
+                    ("Error ingresando cliente en la base de datos", e);
+            }
         }
 
         public IList<Cliente> ConsultarTodos()
@@ -327,6 +414,7 @@ namespace Core.AccesoDatos.SqlServer
                
                 while (conexion.Read())
                 {
+                    cliente = new Cliente();
 
                     cliente.Direccion = new Direccion();
 
