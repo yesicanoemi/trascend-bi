@@ -15,5 +15,6 @@ BEGIN
 		SELECT  c.IdCliente,c.RifCliente,c.Nombre,c.AreaNegocio, d.Calle as CalleAvenidad,d.Urbanizacion,d.EdifCasa as EdificioCasa, 
 		d.Ciudad,d.PisoApto as PisoApartamento
 		from [bddproy2].[dbo].[cliente] c, [bddproy2].[dbo].[direccion] d
-		where c.IdCliente=d.IdCliente and c.Rif like @rif and c.Estatus = 1;
+		where c.IdCliente=d.IdCliente and c.RifCliente like @rif and c.Estatus = 1;
 END
+
