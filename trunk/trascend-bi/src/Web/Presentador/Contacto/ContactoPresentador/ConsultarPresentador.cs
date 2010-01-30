@@ -318,15 +318,14 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "3")
                 {
-<<<<<<< .mine
+
                     Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
                     
                     cliente.Nombre = _vista.Valor.Text;
-=======
+
                     contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
 
                     contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
->>>>>>> .r846
 
                     IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
 
