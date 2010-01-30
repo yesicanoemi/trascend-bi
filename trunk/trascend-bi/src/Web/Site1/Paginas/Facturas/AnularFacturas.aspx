@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="EliminarFacturas.aspx.cs" Inherits="Paginas_Facturas_EliminarFacturas" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AnularFacturas.aspx.cs" Inherits="Paginas_Facturas_EliminarFacturas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -11,7 +11,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarFacturas.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarFacturas.aspx">Consultar<span></span></a></li> 
-    <li><a href="EliminarFacturas.aspx" class="active">Anular<span></span></a></li>
+    <li><a href="AnularFacturas.aspx" class="active">Anular<span></span></a></li>
   <li><a href="ModificarFacturas.aspx" >Modificar<span></span></a></li>
 </ul> 
 						
