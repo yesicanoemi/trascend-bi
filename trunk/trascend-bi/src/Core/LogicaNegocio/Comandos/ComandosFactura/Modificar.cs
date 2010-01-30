@@ -40,7 +40,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             try
             {
                 if (factura == null) { throw new ModificarFacturaLNException(); }
-                _factura = bdpropuestas.UpdateFactura(factura);
+                _factura = bdpropuestas.ModificarEstadoFactura(factura);
             }
             catch (ModificarFacturaADException e) { }
             catch (ModificarFacturaLNException e) { throw new IngresarFacturaLNException("Se esta recibiendo una factura vacia", e); }
