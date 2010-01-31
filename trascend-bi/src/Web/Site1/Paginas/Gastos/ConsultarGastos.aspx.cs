@@ -89,6 +89,12 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         set { uxTablaCliente = value; }
     }
 
+    public HtmlTable TablaInicio
+    {
+        get { return uxTablaInicio; }
+        set { uxTablaInicio = value; }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -142,6 +148,11 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     protected void parametrizadocliente(object sender, GridViewSelectEventArgs e)
     {
         _presenter.busquedaparametrizado(-1,uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+
+    protected void verseleccion(object sender, EventArgs e) 
+    {
+        _presenter.verseleccion();
     }
     protected void GastoDetallado(object sender, GridViewSelectEventArgs e)
     {

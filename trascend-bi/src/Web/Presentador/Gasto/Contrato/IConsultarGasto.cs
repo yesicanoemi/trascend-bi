@@ -24,6 +24,7 @@ namespace Presentador.Gasto.Contrato
         HtmlTable TablaSeleccionGrid { get; set; }
         HtmlTable TablaConsultaParametro { get; set; }
         HtmlTable TablaCliente { get; set; }
+        HtmlTable TablaInicio { get; set; }
         
         #endregion
     }
