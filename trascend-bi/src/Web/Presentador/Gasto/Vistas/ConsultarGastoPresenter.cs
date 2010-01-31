@@ -118,9 +118,9 @@ namespace Presentador.Gasto.Vistas
             if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por fecha
             {
                 gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.Estado = _vista.BusquedaConsulta.Text;
+                gasto.FechaGasto = Convert.ToDateTime( _vista.BusquedaConsulta.Text);
 
-                listaGasto = ConsultarPorEstado(gasto);
+                listaGasto = ConsultarPorFecha(gasto);
                 //listaGasto.Add(gasto);
 
                 try
@@ -128,6 +128,9 @@ namespace Presentador.Gasto.Vistas
                     if (listaGasto != null)
                     {
                         _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                        _vista.TablaInicio.Visible = false;
+                        _vista.GridViewParametro.Visible = false;
+                        _vista.TablaSeleccionGrid.Visible = true;
                     }
                 }
 

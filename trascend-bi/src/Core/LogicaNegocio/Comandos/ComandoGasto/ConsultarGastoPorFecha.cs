@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
@@ -30,8 +32,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
 
         public IList<Gasto> Ejecutar()
         {
-            DAOGastoSQLServer bd = new DAOGastoSQLServer();
-            listaGasto = bd.ConsultarGastoPorFecha(gasto);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOGasto bdgastos = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOGasto();
+            
+            listaGasto = bdgastos.ConsultarGastoPorFecha(gasto);
 
             return listaGasto;
         }
