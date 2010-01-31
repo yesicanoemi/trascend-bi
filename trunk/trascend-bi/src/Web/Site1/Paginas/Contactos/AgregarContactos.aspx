@@ -102,7 +102,6 @@
                                    <td>
                                         <asp:TextBox ID="uxCodOficina" runat="server" Width="40"></asp:TextBox>
                                         <asp:TextBox ID="uxTelfOficina" runat="server" Width="150"></asp:TextBox>
-                                        Tipo: <asp:CheckBox ID="uxFax" runat="server" />
                                         <br />
                                         <asp:RequiredFieldValidator ID="uxValidatorCodOficina" runat="server" 
                                         ControlToValidate="uxCodOficina" 
@@ -114,12 +113,18 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                   <td>Telefono Fax:</td>
+                                   <td>
+                                       <br />
+                                       <asp:TextBox ID="uxCodFax" runat="server" Width="40px"></asp:TextBox>
+                                       <asp:TextBox ID="uxFax" runat="server" Height="22px" Width="147px"></asp:TextBox>
+                                       <br />
+                                                         </td>
                                </tr>
                                <tr>
                                    <td>Telefono de Celular: </td>
                                    <td>
+                                        <br />
                                         <asp:TextBox ID="uxCodCel" runat="server" Width="40"></asp:TextBox>
                                         <asp:TextBox ID="uxTelfCelular" runat="server" Width="150"></asp:TextBox>
                                         <br />
@@ -137,6 +142,8 @@
                                        
                                    </td>
                                    <td>
+                                        
+                                       <br />
                                         
                                        <asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged" Visible="true"> </asp:TextBox>
                                        

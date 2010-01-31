@@ -27,7 +27,11 @@ namespace Presentador.Contacto.ContactoInterface
 
             TextBox TextBoxCodCelular { get; set; }
 
-            CheckBox CheckBoxFax { get; set; }
+            TextBox TextBoxTelfFax { get; set; }
+
+            TextBox TextBoxCodFax { get; set; }
+
+           
 
         //RequiredFieldValidator RequiredFieldValidator { get; set; }
 
