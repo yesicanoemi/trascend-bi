@@ -10,23 +10,26 @@ namespace Presentador.Cliente.Contrato
     public interface IConsultarCliente
     {
         #region Propiedades
-        MultiView MultiViewConsulta
-        {
-            get;
-            set;
-        }
-        DropDownList opcion
-        {
-            get;
-            set;
-        }
 
-        TextBox Valor
-        {
-            get;
-            set;
-        }
-        
+
+
+        TextBox Valor { get; set; }
+        TextBox ConsultaRif { get; set; }
+        Label RifCliente { get; set; }
+        Label NombreCliente { get; set; }
+        Button BotonBuscar { get; set; }
+        DetailsView MuestraCliente { get; set; }
+        DetailsView MuestraDireccion { get; set; }
+        DetailsView MuestraTelefono { get; set; }
+        RadioButtonList RbCampoBusqueda { get; set; }
+
+        MultiView MultiViewConsulta { get; set; }
+
+
+
+
+
+
         #endregion
 
         /*Label CodTelefonoCliente
@@ -182,6 +185,7 @@ namespace Presentador.Cliente.Contrato
         */
         ObjectContainerDataSource GetObjectContainerConsultaCliente { get; set; }
         ObjectContainerDataSource GetObjectContainerConsultaDireccion { get; set; }
+        ObjectContainerDataSource GetObjectContainerConsultaTelefono { get; set; }
 
     }
 }
