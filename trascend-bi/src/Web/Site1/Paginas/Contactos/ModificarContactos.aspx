@@ -43,6 +43,9 @@
                                     
                                     <br />
                                     
+                                    <asp:Label ID="uxIdContactoH" runat="server" Text="" Visible="false"></asp:Label>
+                                    <asp:Label ID="uxIdClienteH" runat="server" Text="" Visible="false"></asp:Label>
+                                    
                                     <table width="">
                                           <tr>  
                                             <td align="right">

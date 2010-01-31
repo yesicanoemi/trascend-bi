@@ -173,6 +173,18 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             set { uxNombreCliente = value; }
         }
 
+        public Label IdContactoH
+        {
+            get { return uxIdContactoH; }
+            set { uxIdContactoH = value; }
+        }
+
+        public Label IdClienteH
+        {
+            get { return uxIdClienteH; }
+            set { uxIdClienteH = value; }
+        }
+
         public TextBox Valor
         {
             get { return uxValor; }

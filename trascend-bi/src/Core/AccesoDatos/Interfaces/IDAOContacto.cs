@@ -20,5 +20,7 @@ namespace Core.AccesoDatos.Interfaces
 
         void Eliminar(Contacto contacto);
 
+        void ModificarContacto(Contacto entidad);
+
     }
 }

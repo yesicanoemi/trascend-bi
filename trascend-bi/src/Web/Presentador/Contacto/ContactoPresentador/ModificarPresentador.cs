@@ -74,6 +74,10 @@ namespace Presentador.Contacto.ContactoPresentador
 
                     contacto.TelefonoDeCelular.Tipo = _vista.TipoTlfC2.Text;
                 }
+
+                contacto.IdContacto = Int32.Parse(_vista.IdContactoH.Text);
+
+                contacto.ClienteContac.IdCliente = Int32.Parse(_vista.IdClienteH.Text);
                
                 ModificarContacto(contacto);
                 
@@ -123,6 +127,10 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.RequiredFieldValidator7.Visible = true;
 
             _vista.RequiredFieldValidator8.Visible = true;
+
+            _vista.IdContactoH.Text = contacto.IdContacto.ToString();
+
+            _vista.IdClienteH.Text = contacto.ClienteContac.IdCliente.ToString(); 
 
             #endregion 
 
