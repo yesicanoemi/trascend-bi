@@ -37,14 +37,14 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
 
 
-                if (_vista.CheckBoxFax.Checked)
-                {
-                    contacto.TelefonoDeTrabajo.Tipo = "Fax";
-                }
-                else
-                {
-                    contacto.TelefonoDeTrabajo.Tipo = "Trabajo";
-                }
+                //if (_vista.CheckBoxFax.Checked)
+                //{
+                //    contacto.TelefonoDeTrabajo.Tipo = "Fax";
+                //}
+                //else
+                //{
+                //    contacto.TelefonoDeTrabajo.Tipo = "Trabajo";
+                //}
 
                 Ingresar(contacto);
             }

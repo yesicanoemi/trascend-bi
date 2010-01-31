@@ -65,11 +65,18 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         set { uxCodCel = value; }
     }
 
-    public CheckBox CheckBoxFax
+    public TextBox TextBoxCodFax
+    {
+        get { return uxCodFax; }
+        set { uxCodFax = value; }
+    }
+
+    public TextBox TextBoxTelfFax
     {
         get { return uxFax; }
         set { uxFax = value; }
     }
+    
 
     public TextBox Valor
     {
