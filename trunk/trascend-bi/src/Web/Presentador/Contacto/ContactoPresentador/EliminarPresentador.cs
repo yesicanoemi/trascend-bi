@@ -66,19 +66,17 @@ namespace Presentador.Contacto.ContactoPresentador
             {   
                 //permite la eliminacion
                 EliminarContacto(contacto);
-
-                _vista.PintarInformacion(ManagerRecursos.GetString
-                        ("MensajeEliminarCorrecto"), "mensajes");
-
-                _vista.CambiarPagina();
-
+               
+                LimpiarElementosVisibles();
+                
+                CambiarVista(0);
             }
             else
-            {
-                _vista.PintarInformacion(ManagerRecursos.GetString
+            {                
+                _vista.PintarInformacionEliminar(ManagerRecursos.GetString
                         ("MensajeEliminarFallida"), "mensajes");
 
-                _vista.CambiarPagina();
+                _vista.InformacionVisibleEliminar = true;
 
             }
            
@@ -173,6 +171,40 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.InformacionVisibleEliminar = false;
 
+        }
+
+        public void LimpiarElementosVisibles()
+        {
+            _vista.TextBoxNombre.Visible = false;
+
+            _vista.TextBoxApellido.Visible = false;
+
+            _vista.TextBoxCodTelefono.Visible = false;
+
+            _vista.TextBoxNumTelefono.Visible = false;
+
+            _vista.ClienteDdl.Visible = false;
+
+            _vista.BotonBuscar.Visible = false;
+
+            _vista.NombreContacto.Visible = false;
+
+            _vista.ApellidoContacto.Visible = false;
+
+            _vista.CodigoTlf.Visible = false;
+
+            _vista.Tlf.Visible = false;
+
+            _vista.NombreCliente.Visible = false;
+
+            _vista.Valor.Visible = false;
+
+            _vista.GetObjectContainerConsultaContacto.DataSource = "";
+
+            _vista.PintarInformacionEliminar(ManagerRecursos.GetString
+                       ("MensajeEliminarCorrecto"), "mensajes");
+
+            _vista.InformacionVisibleEliminar = true;
         }
 
         #region Radio Buttons
