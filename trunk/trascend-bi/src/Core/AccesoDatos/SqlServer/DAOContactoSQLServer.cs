@@ -34,6 +34,8 @@ namespace Core.AccesoDatos.SqlServer
 
         #region Métodos
 
+        #region Ingresar
+
         public Contacto Ingresar(Contacto contacto,int idCliente)
         {
             Contacto _contacto = new Contacto();
@@ -74,6 +76,8 @@ namespace Core.AccesoDatos.SqlServer
             return _contacto;
 
         }
+
+        #endregion 
 
         #region ConsultarContacto
 
@@ -354,6 +358,8 @@ namespace Core.AccesoDatos.SqlServer
 
                     _contacto.IdContacto = (int)reader2.GetValue(5);
 
+                    _contacto.ClienteContac.IdCliente = (int)reader2.GetValue(6);
+
                 }
 
                 contacto = _contacto;
@@ -374,7 +380,8 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
-        #region no tocar
+        #region Eliminar
+
         public void Eliminar(Contacto contacto)
         {
             try
@@ -398,50 +405,131 @@ namespace Core.AccesoDatos.SqlServer
             }
         }
    
+        #endregion
 
-         public void ModificarContacto(Contacto contacto)
+        #region Modificar
+
+        public void ModificarContacto(Contacto contacto)
         {
             try
             {
                 SqlParameter[] arParms = new SqlParameter[6];
 
-                arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[0] = new SqlParameter("@IdContacto", SqlDbType.Int);
 
-                arParms[0].Value = contacto.Nombre;
+                arParms[0].Value = contacto.IdContacto;
 
-                arParms[1] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+                arParms[1] = new SqlParameter("@IdCliente", SqlDbType.Int);
 
-                arParms[1].Value = contacto.Apellido;
+                arParms[1].Value = contacto.ClienteContac.IdCliente;
 
-                arParms[2] = new SqlParameter("@Cargo", SqlDbType.VarChar);
+                arParms[2] = new SqlParameter("@Area", SqlDbType.VarChar);
 
-                arParms[2].Value = contacto.Cargo;
+                arParms[2].Value = contacto.AreaDeNegocio;
 
-                arParms[3] = new SqlParameter("@Area", SqlDbType.VarChar);
+                arParms[3] = new SqlParameter("@Cargo", SqlDbType.VarChar);
 
-                arParms[3].Value = contacto.AreaDeNegocio;
+                arParms[3].Value = contacto.Cargo;
 
-                arParms[4] = new SqlParameter("@IdContacto", SqlDbType.Int);
+                arParms[4] = new SqlParameter("@Apellido", SqlDbType.VarChar);
 
-                arParms[4].Value = contacto.IdContacto;
+                arParms[4].Value = contacto.Apellido;
 
-                arParms[5] = new SqlParameter("@IdCliente", SqlDbType.VarChar);
+                arParms[5] = new SqlParameter("@Nombre", SqlDbType.VarChar);
 
-                arParms[5].Value = contacto.ClienteContac.IdCliente;
+                arParms[5].Value = contacto.Nombre;
 
+                //Modificar el contacto en la BD 
 
                 SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                                         "ModificarContacto_3", arParms);
 
-                
+                //Eliminar los tlf que tiene el contacto a modificar
+
                 SqlParameter[] arParms2 = new SqlParameter[1];
 
-                arParms2[0] = new SqlParameter("@IdContacto", SqlDbType.VarChar);
+                arParms2[0] = new SqlParameter("@IdContacto", SqlDbType.Int);
 
                 arParms2[0].Value = contacto.IdContacto;
 
                 SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                                         "EliminarTelefonosContacto_3", arParms2);
+
+                //Ingresar nuevos tlf a la BD
+
+                SqlParameter[] arParms3 = new SqlParameter[4];
+
+                arParms3[0] = new SqlParameter("@IdContacto", SqlDbType.Int);
+
+                arParms3[0].Value = contacto.IdContacto;
+
+                arParms3[1] = new SqlParameter("@Codigo", SqlDbType.Int);
+
+                arParms3[1].Value = contacto.TelefonoDeTrabajo.Codigoarea;
+
+                arParms3[2] = new SqlParameter("@Numero", SqlDbType.Int);
+
+                arParms3[2].Value = contacto.TelefonoDeTrabajo.Numero;
+
+                arParms3[3] = new SqlParameter("@Tipo", SqlDbType.Int);
+
+                if (contacto.TelefonoDeTrabajo.Tipo == "Trabajo")
+                {
+                    arParms3[3].Value = 1;
+                }
+
+                if (contacto.TelefonoDeTrabajo.Tipo == "Celular")
+                {
+                    arParms3[3].Value = 2;
+                }
+
+                if (contacto.TelefonoDeTrabajo.Tipo == "Fax")
+                {
+                    arParms3[3].Value = 3;
+                }
+                
+                //Si el contacto posee más de 1 tlf 
+
+                if ((contacto.TelefonoDeCelular.Codigocel > 0) && (contacto.TelefonoDeCelular.Numero > 0))
+                {
+
+                    SqlParameter[] arParms4 = new SqlParameter[4];
+
+                    arParms4[0] = new SqlParameter("@IdContacto", SqlDbType.Int);
+
+                    arParms4[0].Value = contacto.IdContacto;
+
+                    arParms4[1] = new SqlParameter("@Codigo", SqlDbType.Int);
+
+                    arParms4[1].Value = contacto.TelefonoDeCelular.Codigocel;
+
+                    arParms4[2] = new SqlParameter("@Numero", SqlDbType.Int);
+
+                    arParms4[2].Value = contacto.TelefonoDeCelular.Numero;
+
+                    arParms4[3] = new SqlParameter("@Tipo", SqlDbType.Int);
+
+                    if (contacto.TelefonoDeCelular.Tipo == "Trabajo")
+                    {
+                        arParms4[3].Value = 1;
+                    }
+
+                    if (contacto.TelefonoDeCelular.Tipo == "Celular")
+                    {
+                        arParms4[3].Value = 2;
+                    }
+
+                    if (contacto.TelefonoDeCelular.Tipo == "Fax")
+                    {
+                        arParms4[3].Value = 3;
+                    }
+
+                    SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
+                                                       "ModificarTelefonosContacto_3", arParms4);
+                }
+
+                SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
+                                                        "ModificarTelefonosContacto_3", arParms3);
 
             }
 
@@ -453,10 +541,7 @@ namespace Core.AccesoDatos.SqlServer
         }
         #endregion
 
-
         #endregion
-
-
     }
 }
 
