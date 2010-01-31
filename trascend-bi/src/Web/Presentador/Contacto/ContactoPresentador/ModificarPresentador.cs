@@ -36,6 +36,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
         #endregion
 
+
+
         #region Métodos
 
         /// <summary>
@@ -80,8 +82,11 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.ClienteContac.IdCliente = Int32.Parse(_vista.IdClienteH.Text);
                
                 ModificarContacto(contacto);
-                
-                //LimpiarRegistros();
+
+                LimpiarElementosVisibles();
+
+                CambiarVista(0);
+
             }
             catch (WebException e)
             {
@@ -94,6 +99,40 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.DialogoVisible = true;
             }
 
+        }
+
+        public void LimpiarElementosVisibles()
+        {
+            _vista.TextBoxNombre.Visible = false;
+
+            _vista.TextBoxApellido.Visible = false;
+
+            _vista.TextBoxCodTelefono.Visible = false;
+
+            _vista.TextBoxNumTelefono.Visible = false;
+
+            _vista.ClienteDdl.Visible = false;
+
+            _vista.BotonBuscar.Visible = false;
+
+            _vista.NombreContacto.Visible = false;
+
+            _vista.ApellidoContacto.Visible = false;
+
+            _vista.CodigoTlf.Visible = false;
+
+            _vista.Tlf.Visible = false;
+
+            _vista.NombreCliente.Visible = false;
+
+            _vista.Valor.Visible = false;
+
+            _vista.GetObjectContainerConsultaContacto.DataSource = "";
+
+            _vista.PintarInformacion2(ManagerRecursos.GetString
+                           ("mensajeModificarContacto"), "mensajes");
+
+            _vista.InformacionVisible2 = true;
         }
 
         /// <summary>
