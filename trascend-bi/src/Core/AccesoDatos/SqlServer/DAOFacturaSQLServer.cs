@@ -106,9 +106,6 @@ namespace Core.AccesoDatos.SqlServer
 
                             factura.Estado = reader["EstadoFactura"].ToString();
 
-                            factura.Prop.Titulo = reader["TituloPropuesta"].ToString();
-
-                            factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
 
                             facturas.Add(factura);
 
