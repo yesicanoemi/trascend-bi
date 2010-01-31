@@ -5,12 +5,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Contacto.ContactoInterface;
 using Presentador.Contacto.ContactoPresentador;
+using Microsoft.Practices.Web.UI.WebControls;
+using Presentador.Aplicacion;
 
 public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminarContacto
 {
-
+    #region Propiedades
 
     private EliminarPresentador _presentador;
+
+    protected const string paginaConsulta = "~/Paginas/Contactos/EliminarContactos.aspx";
 
 
     public TextBox TextBoxNombre
@@ -24,7 +28,7 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
         get { return uxConsultaApellidoContacto; }
         set { uxConsultaApellidoContacto = value; }
     }
-    
+
     public TextBox TextBoxCodTelefono
     {
         get { return uxConsultaCodigoContacto; }
@@ -37,84 +41,181 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
         set { uxConsultaTelefonoContacto = value; }
     }
 
-    public CheckBox CheckBoxNombre
+    public DropDownList ClienteDdl
     {
-        get { return uxCheckBoxNombre; }
-        set { uxCheckBoxNombre = value; }
+        get { return uxConsultaClienteContacto; }
+        set { uxConsultaClienteContacto = value; }
     }
 
-    public CheckBox CheckBoxApellido
+    public MultiView MultiViewConsultar
     {
-        get { return uxChecBoxApellido; }
-        set { uxChecBoxApellido = value; }
+        get { return uxMultiViewConsultar; }
+        set { throw new System.NotImplementedException(); }
     }
 
-    public CheckBox CheckBoxTelefono
+    public GridView GridViewConsultaContacto
     {
-        get { return uxCheckBoxTelefono; }
-        set { uxCheckBoxTelefono = value; }
+        get { return uxConsultaContacto; }
+        set { throw new System.NotImplementedException(); }
     }
 
-    public Table TablaResultados
+    public ObjectContainerDataSource GetObjectContainerConsultaContacto
     {
-        get { return uxTablaResultado; }
-        set { uxTablaResultado = value; }
+        get { return uxObjectConsultaContacto; }
+        set { uxObjectConsultaContacto = value; }
     }
 
-    public TextBox TextBoxBusqueda
+    public RadioButtonList RbCampoBusqueda
     {
-        get { return uxTextBoxOpcion; }
-        set { uxTextBoxOpcion = value; }
+        get { return uxRbCampoBusqueda; }
+        set { uxRbCampoBusqueda = value; }
     }
 
     public Button BotonBuscar
     {
-        set { uxBotonBuscar= value; }
         get { return uxBotonBuscar; }
+        set { uxBotonBuscar = value; }
     }
 
-    public Label LabelBuscar
+    public Label NombreC
     {
-        set { uxLabelBusqueda = value; }
-        get { return uxLabelBusqueda; }
+        get { return uxNombreC; }
+        set { uxNombreC = value; }
     }
 
-    public Label LabelConfirmar
+    public Label ApellidoC
     {
-        set { uxLabelConfirmacion = value; }
-        get { return uxLabelConfirmacion; }
+        get { return uxApellidoC; }
+        set { uxApellidoC = value; }
     }
 
-    public Button BotonEliminar
+    public Label AreaC
     {
-        set { uxBotonEliminar = value; }
-        get { return uxBotonEliminar; }
+        get { return uxArea; }
+        set { uxArea = value; }
     }
 
-    public MultiView MultiViewEliminar
+    public Label CargoC
     {
-        get { return uxMultiViewEliminar; }
-        set { uxMultiViewEliminar = value; }
+        get { return uxCargo; }
+        set { uxCargo = value; }
     }
+
+    public Label TelefonoC1
+    {
+        get { return uxTelefono1; }
+        set { uxTelefono1 = value; }
+    }
+
+    public Label TipoTlfC1
+    {
+        get { return uxTipoTlf1; }
+        set { uxTipoTlf1 = value; }
+    }
+
+    public Label TelefonoC2
+    {
+        get { return uxTelefono2; }
+        set { uxTelefono2 = value; }
+    }
+
+    public Label TipoTlfC2
+    {
+        get { return uxTipoTlf2; }
+        set { uxTipoTlf2 = value; }
+    }
+
+    public Label ClienteC
+    {
+        get { return uxCliente; }
+        set { uxCliente = value; }
+    }
+
+    public Label NombreContacto
+    {
+        get { return uxNombreContacto; }
+        set { uxNombreContacto = value; }
+    }
+
+    public Label ApellidoContacto
+    {
+        get { return uxApellidoContacto; }
+        set { uxApellidoContacto = value; }
+    }
+
+    public Label CodigoTlf
+    {
+        get { return uxCodigo; }
+        set { uxCodigo = value; }
+    }
+
+    public Label Tlf
+    {
+        get { return uxTlf; }
+        set { uxTlf = value; }
+    }
+
+    public Label NombreCliente
+    {
+        get { return uxNombreCliente; }
+        set { uxNombreCliente = value; }
+    }
+
+    public RequiredFieldValidator RequiredFieldValidator
+    {
+        get { return uxRequiredFieldValidator; }
+        set { uxRequiredFieldValidator = value; }
+    }
+
+    public RequiredFieldValidator RequiredFieldValidator1
+    {
+        get { return uxRequiredFieldValidator1; }
+        set { uxRequiredFieldValidator1 = value; }
+    }
+
+    public TextBox Valor
+    {
+        get { return uxValor; }
+        set { uxValor = value; }
+    }
+
+    #region Información
+
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
+
+    #endregion
+
+    #region Diálogo
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
+
+    #endregion
+
+    #endregion
+
+    #region Métodos
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
-    }
-
-    protected void Aceptar_Click(object sender, EventArgs e)
-    {
-        //_presentador.Onclick();
-    }
-
-    protected void BuscarClick(object sender, EventArgs e)
-    {
-        //_presentador.OnClickBusqueda();
-    }
-
-    protected void ConfirmarClick(object sender, EventArgs e)
-    {
-       // _presentador.onClickConfirmar();
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -127,11 +228,11 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 12)
+            if (usuario.PermisoUsu[i].IdPermiso == 10)
             {
                 i = usuario.PermisoUsu.Count;
 
-                //_presentador = new EliminarPresentador(this);
+                _presentador = new EliminarPresentador(this);
 
                 permiso = true;
 
@@ -143,4 +244,50 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
             Response.Redirect(paginaSinPermiso);
         }
     }
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CampoBusqueda_Selected();
+    }
+
+    protected void uxBotonBuscar_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonBuscar();
+    }
+
+    protected void SelectContacto(object sender, GridViewSelectEventArgs e)
+    {
+        _presentador.uxObjectConsultaContactoSelecting
+                            (uxConsultaContacto.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+    protected void uxBotonEliminar_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonEliminar();
+    }
+
+    protected void uxBotonCancelar_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonCancelar();
+    }
+
+    public void CambiarPagina()
+    {
+        Response.Redirect(paginaConsulta);
+
+    }
+
+    protected void uxValor_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    #endregion
 }
