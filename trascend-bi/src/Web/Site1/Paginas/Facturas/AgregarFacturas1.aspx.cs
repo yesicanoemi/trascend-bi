@@ -108,6 +108,12 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
         set { uxEstado = value; }
     }
 
+    public Label Monto
+    {
+        get { return this.lbMonto; }
+        set { lbMonto = value; }
+    }
+
     public MultiView MultiViewFactura
     {
         get { return uxMultiViewFactura; }
@@ -145,5 +151,9 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
     {
         
         MultiViewFactura.ActiveViewIndex = 0;
+    }
+    protected void uxPorcentaje_TextChanged(object sender, EventArgs e)
+    {
+        _presentador.ActualizarMonto();
     }
 }

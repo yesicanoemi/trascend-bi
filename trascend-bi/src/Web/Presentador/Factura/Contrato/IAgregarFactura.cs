@@ -26,6 +26,7 @@ namespace Presentador.Factura.Contrato
         TextBox Descripcion { get; set; }
         TextBox Porcentaje { get; set; }
         DropDownList Estado { get; set; }
+        Label Monto { get; set; }
         
 
         #endregion

@@ -86,6 +86,11 @@ namespace Presentador.Factura.Vistas
 
 
         }
+
+        public void ActualizarMonto()
+        {
+            _vista.Monto.Text = (_propuesta.MontoTotal * float.Parse(_vista.Porcentaje.Text)).ToString();
+        }
         /*
         public void OnBotonAceptar()
         {

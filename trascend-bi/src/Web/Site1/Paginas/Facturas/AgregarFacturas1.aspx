@@ -29,7 +29,7 @@
             
             
        
-         <form id="form1" runat="server">
+        <form id="form1" runat="server">
         <asp:MultiView ID="uxMultiViewFactura" runat="server" ActiveViewIndex="0">
         <asp:View ID="ViewBuscarPropuesta" runat="server">
             <p class="large">Introduzca el nombre de la propuesta a buscar:</p>
@@ -117,7 +117,8 @@
                     </tr>
                     <tr>
                         <td> Porcentaje a pagar:</td>
-                        <td><asp:TextBox ID="uxPorcentaje" runat="server"></asp:TextBox></td>
+                        <td><asp:TextBox ID="uxPorcentaje" runat="server" 
+                                ontextchanged="uxPorcentaje_TextChanged"></asp:TextBox></td>
                     </tr>
                     <tr>
                        <td>&nbsp;</td>
