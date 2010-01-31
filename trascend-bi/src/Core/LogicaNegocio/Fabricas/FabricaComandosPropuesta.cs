@@ -56,6 +56,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarProyecto(estado);
         }
+        public static ConsultarCargoPropuesta CrearComandoConsultarCargo(Cargo entidad)
+        {
+            return new ConsultarCargoPropuesta(entidad);
+        }
 
     }
 }

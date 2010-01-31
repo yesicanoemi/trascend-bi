@@ -192,9 +192,18 @@ namespace Presentador.Propuesta.Vistas
 
         public void ConsultarCargos()
         {
+            Core.LogicaNegocio.Entidades.Cargo EntidadCargo = new Core.LogicaNegocio.Entidades.Cargo();
 
+            Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarCargoPropuesta consultar;
+
+            consultar = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultarCargo(EntidadCargo);
+
+            IList<Entidad> Cargos = consultar.Ejecutar();
+
+            /*
             Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
             IList<Entidad> Cargos = bd.ConsultarCargos();
+            */
 
             List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
 
