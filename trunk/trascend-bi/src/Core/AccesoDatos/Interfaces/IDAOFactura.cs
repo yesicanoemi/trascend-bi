@@ -74,5 +74,7 @@ namespace Core.AccesoDatos.Interfaces
         Factura UpdateFactura( Factura factura );
 
         void ModificarEstadoFactura(int idFactura, string estado);
+
+        IList<String> ConsultarEstados();
     }
 }

@@ -10,5 +10,6 @@ namespace Presentador.Factura.Contrato
     {
         TextBox NumeroFactura { get; set; }
         GridView DetalleFactura { get; set; }
+        DropDownList Estado { get; set; }
     }
 }

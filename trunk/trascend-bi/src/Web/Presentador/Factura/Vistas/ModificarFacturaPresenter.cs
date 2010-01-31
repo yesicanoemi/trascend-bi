@@ -7,6 +7,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using System.Net;
+using Core.AccesoDatos.Interfaces;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
@@ -69,13 +70,31 @@ namespace Presentador.Factura.Vistas
             {
                 Core.LogicaNegocio.Comandos.ComandoFactura.Saldar comandoSaldar =
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoSaldar(
-                    int.Parse(_vista.NumeroFactura.Text), "Cobrada");
+                    int.Parse(_vista.NumeroFactura.Text), _vista.Estado.SelectedItem.Text);
 
                 comandoSaldar.Ejecutar();
             }
             catch (Exception e)
             {
             }
+        }
+
+        public void LLenarDDLEstados()
+        {
+            try
+            {
+                IDAOFactura facturabd = FabricaDAOSQLServer.ObtenerFabricaDAO().ObtenerDAOFactura();
+
+                IList<String> estados = facturabd.ConsultarEstados();
+
+                for (int i = estados.Count-1; i >= 0; i--)
+                {
+                    _vista.Estado.Items.Add(estados[i].ToString());
+                }
+            }
+            catch (ConsultarException e) { }
+            catch (Exception e) { }
+
         }
 
         #endregion

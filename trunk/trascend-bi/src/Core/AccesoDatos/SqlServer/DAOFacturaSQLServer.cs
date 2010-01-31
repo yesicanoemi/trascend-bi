@@ -516,6 +516,33 @@ namespace Core.AccesoDatos.SqlServer
                 return new Factura();
         }
 
+        public IList<String> ConsultarEstados()
+        {
+            IList<String> estados = new List<String>();
+
+            try
+            {
+                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                                        "ConsultarEstadosFactura");
+
+                while (reader.Read())
+                {
+                    estados.Add(reader["Nombre"].ToString());
+                }
+                
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarException("Error SQL al consultar los estados", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar los estados", e);
+            }
+            
+            return estados;
+        }
+
         public void ModificarEstadoFactura(int idFactura, string estado)
         {
             bool valido = false;
