@@ -20,35 +20,36 @@
 		    <div class="features_overview"> 
 		        <div class="features_overview_right"> 
 		            <h3>Consultar Gasto</h3>
-		            <p class="large">Busqueda del Gasto</p>
+		            <p class="large"></p>
 		            
 		            
 		            <table id="uxTablaInicio" runat="server">
 		                <tr>		                    
-		                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>
+		                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Font-Names="Verdana" Text="Realizar Consulta: " /></td>
 		                    <td>&nbsp;</td>
 		                    <td>&nbsp;</td>
 		                    <td>&nbsp;</td>
 		                </tr>
 		                <tr>
 		                    <td>&nbsp;</td>
-		                    <td>&nbsp;</td>
+		                    <td>Si Selecciona Opcion Fecha click en calendario Para Seleccionar</td>
 		                    <td>&nbsp;</td>	
 		                    <td>&nbsp;</td>                    
 		                </tr>    
 		                <tr>
 		                    <td>
                                 <asp:RadioButtonList  ID="uxCheckOpcionBuscar" runat="server" 
-                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="101px"  >                                    
+                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="157px"  >                                    
                                     <asp:ListItem Value="0">Propuesta</asp:ListItem>
                                     <asp:ListItem Value="1">Cliente</asp:ListItem>
-                                    <asp:ListItem Value="2">Rif</asp:ListItem>
+                                    <asp:ListItem Value="2">Fecha de Consumo</asp:ListItem>
                                 </asp:RadioButtonList>
       
                             </td>
                             
-		                    <td align="left"><asp:TextBox ID="uxBusquedaConsulta" runat="server" Height="22px" 
-                                    Width="127px" ></asp:TextBox>
+		                    <td align="left">
+                                <asp:TextBox ID="uxBusquedaConsulta" runat="server" Height="19px" 
+                                    Width="139px" ></asp:TextBox>
 		                         <asp:Image ID="uxFechaInicioImg" runat="server" 
                                     ImageUrl="~/Images/calendario.png" Height="16px" Width="16px" />
 		                        <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"

@@ -304,6 +304,7 @@ namespace Core.AccesoDatos.SqlServer
                     _gasto.FechaIngreso = (DateTime)reader["FechaIngreso"];
                     _gasto.Tipo = (string)reader["Tipo"];
                     _gasto.Descripcion = (string)reader["Descripcion"];
+                    _gasto.IdVersion = (int)reader["IdVersion"];
 
                     gastos.Add(_gasto);
                 }
