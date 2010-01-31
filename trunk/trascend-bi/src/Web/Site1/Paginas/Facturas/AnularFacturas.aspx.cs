@@ -60,7 +60,6 @@ public partial class Paginas_Facturas_EliminarFacturas : PaginaBase, IAnularFact
                 _presenter = new AnularFacturaPresenter(this);
 
                 permiso = true;
-
             }
         }
 
