@@ -39,6 +39,8 @@
                           
                                 <asp:View ID="ViewConsulta" runat="server">
                                 
+                                 <uc2:MensajeInformacion ID="uxMensajeEliminar" runat="server" Visible="false" />
+                                
                                   <p>Introduzca los campos según su tipo de búsqueda</p> 
                                     
                                     <br />
@@ -206,7 +208,7 @@
                                  <asp:View ID="ViewContacto" runat="server">
                         
                                     <p class="large">Datos del Contacto</p>  
-                            
+                                   
                                         <table style="width:100%;">
                                             
                                             <tr>
