@@ -53,11 +53,10 @@ http://trascend-bi.googlecode.com/files/Obligatorio.jpg
 
 == Busquedas ==
 
-1) En caso de busquedas, se tiene que elegir que tipo de búsqueda realizar, para esto sigue aplicando las reglas de llenado de campo, si hay 3 o menos opciones radio button, sino drop down.
-
-2) Cuando se seleccione el campo debe aparecer el campo a llenar o seleccionar, dependiendo del caso.
-
-3) Los botones siempre deben salir en la parte inferior de los campos a llenar y centrados con respecto a los campos
+  # En caso de busquedas, se tiene que elegir que tipo de búsqueda realizar, para esto sigue aplicando las reglas de llenado de campo, si hay 3 o menos opciones radio button, sino drop down.
+  # Cuando se seleccione el campo debe aparecer el campo a llenar o seleccionar, dependiendo del caso.
+  # Los botones siempre deben salir en la parte inferior de los campos a llenar y centrados con respecto a los campos
+  # Si un campo se encuentra vacio al momento de buscar los resultados deben mostrar todos los resultados posibles de ese campo.
 
 
 http://trascend-bi.googlecode.com/files/Busqueda.jpg
