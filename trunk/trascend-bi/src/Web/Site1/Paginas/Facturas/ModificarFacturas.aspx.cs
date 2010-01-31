@@ -11,77 +11,31 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
 
     ModificarFacturaPresenter _presenter;
 
-    public MultiView MultiViewPropuesta
+    #region Propiedades
+    public TextBox NumeroFactura
     {
-        get { return uxMultiViewPropuesta; }
-        set { throw new System.NotImplementedException(); }
+        get
+        {
+            return uxBusqueda;
+        }
+        set
+        {
+            uxBusqueda = value;
+        }
     }
 
-    public TextBox NombrePropuesta
+    public GridView DetalleFactura
     {
-        get { return this.uxTituloPropuesta; }
-        set { this.uxTituloPropuesta = value; }
+        get
+        {
+            return uxDetalleFactura;
+        }
+        set
+        {
+            uxDetalleFactura = value;
+        }
     }
-
-    public TextBox NumeroPropuesta
-    {
-        get { return this.uxNumProp; }
-        set { this.uxNumProp = value; }
-    }
-
-    public DropDownList Facturas
-    {
-        get { return this.uxFacturas; }
-        set { this.uxFacturas = value; }
-    }
-
-    public TextBox FechaIngreso
-    {
-        get { return this.uxFechaIngreso; }
-        set { this.uxFechaIngreso = value; }
-    }
-
-    public TextBox TituloFactura
-    {
-        get { return this.uxTituloFactura; }
-        set { this.uxTituloFactura = value; }
-    }
-
-    public TextBox Descripcion
-    {
-        get { return this.uxDescFact; }
-        set { this.uxDescFact = value; }
-    }
-
-    public TextBox Estado
-    {
-        get { return this.uxEstado; }
-        set { this.uxEstado = value; }
-    }
-
-    public TextBox Codigo
-    {
-        get { return this.uxCodigoFactura; }
-        set { this.uxCodigoFactura = value; }
-    }
-
-    public TextBox Porcentaje
-    {
-        get { return this.uxPorcentajePagar; }
-        set { this.uxPorcentajePagar = value; }
-    }
-
-    public TextBox MontoTotal
-    {
-        get { return this.uxMontoPagar; }
-        set { this.uxMontoPagar = value; }
-    }
-
-    public TextBox FechaPago
-    {
-        get { return this.uxFechaPago; }
-        set { this.uxFechaPago = value; }
-    }
+    #endregion
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -116,41 +70,14 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
         }
     }
 
-
-    protected void uxConsultarxNombreProp_Click(object sender, EventArgs e)
+    protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
-        if (Page.IsValid == true)
-        {
-            
-            _presenter.OnBotonAceptar();
-
-        }
-    }
-    protected void uxConsultarxNumProp_Click(object sender, EventArgs e)
-    {
-        if (Page.IsValid == true)
-        {
-
-            _presenter.OnBotonAceptar_2();
-
-        }
+        //_presenter.ConsultarFactura();
     }
 
-    public void Mensaje(string msg)
+    protected void btGuardar_Click(object sender, EventArgs e)
     {
-        Label lbl = new Label();
-        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
-        Page.Controls.Add(lbl);
+        //_presenter.AnularFactura();
     }
-
-
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        _presenter.CargarFactura();
-    }
-
-    protected void Button4_Click(object sender, EventArgs e)
-    {
-        _presenter.ActualizarFactura();
-    }
+    
 }

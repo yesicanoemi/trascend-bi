@@ -8,22 +8,7 @@ namespace Presentador.Factura.Contrato
 {
     public interface IModificarFactura
     {
-         MultiView MultiViewPropuesta { get; set; }
-
-         TextBox NombrePropuesta { get; set; }
-         TextBox NumeroPropuesta { get; set; }
-
-         DropDownList Facturas { get; set; }
-
-         TextBox FechaIngreso { get; set; }
-         TextBox TituloFactura { get; set; }
-         TextBox Descripcion { get; set; }
-         TextBox Estado { get; set; }
-         TextBox Codigo { get; set; }
-         TextBox Porcentaje { get; set; }
-         TextBox MontoTotal { get; set; }
-         TextBox FechaPago { get; set; }
-
-         void Mensaje(string msg);
+        TextBox NumeroFactura { get; set; }
+        GridView DetalleFactura { get; set; }
     }
 }
