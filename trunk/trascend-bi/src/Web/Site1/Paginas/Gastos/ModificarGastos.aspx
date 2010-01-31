@@ -92,7 +92,7 @@
 		              <table>
 		                 <tr>
 		                    <td><h3><asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" DataSourceID="uxObjectCliente"
-                                                AutoGenerateColumns="false" DataKeyNames="nombre" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizadocliente"
+                                                AutoGenerateColumns="false" DataKeyNames="Nombre" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizadocliente"
                                                 Width="130%" Font-Names="Verdana" Font-Size="X-Small">
                                                 
                                                 <Columns>
