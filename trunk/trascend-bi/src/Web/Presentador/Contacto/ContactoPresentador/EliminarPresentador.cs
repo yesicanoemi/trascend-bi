@@ -93,31 +93,6 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.MultiViewConsultar.ActiveViewIndex = index;
         }
 
-        /*
-
-        /// <summary>
-        /// Llena la lista de todos los clientes
-        /// </summary>
- 
-        public void CargarClientes()
-        {
-            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-            
-            IList<Core.LogicaNegocio.Entidades.Cliente> listaClientes;
-
-            listaClientes = ConsultarCliente() ;
-
-            _vista.ClienteDdl.Items.Clear();
-            _vista.ClienteDdl.Items.Add(" -- ");
-            _vista.ClienteDdl.Items[0].Value = "0";
-            _vista.ClienteDdl.DataSource = listaClientes;
-            _vista.ClienteDdl.DataValueField = "IdCliente";
-            _vista.ClienteDdl.DataTextField = "Nombre";
-            _vista.ClienteDdl.DataBind();
-
-        }
-        */
-
         /// <summary>
         /// Metodo para cargar los datos por pantalla una vez seleccionado el contacto
         /// </summary>
@@ -610,27 +585,6 @@ namespace Presentador.Contacto.ContactoPresentador
 
             comando.Ejecutar();
         }
-
-
-        /*
-
-        /// <summary>
-        /// Método para el comando ConsultarClientes
-        /// </summary>
-        /// <param name="entidad">Entidad comando a consultar (por cliente)</param>
-        /// <returns>Todos los clientes del sistema</returns>
-
-        public IList<Core.LogicaNegocio.Entidades.Cliente> ConsultarCliente()
-        {
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarTodos comando;
-
-            comando = FabricaComandosCliente.CrearComandoConsultarTodos();
-
-            return comando.Ejecutar();
-        }
-
-        */
-
 
         #endregion
     }
