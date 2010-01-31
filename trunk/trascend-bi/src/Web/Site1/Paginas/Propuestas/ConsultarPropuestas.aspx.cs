@@ -14,27 +14,18 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     private Propuesta _propuesta;
     // private Cliente _cliente;
     #region Propiedades de la Pagina
-    public DropDownList opcion
-    {
-        get { return opcion1; } 
-        set { opcion1 = value; }
-    }
+
     public RadioButtonList ListOpcion
     {
-        get { return uxListaOpciones;  }
+        get { return uxListaOpciones; }
         set { uxListaOpciones = value; }
     }
-   
+
     /*public DropDownList SeleccionOpcion
     {
         get { return uxSeleccion; }
         set { uxSeleccion = value; }
     }*/
-    public Label LabelSelec
-    {
-        get { return LabelSeleccion; }
-        set { LabelSeleccion = value; }
-    }
     public Label LabelTipoC
     {
         get { return LabelTipoConsulta; }
@@ -63,7 +54,7 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     public Label LabelFFirm
     {
         get { return LabelFechaFirma; }
-        set { LabelFechaFirmaPropuesta = value; }
+        set { LabelFechaFirma = value; }
     }
     public Label LabelFFirmP
     {
@@ -135,11 +126,12 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return LabelEquipo; }
         set { LabelEquipo = value; }
     }
-    /*public Label LabelParam
+
+    public Label LabelVacioC
     {
-        get { return LabelParametro; }
-        set { LabelParametro = value; }
-    }*/
+        get { return LabelVacio; }
+        set { LabelVacio = value; }
+    }
 
     public ListBox ListaEmpleados
     {
@@ -171,6 +163,13 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return uxObject2; }
         set { uxObject2 = value; }
     }
+
+    public MultiView MultiViewPropuestaC
+    {
+        get { return uxMultiViewPropuesta; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -191,6 +190,8 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
 
                 permiso = true;
 
+                ListOpcion.SelectedIndex = 0;
+
             }
         }
 
@@ -206,8 +207,9 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        uxBotonAceptar.Visible = false;
-        _presenter.AccionBusqueda();   
+        //uxBotonAceptar.Visible = false;
+        _presenter.AccionBusqueda();
+        //uxOpcionCheckBox.Visible = false;
     }
     protected void uxBotonAceptar2_Click(object sender, EventArgs e)
     {
