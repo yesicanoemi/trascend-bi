@@ -59,7 +59,7 @@ namespace Presentador.Usuario.Vistas
 
             _vista.ApellidoEmp.Text = empleado.Apellido;
 
-            _vista.StatusEmp.Text = empleado.Estado;
+            _vista.StatusEmp.Text = empleado.Estado.ToString();
         }
 
         /// <summary>

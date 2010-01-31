@@ -34,7 +34,7 @@ namespace Presentador.Empleado.Vistas
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
                 empleado.Cuenta = _vista.CuentaEmpleado.Text;
                 empleado.Cargo = _vista.ComboCargos.SelectedValue.ToString();
-                empleado.Estado = "Activo";
+                empleado.Estado = 1;
                 empleado.FechaNacimiento = DateTime.Parse(_vista.FechaNacEmpleado.Text);
                 empleado.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
                 empleado.Direccion.Avenida =_vista.AvenidaEmpleado.Text;

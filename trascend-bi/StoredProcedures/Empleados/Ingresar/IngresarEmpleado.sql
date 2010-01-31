@@ -25,7 +25,7 @@ ALTER PROCEDURE InsertarEmpleado
 	@apellidoEmpleado varchar(50),
 	@numeroCta varchar(50),
 	@fechaNac datetime,
-	@estado varchar(50),
+	@estado int,
 	@sueldo varchar(50),
 	@cargo int
 AS
@@ -35,7 +35,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO dbo.Empleado (CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,Sueldo,IdCargo) VALUES (@cedula,@nombreEmpleado,@apellidoEmpleado,@numeroCta,@fechaNac,@estado,@cedula,@cargo)
+	INSERT INTO dbo.Empleado (CIEmpleado,Nombre,Apellido,NumCuenta,FechaNac,Estado,Sueldo,IdCargo) VALUES (@cedula,@nombreEmpleado,@apellidoEmpleado,@numeroCta,@fechaNac,@estado,@sueldo,@cargo)
 	SELECT @@identity
 END
 GO

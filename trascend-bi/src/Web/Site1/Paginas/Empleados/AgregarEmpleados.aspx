@@ -116,10 +116,10 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" align="left">
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="uxAvenida"
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="uxSueldoBase"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaSueldoEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender9" TargetControlID="uxAvenida" FilterType="Numbers"></AjaxControlToolkit:FilteredTextBoxExtender>
+                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender9" TargetControlID="uxSueldoBase" FilterType="Numbers"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>

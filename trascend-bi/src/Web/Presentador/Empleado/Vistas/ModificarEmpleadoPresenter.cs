@@ -40,7 +40,7 @@ namespace Presentador.Empleado.Vistas
                 empleado.Apellido = _vista.ApellidoEmpleado.Text;
                 empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
                 empleado.Cuenta = _vista.CuentaEmpleado.Text;
-                empleado.Estado = "Activo";
+                empleado.Estado = 1;
                 empleado.FechaIngreso = DateTime.Now;
                 empleado.FechaNacimiento = DateTime.Now;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);

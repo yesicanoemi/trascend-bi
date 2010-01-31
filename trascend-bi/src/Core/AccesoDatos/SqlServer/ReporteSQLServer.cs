@@ -622,7 +622,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     empleado.Nombre = (string)reader["NOMBRE"];
                     empleado.Apellido = (string)reader["APELLIDO"];
-                    empleado.Estado = (string)reader["ESTADO"];
+                    empleado.Estado = (int)reader["ESTADO"];
 
                     Empleados.Add(empleado);
                 }
@@ -703,7 +703,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     empleado.Nombre = (string)reader["NOMBRE"];
                     empleado.Apellido = (string)reader["APELLIDO"];
-                    empleado.Estado = (string)reader["ESTADO"];
+                    empleado.Estado = (int)reader["ESTADO"];
 
                     Empleados.Add(empleado);
                 }

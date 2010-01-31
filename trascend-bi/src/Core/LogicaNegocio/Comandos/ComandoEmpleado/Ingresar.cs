@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
 {
@@ -30,8 +33,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         public void Ejecutar()
         {
             Empleado _empleado = null;
-            DAOEmpleadoSQLServer bd = new DAOEmpleadoSQLServer();
-            _empleado = bd.Ingresar(empleado);
+            /*DAOEmpleadoSQLServer bd = new DAOEmpleadoSQLServer();
+            _empleado = bd.Ingresar(empleado);*/
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOEmpleado acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOEmpleado();
+
+            _empleado = acceso.Ingresar(empleado);
+
+           
         }
         #endregion
     }

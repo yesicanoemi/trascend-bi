@@ -37,7 +37,7 @@ namespace Presentador.Empleado.Vistas
             _vista.LabelCI.Text = empleado.Cedula.ToString();
             _vista.LabelNumCuenta.Text = empleado.Cuenta;
             _vista.LabelFechaNac.Text = empleado.FechaNacimiento.ToShortDateString();
-            _vista.LabelEstado.Text = empleado.Estado;
+            _vista.LabelEstado.Text = empleado.Estado.ToString();
             _vista.LabelDirAve.Text = empleado.Direccion.Avenida;
             _vista.LabelDirUrb.Text = empleado.Direccion.Urbanizacion;
             _vista.LabelDirEdifCasa.Text = empleado.Direccion.Edif_Casa;

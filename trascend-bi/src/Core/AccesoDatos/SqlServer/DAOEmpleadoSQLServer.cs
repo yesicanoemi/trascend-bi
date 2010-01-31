@@ -69,7 +69,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[3].Value = empleado.Cuenta;
                 arParms[4] = new SqlParameter("@fechaNac", SqlDbType.SmallDateTime);
                 arParms[4].Value = empleado.FechaNacimiento.ToShortDateString();
-                arParms[5] = new SqlParameter("@estado", SqlDbType.VarChar);
+                arParms[5] = new SqlParameter("@estado", SqlDbType.Int);
                 arParms[5].Value = empleado.Estado;
                 arParms[6] = new SqlParameter("@sueldo", SqlDbType.Float);
                 arParms[6].Value = empleado.SueldoBase;
@@ -149,7 +149,7 @@ namespace Core.AccesoDatos.SqlServer
                     empleado.Apellido = (string)reader["Apellido"];
                     empleado.Cuenta = (string)reader["NumCuenta"];
                     empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
-                    empleado.Estado = (string)reader["Estado"];
+                    empleado.Estado = (int)reader["Estado"];
                     empleado.Cargo = reader["IdCargo"].ToString();
                     empleado.SueldoBase = (float)reader["Sueldo"];
                 }
@@ -228,7 +228,7 @@ namespace Core.AccesoDatos.SqlServer
                 _empleado.Apellido = (string)reader["Apellido"];
                 _empleado.Cuenta = (string)reader["NumCuenta"];
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
-                _empleado.Estado = (string)reader["Estado"];
+                _empleado.Estado = (int)reader["Estado"];
                 _empleado.Cargo = (string)reader["Expr1"];
                 _direccion.Avenida = (string)reader["Avenida"];
                 _direccion.Calle = (string)reader["Calle"];
@@ -270,7 +270,7 @@ namespace Core.AccesoDatos.SqlServer
                 _empleado.Apellido = (string)reader["Apellido"];
                 _empleado.Cuenta = (string)reader["NumCuenta"];
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
-                _empleado.Estado = (string)reader["Estado"];
+                _empleado.Estado = (int)reader["Estado"];
                 _empleado.Cargo = (string)reader["Expr1"];
                 _direccion.Avenida = (string)reader["Avenida"];
                 _direccion.Calle = (string)reader["Calle"];
@@ -301,7 +301,7 @@ namespace Core.AccesoDatos.SqlServer
                 _empleado.Apellido = (string)reader["Apellido"];
                 _empleado.Cuenta = (string)reader["NumCuenta"];
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
-                _empleado.Estado = (string)reader["Estado"];
+                _empleado.Estado = (int)reader["Estado"];
                 _empleado.Cargo = (string)reader["Expr1"];
                 _direccion.Avenida = (string)reader["Avenida"];
                 _direccion.Calle = (string)reader["Calle"];

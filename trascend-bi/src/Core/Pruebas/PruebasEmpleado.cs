@@ -32,7 +32,7 @@ namespace Core.Pruebas
             empleado.Cargo = "1";
             empleado.Cedula = 1111111;
             empleado.Cuenta = "123123";
-            empleado.Estado = "Activo";
+            empleado.Estado = 1;
             empleado.SueldoBase = float.MinValue;
             empleado.Direccion = new Direccion();
             empleado.Direccion.Avenida = "prueba";
@@ -66,7 +66,7 @@ namespace Core.Pruebas
             empleado.Cargo = "1";
             empleado.Cedula = 1111111;
             empleado.Cuenta = "123123";
-            empleado.Estado = "Activo";
+            empleado.Estado = 1;
             empleado.SueldoBase = float.MinValue;
             empleado.Direccion = new Direccion();
             empleado.Direccion.Avenida = "prueba";
