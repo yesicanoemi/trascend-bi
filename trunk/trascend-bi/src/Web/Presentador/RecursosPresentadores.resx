@@ -165,4 +165,7 @@
   <data name="MensajeEliminarFallida" xml:space="preserve">
     <value>El Contacto no se puede elminar, el Cliente no puede quedar sin Contacto.</value>
   </data>
+  <data name="mensajeModificarContacto" xml:space="preserve">
+    <value>El Contacto se modificó con éxito</value>
+  </data>
 </root>

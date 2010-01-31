@@ -35,6 +35,8 @@
                             
                                 <form id="Form3" action="#" runat="server">
                                 
+                                <uc2:MensajeInformacion ID="MensajeInformacion1" runat="server" Visible="false" />
+                                
                                 <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
                           
                                 <asp:View ID="ViewConsulta" runat="server">
@@ -123,7 +125,7 @@
                                                 </table>
                                                 
                                                  
-                                                        <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                                                  <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
                                                     
                                                 
                                                 <asp:Label ID="uxNombreCliente" runat="server" Visible="false" Text="Nombre del Cliente"></asp:Label>
@@ -394,7 +396,7 @@
                                             <tr>
                                              
                                                 <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                                        onclick="uxBotonAceptar_Click" /></td>
+                                                        onclick="uxBotonAceptar_Click"/></td>
                                             </tr>
                                             
                                             </table>

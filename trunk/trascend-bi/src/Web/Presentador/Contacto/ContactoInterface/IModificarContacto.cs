@@ -100,9 +100,13 @@ namespace Presentador.Contacto.ContactoInterface
 
         void PintarInformacion(string mensaje, string estilo);
 
+        bool InformacionVisible2 { get; set; }
+
+        void PintarInformacion2(string mensaje, string estilo);
+
         #endregion
 
-        //void CambiarPagina();
+        void CambiarPagina();
 
         #endregion 
     }

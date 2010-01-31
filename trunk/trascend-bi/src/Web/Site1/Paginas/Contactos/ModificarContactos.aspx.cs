@@ -14,7 +14,7 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
 
     private ModificarPresentador _presentador;
 
-    //protected const string paginaModificar = "~/Paginas/Contactos/ModificarContactos.aspx";
+    protected const string paginaModificar = "~/Paginas/Contactos/ModificarContactos.aspx";
 
 
         public TextBox TextBoxNombre
@@ -256,6 +256,18 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             set { uxMensajeInformacion.Visible = value; }
         }
 
+
+        public void PintarInformacion2(string mensaje, string estilo)
+        {
+            MensajeInformacion1.PintarControl(mensaje, estilo);
+        }
+
+        public bool InformacionVisible2
+        {
+            get { return MensajeInformacion1.Visible; }
+            set { MensajeInformacion1.Visible = value; }
+        }
+
         #endregion
 
         #region Diálogo
@@ -336,13 +348,13 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
     {
         _presentador.OnBotonAceptar();
     }
-    /*
+    
     public void CambiarPagina()
     {
+        InformacionVisible2 = true;
         Response.Redirect(paginaModificar);
-
     }
-    */
+
     protected void uxValor_TextChanged(object sender, EventArgs e)
     {
 
