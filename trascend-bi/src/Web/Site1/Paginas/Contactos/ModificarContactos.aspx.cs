@@ -14,7 +14,7 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
 
     private ModificarPresentador _presentador;
 
-    protected const string paginaModificar = "~/Paginas/Contactos/ModificarContactos.aspx";
+    //protected const string paginaModificar = "~/Paginas/Contactos/ModificarContactos.aspx";
 
 
         public TextBox TextBoxNombre
@@ -324,13 +324,13 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
     {
         _presentador.OnBotonAceptar();
     }
-
+    /*
     public void CambiarPagina()
     {
         Response.Redirect(paginaModificar);
 
     }
-
+    */
     protected void uxValor_TextChanged(object sender, EventArgs e)
     {
 

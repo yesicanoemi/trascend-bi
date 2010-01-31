@@ -98,7 +98,7 @@ namespace Presentador.Contacto.ContactoInterface
 
         #endregion
 
-        void CambiarPagina();
+        //void CambiarPagina();
 
         #endregion 
     }
