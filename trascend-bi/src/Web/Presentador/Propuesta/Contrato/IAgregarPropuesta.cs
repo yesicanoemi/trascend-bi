@@ -33,6 +33,8 @@ namespace Presentador.Propuesta.Contrato
 
         TextBox MontoTotal { get; set; }
 
+        Label LabelExitoA { get; set; }
+
         DropDownList CargoReceptor { get; set; }
 
         ObjectContainerDataSource ObtenerValorDataSource { get; set; }
@@ -41,9 +43,9 @@ namespace Presentador.Propuesta.Contrato
 
 
 
-        TextBox RolEquipo1 { get; set; }    
+        TextBox RolEquipo1 { get; set; }
 
-        
+
 
         void Mensaje(string msg);
 

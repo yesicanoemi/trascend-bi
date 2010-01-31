@@ -9,10 +9,8 @@ namespace Presentador.Propuesta.Contrato
 {
     public interface IConsultarPropuesta
     {
-        DropDownList opcion { get; set; }
         RadioButtonList ListOpcion { get; set; }
         //DropDownList SeleccionOpcion { get; set; }
-        Label LabelSelec { get; set; }
         Label LabelTipoC { get; set; }
         Label LabelT { get; set; }
         Label LabelTP { get; set; }
@@ -40,8 +38,10 @@ namespace Presentador.Propuesta.Contrato
         ObjectContainerDataSource ObtenerValorDataSource { get; set; }
         GridView GridPropuestaMuest { get; set; }
         ObjectContainerDataSource ObtenerValorMuestra { get; set; }
+        MultiView MultiViewPropuestaC { get; set; }
+        Label LabelVacioC { get; set; }
 
 
-       
+
     }
 }

@@ -16,7 +16,7 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
 {
     private AgregarPropuestaPresenter _presentador;
     private AgregarPropuestaPresenter _presentador2;
-   
+
     IList<string[]> _lista;
 
     #region Propiedades
@@ -89,8 +89,8 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
     public CheckBoxList TrabajoEquipo
     {
         get { return uxEquipo; }
-        set {uxEquipo = value;}
-    
+        set { uxEquipo = value; }
+
     }
 
     public ObjectContainerDataSource ObtenerValorDataSource
@@ -104,15 +104,21 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
         get { return Rol1; }
         set { Rol1 = value; }
     }
-   
+
+    public Label LabelExitoA
+    {
+        get { return LabelExito; }
+        set { LabelExito = value; }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        _lista  = new List<string[]>();
+        _lista = new List<string[]>();
         _presentador2 = new AgregarPropuestaPresenter(this);
-        
+
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -128,6 +134,8 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
 
                 _presentador.ConsultarEmpleados();
 
+                _presentador.ConsultarCargos();
+
                 permiso = true;
 
             }
@@ -138,23 +146,38 @@ public partial class Paginas_Propuestas_AgregarPropuestas : PaginaBase, IAgregar
             Response.Redirect(paginaSinPermiso);
         }
 
-        _presentador.ConsultarCargos();
-
     }
 
 
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-    }  
+
+    }
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
+        int j = 0;
+        LabelFaltaEquipo.Visible = false;
+        LabelExito.Visible = false;
         uxBotonAceptar.Visible = true;
         MultiViewPropuesta.ActiveViewIndex = 0;
-        _presentador.AgregarPropuesta();
 
+        for (int i = 0; i < uxEquipo.Items.Count; i++)
+            if (uxEquipo.Items[i].Selected)
+                j++;
+
+        if (j>0)
+            
+            _presentador.AgregarPropuesta();
+
+        else
+            {
+                LabelExito.Text = "No se pudo introducir la propuesta, Falta equipo";
+                LabelExito.Visible = true;
+                LabelFaltaEquipo.Text = "Debe seleccionar el equipo";
+                LabelFaltaEquipo.Visible = true;
+            }
     }
 
     public void Mensaje(string msg)

@@ -25,14 +25,15 @@
     <form id="form1" runat="server">
     <asp:MultiView ID="uxMultiViewPropuesta" runat="server" ActiveViewIndex="0">
     <asp:View ID="ViewAgregarPropuesta" runat="server">
-      <p class="large">Introduzca la información a continuación</p>  
+      <p class="large">Introduzca la información a continuación</p>
+      <p class="large"><asp:Label Font-Size="Large" ID="LabelExito" runat="server" Visible="false"></asp:Label></p>
           <p class="large">
           
                <table style="width:100%;">
                    <tr>
-                       <td> Titulo:</td>
+                       <td><span style="color: #FF0000">*</span> Titulo:</td>
                        <td><asp:TextBox ID="uxTitulo" runat="server"></asp:TextBox>
-                       <span style="color: #FF0000">(*)</span></td>
+                       </td>
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
@@ -42,9 +43,9 @@
                        </td>
                    </tr>
                    <tr>
-                       <td>Version:</td>
+                       <td><span style="color: #FF0000">*</span> Version:</td>
                        <td><asp:TextBox ID="uxVersion" runat="server"></asp:TextBox>
-                       <span style="color: #FF0000">(*)</span></td>
+                       </td>
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
@@ -60,7 +61,7 @@
                    </tr>
                    <tr>
                   
-                       <td>Fecha de firma:</td>
+                       <td>  Fecha de firma:</td>
                        <td>
                            <asp:TextBox ID="uxFechaFirma" runat="server"></asp:TextBox>
                            <asp:Image ID="uxImagenFechaFirma" runat="server" ImageUrl="~/Images/calendario.png" />            
@@ -75,9 +76,9 @@
                        <td>&nbsp;</td>
                    </tr>
                    <tr>
-                       <td>Nombre del receptor:</td>
+                       <td><span style="color: #FF0000">*</span> Nombre del receptor:</td>
                        <td><asp:TextBox ID="uxNombreReceptor" runat="server"></asp:TextBox>
-                       <span style="color: #FF0000">(*)</span></td>
+                       </td>
                    </tr>
                    <tr>
                        <td> &nbsp;</td>
@@ -87,9 +88,9 @@
                        </td>
                    </tr>
                    <tr>
-                       <td>Apellido del receptor:</td>
+                       <td><span style="color: #FF0000">*</span> Apellido del receptor:</td>
                        <td><asp:TextBox ID="uxApellidoReceptor" runat="server"></asp:TextBox>
-                       <span style="color: #FF0000">(*)</span></td>
+                       </td>
                    </tr>
                    <tr>
                        <td>&nbsp;</td>
@@ -100,11 +101,10 @@
                    </tr>
                    <tr>
             
-                       <td>Cargo del receptor:</td>
+                       <td><span style="color: #FF0000">*</span>Cargo del receptor:</td>
                        <td>
                            <asp:DropDownList ID="uxCargoReceptor" runat="server"  >
                                        </asp:DropDownList>
-                                       <span style="color: #FF0000">(*)</span>
                        </td>
                    </tr>
                    <tr>
@@ -126,11 +126,11 @@
                <table style="width:150%;">
                
                    <tr>
-                       <td>Fecha de inicio:</td>
+                       <td><span style="color: #FF0000">*</span> Fecha de inicio:</td>
                        <td>
                            <asp:TextBox ID="uxFechaInicio" runat="server"></asp:TextBox>
                             <asp:Image ID="uxImagenFechaInicio" runat="server" ImageUrl="~/Images/calendario.png" />
-                            <span style="color: #FF0000">(*)</span>
+                            
                        </td>
                    </tr>
                    <tr>
@@ -143,11 +143,11 @@
                        </td>
                    </tr>
                    <tr>
-                       <td>Fecha fin:</td>
+                       <td><span style="color: #FF0000">*</span> Fecha fin:</td>
                        <td>
                            <asp:TextBox ID="uxFechaFin" runat="server"></asp:TextBox>
                            <asp:Image ID="uxImagenFechaFin" runat="server" ImageUrl="~/Images/calendario.png" />
-                            <span style="color: #FF0000">(*)</span>
+                            
                        </td>
                    </tr>
                    <tr>
@@ -161,9 +161,9 @@
                    </tr>
                    
                    <tr>
-                       <td>Rol</td>
+                       <td><span style="color: #FF0000">*</span> Rol</td>
                        <td><asp:TextBox ID="Rol1" runat="server"></asp:TextBox>
-                       <span style="color: #FF0000">(*)</span></td>
+                       </td>
                        </tr>
                         <tr>
                        <td></td>
@@ -172,21 +172,21 @@
                                 ErrorMessage="<%$ Resources:DSU, FaltaRolEquipo1%>" Font-Size="Smaller" Display="Static" /></td>
                        </tr>
                         <tr>
-                       <td>Equipo de trabajo:</td>
-                       <td><span style="color: #FF0000">(*)</span>
+                       <td><span style="color: #FF0000">*</span> Equipo de trabajo:</td>
+                       <td>
                        <asp:CheckBoxList id="uxEquipo" Width="400px" runat="server"/>
                        </td>
                        </tr>
                         <tr>
                        <td>&nbsp;</td>
-                       <td>&nbsp;</td>
+                       <td><asp:Label ID="LabelFaltaEquipo" runat="server" Visible="false" ForeColor="Red"></asp:Label></td>
                        </tr>
                        
                    <tr>
-                       <td>Total horas:</td>
+                       <td><span style="color: #FF0000">*</span> Total horas:</td>
                        <td>
                            <asp:TextBox ID="uxTotalHoras" runat="server"></asp:TextBox>
-                           <span style="color: #FF0000">(*)</span>
+                          
                        </td>
                    </tr>
                    <tr>
@@ -199,10 +199,10 @@
                    </tr>
                    
                     <tr>
-                    <td>Monto Total:</td>
+                    <td><span style="color: #FF0000">*</span> Monto Total:</td>
                      <td>
                            <asp:TextBox ID="uxMontoTotal" runat="server"></asp:TextBox>
-                           <span style="color: #FF0000">(*)</span>
+                         
                        </td>
                       
                    </tr>

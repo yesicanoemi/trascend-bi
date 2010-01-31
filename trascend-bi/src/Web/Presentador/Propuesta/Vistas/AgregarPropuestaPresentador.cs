@@ -31,7 +31,7 @@ namespace Presentador.Propuesta.Vistas
 
         public AgregarPropuestaPresenter(IAgregarPropuesta vista)
         {
-           
+
             _vista = vista;
             _vista2 = vista;
 
@@ -68,22 +68,23 @@ namespace Presentador.Propuesta.Vistas
 
                 propuesta.MontoTotal = float.Parse(_vista.MontoTotal.Text);
 
-               
+
 
                 propuesta.Rol1 = _vista.RolEquipo1.Text;
 
-  
+
                 propuesta.TotalHoras = int.Parse(_vista.TotalHoras.Text);
 
-               // propuesta.Equipo = _vista.TrabajoEquipo.SelectedItem;
+                // propuesta.Equipo = _vista.TrabajoEquipo.SelectedItem;
 
                 //string[] nombre = propuesta.Equipo.Split(' ');
 
                 lista2 = SeleccionEquipo(lista);
 
-                propuesta = Agregar(propuesta,lista2);
+                propuesta = Agregar(propuesta, lista2);
 
-              
+                _vista.LabelExitoA.Text = "La propuesta se agrego con exito";
+                _vista.LabelExitoA.Visible = true;
 
                 LimpiarRegistros();
             }
@@ -106,18 +107,18 @@ namespace Presentador.Propuesta.Vistas
             {
                 if (Persona != null)
                 {
-                    
-               // _vista2.ObtenerValorDataSource.DataSource = Persona;
-                //    LimpiarRegistros();
-                    //_vista2.TrabajoEquipo.DataSource. = Persona;
-              //      _vista2.TrabajoEquipo.DataBind();
-            int i;      
-            for (i = 0; i < Persona.Count; i++)
-            {
-                _vista.TrabajoEquipo.Items.Add(Persona.ElementAt(i).Nombre+" "+Persona.ElementAt(i).Apellido);
 
-            }
-           _vista.TrabajoEquipo.DataBind();
+                    // _vista2.ObtenerValorDataSource.DataSource = Persona;
+                    //    LimpiarRegistros();
+                    //_vista2.TrabajoEquipo.DataSource. = Persona;
+                    //      _vista2.TrabajoEquipo.DataBind();
+                    int i;
+                    for (i = 0; i < Persona.Count; i++)
+                    {
+                        _vista.TrabajoEquipo.Items.Add(Persona.ElementAt(i).Nombre + " " + Persona.ElementAt(i).Apellido);
+
+                    }
+                    _vista.TrabajoEquipo.DataBind();
                 }
 
             }
@@ -127,33 +128,33 @@ namespace Presentador.Propuesta.Vistas
             }
         }
 
-             public IList<string[]>  SeleccionEquipo(IList<string[]> lista)
-             {
-                 string seleccion;
-                string[] nombre;
-                 String s = "Selected items:<br>";
-                lista = new List<string[]>();
+        public IList<string[]> SeleccionEquipo(IList<string[]> lista)
+        {
+            string seleccion;
+            string[] nombre;
+            String s = "Selected items:<br>";
+            lista = new List<string[]>();
 
-           for (int i = 0; i < _vista.TrabajoEquipo.Items.Count; i++)
-           {
-             if (_vista.TrabajoEquipo.Items[i].Selected)
-             {
-                 seleccion = _vista.TrabajoEquipo.Items[i].Text;
-                 nombre = seleccion.Split(' ');
-                 lista.Add(nombre);
-                 // List the selected items
-             //  s = s + Check1.Items[i].Text;
-              // s = s + "<br>";
-             }
-            
-           }
-           
-                 return lista;
-           
-         }
-                 
-      
-             
+            for (int i = 0; i < _vista.TrabajoEquipo.Items.Count; i++)
+            {
+                if (_vista.TrabajoEquipo.Items[i].Selected)
+                {
+                    seleccion = _vista.TrabajoEquipo.Items[i].Text;
+                    nombre = seleccion.Split(' ');
+                    lista.Add(nombre);
+                    // List the selected items
+                    //  s = s + Check1.Items[i].Text;
+                    // s = s + "<br>";
+                }
+
+            }
+
+            return lista;
+
+        }
+
+
+
 
 
 
@@ -180,10 +181,11 @@ namespace Presentador.Propuesta.Vistas
 
             _vista.NombreReceptor.Text = "";
 
-            
-            _vista.RolEquipo1.Text = "";
+            _vista.NombreReceptor.Text = "";
 
-        
+            _vista.ApellidoReceptor.Text = "";
+
+            _vista.RolEquipo1.Text = "";
 
             _vista.TotalHoras.Text = "";
         }
@@ -216,11 +218,11 @@ namespace Presentador.Propuesta.Vistas
         /// <param name="propuesta">Entidad de tipo Propuesta</param>
         /// <returns></returns>
 
-        public Core.LogicaNegocio.Entidades.Propuesta Agregar(Core.LogicaNegocio.Entidades.Propuesta propuesta,IList<string[]> equipo)
+        public Core.LogicaNegocio.Entidades.Propuesta Agregar(Core.LogicaNegocio.Entidades.Propuesta propuesta, IList<string[]> equipo)
         {
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Ingresar ingresar;
 
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoIngresar(propuesta,equipo);
+            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoIngresar(propuesta, equipo);
 
             return ingresar.Ejecutar();
 

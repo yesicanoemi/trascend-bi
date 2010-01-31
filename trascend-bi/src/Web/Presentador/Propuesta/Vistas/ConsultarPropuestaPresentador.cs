@@ -37,8 +37,8 @@ namespace Presentador.Propuesta.Vistas
 
             #endregion
 
-           
-            #region Solicitud Servicios 
+
+            #region Solicitud Servicios
 
 
             #endregion
@@ -73,7 +73,7 @@ namespace Presentador.Propuesta.Vistas
             _vista.LabelVP.Visible          = true;
 
             #endregion
-
+            
             #region Desactivar Campos
 
             _vista.opcion.Visible          = false;
@@ -148,10 +148,26 @@ namespace Presentador.Propuesta.Vistas
             int Opcion = 2;
             string parametro = Convert.ToString(IdPropuesta);
             propuesta = LlenarListaParametro(Opcion, parametro);
-            _vista.ObtenerValorMuestra.DataSource = propuesta;
-            _vista.GridPropuesta.Visible = false;
 
-           
+            _vista.LabelTP.Text = propuesta.ElementAt(0).Titulo;
+            _vista.LabelVP.Text = propuesta.ElementAt(0).Version;
+            _vista.LabelFFirmP.Text = propuesta.ElementAt(0).FechaFirma.ToString("MM/dd/yyyy");
+            _vista.LabelRecepP.Text = propuesta.ElementAt(0).NombreReceptor + ' ' + propuesta.ElementAt(0).ApellidoReceptor;
+            _vista.LabelCargP.Text = propuesta.ElementAt(0).CargoReceptor;
+            _vista.LabelFechaIP.Text = propuesta.ElementAt(0).FechaInicio.ToString("MM/dd/yyyy");
+            _vista.LabelFechaFiP.Text = propuesta.ElementAt(0).FechaFin.ToString("MM/dd/yyyy");
+            _vista.LabelTotalHorasP.Text = string.Format("{0:n2}", propuesta.ElementAt(0).TotalHoras);
+            _vista.LabelMontP.Text = string.Format("{0:n2}", propuesta.ElementAt(0).MontoTotal);
+
+            for (int i = 0; i < propuesta.ElementAt(0).EquipoTrabajo.Count; i++)
+                _vista.ListaEmpleados.Items.Add(propuesta.ElementAt(0).EquipoTrabajo.ElementAt(i).Nombre +
+                    ' ' + propuesta.ElementAt(0).EquipoTrabajo.ElementAt(i).Apellido);
+            _vista.MultiViewPropuestaC.ActiveViewIndex = 1;
+
+            //_vista.ObtenerValorMuestra.DataSource = propuesta;
+            //_vista.GridPropuesta.Visible = false;
+
+
         }
 
         /// <summary>
@@ -160,33 +176,41 @@ namespace Presentador.Propuesta.Vistas
         /// <returns>devuelve objeto de tipo lista de propuestas</returns>
         public IList<Core.LogicaNegocio.Entidades.Propuesta> BuscarPorTitulo(int estado)
         {
-            
+
             Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarProyecto consultar;
 
-            consultar = FabricaComandosPropuesta.CrearComandoConsultarProyecto( estado );
+            consultar = FabricaComandosPropuesta.CrearComandoConsultarProyecto(estado);
 
             propuesta = consultar.Ejecutar();
-            
+
             return propuesta;
 
         }
 
         public void AccionBusqueda()
         {
-                string opciont = _vista.ListOpcion.SelectedItem.Value;
-                int Opcion = Convert.ToInt32(opciont);
-                string Parametro = _vista.TextParametro.Text;
-                propuesta = LlenarListaParametro(Opcion, Parametro);   
-            if(propuesta!=null)
+            _vista.LabelVacioC.Visible = false;
+            string opciont = _vista.ListOpcion.SelectedItem.Value;
+            int Opcion = Convert.ToInt32(opciont);
+            string Parametro = _vista.TextParametro.Text;
+            propuesta = LlenarListaParametro(Opcion, Parametro);
+
+            if (propuesta.Count > 0)
             {
                 _vista.ObtenerValorDataSource.DataSource = propuesta;
+
             }
-            _vista.ListOpcion.Visible = false;
-            _vista.TextParametro.Visible = false;
+            else
+            {
+                _vista.ObtenerValorDataSource.DataSource = propuesta;
+                _vista.LabelVacioC.Visible = true;
+            }
+            //_vista.ListOpcion.Visible = false;
+            //_vista.TextParametro.Visible = false;
         }
 
         public IList<Core.LogicaNegocio.Entidades.Propuesta>
-            LlenarListaParametro(int Opcion , string parametro)
+            LlenarListaParametro(int Opcion, string parametro)
         {
             Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultar;
             consultar = FabricaComandosPropuesta.CrearComandoConsultar(Opcion, parametro);
@@ -194,7 +218,7 @@ namespace Presentador.Propuesta.Vistas
             return propuesta;
         }
 
-        
+
 
         #endregion
     }
