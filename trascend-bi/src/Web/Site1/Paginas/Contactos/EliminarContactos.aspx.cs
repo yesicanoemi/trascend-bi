@@ -293,7 +293,7 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
     public void CambiarPagina()
     {
-        InformacionVisibleEliminar = true;
+       
         Response.Redirect(paginaEliminar);
         
     }

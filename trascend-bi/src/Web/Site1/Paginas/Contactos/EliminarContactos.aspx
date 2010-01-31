@@ -35,11 +35,11 @@
                             
                                 <form id="Form3" action="#" runat="server">
                                 
+                                <uc2:MensajeInformacion ID="uxMensajeEliminar" runat="server" Visible="false" />
+                                
                                 <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
                           
                                 <asp:View ID="ViewConsulta" runat="server">
-                                
-                                 <uc2:MensajeInformacion ID="uxMensajeEliminar" runat="server" Visible="false" />
                                 
                                   <p>Introduzca los campos según su tipo de búsqueda</p> 
                                     
