@@ -72,12 +72,12 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
 
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
-        //_presenter.ConsultarFactura();
+        _presenter.ConsultarFactura();
     }
 
     protected void btGuardar_Click(object sender, EventArgs e)
     {
-        //_presenter.AnularFactura();
+        _presenter.SaldarFactura();
     }
     
 }
