@@ -60,9 +60,9 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarContactoXCliente(entidad);
         }
 
-        public static Ingresar CrearComandoIngresar(Contacto contacto, int idCliente)
+        public static Ingresar CrearComandoIngresar(Contacto contacto)
         {
-            return new Ingresar(contacto, idCliente);
+            return new Ingresar(contacto);
         }
        
         public static Eliminar CrearComandoEliminar(Contacto contacto)
