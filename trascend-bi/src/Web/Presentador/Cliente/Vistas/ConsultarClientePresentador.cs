@@ -112,7 +112,6 @@ namespace Presentador.Cliente.Vistas
                 cliente.Nombre = _vista.Valor.Text;
 
                 IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
-
                 _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
                 _vista.GetObjectContainerConsultaDireccion.DataSource = listaCliente[0].Direccion;
                 _vista.GetObjectContainerConsultaTelefono.DataSource = listaCliente[0].Telefono[0];
@@ -121,10 +120,10 @@ namespace Presentador.Cliente.Vistas
 
             }
 
-            if (_vista.RbCampoBusqueda.SelectedValue == "2")//nombre de area de negocio
+            if (_vista.RbCampoBusqueda.SelectedValue == "2")// rif del cliente
             {
 
-                cliente.Rif = _vista.Valor.Text;
+                cliente.Rif = _vista.ConsultaRif.Text;
 
                 Core.LogicaNegocio.Entidades.Cliente seleccionCliente = ConsultarClienteRif(cliente);
 

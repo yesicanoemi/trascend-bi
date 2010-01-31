@@ -86,6 +86,7 @@
                                             ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor" 
                                             UseContextKey="false">
                                         </ajaxToolkit:AutoCompleteExtender>
+                                                                               
                                         </td>
                                         </tr>
                                         <tr>       
@@ -148,7 +149,9 @@
                                   <Fields>
                                                         <asp:BoundField HeaderText="Rif" DataField="rif" ReadOnly="True"/> 
                                                         <asp:BoundField HeaderText="Nombre Cliente" DataField="nombre" ReadOnly="True"/>
-                                                        <asp:BoundField HeaderText="Area de Negocio" DataField="areanegocio" ReadOnly="True"/>        
+                                                        <asp:BoundField HeaderText="Area de Negocio" DataField="areanegocio" ReadOnly="True"/>  
+                                                                                                                
+                                                   
                                   </Fields>
                                 </asp:DetailsView>
                                 
@@ -164,7 +167,8 @@
                                   </Fields>
                                 </asp:DetailsView>
                                 
-                                                                 <asp:DetailsView ID="uxMuestraTelefono" 
+                                         
+                              <asp:DetailsView ID="uxMuestraTelefono" 
                                     datasourceid="uxObjectConsultaTelefono" HeaderText="Telefonos"
                                 datakeynames="codigoarea" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  
                                  Width="306px">  <headerstyle backcolor="#c60"            forecolor="White"/>
@@ -175,6 +179,7 @@
                                                        
                                   </Fields>
                                 </asp:DetailsView>
+
                                 
                                 
                                 <br />
@@ -205,5 +210,7 @@
 		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 
         
         <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.TelefonoTrabajo" />  
+        
+        <pp:objectcontainerdatasource runat="server" ID="ObjectConsultaContacto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Contacto" />
 </asp:Content>
 
