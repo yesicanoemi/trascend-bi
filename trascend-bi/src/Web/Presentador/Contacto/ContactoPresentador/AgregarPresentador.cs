@@ -35,6 +35,8 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.TelefonoDeCelular.Numero = int.Parse(_vista.TextBoxTelfCelular.Text);
                 contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxTelfOficina.Text);
                 contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
+
+
                 if (_vista.CheckBoxFax.Checked)
                 {
                     contacto.TelefonoDeTrabajo.Tipo = "Fax";
@@ -63,28 +65,15 @@ namespace Presentador.Contacto.ContactoPresentador
             ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar();
             Clientes = ConsultarClientes.ejecutar();
 
-            ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar
-                (_contacto,Clientes.ElementAt(_vista.DropDownClientes.SelectedIndex).IdCliente);
+            //ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar
+            //    (_contacto,Clientes.ElementAt(_vista.DropDownClientes.SelectedIndex).IdCliente);
 
             //try
             //{    
             //ejecuta el comando.
-            ingresar.Ejecutar();
+           // ingresar.Ejecutar();
         }
 
-        public void LlenarClientes()
-        {
-            Core.LogicaNegocio.Comandos.ComandoCliente.Consultar ConsultarClientes;
-            IList<Core.LogicaNegocio.Entidades.Cliente> Clientes = new List<Core.LogicaNegocio.Entidades.Cliente>();
-            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar();
-            Clientes=ConsultarClientes.ejecutar();
-            int i=0;
-            while (i<Clientes.Count())
-            {
-                _vista.DropDownClientes.Items.Add(Clientes.ElementAt(i).Nombre);
-                i++;
-            }
-        }
      }
     
 }

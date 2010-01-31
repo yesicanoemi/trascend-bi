@@ -8,7 +8,12 @@ using Presentador.Contacto.ContactoPresentador;
 
 public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarContacto
 {
+
+   #region Propiedades
+
     private AgregarPresentador _presentador;
+
+    protected const string paginaConsulta = "~/Paginas/Contactos/AgregarContactos.aspx";
 
 
     public TextBox TextBoxNombreContacto
@@ -66,11 +71,49 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         set { uxFax = value; }
     }
 
-    public DropDownList DropDownClientes
+    public TextBox Valor
     {
-        get { return uxDropDownClientes; }
-        set { uxDropDownClientes = value; }
+        get { return uxValor; }
+        set { uxValor = value; }
     }
+
+    //#region Información
+
+    //public void PintarInformacion(string mensaje, string estilo)
+    //{
+    //    uxMensajeInformacion.PintarControl(mensaje, estilo);
+    //}
+
+    //public bool InformacionVisible
+    //{
+    //    get { return uxMensajeInformacion.Visible; }
+    //    set { uxMensajeInformacion.Visible = value; }
+    //}
+
+    //#endregion
+
+    //#region Diálogo
+
+    //public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    //{
+    //    uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    //}
+
+    //public bool DialogoVisible
+    //{
+    //    get { return uxDialogoError.Visible; }
+    //    set { uxDialogoError.Visible = value; }
+    //}
+
+    //#endregion
+
+
+
+   #endregion
+
+
+    #region Métodos
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -79,6 +122,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
+       
         _presentador.Onclick();
     }
 
@@ -97,7 +141,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
                 i = usuario.PermisoUsu.Count;
 
                 _presentador = new AgregarPresentador(this);
-                _presentador.LlenarClientes();
+               
 
                 permiso = true;
 
@@ -110,5 +154,11 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         }
     }
 
+    protected void uxValor_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    #endregion
 
 }
