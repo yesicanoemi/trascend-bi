@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
 {
@@ -29,8 +31,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
         /// <returns>el cargo con valores consultados</returns>
         public IList<Entidad> Ejecutar()
         {
-            CargoSQLServer bd = new CargoSQLServer();
-            return bd.ConsultarCargos();
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCargo iDAOCargo = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
+
+            //CargoSQLServer bd = new CargoSQLServer();
+            return iDAOCargo.ConsultarCargos();
         }
     }
 }
