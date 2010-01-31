@@ -1,4 +1,9 @@
 #summary Integracion Grupo 1
+
+*Tabla de Contenido:*
+
+<wiki:toc />
+
 = Integrantes =
 
 Edgar Ruiz<br/>
@@ -111,7 +116,7 @@ En caso que un campo de llenado contenga un campo inválido (una cédula con let
 
 http://trascend-bi.googlecode.com/files/Validacion.jpg
 
-==== Modelo de la base de datos ====
+= Modelo de la base de datos =
 
 A continuacion se presentara la version del modelo de la base de datos para el tercer proyecto.
 
