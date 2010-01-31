@@ -26,7 +26,6 @@ namespace Presentador.Factura.Vistas
         }
         #endregion
 
-
         public void ConsultarFactura()
         {
             try

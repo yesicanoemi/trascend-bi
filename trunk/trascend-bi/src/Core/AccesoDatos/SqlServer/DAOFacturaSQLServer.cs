@@ -18,7 +18,7 @@ namespace Core.AccesoDatos.SqlServer
 {
     public class DAOFacturaSQLServer : IDAOFactura
     {
-       
+    
 
         #region Constructor
         public DAOFacturaSQLServer()
@@ -516,7 +516,7 @@ namespace Core.AccesoDatos.SqlServer
                 return new Factura();
         }
 
-        public void ModificarEstadoFactura(int idFactura)
+        public void ModificarEstadoFactura(int idFactura, string estado)
         {
             bool valido = false;
             try
@@ -527,9 +527,10 @@ namespace Core.AccesoDatos.SqlServer
                 arparms[0].Value = idFactura;
 
                 arparms[1] = new SqlParameter("@Estado", SqlDbType.VarChar);
-                arparms[1].Value = "Anulada";
+                arparms[1].Value = estado;
 
                 int result = SqlHelper.ExecuteNonQuery(GetConnection(), "ModificarEstadoFactura", arparms);
+
 
                 valido = true;
             }

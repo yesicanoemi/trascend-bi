@@ -5,6 +5,7 @@ using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Interfaces;
 using Core.AccesoDatos;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -24,6 +25,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
         {
         }
 
+        public Anular(int idFactura)
+        {
+            _idFactura = idFactura;
+        }
+
         public Anular(int idFactura, string estado)
         {
             _idFactura = idFactura;
@@ -32,7 +38,6 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
         #endregion
 
-
 	//lol
         public void Ejecutar()
         {
@@ -40,8 +45,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IDAOFactura bdpropuestas = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
+            Factura facturaBuscar = new Factura();
+            facturaBuscar.Numero = _idFactura;
 
-            bdpropuestas.ModificarEstadoFactura( _idFactura );
+            Factura factura = bdpropuestas.ConsultarFacturaID(facturaBuscar);
+
+            if (factura.Estado.Equals("Por Cobrar"))
+                bdpropuestas.ModificarEstadoFactura(_idFactura, "Anulada");
+            else
+                throw new EliminarException("No se puede anular una factura que ya haya sido cobrada");
         }
     }
 }
