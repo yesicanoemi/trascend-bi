@@ -142,7 +142,7 @@ namespace Presentador.Cargo.Vistas
                     LlenarDDLCargos();
                     DesactivarCampos();
 
-                    _vista.Mensaje("Se elimino con exito =)");
+                    _vista.Mensaje("Se elimino con exito.");
             }
             catch (FormatException e)
             {
