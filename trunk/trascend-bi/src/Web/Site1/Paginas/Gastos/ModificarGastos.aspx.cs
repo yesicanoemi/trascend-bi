@@ -8,10 +8,12 @@ using Presentador.Gasto.Vistas;
 using Core.LogicaNegocio.Entidades;
 using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Aplicacion;
+using System.Web.UI.HtmlControls;
 
 public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
 {
     private ModificarGastoPresenter _presenter;
+   // private ConsultarGastoPresenter _presenter2;
 
     #region Propiedades de la Pagina
 
@@ -21,11 +23,31 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { LabelTipoConsulta = value; }
     }
 
+    public Label LIdVersion
+    {
+        get { return uxIdVersion; }
+        set { uxIdVersion = value; }
+    }
+
+    public MultiView ModificarGasto
+    {
+        get { return uxModificar; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     public TextBox BusquedaConsulta
     {
         get { return uxBusquedaConsulta; }
         set { uxBusquedaConsulta = value; }
     }
+
+    public TextBox FechaIngreso
+    {
+        get { return uxFechaIngreso; }
+        set { uxFechaIngreso = value; }    
+    }
+
+
     public RadioButtonList CheckOpcionBuscar
     {
         get { return uxCheckOpcionBuscar; }
@@ -36,17 +58,7 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         get { return uxBotonBuscarDatos; }
         set { uxBotonBuscarDatos = value; }
     }
-    public GridView GridViewModificarGasto
-    {
-        get { return uxModificarGasto; }
-        set { throw new System.NotImplementedException(); }
-    }
 
-    public ObjectContainerDataSource GetObjectContainerModificarGasto
-    {
-        get { return uxObjectModificarGasto; }
-        set { uxObjectModificarGasto = value; }
-    }
     public TextBox DescripcionGasto
     {
         get { return uxDescripcionGasto; }
@@ -77,18 +89,6 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { uxTipoGasto = value; }
     }
 
-    public DropDownList PropuestaAsociada
-    {
-        get { return uxProyectosGasto; }
-        set { uxProyectosGasto = value; }
-    }
-
-    public CheckBox AsociarPropuestaGasto
-    {
-        get { return uxCheckProyectoGasto; }
-        set { uxCheckProyectoGasto = value; }
-    }
-
     public Label MensajeError
     {
         get { return LabelMensajeError; }
@@ -100,7 +100,66 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         get { return uxCodigoGasto; }
         set { uxCodigoGasto = value; }
 
-    }    
+    }
+    public GridView GridViewConsultaGasto
+    {
+        get { return uxConsultaGasto; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public GridView GridViewParametro
+    {
+        get { return uxGridParamCoincidente; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public GridView GridViewCliente
+    {
+        get { return uxGridCliente; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerConsultaGasto
+    {
+        get { return uxObjectConsultaGasto; }
+        set { uxObjectConsultaGasto = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerConsultaGastoSeleccion
+    {
+        get { return uxObjectParamCoinci; }
+        set { uxObjectParamCoinci = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerCliente
+    {
+        get { return uxObjectCliente; }
+        set { uxObjectCliente = value; }
+    }
+
+  /*  public HtmlTable TablaSeleccionGrid
+    {
+        get { return uxTablaSeleccion; }
+        set { uxTablaSeleccion = value; }
+    }
+    public HtmlTable TablaConsultaParametro
+    {
+        get { return uxTablaParametros; }
+        set { uxTablaParametros = value; }
+    }*
+
+   public HtmlTable TablaCliente
+    {
+        get { return uxTablaCliente; }
+        set { uxTablaCliente = value; }
+    }
+
+    public HtmlTable TablaModificar
+    {
+        get { return uxmodi; }
+        set { uxmodi = value; }
+    }*/
+
 
     #endregion
 
@@ -121,6 +180,7 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
 
                 //aqui va la instancia del presentador
                 _presenter = new ModificarGastoPresenter(this);
+             //   _presenter2 = new ConsultarGastoPresenter(this);
 
                 permiso = true;
 
@@ -136,17 +196,18 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     #region Eventos
 
     
-    protected void SeleccionarModificarGasto(object sender, GridViewSelectEventArgs e)
+  /*  protected void SeleccionarModificarGasto(object sender, GridViewSelectEventArgs e)
     {
         uxBotonAceptar.Enabled = true;
         _presenter.uxObjectModificarGastoSelecting(uxModificarGasto.DataKeys[e.NewSelectedIndex].Value.ToString());
 
-    }
+    }*/
     
     protected void uxCheckProyectoGasto_CheckedChanged1(object sender, EventArgs e)
     {
 
     }
+
     protected void uxProyectosGasto_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -161,7 +222,31 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     {
         if (e.Row.RowIndex % 2 == 0)
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
-    }   
+    }
+
+    protected void uxBotonBuscar_Click(object sender, EventArgs e)
+    {
+
+        _presenter.BuscarInformacion();
+
+    }
+
+    protected void uxModificarGasto(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.busquedaparametrizado2(int.Parse(uxConsultaGasto.DataKeys[e.NewSelectedIndex].Value.ToString()), "Propuesta");
+    }
+
+    protected void parametrizado(object sender, GridViewSelectEventArgs e)
+    {
+
+        _presenter.busquedaparametrizado(int.Parse(uxGridParamCoincidente.DataKeys[e.NewSelectedIndex].Value.ToString()), "Propuesta");
+    }
+
+    protected void parametrizadocliente(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.busquedaparametrizado(-1, uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+
 
     #endregion
     

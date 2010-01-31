@@ -1,22 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" Title="Modificar Gasto" CodeFile="ModificarGastos.aspx.cs" Inherits="Paginas_Gastos_ModificarGastos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-                       
-<script type="text/javascript">
-function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
-{
-    var uxddlProyectoGasto = document.getElementById('<%= uxProyectosGasto.ClientID %>');
-    
-    if(uxCheckProyectoGasto.checked==true)
-    {
-        uxddlProyectoGasto.disabled=false;
-    }
-    if(uxCheckProyectoGasto.checked==false)
-    {
-        uxddlProyectoGasto.disabled=true;
-    }
+                     
 
-}</script>
     <div class="container subnav"> 
 	    <div class="content"> 
 		    <div class="sub-heading"> 
@@ -36,6 +22,10 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                         <h3>Modificar Gasto</h3> 
                         <p class="large">Busqueda del Gasto</p>
                          <form id="form1" runat="server">
+                        <asp:MultiView ID = "uxModificar"  runat="server" ActiveViewIndex="0">
+                        
+			                <asp:View ID="uxConsultar" runat="server">
+			                
 			                <table>
 		                        <tr>		                    
 		                            <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>
@@ -52,17 +42,16 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
 		                        <tr>
 		                            <td>
                                         <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
-                                         Font-Size="Small" RepeatDirection="Horizontal" RepeatLayout="Flow" 
-                                         TextAlign="Left" >                                    
-                                                <asp:ListItem Value="0">Por Propuesta</asp:ListItem>
-                                                <asp:ListItem Value="1">Por Tipo</asp:ListItem>
-                                                <asp:ListItem Value="2">Por Estado</asp:ListItem>
+                                         Font-Size="Small" Height="51px" Width="257px"  >                                    
+                                                <asp:ListItem Value="0">Propuesta</asp:ListItem>
+                                                <asp:ListItem Value="1">Cliente</asp:ListItem>
+                                                <asp:ListItem Value="2">RIF</asp:ListItem>
                                         </asp:RadioButtonList>
                                     </td>
                                     <td>&nbsp;</td>
 		                            <td><asp:TextBox ID="uxBusquedaConsulta" runat="server"></asp:TextBox></td>
 		                            <td>&nbsp;</td>
-        		                    <td><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" /></td>
+        		                    <td><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" onclick="uxBotonBuscar_Click" /></td>
 		                        </tr>		                		                
 		                        <tr>
 		                            <td>&nbsp;</td>
@@ -70,52 +59,99 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
 		                    <td>&nbsp;</td>
 		                    <td>&nbsp;</td>	                    
 		                </tr>
-		            </table>          
-                            
-                          
-                         
-		                      <table>
-		                        <tr>
-		                            <td><h3>Datos del Gasto</h3></td>
-			                    </tr>       		                		                      		                
-        		                <tr>
-		                            <td>&nbsp;</td>
-		                            <td>&nbsp;</td>
-        		                    <td>&nbsp;</td>
-		                        </tr>
-		                        <tr>
-			                        <td colspan="2">
-			                        <asp:GridView ID="uxModificarGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectModificarGasto"
-                                                        AutoGenerateColumns="false" DataKeyNames="codigo" AutoGenerateSelectButton="true"
-                                                        Width="130%" Font-Names="Verdana" Font-Size="X-Small" onrowdatabound="uxGridView_RowDataBound" 
-                                                        OnSelectedIndexChanging="SeleccionarModificarGasto">
+		               
+		            
+                              
+		                <tr>
+		                    <td><h3>Parametros Coincidentes<asp:GridView ID="uxGridParamCoincidente" runat="server" AllowPaging="True" DataSourceID="uxObjectParamCoinci"
+                                                AutoGenerateColumns="false" DataKeyNames="ID" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizado"
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
                                                 
-                                                        <Columns>
-                                                                <asp:BoundField HeaderText="Codigo" DataField="codigo" />
+                                                <Columns>
+                                                
+                                                        <asp:BoundField HeaderText="Coincidencias" DataField="Titulo"/>   
+                                                                                                             
+                                                </Columns>
+                                                
+                            </asp:GridView>
+			                    </h3></td>
+			            </tr>
+			            <tr>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                </tr>		                			         
+			            <tr>
+			                <td colspan="2">
+			                    &nbsp;</td>
+			            </tr>
+		            </table>
+		            </asp:View>
+		            
+		                    <asp:View ID="uxCliente" runat="server">
+		              <table>
+		                 <tr>
+		                    <td><h3><asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" DataSourceID="uxObjectCliente"
+                                                AutoGenerateColumns="false" DataKeyNames="nombre" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizadocliente"
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
+                                                
+                                                <Columns>
+                                                
+                                                        <asp:BoundField HeaderText="Rif" DataField="rif"/>
+                                                        <asp:BoundField HeaderText="Nombre" DataField="nombre"/>   
+                                                                                                             
+                                                </Columns>
+                                                
+                            </asp:GridView>
+			                    </h3></td>
+			            </tr>
+			            <tr>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                </tr>		                			         
+			            <tr>
+			                <td colspan="2">
+			                    &nbsp;</td>
+			            </tr>
+		            </table>
+		            </asp:View>
+		            
+		                    <asp:View ID="uxSeleccion" runat="server">
+		            <table>
+		                <tr>
+		                    <td><h3>Datos del Gasto<asp:GridView ID="uxConsultaGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaGasto"
+                                                AutoGenerateColumns="false" DataKeyNames="codigo" AutoGenerateSelectButton="true"
+                                                Width="158%" Font-Names="Verdana" Font-Size="X-Small" OnSelectedIndexChanging="uxModificarGasto">
+                                                
+                                                <Columns>
+                                                                <asp:BoundField HeaderText=""  />
                                                                 <asp:BoundField HeaderText="Estado" DataField="estado" />                                            
                                                                 <asp:BoundField HeaderText="Tipo" DataField="tipo" />
                                                                 <asp:BoundField HeaderText="Estado" DataField="estado" />
                                                                 <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />  
                                                                 <asp:BoundField HeaderText="Monto" DataField="monto" />                                                         
                                                                 <asp:BoundField HeaderText="Fecha Gasto" DataField="fechaGasto" />
-                                                                <asp:BoundField HeaderText="Fecha Ingreso" DataField="fechaIngreso" />
-                                                        </Columns>
-                                                        
-                                                        <EmptyDataTemplate>
-                                                                <center>
-                                                                    <span>No hay data cargada</span>
-                                                                </center>
-                                                        </EmptyDataTemplate>                                                 
-                                        </asp:GridView>
-			                        </td>
-			                    </tr>
-			                    <tr>
-		                            <td>&nbsp;</td>
-		                            <td>&nbsp;</td>
-        		                    <td>&nbsp;</td>
-		                        </tr>                               
-                            </table>      		            
-        		            <table style="width:100%;">
+                                                                <asp:BoundField HeaderText="" />
+                                                </Columns>
+                                                           
+                            </asp:GridView>
+			                    </h3></td>
+			            </tr>
+			            <tr>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                    <td>&nbsp;</td>
+		                </tr>		                			         
+			            <tr>
+			                <td colspan="2">
+			                    &nbsp;</td>
+			            </tr>
+		            </table> 
+		            </asp:View>   		          
+		            
+        		            <asp:View ID="uxError" runat="server">
+        		            <table  style="width:100%;">
                                 <tr>
                                     <td align="center">
                                         <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
@@ -125,7 +161,10 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                     <td>&nbsp;</td>
                                 </tr>
                            </table>
-                           <table style="width:100%;">
+                           </asp:View>
+                       
+                            <asp:View ID="uxfinal" runat="server"> 
+                           <table>
                                <tr>
                                    <td>Codigo: </td>
                                    <td><asp:Label ID="uxCodigoGasto" runat="server"  Enabled="false"/></td>
@@ -136,15 +175,15 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
 		                        </tr>
                                <tr>
                                    <td>Tipo: </td>
-                                   <td><asp:TextBox ID="uxTipoGasto" runat="server" Enabled="false"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxTipoGasto" runat="server" Enabled="true"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td>&nbsp;;</td>
+                                   <td>&nbsp;</td>
                                </tr>
                                 <tr>
                                    <td>Descripcion: </td>
-                                   <td><asp:TextBox ID="uxDescripcionGasto" runat="server" Enabled="false"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxDescripcionGasto" runat="server" Enabled="true"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -153,17 +192,30 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                <tr>
                                    <td>Fecha del gasto: </td>
                                    <td>
-                                       <asp:TextBox ID="uxFechaGasto2" runat="server" Enabled="false"></asp:TextBox>
+                                       <asp:TextBox ID="uxFechaGasto2" runat="server" Enabled="true"></asp:TextBox>
                                        <asp:Image ID="uxImagenFechaGasto2" runat="server" ImageUrl="~/Images/calendario.png"/>                                            
                                    </td>
                                </tr>
                                <tr>
                                    
-                                   <td></td>
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                                <tr>
+                                   <td>Fecha de Ingreso: </td>
+                                   <td>
+                                       <asp:TextBox ID="uxFechaIngreso" runat="server" Enabled="true"></asp:TextBox>
+                                       <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/calendario.png"/>                                            
+                                   </td>
+                               </tr>
+                               <tr>
+                                   
+                                   <td>&nbsp;</td>
+                                   <td>&nbsp;</td>
                                </tr>
                                 <tr>
                                    <td>Monto: </td>
-                                   <td><asp:TextBox ID="uxMontoGasto" runat="server" Enabled="false"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxMontoGasto" runat="server" Enabled="true"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -171,25 +223,21 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                </tr>
                                 <tr>
                                    <td>Estado del gasto: </td>
-                                   <td><asp:TextBox ID="uxEstadoGasto" runat="server" Enabled="false"></asp:TextBox></td>
+                                   <td><asp:TextBox ID="uxEstadoGasto" runat="server" Enabled="true"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
                                </tr>
-                                <tr>
-                                   <td>Asociado a un proyecto:
-                                       <asp:CheckBox ID="uxCheckProyectoGasto" runat="server" 
-                                           onClick="actualizarEstadoDDLGasto(this);" 
-                                           oncheckedchanged="uxCheckProyectoGasto_CheckedChanged1" Enabled="false"/>
-                                            
-                                    </td>
-                                   <td>
-                                       <asp:DropDownList ID="uxProyectosGasto" runat="server" Enabled="false" 
-                                           onselectedindexchanged="uxProyectosGasto_SelectedIndexChanged">
-                                       </asp:DropDownList>
-                                    </td>
-                                </tr>
+                               <tr>
+                                   <td>Version: </td>
+                                   <td><asp:Label ID="uxIdVersion" runat="server"  Enabled="false"/></td>
+                               </tr>
+                               <tr>
+		                            <td>&nbsp;</td>
+		                            <td>&nbsp;</td>        		               
+		                        </tr>
+                               
                                  <tr>
                                    <td>&nbsp;</td>
                                    <td>&nbsp;</td>
@@ -197,17 +245,22 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Modificar" Enabled="false"
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Modificar" Enabled="true"
                                             onclick="uxBotonAceptar_Click" />                                           
                                    </td>
                                 </tr>
-                            </table>        		            
+                            </table>
+                            </asp:View>
+                           
+                                 </asp:MultiView> 		            
                         </form>                        
                     </div> 
                 </div>
             </div> 
         </div>
     </div>	
-<pp:objectcontainerdatasource runat="server" ID="uxObjectModificarGasto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" /> 	 
+<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaGasto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" />
+<pp:objectcontainerdatasource runat="server" ID="uxObjectParamCoinci" DataObjectTypeName="Core.LogicaNegocio.Entidades.Propuesta" />
+<pp:objectcontainerdatasource runat="server" ID="uxObjectCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 	 
 </asp:Content>
 

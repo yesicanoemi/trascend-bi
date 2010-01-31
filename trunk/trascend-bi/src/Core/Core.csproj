@@ -132,6 +132,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoFactura\Saldar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultaGastoM.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGasto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGastoPorEstado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGastoPorFecha.cs" />

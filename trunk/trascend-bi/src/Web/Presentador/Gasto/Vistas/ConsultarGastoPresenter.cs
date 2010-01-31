@@ -68,8 +68,12 @@ namespace Presentador.Gasto.Vistas
                     if (listaPropuesta != null)
                     { 
                         _vista.GetObjectContainerConsultaGastoSeleccion.DataSource = listaPropuesta;
+
+                      //  _vista.TablaConsultaParametro.Visible = true;
+
                         
                         _vista.TablaConsultaParametro.Visible = true;
+
                     }
                 }
 

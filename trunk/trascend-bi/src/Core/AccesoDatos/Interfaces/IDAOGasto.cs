@@ -37,6 +37,8 @@ namespace Core.AccesoDatos.Interfaces
 
         Gasto ModificarGasto(Gasto gasto);
 
+        IList<Gasto> ConsultarGastoaModificar(int id);
+
 
     }
 }
