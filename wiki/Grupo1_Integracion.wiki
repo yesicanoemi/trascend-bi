@@ -112,7 +112,11 @@ En caso que un campo de llenado contenga un campo inválido (una cédula con let
 
 http://trascend-bi.googlecode.com/files/Validacion.jpg
 
+==== Modelo de la base de datos ====
 
+A continuacion se presentara la version del modelo de la base de datos para el tercer proyecto.
+
+http://trascend-bi.googlecode.com/files/BasedeDatos.jpg 
 
 
 
