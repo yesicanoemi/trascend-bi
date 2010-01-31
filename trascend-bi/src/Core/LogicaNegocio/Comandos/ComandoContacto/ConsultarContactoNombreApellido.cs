@@ -39,15 +39,18 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         public IList<Core.LogicaNegocio.Entidades.Contacto> Ejecutar()
         {
-            Core.AccesoDatos.SqlServer.DAOContactoSQLServer acceso = 
-                                                new Core.AccesoDatos.SqlServer.DAOContactoSQLServer();
-
+            
             IList<Core.LogicaNegocio.Entidades.Contacto> listaCont =
                                             new List<Core.LogicaNegocio.Entidades.Contacto>();
 
-            listaCont = acceso.ConsultarContactoNombreApellido(contacto);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOContacto bdcontacto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
+
+            listaCont = bdcontacto.ConsultarContactoNombreApellido(contacto);
 
             return listaCont;
+
         }
 
         #endregion    
