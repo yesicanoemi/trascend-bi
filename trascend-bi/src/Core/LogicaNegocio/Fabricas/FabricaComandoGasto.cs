@@ -45,5 +45,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarGastoPorEstado(gasto);
         }
+
+        public static ConsultaGastoM CrearComandoConsultaraModificar(int Id)
+        {
+            return new ConsultaGastoM(Id);
+        }
     }
 }

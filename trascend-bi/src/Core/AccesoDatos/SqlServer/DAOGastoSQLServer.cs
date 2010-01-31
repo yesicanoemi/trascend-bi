@@ -389,7 +389,7 @@ namespace Core.AccesoDatos.SqlServer
             Gasto _gasto = new Gasto();
             try
             {
-                SqlParameter[] parametros = new SqlParameter[7];
+                SqlParameter[] parametros = new SqlParameter[8];
 
                 parametros[0] = new SqlParameter("@IdGasto", SqlDbType.VarChar);
                 parametros[0].Value = gasto.Codigo;
@@ -412,6 +412,9 @@ namespace Core.AccesoDatos.SqlServer
                 parametros[6] = new SqlParameter("@descripcion", SqlDbType.VarChar);
                 parametros[6].Value = gasto.Descripcion;
 
+                parametros[7] = new SqlParameter("@IdVersion", SqlDbType.Int);
+                parametros[7].Value = gasto.IdVersion;
+
                 int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarGastoPorCodigo", parametros);
 
             }
@@ -426,6 +429,52 @@ namespace Core.AccesoDatos.SqlServer
 
             return _gasto;
         }
+
+        public IList<Gasto> ConsultarGastoaModificar(int IdGasto)
+        {
+            IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
+
+            try
+            {
+                SqlParameter[] parametro = new SqlParameter[1];
+
+                parametro[0] = new SqlParameter("@IdGasto", SqlDbType.Int);
+                parametro[0].Value = IdGasto;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarGModificar", parametro);
+
+                while (reader.Read())
+                {
+                    Gasto _gasto = new Gasto();
+
+                    _gasto.Codigo = (int)reader["IdGasto"];
+                    _gasto.Estado = (string)reader["Estado"];
+                    _gasto.Monto = float.Parse(reader["Monto"].ToString());
+                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
+                    _gasto.FechaIngreso = (DateTime)reader["FechaIngreso"];
+                    _gasto.Tipo = (string)reader["Tipo"];
+                    _gasto.Descripcion = (string)reader["Descripcion"];
+                    _gasto.IdVersion = (int)reader["IdVersion"];
+                   
+
+                    gastos.Add(_gasto);
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                gastos.ElementAt(0).Codigo = -1;
+            }
+            catch (SqlException)
+            {
+                gastos.ElementAt(0).Codigo = -2;
+            }
+
+
+            return gastos;
+        }
+
+
+
 
         #endregion
     }
