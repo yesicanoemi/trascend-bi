@@ -24,6 +24,7 @@ namespace Presentador.Gasto.Contrato
         Label MensajeError { get; set; }
         GridView GridViewConsultaGasto { get; set; }
         GridView GridViewParametro { get; set; }
+        GridView GridViewCliente { get; set; }
         ObjectContainerDataSource GetObjectContainerConsultaGasto { get; set; }
         ObjectContainerDataSource GetObjectContainerConsultaGastoSeleccion { get; set; }
         ObjectContainerDataSource GetObjectContainerCliente { get; set; }   

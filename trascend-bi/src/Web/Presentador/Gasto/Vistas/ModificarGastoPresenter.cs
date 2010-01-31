@@ -159,7 +159,8 @@ namespace Presentador.Gasto.Vistas
                 {
                     if (listaCliente != null)
                     {
-                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                        _vista.GetObjectContainerCliente.DataSource = listaCliente;
+                        _vista.ModificarGasto.ActiveViewIndex = 1;
                     }
                 }
 
@@ -236,7 +237,8 @@ namespace Presentador.Gasto.Vistas
                 listaGasto = ConsultaGasto(-1, tipoConsulta);
                 _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
                 _vista.GridViewParametro.Visible = false;
-              //  _vista.TablaSeleccionGrid.Visible = true;
+                _vista.ModificarGasto.ActiveViewIndex = 2;
+              
             }
         }
 
