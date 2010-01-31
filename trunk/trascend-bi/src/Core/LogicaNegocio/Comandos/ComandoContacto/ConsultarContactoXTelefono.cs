@@ -38,15 +38,18 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         public Core.LogicaNegocio.Entidades.Contacto Ejecutar()
         {
-            Core.AccesoDatos.SqlServer.DAOContactoSQLServer acceso =
-                              new Core.AccesoDatos.SqlServer.DAOContactoSQLServer();
-
+            
             Core.LogicaNegocio.Entidades.Contacto contacto2 =
                                             new Core.LogicaNegocio.Entidades.Contacto();
 
-            contacto2 = acceso.ConsultarContactoXTelefono(contacto);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
+            IDAOContacto bdcontacto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
+
+            contacto2 = bdcontacto.ConsultarContactoXTelefono(contacto);
+            
             return contacto2;
+        
         }
 
         #endregion
