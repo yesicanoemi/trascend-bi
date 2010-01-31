@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarGastos.aspx.cs" Inherits="Paginas_Gastos_ConsultarGastos" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 <form id="form2" runat="server">
@@ -22,7 +23,7 @@
 		            <p class="large">Busqueda del Gasto</p>
 		            
 		            
-		            <table>
+		            <table id="uxTablaInicio" runat="server">
 		                <tr>		                    
 		                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Text="Realizar Consulta: " /></td>
 		                    <td>&nbsp;</td>
@@ -37,17 +38,29 @@
 		                </tr>    
 		                <tr>
 		                    <td>
-                                <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
-                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="257px">                                    
+                                <asp:RadioButtonList  ID="uxCheckOpcionBuscar" runat="server" 
+                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="101px"  >                                    
                                     <asp:ListItem Value="0">Propuesta</asp:ListItem>
                                     <asp:ListItem Value="1">Cliente</asp:ListItem>
                                     <asp:ListItem Value="2">Rif</asp:ListItem>
                                 </asp:RadioButtonList>
+      
                             </td>
-                            <td>&nbsp;</td>
-		                    <td><asp:TextBox ID="uxBusquedaConsulta" runat="server"></asp:TextBox></td>
+                            
+		                    <td align="left"><asp:TextBox ID="uxBusquedaConsulta" runat="server" Height="22px" 
+                                    Width="127px" ></asp:TextBox>
+		                         <asp:Image ID="uxFechaInicioImg" runat="server" 
+                                    ImageUrl="~/Images/calendario.png" Height="16px" Width="16px" />
+		                        <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"
+                                        Format="dd/MM/yyyy" TargetControlID="uxBusquedaConsulta" PopupButtonID="uxFechaInicioImg" >
+                                </AjaxControlToolkit:CalendarExtender>
+                           </td>
 		                    <td>&nbsp;</td>
+		                    </tr>
+		                    <tr>
+		                    <td></td>
 		                    <td><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" onclick="uxBotonBuscar_Click" /></td>
+		                    
 		                </tr>		                		                
 		                <tr>
 		                    <td>&nbsp;</td>
@@ -90,7 +103,7 @@
 		                 <tr>
 		                    <td><h3><asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" DataSourceID="uxObjectCliente"
                                                 AutoGenerateColumns="false" DataKeyNames="nombre" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizadocliente"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" TextAlign="Left">
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
                                                 
                                                 <Columns>
                                                 

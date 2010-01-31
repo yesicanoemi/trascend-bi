@@ -38,54 +38,6 @@ namespace Presentador.Gasto.Vistas
 
         #region Metodos
 
-        /*
-        public int OpcionSeleccion()
-        {
-            _presentadorPropuesta = new ConsultarPropuestaPresentador();
-            listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
-
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // Busqueda por propuesta
-            {
-              
-                string estado = "Aprobada";
-               
-                listaPropuesta = _presentadorPropuesta.BuscarPorTitulo(estado);
-
-                for (int i = 0; i < listaPropuesta.Count; i++)
-                {
-                    _vista.SeleccionDato.Items.Add(listaPropuesta.ElementAt(i).Titulo);
-                }
-
-                _vista.SeleccionDato.DataBind();
-                 
-
-                opcion = 0;
-            }
-
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // Busqueda por Tipo
-            {
-                
-                listaGasto = ConsultarPorTipo();
-
-                for (int i = 0; i < listaGasto.Count; i++)
-                {
-                    _vista.SeleccionDato.Items.Add(listaGasto.ElementAt(i).Tipo);
-                }
-
-                _vista.SeleccionDato.DataBind();
-                
-
-                opcion = 1;
-            }
-
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // Busqueda por Estado
-            {
-                opcion = 2;
-            }
-            return opcion;
-        }
-        */
-
         public void BuscarInformacion() // 
         {
             #region Atributos de la pagina
@@ -93,6 +45,8 @@ namespace Presentador.Gasto.Vistas
             _vista.BusquedaConsulta.Visible = false;
             _vista.CheckOpcionBuscar.Visible = false;
             _vista.LTipoConsulta.Visible = false;
+            _vista.TablaInicio.Visible = false;
+            _vista.TablaConsultaParametro.Visible = false;
            
 
             #endregion
@@ -114,6 +68,7 @@ namespace Presentador.Gasto.Vistas
                     if (listaPropuesta != null)
                     { 
                         _vista.GetObjectContainerConsultaGastoSeleccion.DataSource = listaPropuesta;
+                        
                         _vista.TablaConsultaParametro.Visible = true;
                     }
                 }
@@ -145,8 +100,9 @@ namespace Presentador.Gasto.Vistas
                 try
                 {
                     if (listaCliente != null)
-                    {   
-                        //_vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                    {
+                        _vista.GetObjectContainerCliente.DataSource = listaCliente;
+                        _vista.TablaCliente.Visible = true;
                     }
                 }
 
@@ -155,7 +111,7 @@ namespace Presentador.Gasto.Vistas
                     //Mensaje de error al usuario
                 }
             }
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por Rif Cliente
+            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por fecha
             {
                 gasto = new Core.LogicaNegocio.Entidades.Gasto();
                 gasto.Estado = _vista.BusquedaConsulta.Text;
@@ -184,6 +140,7 @@ namespace Presentador.Gasto.Vistas
             {
                 listaGasto = ConsultaGasto(Id, "Propuesta");
                 _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                _vista.TablaInicio.Visible = false;
                 _vista.GridViewParametro.Visible = false;
                 _vista.TablaSeleccionGrid.Visible = true;
             }
@@ -191,8 +148,10 @@ namespace Presentador.Gasto.Vistas
             {
                 listaGasto = ConsultaGasto(-1, tipoConsulta);
                 _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
+                _vista.TablaInicio.Visible = false;
                 _vista.GridViewParametro.Visible = false;
                 _vista.TablaSeleccionGrid.Visible = true;
+                _vista.TablaCliente.Visible = false;
             }
         }
 
@@ -235,6 +194,14 @@ namespace Presentador.Gasto.Vistas
 
             return listaGasto;
         }*/
+
+        public void verseleccion()
+        {
+            if (_vista.CheckOpcionBuscar.SelectedValue.Equals("2"))
+            {
+                _vista.BusquedaConsulta.Visible = false;
+            }
+        }
 
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorFecha(Core.LogicaNegocio.Entidades.Gasto _gasto)
         {
