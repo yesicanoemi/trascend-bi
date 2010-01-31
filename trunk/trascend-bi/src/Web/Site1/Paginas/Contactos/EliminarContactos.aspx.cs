@@ -7,6 +7,8 @@ using Presentador.Contacto.ContactoInterface;
 using Presentador.Contacto.ContactoPresentador;
 using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Aplicacion;
+using System.Net;
+using Presentador.Base;
 
 public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminarContacto
 {
@@ -14,7 +16,7 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
     private EliminarPresentador _presentador;
 
-    protected const string paginaConsulta = "~/Paginas/Contactos/EliminarContactos.aspx";
+    protected const string paginaEliminar = "~/Paginas/Contactos/EliminarContactos.aspx";
 
 
     public TextBox TextBoxNombre
@@ -192,6 +194,17 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
         set { uxMensajeInformacion.Visible = value; }
     }
 
+    public void PintarInformacionEliminar(string mensaje, string estilo)
+    {
+        uxMensajeEliminar.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisibleEliminar
+    {
+        get { return uxMensajeEliminar.Visible; }
+        set { uxMensajeEliminar.Visible = value; }
+    }
+
     #endregion
 
     #region Diálogo
@@ -280,8 +293,9 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
     public void CambiarPagina()
     {
-        Response.Redirect(paginaConsulta);
-
+        InformacionVisibleEliminar = true;
+        Response.Redirect(paginaEliminar);
+        
     }
 
     protected void uxValor_TextChanged(object sender, EventArgs e)

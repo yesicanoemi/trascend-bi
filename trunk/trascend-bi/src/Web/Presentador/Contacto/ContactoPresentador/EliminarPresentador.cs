@@ -52,8 +52,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void OnBotonEliminar()
         {
-            //revisar si el cliente no se queda sin contactos..
-            //revisar si tiene cuantos telefonos tiene para borrarlos..
+            LimpiarFormulario();
+
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
 
             contacto.Nombre = _vista.NombreC.Text;
@@ -63,15 +63,25 @@ namespace Presentador.Contacto.ContactoPresentador
             contacto = ConsultarContactoNombreApellido(contacto)[0];
 
             if (ConsultarContactoXCliente(contacto).Count > 1)
-            {
-                EliminarContacto(contacto);
+            {   
                 //permite la eliminacion
+                EliminarContacto(contacto);
+
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                        ("MensajeEliminarCorrecto"), "mensajes");
+
+                _vista.CambiarPagina();
+
             }
             else
-            { 
-                //mostrar errror de no eliminacion porq falta de contactos
+            {
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                        ("MensajeEliminarFallida"), "mensajes");
+
+                _vista.CambiarPagina();
+
             }
-            _vista.CambiarPagina();
+           
         }
 
         /// <summary>
@@ -160,6 +170,8 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.Valor.Text = campoVacio;
 
             _vista.InformacionVisible = false;
+
+            _vista.InformacionVisibleEliminar = false;
 
         }
 
