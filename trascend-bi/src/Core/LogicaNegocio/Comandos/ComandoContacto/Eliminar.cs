@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoContacto
 {
@@ -29,10 +31,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         #region Metodos
         public void Ejecutar()
         {
-            //int _resultado = 0;
-            Contacto _contacto = null;
-            DAOContactoSQLServer bd = new DAOContactoSQLServer();
-            bd.Eliminar(contacto);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOContacto bdcontacto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
+
+            bdcontacto.Eliminar(contacto);
         }
         #endregion
     }
