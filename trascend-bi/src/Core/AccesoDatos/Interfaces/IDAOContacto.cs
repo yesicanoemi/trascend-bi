@@ -16,6 +16,8 @@ namespace Core.AccesoDatos.Interfaces
 
         IList<Contacto> ConsultarContactoXCliente(Contacto entidad);
 
+        Contacto ConsultarContactoxId(Contacto entidad);
+
         void Eliminar(Contacto contacto);
 
     }
