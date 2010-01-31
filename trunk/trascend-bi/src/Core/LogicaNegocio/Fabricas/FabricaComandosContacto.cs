@@ -69,6 +69,12 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Eliminar(contacto);
         }
+
+        /// <summary>
+        /// Metodo que fabrica el comando 'ModificarContacto' de la entidad Contacto
+        /// </summary>
+        /// <param name="entidad">Entidad contacto con los datos</param>
+        
         public static ModificarContacto CrearComandoModificarContacto(Contacto entidad)
         {
             return new ModificarContacto(entidad);

@@ -38,6 +38,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
 
         public void Ejecutar()
         {
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOContacto bdcontacto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
+
+            bdcontacto.ModificarContacto(contacto);
 
         }
 

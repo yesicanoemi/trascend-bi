@@ -66,6 +66,10 @@ namespace Presentador.Contacto.ContactoInterface
 
         TextBox Valor { get; set; }
 
+        Label IdClienteH { get; set; }
+
+        Label IdContactoH { get; set; }
+
         #region Validaciones
 
         RequiredFieldValidator RequiredFieldValidator { get; set; }
