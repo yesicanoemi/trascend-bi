@@ -36,7 +36,7 @@ namespace Core.AccesoDatos.SqlServer
 
         #region Ingresar
 
-        public Contacto Ingresar(Contacto contacto,int idCliente)
+        public Contacto Ingresar(Contacto contacto)
         {
             Contacto _contacto = new Contacto();
             try
@@ -61,12 +61,14 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[6].Value = contacto.TelefonoDeCelular.Codigocel;
                 arParms[7] = new SqlParameter("@CodigoArea", SqlDbType.Int);
                 arParms[7].Value = contacto.TelefonoDeTrabajo.Codigoarea;
-                arParms[8] = new SqlParameter("@Tipo", SqlDbType.VarChar);
-                arParms[8].Value = contacto.TelefonoDeTrabajo.Tipo;
-                arParms[9] = new SqlParameter("@IdCliente", SqlDbType.Int);
-                arParms[9].Value = idCliente;
-                arParms[10] = new SqlParameter("@ID", SqlDbType.Int);
-                arParms[10].Value = 0;
+                arParms[8] = new SqlParameter("@CodigoFax", SqlDbType.Int);
+                arParms[8].Value = contacto.TelefonoDeFax.Codigofax;
+                arParms[9] = new SqlParameter("@TelefonoFax", SqlDbType.Int);
+                arParms[9].Value = contacto.TelefonoDeFax.Numero;
+                arParms[10] = new SqlParameter("@IdCliente", SqlDbType.Int);
+                arParms[10].Value = contacto.ClienteContac;
+                arParms[11] = new SqlParameter("@ID", SqlDbType.Int);
+                arParms[11].Value = 0;
                 int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),"InsertarContacto", arParms);
             }
             catch (SqlException e)

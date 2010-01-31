@@ -25,8 +25,15 @@ namespace Presentador.Contacto.ContactoPresentador
         public void IngresarContacto()
         {
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
             try
             {
+
+                contacto.TelefonoDeFax.Numero = 0;
+                contacto.TelefonoDeFax.Codigofax = 0;
+
+                if ((_vista.TextBoxTelfFax.Text!="")&& (_vista.TextBoxCodFax.Text!=""))
+
                 contacto.Nombre = _vista.TextBoxNombreContacto.Text;
                 contacto.Apellido = _vista.TextBoxApellidoContacto.Text;
                 contacto.AreaDeNegocio = _vista.TextBoxAreaNegocio.Text;
@@ -36,15 +43,16 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxTelfOficina.Text);
                 contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
 
+                if ((_vista.TextBoxTelfFax.Text != "") && (_vista.TextBoxCodFax.Text != ""))
+                {
+                    contacto.TelefonoDeFax.Numero = int.Parse(_vista.TextBoxTelfFax.Text);
+                    contacto.TelefonoDeFax.Codigofax = int.Parse(_vista.TextBoxCodFax.Text);
+                }
+                cliente.Nombre = _vista.Valor.Text;
 
-                //if (_vista.CheckBoxFax.Checked)
-                //{
-                //    contacto.TelefonoDeTrabajo.Tipo = "Fax";
-                //}
-                //else
-                //{
-                //    contacto.TelefonoDeTrabajo.Tipo = "Trabajo";
-                //}
+                IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+
+                contacto.ClienteContac = listaCliente[0];
 
                 Ingresar(contacto);
             }
@@ -60,18 +68,39 @@ namespace Presentador.Contacto.ContactoPresentador
 
             //fábrica que instancia el comando Ingresar.
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.Consultar ConsultarClientes;
-            IList<Core.LogicaNegocio.Entidades.Cliente> Clientes = new List<Core.LogicaNegocio.Entidades.Cliente>();
-            ConsultarClientes = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultar();
-            Clientes = ConsultarClientes.ejecutar();
+            Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoNombreApellido ConsultarContacto;
 
-            //ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar
-            //    (_contacto,Clientes.ElementAt(_vista.DropDownClientes.SelectedIndex).IdCliente);
+             IList<Core.LogicaNegocio.Entidades.Contacto> Contactos = 
+                 new List<Core.LogicaNegocio.Entidades.Contacto>();
 
-            //try
-            //{    
-            //ejecuta el comando.
-           // ingresar.Ejecutar();
+             ConsultarContacto= Core.LogicaNegocio.Fabricas.FabricaComandosContacto.
+                 CrearComandoConsultarContactoNombreApellido(_contacto);
+
+             Contactos = ConsultarContacto.Ejecutar();
+
+             if (Contactos.Count == 0)
+             {
+
+                 ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
+
+              
+                 ingresar.Ejecutar();
+             }
+        }
+
+
+        public IList<Core.LogicaNegocio.Entidades.Cliente>
+                            ConsultarClienteNombre(Core.LogicaNegocio.Entidades.Cliente entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
+
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando;
+
+            comando = FabricaComandosCliente.CrearComandoConsultarNombre(entidad);
+
+            listaCliente = comando.ejecutar();
+
+            return listaCliente;
         }
 
      }

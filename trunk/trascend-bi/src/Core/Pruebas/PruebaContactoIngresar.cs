@@ -55,7 +55,7 @@ namespace Core.Pruebas
 
             Core.LogicaNegocio.Comandos.ComandoContacto.Ingresar ComandoContacto;
 
-            ComandoContacto = FabricaComandosContacto.CrearComandoIngresar(contacto, id);
+            ComandoContacto = FabricaComandosContacto.CrearComandoIngresar(contacto);
 
             ComandoContacto.Ejecutar();
 
