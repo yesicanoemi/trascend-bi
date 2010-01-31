@@ -69,16 +69,14 @@ namespace Core.AccesoDatos.SqlServer
         public IList<Factura> ConsultarFacturasNomPro(Propuesta propuesta)
         {
 
-            IList<Propuesta> propuestas = ConsultarPropuesta();
+           
 
             List<Factura> facturas = new List<Factura>();
 
             try
             {
-                foreach (Propuesta propuestaAux in propuestas)
-                {
-                    if (propuesta.Titulo.Equals(propuestaAux.Titulo))
-                    {
+                
+                  
                         int i = 0;
 
                         SqlParameter[] arParms = new SqlParameter[1];
@@ -122,8 +120,8 @@ namespace Core.AccesoDatos.SqlServer
 
                         //if (facturas.Count == 0)
                         //    throw new ConsultarFacturaADException();
-                    }
-                }
+                    
+                
             }
             catch (SqlException e)
             {
@@ -400,8 +398,12 @@ namespace Core.AccesoDatos.SqlServer
                         arparms[4].Value = factura.Fechaingreso.ToShortDateString();
 
                         arparms[5] = new SqlParameter("@Estado", SqlDbType.VarChar);
-                        arparms[5].Value = factura.Estado;
-
+                        if (factura.Estado.Equals("Por Cobrar"))
+                            arparms[5].Value = 1;
+                        if (factura.Estado.Equals("Cobrada"))
+                            arparms[5].Value = 2;
+                        if (factura.Estado.Equals("Anulada"))
+                            arparms[5].Value = 3;
                         arparms[6] = new SqlParameter("@TituloPropuesta", SqlDbType.VarChar);
                         arparms[6].Value = factura.Prop.Id;
 
