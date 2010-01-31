@@ -39,12 +39,57 @@ namespace Presentador.Contacto.ContactoPresentador
         #region Métodos
 
         /// <summary>
-        /// Método que redirecciona al usuario a otra página (de consulta)
+        /// Método que guarda los nuevos datos del Contacto
         /// </summary>
 
         public void OnBotonAceptar()
         {
-            _vista.CambiarPagina();
+            Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
+            
+            try
+            {
+                contacto.Nombre = _vista.NombreC.Text;
+
+                contacto.Apellido = _vista.ApellidoC.Text;
+
+                contacto.Cargo = _vista.CargoC.Text;
+
+                contacto.AreaDeNegocio = _vista.AreaC.Text;
+
+                contacto.TelefonoDeTrabajo.Codigoarea = Int32.Parse(_vista.CodTelefonoC1.Text);
+
+                contacto.TelefonoDeTrabajo.Numero = Int32.Parse(_vista.TelefonoC1.Text);
+
+                contacto.TelefonoDeTrabajo.Tipo = _vista.TipoTlfC1.Text;
+
+                contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
+
+                contacto.ClienteContac.Nombre = _vista.ClienteC.Text;
+
+                if ((_vista.CodTelefonoC2.Text != "") && (_vista.TelefonoC2.Text != ""))
+                {
+                    contacto.TelefonoDeCelular.Codigocel = Int32.Parse(_vista.CodTelefonoC2.Text);
+
+                    contacto.TelefonoDeCelular.Numero = Int32.Parse(_vista.TelefonoC2.Text);
+
+                    contacto.TelefonoDeCelular.Tipo = _vista.TipoTlfC2.Text;
+                }
+               
+                ModificarContacto(contacto);
+                
+                //LimpiarRegistros();
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar("0001", "Error al Modificar Contacto", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0001", "Error al Modificar Contacto", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;
+            }
+
         }
 
         /// <summary>
@@ -102,7 +147,9 @@ namespace Presentador.Contacto.ContactoPresentador
                 }
             
             }
-                
+            
+            //Si el contacto tiene mas de 1 tlf
+
             if (contacto.TelefonoDeCelular.Codigocel > 0)
             {
                 _vista.CodTelefonoC2.Text = contacto.TelefonoDeCelular.Codigocel.ToString();
@@ -508,6 +555,21 @@ namespace Presentador.Contacto.ContactoPresentador
             listaCliente = comando.ejecutar();
 
             return listaCliente;
+        }
+
+        /// <summary>
+        /// Método para el comando ModificarContacto
+        /// </summary>
+        /// <param name="entidad">Entidad contacto a modificar</param>
+
+        public void ModificarContacto (Core.LogicaNegocio.Entidades.Contacto entidad)
+        {
+
+            Core.LogicaNegocio.Comandos.ComandoContacto.ModificarContacto comando;
+
+            comando = FabricaComandosContacto.CrearComandoModificarContacto(entidad);
+
+            comando.Ejecutar();
         }
 
         #endregion

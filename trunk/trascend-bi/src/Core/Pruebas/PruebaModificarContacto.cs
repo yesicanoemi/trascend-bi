@@ -27,8 +27,9 @@ namespace Core.Pruebas
         {
             // code that will be called after each Test case
         }
-
+        /*
         [Test]
+        
         public void ModificarContacto()
         {
             Contacto contacto1 = new Contacto();
