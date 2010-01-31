@@ -60,6 +60,10 @@
                         <p>
                             <br />
                             <br />
+                            <asp:DropDownList ID="uxEstados" runat="server"  >
+                                       </asp:DropDownList>
+                            <br />
+                            <br />
                             <asp:Button ID="btAnular" runat="server" Text="Guardar" OnClick="btGuardar_Click" />
                         </p>
                         </form>

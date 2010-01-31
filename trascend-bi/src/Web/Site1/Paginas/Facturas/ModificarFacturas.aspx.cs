@@ -35,6 +35,18 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
             uxDetalleFactura = value;
         }
     }
+
+    public DropDownList Estado
+    {
+        get
+        {
+            return uxEstados;
+        }
+        set
+        {
+            uxEstados = value;
+        }
+    }
     #endregion
 
 
@@ -68,6 +80,9 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
         {
             Response.Redirect(paginaSinPermiso);
         }
+
+        _presenter.LLenarDDLEstados();
+
     }
 
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
