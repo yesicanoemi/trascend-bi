@@ -50,5 +50,10 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new Anular(idFactura);
         }
+
+        public static Saldar CrearComandoSaldar(int idFactura, string estado)
+        {
+            return new Saldar(idFactura, estado);
+        }
     }
 }

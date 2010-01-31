@@ -9,22 +9,77 @@ using Core.LogicaNegocio.Comandos;
 using System.Net;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Presentador.Factura.Vistas
 {
     public class ModificarFacturaPresenter
     {
 
+        #region Atributos
+
         IModificarFactura _vista;
-        Core.LogicaNegocio.Entidades.Propuesta _propuesta;
-        Core.LogicaNegocio.Entidades.Factura _factura;
+
+        #endregion
+
+        #region Constructor
 
         public ModificarFacturaPresenter(IModificarFactura vista)
         {
             _vista = vista;
         }
+
+        #endregion
+
+        #region Metodos
+
+        public void ConsultarFactura()
+        {
+            try
+            {
+                Core.LogicaNegocio.Entidades.Factura factura =
+                    new Core.LogicaNegocio.Entidades.Factura();
+
+                factura.Numero = int.Parse(_vista.NumeroFactura.Text);
+
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID comandoConsultar =
+                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID(factura);
+
+                factura = comandoConsultar.Ejecutar();
+
+                List<Core.LogicaNegocio.Entidades.Factura> lista = new List<Core.LogicaNegocio.Entidades.Factura>();
+                lista.Add(factura);
+
+                _vista.DetalleFactura.DataSource = lista;
+                _vista.DetalleFactura.DataBind();
+
+            }
+            catch (ConsultarException e)
+            {
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+
+        public void SaldarFactura()
+        {
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoFactura.Saldar comandoSaldar =
+                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoSaldar(
+                    int.Parse(_vista.NumeroFactura.Text), "Cobrada");
+
+                comandoSaldar.Ejecutar();
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        #endregion
     }
-        
 }
 
 
@@ -33,10 +88,3 @@ namespace Presentador.Factura.Vistas
 
 
 
-
-/*factura.Procentajepagado = Int32.Parse(_vista.Porcentaje.Text);
-                factura.Fechaingreso = ConvertirToFecha(_vista.FechaIngreso.Text);
-                factura.Fechapago = ConvertirToFecha(_vista.FechaPagoFact.Text);
-                factura.Titulo = _vista.TituloFactura.Text;
-                factura.Descripcion = _vista.Descripcion.Text;
-                factura.Estado = _vista.Estado.Text;*/

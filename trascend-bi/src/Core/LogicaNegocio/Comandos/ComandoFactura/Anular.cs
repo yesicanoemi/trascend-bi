@@ -38,7 +38,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
         #endregion
 
-	//lol
+        #region Metodos
+
         public void Ejecutar()
         {
             Core.AccesoDatos.FabricaDAO.EnumFabrica = Core.AccesoDatos.EnumFabrica.SqlServer;
@@ -55,5 +56,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             else
                 throw new EliminarException("No se puede anular una factura que ya haya sido cobrada");
         }
+
+        #endregion
     }
 }
