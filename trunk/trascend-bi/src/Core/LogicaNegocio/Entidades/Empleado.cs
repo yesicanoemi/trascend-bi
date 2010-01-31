@@ -14,7 +14,7 @@ namespace Core.LogicaNegocio.Entidades
         private DateTime fechaNacimiento;
         private DateTime fechaIngreso;
         private DateTime fechaEgreso;
-        private string estado;
+        private int estado;
         private Direccion direccion;
         private string cargo;
 
@@ -106,7 +106,7 @@ namespace Core.LogicaNegocio.Entidades
             }
         }
 
-        public virtual string Estado
+        public virtual int Estado
         {
             get
             {
