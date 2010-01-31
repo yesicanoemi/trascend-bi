@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AdministrarCargos.aspx.cs" Inherits="Paginas_Cargos_AdministrarCargos" Title="Administrar Cargos" %>
-
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="AjaxControlToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
                         <form id="Form1" runat="server"> 
     <div class="container subnav"> 
@@ -19,7 +19,7 @@
              <div class="features_overview"> 
                  <div class="features_overview_right"> 
                     <h3>Administrar cargos</h3>
-                    <p class="large">Introduzca el nombre del cargo que desea gestionar</p>
+                    <p class="large">Seleccione el nombre del cargo que desea gestionar</p>
                     <p class="large">
                          <table style="width:100%">
                                <tr>
@@ -28,20 +28,23 @@
                                        <asp:DropDownList ID="uxNombre" runat="server"  >
                                        </asp:DropDownList>
                                                              </td>
-                                   <td><asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" OnClick="uxBotonBuscar_Click" />
+                                   <td>
                                                              </td>
                                    
                                </tr>
+                               
                                <tr>
                                    <td>&nbsp;</td>
-                                   <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                        ControlToValidate="uxNombre" 
-                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreCargo%>" Font-Size="Smaller" Display="Static" />
-                                    </td>
+                                   <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                               <td>&nbsp;</td>
+                               <td><asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" OnClick="uxBotonBuscar_Click" /></td>
                                </tr>
                                <tr>
                                    <td>Descripcion:</td>
-                                   <td><asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox></td>
+                                   <td><asp:TextBox TextMode="MultiLine" ID="uxDescripcion" runat="server" 
+                                           ReadOnly="True"></asp:TextBox></td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
@@ -50,7 +53,7 @@
                                <tr>
                                    <td>Sueldo Mínimo:</td>
                                    <td>
-                                       <asp:TextBox ID="uxSueldoMinimo" runat="server"></asp:TextBox>
+                                       <asp:TextBox ID="uxSueldoMinimo" runat="server" ReadOnly="True"></asp:TextBox>
                                    </td>
                                </tr>
                                <tr>
@@ -60,7 +63,7 @@
                                <tr>
                                    <td>Sueldo Máximo</td>
                                    <td>
-                                       <asp:TextBox ID="uxSueldoMaximo" runat="server"></asp:TextBox>
+                                       <asp:TextBox ID="uxSueldoMaximo" runat="server" ReadOnly="True"></asp:TextBox>
                                    </td>
                                    <td>&nbsp;</td>
                                </tr>
@@ -71,7 +74,7 @@
                                <tr>
                                    <td>Vigencia de Sueldo:</td>
                                    <td>
-                                            <asp:TextBox ID="uxVigenciaSueldo" runat="server" TabIndex="63"></asp:TextBox>
+                                            <asp:TextBox ID="uxVigenciaSueldo" runat="server" TabIndex="63" ReadOnly="True"></asp:TextBox>
                                             <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
                                             
                                    </td>
@@ -100,7 +103,8 @@
                                 </tr>
                              </table>
                              </p> 
-                    <center><asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label></center>
+                    <center><asp:Label ID="uxLabelError" runat="server" Visible="False" 
+                            ForeColor="#CC0000"></asp:Label></center>
                  </div> 
               </div>
         </div> 

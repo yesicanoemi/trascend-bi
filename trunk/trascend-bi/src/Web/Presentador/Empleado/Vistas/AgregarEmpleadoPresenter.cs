@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using Presentador.Empleado.Contrato;
 using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
 using Core.AccesoDatos.Fabricas;
-using Core.LogicaNegocio.Comandos;
 using System.Net;
 using System.Web.UI.WebControls;
 namespace Presentador.Empleado.Vistas
@@ -65,12 +66,19 @@ namespace Presentador.Empleado.Vistas
             try
             {
                 DropDownList e = new DropDownList();
-                Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
-                cargos = conex.ConsultarCargos();
+                //esto lo modifico Iann Yanes para que corriera con el nuevo paton de diseño de DAO
+            
+                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+                IDAOCargo bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
+
+                cargos = bd.ConsultarCargos();
+                //*******************************
                 for (int i = 0; i < cargos.Count; i++)
                 {
-                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo) cargos[i]);            
+                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo)cargos[i]);
                 }
+                
                 _vista.ComboCargos.Items.Clear();
                 _vista.ComboCargos.Items.Add("--");
                 _vista.ComboCargos.Items[0].Value = "0";
@@ -96,8 +104,11 @@ namespace Presentador.Empleado.Vistas
             {
                 Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
                 cargo.Nombre = _vista.ComboCargos.SelectedItem.Text;
-                Core.AccesoDatos.SqlServer.CargoSQLServer conex = new Core.AccesoDatos.SqlServer.CargoSQLServer();
-                cargo = (Core.LogicaNegocio.Entidades.Cargo)conex.ConsultarCargo(cargo);
+                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+                IDAOCargo bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
+
+                cargo = (Core.LogicaNegocio.Entidades.Cargo)bd.ConsultarCargo(cargo);
                 _vista.RangoSueldo = "Rango de Sueldo: " + cargo.SueldoMinimo.ToString() + " - " + cargo.SueldoMaximo.ToString();
                 _vista.RangoVisible = true;
                 _vista.SueldoEmpleado.Text = cargo.SueldoMinimo.ToString();

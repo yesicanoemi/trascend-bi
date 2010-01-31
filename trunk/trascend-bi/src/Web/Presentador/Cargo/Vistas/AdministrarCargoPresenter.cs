@@ -6,6 +6,10 @@ using Presentador.Cargo.Contrato;
 using Core.LogicaNegocio.Entidades;
 using System.Data;
 using Core.LogicaNegocio.Excepciones;
+using Core.LogicaNegocio.Entidades;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Presentador.Cargo.Vistas
 {
@@ -43,7 +47,10 @@ namespace Presentador.Cargo.Vistas
         {
             try
             {
-                Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
+                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+                IDAOCargo bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
+
                 IList<Entidad> ListaEntidadesCargos = bd.ConsultarCargos();
 
                 List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();

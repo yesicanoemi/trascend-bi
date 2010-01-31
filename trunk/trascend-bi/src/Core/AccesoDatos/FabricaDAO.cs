@@ -77,6 +77,8 @@ namespace Core.AccesoDatos
         /// <returns></returns>
         public abstract IDAOEmpleado ObtenerDAOEmpleado();
 
+        public abstract IDAOCargo ObtenerDAOCargo();
+
         #endregion
 
        

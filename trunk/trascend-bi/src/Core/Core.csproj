@@ -89,7 +89,7 @@
     <Compile Include="AccesoDatos\Interfaces\IDAOGasto.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOPropuesta.cs" />
     <Compile Include="AccesoDatos\Interfaces\IDAOUsuario.cs" />
-    <Compile Include="AccesoDatos\SqlServer\CargoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOCargoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />

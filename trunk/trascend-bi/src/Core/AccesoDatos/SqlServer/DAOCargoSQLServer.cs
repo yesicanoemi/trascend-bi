@@ -15,7 +15,7 @@ using Core.AccesoDatos.Fabricas;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    public class CargoSQLServer : IDAOCargo
+    public class DAOCargoSQLServer : IDAOCargo
     {
 
         #region Constructor
@@ -23,7 +23,7 @@ namespace Core.AccesoDatos.SqlServer
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        public CargoSQLServer()
+        public DAOCargoSQLServer()
         {
         }
         #endregion
