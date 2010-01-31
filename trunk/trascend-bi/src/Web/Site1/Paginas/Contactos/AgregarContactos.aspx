@@ -1,4 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="AgregarContactos.aspx.cs" Inherits="Paginas_Contactos_AgregarContactos" %>
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
+
+
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -30,7 +36,8 @@
            <h3>Agregar Contactos de Clientes</h3>
             <p class="large">Introduzca la informacón a continuación</p>  
             <p class="large"> </p>
-                <form id="Form1" action="#" runat="server">
+         
+                <form id="Form1" runat="server">
                            <table style="width:100%;">
                                <tr>
                                    <td>Nombre: </td>
@@ -129,8 +136,20 @@
                                    <td> Cliente: 
                                        
                                    </td>
-                                   <td><asp:DropDownList ID="uxDropDownClientes" runat="server">
-                                       </asp:DropDownList></td>
+                                   <td>
+                                        
+                                       <asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged" Visible="true"> </asp:TextBox>
+                                       
+                                       <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
+                                                 TargetControlID="uxValor"
+                                                 CompletionSetCount="20"
+                                                 MinimumPrefixLength="1" 
+                                                 ServiceMethod="GetSuggestionsClienteNombre"
+                                                 DelimiterCharacters="; ,"
+                                                 ServicePath="../../SuggestionNames.asmx">
+                                              </AjaxControlToolkit:AutoCompleteExtender>
+                                       
+                                   </td>
                                </tr>
                                <tr>
                                    <td>&nbsp;</td>
