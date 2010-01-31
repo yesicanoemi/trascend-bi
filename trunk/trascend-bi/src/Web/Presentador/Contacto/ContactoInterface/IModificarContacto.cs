@@ -34,11 +34,15 @@ namespace Presentador.Contacto.ContactoInterface
 
         TextBox ClienteC { get; set; }
 
-        TextBox TipoTlfC1 { get; set; }
+        DropDownList TipoTlfC1 { get; set; }
+
+        TextBox CodTelefonoC1 { get; set; }
 
         TextBox TelefonoC1 { get; set; }
 
-        TextBox TipoTlfC2 { get; set; }
+        DropDownList TipoTlfC2 { get; set; }
+
+        TextBox CodTelefonoC2 { get; set; }
 
         TextBox TelefonoC2 { get; set; }
 
@@ -60,11 +64,27 @@ namespace Presentador.Contacto.ContactoInterface
 
         Label NombreCliente { get; set; }
 
+        TextBox Valor { get; set; }
+
+        #region Validaciones
+
         RequiredFieldValidator RequiredFieldValidator { get; set; }
 
         RequiredFieldValidator RequiredFieldValidator1 { get; set; }
 
-        TextBox Valor { get; set; }
+        RequiredFieldValidator RequiredFieldValidator3 { get; set; }
+
+        RequiredFieldValidator RequiredFieldValidator4 { get; set; }
+
+        RequiredFieldValidator RequiredFieldValidator5 { get; set; }
+
+        RequiredFieldValidator RequiredFieldValidator6 { get; set; }
+
+        RequiredFieldValidator RequiredFieldValidator7 { get; set; }
+
+        RequiredFieldValidator RequiredFieldValidator8 { get; set; }
+
+        #endregion  
 
         #region Diálogo
 

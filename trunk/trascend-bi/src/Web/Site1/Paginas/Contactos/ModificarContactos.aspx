@@ -214,31 +214,49 @@
                                                 
                                                 <td><asp:TextBox ID="uxNombreC" runat="server" Text=""></asp:TextBox></td>
                                             </tr>
-                                       
-                                            <tr>
-                                                <td>&nbsp;</td>
+                                            
+                                            <tr align="center">
+                                            <td>&nbsp;</td>
+                                                 <td align="center">
+                                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator3" runat="server" 
+                                                        ControlToValidate="uxNombreC" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreContacto%>" Font-Size="Smaller" Display="Static" />
+                                                 </td>
                                             </tr>
-                                       
+                                            
+                                            
                                             <tr>
-                                                <td><span style="color: #FF0000">* </span><b>Apellido de Contacto:</b></td>
+                                                <td style="width:100%;"><span style="color: #FF0000">* </span><b>Apellido de Contacto:</b></td>
                                                 
                                                 <td><asp:TextBox ID="uxApellidoC" runat="server" Text=""></asp:TextBox></td>
                                             </tr>
-                                        
                                             <tr>
                                                 <td>&nbsp;</td>
+                                                 <td align="center">
+                                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator4" runat="server" 
+                                                        ControlToValidate="uxApellidoC" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaApellidoContacto%>" Font-Size="Smaller" Display="Static" />
+                                                 </td>
                                             </tr>
+                                        
+                                          
                                        
                                             <tr>
                                                 <td><span style="color: #FF0000">* </span><b>Área de negocio:</b></td>
                                                 
                                                 <td><asp:TextBox ID="uxArea" runat="server" Text=""></asp:TextBox></td>
                                             </tr>
-                                       
+                                            
                                             <tr>
                                                 <td>&nbsp;</td>
+                                                 <td align="center">
+                                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator5" runat="server" 
+                                                        ControlToValidate="uxArea" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaAreaContacto%>" Font-Size="Smaller" Display="Static" />
+                                                 </td>
                                             </tr>
-                                        
+                                       
+                                         
                                             <tr>
                                                 <td><span style="color: #FF0000">* </span><b>Cargo:</b></td>
                                                 
@@ -247,22 +265,55 @@
                                             
                                              <tr>
                                                 <td>&nbsp;</td>
+                                                 <td align="center">
+                                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator6" runat="server" 
+                                                        ControlToValidate="uxCargo" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaCargoContacto%>" Font-Size="Smaller" Display="Static" />
+                                                 </td>
                                             </tr>
                                             
                                             <tr>
                                                 <td><span style="color: #FF0000">* </span><b>Teléfono 1:</b></td>
                                                 
-                                                <td><asp:TextBox ID="uxTelefono1" runat="server" Text=""></asp:TextBox></td>
+                                                <td><asp:TextBox ID="uxCodTelefono1" MaxLength=3 Width="40" runat="server" Text=""></asp:TextBox>
+                                                <asp:TextBox ID="uxTelefono1" MaxLength=7 Width="100" runat="server" Text=""></asp:TextBox></td>
                                             </tr>
                                             
-                                            <tr>
+                                           <tr>
                                                 <td>&nbsp;</td>
+                                                 <td align="center">
+                                                 
+                                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator7" runat="server" 
+                                                        ControlToValidate="uxCodTelefono1" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller" Display="Static" />
+                                                    
+                                                    <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxTelefono1" 
+                                                        FilterType="Custom, Numbers"
+                                                        ValidChars="<%$ Resources:DSU,ERFormatoTelefono%>" ID="FilteredTextBoxExtender3"
+                                                        runat="server">
+                                                    </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                  
+                                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator8" runat="server" 
+                                                        ControlToValidate="uxTelefono1" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaNumTelefono%>" Font-Size="Smaller" Display="Static" />
+                                                    
+                                                    <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxCodTelefono1" FilterType="Custom, Numbers"
+                                                        ValidChars="<%$ Resources:DSU,ERFormatoCodigoTelefono%>" ID="FilteredTextBoxExtender4"
+                                                        runat="server">
+                                                    </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                
+                                                 </td>
                                             </tr>
                                             
                                             <tr>
                                                 <td><span style="color: #FF0000">* </span><b>Tipo teléfono:</b></td>
-                                                
-                                                <td><asp:TextBox ID="uxTipoTlf1" runat="server" Text=""></asp:TextBox></td>
+                                                <td>
+                                                    <asp:DropDownList ID="uxTipoTlf1" runat="server" Width="90%">
+                                                        <asp:ListItem Value="Trabajo" Selected="False" runat="server">Trabajo</asp:ListItem>
+                                                        <asp:ListItem Value="Celular" Selected="False" runat="server">Celular</asp:ListItem>
+                                                        <asp:ListItem Value="Fax" Selected="False" runat="server">Fax</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
                                             </tr>
                                             
                                             <tr>
@@ -272,16 +323,46 @@
                                             <tr>
                                                 
                                                 <td><b>&nbsp; Teléfono 2:</b></td>
-                                                <td><asp:TextBox ID="uxTelefono2" runat="server" Text=""></asp:TextBox></td>
+                                                <td><asp:TextBox ID="uxCodTelefono2" MaxLength=3 Width="40" runat="server" Text=""></asp:TextBox>
+                                                <asp:TextBox ID="uxTelefono2" MaxLength=7 Width="100" runat="server" Text=""></asp:TextBox></td>
+                   
                                             </tr>
                                             
-                                            <tr>
+                                          <tr>
                                                 <td>&nbsp;</td>
+                                                 <td align="center">
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                                                        ControlToValidate="uxCodTelefono2" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller" Display="Static" />
+                                                    
+                                                    <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxTelefono2" 
+                                                            FilterType="Custom, Numbers"
+                                                            ValidChars="<%$ Resources:DSU,ERFormatoTelefono%>" ID="FilteredTextBoxExtender5"
+                                                            runat="server">
+                                                    </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                  
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                                                        ControlToValidate="uxTelefono2" Visible="false"
+                                                        ErrorMessage="<%$ Resources:DSU, FaltaNumTelefono%>" Font-Size="Smaller" Display="Static" />
+                                                    
+                                                    <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxCodTelefono2" FilterType="Custom, Numbers"
+                                                            ValidChars="<%$ Resources:DSU,ERFormatoCodigoTelefono%>" ID="FilteredTextBoxExtender6"
+                                                            runat="server">
+                                                    </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                
+                                                 </td>
                                             </tr>
                                             
                                             <tr>
                                                 <td><b>&nbsp; Tipo teléfono:</b></td>
-                                                <td><asp:TextBox ID="uxTipoTlf2" runat="server" Text=""></asp:TextBox></td>
+                                                <td>
+                                                    <asp:DropDownList ID="uxTipoTlf2" runat="server" Width="90%">
+                                                        <asp:ListItem Value="Trabajo" Selected="False" runat="server">Trabajo</asp:ListItem>
+                                                        <asp:ListItem Value="Celular" Selected="False" runat="server">Celular</asp:ListItem>
+                                                        <asp:ListItem Value="Fax" Selected="False" runat="server">Fax</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
+                                                
                                             </tr>
                                             
                                             <tr>
@@ -294,13 +375,14 @@
                                             </tr>
                                             
                                             <tr>
-                                                <td>&nbsp;</td>
+                                                
                                             </tr>
-                                            
+                                                <td>&nbsp;</td>
                                               <tr>
-                                                    <td>
+                                              
+                                                 <td>
                                                     <b>&nbsp; Los campos con </b><span style="color: #FF0000">* </span><b> son obligatorios</b>
-                                                    </td>
+                                                 </td>
                                             </tr>
                                             
                                              <tr>

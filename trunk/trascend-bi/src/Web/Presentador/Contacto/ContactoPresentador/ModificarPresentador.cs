@@ -65,6 +65,22 @@ namespace Presentador.Contacto.ContactoPresentador
 
         private void CargarDatos(Core.LogicaNegocio.Entidades.Contacto contacto)
         {
+            #region Validaciones 
+
+            _vista.RequiredFieldValidator3.Visible = true;
+
+            _vista.RequiredFieldValidator4.Visible = true;
+
+            _vista.RequiredFieldValidator5.Visible = true;
+
+            _vista.RequiredFieldValidator6.Visible = true;
+
+            _vista.RequiredFieldValidator7.Visible = true;
+
+            _vista.RequiredFieldValidator8.Visible = true;
+
+            #endregion 
+
             _vista.NombreC.Text = contacto.Nombre;
 
             _vista.ApellidoC.Text = contacto.Apellido;
@@ -73,17 +89,35 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.AreaC.Text = contacto.AreaDeNegocio;
 
-            _vista.TelefonoC1.Text = contacto.TelefonoDeTrabajo.Codigoarea.ToString() 
-                                    + contacto.TelefonoDeTrabajo.Numero.ToString();
+            _vista.CodTelefonoC1.Text = contacto.TelefonoDeTrabajo.Codigoarea.ToString();
+ 
+            _vista.TelefonoC1.Text = contacto.TelefonoDeTrabajo.Numero.ToString();
 
-            _vista.TipoTlfC1.Text = contacto.TelefonoDeTrabajo.Tipo;
+            for (int i = 0; i < 3; i++)
+            {
+                if (_vista.TipoTlfC1.Items[i].Value == contacto.TelefonoDeTrabajo.Tipo)
+                {
+                    _vista.TipoTlfC1.SelectedIndex = i; 
 
+                }
+            
+            }
+                
             if (contacto.TelefonoDeCelular.Codigocel > 0)
             {
-                _vista.TelefonoC2.Text = contacto.TelefonoDeCelular.Codigocel.ToString()
-                            + contacto.TelefonoDeCelular.Numero.ToString();
+                _vista.CodTelefonoC2.Text = contacto.TelefonoDeCelular.Codigocel.ToString();
 
-                _vista.TipoTlfC2.Text = contacto.TelefonoDeCelular.Tipo;
+                _vista.TelefonoC2.Text = contacto.TelefonoDeCelular.Numero.ToString();
+
+                for (int j = 0; j < 3; j++)
+                {
+                    if (_vista.TipoTlfC2.Items[j].Value == contacto.TelefonoDeCelular.Tipo)
+                    {
+                        _vista.TipoTlfC2.SelectedIndex = j;
+
+                    }
+
+                }
             }
             
             _vista.ClienteC.Text = contacto.ClienteContac.Nombre;

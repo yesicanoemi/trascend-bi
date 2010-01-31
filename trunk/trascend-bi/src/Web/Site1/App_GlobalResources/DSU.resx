@@ -298,7 +298,7 @@
     <value>Total Cancelado:</value>
   </data>
   <data name="FaltaAreaContacto" xml:space="preserve">
-    <value>Debe introducir el area de trabajo del contacto</value>
+    <value>Debe introducir el área de trabajo</value>
   </data>
   <data name="FaltaCargoContacto" xml:space="preserve">
     <value>Debe introducir el Cargo del contacto</value>
@@ -307,7 +307,7 @@
     <value>Debe introducir el codigo de area del telefono</value>
   </data>
   <data name="FaltaNumTelefono" xml:space="preserve">
-    <value>Debe introducir el telefono</value>
+    <value>Debe introducir el teléfono</value>
   </data>
   <data name="FaltaTipoGasto" xml:space="preserve">
     <value>Debe introducir el tipo del gasto</value>
@@ -328,7 +328,7 @@
     <value>^\{7}$</value>
   </data>
   <data name="FaltaCodigoTelefono" xml:space="preserve">
-    <value>Debe de introducir el codigo telefónico</value>
+    <value>Debe de introducir el código telefónico</value>
   </data>
   <data name="FaltaTelefonoCliente1" xml:space="preserve">
     <value>Debe introducir el telefono del cliente</value>

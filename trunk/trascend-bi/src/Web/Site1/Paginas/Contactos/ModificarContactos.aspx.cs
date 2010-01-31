@@ -101,25 +101,37 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             set { uxCargo = value; }
         }
 
+        public TextBox CodTelefonoC1
+        {
+            get { return uxCodTelefono1; }
+            set { uxCodTelefono1 = value; }
+        }
+    
         public TextBox TelefonoC1
         {
             get { return uxTelefono1; }
             set { uxTelefono1 = value; }
         }
-
-        public TextBox TipoTlfC1
+        
+        public DropDownList TipoTlfC1
         {
             get { return uxTipoTlf1; }
             set { uxTipoTlf1 = value; }
         }
-
+    
+        public TextBox CodTelefonoC2
+        {
+            get { return uxCodTelefono2; }
+            set { uxCodTelefono2 = value; }
+        }
+        
         public TextBox TelefonoC2
         {
             get { return uxTelefono2; }
             set { uxTelefono2 = value; }
         }
 
-        public TextBox TipoTlfC2
+        public DropDownList TipoTlfC2
         {
             get { return uxTipoTlf2; }
             set { uxTipoTlf2 = value; }
@@ -161,6 +173,14 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             set { uxNombreCliente = value; }
         }
 
+        public TextBox Valor
+        {
+            get { return uxValor; }
+            set { uxValor = value; }
+        }
+
+        #region Validaciones 
+
         public RequiredFieldValidator RequiredFieldValidator
         {
             get { return uxRequiredFieldValidator; }
@@ -173,11 +193,43 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             set { uxRequiredFieldValidator1 = value; }
         }
 
-        public TextBox Valor
+        public RequiredFieldValidator RequiredFieldValidator3
         {
-            get { return uxValor; }
-            set { uxValor = value; }
+            get { return uxRequiredFieldValidator3; }
+            set { uxRequiredFieldValidator3 = value; }
         }
+
+        public RequiredFieldValidator RequiredFieldValidator4
+        {
+            get { return uxRequiredFieldValidator4; }
+            set { uxRequiredFieldValidator4 = value; }
+        }
+
+        public RequiredFieldValidator RequiredFieldValidator5
+        {
+            get { return uxRequiredFieldValidator5; }
+            set { uxRequiredFieldValidator5 = value; }
+        }
+
+        public RequiredFieldValidator RequiredFieldValidator6
+        {
+            get { return uxRequiredFieldValidator6; }
+            set { uxRequiredFieldValidator6 = value; }
+        }
+
+        public RequiredFieldValidator RequiredFieldValidator7
+        {
+            get { return uxRequiredFieldValidator7; }
+            set { uxRequiredFieldValidator7 = value; }
+        }
+
+        public RequiredFieldValidator RequiredFieldValidator8
+        {
+            get { return uxRequiredFieldValidator8; }
+            set { uxRequiredFieldValidator8 = value; }
+        }
+
+        #endregion
 
         #region Información
 
