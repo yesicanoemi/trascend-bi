@@ -42,10 +42,10 @@
 		                        <tr>
 		                            <td>
                                         <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
-                                         Font-Size="Small" Height="51px" Width="257px"  >                                    
+                                         Font-Size="X-Small" Height="51px" Width="257px"  >                                    
                                                 <asp:ListItem Value="0">Propuesta</asp:ListItem>
                                                 <asp:ListItem Value="1">Cliente</asp:ListItem>
-                                                <asp:ListItem Value="2">RIF</asp:ListItem>
+                                                
                                         </asp:RadioButtonList>
                                     </td>
                                     <td>&nbsp;</td>
@@ -154,7 +154,7 @@
         		            <table  style="width:100%;">
                                 <tr>
                                     <td align="center">
-                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="true" Font-Bold="true" Font-Size="Large"/>
                                     </td>
                                 </tr>
                                 <tr>

@@ -221,6 +221,8 @@ namespace Presentador.Gasto.Vistas
            
 
             ModificarGastoPorCodigo(gasto);
+            _vista.ModificarGasto.ActiveViewIndex = 3;
+            _vista.MensajeError.Text = "El gasto se ha modificado con Exito";
         }
 
         public void busquedaparametrizado(int Id, string tipoConsulta)
