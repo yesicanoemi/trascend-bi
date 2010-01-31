@@ -195,24 +195,24 @@ namespace Presentador.Propuesta.Vistas
 
         public void ConsultarCargos()
         {
+            Core.LogicaNegocio.Entidades.Cargo EntidadCargo = new Core.LogicaNegocio.Entidades.Cargo();
 
+            Core.LogicaNegocio.Comandos.ComandoPropuesta.ConsultarCargoPropuesta consultar;
 
+            consultar = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultarCargo(EntidadCargo);
+
+            IList<Entidad> Cargos = consultar.Ejecutar();
+
+            /*
             Core.AccesoDatos.SqlServer.CargoSQLServer bd = new Core.AccesoDatos.SqlServer.CargoSQLServer();
             IList<Entidad> Cargos = bd.ConsultarCargos();
+            */
 
-            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;              
             List<Core.LogicaNegocio.Entidades.Cargo> ListaCargos = new List<Core.LogicaNegocio.Entidades.Cargo>();
-            //esto lo modifico Iann Yanes para que corriera con el nuevo paton de diseño de DAO
-            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
             for (int i = 0; i < Cargos.Count; i++)
-            IDAOCargo bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
-            cargos = bd.ConsultarCargos();
-            //***********
-            for (int i = 0; i < cargos.Count; i++)
             {
                 ListaCargos.Add((Core.LogicaNegocio.Entidades.Cargo)Cargos.ElementAt(i));
-                ListaCargos.Add((Core.LogicaNegocio.Entidades.Cargo)cargos.ElementAt(i));
             }
 
             _vista.CargoReceptor.DataSource = ListaCargos;
