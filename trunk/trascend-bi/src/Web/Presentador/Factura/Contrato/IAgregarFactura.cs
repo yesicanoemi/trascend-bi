@@ -14,24 +14,19 @@ namespace Presentador.Factura.Contrato
         #region InformacionPropuesta
 
 
-        RadioButtonList RadioButtons { get; set; }
-        TextBox PropuestaBuscar { get; set; }
-        GridView ResultadoPropuesta { get; set; }
-        GridView ResultadoFacturas { get; set; }
-        Button BotonBusqueda { get; set; }
-        Label MontoTotal { get; set; }
-        Label PorcentajeTotal { get; set; }
-        Label MontoFaltante { get; set; }
-        Label PorcentajeFaltante { get; set; }
         
-        Label FechaEmision { get; set; }
-        Label NumeroFactura { get; set; }
+        TextBox NombrePropuesta { get; set; }
+        Label LabelNombrePropuesta { get; set; }
+        Label MontoTotal { get; set; }
+        Label PorcentajePagado { get; set; }
+        Label PorcentajeRestante { get; set; }
+        Label MontoPagado { get; set; }
+        Label MontoRestante { get; set; }
         TextBox Titulo { get; set; }
         TextBox Descripcion { get; set; }
-        TextBox PorcentajePagar { get; set; }
-        TextBox FechaPago { get; set; }
-        TextBox Estado { get; set; }
-        TextBox MontoCalculado { get; set; }
+        TextBox Porcentaje { get; set; }
+        DropDownList Estado { get; set; }
+        
 
         #endregion
 
