@@ -26,5 +26,7 @@ namespace Core.AccesoDatos.Interfaces
         /// </summary>
         /// <returns>Una IList de entidades que contienen todos los cargos</returns>
         IList<Entidad> ConsultarCargos();
+
+        void EliminarCargo(int IdCargo);
     }
 }

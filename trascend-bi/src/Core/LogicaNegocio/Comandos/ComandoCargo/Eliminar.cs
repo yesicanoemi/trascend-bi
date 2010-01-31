@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
@@ -38,8 +40,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// <returns>true si se elimino correctamente y false si hubo error</returns>
         public void Ejecutar()
         {
-            CargoSQLServer bd = new CargoSQLServer();
-            bd.EliminarCargo(_cargo.Id);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOCargo acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
+
+            acceso.EliminarCargo(_cargo.Id);
+            
         }
     }
 }

@@ -26,8 +26,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// <returns>El cargo con valores modificados</returns>
         public void Ejecutar()
         {
-            CargoSQLServer bd = new CargoSQLServer();
-            bd.ModificarCargo(_cargo);
+            /*CargoSQLServer bd = new CargoSQLServer();
+             * AQUI SE DEBE HACER LA LLAMADA CON EL NUEVO PATRON DAO.
+            bd.ModificarCargo(_cargo);*/
         }
     }
 }

@@ -39,7 +39,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
         LabelError.Visible = false;
         DesactivarBotones();
     }
