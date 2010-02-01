@@ -19,7 +19,7 @@ namespace Core.AccesoDatos.Interfaces
 
         int Modificar(Empleado empleado);
 
-        IList<Empleado> ConsultarPorTipoNombre(Empleado emp);
+        List<Empleado> ConsultarPorTipoNombre(Empleado emp);
 
         IList<string> ConsultarCargos();
 
@@ -32,6 +32,8 @@ namespace Core.AccesoDatos.Interfaces
         IList<Persona> ConsultarNombreApellido();
 
         int EliminarEmpleado(Empleado emp);
+
+        Empleado ConsultarPorCodigo(Empleado emp);
 
         //sEmpleado ConsultarCargoNuevo(Cargo entidad);
 

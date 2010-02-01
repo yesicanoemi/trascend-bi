@@ -6,7 +6,7 @@ BEGIN
 -- interfering with SELECT statements.
 SET NOCOUNT ON;
 
-SELECT     A.Nombre, A.Apellido, A.CIEmpleado, 
+SELECT     A.Nombre, A.Apellido, A.CIEmpleado, A.IdEmpleado,
 		   
 			A.NumCuenta, A.FechaNac, A.Estado, b.Nombre AS Expr1, 
 

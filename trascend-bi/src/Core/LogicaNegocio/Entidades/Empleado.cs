@@ -17,7 +17,15 @@ namespace Core.LogicaNegocio.Entidades
         private int estado;
         private Direccion direccion;
         private string cargo;
+        private EstadoEmpleado estadoEmpleado;
+        private Cargo cargoEmpleado;
 
+        public virtual EstadoEmpleado EstadoEmpleado
+        {
+            get { return estadoEmpleado; }
+            set { estadoEmpleado = value; }
+        }
+        
         public virtual int Id
         {
             get
@@ -42,6 +50,7 @@ namespace Core.LogicaNegocio.Entidades
                 cedula = value;
             }
         }
+       
         public virtual string Cuenta
         {
             get
@@ -144,6 +153,12 @@ namespace Core.LogicaNegocio.Entidades
             {
                 cargo = value;
             }
+        }
+
+        public virtual Cargo CargoEmpleado 
+        {
+            get {return cargoEmpleado;}
+            set { cargoEmpleado = value; }
         }
     }
 }

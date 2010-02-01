@@ -59,5 +59,10 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarCargoNuevo(cargo);
         }
 
+        public static ConsultarPorCodigo CrearConsultarPorCodigo(Empleado empleado)
+        {
+            return new ConsultarPorCodigo(empleado);
+        }
+
     }
 }

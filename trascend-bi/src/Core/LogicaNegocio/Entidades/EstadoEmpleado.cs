@@ -3,10 +3,11 @@
     using System;
     using System.Collections.Generic;
 
-    class EstadoEmpleado
+    public class EstadoEmpleado
     {
+
         private int idEstadoEmpleado;
-        private string   nombre;
+        private string nombre;
 
         public virtual int IdEstadoEmpleado
         {
@@ -19,5 +20,8 @@
             get { return nombre; }
             set { nombre = value; }
         }
+
+
+        
     }
 }

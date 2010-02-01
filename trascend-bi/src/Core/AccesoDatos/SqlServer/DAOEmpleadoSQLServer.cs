@@ -95,6 +95,7 @@ namespace Core.AccesoDatos.SqlServer
             return _empleado;
 
         }
+        
         public void InsertarDireccion (Core.LogicaNegocio.Entidades.Empleado empleado,int id)
         {
             Direccion direccion = new Direccion();
@@ -130,6 +131,7 @@ namespace Core.AccesoDatos.SqlServer
 
             
         }
+        
         public IList<Empleado> Consultar()
         {
             IList<Empleado> empleado = null;
@@ -220,35 +222,60 @@ namespace Core.AccesoDatos.SqlServer
             return resultado;
         }
 
-        public IList<Empleado> ConsultarPorTipoNombre(Empleado emp)
+        public List<Empleado> ConsultarPorTipoNombre(Empleado emp)
         {
             List<Empleado> empleado = new List<Empleado>();
+            
             SqlParameter[] arParms = new SqlParameter[1];
 
-            arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
-            arParms[0].Value = "%" + emp.Nombre + "%";
+            
 
-            DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarEmpleadoNombre", arParms);
+            arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
+            arParms[0].Value = emp.Nombre;
+
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "ConsultarEmpleadoNombre", arParms);
+            int i = 0;
+
             while (reader.Read())
             {
                 Empleado _empleado = new Empleado();
+
                 Direccion _direccion = new Direccion();
-                //_empleado.Id = (int)reader["IdEmpleado"];
+
+                _empleado.Id = (int)reader["IdEmpleado"];
+
                 _empleado.Cedula = (int)reader["CIEmpleado"];
+
                 _empleado.Nombre = (string)reader["Nombre"];
+
                 _empleado.Apellido = (string)reader["Apellido"];
+
                 _empleado.Cuenta = (string)reader["NumCuenta"];
+
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+
                 _empleado.Estado = (int)reader["Estado"];
+
                 _empleado.Cargo = (string)reader["Expr1"];
+
                 _direccion.Avenida = (string)reader["Avenida"];
+
                 _direccion.Calle = (string)reader["Calle"];
+
                 _direccion.Ciudad = (string)reader["Ciudad"];
+
                 _direccion.Edif_Casa = (string)reader["EdifCasa"];
+
                 _direccion.Piso_apto = (string)reader["PisoApto"];
+
                 _direccion.Urbanizacion = (string)reader["Urbanizacion"];
-                _empleado.Direccion = _direccion;
-                empleado.Add(_empleado);
+
+                _empleado.Direccion = _direccion;                
+
+                empleado.Insert(i,_empleado);
+                //empleado.Add(_empleado);
+                i++;
             }
             return empleado;
         }
@@ -280,6 +307,8 @@ namespace Core.AccesoDatos.SqlServer
             {
                 
                 Direccion _direccion = new Direccion();
+
+                _empleado.Id = (int)reader["IdEmpleado"];
                 
                 _empleado.Cedula = (int)reader["CIEmpleado"];
                 
@@ -317,12 +346,14 @@ namespace Core.AccesoDatos.SqlServer
         public IList<Empleado> ConsultarPorTipoCargo(Empleado emp)
         {
             List<Empleado> empleado = new List<Empleado>();
+
+            
             
             SqlParameter[] arParms = new SqlParameter[1];
 
-            arParms[0] = new SqlParameter("@cargo", SqlDbType.VarChar);
+            arParms[0] = new SqlParameter("@cargo", SqlDbType.Int);
             
-            arParms[0].Value = "%" + emp.Cargo + "%";
+            arParms[0].Value =emp.CargoEmpleado.Id;
 
             DbDataReader reader = SqlHelper.ExecuteReader
                 (_conexion.GetConnection(), "ConsultarEmpleadoCargo", arParms);
@@ -331,41 +362,41 @@ namespace Core.AccesoDatos.SqlServer
             {
                 
                 Empleado _empleado = new Empleado();
-                
+
                 Direccion _direccion = new Direccion();
-                
+
+                _empleado.Id = (int)reader["IdEmpleado"];
+
                 _empleado.Cedula = (int)reader["CIEmpleado"];
-                
+
                 _empleado.Nombre = (string)reader["Nombre"];
-                
+
                 _empleado.Apellido = (string)reader["Apellido"];
-                
+
                 _empleado.Cuenta = (string)reader["NumCuenta"];
-                
+
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
-                
+
                 _empleado.Estado = (int)reader["Estado"];
-                
+
                 _empleado.Cargo = (string)reader["Expr1"];
-                
+
                 _direccion.Avenida = (string)reader["Avenida"];
-                
+
                 _direccion.Calle = (string)reader["Calle"];
-                
+
                 _direccion.Ciudad = (string)reader["Ciudad"];
-                
+
                 _direccion.Edif_Casa = (string)reader["EdifCasa"];
-                
+
                 _direccion.Piso_apto = (string)reader["PisoApto"];
-                
+
                 _direccion.Urbanizacion = (string)reader["Urbanizacion"];
-                
+
                 _empleado.Direccion = _direccion;
-                
+
                 empleado.Add(_empleado);
-            
             }
-            
             return empleado;
         }
 
@@ -470,7 +501,67 @@ namespace Core.AccesoDatos.SqlServer
                 throw new Exception(e.ToString());
             }
         }*/
-        
+
+        public Empleado ConsultarPorCodigo(Empleado emp)
+        {
+            SqlParameter[] arParms = new SqlParameter[1];
+
+            Empleado _empleado = new Empleado();
+
+            arParms[0] = new SqlParameter("@Id", SqlDbType.Int);
+            arParms[0].Value = emp.Id;
+
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "ConsultarEmpleadoCodigo", arParms);
+
+            if (reader.Read())
+            {
+
+                Direccion _direccion = new Direccion();
+
+                EstadoEmpleado _estadoEmpleado = new EstadoEmpleado();
+
+                Cargo _cargo = new Cargo();
+
+                _empleado.Cedula = (int)reader["CIEmpleado"];
+
+                _empleado.Nombre = (string)reader["Nombre"];
+
+                _empleado.Apellido = (string)reader["Apellido"];
+
+                _empleado.Cuenta = (string)reader["NumCuenta"];
+
+                _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+
+                _empleado.SueldoBase = float.Parse(reader["SueldoBase"].ToString());// (float)reader["SueldoBase"];
+
+                _estadoEmpleado.Nombre = (string)reader["EstadoEmpleado"];
+
+                _cargo.Nombre = (string)reader["Expr1"];
+
+                _direccion.Avenida = (string)reader["Avenida"];
+
+                _direccion.Calle = (string)reader["Calle"];
+
+                _direccion.Ciudad = (string)reader["Ciudad"];
+
+                _direccion.Edif_Casa = (string)reader["EdifCasa"];
+
+                _direccion.Piso_apto = (string)reader["PisoApto"];
+
+                _direccion.Urbanizacion = (string)reader["Urbanizacion"];
+
+                _empleado.Direccion = _direccion;
+
+                _empleado.EstadoEmpleado = _estadoEmpleado;
+
+                _empleado.CargoEmpleado = _cargo;
+
+            }
+
+            return _empleado;
+        }
+
         #endregion
     }
 }
