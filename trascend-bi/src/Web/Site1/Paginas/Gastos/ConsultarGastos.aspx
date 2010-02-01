@@ -32,14 +32,14 @@
 		                </tr>
 		                <tr>
 		                    <td>&nbsp;</td>
-		                    <td>Si Selecciona Opcion Fecha click en calendario Para Seleccionar</td>
+		                    <td></td>
 		                    <td>&nbsp;</td>	
 		                    <td>&nbsp;</td>                    
 		                </tr>    
 		                <tr>
 		                    <td>
                                 <asp:RadioButtonList  ID="uxCheckOpcionBuscar" runat="server" 
-                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="157px"  >                                    
+                                    Font-Size="X-Small" TextAlign="Left" Height="51px" Width="157px" Onselectedindexchanged="verseleccion" AutoPostBack="true"  >                                    
                                     <asp:ListItem Value="0">Propuesta</asp:ListItem>
                                     <asp:ListItem Value="1">Cliente</asp:ListItem>
                                     <asp:ListItem Value="2">Fecha de Consumo</asp:ListItem>
@@ -48,10 +48,11 @@
                             </td>
                             
 		                    <td align="left">
+		                        <asp:Label ID="uxLabelInfo" runat="server" Font-Names="Verdana" />
                                 <asp:TextBox ID="uxBusquedaConsulta" runat="server" Height="19px" 
                                     Width="139px" ></asp:TextBox>
 		                         <asp:Image ID="uxFechaInicioImg" runat="server" 
-                                    ImageUrl="~/Images/calendario.png" Height="16px" Width="16px" />
+                                    ImageUrl="~/Images/calendario.png" Height="16px" Width="16px" Visible="false" />
 		                        <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"
                                         Format="dd/MM/yyyy" TargetControlID="uxBusquedaConsulta" PopupButtonID="uxFechaInicioImg" >
                                 </AjaxControlToolkit:CalendarExtender>
