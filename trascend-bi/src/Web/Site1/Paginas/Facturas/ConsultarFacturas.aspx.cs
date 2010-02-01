@@ -11,60 +11,79 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
 
     ConsultarFacturaPresenter _presenter;
 
-    public RadioButtonList RadioButtons
+    #region Propiedades
+    public DropDownList ParametroBox
     {
-        get { return this.uxRadioButton; }
-        set { this.uxRadioButton = value; }
+        get { return this.uxParametroBox; }
+        set { uxParametroBox = value; }
     }
 
-    public TextBox PropuestaBuscar
-    {
-        get { return this.uxBusqueda; }
-        set { this.uxBusqueda = value; }
+    public TextBox ParametroTexto
+    { 
+        get { return this.uxParametroTexto; }
+        set { uxParametroTexto = value; } 
     }
 
-    public GridView ResultadoFacturas
+    public MultiView MultiViewFacturas 
     {
-        get { return this.uxGridFacturas; }
-        set { this.uxGridFacturas = value; }
+        get { return this.uxMultiViewFactura; }
+        set { throw new System.NotImplementedException(); } 
     }
 
-    public GridView ResultadoPropuesta
+    public Label TituloPropuesta
     {
-        get { return this.uxGridPropuesta; }
-        set { this.uxGridPropuesta = value; }
-    }
-
-    public Button BotonBusqueda
-    {
-        get { return this.uxBusquedaBoton; }
-        set { this.uxBusquedaBoton = value; }
+        get { return this.lbTituloPropuesta; }
+        set { lbTituloPropuesta = value; }
     }
 
     public Label MontoTotal
     {
-        get { return this.uxLabelTotalPagado; }
-        set { this.uxLabelTotalPagado = value; }
+        get { return this.lbMontoTotal; }
+        set { lbMontoTotal = value; }
     }
-
-    public Label PorcentajeTotal
+    
+    public GridView TablaFacturas 
     {
-        get { return this.uxLabelPorcentajePagado; }
-        set { this.uxLabelPorcentajePagado = value; }
+        get { return this.uxTablaFacturas; }
+        set { uxTablaFacturas = value; }
     }
-
-    public Label MontoFaltante
+    
+    public Label Titulo 
     {
-        get { return this.uxLabelMontoRestante; }
-        set { this.uxLabelMontoRestante = value; }
+        get { return this.lbTitulo; }
+        set { lbTitulo = value; }
     }
-
-    public Label PorcentajeFaltante
+    
+    public Label Descripcion 
     {
-        get { return this.uxLabelPorcentajeRestante; }
-        set { this.uxLabelPorcentajeRestante = value; }
+        get { return this.lbDescripcion; }
+        set { lbDescripcion = value; } 
+    }
+    
+    public Label Porcentaje 
+    {
+        get { return this.lbPorcentaje; }
+        set { lbPorcentaje = value; } 
     }
 
+    public Label FechaIngreso 
+    {
+        get { return this.lbFechaIngreso; }
+        set { lbFechaIngreso = value; } 
+    }
+    
+    public Label FechaPago 
+    {
+        get { return this.lbFechaPago; }
+        set { lbFechaPago = value; }
+    }
+
+    public Label Estado 
+    { 
+        get { return this.lbEstado; }
+        set { lbEstado = value; }
+    }
+    #endregion
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -74,6 +93,11 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        ParametroBox.Items.Clear();
+        ParametroBox.Items.Add("Por Nombre de Propuesta");
+        ParametroBox.Items.Add("Por Numero de Factura");
+
+        MultiViewFacturas.Visible = false;
 
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
@@ -122,8 +146,30 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         Page.Controls.Add(lbl);
     }
 
-    protected void uxBusquedaBoton_Click(object sender, EventArgs e)
+    
+    protected void btBotonBuscar_Click(object sender, EventArgs e)
     {
-        _presenter.CargarGrid();
+        if (ParametroBox.SelectedItem.Text.Equals("Por Nombre de Propuesta"))
+        {
+            _presenter.CargarTabla();
+            MultiViewFacturas.Visible = true;
+            MultiViewFacturas.ActiveViewIndex = 0;
+            
+        }
+        if (ParametroBox.SelectedItem.Text.Equals("Por Numero de Factura"))
+        {
+            _presenter.CargarDatos();
+            MultiViewFacturas.Visible = true;
+            MultiViewFacturas.ActiveViewIndex = 1;
+        }
+
+    }
+    protected void uxTablaFacturas_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+       
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+
     }
 }
