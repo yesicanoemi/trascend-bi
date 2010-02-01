@@ -7,6 +7,7 @@ namespace Core.LogicaNegocio.Entidades
 
     public class Direccion
     {
+        private int idDireccion;
         private string calle;
         private string avenida;
         private string urbanizacion;
@@ -14,6 +15,14 @@ namespace Core.LogicaNegocio.Entidades
         private string oficina;
         private string piso_apto;
         private string ciudad;
+
+        public virtual int IdDireccion
+        {
+            get { return idDireccion; }
+
+            set { idDireccion = value; }
+        
+        }
 
         public virtual string Oficina
         {

@@ -33,5 +33,7 @@ namespace Core.AccesoDatos.Interfaces
 
         int EliminarEmpleado(Empleado emp);
 
+        //sEmpleado ConsultarCargoNuevo(Cargo entidad);
+
     }
 }

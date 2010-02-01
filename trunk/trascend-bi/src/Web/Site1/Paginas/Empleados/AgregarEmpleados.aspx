@@ -29,15 +29,20 @@
                             </p>
                             <form id="Form1" action="#" runat="server">
                             <p class="large">
-                            <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                                &nbsp;<asp:UpdatePanel ID="UpdatePanel" runat="server">
                                 <ContentTemplate>
                                     <uc1:DialogoError ID="uxDialogoError" runat="server" />
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                                 <table style="width: 100%;">
                                     <tr>
+                                    <td align="center">
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
+                                    </td>
+                                </tr>
+                                    <tr>
                                         <td>
-                                            Nombre:
+                                            <span style="color: #FF0000">*</span>Nombre:
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxNombreEmpleado" runat="server"></asp:TextBox>
@@ -54,7 +59,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            Apellido:
+                                            <span style="color: #FF0000">*</span>Apellido:
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxApellidoEmpleado" runat="server"></asp:TextBox>
@@ -71,7 +76,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            C.I.:
+                                            <span style="color: #FF0000">*</span>C.I.:
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxCedulaEmpleado" runat="server"></asp:TextBox>
@@ -82,13 +87,20 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="uxCedulaEmpleado"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
+                                            
+                                            <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1"
+                                                runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoNumCedula%>"
+                                                ControlToValidate="uxCedulaEmpleado" ValidationExpression="<%$Resources:DSU, ERFormatoNumCedula%>"
+                                                Font-Size="Smaller">
+                                            </asp:RegularExpressionValidator>
+                                               
                                             <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender8" TargetControlID="uxAvenida" FilterType="LowercaseLetters, 
                                             UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Numero de Cuenta:
+                                            <span style="color: #FF0000">*</span>Numero de Cuenta:
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxNumCuentaEmpleado" runat="server"></asp:TextBox>
@@ -108,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            Sueldo Base:
+                                            <span style="color: #FF0000">*</span>Sueldo Base:
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxSueldoBase" Enabled="false" runat="server"></asp:TextBox><br /><asp:Label ID="lbRangoSueldo" Visible="false" runat="server"></asp:Label>
@@ -124,7 +136,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            Cargo:
+                                            <span style="color: #FF0000">*</span>Cargo:
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="uxCargoEmpleado" AutoPostBack="true" runat="server" OnSelectedIndexChanged="uxCargoEmpleado_SelectedIndexChanged">
@@ -141,7 +153,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            Fecha de Nacimiento:
+                                            <span style="color: #FF0000">*</span>Fecha de Nacimiento:
                                         </td>
                                         <td>
                                             <asp:TextBox ID="uxFechaNac" runat="server" TabIndex="63"></asp:TextBox>
@@ -170,7 +182,7 @@
                                     </tr>
                                     <tr><td colspan="2">&nbsp;</td></tr>
                                     <tr>
-                                        <td>Ciudad                                     <td>
+                                        <td><span style="color: #FF0000">*</span>Ciudad                                     <td>
                                             <asp:TextBox ID="uxCiudad" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
@@ -184,7 +196,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Avenida</td>
+                                        <td><span style="color: #FF0000">*</span>Avenida</td>
                                         <td>
                                             <asp:TextBox ID="uxAvenida" runat="server" Enabled=true></asp:TextBox>
                                         </td>
@@ -194,12 +206,11 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="uxAvenida"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender1" TargetControlID="uxAvenida" FilterType="LowercaseLetters, 
-                                            UppercaseLetters"></AjaxControlToolkit:FilteredTextBoxExtender>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Calle</td>
+                                        <td><span style="color: #FF0000">*</span>Calle</td>
                                         <td>
                                             <asp:TextBox ID="uxCalle" runat="server"></asp:TextBox>
                                         </td>
@@ -209,12 +220,11 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="uxCalle"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender2" TargetControlID="uxCalle" FilterType="LowercaseLetters, 
-                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Urbanización</td>
+                                        <td><span style="color: #FF0000">*</span>Urbanización</td>
                                         <td>
                                             <asp:TextBox ID="uxUrbanizacion" runat="server"></asp:TextBox>
                                         </td>
@@ -229,7 +239,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Edificio o Casa</td>
+                                        <td><span style="color: #FF0000">*</span>Edificio o Casa</td>
                                         <td>
                                             <asp:TextBox ID="uxEdificio" runat="server"></asp:TextBox>
                                         </td>
@@ -239,12 +249,11 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="uxEdificio"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender4" TargetControlID="uxEdificio" FilterType="LowercaseLetters, 
-                                            UppercaseLetters,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Piso o Apartamento</td>
+                                        <td><span style="color: #FF0000">*</span>Piso o Apartamento</td>
                                         <td>
                                             <asp:TextBox ID="uxPiso" runat="server"></asp:TextBox>
                                         </td>
@@ -254,15 +263,11 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="uxPiso"
                                                 ErrorMessage="<%$ Resources:DSU, FaltaAvenidaEmpleado%>" Font-Size="Smaller"
                                                 Display="Static" />
-                                            <AjaxControlToolkit:FilteredTextBoxExtender  runat="server" ID="FilteredTextBoxExtender5" TargetControlID="uxPiso" FilterType="LowercaseLetters, 
-                                            UppercaseLetters,Numbers,Custom" ValidChars="' '"></AjaxControlToolkit:FilteredTextBoxExtender>
+                                            
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
+                                    <tr>                                        
+                                        <td colspan="2" align="center">
                                             <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="uxBotonAceptar_Click" />
                                         </td>
                                     </tr>

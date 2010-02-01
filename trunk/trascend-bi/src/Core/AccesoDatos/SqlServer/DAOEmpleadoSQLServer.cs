@@ -78,24 +78,31 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "InsertarEmpleado", arParms);
                 if (reader.Read())
                 {
+                    Direccion direccion;
                     InsertarDireccion(empleado, Int32.Parse(reader[0].ToString()));
+
                 }
             }
             catch (SqlException e)
             {
-                throw new IngresarException("Error ingresando en la base de datos",e);
+                _empleado.Id = -1;
             }
             catch (Exception e)
             {
-                throw new Exception(e.ToString());
+                _empleado.Id = -2;
             }
+            
             return _empleado;
 
         }
         public void InsertarDireccion (Core.LogicaNegocio.Entidades.Empleado empleado,int id)
         {
+            Direccion direccion = new Direccion();
+
             try
             {
+                
+
                  SqlParameter[] arParms = new SqlParameter[7];
                 // Parametros 
                 arParms[0] = new SqlParameter("@id", SqlDbType.Int);
@@ -114,10 +121,14 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[6].Value = empleado.Direccion.Urbanizacion;
                 SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "InsertarDireccionEmpleado", arParms);
             }
+
             catch(SqlException e)
             {
-                throw new Exception(e.ToString());
+                throw new Exception(e.ToString());  
             }
+            
+
+            
         }
         public IList<Empleado> Consultar()
         {
@@ -256,65 +267,107 @@ namespace Core.AccesoDatos.SqlServer
         public Empleado ConsultarPorTipoCedula(Empleado emp)
         {
             SqlParameter[] arParms = new SqlParameter[1];
+            
             Empleado _empleado = new Empleado();
 
             arParms[0] = new SqlParameter("@ced", SqlDbType.Int);
             arParms[0].Value = emp.Cedula;
 
-            DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarEmpleadoCI", arParms);
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "ConsultarEmpleadoCI", arParms);
+            
             if (reader.Read())
             {
+                
                 Direccion _direccion = new Direccion();
+                
                 _empleado.Cedula = (int)reader["CIEmpleado"];
+                
                 _empleado.Nombre = (string)reader["Nombre"];
+                
                 _empleado.Apellido = (string)reader["Apellido"];
+                
                 _empleado.Cuenta = (string)reader["NumCuenta"];
+                
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+                
                 _empleado.Estado = (int)reader["Estado"];
+                
                 _empleado.Cargo = (string)reader["Expr1"];
+                
                 _direccion.Avenida = (string)reader["Avenida"];
+                
                 _direccion.Calle = (string)reader["Calle"];
+                
                 _direccion.Ciudad = (string)reader["Ciudad"];
+                
                 _direccion.Edif_Casa = (string)reader["EdifCasa"];
+                
                 _direccion.Piso_apto = (string)reader["PisoApto"];
+                
                 _direccion.Urbanizacion = (string)reader["Urbanizacion"];
+                
                 _empleado.Direccion = _direccion;
+            
             }
+            
             return _empleado;
         }
 
         public IList<Empleado> ConsultarPorTipoCargo(Empleado emp)
         {
             List<Empleado> empleado = new List<Empleado>();
+            
             SqlParameter[] arParms = new SqlParameter[1];
 
             arParms[0] = new SqlParameter("@cargo", SqlDbType.VarChar);
+            
             arParms[0].Value = "%" + emp.Cargo + "%";
 
-            DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarEmpleadoCargo", arParms);
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "ConsultarEmpleadoCargo", arParms);
+            
             while (reader.Read())
             {
+                
                 Empleado _empleado = new Empleado();
+                
                 Direccion _direccion = new Direccion();
+                
                 _empleado.Cedula = (int)reader["CIEmpleado"];
+                
                 _empleado.Nombre = (string)reader["Nombre"];
+                
                 _empleado.Apellido = (string)reader["Apellido"];
+                
                 _empleado.Cuenta = (string)reader["NumCuenta"];
+                
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+                
                 _empleado.Estado = (int)reader["Estado"];
+                
                 _empleado.Cargo = (string)reader["Expr1"];
+                
                 _direccion.Avenida = (string)reader["Avenida"];
+                
                 _direccion.Calle = (string)reader["Calle"];
+                
                 _direccion.Ciudad = (string)reader["Ciudad"];
+                
                 _direccion.Edif_Casa = (string)reader["EdifCasa"];
+                
                 _direccion.Piso_apto = (string)reader["PisoApto"];
+                
                 _direccion.Urbanizacion = (string)reader["Urbanizacion"];
+                
                 _empleado.Direccion = _direccion;
+                
                 empleado.Add(_empleado);
+            
             }
+            
             return empleado;
         }
-
 
         public void ModificarDireccion(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
@@ -343,6 +396,7 @@ namespace Core.AccesoDatos.SqlServer
                 throw new Exception (e.ToString());
             }
         }
+        
         public IList<Persona> ConsultarNombreApellido()
         {
             List<Persona> Empleados = new List<Persona>();
@@ -383,6 +437,40 @@ namespace Core.AccesoDatos.SqlServer
             }
             return result;
         }
+
+        /*public Empleado ConsultarCargoNuevo(Cargo entidad)
+        {
+            Empleado _empleado = new Empleado();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@NombreCargo", SqlDbType.VarChar);
+                arParms[0] = entidad.Nombre;
+
+                DbDataReader reader = SqlHelper.ExecuteNonQuery
+                    (_conexion.GetConnection(), "ConsultarCargoNuevo", arParms);
+
+               if(reader.Read())
+                {
+                    _empleado.Cargo = (string)reader["Idcargo"];
+                    
+                }
+
+               return _empleado;
+
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
+        }*/
+        
         #endregion
     }
 }

@@ -10,21 +10,22 @@ using Microsoft.Practices.Web.UI.WebControls;
 
 public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsultarEmpleado
 {
-      private  ConsultarEmpleadoPresenter _presenter;
+    private  ConsultarEmpleadoPresenter _presenter;
+    
     private Empleado _empleado;
     
     #region Propiedades de la Pagina
-    public DropDownList opcion
+    public RadioButtonList opcion
     {
         get { return opcion1; } 
         set { opcion1 = value; }
     }
 
-    public DropDownList SeleccionCargo
+    /*public DropDownList SeleccionCargo
     {
         get { return uxSeleccion; }
         set { uxSeleccion = value; }
-    }
+    }*/
     
     public MultiView MultiViewConsultar
     {
@@ -49,8 +50,14 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
         get { return uxParametro; }
         set { uxParametro = value; }
     }
+    public TextBox ParametroCedula
+    {
+        get { return uxParametroCedula; }
+        set { uxParametroCedula = value; }
 
-    public Label LabelSelec
+    }
+
+    /*public Label LabelSelec
     {
         get { return LabelSeleccion; }
         set { LabelSeleccion = value; }
@@ -59,7 +66,7 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
     {
         get { return LabelParametroB; }
         set { LabelParametroB = value; }
-    }
+    }*/
 
     public Label LabelCI
     {
@@ -134,6 +141,16 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
         set { uxCargoEmp = value; }
     }
 
+    public DropDownList drowListaCargo
+    {
+        get { return listaCargo; }
+        set { listaCargo= value;}
+    }
+    public Button Aceptar
+    {
+        get { return uxBotonAceptar; }
+        set { uxBotonAceptar = value; }
+    }
 
     #endregion
 
@@ -173,41 +190,61 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        if(opcion1.SelectedIndex == 0)//Busqueda por cedula
-        {
-            LabelParametroB.Text = "Introduzca Cedula:";
+    #region comentado no se usa el habilitador y desabilitador de boton y label
+       // if(opcion1.SelectedIndex == 0)//Busqueda por cedula
+        //{
+           /* LabelParametroB.Text = "Introduzca Cedula:";
             LabelParametroB.Visible = true;
             uxParametro.Visible = true;
             uxBotonBuscar.Visible = true;
             LabelSeleccion.Visible = false;
             uxSeleccion.Visible = false;
-            uxBotonBuscar2.Visible = false;
-        }
-        if (opcion1.SelectedIndex == 1)//Busqueda por Nombre
-        {
-            LabelParametroB.Text = "Introduzca Nombre:";
+            uxBotonBuscar2.Visible = false;*/
+        //}
+        //if (opcion1.SelectedIndex == 1)//Busqueda por Nombre
+        //{
+           /* LabelParametroB.Text = "Introduzca Nombre:";
             LabelParametroB.Visible = true;
             uxParametro.Visible = true;
             uxBotonBuscar.Visible = true;
             LabelSeleccion.Visible = false;
             uxSeleccion.Visible = false;
-            uxBotonBuscar2.Visible = false;
-        }
-        if (opcion1.SelectedIndex == 2)//Busqueda por cargo
-        {
-            LabelParametroB.Visible = false;
+            uxBotonBuscar2.Visible = false;*/
+        //}
+        //if (opcion1.SelectedIndex == 2)//Busqueda por cargo
+        //{
+            /*LabelParametroB.Visible = false;
             uxParametro.Visible = false;
             uxBotonBuscar.Visible = false;
             LabelSeleccion.Visible = true;
             uxSeleccion.Visible = true;
-            uxBotonBuscar2.Visible = true;
-        }
-         _presenter.BotonSeleccionTipo();
+            uxBotonBuscar2.Visible = true;*/
+        //}
+         //_presenter.BotonSeleccionTipo();
+    #endregion
+        
+        _presenter.BotonAccionConsulta();
+    
     }
-    protected void uxBotonBuscar_Click(object sender, EventArgs e)
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presenter.ChangedSearch();
+    }
+
+    /*protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         _presenter.BotonAccionConsulta();
         
+    }*/
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            _presenter.ConsultarCargos();
+        }
+
     }
 }
 

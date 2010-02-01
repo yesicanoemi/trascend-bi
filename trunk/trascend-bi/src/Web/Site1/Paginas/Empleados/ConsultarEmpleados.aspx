@@ -6,24 +6,25 @@
 				<div class="sub-heading"> 
 					<h2>Empleados</h2> 
 				</div> 
-				<div class="subnav-container"> 
+			<div class="subnav-container"> 
 				
-					<ul id="subnav"> 
+<ul id="subnav"> 
   <li><a href="AgregarEmpleados.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarEmpleados.aspx" class="active">Consultar<span></span></a></li> 
-      <li><a href="EliminarEmpleados.aspx">Eliminar<span></span></a></li>
-                    <li><a href="ModificarEmpleados.aspx">Modificar<span></span></a></li>
+  <li><a href="EliminarEmpleados.aspx">Eliminar<span></span></a></li>
+  <li><a href="ModificarEmpleados.aspx">Modificar<span></span></a></li>
 </ul> 
 						
-				</div> 
+    </div> 
 				
 			<div class="sub-content"> 
              <div class="features_overview"> 
                  <div class="features_overview_right"> 
+                    
                     <h3>Consultar Empleado</h3>
                     
-                    <p class="large">
-                            </p>
+                        <p class="large">
+                        </p>
                             
                     <form id="Form1" action="#" runat="server">
                     
@@ -33,79 +34,67 @@
                           
                           <br />
                          
-                            <table width="100%">
-                             <tr>
-                                <td><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
-                                <td><asp:DropDownList ID="opcion1" runat="server">
-                                    <asp:ListItem>Busqueda por Cedula</asp:ListItem>
-                                    <asp:ListItem>Busqueda por Nombre</asp:ListItem>
-                                    <asp:ListItem>Busqueda por Cargo</asp:ListItem>
-                                    </asp:DropDownList></td>
-                                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
-                                        onclick="uxBotonAceptar_Click" /></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                                                    
-                       <tr>
-                                   <td><asp:Label ID="LabelParametroB" runat="server" Text = "Introduzca" 
-                                           Visible = "False" /></td>
-                                   <td><asp:TextBox ID="uxParametro" runat="server" Visible="False"></asp:TextBox></td>
-        
-                                    <td>
-                                <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" 
-                                            onclick="uxBotonBuscar_Click" Visible="False" 
-                                    />
-                            </td>
-                               </tr>
-                               <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                               <tr>
-                                
-                                <td><asp:Label ID="LabelSeleccion" runat="server" Text = "Seleccione Cargo:" Visible = "false" /></td>
-                                <td><asp:DropDownList ID="uxSeleccion" runat="server" Visible="False">
-                                    </asp:DropDownList></td>
-                                 <td><asp:Button ID="uxBotonBuscar2" runat="server" Text="Buscar" 
-                                        onclick="uxBotonBuscar_Click" Visible="False" /></td>   
-                               </tr>
-                               <tr>
-                                <td></td>
-                                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                        ControlToValidate="uxParametro" 
-                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="None" />
-                                    </td>
-                               </tr>
-                                <tr>
-                                    <td colspan="2">
-                                
-                                        <asp:GridView ID="uxConsultarEmpleado" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultarEmpleado"
+                           <table width="100%" border="0">
+  <tr>
+    <td colspan="2"><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+   <tr>
+    <td colspan="2" height="50px">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="100%"><asp:RadioButtonList ID="opcion1" runat="server" Width="194px"  
+                                                    OnSelectedIndexChanged="uxRbCampoBusqueda_SelectedIndexChanged" 
+                                                    AutoPostBack="true" Visible="true">
+      <asp:ListItem Value="1" Text="Busqueda por Cedula"></asp:ListItem>
+      <asp:ListItem Value="2" Text="Busqueda por Nombre"></asp:ListItem>
+      <asp:ListItem Value="3" Text="Busqueda por Cargo"></asp:ListItem>
+    </asp:RadioButtonList></td>
+    <td width="100%"><table width="100%" border="1">
+      <tr>
+        <td align="center">
+            <asp:TextBox ID="uxParametro" runat="server" Visible="false">
+            </asp:TextBox><asp:TextBox ID="uxParametroCedula" runat="server" Visible="false">
+            </asp:TextBox>  <asp:DropDownList ID="listaCargo" runat="server" Visible="false"> </asp:DropDownList>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="uxBotonAceptar_Click" Visible="false"/></td>
+      </tr>
+	   <tr>
+        <td align="center"><asp:Label ID="Label1" runat="server" Text = "Introduzca" Visible = "False" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+   <tr>
+       <td colspan="2"><asp:GridView ID="uxConsultarEmpleado" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultarEmpleado"
                                             AutoGenerateColumns="False" DataKeyNames ="Nombre" AutoGenerateSelectButton="True"
                                             Width="95%" Font-Names="Verdana" Font-Size="Smaller" PageSize = "10"
                                             OnSelectedIndexChanging="SelectUsuarios">
-                                            
-                                            <Columns>
-                                            
-                                            <asp:BoundField HeaderText="Cedula" DataField="Cedula" SortExpression="Cedula" />
-                                            <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True"
-
-                                                    SortExpression="Nombre" />
-                                            <asp:BoundField DataField="Apellido" HeaderText="Apellido" 
-                                                    SortExpression="Apellido" />
-                                            
-                                            </Columns>
-                                            
-                                            <EmptyDataTemplate>
-                                                <center>
-                                                    <span>No hay data cargada </span>
-                                                </center>
-                                            </EmptyDataTemplate>
-                                        
-                                        </asp:GridView>
-                                    </td>
-                                </tr>
-                            </table>
+         <columns>
+         <asp:BoundField HeaderText="Cedula" DataField="Cedula" SortExpression="Cedula" />
+         <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />
+         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+         </columns>
+         <EmptyDataTemplate>
+           <center>
+             <span>No hay data cargada </span>
+           </center>
+         </EmptyDataTemplate>
+       </asp:GridView></td>
+   </tr>
+</table>
                         </asp:View>
                         
                         <asp:View ID="ViewUsuario" runat="server">

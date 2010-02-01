@@ -117,6 +117,12 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
         get { return uxCargoEmpleado; }
         set { uxCargoEmpleado = value; }
     }
+    
+    public Label MensajeError
+    {
+        get { return LabelMensajeError; }
+        set { LabelMensajeError = value; }
+    }
     #endregion
 
     #endregion

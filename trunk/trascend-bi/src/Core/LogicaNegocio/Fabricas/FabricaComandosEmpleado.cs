@@ -54,5 +54,10 @@ namespace Core.LogicaNegocio.Fabricas
             return new EliminarEmpleado(empleado);
         }
 
+        public static ConsultarCargoNuevo CrearComandoConsultarCargoNuevo(Cargo cargo)
+        {
+            return new ConsultarCargoNuevo(cargo);
+        }
+
     }
 }
