@@ -235,6 +235,12 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.Valor.Text = campoVacio;
 
+            _vista.RequiredFieldValidator.Visible = false;
+
+            _vista.RequiredFieldValidator1.Visible = false;
+
+            _vista.GetObjectContainerConsultaContacto.DataSource = "";
+
             _vista.InformacionVisible = false;
 
             _vista.InformacionVisible2 = false;
@@ -276,8 +282,6 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.NombreCliente.Visible = false;
 
                 _vista.Valor.Visible = false;
-
-               _vista.GetObjectContainerConsultaContacto.DataSource = "";
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "2")
@@ -306,7 +310,9 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.Valor.Visible = false;
 
-               _vista.GetObjectContainerConsultaContacto.DataSource = "";
+                _vista.RequiredFieldValidator.Visible = true;
+
+                _vista.RequiredFieldValidator1.Visible = true;
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "3")
@@ -424,10 +430,15 @@ namespace Presentador.Contacto.ContactoPresentador
                     cliente.Nombre = _vista.Valor.Text;
 
                     IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+                    for (int i = 0; i < listaCliente.Count; i++)
+                    {
+                        contacto.ClienteContac = listaCliente[i];
 
-                    contacto.ClienteContac = listaCliente[0];
-
-                    listContac = ConsultarContactoXCliente(contacto);
+                        for (int j = 0; j < ConsultarContactoXCliente(contacto).Count; j++)
+                        {
+                            listContac.Add(ConsultarContactoXCliente(contacto)[j]);
+                        }
+                    }
 
                     _vista.InformacionVisible = false;
 
