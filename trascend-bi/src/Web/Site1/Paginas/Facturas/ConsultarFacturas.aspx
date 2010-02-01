@@ -45,11 +45,11 @@
                             <asp:View ID="ViewBuscarPorPropuesta" runat="server">
                                 <table style="width:auto">
                                     <tr>
-                                        <td>Titulo:</td>
+                                        <td><b>Titulo:</b></td>
                                         <td><asp:Label ID ="lbTituloPropuesta" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr>
-                                        <td>Monto Total:</td>
+                                        <td><b>Monto Total:</b></td>
                                         <td><asp:Label ID ="lbMontoTotal" runat ="server" Text=""></asp:Label></td>
                                     </tr>
                                 </table>
@@ -78,32 +78,32 @@
                                 <table style="width: auto">
                                     <tr><td></td></tr>
                                     <tr>
-                                        <td> Titulo:</td>
+                                        <td> <b>Titulo:</b></td>
                                         <td><asp:Label ID="lbTitulo" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr><td></td></tr>
                                      <tr>
-                                        <td> Descripcion:</td>
+                                        <td><b> Descripcion:</b></td>
                                         <td><asp:Label ID="lbDescripcion" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr><td></td></tr>
                                      <tr>
-                                        <td> Porcentaje:</td>
+                                        <td><b> Porcentaje:</b></td>
                                         <td><asp:Label ID="lbPorcentaje" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr><td></td></tr>
                                      <tr>
-                                        <td> Fecha Ingreso:</td>
+                                        <td><b> Ingreso:</b></td>
                                         <td><asp:Label ID="lbFechaIngreso" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr><td></td></tr>
                                      <tr>
-                                        <td> Fecha Pago:</td>
+                                        <td><b> Fecha Pago:</b></td>
                                         <td><asp:Label ID="lbFechaPago" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr><td></td></tr>
                                      <tr>
-                                        <td> Estado:</td>
+                                        <td><b> Estado:</b></td>
                                         <td><asp:Label ID="lbEstado" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                 </table>
