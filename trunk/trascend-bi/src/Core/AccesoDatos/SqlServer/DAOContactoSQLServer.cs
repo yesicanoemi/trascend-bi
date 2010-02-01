@@ -85,16 +85,6 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
-
-        /// <summary>
-        /// Metodo para consultar un Cliente
-        /// </summary>
-        /// <param name="usuario">Objeto Cliente</param>
-        /// <returns></returns>
-
-
-
-
         #endregion 
 
         #region Consultar Contacto
