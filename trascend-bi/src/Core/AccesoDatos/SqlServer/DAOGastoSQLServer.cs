@@ -29,24 +29,6 @@ namespace Core.AccesoDatos.SqlServer
         }
         #endregion
 
-    /*    #region Conexion a Base de Datos
-
-        private SqlConnection GetConnection()
-        {
-            XmlDocument xDoc = new XmlDocument();
-
-            xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
-
-            XmlNodeList conexiones = xDoc.GetElementsByTagName("connection");
-
-            String lista = conexiones[0].InnerText;
-            SqlConnection connection = new SqlConnection(lista);
-            connection.Open();
-
-            return connection;
-        }
-        #endregion */
-
         #region Metodos
 
         /// <summary>
@@ -149,12 +131,13 @@ namespace Core.AccesoDatos.SqlServer
             return _gasto;
         }
 
-        /// <summary>
-        /// Este metodo se encarga de eliminar el gasto de la base de datos accediendo al procedimiento EliminarGasto.
-        /// </summary>
-        /// <param name="gasto"></param>
-        /// <returns></returns>
-
+       /// <summary>
+       /// Metodo encargado de la busqueda de los gastos asociados a una seleccion del usuario
+       /// </summary>
+       /// <param name="Opcion">El id de la propuesta en caso de seleccion de propuesta 
+       /// o -1 en caso de ser por busqueda de cliente</param>
+       /// <param name="Parametro"></param>
+       /// <returns> retorna una lista de los gastos asociados a la consulta</returns>
         public IList<Gasto> ConsultarGasto( int Opcion , string Parametro )
         {
            
@@ -174,7 +157,7 @@ namespace Core.AccesoDatos.SqlServer
                 }
                 if ( Opcion == -1 ) // Nombre Cliente
                 {
-                    parametroconsulta[0] = new SqlParameter("@Parametro", SqlDbType.VarChar);
+                    parametroconsulta[0]       = new SqlParameter("@Parametro", SqlDbType.VarChar);
                     parametroconsulta[0].Value = Parametro;
                     reader = SqlHelper.ExecuteReader
                         ( _conexion.GetConnection(), "ConsultarGastoNomCli", parametroconsulta );
@@ -184,15 +167,15 @@ namespace Core.AccesoDatos.SqlServer
 
                 while ( reader.Read() )
                 {
-                    Gasto gastocons = new Gasto();
-                    gastocons.Codigo = (int)reader["IdGasto"];
-                    gastocons.Estado = (string)reader["Estado"];
-                    gastocons.Monto = float.Parse(reader["Monto"].ToString());
-                    gastocons.FechaGasto = (DateTime)reader["Fecha"];
+                    Gasto gastocons        = new Gasto();
+                    gastocons.Codigo       = (int)reader["IdGasto"];
+                    gastocons.Estado       = (string)reader["Estado"];
+                    gastocons.Monto        = float.Parse(reader["Monto"].ToString());
+                    gastocons.FechaGasto   = (DateTime)reader["Fecha"];
                     gastocons.FechaIngreso = (DateTime)reader["FechaIngreso"];
-                    gastocons.Tipo = (string)reader["Tipo"];
-                    gastocons.Descripcion = (string)reader["Descripcion"];
-                    gastocons.IdVersion = (int)reader["IdVersion"];
+                    gastocons.Tipo         = (string)reader["Tipo"];
+                    gastocons.Descripcion  = (string)reader["Descripcion"];
+                    gastocons.IdVersion    = (int)reader["IdVersion"];
 
                     _ListaGastos.Add(gastocons);
                 }
@@ -292,9 +275,16 @@ namespace Core.AccesoDatos.SqlServer
 
         }
 
-        public IList<Gasto> ConsultarGastoPorFecha(Core.LogicaNegocio.Entidades.Gasto gasto)
+        /// <summary>
+        /// Metodo encargado de realizar la busqueda de los gastos
+        /// de acuerdo a la fecha ingresada por el usuario
+        /// </summary>
+        /// <param name="gasto">recibe entidad gasto con la fecha ingresada por el usuario</param>
+        /// <returns>retorna una lista de los gastos</returns>
+        public IList<Gasto> ConsultarGastoPorFecha( Core.LogicaNegocio.Entidades.Gasto gasto )
         {
-            IList<Core.LogicaNegocio.Entidades.Gasto> gastos = new List<Core.LogicaNegocio.Entidades.Gasto>();
+            IList<Core.LogicaNegocio.Entidades.Gasto> gastos
+                = new List<Core.LogicaNegocio.Entidades.Gasto>();
             
             try
             {
@@ -309,28 +299,28 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     Gasto _gasto = new Gasto();
 
-                    _gasto.Codigo = (int)reader["IdGasto"];
-                    _gasto.Estado = (string)reader["Estado"];
-                    _gasto.Monto = float.Parse(reader["Monto"].ToString());
-                    _gasto.FechaGasto = (DateTime)reader["Fecha"];
+                    _gasto.Codigo       = (int)reader["IdGasto"];
+                    _gasto.Estado       = (string)reader["Estado"];
+                    _gasto.Monto        = float.Parse(reader["Monto"].ToString());
+                    _gasto.FechaGasto   = (DateTime)reader["Fecha"];
                     _gasto.FechaIngreso = (DateTime)reader["FechaIngreso"];
-                    _gasto.Tipo = (string)reader["Tipo"];
-                    _gasto.Descripcion = (string)reader["Descripcion"];
-                    _gasto.IdVersion = (int)reader["IdVersion"];
+                    _gasto.Tipo         = (string)reader["Tipo"];
+                    _gasto.Descripcion  = (string)reader["Descripcion"];
+                    _gasto.IdVersion    = (int)reader["IdVersion"];
 
                     gastos.Add(_gasto);
                 }
             }
-            catch (SqlException e)
+            catch ( SqlException e )
             {
                 throw new ConsultarGastoBDExceptions
-                ("Error de Consulta en Base de DAtos", e);
+                ( "Error de Consulta en Base de DAtos" , e );
             }
 
-            catch (Exception e)
+            catch ( Exception e )
             {
                 throw new ConsultarGastoBDExceptions
-                ("Error de Consulta en Base de DAtos", e);
+                ( "Error de Consulta en Base de DAtos" , e );
             }
 
 

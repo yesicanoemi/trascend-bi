@@ -20,6 +20,11 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         get { return LabelTipoConsulta; }
         set { LabelTipoConsulta = value; }
     }
+    public Label Error
+    {
+        get { return uxError; }
+        set { uxError = value; }
+    }
     public Label LabelInfo
     {
         get { return uxLabelInfo; }
@@ -35,7 +40,7 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     {
         get { return uxCheckOpcionBuscar; }
         set { uxCheckOpcionBuscar = value; }
-    }    
+    }
     public Button BotonBuscarDatos
     {
         get { return uxBotonBuscarDatos; }
@@ -136,15 +141,14 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         }
     }
 
-    #region Eventos
+
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         _presenter.BuscarInformacion();
     }
-    
-    #endregion    
-    
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -152,21 +156,17 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
 
     protected void parametrizado(object sender, GridViewSelectEventArgs e)
     {
-        
-        _presenter.busquedaparametrizado(int.Parse(uxGridParamCoincidente.DataKeys[e.NewSelectedIndex].Value.ToString()),"Propuesta");
+
+        _presenter.busquedaparametrizado(int.Parse(uxGridParamCoincidente.DataKeys[e.NewSelectedIndex].Value.ToString()), "Propuesta");
     }
 
     protected void parametrizadocliente(object sender, GridViewSelectEventArgs e)
     {
-        _presenter.busquedaparametrizado(-1,uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presenter.busquedaparametrizado(-1, uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
-    protected void verseleccion(object sender, EventArgs e) 
+    protected void verseleccion(object sender, EventArgs e)
     {
         _presenter.verseleccion();
-    }
-    protected void GastoDetallado(object sender, GridViewSelectEventArgs e)
-    {
-        _presenter.GastoDetalle(int.Parse(uxConsultaGasto.DataKeys[e.NewSelectedIndex].Value.ToString()));
     }
 }

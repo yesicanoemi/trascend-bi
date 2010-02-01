@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using Microsoft.Practices.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Presentador.Gasto.Contrato
 {
@@ -14,6 +16,7 @@ namespace Presentador.Gasto.Contrato
 
         Label LTipoConsulta { get; set;}
         Label LabelInfo { get; set; }
+        Label Error { get; set; }
         TextBox BusquedaConsulta { get; set;}
         RadioButtonList CheckOpcionBuscar { get; set; }       
         Button BotonBuscarDatos { get; set; }        
@@ -27,6 +30,8 @@ namespace Presentador.Gasto.Contrato
         HtmlTable TablaCliente { get; set; }
         HtmlTable TablaInicio { get; set; }
         Image Calendario { get; set; }
+        
+        
         
         #endregion
     }
