@@ -41,15 +41,19 @@
 		                        </tr>    
 		                        <tr>
 		                            <td>
-                                        <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" 
+                                        <asp:RadioButtonList ID="uxCheckOpcionBuscar" runat="server" OnSelectedIndexChanged="verseleccion" AutoPostBack ="true"  
                                          Font-Size="X-Small" Height="51px" Width="257px"  >                                    
                                                 <asp:ListItem Value="0">Propuesta</asp:ListItem>
                                                 <asp:ListItem Value="1">Cliente</asp:ListItem>
                                                 
                                         </asp:RadioButtonList>
                                     </td>
+                                    
                                     <td>&nbsp;</td>
-		                            <td><asp:TextBox ID="uxBusquedaConsulta" runat="server"></asp:TextBox></td>
+                                    
+		                            <td>
+		                             <asp:Label ID="uxLabelInfo" runat="server" Font-Names="Verdana" Font-Size="X-Small" />
+		                            <asp:TextBox ID="uxBusquedaConsulta" runat="server"></asp:TextBox></td>
 		                            <td>&nbsp;</td>
         		                    <td><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" onclick="uxBotonBuscar_Click" /></td>
 		                        </tr>		                		                
@@ -65,11 +69,12 @@
 		                <tr>
 		                    <td><h3>Parametros Coincidentes<asp:GridView ID="uxGridParamCoincidente" runat="server" AllowPaging="True" DataSourceID="uxObjectParamCoinci"
                                                 AutoGenerateColumns="false" DataKeyNames="ID" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizado"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
+                                                Width="170%" Font-Names="Verdana" Font-Size="X-Small">
                                                 
                                                 <Columns>
                                                 
-                                                        <asp:BoundField HeaderText="Coincidencias" DataField="Titulo"/>   
+                                                        <asp:BoundField HeaderText="Coincidencias" DataField="Titulo"/>
+                                                         <asp:BoundField HeaderText="      " />   
                                                                                                              
                                                 </Columns>
                                                 
@@ -98,6 +103,7 @@
                                                 <Columns>
                                                 
                                                         <asp:BoundField HeaderText="Rif" DataField="rif"/>
+                                                        <asp:BoundField HeaderText="      " />
                                                         <asp:BoundField HeaderText="Nombre" DataField="nombre"/>   
                                                                                                              
                                                 </Columns>

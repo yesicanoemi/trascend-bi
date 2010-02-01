@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Gasto.Vistas;
 using Presentador.Propuesta.Vistas;
 using Presentador.Gasto.Contrato;
+using System.Web.UI.HtmlControls;
 
 public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
 {
@@ -18,6 +19,12 @@ public partial class Paginas_Gastos_AgregarGastos : PaginaBase, IIngresarGasto
     {
         get { return uxDescripcionGasto; }
         set { uxDescripcionGasto = value; }
+    }
+
+    public HtmlTable Datos
+    {
+        get { return uxtabla; }
+        set { uxtabla = value; }    
     }
 
     public TextBox FechaGasto

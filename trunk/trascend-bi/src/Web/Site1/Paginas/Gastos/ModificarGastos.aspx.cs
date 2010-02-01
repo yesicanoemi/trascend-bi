@@ -23,6 +23,12 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
         set { LabelTipoConsulta = value; }
     }
 
+    public Label LabelInfo
+    {
+        get { return uxLabelInfo; }
+        set {uxLabelInfo = value;}
+    }
+
     public Label LIdVersion
     {
         get { return uxIdVersion; }
@@ -245,6 +251,11 @@ public partial class Paginas_Gastos_ModificarGastos : PaginaBase, IModifcarGasto
     protected void parametrizadocliente(object sender, GridViewSelectEventArgs e)
     {
         _presenter.busquedaparametrizado(-1, uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+
+    protected void verseleccion(object sender, EventArgs e)
+    {
+        _presenter.verseleccion();
     }
 
 

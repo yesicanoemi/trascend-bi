@@ -40,155 +40,106 @@ namespace Presentador.Gasto.Vistas
 
         #region Metodos
 
-        /*
-        public int OpcionSeleccion()
-        {
-
-            _presentadorPropuesta = new ConsultarPropuestaPresentador();
-            listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
-
-            if (_vista.TipoConsulta.SelectedIndex == 0) // Busqueda por propuesta
-            {
-                _vista.TipoConsulta.Enabled = false;
-                _vista.LTipoConsulta.Enabled = false;
-                _vista.SeleccionDato.Enabled = true;
-                _vista.LSeleccion.Enabled = true;
-                string estado = "Aprobada";
-                listaPropuesta = _presentadorPropuesta.BuscarPorTitulo(estado);
-
-                for (int i = 0; i < listaPropuesta.Count; i++)
-                {
-                    _vista.SeleccionDato.Items.Add(listaPropuesta.ElementAt(i).Titulo);
-                }
-
-                _vista.SeleccionDato.DataBind();
-
-                opcion = 0;
-            }
-
-            if (_vista.TipoConsulta.SelectedIndex == 1) // Busqueda por Tipo
-            {
-                _vista.TipoConsulta.Enabled = false;
-                _vista.LTipoConsulta.Enabled = false;
-                _vista.SeleccionDato.Enabled = true;
-                _vista.LSeleccion.Enabled = true;
-
-                listaGasto = ConsultarPorTipo();
-
-                for (int i = 0; i < listaGasto.Count; i++)
-                {
-                    _vista.SeleccionDato.Items.Add(listaGasto.ElementAt(i).Tipo);
-                }
-
-                _vista.SeleccionDato.DataBind();
-
-                opcion = 1;
-            }
-
-            if (_vista.TipoConsulta.SelectedIndex == 2) // Busqueda por Fecha del Gasto
-            {
-                _vista.TipoConsulta.Enabled = false;
-                _vista.LTipoConsulta.Enabled = false;
-                _vista.LFechaGasto.Enabled = true;
-                _vista.FechaGasto.Enabled = true;
-
-                opcion = 2;
-            }
-            return opcion;
-        }
-        */
+       
 
         public void BuscarInformacion() // 
         {
-            #region Atributos de la pagina
+            try
+            {
+                #region Atributos de la pagina
+
+
+                _vista.BusquedaConsulta.Visible = false;
+                _vista.CheckOpcionBuscar.Visible = false;
+                _vista.BotonBuscarDatos.Visible = false;
+
+
+
+                #endregion
+
+                listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
+
+                int Opcion = _vista.CheckOpcionBuscar.SelectedIndex;
+                string Parametro = _vista.BusquedaConsulta.Text;
+
+
+                if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // La Seleccion fue por Propuesta
+                {
+
+                    ConsultarPropuestaPresentador _presentadorPropuesta2 = new ConsultarPropuestaPresentador();
+                    listaPropuesta = _presentadorPropuesta2.LlenarListaParametro(1, Parametro);
+
+                    try
+                    {
+                        if (listaPropuesta != null)
+                        {
+                            _vista.GetObjectContainerConsultaGastoSeleccion.DataSource = listaPropuesta;
+                            _vista.LabelInfo.Visible = false;
+
+                        }
+                    }
+
+                    catch (WebException e)
+                    {
+                        //Mensaje de error al usuario
+                    }
+
+                }
+
+                if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Nombre Cliente
+                {
+
+                    // Se crea la entidad Cliente que es necesaria para el comando consultar de cliente
+                    Core.LogicaNegocio.Entidades.Cliente cliente =
+                        new Core.LogicaNegocio.Entidades.Cliente();
+
+                    cliente.Nombre = _vista.BusquedaConsulta.Text;
+
+
+                    // Instancia del presentador
+                    ConsultarClientePresentador _presentadorcliente =
+                        new ConsultarClientePresentador();
+
+                    // Llamado al metodo
+                    listaCliente = _presentadorcliente.ConsultarClienteNombre(cliente);
+
+                    try
+                    {
+                        if (listaCliente != null)
+                        {
+                            _vista.GetObjectContainerCliente.DataSource = listaCliente;
+                            _vista.ModificarGasto.ActiveViewIndex = 1;
+                        }
+                    }
+
+                    catch (WebException e)
+                    {
+                        //Mensaje de error al usuario
+                    }
+                }
+            }
+            catch
+            {
+                _vista.ModificarGasto.ActiveViewIndex = 3;
+                _vista.MensajeError.Text = "Debe Seleccionar una Opcion";
+                
+            }
            
-          
-            _vista.BusquedaConsulta.Visible = false;
-            _vista.CheckOpcionBuscar.Visible = false;
-       
+        }
 
-
-            #endregion
-
-            listaGasto = new List<Core.LogicaNegocio.Entidades.Gasto>();
-
-            int Opcion = _vista.CheckOpcionBuscar.SelectedIndex;
-            string Parametro = _vista.BusquedaConsulta.Text;
-
-
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 0) // La Seleccion fue por Propuesta
+        public void verseleccion()
+        {
+            if (_vista.CheckOpcionBuscar.SelectedValue.Equals("0"))
             {
-
-                ConsultarPropuestaPresentador _presentadorPropuesta2 = new ConsultarPropuestaPresentador();
-                listaPropuesta = _presentadorPropuesta2.LlenarListaParametro(1, Parametro);
-
-                try
-                {
-                    if (listaPropuesta != null)
-                    {
-                        _vista.GetObjectContainerConsultaGastoSeleccion.DataSource = listaPropuesta;    
-                        
-                    }
-                }
-
-                catch (WebException e)
-                {
-                    //Mensaje de error al usuario
-                }
-
+                _vista.LabelInfo.Text = "Ingrese Nombre Propuesta";
             }
-
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 1) // La Seleccion fue por Nombre Cliente
+            if (_vista.CheckOpcionBuscar.SelectedValue.Equals("1"))
             {
-
-                // Se crea la entidad Cliente que es necesaria para el comando consultar de cliente
-                Core.LogicaNegocio.Entidades.Cliente cliente =
-                    new Core.LogicaNegocio.Entidades.Cliente();
-
-                cliente.Nombre = _vista.BusquedaConsulta.Text;
-
-
-                // Instancia del presentador
-                ConsultarClientePresentador _presentadorcliente =
-                    new ConsultarClientePresentador();
-
-                // Llamado al metodo
-                listaCliente = _presentadorcliente.ConsultarClienteNombre(cliente);
-
-                try
-                {
-                    if (listaCliente != null)
-                    {
-                        _vista.GetObjectContainerCliente.DataSource = listaCliente;
-                        _vista.ModificarGasto.ActiveViewIndex = 1;
-                    }
-                }
-
-                catch (WebException e)
-                {
-                    //Mensaje de error al usuario
-                }
+                _vista.LabelInfo.Text = "Ingrese Nombre de Cliente";
             }
-            if (_vista.CheckOpcionBuscar.SelectedIndex == 2) // La Seleccion por Rif Cliente
+            if (_vista.CheckOpcionBuscar.SelectedValue.Equals("2"))
             {
-                gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                gasto.Estado = _vista.BusquedaConsulta.Text;
-
-                listaGasto = ConsultarPorEstado(gasto);
-                //listaGasto.Add(gasto);
-
-                try
-                {
-                    if (listaGasto != null)
-                    {
-                        _vista.GetObjectContainerConsultaGasto.DataSource = listaGasto;
-                    }
-                }
-
-                catch (WebException e)
-                {
-                    //Mensaje de error al usuario
-                }
+                _vista.LabelInfo.Text = "Ingrese Fecha a través de la Imagen";
             }
         }
 
@@ -207,22 +158,30 @@ namespace Presentador.Gasto.Vistas
 
         public void ModificarGasto()
         {
-            gasto = new Core.LogicaNegocio.Entidades.Gasto();
+            try
+            {
+                gasto = new Core.LogicaNegocio.Entidades.Gasto();
 
-            gasto.Codigo = Int32.Parse(_vista.CodigoGasto.Text);
-            gasto.Descripcion = _vista.DescripcionGasto.Text;
-            gasto.Estado = _vista.EstadoGasto.Text;
-            gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto2.Text);
-            gasto.FechaIngreso = Convert.ToDateTime(_vista.FechaIngreso.Text);
-            gasto.Monto = float.Parse(_vista.MontoGasto.Text);
-            gasto.Tipo = _vista.TipoGasto.Text;
-            gasto.IdVersion = Int32.Parse(_vista.LIdVersion.Text);
+                gasto.Codigo = Int32.Parse(_vista.CodigoGasto.Text);
+                gasto.Descripcion = _vista.DescripcionGasto.Text;
+                gasto.Estado = _vista.EstadoGasto.Text;
+                gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto2.Text);
+                gasto.FechaIngreso = Convert.ToDateTime(_vista.FechaIngreso.Text);
+                gasto.Monto = float.Parse(_vista.MontoGasto.Text);
+                gasto.Tipo = _vista.TipoGasto.Text;
+                gasto.IdVersion = Int32.Parse(_vista.LIdVersion.Text);
 
-           
 
-            ModificarGastoPorCodigo(gasto);
-            _vista.ModificarGasto.ActiveViewIndex = 3;
-            _vista.MensajeError.Text = "El gasto se ha modificado con Exito";
+
+                ModificarGastoPorCodigo(gasto);
+                _vista.ModificarGasto.ActiveViewIndex = 3;
+                _vista.MensajeError.Text = "El gasto se ha modificado con Exito";
+            }
+            catch (Exception e)
+            {
+                _vista.ModificarGasto.ActiveViewIndex = 3;
+                _vista.MensajeError.Text = "No Se pudo Modificar el Gasto";
+            }
         }
 
         public void busquedaparametrizado(int Id, string tipoConsulta)

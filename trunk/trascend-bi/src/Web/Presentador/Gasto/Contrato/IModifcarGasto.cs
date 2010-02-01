@@ -31,6 +31,8 @@ namespace Presentador.Gasto.Contrato
         MultiView ModificarGasto { get; set; }
         Label LIdVersion { get; set; }
         TextBox FechaIngreso { get; set; }
+        Label LabelInfo { get; set; }
+        Button BotonBuscarDatos { get; set; }
 
         #endregion
     }

@@ -48,14 +48,15 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                            <table style="width:100%;">
                                 <tr>
                                     <td align="center">
-                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="false" Font-Bold="true" Font-Size="Large"/>
+                                        <asp:Label ID="LabelMensajeError" runat="server" Visible="true" Font-Bold="true" Font-Size="Large"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                 </tr>
                            </table>
-                           <table style="width:100%;">
+                           
+                           <table  id="uxtabla" runat="server" style="width:100%;">
                                <tr>
                                    <td>Tipo: </td>
                                    <td><asp:DropDownList ID="uxTipoGasto" runat="server" 
@@ -66,6 +67,7 @@ function actualizarEstadoDDLGasto(uxCheckProyectoGasto)
                                        <asp:ListItem>Desayuno</asp:ListItem>
                                        <asp:ListItem>Obsequio</asp:ListItem>
                                        <asp:ListItem>Reunion</asp:ListItem>
+                                       <asp:ListItem>Otro</asp:ListItem>
                                        </asp:DropDownList></td>
                                </tr>
                                <tr>
