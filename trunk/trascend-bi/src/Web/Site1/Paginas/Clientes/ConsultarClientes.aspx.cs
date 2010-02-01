@@ -60,7 +60,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
         set { uxMuestraDireccion = value; }
     }
 
-    public DetailsView MuestraTelefono
+    public GridView MuestraTelefono
     {
         get { return uxMuestraTelefono; }
         set { uxMuestraTelefono = value; }
@@ -206,6 +206,16 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
      */
 
     protected void uxValor_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+
+    protected void uxMuestraDireccion_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
+    {
+
+    }
+    protected void uxMuestraCliente_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
     {
 
     }
