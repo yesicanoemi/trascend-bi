@@ -34,6 +34,7 @@ namespace Presentador.Propuesta.Contrato
         //Label LabelParam { get; set; }
         ListBox ListaEmpleados { get; set; }
         TextBox TextParametro { get; set; }
+        TextBox TextParametroRif { get; set; }
         GridView GridPropuesta { get; set; }
         ObjectContainerDataSource ObtenerValorDataSource { get; set; }
         GridView GridPropuestaMuest { get; set; }
