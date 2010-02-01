@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarGastos.aspx.cs" Inherits="Paginas_Gastos_ConsultarGastos" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 <form id="form2" runat="server">
 <div class="container subnav"> 
@@ -22,7 +23,7 @@
 		            <h3>Consultar Gasto</h3>
 		            <p class="large"></p>
 		            
-		            
+		            <asp:Label ID="uxError" runat="server" Visible="false"></asp:Label>
 		            <table id="uxTablaInicio" runat="server">
 		                <tr>		                    
 		                    <td><asp:Label ID="LabelTipoConsulta" runat="server" Font-Names="Verdana" Text="Realizar Consulta: " /></td>
@@ -40,7 +41,7 @@
 		                    <td>
                                 <asp:RadioButtonList  ID="uxCheckOpcionBuscar" runat="server" 
                                     Font-Size="X-Small" TextAlign="Left" Height="51px" Width="157px" Onselectedindexchanged="verseleccion" AutoPostBack="true"  >                                    
-                                    <asp:ListItem Value="0">Propuesta</asp:ListItem>
+                                    <asp:ListItem Value="0" >Propuesta</asp:ListItem>
                                     <asp:ListItem Value="1">Cliente</asp:ListItem>
                                     <asp:ListItem Value="2">Fecha de Consumo</asp:ListItem>
                                 </asp:RadioButtonList>
@@ -75,7 +76,7 @@
 		                <tr>
 		                    <td><h3><asp:GridView ID="uxGridParamCoincidente" runat="server" AllowPaging="True" DataSourceID="uxObjectParamCoinci"
                                                 AutoGenerateColumns="false" DataKeyNames="ID" AutoGenerateSelectButton="true"  OnSelectedIndexChanging="parametrizado"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" TextAlign="Left">
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small">
                                                 
                                                 <Columns>
                                                 
@@ -131,6 +132,7 @@
 			                <td colspan="2">
 			                    &nbsp;</td>
 			            </tr>
+			            
 		            </table>
 		            <table id="uxTablaSeleccion" runat="server" visible = "false">
 		                <tr>
@@ -168,6 +170,7 @@
 			                    &nbsp;</td>
 			            </tr>
 		            </table>
+		            
 		            </div>
 		           </div> 
 		         </div>
