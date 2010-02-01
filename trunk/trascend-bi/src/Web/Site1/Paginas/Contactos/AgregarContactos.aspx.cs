@@ -71,35 +71,35 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         set { uxValor = value; }
     }
 
-    //#region Información
+    #region Información
 
-    //public void PintarInformacion(string mensaje, string estilo)
-    //{
-    //    uxMensajeInformacion.PintarControl(mensaje, estilo);
-    //}
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
 
-    //public bool InformacionVisible
-    //{
-    //    get { return uxMensajeInformacion.Visible; }
-    //    set { uxMensajeInformacion.Visible = value; }
-    //}
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
 
-    //#endregion
+    #endregion
 
-    //#region Diálogo
+    #region Diálogo
 
-    //public void Pintar(string codigo, string mensaje, string actor, string detalles)
-    //{
-    //    uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
-    //}
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
 
-    //public bool DialogoVisible
-    //{
-    //    get { return uxDialogoError.Visible; }
-    //    set { uxDialogoError.Visible = value; }
-    //}
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
 
-    //#endregion
+    #endregion
 
 
 

@@ -177,4 +177,7 @@
   <data name="mensajeErrorIngresar" xml:space="preserve">
     <value>Ha ocurrido un Error Ingresando la información.</value>
   </data>
+  <data name="MensajeContactoExistente" xml:space="preserve">
+    <value>Ya existe este contacto registrado para un cliente, debe ingresar uno nuevo</value>
+  </data>
 </root>

@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using Presentador.Contacto.ContactoInterface;
 using System.Net;
+using Core.LogicaNegocio.Excepciones;
+using System.Resources;
 using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Entidades;
+using Presentador.Base;
 
 namespace Presentador.Contacto.ContactoPresentador
 {
-    public class AgregarPresentador
+    public class AgregarPresentador: PresentadorBase
     {
         #region Propiedades
 
@@ -36,6 +39,8 @@ namespace Presentador.Contacto.ContactoPresentador
         {
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+         
+
             try
             {
                 contacto.Nombre = _vista.TextBoxNombreContacto.Text;
@@ -56,9 +61,30 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 Ingresar(contacto);
             }
-            catch (WebException)
+            catch (WebException e)
             {
-                //Aqui se maneja la excepcion en caso de que de error la seccion Web
+
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
+                                                                "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
             }
         }
 
@@ -68,6 +94,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
         public void Ingresar(Core.LogicaNegocio.Entidades.Contacto _contacto)
         {
+            bool imprime = true;
             Core.LogicaNegocio.Comandos.ComandoContacto.Ingresar ingresar;
 
             Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoNombreApellido ConsultarContacto;
@@ -85,8 +112,19 @@ namespace Presentador.Contacto.ContactoPresentador
 
                  ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
 
-              
+
                  ingresar.Ejecutar();
+             }
+
+             else
+             {
+                 if (imprime == true)
+                 {
+                     _vista.PintarInformacion(ManagerRecursos.GetString
+                     ("MensajeContactoExistente"), "mensajes");
+                     _vista.InformacionVisible = true;
+                 }
+
              }
         }
 

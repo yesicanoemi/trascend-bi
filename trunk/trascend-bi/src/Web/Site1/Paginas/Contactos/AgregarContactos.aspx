@@ -38,6 +38,13 @@
             <p class="large"> </p>
          
                 <form id="Form1" runat="server">
+                           
+                           <asp:Label ID="Label1" 
+                                           style="left:593px; POSITION: absolute; TOP: 149px; color:Red" 
+                               runat="server">
+                                        <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false"/>
+                                     </asp:Label>
+                           
                            <table style="width:100%;">
                                <tr>
                                    <td>Nombre: </td>
@@ -121,7 +128,6 @@
                                <tr>
                                    <td>Telefono de Celular: </td>
                                    <td>
-                                        <br />
                                         <asp:TextBox ID="uxCodCel" runat="server" Width="40"></asp:TextBox>
                                         <asp:TextBox ID="uxTelfCelular" runat="server" Width="150"></asp:TextBox>
                                         <br />
@@ -152,6 +158,12 @@
                                                  DelimiterCharacters="; ,"
                                                  ServicePath="../../SuggestionNames.asmx">
                                               </AjaxControlToolkit:AutoCompleteExtender>
+                                              
+                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="uxValor" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaNombreCliente%>" Font-Size="Smaller" Display="Static" />
+                                              
+                                                
                                        
                                    </td>
                                </tr>
@@ -170,6 +182,13 @@
                                     </td>
                                 </tr>
                            </table>
+                           
+                            <asp:UpdatePanel ID="up2" runat="server">
+                    <ContentTemplate>
+                        <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                    </ContentTemplate>
+                    </asp:UpdatePanel>
+                           
                     </form>
             
             
