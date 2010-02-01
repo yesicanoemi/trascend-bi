@@ -11,7 +11,18 @@ namespace Presentador.Usuario.Contrato
     {
         #region Informacion Basica
 
+
+        Label AsteriscoStatus { get; set; }
+
+        // Label AsteriscoLogin { get; set; }
+
+        Label NombreUsuarioLabel { get; set; }
+
+        Label StatusDdLLabel { get; set; }
+
         TextBox NombreUsuario { get; set; }
+
+        DropDownList StatusDdL { get; set; }
 
         MultiView MultiViewModificar { get; set; }
 
@@ -36,6 +47,16 @@ namespace Presentador.Usuario.Contrato
         DropDownList DLStatusUsuario { get; set; }
 
         CheckBoxList CBLReporte { get; set; }
+
+        RadioButtonList RbCampoBusqueda { get; set; }
+
+        Button BotonBuscar { get; set; }
+
+        RequiredFieldValidator ValidarNombreVacio { get; set; }
+
+        RequiredFieldValidator ValidarNoSeleccion { get; set; }
+
+        //void CambiarPagina();
 
         #region Dialogo
 

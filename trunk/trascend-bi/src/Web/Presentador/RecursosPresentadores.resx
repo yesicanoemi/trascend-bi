@@ -180,4 +180,13 @@
   <data name="MensajeContactoExistente" xml:space="preserve">
     <value>Ya existe este contacto registrado para un cliente, debe ingresar uno nuevo</value>
   </data>
+  <data name="MensajeIniciarSesion" xml:space="preserve">
+    <value>Intento fallido. Revise los datos y vuelva a intentar</value>
+  </data>
+  <data name="mensajeSesionTerminada" xml:space="preserve">
+    <value>Sesion cerrada por inactividad</value>
+  </data>
+  <data name="mensajeUsuarioInactivo" xml:space="preserve">
+    <value>El Usuario ya se encuentra inactivo</value>
+  </data>
 </root>

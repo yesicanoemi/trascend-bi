@@ -12,6 +12,15 @@ namespace Presentador.Usuario.Contrato
 
         #region Información Básica
 
+
+        Label AsteriscoStatus { get; set; }
+
+        // Label AsteriscoLogin { get; set; }
+
+        Label NombreUsuarioLabel { get; set; }
+
+        Label StatusDdLLabel { get; set; }
+
         TextBox NombreUsuario { get; set; }
 
         DropDownList StatusDdL { get; set; }
@@ -45,7 +54,9 @@ namespace Presentador.Usuario.Contrato
         Button BotonBuscar { get; set; }
 
         RequiredFieldValidator ValidarNombreVacio { get; set; }
-        
+
+        RequiredFieldValidator ValidarNoSeleccion { get; set; }
+
         void CambiarPagina();
 
 

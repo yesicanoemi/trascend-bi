@@ -11,13 +11,31 @@ namespace Presentador.Usuario.Contrato
     {
         #region Informacion Basica
 
+        Label AsteriscoStatus { get; set; }
+
+        // Label AsteriscoLogin { get; set; }
+
+        Label NombreUsuarioLabel { get; set; }
+
+        Label StatusDdLLabel { get; set; }
+
         TextBox Login { get; set; }
-        
+
         MultiView MultiViewEliminar { get; set; }
 
         GridView GridViewConsultarEliminarUsuario { get; set; }
 
         ObjectContainerDataSource GetObjectContainerConsultaEliminarUsuario { get; set; }
+
+        DropDownList StatusDdL { get; set; }
+
+        Button BotonBuscar { get; set; }
+
+        RequiredFieldValidator ValidarNombreVacio { get; set; }
+
+        RequiredFieldValidator ValidarNoSeleccion { get; set; }
+
+        RadioButtonList RbCampoBusqueda { get; set; }
 
         #region Dialogo
 
@@ -32,10 +50,10 @@ namespace Presentador.Usuario.Contrato
         void PintarInformacion(string mensaje, string estilo);
 
         void PintarInformacionBotonAceptar(string mensaje, string estilo);
-        
+
         #endregion
-       // void Mensaje(string msg);
-       // void Volver();
+        // void Mensaje(string msg);
+        // void Volver();
         #endregion
     }
 
