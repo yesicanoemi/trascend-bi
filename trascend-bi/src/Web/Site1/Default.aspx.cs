@@ -79,6 +79,7 @@ public partial class _Default : PaginaBase, IDefaultPresenter
         {
 
             _presenter.OnBotonAceptar();
+            _presenter.LimpiarFormulario();
 
         }
     }
@@ -86,6 +87,7 @@ public partial class _Default : PaginaBase, IDefaultPresenter
     public void IngresarSistema()
     {
         Response.Redirect(paginaPrueba);
+        _presenter.LimpiarFormulario();
 
     }
 

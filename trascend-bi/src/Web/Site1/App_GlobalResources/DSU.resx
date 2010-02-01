@@ -432,4 +432,73 @@
   <data name="CampoObligatorio" xml:space="preserve">
     <value>Los campos con * son de caracter obligatorio</value>
   </data>
+  <data name="Aceptar" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="Agregar" xml:space="preserve">
+    <value>Agregar:</value>
+  </data>
+  <data name="ApellidoEmpleado" xml:space="preserve">
+    <value>Apellido del Empleado: </value>
+  </data>
+  <data name="Asterisco" xml:space="preserve">
+    <value>* </value>
+  </data>
+  <data name="Buscar" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Consultar" xml:space="preserve">
+    <value>Consultar:</value>
+  </data>
+  <data name="Contrasena" xml:space="preserve">
+    <value>Contraseña:</value>
+  </data>
+  <data name="ContrasenaObligatorio" xml:space="preserve">
+    <value>* Contraseña:</value>
+  </data>
+  <data name="Eliminar" xml:space="preserve">
+    <value>Eliminar:</value>
+  </data>
+  <data name="EstadoEmpleado" xml:space="preserve">
+    <value>Estado del Empleado:</value>
+  </data>
+  <data name="EstadoUsuario" xml:space="preserve">
+    <value>Estado del usuario:</value>
+  </data>
+  <data name="FaltaEstadoUsuario" xml:space="preserve">
+    <value>Seleccione estado del usuario</value>
+  </data>
+  <data name="Guardar" xml:space="preserve">
+    <value>Guardar:</value>
+  </data>
+  <data name="IntroducirUsuario" xml:space="preserve">
+    <value>Nombre de usuario:</value>
+  </data>
+  <data name="IntroducirUsuarioObligatorio" xml:space="preserve">
+    <value>* Introduzca nombre de usuario:</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Nombre de Usuario:</value>
+  </data>
+  <data name="LoginObligatorio" xml:space="preserve">
+    <value>* Nombre de Usuario:</value>
+  </data>
+  <data name="Modificar" xml:space="preserve">
+    <value>Modificar:</value>
+  </data>
+  <data name="NombreEmpleadoObligatorio" xml:space="preserve">
+    <value>* Nombre de Empleado:</value>
+  </data>
+  <data name="Permisos" xml:space="preserve">
+    <value>Permisos:</value>
+  </data>
+  <data name="Reportes" xml:space="preserve">
+    <value>Reportes:</value>
+  </data>
+  <data name="SeleccioneEstado" xml:space="preserve">
+    <value>Seleccione estado:</value>
+  </data>
+  <data name="SeleccioneEstadoObligatorio" xml:space="preserve">
+    <value>* Seleccione estado:</value>
+  </data>
 </root>

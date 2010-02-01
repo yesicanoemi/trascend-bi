@@ -7,35 +7,91 @@ using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using System.Web.SessionState;
 using Microsoft.Practices.Web.UI.WebControls;
+using Core.LogicaNegocio.Excepciones;
 
 
 public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUsuario
 {
     private EliminarUsuarioPresenter _presentador;
 
+    private EliminarUsuarioPresenter _presenter;
+
     #region Propiedades
+
+    public Label AsteriscoStatus
+    {
+        get { return uxAsteriscoStatus; }
+        set { uxAsteriscoStatus = value; }
+    }
+
+    /*public Label AsteriscoLogin
+    {
+        get { return uxAsteriscoLogin; }
+        set { uxAsteriscoLogin = value; }
+    }*/
+    public Label NombreUsuarioLabel
+    {
+        get { return uxLoginLabel; }
+        set { uxLoginLabel = value; }
+    }
+
+    public Label StatusDdLLabel
+    {
+        get { return uxStatusDdLLabel; }
+        set { uxStatusDdLLabel = value; }
+    }
 
     public TextBox Login
     {
         get { return uxLogin; }
         set { uxLogin = value; }
     }
-    
-    public MultiView MultiViewEliminar
-    { 
-        get { return uxMultiViewEliminar;}
-        set { uxMultiViewEliminar = value;}
+
+    public Button BotonBuscar
+    {
+        get { return uxBotonBuscar; }
+        set { uxBotonBuscar = value; }
     }
 
-    public GridView GridViewConsultarEliminarUsuario 
+    public RequiredFieldValidator ValidarNombreVacio
     {
-        get { return uxConsultaEliminarUsuario;}
-        set { uxConsultaEliminarUsuario=value;} 
+        get { return uxRequiredFieldValidator; }
+        set { uxRequiredFieldValidator = value; }
     }
-    public ObjectContainerDataSource GetObjectContainerConsultaEliminarUsuario 
+
+    public RequiredFieldValidator ValidarNoSeleccion
     {
-        get { return uxObjectConsultaEliminarUsuario;}
-        set { uxObjectConsultaEliminarUsuario=value;} 
+        get { return uxRequiredFieldValidator2; }
+        set { uxRequiredFieldValidator2 = value; }
+    }
+
+    public DropDownList StatusDdL
+    {
+        get { return uxStatusDdL; }
+        set { uxStatusDdL = value; }
+    }
+
+    public RadioButtonList RbCampoBusqueda
+    {
+        get { return uxRbCampoBusqueda; }
+        set { uxRbCampoBusqueda = value; }
+    }
+
+    public MultiView MultiViewEliminar
+    {
+        get { return uxMultiViewEliminar; }
+        set { uxMultiViewEliminar = value; }
+    }
+
+    public GridView GridViewConsultarEliminarUsuario
+    {
+        get { return uxConsultaEliminarUsuario; }
+        set { uxConsultaEliminarUsuario = value; }
+    }
+    public ObjectContainerDataSource GetObjectContainerConsultaEliminarUsuario
+    {
+        get { return uxObjectConsultaEliminarUsuario; }
+        set { uxObjectConsultaEliminarUsuario = value; }
     }
     #endregion
 
@@ -70,57 +126,74 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
 
     public void PintarInformacionBotonAceptar(string mensaje, string estilo)
     {
-        //uxMensajeInformacionBotonAceptar.PintarControl(mensaje, estilo);
+        uxMensajeInformacionBotonAceptar.PintarControl(mensaje, estilo);
     }
 
     public bool InformacionVisibleBotonAceptar
     {
-       get { return uxMensajeInformacionBotonAceptar.Visible; }
-       set { uxMensajeInformacionBotonAceptar.Visible = value; }
+        get { return uxMensajeInformacionBotonAceptar.Visible; }
+        set { uxMensajeInformacionBotonAceptar.Visible = value; }
     }
 
     #endregion
 
     #endregion
-    /* public void Mensaje(string msg)
-    {
-        Label lbl = new Label();
-        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
-        Page.Controls.Add(lbl);
-    }*/
+
     #region Metodos
     protected void Page_Init(object sender, EventArgs e)
     {
 
         Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-
+        Core.LogicaNegocio.Entidades.Permiso _permiso = new
+                        Core.LogicaNegocio.Entidades.Permiso();
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        _presenter = new EliminarUsuarioPresenter();
+
+        _permiso = _presenter.ConsultarIdPermiso();
+
+        int idPermiso = _permiso.IdPermiso;
+
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 32)
+            //int conteo = usuario.PermisoUsu.Count;
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new EliminarUsuarioPresenter(this);
+                    _presentador = new EliminarUsuarioPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
             }
-        }
 
-        if (permiso == false)
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
+            }
+
+        }
+        catch (NullReferenceException a)
         {
-            Response.Redirect(paginaSinPermiso);
+            //_presentador = new EliminarUsuarioPresenter(this);
+
+            //_presentador.sesionTerminada();
+
+            Response.Redirect(paginaDefault);
+
+            //throw new PermisoException("No posee privilegios para ver esta pagina", a);
         }
 
     }
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        
+
         _presentador.uxObjectConsultaEliminarUsuarioSelecting
-                               (GridViewConsultarEliminarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
+                    (uxConsultaEliminarUsuario.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -133,7 +206,13 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
     {
         _presentador.OnBotonBuscar();
     }
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CampoBusqueda_Selected();
+    }
     #endregion
+
 }
 
 

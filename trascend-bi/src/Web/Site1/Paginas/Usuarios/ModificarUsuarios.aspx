@@ -25,47 +25,71 @@
                 <div class="features_overview"> 
                     <div class="features_overview_right"> 
                         <h3>Modificar Usuario</h3> 
-                        <p class="large">Introduzca el Nombre de Usuario</p> 
-
-                        <p class="large"></p>
-
-                        <form id="Form1" action="#" runat="server">
+                        <p class="large">Introduzca la informacion a continuación</p> 
+                       
+<form id="Form1" action="#" runat="server">
 
                             <asp:MultiView ID="uxMultiViewModificar" runat="server" ActiveViewIndex="0">
                                 <asp:View ID="ViewConsultaUsuario" runat="server">
-
+                                <span style="text-align:center"><uc3:MensajeInformacionBotonAceptar ID="uxMensajeInformacionBotonAceptar" runat="server" Visible="false" />
+                                  </span>
+                                    <p><div style="background-color:InfoBackground">Consultar usuario</div>
                                     <br />
                                     <table width="70%">
-                                        <tr>
-                                            <td>Nombre de Usuario:</td>
-                                            <td><asp:TextBox ID="uxLogin" runat="server"></asp:TextBox></td>
-
+                                    <tr>
                                             <td>
-                                            <asp:Button ID="uxBotonBuscar" runat="server" Text="Buscar" onclick="uxBotonBuscar_Click"/>
-                                        </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>
-                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                                            <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" 
+                                                    onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" 
+                                                    AutoPostBack="true" RepeatColumns="2" Width="610px">
+                                                    <asp:ListItem Value="1" Text="Nombre Usuario"></asp:ListItem> 
+                                                    <asp:ListItem Value="2" Text="Estado Usuario"></asp:ListItem>
+                                                </asp:RadioButtonList>
                                             </td>
-                                        </tr>
-
+                                         </tr>
+                                         <tr><td>&nbsp;</td></tr>
                                         <tr>
-                                            <td></td>
-                                            <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                            ControlToValidate="uxLogin" 
-                                            ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
+                                          <td>
+                                                <asp:Label runat="server" ID="uxLoginLabel" Text="<%$ Resources:DSU, IntroducirUsuario%>" Visible="false"></asp:Label>
+                                                <asp:TextBox ID="uxLogin" runat="server" Visible="false">
+                                                </asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
+                                                ControlToValidate="uxLogin" Visible="false"
+                                                ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
+                                                
+                                                <span style="color:#FF0000"><asp:Label ID="uxAsteriscoStatus" Visible="false" runat="server" Text="<%$ Resources:DSU, Asterisco%>">
+                                        </asp:Label></span><asp:Label runat="server" ID="uxStatusDdLLabel" Text="<%$ Resources:DSU, SeleccioneEstado%>" Visible="false"></asp:Label>
+                                                <asp:DropDownList ID="uxStatusDdL" runat="server" Visible="false">
+                                                    <asp:ListItem Value="ninguno" Text="Seleccionar..."></asp:ListItem>
+                                                    <asp:ListItem Value="Activo" Text="Activo"></asp:ListItem>
+                                                    <asp:ListItem Value="Inactivo" Text="Inactivo"></asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:RequiredFieldValidator id="uxRequiredFieldValidator2" runat="server" ControlToValidate="uxStatusDdL" 
+                   InitialValue="ninguno"  ErrorMessage="<%$ Resources:DSU, FaltaEstadoUsuario %>" Display="Static" /> 
+                                            </td>  
+                                            
+                                        </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                      <tr> <td>
+                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
+                                                    Visible="false" />
+                                            </td></tr>
+                                 </table>
+                                 <table>
+                                        <tr>
+                                    
+                                            <td align="center">
+                                            <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
+                                                Text="<%$ Resources:DSU, Buscar%>" Visible="false" />
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-
-                                                <asp:GridView ID="uxConsultaModificarUsuario" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaModificarUsuario"
+                                           <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                                          </tr>
+                                         <tr><td>&nbsp;</td></tr>
+                                    </table>
+                                     <asp:GridView ID="uxConsultaModificarUsuario" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaModificarUsuario"
                                                 AutoGenerateColumns="False" DataKeyNames="login" AutoGenerateSelectButton="True"
-                                                Width="150%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
-                                                OnSelectedIndexChanging="SelectUsuarios" 
-                                                    onselectedindexchanged="uxConsultaModificarUsuario_SelectedIndexChanged">
+                                                Width="100%" Font-Names="Verdana" Font-Size="Smaller" PageSize="10"
+                                                OnSelectedIndexChanging="SelectUsuarios">
 
                                                     <Columns>
 
@@ -78,30 +102,28 @@
 
                                                     <EmptyDataTemplate>
                                                         <center>
-                                                            <span>No hay data cargada </span>
+                                                            <!--<span>No hay data cargada </span>-->
                                                         </center>
                                                     </EmptyDataTemplate>
 
                                                 </asp:GridView>
-                                            </td>
-                                        </tr>
-                                    </table>
                                 </asp:View>
                                 <asp:View ID="ViewUsuario" runat="server">
 
-                                    <p class="large">Datos del Usuario</p>                    
+                                    <p><div style="background-color:InfoBackground">Datos del usuario</div>
+                                    <br />                    
 
                                     <form id="uxFormConsultarUsuario">
                                         <table style="width:100%;">
                                             <tr>
-                                                <td><b>Usuario:</b></td>
+                                                <td><b><asp:Label runat="server" ID="Label1" Text="<%$ Resources:DSU, Login%>" Visible="true"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxNombreU" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;</td>
                                             </tr>
                                             <tr>
-                                                <td><b>Nombre del Empleado:</b></td>
+                                                <td><b><asp:Label runat="server" ID="Label2" Text="<%$ Resources:DSU, NombreEmpleado%>" Visible="true"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxNombreEmp" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                             <tr>
@@ -109,7 +131,7 @@
 
                                             </tr>
                                             <tr>
-                                                <td><b>Apellido del Empleado:</b></td>
+                                                <td><b><asp:Label runat="server" ID="Label3" Text="<%$ Resources:DSU, ApellidoEmpleado%>" Visible="true"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxApellidoEmp" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                             <tr>
@@ -118,7 +140,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="StatusUsua" runat="server" Text = "Status Usuario" />
+                                                    <b><asp:Label runat="server" ID="Label4" Text="<%$ Resources:DSU, EstadoUsuario%>" Visible="true"></b></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="uxStatusUsuario" runat="server" 
@@ -130,32 +152,48 @@
                                                 <td>&nbsp;</td>
 
                                             </tr>
-                                            <tr>
-                                                <td>&nbsp;</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>&nbsp;</td>
-
-                                            </tr>
-                                            </table>  
+                                           
+                                        </table>  
                                              
-                                        <td>&nbsp; </td>
-
+                                      
                                         <table style="width: 100%; border: 1px solid #799CBE">
-                                            <tr>
-                                                <td>
-                                                &nbsp;</td>
-                                                <td>
-                                                Agregar</td>
-                                                <td>
-                                                Consultar</td>
-                                                <td>
-                                                Modificar</td>
-                                                <td>
-                                                Eliminar</td>
-                                            </tr>
-
+                                           <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td><asp:Label runat="server" ID="Label5" Text="<%$ Resources:DSU, Agregar%>" Visible="false"></asp:Label></td>
+                                                            <td><asp:Label runat="server" ID="Label8" Text="<%$ Resources:DSU, Consultar%>" Visible="false"></asp:Label></td>
+                                                            <td><asp:Label runat="server" ID="Label7" Text="<%$ Resources:DSU, Modificar%>" Visible="false"></asp:Label></td>
+                                                            <td><asp:Label runat="server" ID="Label6" Text="<%$ Resources:DSU, Eliminar%>" Visible="false"></asp:Label></td>
+                                                        </tr>
+                                                          <tr>
+                                                            <td>&nbsp;</td>
+                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td>(<asp:LinkButton ID="lbAllAgregar" runat="server" onclick="lbAllAgregar_Click">todos, </asp:LinkButton>
+                                                                       </td>
+                                                            <td>(<asp:LinkButton ID="lbAllConsultar" runat="server" onclick="lbAllConsultar_Click">todos, </asp:LinkButton>
+                                                                        </td>
+                                                            <td>(<asp:LinkButton ID="lbAllModificar" runat="server" onclick="lbAllModificar_Click">todos, </asp:LinkButton>
+                                                                        </td>
+                                                            <td>(<asp:LinkButton ID="lbAllEliminar" runat="server" onclick="lbAllEliminar_Click">todos </asp:LinkButton>
+                                                                        </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td> <asp:LinkButton ID="lbNoneAgregar" runat="server" onclick="lbNoneAgregar_Click">ninguno)</asp:LinkButton>
+                                                            </td>
+                                                            <td><asp:LinkButton ID="lbNoneConsultar" runat="server" onclick="lbNoneConsultar_Click">ninguno)</asp:LinkButton>
+                                                            </td>
+                                                            <td><asp:LinkButton ID="lbNoneModificar" runat="server" onclick="lbNoneModificar_Click">ninguno)</asp:LinkButton>
+                                                                        </td>
+                                                            <td><asp:LinkButton ID="lbNoneEliminar" runat="server" onclick="lbNoneEliminar_Click">Select None)</asp:LinkButton>
+                                                                        </td>
+                                                        </tr>
+                                              <tr>
+                                                            <td>&nbsp;</td>
+                                                            
+                                                        </tr>
                                             <tr>
                                                 <td> <b>Permisos:</b></td>
                                                 <td align="center"> 
@@ -210,50 +248,69 @@
                                                 </td>
                                                 
                                             </tr>
-                                            
-                                            <table style="width: 100%; border: 1px solid #799CBE">
+                                                <table style="width: 100%; border: 1px solid #799CBE">
                                                     <tr>
-                                                            <td>&nbsp;</td>
-                                                          
-                                                        </tr>
-                                                        
-                                                          <tr>
-                                                            <td>&nbsp;</td>
-                                                            <td>Reportes</td>
-                                                           <td align="center"> 
-                                                                <asp:CheckBoxList ID="uxCBLReporte" runat="server">
-                                                                    <asp:ListItem Value="33" Text="Paquete Anual" ></asp:ListItem>
-                                                                    <asp:ListItem Value="34" Text="Total Anual" ></asp:ListItem>
-                                                                    <asp:ListItem Value="35" Text="Total de Horas Anuales"></asp:ListItem>
-                                                                    <asp:ListItem Value="36" Text="Gastos"></asp:ListItem>
-                                                                    <asp:ListItem Value="37" Text="Gastos Anuales" ></asp:ListItem>
-                                                                    <asp:ListItem Value="38" Text="Facturas Emitidas" ></asp:ListItem>
-                                                                    <asp:ListItem Value="39" Text="Facturas Cobradas" ></asp:ListItem>
-                                                                    <asp:ListItem Value="40" Text="Facturas Por Cobrar" ></asp:ListItem>
-                                                                    <asp:ListItem Value="41" Text="Total Facturas Emitidas" ></asp:ListItem>
-                                                                    <asp:ListItem Value="42" Text="Total Facturas Cobradas" ></asp:ListItem>
-                                                                    <asp:ListItem Value="43" Text="Total Facturas Por Cobrar" ></asp:ListItem>
-                                                                    <asp:ListItem Value="44" Text="Propuestas Emitidas" ></asp:ListItem>
-                                                                    <asp:ListItem Value="45" Text="Total de Propuestas Emitidas" ></asp:ListItem>
-                                                                </asp:CheckBoxList> 
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-
+                                                        <td>
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            &nbsp;</td>
+                                                        <td>
+                                                            
+                                                        </td>
+                                                        <td align="left">
+                                                            (<asp:LinkButton ID="lbAllReporte" runat="server" onclick="lbAllReporte_Click">todos,
+                                                            </asp:LinkButton>
+                                                            <asp:LinkButton ID="lbNoneReporte" runat="server" onclick="lbNoneReporte_Click">ninguno)</asp:LinkButton>
+                                                        </td>
+                                                    </tr>
+                                                     <tr>
+                                                        <td>
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <b>
+                                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:DSU, Reportes%>" 
+                                                                Visible="true"></asp:Label>
+                                                            </b></td>
+                                                        <td>
+                                                            &nbsp;</td>
+                                                        <td align="center">
+                                                            <asp:CheckBoxList ID="uxCBLReporte" runat="server">
+                                                                <asp:ListItem Text="Paquete Anual" Value="33"></asp:ListItem>
+                                                                <asp:ListItem Text="Total Anual" Value="34"></asp:ListItem>
+                                                                <asp:ListItem Text="Total de Horas Anuales" Value="35"></asp:ListItem>
+                                                                <asp:ListItem Text="Gastos" Value="36"></asp:ListItem>
+                                                                <asp:ListItem Text="Gastos Anuales" Value="37"></asp:ListItem>
+                                                                <asp:ListItem Text="Facturas Emitidas" Value="38"></asp:ListItem>
+                                                                <asp:ListItem Text="Facturas Cobradas" Value="39"></asp:ListItem>
+                                                                <asp:ListItem Text="Facturas Por Cobrar" Value="40"></asp:ListItem>
+                                                                <asp:ListItem Text="Total Facturas Emitidas" Value="41"></asp:ListItem>
+                                                                <asp:ListItem Text="Total Facturas Cobradas" Value="42"></asp:ListItem>
+                                                                <asp:ListItem Text="Total Facturas Por Cobrar" Value="43"></asp:ListItem>
+                                                                <asp:ListItem Text="Propuestas Emitidas" Value="44"></asp:ListItem>
+                                                                <asp:ListItem Text="Total de Propuestas Emitidas" Value="45"></asp:ListItem>
+                                                            </asp:CheckBoxList>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                          
+                                                  <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <table>
                                             <tr>
-                                                <td>
-                                                    <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                                <td>&nbsp;</td>
+                                                <td align="right">
+                                                    <asp:Button ID="uxBotonAceptar" runat="server" Text="<%$ Resources:DSU, Aceptar%>" 
                                                     onclick="uxBotonAceptar_Click" />
                                                 </td>
                                             </tr>
                                             
-                                            <tr>
-                                            <td>
-                                                <uc3:MensajeInformacionBotonAceptar ID="uxMensajeInformacionBotonAceptar" runat="server" Visible="false" />
-                                            </td>
-                                        </tr>
-
-
+                                         
                                         </table>
                                     </form>
 

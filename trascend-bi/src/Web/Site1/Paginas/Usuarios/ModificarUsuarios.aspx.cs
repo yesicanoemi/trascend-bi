@@ -7,6 +7,7 @@ using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Aplicacion;
+using Core.LogicaNegocio.Excepciones;
 
 public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificarUsuario
 {
@@ -14,6 +15,8 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
     #region Propiedades
 
     private ModificarUsuarioPresenter _presentador;
+
+    private ModificarUsuarioPresenter _presenter;
 
     #endregion
 
@@ -60,10 +63,40 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     #endregion
 
+    public Label AsteriscoStatus
+    {
+        get { return uxAsteriscoStatus; }
+        set { uxAsteriscoStatus = value; }
+    }
+
+    /*public Label AsteriscoLogin
+    {
+        get { return uxAsteriscoLogin; }
+        set { uxAsteriscoLogin = value; }
+    }*/
+
+    public Label NombreUsuarioLabel
+    {
+        get { return uxLoginLabel; }
+        set { uxLoginLabel = value; }
+    }
+
+    public Label StatusDdLLabel
+    {
+        get { return uxStatusDdLLabel; }
+        set { uxStatusDdLLabel = value; }
+    }
+
     public TextBox NombreUsuario
     {
         get { return uxLogin; }
         set { uxLogin = value; }
+    }
+
+    public DropDownList StatusDdL
+    {
+        get { return uxStatusDdL; }
+        set { uxStatusDdL = value; }
     }
 
     public MultiView MultiViewModificar
@@ -138,6 +171,29 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         set { uxStatusUsuario = value; }
     }
 
+    public RadioButtonList RbCampoBusqueda
+    {
+        get { return uxRbCampoBusqueda; }
+        set { uxRbCampoBusqueda = value; }
+    }
+
+    public Button BotonBuscar
+    {
+        get { return uxBotonBuscar; }
+        set { uxBotonBuscar = value; }
+    }
+
+    public RequiredFieldValidator ValidarNombreVacio
+    {
+        get { return uxRequiredFieldValidator; }
+        set { uxRequiredFieldValidator = value; }
+    }
+
+    public RequiredFieldValidator ValidarNoSeleccion
+    {
+        get { return uxRequiredFieldValidator2; }
+        set { uxRequiredFieldValidator2 = value; }
+    }
     #endregion
 
     #region Métodos
@@ -159,24 +215,41 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
+        Core.LogicaNegocio.Entidades.Permiso _permiso = new
+                               Core.LogicaNegocio.Entidades.Permiso();
+
+        _presenter = new ModificarUsuarioPresenter();
+
+        _permiso = _presenter.ConsultarIdPermiso();
+
+        int idPermiso = _permiso.IdPermiso;
+
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 31)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new ModificarUsuarioPresenter(this);
+                    _presentador = new ModificarUsuarioPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            Response.Redirect(paginaDefault);
+            //throw new PermisoException("No posee privilegios para ver esta pagina", a);
         }
 
     }
@@ -203,10 +276,90 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     }
 
-    #endregion
+  
 
     protected void uxConsultaModificarUsuario_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CampoBusqueda_Selected();
+    }
+
+    protected void lbAllAgregar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLAgregar.Items)
+        {
+            li.Selected = true;
+        }
+    }
+    protected void lbNoneAgregar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLAgregar.Items)
+        {
+            li.Selected = false;
+        }
+    }
+
+    protected void lbAllConsultar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLConsultar.Items)
+        {
+            li.Selected = true;
+        }
+    }
+    protected void lbNoneConsultar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLConsultar.Items)
+        {
+            li.Selected = false;
+        }
+    }
+    protected void lbAllModificar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLModificar.Items)
+        {
+            li.Selected = true;
+        }
+    }
+    protected void lbNoneModificar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLModificar.Items)
+        {
+            li.Selected = false;
+        }
+    }
+    protected void lbAllEliminar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLEliminar.Items)
+        {
+            li.Selected = true;
+        }
+    }
+    protected void lbNoneEliminar_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLEliminar.Items)
+        {
+            li.Selected = false;
+        }
+    }
+    protected void lbAllReporte_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLReporte.Items)
+        {
+            li.Selected = true;
+        }
+
+    }
+    protected void lbNoneReporte_Click(object sender, EventArgs e)
+    {
+        foreach (ListItem li in CBLReporte.Items)
+        {
+            li.Selected = false;
+        }
+
+    }
+    #endregion
 }
