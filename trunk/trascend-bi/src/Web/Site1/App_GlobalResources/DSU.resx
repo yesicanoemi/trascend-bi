@@ -501,4 +501,7 @@
   <data name="SeleccioneEstadoObligatorio" xml:space="preserve">
     <value>* Seleccione estado:</value>
   </data>
+  <data name="NombreEmpleadoAgregar" xml:space="preserve">
+    <value>Nombre Empleado:</value>
+  </data>
 </root>
