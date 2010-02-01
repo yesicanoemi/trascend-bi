@@ -178,19 +178,20 @@ namespace Presentador.Propuesta.Vistas
 
             _vista.MontoTotal.Text = "";
 
-            _vista.CargoReceptor.Text = "";
+            //_vista.CargoReceptor.Text = "";
 
             _vista.ApellidoReceptor.Text = "";
 
             _vista.NombreReceptor.Text = "";
-
-            _vista.NombreReceptor.Text = "";
-
-            _vista.ApellidoReceptor.Text = "";
 
             _vista.RolEquipo1.Text = "";
 
             _vista.TotalHoras.Text = "";
+
+            for (int i = 0; i < _vista.TrabajoEquipo.Items.Count; i++)
+            {
+                _vista.TrabajoEquipo.Items[i].Selected = false;
+            }
         }
 
         public void ConsultarCargos()
