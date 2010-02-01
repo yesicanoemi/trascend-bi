@@ -813,7 +813,7 @@ namespace Core.AccesoDatos.SqlServer
             }
         }
 
-        public Cliente ConsultarRif(Cliente cliente)
+        public IList<Cliente> ConsultarRif(Cliente cliente)
         {
             try
             {
@@ -831,7 +831,7 @@ namespace Core.AccesoDatos.SqlServer
                 int i = 0;
 
 
-                if (conexion.Read())
+                while (conexion.Read())
                 {
                     cliente = new Cliente();
 
@@ -865,11 +865,11 @@ namespace Core.AccesoDatos.SqlServer
 
                     //_listaContacto = BuscarContacto(cliente.IdCliente);
 
-                    i++;
+                    listaCliente.Add(cliente);
                 }
 
 
-                return cliente;
+                return listaCliente;
 
             }
 

@@ -34,8 +34,8 @@ namespace Core.AccesoDatos.Interfaces
         /// Consulta un cliente por su RIF
         /// </summary>
         /// <param name="cliente">El Cliente a Consultar</param>
-        /// <returns>El cliente resultante</returns>
-        Cliente ConsultarRif(Cliente cliente);
+        /// <returns>El resultado de clientes</returns>
+        IList<Cliente> ConsultarRif(Cliente cliente);
 
         /// <summary>
         /// Consulta todos los clientes

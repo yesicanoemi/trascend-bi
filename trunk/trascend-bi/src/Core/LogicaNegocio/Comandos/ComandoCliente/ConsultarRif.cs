@@ -33,7 +33,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
             Cliente cliente = new Cliente();
             IDAOCliente bdcliente = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
-            cliente = bdcliente.ConsultarRif(_cliente);
+            //cliente = bdcliente.ConsultarRif(_cliente);
             return cliente;
 
         }
