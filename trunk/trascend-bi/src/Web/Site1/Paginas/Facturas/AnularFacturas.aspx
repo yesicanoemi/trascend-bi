@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true"
-    CodeFile="AnularFacturas.aspx.cs" Inherits="Paginas_Facturas_EliminarFacturas" %>
+    CodeFile="AnularFacturas.aspx.cs" Inherits="Paginas_Facturas_AnularFacturas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav">
@@ -19,48 +19,117 @@
             <div class="sub-content">
                 <div class="features_overview">
                     <div class="features_overview_right">
-                        <form id="Form1" runat="server">
                         <h3>
-                            Eliminar Facturas</h3>
-                        <p class="small">
-                            Introduzca el N° de factura a Anular</p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anular Factura</h3>
+                        <form id="Form1" action="#" runat="server">
                         <p class="large">
-                            <table style="width: auto">
+                            <table style="width: 75%;">
                                 <tr>
                                     <td>
-                                        <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxBusqueda" runat="server" TabIndex="1"></asp:TextBox>
+                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda"
+                                            FilterType="Numbers" ID="FilteredTextBoxExtender1" runat="server">
+                                        </AjaxControlToolkit:FilteredTextBoxExtender>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                            ControlToValidate="uxBusqueda" 
+                                            ErrorMessage="<%$ Resources:DSU, FaltaNumeroFactura%>" Font-Size="Smaller" Display="None" />
+                                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1" 
+                                            TargetControlID="RequiredFieldValidator1" />
                                     </td>
-                                    <td>
-                                        <asp:Button ID="uxBusquedaBoton" runat="server" Text="Buscar" OnClick="uxBusquedaBoton_Click" />
+                                    <td align="center">
+                                        <asp:Button ID="uxBusquedaBoton" runat="server" Text="Buscar" OnClick="uxBusquedaBoton_Click" TabIndex="2" />
                                     </td>
                                 </tr>
                             </table>
-                        </p>
-                        <p class="small">
-                            <asp:GridView ID="uxDetalleFactura" runat="server" AutoGenerateRows="false" AutoGenerateColumns="false">
-                                <Columns>
-                                    <asp:BoundField HeaderText="N°" DataField="Numero" runat="server"></asp:BoundField>
-                                    <asp:BoundField HeaderText="Titulo" DataField="Titulo" runat="server"></asp:BoundField>
-                                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" runat="server"></asp:BoundField>
-                                    <asp:BoundField HeaderText="%" DataField="Procentajepagado" runat="server"></asp:BoundField>
-                                    <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" runat="server"></asp:BoundField>
-                                    <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblprop" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.Titulo") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Monto" AccessibleHeaderText="Monto">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblmont" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.MontoTotal") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                        </p>
-                        <p>
-                            <br />
-                            <br />
-                            <asp:Button ID="btAnular" runat="server" Text="Anular" OnClick="btAnular_Click" />
+                            
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            
+                            <table style="width: 100%;" visible="false" ID="tbDatos" runat="server">
+                            
+                            <tr>
+                                <td><asp:Label ID="lbDatosPropuesta" runat="server" Text="Datos de la Propuesta" Font-Bold="true"></asp:Label></td>                                
+                                <td></td> 
+                            </tr>   
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>                      
+                            
+                            <tr>
+                                <td><asp:Label ID="lbNombre" runat="server" Text="Titulo:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbNombrePropuesta" runat="server"></asp:Label></td> 
+                            </tr>    
+                            <tr>
+                                <td><asp:Label ID="lbMonto" runat="server" Text="Monto:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbMontoPropuesta" runat="server"></asp:Label></td> 
+                            </tr>
+                            
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><asp:Label ID="lbDatosFactura" runat="server" Text="Datos de la Factura" Font-Bold="true"></asp:Label></td>                                
+                                <td></td> 
+                            </tr>
+                            
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr> 
+                            
+                            <tr>
+                                <td><asp:Label ID="lbNumero" runat="server" Text="Numero:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbNumeroFactura" runat="server"></asp:Label></td> 
+                            </tr>
+                            <tr>
+                                <td><asp:Label ID="lbTitulo" runat="server" Text="Titulo:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbTituloFactura" runat="server"></asp:Label></td> 
+                            </tr>
+                            <tr>
+                                <td><asp:Label ID="lbDescripcion" runat="server" Text="Descripcion:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbDescripcionFactura" runat="server"></asp:Label></td> 
+                            </tr>
+                            <tr>
+                                <td><asp:Label ID="lbFecha" runat="server" Text="Fecha Ingreso:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbFechaFactura" runat="server"></asp:Label></td> 
+                            </tr>
+                            <tr>
+                                <td><asp:Label ID="lbPorcentaje" runat="server" Text="Porcentaje:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbPorcentajeFactura" runat="server"></asp:Label></td> 
+                            </tr>
+                            <tr>
+                                <td><asp:Label ID="lbTotal" runat="server" Text="Total Factura:"></asp:Label></td>                                
+                                <td><asp:Label ID="lbTotalFactura" runat="server" ></asp:Label></td> 
+                            </tr>
+
+                            
+                            </table>
+                            
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            
+                            <table style="width: 75%;">
+                                <tr>
+                                    <td style="width: 73%;">
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="btAnular" runat="server" Text="Anular" Visible="false" 
+                                        OnClick="btAnular_Click" OnClientClick="return confirm('Esta seguro que quiere anular ésta factura?');"   
+                                        TabIndex="3" />
+                                    </td>
+                                </tr>
+                            </table>
                         </p>
                         </form>
                     </div>
