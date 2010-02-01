@@ -123,6 +123,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ModificarContacto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargo.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargoNuevo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarE.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarEmpleado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="LogicaNegocio\Entidades\Cargo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Cliente.cs" />
     <Compile Include="LogicaNegocio\Entidades\Entidad.cs" />
+    <Compile Include="LogicaNegocio\Entidades\EstadoEmpleado.cs" />
     <Compile Include="LogicaNegocio\Entidades\Permiso.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonoceular.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonofax.cs" />

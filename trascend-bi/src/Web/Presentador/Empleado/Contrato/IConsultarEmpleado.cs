@@ -9,14 +9,15 @@ namespace Presentador.Empleado.Contrato
 {
     public interface IConsultarEmpleado
     {
-        DropDownList opcion { get; set; }
-        DropDownList SeleccionCargo { get; set; }
+        TextBox ParametroCedula{ get; set;}
+        RadioButtonList opcion { get; set; }
+        //DropDownList SeleccionCargo { get; set; }
         MultiView MultiViewConsultar { get; set; }
         GridView GridViewConsultarEmpleado { get; set; }
         ObjectContainerDataSource GetOCConsultarEmp { get; set; }
         TextBox TextBoxParametro { get; set; }
-        Label LabelSelec { get; set; }
-        Label LabelParametro { get; set; }
+        //Label LabelSelec { get; set; }
+        //Label LabelParametro { get; set; }
         Label LabelCI { get; set; }
         Label LabelNombre { get; set; }
         Label LabelApellido { get; set; }
@@ -30,6 +31,13 @@ namespace Presentador.Empleado.Contrato
         Label LabelDirCiudad { get; set; }
         Label LabelCargo { get; set; }
         Label LabelEstado { get; set; }
+        Button Aceptar { get; set; }
+        DropDownList drowListaCargo
+        {
+            get;
+            set;
+        }
+
     }
 }
 

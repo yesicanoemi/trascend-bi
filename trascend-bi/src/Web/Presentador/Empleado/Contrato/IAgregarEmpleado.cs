@@ -24,6 +24,7 @@ namespace Presentador.Empleado.Contrato
         string RangoSueldo { get; set; }
         bool RangoVisible { get; set; }
         DropDownList ComboCargos { get; set; }
+        Label MensajeError { get; set; }
         #endregion
         #region Dialogo
         bool DialogoVisible { get; set; }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
 {
@@ -30,10 +33,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public IList<Empleado> Ejecutar()
         {
-            DAOEmpleadoSQLServer acceso = new DAOEmpleadoSQLServer();
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOEmpleado acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOEmpleado();            
+            
             _empleado2 = acceso.ConsultarPorTipoCargo(empleado);
 
             return _empleado2;
+
+            
         }
         #endregion
     }

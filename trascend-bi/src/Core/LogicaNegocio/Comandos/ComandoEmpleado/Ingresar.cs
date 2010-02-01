@@ -30,7 +30,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #endregion
 
         #region Metodos
-        public void Ejecutar()
+        public Empleado Ejecutar()
         {
             Empleado _empleado = null;
             /*DAOEmpleadoSQLServer bd = new DAOEmpleadoSQLServer();
@@ -41,6 +41,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
             IDAOEmpleado acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOEmpleado();
 
             _empleado = acceso.Ingresar(empleado);
+
+            return _empleado;
 
            
         }

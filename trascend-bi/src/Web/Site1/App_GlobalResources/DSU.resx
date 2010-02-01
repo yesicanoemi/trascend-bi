@@ -124,7 +124,7 @@
     <value>^([a-zA-Z](?:(?:(?:\w[\._]?)*)\w)+)([a-zA-Z0-9])$</value>
   </data>
   <data name="ERNumCuentaEmpleado" xml:space="preserve">
-    <value>^\d{1,7}$</value>
+    <value>^\d{12}$</value>
   </data>
   <data name="ERPassword" xml:space="preserve">
     <value>^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&amp;+=]).*$</value>
@@ -139,7 +139,7 @@
     <value>El nombre de usuario no posee el formato adecuado</value>
   </data>
   <data name="ErrorFormatoNumCuentaEmpleado" xml:space="preserve">
-    <value>Error en en el formato del numero de cuenta (Solo numeros)</value>
+    <value>Error en en el formato del numero de cuenta (Solo numeros) acepta 12 digitos </value>
   </data>
   <data name="ErrorFormatoPassword" xml:space="preserve">
     <value>Error en el formato de la contraseña</value>
@@ -408,7 +408,15 @@
   <data name="FaltaParametroBusqueda" xml:space="preserve">
     <value>Debe introducir valor de parámetro de búsqueda</value>
   </data>
+  <data name="ERFormatoNumCedula" xml:space="preserve">
+    <value>^\d{8}$</value>
+  </data>
+  <data name="ErrorFormatoNumCedula" xml:space="preserve">
+    <value>Solo acepta numeros acepta solamente 8 digitos</value>
+  </data>
+
   <data name="CampoObligatorio" xml:space="preserve">
     <value>Los campos con * son de caracter obligatorio</value>
   </data>
+
 </root>

@@ -46,7 +46,7 @@ namespace Presentador.Empleado.Vistas
                 empleado.Direccion.Urbanizacion = _vista.UrbanizacionEmpleado.Text;
                 empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
                 Ingresar(empleado);
-                LimpiarRegistros();
+                
             }
             catch (WebException e)
             {
@@ -134,13 +134,16 @@ namespace Presentador.Empleado.Vistas
             _vista.CuentaEmpleado.Text = campoVacio;
             _vista.CedulaEmpleado.Text = campoVacio;
             _vista.ApellidoEmpleado.Text = campoVacio;
-            _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
+            _vista.FechaNacEmpleado.Text = campoVacio;
+            
         }
         #endregion
 
         #region Comando
         public void Ingresar(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
+            Core.LogicaNegocio.Entidades.Empleado _empleado;
+
             try
             {
                 Core.LogicaNegocio.Comandos.ComandoEmpleado.Ingresar ingresar; //objeto del comando Ingresar.
@@ -151,7 +154,26 @@ namespace Presentador.Empleado.Vistas
                 //try
                 //{    
                 //ejecuta el comando.
-                ingresar.Ejecutar();
+                 _empleado = ingresar.Ejecutar();
+                 if (_empleado.Id == -1) 
+                 {
+                     _vista.MensajeError.Text = "Operacion Fallida: No se pudo ingresar el empleado";
+                     _vista.MensajeError.Visible = true;
+                 }
+                 else if (_empleado.Id == -2)
+                 {
+                     _vista.MensajeError.Text = "Operacion Fallida: No se pudo ingresaro el empleado";
+                     _vista.MensajeError.Visible = true;
+                 }
+                 else
+                 {
+                     _vista.MensajeError.Text = "El empleado se agrego con exito";
+                     _vista.MensajeError.Visible = true;
+                 }
+                
+                LimpiarRegistros();
+                
+
             }
             catch (Exception e)
             {

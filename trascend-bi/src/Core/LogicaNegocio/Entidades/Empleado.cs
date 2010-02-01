@@ -29,6 +29,7 @@ namespace Core.LogicaNegocio.Entidades
                 id = value;
             }
         }
+
         public virtual int Cedula
         {
             get
