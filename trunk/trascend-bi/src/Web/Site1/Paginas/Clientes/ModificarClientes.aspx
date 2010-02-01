@@ -51,7 +51,7 @@
                                            
                                         
                                             <td align="center">
-                                               <asp:TextBox ID="uxNombreCliente" runat="server" ontextchanged="uxNombreCliente_TextChanged"> </asp:TextBox></td>
+                                               <asp:TextBox ID="uxCampoBusqueda" runat="server" ontextchanged="uxNombreCliente_TextChanged"> </asp:TextBox></td>
                                     <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
                                                  TargetControlID="uxNombreCliente"
                                                  CompletionInterval="1000"
@@ -128,7 +128,7 @@
                                             <asp:ListItem Value="V">V</asp:ListItem>
                                             <asp:ListItem Value="E">E</asp:ListItem>
                                         </asp:DropDownList>
-                                        &nbsp;&nbsp; -<asp:TextBox ID="uxRif0" runat="server" MaxLength="9" Width="87px"></asp:TextBox>
+                                        &nbsp;&nbsp; -<asp:TextBox ID="uxRif" runat="server" MaxLength="9" Width="87px"></asp:TextBox>
                                         &nbsp;<span style="color: #FF0000"> </span>
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" 
                                             runat="server" FilterType="Custom, Numbers" TargetControlID="uxRif">
@@ -156,7 +156,7 @@
                                  <tr>
 		                            <td><span style="color: #FF0000">* </span>Nombre:</td>
 		                            <td>
-                                        <asp:TextBox ID="uxNombreCliente0" runat="server" MaxLength="32"></asp:TextBox>
+                                        <asp:TextBox ID="uxNombreCliente" runat="server" MaxLength="32"></asp:TextBox>
                                         &nbsp;</td>        		               
 		                        </tr>
                                <tr>
@@ -228,7 +228,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span style="color: #FF0000">* </span>Piso</td>
+                                                    <span style="color: #FF0000">* </span>Oficina</td>
                                                 <td>
                                                     <asp:TextBox ID="uxPisoApartamento" runat="server" MaxLength="20"></asp:TextBox>
                                                     &nbsp;

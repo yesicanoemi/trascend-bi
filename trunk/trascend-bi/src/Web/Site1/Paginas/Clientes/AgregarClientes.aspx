@@ -127,7 +127,7 @@
                                    </td>
                                </tr>
                                 <tr>
-                                   <td><span style="color: #FF0000">* </span>Piso</td>
+                                   <td><span style="color: #FF0000">* </span>Oficina</td>
                                    <td><asp:TextBox ID="uxPisoApartamento" runat="server" MaxLength="20"></asp:TextBox>&nbsp;
                                        </td>
                                </tr>
