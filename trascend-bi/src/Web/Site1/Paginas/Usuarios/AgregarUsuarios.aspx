@@ -113,8 +113,8 @@
                                             </tr>
                                        
                                             <tr>
-                                                <td><b><asp:Label runat="server" ID="Label3" Text="<%$ Resources:DSU, NombreEmpleado %>"></asp:Label></b></td>
-                                                <td><asp:Label ID="uxNombreEmp" runat="server" Text=""></asp:Label></td>
+                                                <td><b><asp:Label runat="server" ID="Label3" Text="<%$ Resources:DSU, NombreEmpleadoAgregar %>"></asp:Label></b></td>
+                                                <td><asp:Label ID="uxNombreEmp" runat="server"></asp:Label></td>
                                             </tr>
                                         
                                             <tr>
