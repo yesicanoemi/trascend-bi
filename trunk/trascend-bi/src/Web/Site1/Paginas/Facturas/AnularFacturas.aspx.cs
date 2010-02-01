@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Presentador.Factura.Contrato;
 using Presentador.Factura.Vistas;
+using Microsoft.Practices.Web.UI.WebControls;
 
 
 public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactura
@@ -70,6 +71,7 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
 
     #endregion
 
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -112,5 +114,7 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
     protected void btAnular_Click(object sender, EventArgs e)
     {
         _presenter.AnularFactura();
+        btAnular.Visible = false;
+        tbDatos.Visible = false;
     }
 }

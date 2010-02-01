@@ -259,6 +259,10 @@ namespace Core.AccesoDatos.SqlServer
 
                     factura.Estado = reader["EstadoFactura"].ToString();
 
+                    factura.Prop.Titulo = reader["Titulopropuesta"].ToString();
+
+                    factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
+
                 }
                 else
                     throw new ConsultarFacturaADException();
