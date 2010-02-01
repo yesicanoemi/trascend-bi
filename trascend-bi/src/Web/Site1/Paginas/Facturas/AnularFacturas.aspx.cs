@@ -128,11 +128,13 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
         _presenter.ConsultarFactura();
+        lbMensaje.Text = "";
     }
 
     protected void btAnular_Click(object sender, EventArgs e)
     {
         _presenter.AnularFactura();
+        DesactivarElementos();
     }
 
     public void ActivarElementos()
@@ -145,6 +147,7 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
     {
         tbDatos.Visible = false;
         btAnular.Visible = false;
+        Busqueda.Text = "";
     }
 
 }
