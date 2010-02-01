@@ -43,166 +43,136 @@
                                 
                                   <p>Introduzca los campos según su tipo de búsqueda</p> 
                                     
-                                    <br />
                                     
-                                    <table width="">
-                                          <tr>  
-                                            <td align="right">
-                                                <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" Width=""  
-                                                    onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" AutoPostBack="true">
-                                                    <asp:ListItem Value="1" Text="Nombre de Contacto"></asp:ListItem> 
-                                                    <asp:ListItem Value="2" Text="Teléfono de Contacto"></asp:ListItem>
-                                                    <asp:ListItem Value="3" Text="Cliente"></asp:ListItem>
-                                                </asp:RadioButtonList>
-                                            </td>
-                                           
+                                    <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server"
+                                        style="padding: 30px; margin: 0px;  COLOR: white;POSITION: absolute;"
+                                        onselectedindexchanged="uxRbCampoBusqueda_SelectedIndexChanged" AutoPostBack="true">
+                                        <asp:ListItem Value="1" Text="Nombre de Contacto"></asp:ListItem> 
+                                        <asp:ListItem Value="2" Text="Teléfono de Contacto"></asp:ListItem>
+                                        <asp:ListItem Value="3" Text="Cliente"></asp:ListItem>
+                                    </asp:RadioButtonList>
+                                    
+                                    <asp:TextBox ID="uxConsultaNombreContacto" runat="server" Visible="false" 
+                                        style="left:350px; POSITION: absolute; TOP: 160px;">
+                                        </asp:TextBox>
                                         
-                                            <td align="center">
-                                              
-                                                <table>
-                                                    <tr>
-                                                   
-                                                        <td align="right">
-                                                            <asp:TextBox ID="uxConsultaNombreContacto" runat="server" Visible="false">
-                                                            </asp:TextBox>
-                                                            <asp:TextBox ID="uxConsultaCodigoContacto" MaxLength=3 runat="server" Visible="false" Width="40">
-                                                            </asp:TextBox>
-                                                        </td>
-                                                        <td align="left">
-                                                            <asp:TextBox ID="uxConsultaApellidoContacto" runat="server" Visible="false">
-                                                            </asp:TextBox>
-                                                            
-                                                            <asp:TextBox ID="uxConsultaTelefonoContacto" MaxLength=7 runat="server" Visible="false">
-                                                            </asp:TextBox>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                    <tr>
-                                                        <td align="center"><asp:Label ID="uxNombreContacto" runat="server" Visible="false" Text="Nombre del Contacto"></asp:Label></td>
-                                                        <td align="center"><asp:Label ID="uxApellidoContacto" runat="server" Visible="false" Text="Apellido del Contacto"></asp:Label></td>
-                                                    </tr>
-                                                    <tr>
-                                                         <td align="right"><asp:Label ID="uxCodigo" runat="server" Visible="false" Text="Código<br>(Ej.212)"></asp:Label></td>
-                                                        <td align="center"><asp:Label ID="uxTlf" runat="server" Visible="false" Text="Teléfono<br>(Ej. 2386546)"></asp:Label></td>
-                                                    </tr>
-                                                    
-                                                    <tr align="center">
-                                                        <td align="center">
-                                                        <asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
-                                                            ControlToValidate="uxConsultaCodigoContacto" Visible="false"
-                                                            ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller" Display="Static" />
-                                                        </td>
-                                                         <td align="center">
-                                                            <asp:RequiredFieldValidator ID="uxRequiredFieldValidator1" runat="server" 
-                                                            ControlToValidate="uxConsultaTelefonoContacto" Visible="false"
-                                                            ErrorMessage="<%$ Resources:DSU,FaltaTelfono%>" Font-Size="Smaller" Display="Static" />
-                                                    </td> 
-                                                   </tr>
-                                                   
-                                                  
-                                                 <tr align="center">
-                                                 <td align="center">
-                                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxConsultaTelefonoContacto" FilterType="Custom, Numbers"
+                                    <asp:Label ID="uxNombreContacto" runat="server" Visible="false" Text="Nombre del Contacto"
+                                        style="left:400px; POSITION: absolute; TOP: 180px;">
+                                        </asp:Label>
+                                        
+                                    <asp:TextBox ID="uxConsultaApellidoContacto" runat="server" Visible="false" 
+                                        style=" left:550px; position: absolute; TOP: 160px;">
+                                        </asp:TextBox>
+                                    
+                                    <asp:Label ID="uxApellidoContacto" runat="server" Visible="false" Text="Apellido del Contacto"
+                                        style="left:600px; POSITION: absolute; TOP: 180px;">
+                                        </asp:Label>
+                                        
+                                    <asp:TextBox ID="uxConsultaCodigoContacto" MaxLength=3 runat="server" Visible="false" Width="40"
+                                        style="left:430px; POSITION: absolute; TOP: 160px;">
+                                        </asp:TextBox>    
+                                    
+                                    <asp:Label ID="uxCodigo" runat="server" Visible="false" Text="Código<br>(Ej.212)"
+                                        style="left:450px; POSITION: absolute; TOP: 180px;">
+                                        </asp:Label>
+                                    
+                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator" runat="server" 
+                                        ControlToValidate="uxConsultaCodigoContacto" Visible="false"
+                                        ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller" Display="Static"
+                                        style="left:470px; POSITION: absolute; TOP: 220px;"/> 
+                                                        
+                                    <asp:TextBox ID="uxConsultaTelefonoContacto" MaxLength=7 runat="server" Visible="false"
+                                        style="left:480px; POSITION: absolute; TOP: 160px;">
+                                        </asp:TextBox>
+                                            
+                                    <asp:Label ID="uxTlf" runat="server" Visible="false" Text="Teléfono<br>(Ej. 2386546)"
+                                        style="left:550px; POSITION: absolute; TOP: 180px;">
+                                        </asp:Label>
+                                   
+                                    <asp:RequiredFieldValidator ID="uxRequiredFieldValidator1" runat="server" 
+                                        ControlToValidate="uxConsultaTelefonoContacto" Visible="false"
+                                        ErrorMessage="<%$ Resources:DSU,FaltaTelfono%>" Font-Size="Smaller" Display="Static" 
+                                        style="left:470px; POSITION: absolute; TOP: 230px;"/>    
+                                        
+                                     <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxConsultaTelefonoContacto" FilterType="Custom, Numbers"
                                                             ValidChars="<%$ Resources:DSU,ERFormatoTelefono%>" ID="FilteredTextBoxExtender1"
                                                             runat="server">
-                                                        </AjaxControlToolkit:FilteredTextBoxExtender>
-                                                     </td>  
-                                                     
-                                                      <td align="center">
-                                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxConsultaCodigoContacto" FilterType="Custom, Numbers"
+                                     </AjaxControlToolkit:FilteredTextBoxExtender>
+                                                        
+                                     <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxConsultaCodigoContacto" FilterType="Custom, Numbers"
                                                             ValidChars="<%$ Resources:DSU,ERFormatoCodigoTelefono%>" ID="FilteredTextBoxExtender2"
                                                             runat="server">
-                                                        </AjaxControlToolkit:FilteredTextBoxExtender>
-                                                    </td>
-                                                    
-                                                   
-                                                 </tr> 
-                                                
-                                            
-                                                </table>
-                                                
-                                                 
-                                                        <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
-                                                    
-                                                
-                                                <asp:Label ID="uxNombreCliente" runat="server" Visible="false" Text="Nombre del Cliente"></asp:Label>
-                                                <asp:DropDownList ID="uxConsultaClienteContacto" runat="server" Visible="false" 
-                                                    DataTextField="IdContacto" DataValueField="IdContacto" AutoPostBack="false">
-                                                </asp:DropDownList>
-                                                
-                                                <asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged" Visible="false"> </asp:TextBox>
-                                                 <AjaxControlToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
-                                                 TargetControlID="uxValor"
-                                                 CompletionSetCount="20"
-                                                 MinimumPrefixLength="1" 
-                                                 ServiceMethod="GetSuggestionsClienteNombre"
-                                                 DelimiterCharacters="; ,"
-                                                 ServicePath="../../SuggestionNames.asmx">
-                                              </AjaxControlToolkit:AutoCompleteExtender>
-                                              
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                
-                                                <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
-                                                            Text="Buscar" Visible="false" />
-                                                <br />
-                                                <br />
-                                            </td>
-                                        </tr>
-                                        
-
-                                        
-                                        <tr>
-                                          
-                                            <td colspan="2">
-                                                <asp:GridView ID="uxConsultaContacto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaContacto"
-                                                AutoGenerateColumns="False" DataKeyNames="IdContacto" AutoGenerateSelectButton="True"
-                                                Width="135%" Font-Names="Verdana" Font-Size="Smaller" 
-                                                OnSelectedIndexChanging="SelectContacto" 
-                                                    onrowdatabound="uxGridView_RowDataBound">
-                                                    
-                                                    <RowStyle HorizontalAlign="Center" />  
-                                                    
-                                                    <Columns>
-                                            
-                                                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                                                        
-                                                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                                                        
-                                                        <asp:TemplateField HeaderText="Teléfono" AccessibleHeaderText="Telefono">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="L1" runat="server" 
-                                                            Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
-                                                       
-                                                            <asp:Label ID="L2" runat="server" 
-                                                            Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Numero") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                        </asp:TemplateField> 
-                                                        
-                                                        <asp:TemplateField HeaderText="Cliente" AccessibleHeaderText="Cliente">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="L1" runat="server" 
-                                                            Text='<%# DataBinder.Eval(Container, "DataItem.ClienteContac.Nombre") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                        </asp:TemplateField> 
-                                                        
-                                                        
-                                                        
-                                                    </Columns>
-    
-                                                 </asp:GridView>
-                                                 
-                                                 
-                                            </td>
-                                        </tr>
-                                        
+                                     </AjaxControlToolkit:FilteredTextBoxExtender>
                                                                               
-                                       
+                                     <asp:Label ID="uxNombreCliente" runat="server" Visible="false" Text="Por favor introduzca las primeras letras del Nombre del Cliente"
+                                        style="left:380px; POSITION: absolute; TOP: 140px;">
+                                     </asp:Label>
+                                     
+                                     <asp:TextBox ID="uxValor" runat="server" ontextchanged="uxValor_TextChanged" 
+                                        Visible="false" style="left:450px; POSITION: absolute; TOP: 160px;">
+                                     </asp:TextBox>
+                                     
+                                     <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" 
+                                        CompletionSetCount="20" DelimiterCharacters="; ," MinimumPrefixLength="1" 
+                                        ServiceMethod="GetSuggestionsClienteNombre" 
+                                        ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor">
+                                     </ajaxToolkit:AutoCompleteExtender>
+                                     
+                                     <asp:Label ID="Label1" style="left:380px; POSITION: absolute; TOP: 280px;" runat="server">
+                                        <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false"/>
+                                     </asp:Label>
+                                     
+                                     <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
+                                        Text="Buscar" Visible="false" style="left:520px; POSITION: absolute; TOP: 250px;"/>
                                         
-                                    </table>
-                                    
+                                     <asp:DropDownList ID="uxConsultaClienteContacto" runat="server" Visible="false" 
+                                        DataTextField="IdContacto" DataValueField="IdContacto" AutoPostBack="false">
+                                     </asp:DropDownList>  
+                                      
+                                    <asp:GridView ID="uxConsultaContacto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaContacto"
+                                        AutoGenerateColumns="False" DataKeyNames="IdContacto" AutoGenerateSelectButton="True"
+                                        Width="70%" Font-Names="Verdana" Font-Size="Smaller" 
+                                        OnSelectedIndexChanging="SelectContacto" 
+                                        onrowdatabound="uxGridView_RowDataBound"
+                                        style="left:250px; POSITION: absolute; TOP: 300px;">
+                                        <RowStyle HorizontalAlign="Center" />  
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                            <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                                            <asp:TemplateField HeaderText="Teléfono" AccessibleHeaderText="Telefono">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="L1" runat="server" 
+                                                    ext='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
+                                                    <asp:Label ID="L2" runat="server" 
+                                                    Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Numero") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField> 
+                                            <asp:TemplateField HeaderText="Cliente" AccessibleHeaderText="Cliente">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="L1" runat="server" 
+                                                    Text='<%# DataBinder.Eval(Container, "DataItem.ClienteContac.Nombre") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField> 
+                                        </Columns>
+                                     
+                                    </asp:GridView> 
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        
                                 </asp:View>
                                 
                                  <asp:View ID="ViewContacto" runat="server">
