@@ -178,6 +178,7 @@
     <Compile Include="Usuario\Contrato\IModificarUsuario.cs" />
     <Compile Include="Usuario\Vistas\AgregarUsuarioPresenter.cs" />
     <Compile Include="Usuario\Vistas\ConsultarUsuarioPresenter.cs" />
+    <Compile Include="Usuario\Vistas\DefaultUsuarioPresenter.cs" />
     <Compile Include="Usuario\Vistas\EliminarUsuarioPresenter.cs" />
     <Compile Include="Usuario\Vistas\ModificarUsuarioPresenter.cs" />
   </ItemGroup>

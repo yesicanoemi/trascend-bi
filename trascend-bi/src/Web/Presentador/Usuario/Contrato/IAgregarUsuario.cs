@@ -43,6 +43,8 @@ namespace Presentador.Usuario.Contrato
 
         void CambiarPagina();
 
+        void CambiarPaginaDefault();
+
         #region Dialogo
 
         bool DialogoVisible { get; set; }

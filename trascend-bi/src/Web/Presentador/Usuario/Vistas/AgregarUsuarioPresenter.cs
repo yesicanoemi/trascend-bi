@@ -11,6 +11,7 @@ using System.Collections;
 using Presentador.Base;
 using System.Resources;
 using Core.LogicaNegocio.Excepciones;
+using System.Web.Mail;
 
 namespace Presentador.Usuario.Vistas
 {
@@ -27,10 +28,17 @@ namespace Presentador.Usuario.Vistas
         #endregion
 
         #region Constructor
-
+        public AgregarUsuarioPresenter()
+        { }
         public AgregarUsuarioPresenter(IAgregarUsuario vista)
         {
             _vista = vista;
+
+        }
+
+        public AgregarUsuarioPresenter(IDefaultUsuario vistaDefault)
+        {
+            _vistaDefault = vistaDefault;
         }
         #endregion
 
@@ -59,7 +67,7 @@ namespace Presentador.Usuario.Vistas
 
             _vista.ApellidoEmp.Text = empleado.Apellido;
 
-            _vista.StatusEmp.Text = empleado.Estado.ToString();
+            //_vista.StatusEmp.Text = empleado.Estado;
         }
 
         /// <summary>
@@ -124,7 +132,7 @@ namespace Presentador.Usuario.Vistas
             Core.LogicaNegocio.Entidades.Empleado empleado =
                                     new Core.LogicaNegocio.Entidades.Empleado();
 
-            empleado.Apellido = _vista.EmpleadoBuscar.Text;
+            empleado.Nombre = _vista.EmpleadoBuscar.Text;
 
             IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleado(empleado);
 
@@ -184,9 +192,10 @@ namespace Presentador.Usuario.Vistas
         {
             IList<Core.LogicaNegocio.Entidades.Empleado> empleado = null;
 
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre comando;
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarEmpleadoSinUsuario comando;
 
-            comando = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
+            comando = FabricaComandosUsuario.CrearComandoConsultarEmpleadoSinUsuario(entidad);
+            //comando = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
 
             empleado = comando.Ejecutar();
 
@@ -279,7 +288,7 @@ namespace Presentador.Usuario.Vistas
         private Core.LogicaNegocio.Entidades.Empleado
                     ConsultarEmpleadoxCedula(Core.LogicaNegocio.Entidades.Empleado entidad)
         {
-            Core.LogicaNegocio.Entidades.Empleado empleado = 
+            Core.LogicaNegocio.Entidades.Empleado empleado =
                                                 new Core.LogicaNegocio.Entidades.Empleado();
 
             Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCI comando;
@@ -290,7 +299,7 @@ namespace Presentador.Usuario.Vistas
 
             return empleado;
 
-            
+
         }
 
         /// <summary>
@@ -345,7 +354,7 @@ namespace Presentador.Usuario.Vistas
 
             usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
 
-            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar),usuario.PermisoUsu);
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
 
             usuario.PermisoUsu =
                 UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
@@ -371,9 +380,22 @@ namespace Presentador.Usuario.Vistas
                 {
                     AgregarUsuario(usuario);
 
+                    //EnviarCorreo();
+                    CambiarVista(0);
+
                     _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                ("mensajeUsuarioAgregado"), "mensajes");
+                        ("mensajeUsuarioAgregado"), "mensajes");
                     _vista.InformacionVisibleBotonAceptar = true;
+
+                    _vista.GetObjectContainerConsultaEmpleado.DataSource = "";
+
+                    //_vistaDefault.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                    // ("mensajeUsuarioAgregado"), "mensajes");
+
+                    //                   _vistaDefault.InformacionVisibleBotonAceptar = true;
+
+                    //                 _vista.CambiarPaginaDefault();
+
 
                 }
                 else
@@ -393,6 +415,46 @@ namespace Presentador.Usuario.Vistas
 
         }
 
+        public void EnviarCorreo()
+        {
+            /*MailMessage mail = new MailMessage();
+
+            mail.To = txtTo.Text;
+
+            mail.From = txtFrom.Text;
+
+            mail.Subject = txtSubject.Text;
+
+            mail.Body = txtBody.Text;
+
+            SmtpMail.SmtpServer = "localhost";
+
+            SmtpMail.Send(mail);*/
+        }
+
+        /// <summary>
+        /// Método para el comando Consultar IdPermiso
+        /// </summary>
+        /// <param name="entidad">Entidad permiso</param>
+        /// 
+
+        public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
+        {
+
+            Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
+
+            Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+
+            permiso2.Permisos = "Agregar Usuarios";
+
+            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+
+            comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+
+            permiso1 = comando.Ejecutar();
+
+            return permiso1;
+        }
         #endregion
 
     }

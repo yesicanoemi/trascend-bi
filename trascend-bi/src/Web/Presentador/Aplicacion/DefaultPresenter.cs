@@ -27,6 +27,9 @@ namespace Presentador.Aplicacion
 
         public Core.LogicaNegocio.Entidades.Usuario SesionUsuario;
 
+        private const string campoVacio = "";
+
+
         #endregion
 
         #region Constructor
@@ -38,6 +41,9 @@ namespace Presentador.Aplicacion
             _vista = vista;
 
         }
+
+        public DefaultPresenter()
+        { }
 
         #endregion
 
@@ -73,10 +79,19 @@ namespace Presentador.Aplicacion
             else
             {
                 _vista.PintarInformacion(ManagerRecursos.GetString
-                                            ("MensajeCredenciales"), "mensajes");
+                                            ("MensajeIniciarSesion"), "mensajes");
+
+                _vista.InformacionVisible = true;
 
             }
 
+        }
+
+        public void sesionTerminada()
+        {
+            _vista.PintarInformacion(ManagerRecursos.GetString
+                              ("mensajeSesionTerminada"), "mensajes");
+            _vista.InformacionVisible = true;
         }
 
         #endregion
@@ -126,6 +141,12 @@ namespace Presentador.Aplicacion
             return permiso1;
         }
 
+
+        public void LimpiarFormulario()
+        {
+            _vista.Login.Text = campoVacio;
+            _vista.Password.Text = campoVacio;
+        }
         #endregion
 
     }
