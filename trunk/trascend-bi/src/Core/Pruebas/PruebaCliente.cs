@@ -50,7 +50,7 @@ namespace Core.Pruebas
 
             cliente.Direccion.Oficina = "14-c";
                                    
-            cliente.Nombre = "Oh L0lz0r";
+            cliente.Nombre = "Iiiiiiii";
             
             cliente.Rif = "J-00006372-9";
 
@@ -94,7 +94,7 @@ namespace Core.Pruebas
         {
             Cliente cliente = new Cliente();            
 
-            cliente.Nombre = "o";
+            cliente.Nombre = "i";
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
@@ -197,17 +197,22 @@ namespace Core.Pruebas
         [Test]
         public void BuscarClienteRif()
         {
+            IList<Cliente> listaCliente = new List<Cliente>();
+
             Cliente cliente = new Cliente();
 
-            cliente.Rif = "C03758493-1";
+            cliente.Rif = "j";
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
             IDAOCliente acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
 
-            cliente = acceso.ConsultarRif(cliente);
+            listaCliente = acceso.ConsultarRif(cliente);
 
-            Console.WriteLine(cliente.Nombre);
+            foreach (Cliente clienteA in listaCliente)
+            {
+                Console.WriteLine(clienteA.Nombre + " " + clienteA.AreaNegocio);
+            }
             
         }
     }
