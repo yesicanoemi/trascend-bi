@@ -391,14 +391,10 @@ namespace Core.AccesoDatos.SqlServer
                         arparms[4].Value = factura.Fechaingreso.ToShortDateString();
 
                         arparms[5] = new SqlParameter("@Estado", SqlDbType.VarChar);
-                        if (factura.Estado.Equals("Por Cobrar"))
-                            arparms[5].Value = 2;
-                        if (factura.Estado.Equals("Cobrada"))
-                            arparms[5].Value = 1;
-                        if (factura.Estado.Equals("Anulada"))
-                            arparms[5].Value = 3;
+                        arparms[5].Value = factura.Estado ;
+                        
                         arparms[6] = new SqlParameter("@TituloPropuesta", SqlDbType.VarChar);
-                        arparms[6].Value = factura.Prop.Id;
+                        arparms[6].Value = factura.Prop.Titulo;
 
                         int result = SqlHelper.ExecuteNonQuery(GetConnection(), "IngresarFactura", arparms);
 
