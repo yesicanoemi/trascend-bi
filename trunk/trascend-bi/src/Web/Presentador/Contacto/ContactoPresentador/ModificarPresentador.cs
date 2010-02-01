@@ -36,8 +36,6 @@ namespace Presentador.Contacto.ContactoPresentador
 
         #endregion
 
-
-
         #region Métodos
 
         /// <summary>
@@ -100,6 +98,10 @@ namespace Presentador.Contacto.ContactoPresentador
             }
 
         }
+
+        /// <summary>
+        /// Método que oculta los elementos de la vista
+        /// </summary>
 
         public void LimpiarElementosVisibles()
         {
@@ -234,6 +236,8 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.Valor.Text = campoVacio;
 
             _vista.InformacionVisible = false;
+
+            _vista.InformacionVisible2 = false;
 
         }
 
@@ -477,6 +481,15 @@ namespace Presentador.Contacto.ContactoPresentador
         }
 
         #endregion 
+
+        /// <summary>
+        /// Método que redirecciona al usuario a la página default de consulta
+        /// </summary>
+
+        public void OnBotonCancelar()
+        {
+            _vista.CambiarPagina();
+        }
 
         /// <summary>
         /// Método de Consulta una vez seleccionado el contacto 
