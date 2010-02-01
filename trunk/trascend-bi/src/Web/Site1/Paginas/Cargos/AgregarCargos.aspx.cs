@@ -39,7 +39,7 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        _presentador.FechaActual();
     }
 
     #region Propiedades
