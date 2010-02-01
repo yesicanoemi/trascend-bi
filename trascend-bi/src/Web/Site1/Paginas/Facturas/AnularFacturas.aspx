@@ -11,7 +11,7 @@
             </div>
             <div class="subnav-container">
                 <ul id="subnav">
-                    <li><a href="AgregarFacturas1.aspx">Agregar<span></span></a></li>
+                    <li><a href="AgregarFacturas.aspx">Agregar<span></span></a></li>
                     <li><a href="ConsultarFacturas.aspx">Consultar<span></span></a></li>
                     <li><a href="AnularFacturas.aspx" class="active">Anular<span></span></a></li>
                     <li><a href="ModificarFacturas.aspx">Modificar<span></span></a></li>
