@@ -37,17 +37,20 @@
                         
                         <tr>
                             <td> Nombre Propuesta:</td>
-                        </tr>
-                        <tr>
-                            
-                            <td><asp:TextBox ID="uxNombrePropuesta" runat="server"></asp:TextBox></td>
+                            <td align="left"><asp:TextBox ID="uxNombrePropuesta" runat="server"></asp:TextBox></td>
+                            <td>&nbsp;</td>
                             <td><asp:Button ID="btBotonBuscar" runat="server" Text="Buscar" OnClick = "btBotonBuscar_Click"/></td>
                             
                         </tr>
-                        
                         <tr>
-                      
-                            <td> Nombre Propuesta:</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        </table>
+                        <table style="width:auto">
+                        <tr>
+                            <td>Nombre Propuesta:</td>
                             <td><asp:Label ID="lbNombrePropuesta" runat="server" Text=""></asp:Label></td>
                             
                         </tr>
@@ -81,10 +84,20 @@
                             <td><asp:Label ID="lbMontoRestante" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
-                            <td><asp:Button ID="btBotonIngresarFactura" runat="server" Text="Ingresar Factura" OnClick = "btBotonIngresarFactura_Click"/></td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
                         
+                    </table>
+                    <table width="100%">
+                        <tr align="center">
+                            <td align="center"><asp:Button ID="btBotonIngresarFactura" runat="server" Text="Ingresar Factura" OnClick = "btBotonIngresarFactura_Click"/></td>
+                        </tr>
                     </table>
                 </p>
                 
@@ -117,8 +130,8 @@
                     </tr>
                     <tr>
                         <td> Porcentaje a pagar:</td>
-                        <td><asp:TextBox ID="uxPorcentaje" runat="server" 
-                                ontextchanged="uxPorcentaje_TextChanged"></asp:TextBox></td>
+                        <td><asp:TextBox ID="uxPorcentaje" runat="server">
+                        </asp:TextBox></td>
                     </tr>
                     <tr>
                        <td>&nbsp;</td>
@@ -144,14 +157,19 @@
                         <td> Monto a pagar:</td>
                         <td><asp:Label ID="lbMonto" runat="server"></asp:Label></td>
                     </tr>
-                    
+                    <tr>
+                       <td>&nbsp;</td>
+                       <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                       <td>&nbsp;</td>
+                       <td>&nbsp;</td>
+                    </tr>
                     <tr>
                         <td><asp:Button ID="btBotonVolver" runat="server" Text="Volver" OnClick = "btBotonVolver_Click" /></td>
                         <td><asp:Button ID="btBotonIngresar" runat="server" Text="Ingresar" OnClick = "btBotonIngresar_Click" /></td>
                     </tr>
                     
-                     
-                        
                     </table>
                 </p>
         

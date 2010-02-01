@@ -39,6 +39,8 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
         {
             Response.Redirect(paginaSinPermiso);
         }
+
+        _presentador.LlenarDDLEstados();
     }
 
     #region Propiedades
@@ -154,6 +156,6 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
     }
     protected void uxPorcentaje_TextChanged(object sender, EventArgs e)
     {
-        _presentador.ActualizarMonto();
+        _presentador.CalcularMontoTotal();
     }
 }
