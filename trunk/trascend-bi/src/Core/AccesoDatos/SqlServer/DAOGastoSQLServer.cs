@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Xml;
 using Core.AccesoDatos.Interfaces;
 using Core.AccesoDatos.Fabricas;
+using Core.LogicaNegocio.Excepciones.Gasto.Acceso_a_Datos;
 
 namespace Core.AccesoDatos.SqlServer
 {
@@ -201,11 +202,15 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                return null;
-                //_gastos.ElementAt(0).Codigo= -1;
-                //System.Console.Write(e);
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
+            catch (Exception e)
+            {
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
+            }
 
             
         }
@@ -272,7 +277,14 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
+            }
+
+            catch (Exception e)
+            {
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
 
@@ -311,7 +323,14 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
+            }
+
+            catch (Exception e)
+            {
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
 
@@ -346,13 +365,16 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo = -1;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
-            catch (SqlException)
+
+            catch (Exception e)
             {
-                gastos.ElementAt(0).Codigo = -2;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
 
@@ -372,13 +394,16 @@ namespace Core.AccesoDatos.SqlServer
                 DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "EliminarGasto", parametro);
 
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gasto.Codigo = -1;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
-            catch (SqlException)
+
+            catch (Exception e)
             {
-                gasto.Codigo = -2;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
 
@@ -419,13 +444,16 @@ namespace Core.AccesoDatos.SqlServer
                 int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarGastoPorCodigo", parametros);
 
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                _gasto.Codigo = -1; 
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
-            catch (SqlException)
+
+            catch (Exception e)
             {
-                _gasto.Codigo = -2;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
             return _gasto;
@@ -461,13 +489,16 @@ namespace Core.AccesoDatos.SqlServer
                     gastos.Add(_gasto);
                 }
             }
-            catch (InvalidOperationException)
+            catch (SqlException e)
             {
-                gastos.ElementAt(0).Codigo = -1;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
-            catch (SqlException)
+
+            catch (Exception e)
             {
-                gastos.ElementAt(0).Codigo = -2;
+                throw new ConsultarGastoBDExceptions
+                ("Error de Consulta en Base de DAtos", e);
             }
 
 

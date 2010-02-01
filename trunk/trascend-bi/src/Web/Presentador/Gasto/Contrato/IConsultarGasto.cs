@@ -12,7 +12,8 @@ namespace Presentador.Gasto.Contrato
     {
         #region Datos del Gasto
 
-        Label LTipoConsulta { get; set;}       
+        Label LTipoConsulta { get; set;}
+        Label LabelInfo { get; set; }
         TextBox BusquedaConsulta { get; set;}
         RadioButtonList CheckOpcionBuscar { get; set; }       
         Button BotonBuscarDatos { get; set; }        
@@ -25,6 +26,7 @@ namespace Presentador.Gasto.Contrato
         HtmlTable TablaConsultaParametro { get; set; }
         HtmlTable TablaCliente { get; set; }
         HtmlTable TablaInicio { get; set; }
+        Image Calendario { get; set; }
         
         #endregion
     }

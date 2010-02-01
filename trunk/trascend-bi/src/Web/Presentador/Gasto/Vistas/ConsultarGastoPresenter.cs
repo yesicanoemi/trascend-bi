@@ -204,9 +204,20 @@ namespace Presentador.Gasto.Vistas
 
         public void verseleccion()
         {
+            if (_vista.CheckOpcionBuscar.SelectedValue.Equals("0"))
+            {
+                _vista.LabelInfo.Text = "Ingrese Nombre Propuesta";
+                _vista.Calendario.Visible = false;
+            }
+            if (_vista.CheckOpcionBuscar.SelectedValue.Equals("1"))
+            {
+                _vista.LabelInfo.Text = "Ingrese Nombre de Cliente";
+                _vista.Calendario.Visible = false;
+            }
             if (_vista.CheckOpcionBuscar.SelectedValue.Equals("2"))
             {
-                _vista.BusquedaConsulta.Visible = false;
+                _vista.LabelInfo.Text = "Ingrese Fecha a través de la Imagen";
+                _vista.Calendario.Visible=true;
             }
         }
 

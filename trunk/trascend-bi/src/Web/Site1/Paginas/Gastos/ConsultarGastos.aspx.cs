@@ -20,6 +20,11 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         get { return LabelTipoConsulta; }
         set { LabelTipoConsulta = value; }
     }
+    public Label LabelInfo
+    {
+        get { return uxLabelInfo; }
+        set { uxLabelInfo = value; }
+    }
 
     public TextBox BusquedaConsulta
     {
@@ -93,6 +98,12 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     {
         get { return uxTablaInicio; }
         set { uxTablaInicio = value; }
+    }
+
+    public Image Calendario
+    {
+        get { return uxFechaInicioImg; }
+        set { uxFechaInicioImg = value; }
     }
 
     #endregion
