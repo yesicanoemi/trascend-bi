@@ -429,7 +429,6 @@
   <data name="ErrorFormatoNumCedula" xml:space="preserve">
     <value>Solo acepta numeros acepta solamente 8 digitos</value>
   </data>
-
   <data name="CampoObligatorio" xml:space="preserve">
     <value>Los campos con * son de caracter obligatorio</value>
   </data>

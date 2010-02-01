@@ -41,6 +41,11 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return LabelTituloPropuesta; }
         set { LabelTituloPropuesta = value; }
     }
+    public Label LabelError
+    {
+        get { return Labelerror; }
+        set { Labelerror = value; }
+    }
     public Label LabelV
     {
         get { return LabelVersion; }
@@ -212,20 +217,24 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     }
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         //uxBotonAceptar.Visible = false;
         _presenter.AccionBusqueda();
         //uxOpcionCheckBox.Visible = false;
     }
     protected void uxBotonAceptar2_Click(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         _presenter.BotonAccionConsulta();
     }
     protected void Consult(object sender, GridViewSelectEventArgs e)
     {
+        LabelError.Visible = false;
         _presenter.CargaDatosPagina(int.Parse(uxPropuestaConsultada.DataKeys[e.NewSelectedIndex].Value.ToString()));
     }
     protected void uxListaOpciones_SelectedIndexChanged1(object sender, EventArgs e)
     {
+        LabelError.Visible = false;
         TextParametroRif.Text = "";
         TextParametro.Text = "";
         _presenter.TipoBusqueda();

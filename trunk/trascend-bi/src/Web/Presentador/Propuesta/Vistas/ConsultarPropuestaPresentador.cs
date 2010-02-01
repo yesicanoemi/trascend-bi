@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Presentador.Propuesta.Contrato;
-using Core.LogicaNegocio.Entidades;
-using Core.LogicaNegocio.Fabricas;
 using System.Net;
+using System.Text;
+using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Excepciones.Propuesta.LogicaNegocio;
+using Core.LogicaNegocio.Fabricas;
+using Presentador.Propuesta.Contrato;
 namespace Presentador.Propuesta.Vistas
 {
     public class ConsultarPropuestaPresentador
@@ -189,30 +189,38 @@ namespace Presentador.Propuesta.Vistas
 
         public void AccionBusqueda()
         {
-            _vista.LabelVacioC.Visible = false;
-            string opciont = _vista.ListOpcion.SelectedItem.Value;
-            int Opcion = Convert.ToInt32(opciont);
-            string Parametro;
+            try
+            {
+                _vista.LabelVacioC.Visible = false;
+                string opciont = _vista.ListOpcion.SelectedItem.Value;
+                int Opcion = Convert.ToInt32(opciont);
+                string Parametro;
 
-            if (Opcion == 3)
-                Parametro = _vista.TextParametroRif.Text;
-            else
-                Parametro = _vista.TextParametro.Text;
+                if (Opcion == 3)
+                    Parametro = _vista.TextParametroRif.Text;
+                else
+                    Parametro = _vista.TextParametro.Text;
             
-            propuesta = LlenarListaParametro(Opcion, Parametro);
+                propuesta = LlenarListaParametro(Opcion, Parametro);
 
-            if (propuesta.Count > 0)
-            {
-                _vista.ObtenerValorDataSource.DataSource = propuesta;
+                if (propuesta.Count > 0)
+                {
+                    _vista.ObtenerValorDataSource.DataSource = propuesta;
 
+                }
+                else
+                {
+                    _vista.ObtenerValorDataSource.DataSource = propuesta;
+                    _vista.LabelVacioC.Visible = true;
+                }
+                //_vista.ListOpcion.Visible = false;
+                //_vista.TextParametro.Visible = false;
             }
-            else
+            catch (Exception e)
             {
-                _vista.ObtenerValorDataSource.DataSource = propuesta;
-                _vista.LabelVacioC.Visible = true;
+                _vista.LabelError.Text = e.Message;
+                _vista.LabelError.Visible = true;
             }
-            //_vista.ListOpcion.Visible = false;
-            //_vista.TextParametro.Visible = false;
         }
 
         public IList<Core.LogicaNegocio.Entidades.Propuesta>

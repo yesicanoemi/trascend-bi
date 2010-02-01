@@ -41,8 +41,7 @@ namespace Presentador.Propuesta.Contrato
         ObjectContainerDataSource ObtenerValorMuestra { get; set; }
         MultiView MultiViewPropuestaC { get; set; }
         Label LabelVacioC { get; set; }
-
-
+        Label LabelError { get; set; }
 
     }
 }

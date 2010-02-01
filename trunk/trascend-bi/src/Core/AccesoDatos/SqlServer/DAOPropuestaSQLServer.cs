@@ -189,10 +189,10 @@ namespace Core.AccesoDatos.SqlServer
             //Ingresar Equipo
             foreach (string[] nombre in listaequipo)
             {
-                for (int i = 0; i < listaequipo.Count; i++)
-                {
-                    string Nombre = nombre.ElementAt(i);
-                    string Apellido = nombre.ElementAt(i + 1);
+                //for (int i = 0; i < listaequipo.Count; i++)
+                //{
+                    string Nombre = nombre.ElementAt(0);
+                    string Apellido = nombre.ElementAt(1);
                     SqlParameter[] Param = new SqlParameter[2];
                     Param[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
 
@@ -241,7 +241,7 @@ namespace Core.AccesoDatos.SqlServer
 
                             int result3 = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                 "IngresarEquipo", Param2);
-                            i++;
+                            //i++;
 
                         }
                         else
@@ -250,7 +250,7 @@ namespace Core.AccesoDatos.SqlServer
                     }
                     else
                         throw new IngresarPropuestaBDException();
-                }
+                //}
             }
             
        }

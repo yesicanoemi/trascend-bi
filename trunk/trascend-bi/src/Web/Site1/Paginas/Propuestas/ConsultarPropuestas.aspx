@@ -20,7 +20,9 @@
 		<div class="sub-content"> 
              <div class="features_overview"> 
                  <div class="features_overview_right"> 
-                    <h3>Consultar Propuesta</h3> 
+                    <h3>Consultar Propuesta</h3>
+                    &nbsp;
+                    <p class="large"><asp:Label Font-Size="Large" ID="Labelerror" runat="server" Visible="false"></asp:Label></p> 
                     <p class="large">
                     <form id="Form1" action="#" runat="server">
                     
