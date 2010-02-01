@@ -21,6 +21,7 @@ namespace Presentador.Cliente.Contrato
         DetailsView MuestraCliente { get; set; }
         DetailsView MuestraDireccion { get; set; }
         GridView MuestraTelefono { get; set; }
+        GridView GridCliente { get; set; }
         RadioButtonList RbCampoBusqueda { get; set; }
 
         MultiView MultiViewConsulta { get; set; }
