@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Xml;
 using Core.AccesoDatos.Interfaces;
 using Core.AccesoDatos.Fabricas;
+using Core.LogicaNegocio.Excepciones;
 
 
 namespace Core.AccesoDatos.SqlServer
@@ -96,15 +97,15 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion 
 
-        #region ConsultarContacto
-
-        /// <summary>
-        /// Metodo para consultar el Contacto
-        /// </summary>
-        /// <param name="usuario">Criterio de busqueda</param>
-        /// <returns>Usuario(s) que coincidan con el criterio</returns>
+        #region Consultar Contacto
 
         #region ConsultarContactoNombreApellido_3
+
+        /// <summary>
+        /// Metodo para consultar el Contacto por nombre y apellido
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
+        /// <returns>Contacto(s) que coincidan con el criterio</returns>
 
         public IList<Contacto> ConsultarContactoNombreApellido(Contacto entidad)
         {
@@ -159,19 +160,26 @@ namespace Core.AccesoDatos.SqlServer
                 return contacto;
 
             }
-
             catch (SqlException e)
             {
-
+                throw new ConsultarException("Error SQL al consultar Contacto por Nombre/Apellido", e);
             }
-
-            return contacto;
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar Contacto por Nombre/Apellido", e);
+            }
 
         }
         #endregion
 
         #region ConsultarContactoXTelefono_3
 
+        /// <summary>
+        /// Metodo para consultar el Contacto por teléfono
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
+        /// <returns>Contacto que coincida con el criterio</returns>
+        
         public Contacto ConsultarContactoXTelefono(Contacto entidad)
         {
             Contacto contacto = new Contacto();
@@ -223,18 +231,25 @@ namespace Core.AccesoDatos.SqlServer
                 return contacto;
 
             }
-
             catch (SqlException e)
             {
-
+                throw new ConsultarException("Error SQL al consultar Contacto por Teléfono", e);
             }
-
-            return contacto;
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar Contacto por Teléfono", e);
+            }
 
         }
         #endregion
 
         #region ConsultarContactoXCliente_3
+
+        /// <summary>
+        /// Metodo para consultar el Contacto por cliente
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
+        /// <returns>Contacto(s) que coincidan con el criterio</returns>
 
         public IList<Contacto> ConsultarContactoXCliente(Contacto entidad)
         {
@@ -286,15 +301,22 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-
+                throw new ConsultarException("Error SQL al consultar Contacto por Cliente ", e);
             }
-
-            return contacto;
-
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar Contacto por Cliente", e);
+            }
         }
         #endregion
 
         #region ConsultarContactoxId
+
+        /// <summary>
+        /// Metodo para consultar el Contacto por Id
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
+        /// <returns>Contacto que coincida con el criterio</returns>
 
         public Contacto ConsultarContactoxId(Contacto entidad)
         {
@@ -384,13 +406,14 @@ namespace Core.AccesoDatos.SqlServer
                 return contacto;
 
             }
-
             catch (SqlException e)
             {
-
+                throw new ConsultarException("Error SQL al consultar Contacto por Id", e);
             }
-
-            return contacto;
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar Contacto por Id", e);
+            }
 
         }
         #endregion
@@ -398,6 +421,11 @@ namespace Core.AccesoDatos.SqlServer
         #endregion
 
         #region Eliminar
+
+        /// <summary>
+        /// Metodo para Eliminar el Contacto
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
 
         public void Eliminar(Contacto contacto)
         {
@@ -416,15 +444,26 @@ namespace Core.AccesoDatos.SqlServer
                                                         "EliminarContacto_3", arParms);
 
             }
+
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new EliminarException("Error al eliminar el cargo", e);
+            
+            }
+            catch (Exception e)
+            {
+                throw new EliminarException("Error al eliminar el cargo", e);
             }
         }
    
         #endregion
 
         #region Modificar
+
+        /// <summary>
+        /// Metodo para Modificar el Contacto
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
 
         public void ModificarContacto(Contacto contacto)
         {
@@ -549,10 +588,14 @@ namespace Core.AccesoDatos.SqlServer
                                                         "ModificarTelefonosContacto_3", arParms3);
 
             }
-
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ModificarException("Error SQL al modificar el Contacto", e);
+     
+            }
+            catch (Exception e)
+            {
+                throw new ModificarException("Error al modificar el Contacto", e);
             }
             
         }
