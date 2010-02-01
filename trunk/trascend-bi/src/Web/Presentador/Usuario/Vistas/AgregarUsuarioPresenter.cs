@@ -25,6 +25,8 @@ namespace Presentador.Usuario.Vistas
 
         private IDefaultUsuario _vistaDefault;
 
+        private const string campoVacio = "";
+
         #endregion
 
         #region Constructor
@@ -389,14 +391,7 @@ namespace Presentador.Usuario.Vistas
 
                     _vista.GetObjectContainerConsultaEmpleado.DataSource = "";
 
-                    //_vistaDefault.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                    // ("mensajeUsuarioAgregado"), "mensajes");
-
-                    //                   _vistaDefault.InformacionVisibleBotonAceptar = true;
-
-                    //                 _vista.CambiarPaginaDefault();
-
-
+                    _vista.EmpleadoBuscar.Text = campoVacio;
                 }
                 else
                 {
