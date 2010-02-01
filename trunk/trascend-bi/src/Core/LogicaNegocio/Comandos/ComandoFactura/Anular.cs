@@ -54,7 +54,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             if (factura.Estado.Equals("Por Cobrar"))
                 bdpropuestas.ModificarEstadoFactura(_idFactura, "Anulada");
             else
-                throw new EliminarException("No se puede anular una factura que ya haya sido cobrada");
+                throw new EliminarException("No se puede anular una factura cuyo estado sea: " + factura.Estado);
         }
 
         #endregion
