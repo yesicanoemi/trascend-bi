@@ -17,5 +17,16 @@ namespace Presentador.Factura.Contrato
         Label PorcentajeFactura { get; set; }
         Label TotalFactura { get; set; }
         Label FechaFactura { get; set; }
+        Label Mensaje { get; set; }
+
+        #region Mensaje
+        void Pintar(string mensaje);
+        bool MensajeVisible { get; set; }
+        #endregion
+
+        #region Mostrar Elementos
+        void ActivarElementos();
+        void DesactivarElementos();
+        #endregion
     }
 }

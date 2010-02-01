@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true"
     CodeFile="AnularFacturas.aspx.cs" Inherits="Paginas_Facturas_AnularFacturas"
     Title="Anular Factura" %>
-
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav">
         <div class="content">
@@ -20,10 +20,15 @@
             <div class="sub-content">
                 <div class="features_overview">
                     <div class="features_overview_right">
-                        <h3>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anular Factura</h3>
-                        <p class="large">
+                        <h3 style="font-size:small;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anular Factura</h3>
+                        <p class="large" style="font-size:small;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                             Introduzca el numero de factura a continuación</p>
+                            <p class="large" >
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
+                            </p>
                         <form id="Form1" runat="server">
                         <p class="large">
                        
@@ -175,8 +180,8 @@
                                     </td>
                                     <td align="right">
                                         <asp:Button ID="btAnular" runat="server" Text="Anular" Visible="false" OnClick="btAnular_Click"
-                                            OnClientClick="return confirm('Esta seguro que quiere anular ésta factura?');"
-                                            TabIndex="3" />
+                                            OnClientClick="return confirm('Esta seguro que quiere anular ésta factura?');" 
+                                            TabIndex="3" />                                       
                                     </td>
                                 </tr>
                             </table>
