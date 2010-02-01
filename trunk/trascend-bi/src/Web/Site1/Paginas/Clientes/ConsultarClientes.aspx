@@ -111,8 +111,35 @@
                                               <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
                                               
                                                
-                                 <tr>                      
-
+                                                  </td>
+                                         </tr> 
+                                     <tr>
+                                     <td></td>
+                                     
+                                                                          <td align="center">
+                                         <asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" 
+                                          AutoGenerateColumns="False" 
+                                         DataKeyNames="rif" AutoGenerateSelectButton="True" 
+                                         Width="70%" Font-Names="Verdana" Font-Size="Smaller"
+                                         OnSelectedIndexChanging="SelectCliente" 
+                                          onrowdatabound="uxGridView_RowDataBound">
+                                        <RowStyle HorizontalAlign="Center" />  
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Rif" DataField="rif" />
+                                            <asp:BoundField HeaderText="Nombre" DataField="nombre" />
+                                            <asp:BoundField HeaderText="Area de Negocio" DataField="areanegocio"/>
+                                            
+                                        </Columns>
+                                                                    <EmptyDataTemplate>
+                                            <center>
+                                                <span>No Data Papa</span>
+                                            </center>
+                                        </EmptyDataTemplate>
+                                    </asp:GridView> 
+                                      
+                                     </td>
+                                     </tr>
+                                     <tr>
                                     <td colspan="2">
 
                                         
@@ -135,14 +162,17 @@
                                         
                                                 <br />
                                                 <br />
+                                                
+                                                
                                             </td>
-                                     
-                                
+
+                                     </tr>
+                           
                               
                                 </td>
                             </tr>
                     
-                        
+                        </table>
                      
                         </asp:View>
                         <asp:View ID="uxViewMostrar" runat="server">

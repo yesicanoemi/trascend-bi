@@ -50,7 +50,7 @@ namespace Core.Pruebas
 
             cliente.Direccion.Oficina = "14-c";
                                    
-            cliente.Nombre = "Iiiiiiii";
+            cliente.Nombre = "El guevo Erecto";
             
             cliente.Rif = "J-00006372-9";
 

@@ -28,13 +28,13 @@ namespace Core.LogicaNegocio.Comandos.ComandoCliente
         #endregion
         #region metodo
 
-        public Cliente ejecutar()
+        public IList<Cliente> ejecutar()
         {
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
-            Cliente cliente = new Cliente();
+            IList<Cliente> clientes = new List<Cliente>();
             IDAOCliente bdcliente = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCliente();
-            //cliente = bdcliente.ConsultarRif(_cliente);
-            return cliente;
+            clientes = bdcliente.ConsultarRif(_cliente);
+            return clientes;
 
         }
         #endregion

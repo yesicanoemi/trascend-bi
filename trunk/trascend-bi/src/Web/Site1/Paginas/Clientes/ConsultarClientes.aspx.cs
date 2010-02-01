@@ -66,6 +66,12 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
         set { uxMuestraTelefono = value; }
     }
 
+    public GridView GridCliente
+    {
+        get { return uxGridCliente; }
+        set { uxGridCliente = value; }
+    }
+
 
     #region Información
 
@@ -171,6 +177,22 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
     {
 
         _presentador.OnBotonBuscar();
+
+
+
+    }
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+
+
+    protected void SelectCliente(object sender, GridViewSelectEventArgs e)
+    {
+       _presentador.uxObjectConsultaClienteSelecting( uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)

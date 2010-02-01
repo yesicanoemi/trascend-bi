@@ -107,24 +107,24 @@ namespace Presentador.Cliente.Vistas
         public void OnBotonBuscar()
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-
+            IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
             try
             {
                 if (_vista.RbCampoBusqueda.SelectedValue == "1")// nombre de cliente
                 {
                     cliente.Nombre = _vista.Valor.Text;
-                    IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
-                    CargarDatos(listaCliente[0]);
-                    CambiarVista(1);
+                    listaCliente = ConsultarClienteNombre(cliente);
+                   // CargarDatos(listaCliente);
+                    //CambiarVista(1);
 
                 }
 
                 if (_vista.RbCampoBusqueda.SelectedValue == "2")// rif del cliente
                 {
                     cliente.Rif = _vista.ConsultaRif.Text;
-                    Core.LogicaNegocio.Entidades.Cliente seleccionCliente = ConsultarClienteRif(cliente);
-                    CargarDatos(seleccionCliente);
-                    CambiarVista(1);
+                    listaCliente = ConsultarClienteRif(cliente);
+                  //  CargarDatos(listacliente);
+                    //CambiarVista(1);
                 }
             }
             catch (WebException e)
@@ -141,11 +141,28 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
+
+            if (listaCliente.Count() > 1)
+            {
+                CargarGrid(listaCliente);
+            }
+            else
+            {
+                CargarDatos(listaCliente[0]);
+                CambiarVista(1);
+            }
+        }
+
+        public void CargarGrid(IList<Core.LogicaNegocio.Entidades.Cliente> clientes)
+        {
+            _vista.GridCliente.DataSource = clientes;
+            _vista.GridCliente.DataBind();
+            _vista.GridCliente.Visible = true;
+
         }
 
 
-
-        public void CargarDatos(Core.LogicaNegocio.Entidades.Cliente cliente)
+        public void CargarDatos( Core.LogicaNegocio.Entidades.Cliente cliente)
         {
             int i=0;
             IList<Core.LogicaNegocio.Entidades.TelefonoTrabajo> telefonos = new List<TelefonoTrabajo>();
@@ -201,9 +218,9 @@ namespace Presentador.Cliente.Vistas
         }
 
 
-        public Core.LogicaNegocio.Entidades.Cliente ConsultarClienteRif(Core.LogicaNegocio.Entidades.Cliente entidad)
+        public IList<Core.LogicaNegocio.Entidades.Cliente> ConsultarClienteRif(Core.LogicaNegocio.Entidades.Cliente entidad)
         {
-            Core.LogicaNegocio.Entidades.Cliente seleccioncliente = new Core.LogicaNegocio.Entidades.Cliente();
+           IList<Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
 
 
             try
@@ -212,7 +229,7 @@ namespace Presentador.Cliente.Vistas
 
                 comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
 
-                seleccioncliente = comando.ejecutar();
+                listacliente = comando.ejecutar();
 
                 
             }
@@ -230,19 +247,19 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
-            return seleccioncliente;
+            return listacliente;
         }
 
         public void uxObjectConsultaClienteSelecting(string rif)
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
 
-            Core.LogicaNegocio.Entidades.Cliente cliente2 = new Core.LogicaNegocio.Entidades.Cliente();
+          IList< Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
 
             cliente.Rif = rif;
 
-            cliente2 = ConsultarClienteRif(cliente);
-
+            listacliente = ConsultarClienteRif(cliente);
+            CargarDatos(listacliente[0]);
             CambiarVista(1);
 
         }
