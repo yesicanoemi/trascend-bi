@@ -14,6 +14,12 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
 
     #region Propiedades
 
+    public Button InsertarOtro
+    {
+        get { return uxInsertarOtro; }
+        set { uxInsertarOtro = value; }
+    }
+
     public TextBox rifCliente
     {
         get { return uxRif; }
@@ -104,6 +110,12 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         set { uxTipoRif = value; }
     }
 
+    public Button Agregar
+    {
+        get { return uxBotonAceptar; }
+        set { uxBotonAceptar = value; }
+    }
+
     #endregion
 
     #region Propiedades del Dialogo
@@ -174,4 +186,8 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
 
     }
 
+    protected void uxInsertarOtro_Click(object sender, EventArgs e)
+    {
+        _presentador.PrepararOtraInsercion();
+    }
 }
