@@ -11,14 +11,17 @@ using System.Configuration;
 using System.Xml;
 using Core.AccesoDatos.Interfaces;
 using Core.AccesoDatos.Fabricas;
+using Core.LogicaNegocio.Excepciones.Usuario.AccesoDatos;
 
 namespace Core.AccesoDatos.SqlServer
 {
-    class DAOUsuarioSQLServer: IDAOUsuario
+    class DAOUsuarioSQLServer : IDAOUsuario
     {
+
+
         IConexion _conexion = new FabricaConexion().getConexionSQLServer();
 
-         #region Constructor
+        #region Constructor
 
         public DAOUsuarioSQLServer()
         {
@@ -26,27 +29,6 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
-       /* #region Conexion a la Base de Datos
-
-        private SqlConnection _conexion.GetSqlServerConnection()
-        {
-            XmlDocument xDoc = new XmlDocument();
-
-            xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
-
-            XmlNodeList conexiones = xDoc.GetElementsByTagName("connectionSQLServer");
-
-            string lista = conexiones[0].InnerText;
-
-            SqlConnection connection = new SqlConnection(lista);
-
-            connection.Open();
-
-            return connection;
-        }
-
-        #endregion*/
-        
         #region Metodos
 
         #region ConsultarCredenciales
@@ -114,6 +96,7 @@ namespace Core.AccesoDatos.SqlServer
             IList<Core.LogicaNegocio.Entidades.Usuario> usuario =
                                             new List<Core.LogicaNegocio.Entidades.Usuario>();
 
+
             try
             {
                 //Parametros de busqueda
@@ -140,7 +123,7 @@ namespace Core.AccesoDatos.SqlServer
                     _usuario.Status = (string)reader["Status"];
 
                     _usuario.IdUsuario = (int)reader["IdUsuario"];
-                    
+
                     usuario.Add(_usuario);
                 }
 
@@ -175,6 +158,8 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = usuario.IdUsuario;
 
+                /* DbDataReader readerN1 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                        "EliminarPermisos", arParms);*/
                 SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                         "EliminarPermisos", arParms);
 
@@ -194,6 +179,8 @@ namespace Core.AccesoDatos.SqlServer
 
                     SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                             "AgregarPermisoUsuario", arParmsAgregarPermisos);
+                    /* DbDataReader readerN2 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                       "AgregarPermisoUsuario", arParmsAgregarPermisos);*/
                 }
 
                 SqlParameter[] arParmsStatus = new SqlParameter[2];
@@ -209,6 +196,9 @@ namespace Core.AccesoDatos.SqlServer
 
                 SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                         "ModificarStatusUsuario", arParmsStatus);
+
+                /* DbDataReader readerN3 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                "ModificarStatusUsuario", arParmsStatus);*/
 
             }
             catch (SqlException e)
@@ -280,47 +270,69 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
                 #region Busca el Id del empleado
-
-                SqlParameter[] arParmsIdEmp = new SqlParameter[1];
-
-                arParmsIdEmp[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
-
-                arParmsIdEmp[0].Value = usuario.Cedula;
-
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
-                                        "BuscarCIEmpleado", arParmsIdEmp);
-
-                while (reader.Read())
+                try
                 {
-                    usuario.Id = (int)reader["IdEmpleado"];
-                }
 
+
+                    SqlParameter[] arParmsIdEmp = new SqlParameter[1];
+
+                    arParmsIdEmp[0] = new SqlParameter("@CIEmpleado", SqlDbType.Int);
+
+                    arParmsIdEmp[0].Value = usuario.Cedula;
+
+                    DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                            "BuscarCIEmpleado", arParmsIdEmp);
+
+                    while (reader.Read())
+                    {
+                        usuario.Id = (int)reader["IdEmpleado"];
+                    }
+
+
+                }
+                catch
+                {
+                    throw new ConsultarUsuarioBDExcepciones();
+                }
                 #endregion
 
                 #region Agregar Usuario en la bd
+                try
+                {
 
-                SqlParameter[] arParms = new SqlParameter[4];
 
-                arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
+                    SqlParameter[] arParms = new SqlParameter[4];
 
-                arParms[0].Value = usuario.Login;
+                    arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
 
-                arParms[1] = new SqlParameter("@Password", SqlDbType.VarChar);
+                    arParms[0].Value = usuario.Login;
 
-                arParms[1].Value = usuario.Password;
+                    arParms[1] = new SqlParameter("@Password", SqlDbType.VarChar);
 
-                arParms[2] = new SqlParameter("@Status", SqlDbType.VarChar);
+                    arParms[1].Value = usuario.Password;
 
-                arParms[2].Value = "Activo";
+                    arParms[2] = new SqlParameter("@Status", SqlDbType.VarChar);
 
-                arParms[3] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+                    arParms[2].Value = "Activo";
 
-                arParms[3].Value = usuario.Id;
+                    arParms[3] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
 
-                SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
-                                        "AgregarUsuario", arParms);
+                    arParms[3].Value = usuario.Id;
+
+                    DbDataReader readerN = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                        "AgregarUsuario", arParms);
+                    /*SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
+                                            "AgregarUsuario", arParms);*/
+
+                }
+                catch (SqlException e)
+                {
+                    //System.Console.Write(e);
+                    throw new AgregarUsuarioBDExcepciones("Error agregando en la base de datos", e);
+                }
                 #endregion
 
+                #region ConsultarUsuario agregado
 
 
                 SqlParameter[] arParms1 = new SqlParameter[1];
@@ -346,8 +358,10 @@ namespace Core.AccesoDatos.SqlServer
 
 
 
+                #endregion
 
                 #region Agregar Permisos al usuario registrado
+
 
                 SqlParameter[] arParmsAgregarPermisos = new SqlParameter[2];
 
@@ -361,16 +375,20 @@ namespace Core.AccesoDatos.SqlServer
                 for (int i = 0; i < usuario.PermisoUsu.Count; i++)
                 {
                     arParmsAgregarPermisos[1].Value = usuario.PermisoUsu[i].IdPermiso;
+                    DbDataReader readerN1 = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                       "AgregarPermisoUsuario", arParmsAgregarPermisos);
 
-                    SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
-                                            "AgregarPermisoUsuario", arParmsAgregarPermisos);
+                    /*SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
+                                            "AgregarPermisoUsuario", arParmsAgregarPermisos);*/
                 }
+
                 #endregion
 
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
-                System.Console.Write(e);
+
+                throw new AgregarUsuarioBDExcepciones("Error agregando usuario en la base de datos", e);
             }
 
         }
@@ -411,7 +429,7 @@ namespace Core.AccesoDatos.SqlServer
                 }
 
                 #endregion
-                
+
 
                 SqlParameter[] arParms = new SqlParameter[1];
 
@@ -433,6 +451,53 @@ namespace Core.AccesoDatos.SqlServer
 
                 return empleado;
 
+            }
+
+            catch (SqlException e)
+            {
+
+            }
+
+            return empleado;
+
+        }
+
+        #endregion
+
+        #region ConsultarEmpleadoConUsuario
+
+        /// <summary>
+        /// Metodo para consultar el usuario por "Login"
+        /// </summary>
+        /// <param name="usuario">Criterio de busqueda</param>
+        /// <returns>Usuario(s) que coincidan con el criterio</returns>
+
+
+        public IList<Core.LogicaNegocio.Entidades.Empleado> ConsultarEmpleadoSinUsuario(Empleado entidad)
+        {
+            List<Empleado> empleado = new List<Empleado>();
+            try
+            {
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
+                arParms[0].Value = "%" + entidad.Nombre + "%";
+
+                DbDataReader reader = SqlHelper.ExecuteReader
+                    (_conexion.GetConnection(), "ConsultarEmpleadoSinUsuario", arParms);
+                while (reader.Read())
+                {
+                    Empleado _empleado = new Empleado();
+
+                    _empleado.Cedula = (int)reader["CIEmpleado"];
+                    _empleado.Nombre = (string)reader["Nombre"];
+                    _empleado.Apellido = (string)reader["Apellido"];
+                    _empleado.Cuenta = (string)reader["NumCuenta"];
+                    _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+
+                    empleado.Add(_empleado);
+                }
             }
 
             catch (SqlException e)
@@ -572,6 +637,105 @@ namespace Core.AccesoDatos.SqlServer
                 System.Console.Write(e);
             }
             return _usuario;
+
+        }
+
+        #endregion
+
+        #region ConsultarUsuarioTodos
+
+        /// <summary>
+        /// Metodo que trae todos los usuarios del sistema
+        /// </summary>
+        /// <param name="usuario">Usuario que inicia sesion</param>
+        /// <returns>Lista de Usuarios</returns>
+
+        public IList<Usuario> ConsultarUsuarioTodos()
+        {
+            IList<Core.LogicaNegocio.Entidades.Usuario> usuario =
+                                             new List<Core.LogicaNegocio.Entidades.Usuario>();
+
+            try
+            {
+
+                SqlParameter[] arParms = new SqlParameter[2];
+                // Parametros
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                "ConsultarUsuarioTodos");
+
+                while (reader.Read())
+                {
+                    Usuario _usuario = new Usuario();
+
+                    _usuario.Login = (string)reader["LoginUsuario"];
+
+                    _usuario.Nombre = (string)reader["Nombre"];
+
+                    _usuario.Apellido = (string)reader["Apellido"];
+
+                    _usuario.Status = (string)reader["Status"];
+
+                    _usuario.IdUsuario = (int)reader["IdUsuario"];
+
+                    usuario.Add(_usuario);
+                }
+
+                return usuario;
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+            return usuario;
+
+        }
+
+        #endregion
+
+        #region ConsultarIdPermiso
+
+        /// <summary>
+        /// Método para consultar los permisos de usuarios
+        /// </summary>
+        /// <param name="entidad">Entidad Usuario</param>
+        /// <returns>Lista de permisos del usuario a consultar</returns>
+
+        public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso(Permiso permiso)
+        {
+
+            Permiso _permiso = new Permiso();
+
+            try
+            {
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@NombreUsuario", SqlDbType.VarChar);
+
+                arParms[0].Value = permiso.Permisos;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ConsultarIdPermiso", arParms);
+
+                while (reader.Read())
+                {
+
+
+                    _permiso.IdPermiso = (int)reader["IdPermiso"];
+
+                    //permiso1(_permiso);
+                }
+
+                return _permiso;
+
+            }
+
+            catch (SqlException e)
+            {
+                System.Console.Write(e);
+            }
+
+            return permiso;
 
         }
 

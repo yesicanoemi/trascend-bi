@@ -19,6 +19,10 @@ namespace Core.AccesoDatos.Fabricas
         {
             return new DAOClienteSQLServer();
         }
+        /// <summary>
+        /// Método que génera la fábrica para el DAO de la entidad Usuario
+        /// </summary>
+        /// <returns>Interface del DAO de la entidad Usuario</returns>
 
         public override IDAOUsuario ObtenerDAOUsuario()
         {

@@ -34,6 +34,18 @@ namespace Core.LogicaNegocio.Fabricas
         }
 
         /// <summary>
+        /// Metodo que fabrica el comando "ConsultarUsuarioTodos" de la entidad Usuario
+        /// </summary>
+        /// <param name="empleado">Entidad Usuario con los datos</param>
+        /// <returns>Comando Consultar de la entidad usuario</returns>
+
+        public static ConsultarUsuarioTodos CrearComandoConsultarUsuarioTodos()
+        {
+            return new ConsultarUsuarioTodos();
+        }
+
+
+        /// <summary>
         /// Metodo que fabrica el comando "ConsultarPermisos" de la entidad Usuario
         /// </summary>
         /// <param name="entidad">Entidad usuario</param>
@@ -91,6 +103,27 @@ namespace Core.LogicaNegocio.Fabricas
         public static ConsultarEmpleadoConUsuario CrearComandoConsultarEmpleadoConUsuario(Empleado entidad)
         {
             return new ConsultarEmpleadoConUsuario(entidad);
+        }
+
+        /// <summary>
+        /// Metodo que fabrica el comando "CrearComandoConsultarEmpleadoSinUsuario" de la entidad empleado
+        /// </summary>
+        /// <param name="entidad">Entidad Empleado</param>
+        /// <returns>Comando CrearComandoConsultarEmpleadoSinUsuario</returns>
+
+        public static ConsultarEmpleadoSinUsuario CrearComandoConsultarEmpleadoSinUsuario(Empleado entidad)
+        {
+            return new ConsultarEmpleadoSinUsuario(entidad);
+        }
+        /// <summary>
+        /// Metodo que fabrica el comando "ConsultarIdPermiso" de la entidad Permiso
+        /// </summary>
+        /// <param name="entidad">Entidad Permiso</param>
+        /// <returns>Comando ConsultarIdPermiso</returns>
+
+        public static ConsultarIdPermiso CrearComandoConsultarIdPermiso(Permiso entidad)
+        {
+            return new ConsultarIdPermiso(entidad);
         }
 
         #endregion
