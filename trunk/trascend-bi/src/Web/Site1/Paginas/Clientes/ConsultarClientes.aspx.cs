@@ -86,13 +86,13 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     public void Pintar(string codigo, string mensaje, string actor, string detalles)
     {
-        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+        uxDialogoError0.Pintar(codigo, mensaje, actor, detalles);
     }
 
     public bool DialogoVisible
     {
-        get { return uxDialogoError.Visible; }
-        set { uxDialogoError.Visible = value; }
+        get { return uxDialogoError0.Visible; }
+        set { uxDialogoError0.Visible = value; }
     }
 
     #endregion
@@ -132,6 +132,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     #endregion
 
+ 
     protected void Page_Load(object sender, EventArgs e)
     {
         width = 0;

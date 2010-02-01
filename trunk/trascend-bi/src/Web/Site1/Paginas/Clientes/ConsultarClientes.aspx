@@ -248,6 +248,15 @@
                        
                    </asp:MultiView>     
                     
+
+                     <br />
+                      <asp:UpdatePanel ID="up3" runat="server" >
+                          <ContentTemplate>
+                              <uc1:DialogoError ID="uxDialogoError0" runat="server"  />
+                              <br />
+                          </ContentTemplate>
+                      </asp:UpdatePanel>
+
                  </div> 
              
                       
@@ -266,5 +275,6 @@
         
     </form>
         
+    </form>
 </asp:Content>
 

@@ -1,15 +1,25 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
+using System.Globalization;
+using System.Data;
+using System.Web;
+using System.Configuration;
 using Presentador.Cliente.Contrato;
 using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Comandos.ComandoCliente;
+using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
+using Presentador.Base;
+using System.Web;
+
 
 namespace Presentador.Cliente.Vistas
 {
-    public class ConsultarClientePresentador
+    public class ConsultarClientePresentador : PresentadorBase
     {
 
         #region Propiedades
@@ -64,7 +74,7 @@ namespace Presentador.Cliente.Vistas
         public void CampoBusqueda_Selected()
         {
             LimpiarFormulario();
-
+ 
             if (_vista.RbCampoBusqueda.SelectedValue == "1")
             {
                 _vista.BotonBuscar.Visible = true;
@@ -87,19 +97,10 @@ namespace Presentador.Cliente.Vistas
                 _vista.GetObjectContainerConsultaCliente.DataSource = "";
                 _vista.GetObjectContainerConsultaDireccion.DataSource = "";
                 _vista.GetObjectContainerConsultaTelefono.DataSource = "";
-            }
+            }   
         }
 
         #endregion
-
-
-
-
-
-
-
-
-
 
 
 
@@ -107,37 +108,41 @@ namespace Presentador.Cliente.Vistas
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
 
-            if (_vista.RbCampoBusqueda.SelectedValue == "1")// nombre de cliente
+            try
             {
-                cliente.Nombre = _vista.Valor.Text;
+                if (_vista.RbCampoBusqueda.SelectedValue == "1")// nombre de cliente
+                {
+                    cliente.Nombre = _vista.Valor.Text;
+                    IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+                    CargarDatos(listaCliente[0]);
+                    CambiarVista(1);
 
-                IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
-     /*           _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
-                _vista.GetObjectContainerConsultaDireccion.DataSource = listaCliente[0].Direccion;
-                _vista.GetObjectContainerConsultaTelefono.DataSource = listaCliente[0].Telefono[0];
-*/
+                }
 
-
-                CargarDatos(listaCliente[0]);
-                CambiarVista(1);
+                if (_vista.RbCampoBusqueda.SelectedValue == "2")// rif del cliente
+                {
+                    cliente.Rif = _vista.ConsultaRif.Text;
+                    Core.LogicaNegocio.Entidades.Cliente seleccionCliente = ConsultarClienteRif(cliente);
+                    CargarDatos(seleccionCliente);
+                    CambiarVista(1);
+                }
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
 
             }
-
-            if (_vista.RbCampoBusqueda.SelectedValue == "2")// rif del cliente
+            catch (Exception e)
             {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
 
-                cliente.Rif = _vista.ConsultaRif.Text;
-
-                Core.LogicaNegocio.Entidades.Cliente seleccionCliente = ConsultarClienteRif(cliente);
-
-                _vista.GetObjectContainerConsultaCliente.DataSource = seleccionCliente;
-                _vista.GetObjectContainerConsultaDireccion.DataSource = seleccionCliente.Direccion;
-                _vista.GetObjectContainerConsultaTelefono.DataSource = seleccionCliente.Telefono[0];
-
-                CambiarVista(1);
             }
-
         }
+
 
 
         public void CargarDatos(Core.LogicaNegocio.Entidades.Cliente cliente)
@@ -167,12 +172,31 @@ namespace Presentador.Cliente.Vistas
         {
             IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando;
 
-            comando = FabricaComandosCliente.CrearComandoConsultarNombre(entidad);
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando; //tengo q crear una nueva consulta
 
-            listaCliente = comando.ejecutar();
+                comando = FabricaComandosCliente.CrearComandoConsultarNombre(entidad);
 
+                listaCliente = comando.ejecutar();
+
+                
+            }
+            catch (ConsultarClienteLNException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
             return listaCliente;
         }
 
@@ -181,12 +205,31 @@ namespace Presentador.Cliente.Vistas
         {
             Core.LogicaNegocio.Entidades.Cliente seleccioncliente = new Core.LogicaNegocio.Entidades.Cliente();
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif comando; 
 
-            comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif comando; //tengo q crear una nueva consulta
 
-            seleccioncliente = comando.ejecutar();
+                comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
 
+                seleccioncliente = comando.ejecutar();
+
+                
+            }
+            catch (ConsultarClienteLNException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
             return seleccioncliente;
         }
 
