@@ -31,21 +31,20 @@ namespace Core.Pruebas
         {
             Contacto contacto = new Contacto();
 
-            contacto.ClienteContac = new Cliente();
-
-
-
-
+            Contacto comparar;
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
             IDAOContacto bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
 
-            bd.ModificarContacto(contacto);
+            contacto.IdContacto = 7;
 
+            bd.Eliminar(contacto);
 
+            comparar = bd.ConsultarContactoxId(contacto);
 
-
+            Assert.AreEqual(comparar.Nombre,null );
+            Assert.AreEqual(comparar.Apellido, null);
 
         }
     }
