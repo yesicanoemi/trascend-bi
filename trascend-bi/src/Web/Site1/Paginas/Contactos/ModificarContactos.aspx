@@ -397,6 +397,9 @@
                                              
                                                 <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                                         onclick="uxBotonAceptar_Click"/></td>
+                                                        
+                                                <td align="center"><asp:Button ID="uxBotonCancelar" runat="server" Text="Cancelar" 
+                                                        onclick="uxBotonCancelar_Click" /></td>
                                             </tr>
                                             
                                             </table>

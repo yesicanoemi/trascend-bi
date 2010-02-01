@@ -177,7 +177,7 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
         {
             get { return uxValor; }
             set { uxValor = value; }
-        }
+        }    
 
         #region Información
 

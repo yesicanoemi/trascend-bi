@@ -12,10 +12,9 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
 {
     #region Propiedades
 
-    private ModificarPresentador _presentador;
-
     protected const string paginaModificar = "~/Paginas/Contactos/ModificarContactos.aspx";
 
+    private ModificarPresentador _presentador;
 
         public TextBox TextBoxNombre
         {
@@ -331,6 +330,11 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
         _presentador.OnBotonBuscar();
     }
 
+    protected void uxBotonCancelar_Click(object sender, EventArgs e)
+    {
+        _presentador.OnBotonCancelar();
+    }
+
     protected void SelectContacto(object sender, GridViewSelectEventArgs e)
     {
         _presentador.uxObjectConsultaContactoSelecting
@@ -348,15 +352,16 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
     {
         _presentador.OnBotonAceptar();
     }
-    
-    public void CambiarPagina()
-    {
-        InformacionVisible2 = true;
-        Response.Redirect(paginaModificar);
-    }
 
     protected void uxValor_TextChanged(object sender, EventArgs e)
     {
+
+    }
+
+    public void CambiarPagina()
+    {
+
+        Response.Redirect(paginaModificar);
 
     }
 

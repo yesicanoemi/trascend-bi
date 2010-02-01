@@ -9,7 +9,6 @@ namespace Presentador.Contacto.ContactoInterface
 {
     public interface IModificarContacto
     {
-
         #region Propiedades
 
         TextBox TextBoxNombre { get; set; }
@@ -70,6 +69,8 @@ namespace Presentador.Contacto.ContactoInterface
 
         Label IdContactoH { get; set; }
 
+        void CambiarPagina();
+
         #region Validaciones
 
         RequiredFieldValidator RequiredFieldValidator { get; set; }
@@ -105,8 +106,6 @@ namespace Presentador.Contacto.ContactoInterface
         void PintarInformacion2(string mensaje, string estilo);
 
         #endregion
-
-        void CambiarPagina();
 
         #endregion 
     }

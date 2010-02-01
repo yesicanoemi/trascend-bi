@@ -57,31 +57,6 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.MultiViewConsultar.ActiveViewIndex = index;
         }
 
-        /*
-
-        /// <summary>
-        /// Llena la lista de todos los clientes
-        /// </summary>
- 
-        public void CargarClientes()
-        {
-            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-            
-            IList<Core.LogicaNegocio.Entidades.Cliente> listaClientes;
-
-            listaClientes = ConsultarCliente() ;
-
-            _vista.ClienteDdl.Items.Clear();
-            _vista.ClienteDdl.Items.Add(" -- ");
-            _vista.ClienteDdl.Items[0].Value = "0";
-            _vista.ClienteDdl.DataSource = listaClientes;
-            _vista.ClienteDdl.DataValueField = "IdCliente";
-            _vista.ClienteDdl.DataTextField = "Nombre";
-            _vista.ClienteDdl.DataBind();
-
-        }
-        */
-
         /// <summary>
         /// Metodo para cargar los datos por pantalla una vez seleccionado el contacto
         /// </summary>
@@ -130,6 +105,12 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.Valor.Text = campoVacio;
 
+            _vista.RequiredFieldValidator.Visible = false;
+
+            _vista.RequiredFieldValidator1.Visible = false;
+
+            _vista.GetObjectContainerConsultaContacto.DataSource = "";
+
             _vista.InformacionVisible = false;
 
         }
@@ -169,12 +150,6 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.NombreCliente.Visible = false;
 
                 _vista.Valor.Visible = false;
-
-                //_vista.InformacionVisible = false;
-
-                //_vista.ValidarNombreVacio.Visible = true;
-
-               _vista.GetObjectContainerConsultaContacto.DataSource = "";
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "2")
@@ -203,11 +178,9 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.Valor.Visible = false;
 
-                //_vista.InformacionVisible = false;
+                _vista.RequiredFieldValidator.Visible = true;
 
-                //_vista.ValidarNombreVacio.Visible = false;
-
-               _vista.GetObjectContainerConsultaContacto.DataSource = "";
+                _vista.RequiredFieldValidator1.Visible = true;
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "3")
@@ -219,8 +192,6 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.TextBoxCodTelefono.Visible = false;
 
                 _vista.TextBoxNumTelefono.Visible = false;
-
-                //_vista.ClienteDdl.Visible = true;
 
                 _vista.Valor.Visible = true;
 
@@ -236,13 +207,6 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.NombreCliente.Visible = true;
 
-                //_vista.InformacionVisible = false;
-
-                //_vista.ValidarNombreVacio.Visible = false;
-
-                //CargarClientes();
-
-                _vista.GetObjectContainerConsultaContacto.DataSource = "";
             }
 
         }
@@ -332,16 +296,19 @@ namespace Presentador.Contacto.ContactoPresentador
                     
                     cliente.Nombre = _vista.Valor.Text;
 
-                    //contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
-
                     IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
 
-                    contacto.ClienteContac = listaCliente[0];
+                    for (int i = 0; i < listaCliente.Count; i++)
+                    {
+                        contacto.ClienteContac = listaCliente[i];
 
-                    //contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
+                        for (int j = 0; j <  ConsultarContactoXCliente(contacto).Count; j++)
+                        {
+                            listContac.Add(ConsultarContactoXCliente(contacto)[j]);
+                        }
 
-                    listContac = ConsultarContactoXCliente(contacto);
-
+                        
+                    }
                     _vista.InformacionVisible = false;
 
                 }
@@ -524,27 +491,7 @@ namespace Presentador.Contacto.ContactoPresentador
 
             return listaCliente;
         }
-
-        /*
-
-        /// <summary>
-        /// Método para el comando ConsultarClientes
-        /// </summary>
-        /// <param name="entidad">Entidad comando a consultar (por cliente)</param>
-        /// <returns>Todos los clientes del sistema</returns>
-
-        public IList<Core.LogicaNegocio.Entidades.Cliente> ConsultarCliente()
-        {
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarTodos comando;
-
-            comando = FabricaComandosCliente.CrearComandoConsultarTodos();
-
-            return comando.Ejecutar();
-        }
-
-        */
         
-
         #endregion
     }
     
