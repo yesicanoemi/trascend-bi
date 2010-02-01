@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Presentador.Factura.Contrato;
 using Core.LogicaNegocio.Excepciones;
+using System.Net;
 
 namespace Presentador.Factura.Vistas
 {
@@ -36,7 +37,7 @@ namespace Presentador.Factura.Vistas
                 factura.Numero = int.Parse(_vista.Busqueda.Text);
 
                 Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID comandoConsultar =
-                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID( factura );
+                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID(factura);
 
                 factura = comandoConsultar.Ejecutar();
 
@@ -49,11 +50,17 @@ namespace Presentador.Factura.Vistas
                 _vista.PorcentajeFactura.Text = factura.Procentajepagado.ToString() + " %";
                 _vista.TotalFactura.Text = (factura.Prop.MontoTotal * factura.Procentajepagado).ToString();
             }
-            catch (ConsultarException e)
+            catch (WebException e)
             {
+                
+            }
+            catch (EliminarException e)
+            {
+                
             }
             catch (Exception e)
             {
+               
             }
         }
 
