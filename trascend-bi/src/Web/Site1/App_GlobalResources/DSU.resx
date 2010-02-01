@@ -400,13 +400,25 @@
     <value>Debe introducir el número de teléfono</value>
   </data>
   <data name="ErrorFormatoCodTelefono" xml:space="preserve">
-    <value>Error en el formato del código telefónico. Formato:  +1 (123)</value>
+    <value>Error en el formato del código telefónico. Formato:  cod. pais + cod. area</value>
   </data>
   <data name="ERTelefono" xml:space="preserve">
-    <value>^(\+\d\d?\d?)?\s?(\(\d{2,3}\))$</value>
+    <value>^(\d\d\d\d\d)$</value>
   </data>
   <data name="FaltaParametroBusqueda" xml:space="preserve">
     <value>Debe introducir valor de parámetro de búsqueda</value>
+  </data>
+  <data name="ERNumTelf" xml:space="preserve">
+    <value>^(\d\d\d\d\d\d\d)$</value>
+  </data>
+  <data name="ERRif" xml:space="preserve">
+    <value>^(\d\d\d\d\d\d\d\d\d)$</value>
+  </data>
+  <data name="ErrorFormatoNumTelf" xml:space="preserve">
+    <value>Número de teléfono debe ser de 7 dígitos</value>
+  </data>
+  <data name="ErrorFormatoRif" xml:space="preserve">
+    <value>Error en el formato del rif de cliente. Rif debe ser de 9 dígitos</value>
   </data>
   <data name="FaltaNumeroFactura" xml:space="preserve">
     <value>Introduzca el numero de una factura</value>
@@ -421,5 +433,4 @@
   <data name="CampoObligatorio" xml:space="preserve">
     <value>Los campos con * son de caracter obligatorio</value>
   </data>
-
 </root>

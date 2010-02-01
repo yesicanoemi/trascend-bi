@@ -3,22 +3,28 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-//using Presentador.Cliente.ClientePresentador;
+using System.Web.UI.WebControls;
+using System.Globalization;
+using System.Data;
+using System.Web;
+using System.Configuration;
+using Presentador.Base;
 using Presentador.Cliente.Vistas;
 using Presentador.Cliente.Contrato;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
+using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
 
 
 namespace Presentador.Cliente.Vistas
 {
-    public class AgregarClientePresentador
+    public class AgregarClientePresentador : PresentadorBase
     {
 
         private IAgregarCliente _vista;
         private string campoVacio = "";
+        string _RifAux;
 
         #region Constructor
         public AgregarClientePresentador(IAgregarCliente vista)
@@ -36,10 +42,33 @@ namespace Presentador.Cliente.Vistas
             {
                 cliente.Direccion = new Direccion();
 
-                //cliente.Telefono = new TelefonoTrabajo();
+                cliente.Telefono = new TelefonoTrabajo[3];
 
-                cliente.Rif = _vista.rifCliente.Text;
+                cliente.Telefono[0] = new TelefonoTrabajo();           
+                cliente.Telefono[0].Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
+                cliente.Telefono[0].Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
+                cliente.Telefono[0].Tipo = "Trabajo";
 
+                if (!_vista.CodCelular.Text.Equals("") && !_vista.TelefonoCelular.Text.Equals(""))
+                {
+                    cliente.Telefono[1] = new TelefonoTrabajo();
+                    cliente.Telefono[1].Codigoarea = int.Parse((string)_vista.CodCelular.Text);
+                    cliente.Telefono[1].Numero = int.Parse((string)_vista.TelefonoCelular.Text);
+                    cliente.Telefono[1].Tipo = "Celular";
+                }
+
+                if (!_vista.CodFax.Text.Equals("") && !_vista.TelefonoFax.Text.Equals(""))
+                {
+                    cliente.Telefono[2] = new TelefonoTrabajo();
+                    cliente.Telefono[2].Codigoarea = int.Parse((string)_vista.CodFax.Text);
+                    cliente.Telefono[2].Numero = int.Parse((string)_vista.TelefonoFax.Text);
+                    cliente.Telefono[2].Tipo = "Fax";
+                }
+
+                _RifAux = _vista.TipoRif.SelectedValue.ToString() + " - " +_vista.rifCliente.Text.ToString();
+                
+                cliente.Rif = _RifAux;
+                
                 cliente.Nombre = _vista.NombreCliente.Text;
 
                 cliente.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
@@ -56,22 +85,40 @@ namespace Presentador.Cliente.Vistas
 
                 cliente.AreaNegocio = _vista.AreaNegocioCliente.Text;
 
-                //cliente.Telefono.Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
-
-                //cliente.Telefono.Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
-
-                //cliente.Telefono.Tipo = _vista.TipoTelefono.Text;
-
                 Ingresar(cliente);
 
                 limpiarRegistro();
             }
             catch (WebException e)
             {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (AgregarClienteLNException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorIngresar"),
+                    ManagerRecursos.GetString("mensajeErrorIngresar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
 
             }
 
+            _vista.PintarInformacion(ManagerRecursos.GetString("ClienteOperacionExitosa"), "confirmacion");
+            _vista.InformacionVisible = true;
+
+            limpiarRegistro();
+
         }
+
+
         public void limpiarRegistro()
         {
             _vista.AreaNegocioCliente.Text = campoVacio;
@@ -84,16 +131,20 @@ namespace Presentador.Cliente.Vistas
             _vista.UrbanizacionCliente.Text = campoVacio;
             _vista.TelefonoTrabajoCliente.Text = campoVacio;
             _vista.CodigoTrabajoCliente.Text = campoVacio;
-
+            _vista.TelefonoCelular.Text = campoVacio;
+            _vista.CodCelular.Text = campoVacio;
+            _vista.TelefonoFax.Text = campoVacio;
+            _vista.CodFax.Text = campoVacio;
         }
-
         #endregion
+
         #region Comando
 
         public void Ingresar(Core.LogicaNegocio.Entidades.Cliente cliente)
         {
-            Core.LogicaNegocio.Comandos.ComandoCliente.Ingresar ingresar;
+            Core.LogicaNegocio.Comandos.ComandoCliente.Ingresar ingresar; //objeto del comando Ingresar.
 
+            //fábrica que instancia el comando Ingresar.
             ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoIngresar(cliente);
 
             ingresar.Ejecutar();

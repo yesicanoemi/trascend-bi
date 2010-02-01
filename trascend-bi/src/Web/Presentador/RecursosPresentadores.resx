@@ -168,4 +168,13 @@
   <data name="mensajeModificarContacto" xml:space="preserve">
     <value>El Contacto se modificó con éxito</value>
   </data>
+  <data name="ClienteOperacionExitosa" xml:space="preserve">
+    <value>Cliente registrado con éxito</value>
+  </data>
+  <data name="codigoErrorIngresar" xml:space="preserve">
+    <value>ING001</value>
+  </data>
+  <data name="mensajeErrorIngresar" xml:space="preserve">
+    <value>Ha ocurrido un Error Ingresando la información.</value>
+  </data>
 </root>
