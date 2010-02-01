@@ -72,7 +72,7 @@ namespace Presentador.Cargo.Vistas
             }
             else
             {
-                _vista.Mensaje("Debe rellenar todos los campos");
+                _vista.Mensaje("Debe rellenar todos los campos y la fecha de Vigencia no puede ser menor a la fecha actual");
             }
         }
 
@@ -147,7 +147,7 @@ namespace Presentador.Cargo.Vistas
             if (_vista.SueldoMaximo.Text == "")
                 b = false;
 
-            if (_vista.VigenciaSueldo.Text == "")
+            if (_vista.VigenciaSueldo.Text == "" && DateTime.Parse(_vista.VigenciaSueldo.Text) >= DateTime.Now)
                 b = false;
 
             return b;
@@ -173,6 +173,10 @@ namespace Presentador.Cargo.Vistas
                 _vista.LabelError.Text = "El sueldo minimo no puede ser menor que 0";
                 _vista.LabelError.Visible = true;
             }
+        }
+        public void FechaActual()
+        {
+            _vista.VigenciaSueldo.Text = DateTime.Now.ToShortDateString();
         }
         /// <summary>
         /// Se valida que el monto maximo no sea negativo y que sea menor que el monto minimo

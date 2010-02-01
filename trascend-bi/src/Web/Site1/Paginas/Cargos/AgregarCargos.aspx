@@ -80,8 +80,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="fteSueldoMinimo" runat="server" TargetControlID="uxSueldoMinimo"
-                                            FilterType="Numbers" />
+                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="uxDescripcion"
+                                            FilterType="Numbers, Custom" ValidChars="." />
                                     </td>
                                     <td>
                                         <asp:RequiredFieldValidator ID="rfvSueldoMinimo" runat="server" ControlToValidate="uxSueldoMinimo"
@@ -99,8 +99,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="fteSueldoMaximo" runat="server" TargetControlID="uxSueldoMaximo"
-                                            FilterType="Numbers" />
+                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="uxDescripcion"
+                                            FilterType="Numbers, Custom" ValidChars="." />
                                     </td>
                                     <td>
                                         <asp:RequiredFieldValidator ID="rvfSueldoMaximo" runat="server" ControlToValidate="uxSueldoMaximo"
@@ -112,7 +112,7 @@
                                         Vigencia de Sueldo:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxVigenciaSueldo" runat="server" TabIndex="63" CausesValidation="False"></asp:TextBox>
+                                        <asp:TextBox ID="uxVigenciaSueldo" runat="server" CausesValidation="False"></asp:TextBox>
                                         <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" /><asp:Label CssClass="campos" ID="Label5" runat="server">*</asp:Label>
                                     </td>
                                     <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
