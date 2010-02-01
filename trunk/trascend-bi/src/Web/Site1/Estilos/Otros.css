@@ -1,5 +1,9 @@
 ﻿body
 {}
+.campos
+{
+	color:Red;
+}
 .ajax__calendar {
     position: relative;
     left: 0px !important;
