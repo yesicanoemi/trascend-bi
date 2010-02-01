@@ -62,22 +62,35 @@ namespace Presentador.Contacto.ContactoPresentador
 
             contacto = ConsultarContactoNombreApellido(contacto)[0];
 
-            if (ConsultarContactoXCliente(contacto).Count > 1)
-            {   
-                //permite la eliminacion
-                EliminarContacto(contacto);
-               
-                LimpiarElementosVisibles();
-                
-                CambiarVista(0);
+            try
+            {
+                if (ConsultarContactoXCliente(contacto).Count > 1)
+                {
+                    //permite la eliminacion
+                    EliminarContacto(contacto);
+
+                    LimpiarElementosVisibles();
+
+                    CambiarVista(0);
+                }
+                else
+                {
+                    _vista.PintarInformacionEliminar(ManagerRecursos.GetString
+                            ("MensajeEliminarFallida"), "mensajes");
+
+                    _vista.InformacionVisibleEliminar = true;
+
+                }
             }
-            else
-            {                
-                _vista.PintarInformacionEliminar(ManagerRecursos.GetString
-                        ("MensajeEliminarFallida"), "mensajes");
-
-                _vista.InformacionVisibleEliminar = true;
-
+            catch (WebException e)
+            {
+                _vista.Pintar("0001", "Error al Eliminar Contacto", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar("0001", "Error al Eliminar Contacto", "Especificacion del Error", e.ToString());
+                _vista.DialogoVisible = true;
             }
            
         }
@@ -141,6 +154,12 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.TextBoxNumTelefono.Text = campoVacio;
 
             _vista.Valor.Text = campoVacio;
+
+            _vista.RequiredFieldValidator.Visible = false;
+
+            _vista.RequiredFieldValidator1.Visible = false;
+
+            _vista.GetObjectContainerConsultaContacto.DataSource = "";
 
             _vista.InformacionVisible = false;
 
@@ -217,12 +236,6 @@ namespace Presentador.Contacto.ContactoPresentador
                 _vista.NombreCliente.Visible = false;
 
                 _vista.Valor.Visible = false;
-
-                //_vista.InformacionVisible = false;
-
-                //_vista.ValidarNombreVacio.Visible = true;
-
-                _vista.GetObjectContainerConsultaContacto.DataSource = "";
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "2")
@@ -251,11 +264,9 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 _vista.Valor.Visible = false;
 
-                //_vista.InformacionVisible = false;
+                _vista.RequiredFieldValidator.Visible = true;
 
-                //_vista.ValidarNombreVacio.Visible = false;
-                
-                _vista.GetObjectContainerConsultaContacto.DataSource = "";
+                _vista.RequiredFieldValidator1.Visible = true;
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "3")
@@ -383,12 +394,15 @@ namespace Presentador.Contacto.ContactoPresentador
                     //contacto.ClienteContac = new Core.LogicaNegocio.Entidades.Cliente();
 
                     IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
+                    for (int i = 0; i < listaCliente.Count; i++)
+                    {
+                        contacto.ClienteContac = listaCliente[i];
 
-                    contacto.ClienteContac = listaCliente[0];
-
-                    //contacto.ClienteContac.IdCliente = int.Parse(_vista.ClienteDdl.Text);
-
-                    listContac = ConsultarContactoXCliente(contacto);
+                        for (int j = 0; j < ConsultarContactoXCliente(contacto).Count; j++)
+                        {
+                            listContac.Add(ConsultarContactoXCliente(contacto)[j]);
+                        }
+                    }
 
                     _vista.InformacionVisible = false;
 
