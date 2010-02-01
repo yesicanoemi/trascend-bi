@@ -16,7 +16,7 @@ AS
 BEGIN
 
 SET NOCOUNT ON;
-SELECT C.NOMBRE, C.APELLIDO, C.AREANEGOCIO, C.CARGO, CL.Nombre, C.IdContacto
+SELECT C.NOMBRE, C.APELLIDO, C.AREANEGOCIO, C.CARGO, CL.Nombre, C.IdContacto, CL.IdCliente
 FROM dbo.contacto C, dbo.cliente CL
 WHERE ((C.IdCliente = CL.IdCliente) and (C.IdContacto = @IdContacto))
 END
