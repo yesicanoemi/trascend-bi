@@ -154,8 +154,10 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
         
         MultiViewFactura.ActiveViewIndex = 0;
     }
-    protected void uxPorcentaje_TextChanged(object sender, EventArgs e)
+
+    protected void btCalcularMonto_Click(object sender, EventArgs e)
     {
         _presentador.CalcularMontoTotal();
     }
+
 }

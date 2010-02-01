@@ -155,7 +155,15 @@
                     </tr>
                      <tr>
                         <td> Monto a pagar:</td>
-                        <td><asp:Label ID="lbMonto" runat="server"></asp:Label></td>
+                        <td align="center"><asp:Label ID="lbMonto" runat="server" Font-Bold="true"></asp:Label></td>
+                    </tr>
+                    <tr>
+                       <td>&nbsp;</td>
+                       <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                       <td>&nbsp;</td>
+                       <td><asp:Button ID="btCargarTotal" runat="server" Text="Calcular" OnClick = "btCalcularMonto_Click" /></td>
                     </tr>
                     <tr>
                        <td>&nbsp;</td>
@@ -164,6 +172,7 @@
                     <tr>
                        <td>&nbsp;</td>
                        <td>&nbsp;</td>
+                        
                     </tr>
                     <tr>
                         <td><asp:Button ID="btBotonVolver" runat="server" Text="Volver" OnClick = "btBotonVolver_Click" /></td>
