@@ -35,17 +35,17 @@ namespace Presentador.Contacto.ContactoInterface
 
             TextBox Valor { get; set; }
 
-            //#region Diálogo
+            #region Diálogo
 
-            //bool DialogoVisible { get; set; }
+            bool DialogoVisible { get; set; }
 
-            //void Pintar(string codigo, string mensaje, string actor, string detalles);
+            void Pintar(string codigo, string mensaje, string actor, string detalles);
 
-            //bool InformacionVisible { get; set; }
+            bool InformacionVisible { get; set; }
 
-            //void PintarInformacion(string mensaje, string estilo);
+            void PintarInformacion(string mensaje, string estilo);
 
-            //#endregion
+            #endregion
         #endregion
     }
         

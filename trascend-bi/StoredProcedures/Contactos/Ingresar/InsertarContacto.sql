@@ -1,22 +1,9 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ===============================================
-USE [BddProy2]
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		<Claudio Melcón/Edgar Ruiz>
--- Create date: <15/01/2010>
+-- Author:		<Sofia Ostos>
+-- Create date: <30/01/2010>
 -- Description:	<Insert Contacto>
 -- =============================================
 CREATE PROCEDURE [dbo].[InsertarContacto] 
@@ -31,7 +18,6 @@ CREATE PROCEDURE [dbo].[InsertarContacto]
 @TelefonoCelular int,
 @CodigoCel int,
 @CodigoArea int,
-@Tipo varchar (50),
 @IdCliente int,
 @ID int
 
@@ -51,15 +37,15 @@ from [BddProy2].[dbo].[Contacto] as C
 where C.Nombre=@Nombre and C.Apellido=@Apellido and C.Cargo=@Cargo;
 
 
-INSERT INTO [BddProy2].[dbo].[Telefono] (CodigoArea,Numero,Tipo,IdContacto)
+INSERT INTO [BddProy2].[dbo].[Telefono] (CodigoArea,Numero,IdTipoTelefono,IdContacto)
      VALUES
-           (@CodigoCel,@TelefonoCelular,'celular',@ID);
+           (@CodigoCel,@TelefonoCelular,2,@ID);
 
 
-INSERT INTO [BddProy2].[dbo].[Telefono] (CodigoArea,Numero,Tipo,IdContacto)
+INSERT INTO [BddProy2].[dbo].[Telefono] (CodigoArea,Numero,IdTipoTelefono,IdContacto)
      VALUES
-           (@CodigoArea,@TelefonoTrabajo,@Tipo,@ID);
-
+           (@CodigoArea,@TelefonoTrabajo,1,@ID);
 
 END
-GO
+
+
