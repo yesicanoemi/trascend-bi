@@ -36,7 +36,7 @@
                          
                            <table width="100%" border="0">
   <tr>
-    <td colspan="2"><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" /></td>
+    <td colspan="2"><asp:Label ID="LabelTipoConsulta" runat="server" Text = "Introduzca Tipo de Consulta" Font-Size="Medium"/></td>
   </tr>
   <tr>
     <td colspan="2">&nbsp;</td>
@@ -45,19 +45,22 @@
     <td colspan="2">&nbsp;</td>
   </tr>
    <tr>
-    <td colspan="2" height="50px">&nbsp;</td>
+    <td colspan="2" ><strong>Realizar consulta por:</strong></td>
   </tr>
   <tr>
-    <td width="100%"><asp:RadioButtonList ID="opcion1" runat="server" Width="194px"  
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%"><asp:RadioButtonList ID="opcion1" runat="server" Width="200px"  
                                                     OnSelectedIndexChanged="uxRbCampoBusqueda_SelectedIndexChanged" 
                                                     AutoPostBack="true" Visible="true">
-      <asp:ListItem Value="1" Text="Busqueda por Cedula"></asp:ListItem>
-      <asp:ListItem Value="2" Text="Busqueda por Nombre"></asp:ListItem>
-      <asp:ListItem Value="3" Text="Busqueda por Cargo"></asp:ListItem>
+      <asp:ListItem Value="1">Cedula</asp:ListItem>
+      <asp:ListItem Value="2">Nombre</asp:ListItem>
+      <asp:ListItem Value="3">Cargo</asp:ListItem>
     </asp:RadioButtonList></td>
-    <td width="100%"><table width="100%" border="1">
+    <td width="50%"><table width="100%" border="1">
       <tr>
-        <td align="center">
+        <td align="left" width="50%">
             <asp:TextBox ID="uxParametro" runat="server" Visible="false">
             </asp:TextBox><asp:TextBox ID="uxParametroCedula" runat="server" Visible="false">
             </asp:TextBox>  <asp:DropDownList ID="listaCargo" runat="server" Visible="false"> </asp:DropDownList>

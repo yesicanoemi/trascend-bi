@@ -261,7 +261,11 @@ namespace Presentador.Empleado.Vistas
                             _vista.opcion.Visible = true;
                             _vista.TextBoxParametro.Visible = false;
                             _vista.ParametroCedula.Visible = true;
-                            _vista.Aceptar.Visible = true; 
+                            _vista.Aceptar.Visible = true;
+                            _vista.GetOCConsultarEmp.DataSource = "";
+                            _vista.ParametroCedula.Text = "";
+                            _vista.TextBoxParametro.Text = "";
+                           
                             
                         }
 
@@ -272,6 +276,10 @@ namespace Presentador.Empleado.Vistas
                             _vista.TextBoxParametro.Visible = true;
                             _vista.Aceptar.Visible = true;
                             _vista.ParametroCedula.Visible = false;
+                            _vista.GetOCConsultarEmp.DataSource = "";
+                            _vista.ParametroCedula.Text = "";
+                            _vista.TextBoxParametro.Text = "";
+                            
 
                         }
 
@@ -282,6 +290,10 @@ namespace Presentador.Empleado.Vistas
                             _vista.TextBoxParametro.Visible = false;
                             _vista.Aceptar.Visible = true;
                             _vista.ParametroCedula.Visible = false;
+                            _vista.GetOCConsultarEmp.DataSource = "";
+                            _vista.ParametroCedula.Text = "";
+                            _vista.TextBoxParametro.Text = "";
+                            
                         }
                     }
 
