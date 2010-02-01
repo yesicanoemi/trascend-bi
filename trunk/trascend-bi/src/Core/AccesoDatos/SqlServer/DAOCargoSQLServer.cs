@@ -172,7 +172,8 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new EliminarException("Error SQL al eliminar el cargo", e);
+                if(e.ErrorCode == -2146232060)
+                    throw new EliminarException("Este cargo se encuentra asociado al menos\n a un empleado y no se puede eliminar", e);
                 //System.Console.Write(e);
             }
             catch (Exception e)
