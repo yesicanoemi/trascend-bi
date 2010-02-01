@@ -11,13 +11,23 @@ namespace Presentador.Contacto.ContactoPresentador
 {
     public class AgregarPresentador
     {
-        
+        #region Propiedades
+
         private IAgregarContacto _vista;
+
+        #endregion
+
+        #region Constructor
 
         public AgregarPresentador(IAgregarContacto vista)
         {
             _vista = vista;
         }
+
+        #endregion
+
+        #region Metodos
+
         public void Onclick()
         {
             IngresarContacto();
@@ -44,10 +54,6 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 contacto.ClienteContac = listaCliente[0];
 
-                //   int idCliente = 0;
-                //   idCliente = contacto.ClienteContac.IdCliente; 
-                //if (idCliente!=0)
-
                 Ingresar(contacto);
             }
             catch (WebException)
@@ -56,11 +62,13 @@ namespace Presentador.Contacto.ContactoPresentador
             }
         }
 
+        #endregion
+
+        #region Comandos
+
         public void Ingresar(Core.LogicaNegocio.Entidades.Contacto _contacto)
         {
             Core.LogicaNegocio.Comandos.ComandoContacto.Ingresar ingresar;
-
-            //fábrica que instancia el comando Ingresar.
 
             Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoNombreApellido ConsultarContacto;
 
@@ -97,6 +105,7 @@ namespace Presentador.Contacto.ContactoPresentador
             return listaCliente;
         }
 
-     }
-    
+        #endregion
+    }
+
 }
