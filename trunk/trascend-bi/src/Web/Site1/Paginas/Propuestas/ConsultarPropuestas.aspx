@@ -39,12 +39,15 @@
                             <tr>
                                 <td><asp:Label ID="uxOpcionCheckBox" runat="server" Text = "Realizar consulta por:" Font-Bold="true" />
                                     &nbsp;</td>
-                                <td><asp:TextBox ID="uxParametro" runat="server"></asp:TextBox></td>
+                                <td>
+                                <asp:TextBox ID="uxParametro" runat="server" Visible="true"></asp:TextBox>
+                                <asp:TextBox ID="uxParametroRif" runat="server" Visible="false"></asp:TextBox>
+                                </td>
                             </tr>
                             <tr>
-                                <td><asp:RadioButtonList id="uxListaOpciones" runat="server" Width="420px">
+                                <td><asp:RadioButtonList id="uxListaOpciones" runat="server" Width="365px" 
+                                        onselectedindexchanged="uxListaOpciones_SelectedIndexChanged1" AutoPostBack="true">
                                         <asp:ListItem Value="1">Nombre Propuesta</asp:ListItem>
-                                        <asp:ListItem Value="2">Codigo de Propuesta</asp:ListItem>
                                         <asp:ListItem Value="3">Rif Cliente</asp:ListItem>
                                         <asp:ListItem Value="4">Nombre Cliente</asp:ListItem>
                                     </asp:RadioButtonList>

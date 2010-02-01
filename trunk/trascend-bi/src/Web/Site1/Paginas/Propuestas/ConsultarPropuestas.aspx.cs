@@ -143,6 +143,11 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
         get { return uxParametro; }
         set { uxParametro = value; }
     }
+    public TextBox TextParametroRif
+    {
+        get { return uxParametroRif; }
+        set { uxParametroRif = value; }
+    }
     public GridView GridPropuesta
     {
         get { return uxPropuestaConsultada; }
@@ -218,5 +223,11 @@ public partial class Paginas_Propuestas_ConsultarPropuestas : PaginaBase, IConsu
     protected void Consult(object sender, GridViewSelectEventArgs e)
     {
         _presenter.CargaDatosPagina(int.Parse(uxPropuestaConsultada.DataKeys[e.NewSelectedIndex].Value.ToString()));
+    }
+    protected void uxListaOpciones_SelectedIndexChanged1(object sender, EventArgs e)
+    {
+        TextParametroRif.Text = "";
+        TextParametro.Text = "";
+        _presenter.TipoBusqueda();
     }
 }

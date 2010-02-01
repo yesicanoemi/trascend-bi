@@ -349,8 +349,8 @@ namespace Core.AccesoDatos.SqlServer
                 }
                 if (Opcion == 2) // Id de la Propuesta
                 {
-                     conexion = SqlHelper.ExecuteReader
-                        (_conexion.GetConnection(), "CpIdProp", ParametroBusqueda);
+                    conexion = SqlHelper.ExecuteReader
+                       (_conexion.GetConnection(), "CpIdProp", ParametroBusqueda);
                 }
                 if (Opcion == 3)// Rif Cliente
                 {

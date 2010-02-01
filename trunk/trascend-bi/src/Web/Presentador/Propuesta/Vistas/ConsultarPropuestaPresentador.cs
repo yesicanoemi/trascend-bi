@@ -192,7 +192,13 @@ namespace Presentador.Propuesta.Vistas
             _vista.LabelVacioC.Visible = false;
             string opciont = _vista.ListOpcion.SelectedItem.Value;
             int Opcion = Convert.ToInt32(opciont);
-            string Parametro = _vista.TextParametro.Text;
+            string Parametro;
+
+            if (Opcion == 3)
+                Parametro = _vista.TextParametroRif.Text;
+            else
+                Parametro = _vista.TextParametro.Text;
+            
             propuesta = LlenarListaParametro(Opcion, Parametro);
 
             if (propuesta.Count > 0)
@@ -218,6 +224,24 @@ namespace Presentador.Propuesta.Vistas
             return propuesta;
         }
 
+        public void TipoBusqueda()
+        {
+            if (_vista.ListOpcion.SelectedValue == "3")
+            {
+                _vista.TextParametroRif.Visible = true;
+                _vista.TextParametro.Visible = false;
+            }
+            if (_vista.ListOpcion.SelectedValue == "1")
+            {
+                _vista.TextParametro.Visible = true;
+                _vista.TextParametroRif.Visible = false;
+            }
+            if (_vista.ListOpcion.SelectedValue == "4")
+            {
+                _vista.TextParametro.Visible = true;
+                _vista.TextParametroRif.Visible = false;
+            }
+        }
 
 
         #endregion
