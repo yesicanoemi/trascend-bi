@@ -10,12 +10,9 @@ using Presentador.Cliente.Contrato;
 
 public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarCliente
 {
-    #region Propiedades
     private AgregarClientePresentador _presentador;
 
-    #endregion
-
-    #region Informacion Basica se guardan las variables
+    #region Propiedades
 
     public TextBox rifCliente
     {
@@ -28,7 +25,6 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         get { return uxNombreCliente; }
         set { uxNombreCliente = value; }
     }
-
 
     public TextBox CalleAvenidaCliente
     {
@@ -102,6 +98,38 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         set { uxCodFax = value; }
     }
 
+    public DropDownList TipoRif
+    {
+        get { return uxTipoRif; }
+        set { uxTipoRif = value; }
+    }
+
+    #endregion
+
+    #region Propiedades del Dialogo
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
+
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -134,9 +162,11 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         //_presentador = new AgregarClientePresentador(this);
 
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
     }
+
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.IngersarCliente();

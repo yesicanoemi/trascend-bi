@@ -8,7 +8,8 @@ namespace Presentador.Cliente.Contrato
 {
     public interface IAgregarCliente
     {
-        #region informacion Basicas
+        #region informacion Cliente
+
         TextBox rifCliente { get; set; }
         TextBox NombreCliente { get; set; }
         TextBox CalleAvenidaCliente { get; set; }
@@ -23,8 +24,18 @@ namespace Presentador.Cliente.Contrato
         TextBox CodCelular { get; set; }
         TextBox TelefonoFax { get; set; }
         TextBox CodFax { get; set; }
-        
+        DropDownList TipoRif { get; set; }
+
         #endregion
 
+        #region Dialogo
+
+        bool DialogoVisible { get; set; }
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
+        bool InformacionVisible { get; set; }
+        void PintarInformacion(string mensaje, string estilo);
+        //void Mensaje(string msg);
+
+        #endregion
     }
 }
