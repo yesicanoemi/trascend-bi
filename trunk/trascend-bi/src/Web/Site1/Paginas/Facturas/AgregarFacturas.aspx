@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" 
-        CodeFile="AgregarFacturas1.aspx.cs" Inherits="Paginas_Facturas_AgregarFacturas1" %>
+        CodeFile="AgregarFacturas.aspx.cs" Inherits="Paginas_Facturas_AgregarFacturas1" %>
 
 
 
