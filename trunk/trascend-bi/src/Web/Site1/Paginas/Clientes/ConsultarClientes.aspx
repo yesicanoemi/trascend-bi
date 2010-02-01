@@ -113,7 +113,7 @@
                                                
                                  <tr>                      
 
-                                    <td>
+                                    <td colspan="2">
 
                                         
                                         
@@ -121,6 +121,11 @@
                                         
 
                                 <br />
+                                                <asp:UpdatePanel ID="up2" runat="server">
+                                                    <ContentTemplate>
+                                                        <uc1:DialogoError ID="uxDialogoError0" runat="server" />
+                                                    </ContentTemplate>
+                                        </asp:UpdatePanel>
                                                 <br />
                                                 <br />
                                                 <br />
@@ -236,11 +241,11 @@
                                 
                                 <caption>
                                     <br />
-                                    <asp:UpdatePanel ID="up2" runat="server">
+                                    <%--<asp:UpdatePanel ID="up2" runat="server">
                                         <ContentTemplate>
                                             <uc1:DialogoError ID="uxDialogoError" runat="server" />
                                         </ContentTemplate>
-                                    </asp:UpdatePanel>
+                                    </asp:UpdatePanel>--%>
                                 </caption>
                                 
                                 
@@ -250,12 +255,6 @@
                     
 
                      <br />
-                      <asp:UpdatePanel ID="up3" runat="server" >
-                          <ContentTemplate>
-                              <uc1:DialogoError ID="uxDialogoError0" runat="server"  />
-                              <br />
-                          </ContentTemplate>
-                      </asp:UpdatePanel>
 
                  </div> 
              
@@ -263,6 +262,8 @@
                      
               </div>
                       
+                      
+
         </div> 
 				
 			</div> 
