@@ -8,6 +8,7 @@ using Core.LogicaNegocio.Comandos;
 using System.Net;
 using Presentador.Gasto.Contrato;
 using Presentador.Propuesta.Vistas;
+using Core.LogicaNegocio.Excepciones.Gasto.Logica_de_Negocio;
 
 
 namespace Presentador.Gasto.Vistas
@@ -49,34 +50,44 @@ namespace Presentador.Gasto.Vistas
 
         public void ingresarGasto()
         {
-            Core.LogicaNegocio.Entidades.Gasto gasto = new Core.LogicaNegocio.Entidades.Gasto();
-
-            gasto.Descripcion = _vista.DescripcionGasto.Text;
-
-            gasto.Estado = _vista.EstadoGasto.SelectedItem.Text;
-
-            gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
-
-            gasto.FechaIngreso = DateTime.Now;
-
-            gasto.Monto = float.Parse(_vista.MontoGasto.Text);
-
-            gasto.Tipo = _vista.TipoGasto.SelectedItem.Text;
-
-            if (_vista.AsociarPropuestaGasto.Checked)
+            try
             {
-                int i = 0;
+                Core.LogicaNegocio.Entidades.Gasto gasto = new Core.LogicaNegocio.Entidades.Gasto();
 
-                if (propuestas.Count == 0)
-                    gasto.IdVersion = 0;
+                gasto.Descripcion = _vista.DescripcionGasto.Text;
 
-                for (i = 0; i < propuestas.Count; i++)
+                gasto.Estado = _vista.EstadoGasto.SelectedItem.Text;
 
-                    if (propuestas.ElementAt(i).Titulo.Equals(_vista.PropuestaAsociada.SelectedItem.Text))
+                gasto.FechaGasto = Convert.ToDateTime(_vista.FechaGasto.Text);
 
-                        gasto.IdVersion = Int32.Parse(propuestas.ElementAt(i).Version);
+                gasto.FechaIngreso = DateTime.Now;
+
+                gasto.Monto = float.Parse(_vista.MontoGasto.Text);
+
+                gasto.Tipo = _vista.TipoGasto.SelectedItem.Text;
+
+                if (_vista.AsociarPropuestaGasto.Checked)
+                {
+                    int i = 0;
+
+                    if (propuestas.Count == 0)
+                        gasto.IdVersion = 0;
+
+                    for (i = 0; i < propuestas.Count; i++)
+
+                        if (propuestas.ElementAt(i).Titulo.Equals(_vista.PropuestaAsociada.SelectedItem.Text))
+
+                            gasto.IdVersion = Int32.Parse(propuestas.ElementAt(i).Version);
+                }
+                Ingresar(gasto);
             }
-            Ingresar(gasto);
+                   
+            catch (Exception e) {
+                _vista.MensajeError.Text = "Error al Ingresar los Datos";
+                _vista.Datos.Visible = false;
+                
+            }
+            
 
         }
 
@@ -107,6 +118,7 @@ namespace Presentador.Gasto.Vistas
                 limpiar();
                 _vista.MensajeError.Text = "El gasto se ha insertado correctamente!!!";
                 _vista.MensajeError.Visible = true;
+                _vista.Datos.Visible = false;
             }
 
         }
@@ -127,6 +139,8 @@ namespace Presentador.Gasto.Vistas
                 _vista.PropuestaAsociada.Items.Add(propuestas.ElementAt(i).Titulo);
             }
         }
+
+      
         #endregion
 
     }

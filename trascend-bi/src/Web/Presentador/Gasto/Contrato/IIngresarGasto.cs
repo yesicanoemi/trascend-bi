@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Presentador.Gasto.Contrato
 {
@@ -17,6 +18,7 @@ namespace Presentador.Gasto.Contrato
         ListBox PropuestaAsociada { get; set; }
         CheckBox AsociarPropuestaGasto { get; set; }
         Label MensajeError { get; set; }
+        HtmlTable Datos { get; set; }
         #endregion
     }
 }
