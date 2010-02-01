@@ -259,10 +259,6 @@ namespace Core.AccesoDatos.SqlServer
 
                     factura.Estado = reader["EstadoFactura"].ToString();
 
-                    factura.Prop.Titulo = reader["TituloPropuesta"].ToString();
-
-                    factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
-
                 }
                 else
                     throw new ConsultarFacturaADException();
@@ -396,9 +392,9 @@ namespace Core.AccesoDatos.SqlServer
 
                         arparms[5] = new SqlParameter("@Estado", SqlDbType.VarChar);
                         if (factura.Estado.Equals("Por Cobrar"))
-                            arparms[5].Value = 1;
-                        if (factura.Estado.Equals("Cobrada"))
                             arparms[5].Value = 2;
+                        if (factura.Estado.Equals("Cobrada"))
+                            arparms[5].Value = 1;
                         if (factura.Estado.Equals("Anulada"))
                             arparms[5].Value = 3;
                         arparms[6] = new SqlParameter("@TituloPropuesta", SqlDbType.VarChar);
