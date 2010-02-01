@@ -8,15 +8,18 @@ namespace Presentador.Factura.Contrato
 {
     public interface IConsultarFactura
     {
-        RadioButtonList RadioButtons { get; set; }
-        TextBox PropuestaBuscar { get; set; }
-        GridView ResultadoPropuesta { get; set; }
-        GridView ResultadoFacturas { get; set; }
-        Button BotonBusqueda { get; set; }
+        DropDownList ParametroBox { get; set; }
+        TextBox ParametroTexto { get; set; }
+        MultiView MultiViewFacturas { get; set; }
+        Label TituloPropuesta { get; set; }
         Label MontoTotal { get; set; }
-        Label PorcentajeTotal { get; set; }
-        Label MontoFaltante { get; set; }
-        Label PorcentajeFaltante { get; set; }
+        GridView TablaFacturas { get; set; }
+        Label Titulo { get; set; }
+        Label Descripcion { get; set; }
+        Label Porcentaje { get; set; }
+        Label FechaIngreso { get; set; }
+        Label FechaPago { get; set; }
+        Label Estado { get; set; }
 
         void Mensaje(string msg);
     }
