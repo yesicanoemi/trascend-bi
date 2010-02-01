@@ -29,6 +29,8 @@ namespace Core.Pruebas
         [Test]
         public void TestContactoModificar()
         {
+            Contacto comparar = new Contacto();
+
             Contacto contacto = new Contacto();
 
             contacto.ClienteContac = new Cliente();
@@ -45,7 +47,17 @@ namespace Core.Pruebas
 
             contacto.Nombre = "Dina";
 
-            contacto.TelefonoDeTrabajo.Codigoarea = 414;
+            contacto.TelefonoDeTrabajo.Codigoarea = 212;
+
+            contacto.TelefonoDeTrabajo.Numero = 8112211;
+
+            contacto.TelefonoDeTrabajo.Tipo = "Trabajo";
+
+            contacto.TelefonoDeCelular.Codigocel = 414;
+
+            contacto.TelefonoDeCelular.Numero = 8113311;
+
+            contacto.TelefonoDeCelular.Tipo = "Celular";
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
@@ -53,9 +65,15 @@ namespace Core.Pruebas
 
             bd.ModificarContacto(contacto);
 
+            comparar = bd.ConsultarContactoxId(contacto);
 
-
-
+            Assert.AreEqual(comparar.Nombre, contacto.Nombre);
+            Assert.AreEqual(comparar.Apellido, contacto.Apellido);
+            Assert.AreEqual(comparar.AreaDeNegocio, contacto.AreaDeNegocio);
+            Assert.AreEqual(comparar.Cargo, contacto.Cargo);
+            Assert.AreEqual(comparar.TelefonoDeCelular.Codigocel, contacto.TelefonoDeCelular.Codigocel);
+            Assert.AreEqual(comparar.TelefonoDeCelular.Numero, contacto.TelefonoDeCelular.Numero);
+            Assert.AreEqual(comparar.TelefonoDeCelular.Tipo, contacto.TelefonoDeCelular.Tipo);
 
         }
     }
