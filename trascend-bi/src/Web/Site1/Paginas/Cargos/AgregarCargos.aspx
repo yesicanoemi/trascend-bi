@@ -26,11 +26,19 @@
                         <p class="large">
                             <table style="width: 100%">
                                 <tr>
+                                    <td colspan="2" align="center"><asp:Label ID="uxLabelError" CssClass="campos" runat="server" Visible="False"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         Nombre:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxNombre" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxNombre" runat="server"></asp:TextBox><asp:Label ID="Label1" CssClass="campos" runat="server">*</asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
@@ -48,7 +56,7 @@
                                         Descripcion:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox><asp:Label ID="Label2" CssClass="campos" runat="server">*</asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
@@ -66,7 +74,8 @@
                                         Sueldo Mínimo:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxSueldoMinimo" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxSueldoMinimo" runat="server" AutoPostBack="true"
+                                            OnTextChanged="uxSueldoMinimo_TextChanged"></asp:TextBox><asp:Label ID="Label3" CssClass="campos" runat="server">*</asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
@@ -84,7 +93,8 @@
                                         Sueldo Máximo
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxSueldoMaximo" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxSueldoMaximo" runat="server" AutoPostBack="true"
+                                            OnTextChanged="uxSueldoMaximo_TextChanged"></asp:TextBox><asp:Label ID="Label4" CssClass="campos" runat="server">*</asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
@@ -103,7 +113,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="uxVigenciaSueldo" runat="server" TabIndex="63" CausesValidation="False"></asp:TextBox>
-                                        <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
+                                        <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" /><asp:Label CssClass="campos" ID="Label5" runat="server">*</asp:Label>
                                     </td>
                                     <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
                                         ID="uxceFechaNac" Format="dd/MM/yyyy" TargetControlID="uxVigenciaSueldo" PopupButtonID="uxImgFechaNac">
@@ -133,9 +143,16 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td colspan="2">
+                                    <asp:Label runat="server" ID="label14" CssClass="campos" Text="<%$ Resources:DSU, CampoObligatorio%>"></asp:Label> 
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         &nbsp;
                                     </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         &nbsp;
                                     </td>
@@ -158,8 +175,6 @@
                                 </tr>
                             </table>
                         </p>
-                        <center>
-                            <asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label></center>
                         <asp:GridView ID="uxVistaCargo" runat="server" AutoGenerateColumns="false" CellPadding="10"
                             CellSpacing="5" OnRowDataBound="uxVistaCargo_RowDataBound">
                             <RowStyle HorizontalAlign="Center" />

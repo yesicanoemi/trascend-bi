@@ -408,4 +408,7 @@
   <data name="FaltaParametroBusqueda" xml:space="preserve">
     <value>Debe introducir valor de parámetro de búsqueda</value>
   </data>
+  <data name="CampoObligatorio" xml:space="preserve">
+    <value>Los campos con * son de caracter obligatorio</value>
+  </data>
 </root>
