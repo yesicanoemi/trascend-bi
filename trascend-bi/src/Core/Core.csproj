@@ -255,8 +255,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Pruebas\PruebaCliente.cs" />
-    <Compile Include="Pruebas\PruebaModificarContacto.cs" />
-    <Compile Include="Pruebas\PruebaEliminarContacto.cs" />
+    <Compile Include="Pruebas\PruebaContactoConsultar.cs" />
+    <Compile Include="Pruebas\PruebaContactoEliminar.cs" />
+    <Compile Include="Pruebas\PruebaContactoModificar.cs" />
     <Compile Include="Pruebas\PruebaContactoIngresar.cs" />
     <Compile Include="Pruebas\PruebaEliminarUsuario.cs" />
     <Compile Include="Pruebas\PruebaReporteFacturasEmitidas.cs" />
