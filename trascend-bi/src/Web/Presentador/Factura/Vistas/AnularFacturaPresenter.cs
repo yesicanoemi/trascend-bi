@@ -33,19 +33,21 @@ namespace Presentador.Factura.Vistas
                 Core.LogicaNegocio.Entidades.Factura factura =
                     new Core.LogicaNegocio.Entidades.Factura();
 
-                factura.Numero = int.Parse(_vista.NumeroFactura.Text);
+                factura.Numero = int.Parse(_vista.Busqueda.Text);
 
                 Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID comandoConsultar =
                     Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID( factura );
 
                 factura = comandoConsultar.Ejecutar();
 
-                List<Core.LogicaNegocio.Entidades.Factura> lista = new List<Core.LogicaNegocio.Entidades.Factura>();
-                lista.Add(factura);
-
-                _vista.DetalleFactura.DataSource = lista;
-                _vista.DetalleFactura.DataBind();
-    
+                _vista.NombrePropuesta.Text = factura.Prop.Titulo;
+                _vista.MontoPropuesta.Text = factura.Prop.MontoTotal.ToString();
+                _vista.NumeroFactura.Text = factura.Numero.ToString();
+                _vista.TituloFactura.Text = factura.Titulo;
+                _vista.DescripcionFactura.Text = factura.Descripcion;
+                _vista.FechaFactura.Text = factura.Fechaingreso.ToShortDateString().ToString();
+                _vista.PorcentajeFactura.Text = factura.Procentajepagado.ToString() + " %";
+                _vista.TotalFactura.Text = (factura.Prop.MontoTotal * factura.Procentajepagado).ToString();
             }
             catch (ConsultarException e)
             {

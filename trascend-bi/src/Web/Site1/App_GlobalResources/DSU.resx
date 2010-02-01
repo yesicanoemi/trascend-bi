@@ -408,6 +408,9 @@
   <data name="FaltaParametroBusqueda" xml:space="preserve">
     <value>Debe introducir valor de parámetro de búsqueda</value>
   </data>
+  <data name="FaltaNumeroFactura" xml:space="preserve">
+    <value>Introduzca el numero de una factura</value>
+  </data>
   <data name="ERFormatoNumCedula" xml:space="preserve">
     <value>^\d{8}$</value>
   </data>

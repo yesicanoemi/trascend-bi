@@ -8,7 +8,14 @@ namespace Presentador.Factura.Contrato
 {
     public interface IAnularFactura
     {
-        TextBox NumeroFactura { get; set; }
-        GridView DetalleFactura { get; set; }
+        TextBox Busqueda { get; set; }
+        Label NombrePropuesta { get; set; }
+        Label MontoPropuesta { get; set; }
+        Label NumeroFactura { get; set; }
+        Label TituloFactura { get; set; }
+        Label DescripcionFactura { get; set; }
+        Label PorcentajeFactura { get; set; }
+        Label TotalFactura { get; set; }
+        Label FechaFactura { get; set; }
     }
 }
