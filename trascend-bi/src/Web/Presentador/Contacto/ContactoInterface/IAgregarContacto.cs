@@ -27,10 +27,6 @@ namespace Presentador.Contacto.ContactoInterface
 
             TextBox TextBoxCodCelular { get; set; }
 
-            TextBox TextBoxTelfFax { get; set; }
-
-            TextBox TextBoxCodFax { get; set; }
-
            
 
         //RequiredFieldValidator RequiredFieldValidator { get; set; }

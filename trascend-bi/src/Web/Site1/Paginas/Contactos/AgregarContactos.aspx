@@ -113,11 +113,8 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td>Telefono Fax:</td>
+                                   <td></td>
                                    <td>
-                                       <br />
-                                       <asp:TextBox ID="uxCodFax" runat="server" Width="40px"></asp:TextBox>
-                                       <asp:TextBox ID="uxFax" runat="server" Height="22px" Width="147px"></asp:TextBox>
                                        <br />
                                                          </td>
                                </tr>

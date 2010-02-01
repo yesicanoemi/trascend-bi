@@ -28,12 +28,6 @@ namespace Presentador.Contacto.ContactoPresentador
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
             try
             {
-
-                contacto.TelefonoDeFax.Numero = 0;
-                contacto.TelefonoDeFax.Codigofax = 0;
-
-                if ((_vista.TextBoxTelfFax.Text!="")&& (_vista.TextBoxCodFax.Text!=""))
-
                 contacto.Nombre = _vista.TextBoxNombreContacto.Text;
                 contacto.Apellido = _vista.TextBoxApellidoContacto.Text;
                 contacto.AreaDeNegocio = _vista.TextBoxAreaNegocio.Text;
@@ -43,16 +37,16 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxTelfOficina.Text);
                 contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
 
-                if ((_vista.TextBoxTelfFax.Text != "") && (_vista.TextBoxCodFax.Text != ""))
-                {
-                    contacto.TelefonoDeFax.Numero = int.Parse(_vista.TextBoxTelfFax.Text);
-                    contacto.TelefonoDeFax.Codigofax = int.Parse(_vista.TextBoxCodFax.Text);
-                }
+              
                 cliente.Nombre = _vista.Valor.Text;
 
                 IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
 
                 contacto.ClienteContac = listaCliente[0];
+
+                //   int idCliente = 0;
+                //   idCliente = contacto.ClienteContac.IdCliente; 
+                //if (idCliente!=0)
 
                 Ingresar(contacto);
             }
