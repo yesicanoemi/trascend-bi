@@ -11,62 +11,17 @@ using Microsoft.Practices.Web.UI.WebControls;
 public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificarCliente
 {
 
-    
+
 
     #region propiedades
 
     private ConsultarClientePresentador _presentador;
 
-    #endregion
-
-
-
-    /*
-
-    #region Información Básica
-
-    #region Propiedades del Diálogo
-
-    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    public TextBox rifCliente
     {
-        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+        get { return uxRif; }
+        set { uxRif = value; }
     }
-
-    public bool DialogoVisible
-    {
-        get { return uxDialogoError.Visible; }
-        set { uxDialogoError.Visible = value; }
-    }
-
-    #endregion
-    
-
-    #region Información
-
-    public void PintarInformacion(string mensaje, string estilo)
-    {
-        uxMensajeInformacion.PintarControl(mensaje, estilo);
-    }
-
-    public bool InformacionVisible
-    {
-        get { return uxMensajeInformacion.Visible; }
-        set { uxMensajeInformacion.Visible = value; }
-    }
-
-    public void PintarInformacionBotonAceptar(string mensaje, string estilo)
-    {
-        uxMensajeInformacionBotonAceptar.PintarControl(mensaje, estilo);
-    }
-
-    public bool InformacionVisibleBotonAceptar
-    {
-        get { return uxMensajeInformacionBotonAceptar.Visible; }
-        set { uxMensajeInformacionBotonAceptar.Visible = value; }
-    }
-
-    #endregion
-     */ 
 
     public TextBox NombreCliente
     {
@@ -74,12 +29,100 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
         set { uxNombreCliente = value; }
     }
 
+    public TextBox CalleAvenidaCliente
+    {
+        get { return uxAvenidaCalle; }
+        set { uxAvenidaCalle = value; }
+    }
+
+    public TextBox UrbanizacionCliente
+    {
+        get { return uxUrbanizacion; }
+        set { uxUrbanizacion = value; }
+    }
+
+    public TextBox EdificioCasaCliente
+    {
+        get { return uxEdificioCasa; }
+        set { uxEdificioCasa = value; }
+    }
+
+    public TextBox PisoApartamentoCliente
+    {
+        get { return uxPisoApartamento; }
+        set { uxPisoApartamento = value; }
+    }
+
+    public TextBox CiudadCliente
+    {
+        get { return uxciudad; }
+        set { uxciudad = value; }
+    }
+
+    public TextBox AreaNegocioCliente
+    {
+        get { return uxAreaNegocioCliente; }
+        set { uxAreaNegocioCliente = value; }
+    }
+
+    public TextBox TelefonoTrabajoCliente
+    {
+        get { return uxTelefonoTrabajo; }
+        set { uxTelefonoTrabajo = value; }
+    }
+
+    public TextBox CodigoTrabajoCliente
+    {
+        get { return uxCodTrabajo; }
+        set { uxCodTrabajo = value; }
+    }
+
+    public TextBox TelefonoCelular
+    {
+        get { return uxTelefonoCelular; }
+        set { uxTelefonoCelular = value; }
+    }
+
+    public TextBox CodCelular
+    {
+        get { return uxCodCelular; }
+        set { uxCodCelular = value; }
+    }
+
+    public TextBox TelefonoFax
+    {
+        get { return uxTelefonoFax; }
+        set { uxTelefonoFax = value; }
+    }
+
+    public TextBox CodFax
+    {
+        get { return uxCodFax; }
+        set { uxCodFax = value; }
+    }
+
+    public DropDownList TipoRif
+    {
+        get { return uxTipoRif; }
+        set { uxTipoRif = value; }
+    }
+
+    public TextBox CampoBusqueda
+    {
+        get { return uxCampoBusqueda; }
+        set { uxCampoBusqueda = value; }
+    }
+
     public RadioButtonList RbCampoBusqueda
     {
         get { return uxRbCampoBusqueda; }
         set { uxRbCampoBusqueda = value; }
     }
- //   #endregion
+
+    #endregion
+
+
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -112,8 +155,8 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
             Response.Redirect(paginaSinPermiso);
         }
 
-        uxNombreCliente.Visible = true;
-        uxBotonBuscar.Visible = true;
+        uxCampoBusqueda.Visible = true;
+        uxCampoBusqueda.Visible = true;
     }
 
 
