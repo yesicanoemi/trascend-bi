@@ -13,7 +13,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        Core.LogicaNegocio.Entidades.Usuario usuario =
+        /*Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
@@ -24,9 +24,9 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
             {
                 i = usuario.PermisoUsu.Count;
 
-                _presenter = new AdministrarCargoPresenter(this);
+               */ _presenter = new AdministrarCargoPresenter(this);
 
-                permiso = true;
+               /* permiso = true;
 
             }
         }
@@ -34,7 +34,7 @@ public partial class Paginas_Cargos_AdministrarCargos : PaginaBase, IAdministrar
         if (permiso == false)
         {
             Response.Redirect(paginaSinPermiso);
-        }
+        }*/
     }
 
     protected void Page_Load(object sender, EventArgs e)
