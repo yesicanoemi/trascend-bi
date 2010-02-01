@@ -25,8 +25,11 @@ namespace Presentador.Cliente.Contrato
         TextBox TelefonoFax { get; set; }
         TextBox CodFax { get; set; }
         DropDownList TipoRif { get; set; }
+        Button InsertarOtro { get; set; }
 
         #endregion
+
+        Button Agregar { get; set; }
 
         #region Dialogo
 

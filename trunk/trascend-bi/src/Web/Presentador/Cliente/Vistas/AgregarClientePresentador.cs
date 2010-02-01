@@ -87,7 +87,7 @@ namespace Presentador.Cliente.Vistas
 
                 Ingresar(cliente);
 
-                limpiarRegistro();
+                //limpiarRegistro();
             }
             catch (WebException e)
             {
@@ -114,8 +114,11 @@ namespace Presentador.Cliente.Vistas
             _vista.PintarInformacion(ManagerRecursos.GetString("ClienteOperacionExitosa"), "confirmacion");
             _vista.InformacionVisible = true;
 
-            limpiarRegistro();
-
+            //limpiarRegistro();
+            DesactivarCampos();
+            _vista.InsertarOtro.Visible = true;
+            _vista.Agregar.Visible = false;
+            
         }
 
 
@@ -136,6 +139,55 @@ namespace Presentador.Cliente.Vistas
             _vista.TelefonoFax.Text = campoVacio;
             _vista.CodFax.Text = campoVacio;
         }
+
+
+        public void DesactivarCampos()
+        {
+            _vista.AreaNegocioCliente.Enabled = false;
+            _vista.CalleAvenidaCliente.Enabled = false;
+            _vista.CiudadCliente.Enabled = false;
+            _vista.EdificioCasaCliente.Enabled = false;
+            _vista.NombreCliente.Enabled = false;
+            _vista.PisoApartamentoCliente.Enabled = false;
+            _vista.rifCliente.Enabled = false;
+            _vista.UrbanizacionCliente.Enabled = false;
+            _vista.TelefonoTrabajoCliente.Enabled = false;
+            _vista.CodigoTrabajoCliente.Enabled = false;
+            _vista.TelefonoCelular.Enabled = false;
+            _vista.CodCelular.Enabled = false;
+            _vista.TelefonoFax.Enabled = false;
+            _vista.CodFax.Enabled = false;
+        }
+
+
+        public void ActivarCampos()
+        {
+            _vista.AreaNegocioCliente.Enabled = true;
+            _vista.CalleAvenidaCliente.Enabled = true;
+            _vista.CiudadCliente.Enabled = true;
+            _vista.EdificioCasaCliente.Enabled = true;
+            _vista.NombreCliente.Enabled = true;
+            _vista.PisoApartamentoCliente.Enabled = true;
+            _vista.rifCliente.Enabled = true;
+            _vista.UrbanizacionCliente.Enabled = true;
+            _vista.TelefonoTrabajoCliente.Enabled = true;
+            _vista.CodigoTrabajoCliente.Enabled = true;
+            _vista.TelefonoCelular.Enabled = true;
+            _vista.CodCelular.Enabled = true;
+            _vista.TelefonoFax.Enabled = true;
+            _vista.CodFax.Enabled = true;
+        }
+
+
+        public void PrepararOtraInsercion()
+        {
+            ActivarCampos();
+            limpiarRegistro();
+            _vista.InformacionVisible = false;
+            _vista.InsertarOtro.Visible = false;
+            _vista.Agregar.Visible = true;
+        }
+
         #endregion
 
         #region Comando

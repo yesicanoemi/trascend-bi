@@ -304,12 +304,21 @@
                                    <td>
                                        <table style="width: 100%">
                                            <tr>
-                                               <td>
+                                               <td align="center">
                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Agregar" 
                                            onclick="uxBotonAceptar_Click" ValidationGroup="ValidarCampos" />
                                                </td>
-                                               <td>
-                                                   <asp:Button ID="Button1" runat="server" Text="Cancelar" />
+                                               <td align="center">
+                                                   <asp:Button ID="uxInsertarOtro" runat="server" Text="Insertar Otro" 
+                                                       Visible="False" onclick="uxInsertarOtro_Click" />
+                                               </td>
+                                               <td align="center">
+                                                   <asp:Button ID="Button1" runat="server" Text="Cancelar"  PostBackUrl="~/Paginas/Clientes/DefaultClientes.aspx" />
+                                               </td>
+                                           </tr>
+                                           <tr>
+                                               <td colspan="2" align="center">
+                                                   <br />
                                                </td>
                                            </tr>
                                        </table>

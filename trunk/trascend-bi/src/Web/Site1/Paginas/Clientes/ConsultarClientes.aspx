@@ -100,7 +100,7 @@
                                                         <tr>
                                                             <td align="center">
                                                                 <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
-                                                                Visible="false"    Text="Buscar" ValidationGroup="valBusquedaNombre" />
+                                                                Visible="false"    Text="Buscar" ValidationGroup="valBusquedaNombre"  />
                                                             </td>
                                                         </tr>
                                                    
