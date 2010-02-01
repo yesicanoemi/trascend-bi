@@ -37,17 +37,32 @@ namespace Presentador.Empleado.Vistas
                     private void CargarDatos(Core.LogicaNegocio.Entidades.Empleado empleado)
                     {
                         _vista.LabelNombre.Text = empleado.Nombre;
+                       
                         _vista.LabelApellido.Text = empleado.Apellido;
+                        
                         _vista.LabelCI.Text = empleado.Cedula.ToString();
+                        
                         _vista.LabelNumCuenta.Text = empleado.Cuenta;
+
+                        _vista.LabelSueldoBase.Text=empleado.SueldoBase.ToString();
+                        
                         _vista.LabelFechaNac.Text = empleado.FechaNacimiento.ToShortDateString();
-                        _vista.LabelEstado.Text = empleado.Estado.ToString();
+
+                        _vista.LabelEstado.Text = empleado.EstadoEmpleado.Nombre.ToString();//   .Estado.ToString();
+                        
                         _vista.LabelDirAve.Text = empleado.Direccion.Avenida;
+
+                        _vista.LabelDirCalle.Text = empleado.Direccion.Calle;
+                        
                         _vista.LabelDirUrb.Text = empleado.Direccion.Urbanizacion;
+                        
                         _vista.LabelDirEdifCasa.Text = empleado.Direccion.Edif_Casa;
+                        
                         _vista.LabelDirPisoApto.Text = empleado.Direccion.Piso_apto;
+                        
                         _vista.LabelDirCiudad.Text = empleado.Direccion.Ciudad;
-                        _vista.LabelCargo.Text = empleado.Cargo;
+                        
+                        _vista.LabelCargo.Text = empleado.CargoEmpleado.Nombre;
                     }
                     
                    
@@ -102,7 +117,7 @@ namespace Presentador.Empleado.Vistas
 
                             try
                             {
-                                if (listado != null)
+                                if (listado!=null)
                                 {
                                     _vista.GetOCConsultarEmp.DataSource = listado;
                                 }
@@ -119,11 +134,11 @@ namespace Presentador.Empleado.Vistas
                         {
                             emp.Nombre = _vista.TextBoxParametro.Text;
                             
-                            IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
+                            List<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
                             
                             try
                             {
-                                if (listado != null)
+                                if (listado.Count > 0)
                                 {
                                     _vista.GetOCConsultarEmp.DataSource = listado;
                                 }
@@ -138,19 +153,17 @@ namespace Presentador.Empleado.Vistas
                         #region buscar por cargo
                         if (_vista.opcion.SelectedValue == "3")//cargo
                         {
-                            Core.LogicaNegocio.Entidades.Empleado empleado1 = new Core.LogicaNegocio.Entidades.Empleado();
+                            Core.LogicaNegocio.Entidades.Empleado empleado1 = 
+                                new Core.LogicaNegocio.Entidades.Empleado();
 
-                            //empleado1.Cargo = _vista.SeleccionCargo.SelectedItem.Text;
+                            Core.LogicaNegocio.Entidades.Cargo cargoEmpleado= 
+                                new Core.LogicaNegocio.Entidades.Cargo();
 
-                            //Core.LogicaNegocio.Entidades.Cargo cargo = BuscarCargosNuevo(cargo1);
+                            cargoEmpleado.Id = _vista.drowListaCargo.SelectedIndex + 1;
 
-                            //////////////////////////////////////////
+                            empleado1.CargoEmpleado = cargoEmpleado;
 
-
-                            
-                            //emp.Cargo = _vista.SeleccionCargo.SelectedItem.Text;//vamos a ver no estoy muy seguro
-                            
-                            IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(emp);
+                            IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(empleado1);
                             
                             try
                             {
@@ -168,23 +181,28 @@ namespace Presentador.Empleado.Vistas
                         #endregion
 
                         
-                    }                                    
+                    }
 
-                    public void uxObjectConsultaUsuariosSelecting(string nombre)
+                    public void uxObjectConsultaUsuariosSelecting(int codigoEmpleado)//string nombre
                     {
                         Core.LogicaNegocio.Entidades.Empleado emp = new Core.LogicaNegocio.Entidades.Empleado();
-                        emp.Nombre = nombre;
+                        //emp.Nombre = nombre;
+                        emp.Id = codigoEmpleado;
 
-                        IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
+                        Core.LogicaNegocio.Entidades.Empleado listado = BuscarEmpleadoCodigo(emp);//BuscarPorNombre(emp);
+                        
                         emp = null;
-                        emp = listado[0];
+                        
+                        emp = listado;
+                        
                         CargarDatos(emp);
+                        
                         CambiarVista(1);
                     }
                           
-                    public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorNombre(Core.LogicaNegocio.Entidades.Empleado entidad)
+                    public List<Core.LogicaNegocio.Entidades.Empleado> BuscarPorNombre(Core.LogicaNegocio.Entidades.Empleado entidad)
                     {
-                        IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
+                        List<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
 
                         Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre consultar;
 
@@ -310,8 +328,11 @@ namespace Presentador.Empleado.Vistas
                         try
                         {
                             DropDownList e = new DropDownList();
+                            
                             Core.AccesoDatos.SqlServer.DAOCargoSQLServer conex = new Core.AccesoDatos.SqlServer.DAOCargoSQLServer();
+                            
                             cargos = conex.ConsultarCargos();
+                            
                             for (int i = 0; i < cargos.Count; i++)
                             {
                                 cargo.Add((Core.LogicaNegocio.Entidades.Cargo)cargos[i]);
@@ -334,6 +355,20 @@ namespace Presentador.Empleado.Vistas
                             //_vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
                             //_vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
                         }
+                    }
+
+                    private Core.LogicaNegocio.Entidades.Empleado BuscarEmpleadoCodigo(Core.LogicaNegocio.Entidades.Empleado entidad)
+                    {
+                        Core.LogicaNegocio.Entidades.Empleado empleado1 = null;
+
+                        Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCodigo consultar;//nuevo
+
+                        consultar = FabricaComandosEmpleado.CrearConsultarPorCodigo(entidad);
+
+                        empleado1 = consultar.Ejecutar();
+
+                        return empleado1;
+                    
                     }
 
                     #endregion

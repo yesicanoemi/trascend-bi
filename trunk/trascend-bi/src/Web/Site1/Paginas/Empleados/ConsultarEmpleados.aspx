@@ -82,14 +82,15 @@
   </tr>
    <tr>
        <td colspan="2"><asp:GridView ID="uxConsultarEmpleado" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultarEmpleado"
-                                            AutoGenerateColumns="False" DataKeyNames ="Nombre" AutoGenerateSelectButton="True"
+                                            AutoGenerateColumns="False" DataKeyNames ="ID" AutoGenerateSelectButton="True"
                                             Width="95%" Font-Names="Verdana" Font-Size="Smaller" PageSize = "10"
                                             OnSelectedIndexChanging="SelectUsuarios">
          <columns>
-         <asp:BoundField HeaderText="Cedula" DataField="Cedula" SortExpression="Cedula" />
+         <asp:BoundField HeaderText="Cedula" DataField="Cedula" SortExpression="Cedula"  />
          <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />
          <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
          </columns>
+         
          <EmptyDataTemplate>
            <center>
              <span>No hay data cargada </span>
@@ -102,84 +103,139 @@
                         
                         <asp:View ID="ViewUsuario" runat="server">
                         
-                            <p class="large">Detalles de Empleado</p>                    
+                            <b><span style="background-color: #0000CC; color: #FFFFFF;">
+                                               DETALLES DEL EMPLEADO:&nbsp;&nbsp;&nbsp; </span></b>                    
                          
                             <form id="uxFormConsultarUsuario">
+                            <b><span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp; <b>
+                            <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; <b>
+                            <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; <b>
+                            <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; <b>
+                            <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; </span></b></span>
+                            </b></span></b></span></b></span></b>
                             <table style="width:100%;">
+                               <tr>
+                                           <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                                           
+                               </tr>
+                               <tr>
+                                           <td><b><span style="background-color: #0000CC; color: #FFFFFF;">
+                                               Datos Personales<b><span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;
+                                               <b><span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; </span></b>
+                                               </span></b></span></b></td>
+                                           <td>&nbsp;</td>
+                                           
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                                           
+                               </tr>
                                <tr>
                                            <td><b>Nombre:</b></td>
                                            <td><asp:Label ID="uxNombreEmp" runat="server" Text=""></asp:Label></td>
-                                       </tr>
-                                       <tr>
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
                                            <td>&nbsp;</td>
                                            
-                                       </tr>
-                                       <tr>
+                               </tr>
+                               <tr>
                                            <td><b>Apellido:</b></td>
                                            <td><asp:Label ID="uxApellidoEmp" runat="server" Text=""></asp:Label></td>
-                                       </tr>
-                                        <tr>
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
                                            <td>&nbsp;</td>
                                          
-                                        </tr>
-                                       <tr>
+                               </tr>
+                               <tr>
                                            <td><b>Cedula:</b></td>
                                            <td><asp:Label ID="uxCedEmp" runat="server" Text=""></asp:Label></td>
-                                       </tr>
-                                       <tr>
-                                           <td>&nbsp;</td>
-                                          
-                                        </tr>
-                                        <tr>
+                               </tr>
+                               <tr>
+                                          <td>&nbsp;</td>
+                                          <td>&nbsp;</td>
+                               </tr>
+                               <tr>
                                            <td><b>Numero de Cuenta:</b></td>
                                            <td><asp:Label ID="uxNumCuentaE" runat="server" Text=""></asp:Label></td>
-                                        </tr>
-                                        <tr>
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
                                            <td>&nbsp;</td>
                                            
-                                       </tr>
-                                        <tr>
+                              </tr>
+                              <tr>
+                                           <td><b>Sueldo Base:</b></td>
+                                           <td><asp:Label ID="uxSueldoBase" runat="server" Text=""></asp:Label></td>
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                                           
+                              </tr>
+                              <tr>
                                            <td><b>Fecha de Nacimiento:</b></td>
                                            <td><asp:Label ID="uxFecNacE" runat="server" Text=""></asp:Label></td>
-                                        </tr>
-                                        <tr>
+                              </tr>
+                              <tr>
                                            <td>&nbsp;</td>
-                                           
-                                       </tr>
-                                        <tr>
+                                           <td>&nbsp;</td>
+                              </tr>
+                              <tr>
                                            <td><b>Estado:</b></td>
                                            <td><asp:Label ID="uxEstadoE" runat="server" Text=""></asp:Label></td>
+                              </tr>
+                              <tr>
+                                           <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                           <td><b>Cargo:</b></td>
+                                           <td><asp:Label ID="uxCargoEmp" runat="server" Text=""></asp:Label></td>
                                         </tr>
                                         <tr>
                                            <td>&nbsp;</td>
-                                           
-                                       </tr>
-                                        <tr>
-                                           <td><b>Direccion:</b></td>
-                                           
-                                        </tr>
-                                        <tr>
                                            <td>&nbsp;</td>
                                            
                                        </tr>
-                                       <tr>
-                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calle:</b></td>
+                               <tr>
+                                           <td style="color: #0033CC"><b>
+                                               <span style="background-color: #0000CC; color: #FFFFFF;">
+                                               Direccion<b><span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; <b>
+                                               <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; <b>
+                                               <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; <b>
+                                               <span style="background-color: #0000CC; color: #FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp; </span></b></span>
+                                               </b></span></b></span></b></span></b></td>
+                                           <td style="font-size: large">&nbsp;</td>
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                                           
+                               </tr>
+                               <tr>
+                                           <td><b>Calle:</b></td>
                                            <td><asp:Label ID="uxDirCalleEmp" runat="server" Text=""></asp:Label></td>
-                                        </tr>
-                                        <tr>
+                               </tr>
+                               <tr>
+                                           <td>&nbsp;</td>
                                            <td>&nbsp;</td>
                                            
-                                       </tr>
-                                       <tr>
-                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avenida:</b></td>
+                                </tr>
+                                <tr>
+                                           <td><b>Avenida:</b></td>
                                            <td><asp:Label ID="uxDirAveEmp" runat="server" Text=""></asp:Label></td>
-                                        </tr>
-                                        <tr>
+                                </tr>
+                                <tr>
+                                           <td>&nbsp;</td>
                                            <td>&nbsp;</td>
                                            
-                                       </tr>
+                               </tr>
                                        <tr>
-                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urbanizacion:</b></td>
+                                           <td><b>Urbanizacion:</b></td>
                                            <td><asp:Label ID="uxDirUrbEmp" runat="server" Text=""></asp:Label></td>
                                         </tr>
                                         <tr>
@@ -187,38 +243,37 @@
                                            
                                        </tr>
                                        <tr>
-                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edificio o Casa:</b></td>
+                                           <td><b>Edificio o Casa:</b></td>
                                            <td><asp:Label ID="uxDirEdCasaEmp" runat="server" Text=""></asp:Label></td>
                                         </tr>
                                         <tr>
                                            <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
                                            
                                        </tr>
                                        <tr>
-                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Piso/Apto:</b></td>
+                                           <td><b>Piso/Apartamento:</b></td>
                                            <td><asp:Label ID="uxDirPisAptoEmp" runat="server" Text=""></asp:Label></td>
                                         </tr>
                                         <tr>
                                            <td>&nbsp;</td>
-                                           
+                                           <td>&nbsp;</td>
                                        </tr>
                                        <tr>
-                                           <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ciudad:</b></td>
+                                           <td><b>Ciudad:</b></td>
                                            <td><asp:Label ID="uxDirCiudadEmp" runat="server" Text=""></asp:Label></td>
                                         </tr>
                                         <tr>
                                            <td>&nbsp;</td>
+                                           <td>&nbsp;</td>
+                                       </tr>
+                                       <tr colspan="2" align="center">
+                                           <td><asp:Button ID="Button1" runat="server" Text="Aceptar" 
+                                                   onclick="Button1_Click" /></td>
                                            
                                        </tr>
                           
-                                        <tr>
-                                           <td><b>Cargo:</b></td>
-                                           <td><asp:Label ID="uxCargoEmp" runat="server" Text=""></asp:Label></td>
-                                        </tr>
-                                        <tr>
-                                           <td>&nbsp;</td>
-                                           
-                                       </tr>
+                                        
                                        
                                      </table>
                                  </form>

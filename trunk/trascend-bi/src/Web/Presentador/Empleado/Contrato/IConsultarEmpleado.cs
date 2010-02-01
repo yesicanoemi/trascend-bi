@@ -32,6 +32,7 @@ namespace Presentador.Empleado.Contrato
         Label LabelCargo { get; set; }
         Label LabelEstado { get; set; }
         Button Aceptar { get; set; }
+        Label LabelSueldoBase { get; set; }
         DropDownList drowListaCargo
         {
             get;

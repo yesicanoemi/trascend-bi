@@ -10,37 +10,39 @@ using Core.AccesoDatos.Fabricas;
 
 namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
 {
-    public class ConsultarPorNombre : Comando<Empleado>
+    public class ConsultarPorCodigo : Comando<Empleado>
     {
         private Empleado _empleado;
-        
-        private List<Empleado> _empleado2;
+        private Empleado empleado;
+
 
         #region Constructor
 
         /// <summary>Constructor por defecto de la clase 'Ingresar'.</summary>
-        public ConsultarPorNombre()
+        public ConsultarPorCodigo()
         { }
 
         /// <summary>Constructor de la clase 'Ingresar'.</summary>
         /// <param name="urbanizador">Entidad sobre la cual se aplicará el comando.</param>
-        public ConsultarPorNombre(Core.LogicaNegocio.Entidades.Empleado empleado)
+        public ConsultarPorCodigo(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
-            _empleado = empleado;
+            this.empleado = empleado;
         }
 
         #endregion
 
         #region Metodos
-        public List<Empleado> Ejecutar()
+        
+        public Empleado Ejecutar()
         {
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-            IDAOEmpleado acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOEmpleado();
+            IDAOEmpleado acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOEmpleado();                        
+            
+            _empleado = acceso.ConsultarPorCodigo(empleado);
 
-            _empleado2 = acceso.ConsultarPorTipoNombre(_empleado);
-
-            return _empleado2;             
+            return _empleado;                                            
+        
         }
         #endregion
     }

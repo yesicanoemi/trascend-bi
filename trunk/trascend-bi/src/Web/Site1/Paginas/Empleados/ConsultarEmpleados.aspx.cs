@@ -13,6 +13,8 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
     private  ConsultarEmpleadoPresenter _presenter;
     
     private Empleado _empleado;
+
+    protected const string paginaConsulta = "~/Paginas/Empleados/ConsultarEmpleados.aspx";
     
     #region Propiedades de la Pagina
     public RadioButtonList opcion
@@ -152,6 +154,12 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
         set { uxBotonAceptar = value; }
     }
 
+    public Label LabelSueldoBase
+    {
+        get { return uxSueldoBase; }
+        set { uxSueldoBase = value; }
+    }
+
     #endregion
 
     protected void Page_Init(object sender, EventArgs e)
@@ -185,7 +193,11 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
     
      protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        _presenter.uxObjectConsultaUsuariosSelecting(uxConsultarEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presenter.uxObjectConsultaUsuariosSelecting
+            (int.Parse(uxConsultarEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString()));
+
+        
+
     }
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
@@ -245,6 +257,10 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
             _presenter.ConsultarCargos();
         }
 
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(paginaConsulta);
     }
 }
 
