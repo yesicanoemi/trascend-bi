@@ -175,8 +175,11 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\AgregarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarEmpleadoConUsuario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarEmpleadoSinUsuario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarIdPermiso.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarPermisos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarUsuarioTodos.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\EliminarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ListaUsuarios.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ModificarUsuario.cs" />
@@ -216,6 +219,12 @@
     <Compile Include="LogicaNegocio\Excepciones\Gasto\Logica de Negocio\ConsultarGastoLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\IngresarException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\ModificarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\PermisoException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Usuario\AccesoDatos\AgregarPermisosBDExcepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Usuario\AccesoDatos\AgregarUsuarioBDExcepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Usuario\AccesoDatos\ConsultarUsuarioBDExcepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Usuario\AccesoDatos\EliminarUsuarioBDExcepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Usuario\AccesoDatos\ModificarUsuarioBDExcepciones.cs" />
     <Compile Include="LogicaNegocio\Fabricas\FabricaComandosCliente.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\ConsultarPropuestaBDException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Propuesta\AccesoDatos\EliminarPropuestaBDException.cs" />
@@ -268,6 +277,9 @@
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestasIntervalo.cs" />
     <Compile Include="Pruebas\PruebasUsuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LogicaNegocio\Excepciones\Usuario\LogicaNegocio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

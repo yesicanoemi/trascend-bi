@@ -11,7 +11,7 @@ namespace Core.AccesoDatos.Interfaces
         void AgregarUsuario(Usuario usuario);
 
         void ModificarUsuario(Usuario usuario);
-        
+
         Usuario ConsultarCredenciales(Usuario usuario);
 
         IList<Usuario> ConsultarUsuario(Usuario usuario);
@@ -20,13 +20,19 @@ namespace Core.AccesoDatos.Interfaces
 
         IList<Empleado> ConsultarEmpleadoConUsuario(Empleado empleado);
 
+        IList<Empleado> ConsultarEmpleadoSinUsuario(Empleado empleado);
+
         IList<Usuario> ListaUsuarios();
+
+        IList<Usuario> ConsultarUsuarioTodos();
 
         Usuario VerificarUsuario(Usuario usuario);
 
         Usuario EliminarUsuario(Usuario usuario);
 
+        Permiso ConsultarIdPermiso(Permiso permiso);
 
-        
+
+
     }
 }
