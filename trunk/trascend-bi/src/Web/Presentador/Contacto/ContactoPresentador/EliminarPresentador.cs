@@ -199,6 +199,8 @@ namespace Presentador.Contacto.ContactoPresentador
                        ("MensajeEliminarCorrecto"), "mensajes");
 
             _vista.InformacionVisibleEliminar = true;
+
+            _vista.RbCampoBusqueda.ClearSelection();
         }
 
         #region Radio Buttons

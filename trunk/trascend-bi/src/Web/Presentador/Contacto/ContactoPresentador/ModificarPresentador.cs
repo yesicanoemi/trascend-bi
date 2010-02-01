@@ -135,6 +135,8 @@ namespace Presentador.Contacto.ContactoPresentador
                            ("mensajeModificarContacto"), "mensajes");
 
             _vista.InformacionVisible2 = true;
+
+            _vista.RbCampoBusqueda.ClearSelection();
         }
 
         /// <summary>
