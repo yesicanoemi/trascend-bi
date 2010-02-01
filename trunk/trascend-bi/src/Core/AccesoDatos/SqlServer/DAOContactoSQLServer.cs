@@ -34,7 +34,15 @@ namespace Core.AccesoDatos.SqlServer
 
         #region Métodos
 
+
+
         #region Ingresar
+
+        /// <summary>
+        /// Metodo para insertar un Contacto
+        /// </summary>
+        /// <param name="usuario">Objeto Contacto</param>
+        /// <returns></returns>
 
         public Contacto Ingresar(Contacto contacto)
         {
@@ -43,7 +51,7 @@ namespace Core.AccesoDatos.SqlServer
             {
                 
                 
-                SqlParameter[] arParms = new SqlParameter[11];
+                SqlParameter[] arParms = new SqlParameter[10];
                 // Parametros 
                 arParms[0] = new SqlParameter("@Nombre", SqlDbType.VarChar);
                 arParms[0].Value = contacto.Nombre;
@@ -61,14 +69,11 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[6].Value = contacto.TelefonoDeCelular.Codigocel;
                 arParms[7] = new SqlParameter("@CodigoArea", SqlDbType.Int);
                 arParms[7].Value = contacto.TelefonoDeTrabajo.Codigoarea;
-                arParms[8] = new SqlParameter("@CodigoFax", SqlDbType.Int);
-                arParms[8].Value = contacto.TelefonoDeFax.Codigofax;
-                arParms[9] = new SqlParameter("@TelefonoFax", SqlDbType.Int);
-                arParms[9].Value = contacto.TelefonoDeFax.Numero;
-                arParms[10] = new SqlParameter("@IdCliente", SqlDbType.Int);
-                arParms[10].Value = contacto.ClienteContac;
-                arParms[11] = new SqlParameter("@ID", SqlDbType.Int);
-                arParms[11].Value = 0;
+                
+                arParms[8] = new SqlParameter("@IdCliente", SqlDbType.Int);
+                arParms[8].Value = contacto.ClienteContac.IdCliente;
+                arParms[9] = new SqlParameter("@ID", SqlDbType.Int);
+                arParms[9].Value = 0;
                 int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),"InsertarContacto", arParms);
             }
             catch (SqlException e)
@@ -78,6 +83,16 @@ namespace Core.AccesoDatos.SqlServer
             return _contacto;
 
         }
+
+
+        /// <summary>
+        /// Metodo para consultar un Cliente
+        /// </summary>
+        /// <param name="usuario">Objeto Cliente</param>
+        /// <returns></returns>
+
+
+
 
         #endregion 
 

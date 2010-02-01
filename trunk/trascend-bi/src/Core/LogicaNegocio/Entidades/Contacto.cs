@@ -19,7 +19,7 @@ namespace Core.LogicaNegocio.Entidades
         
         private TelefonoTrabajo _telefonoTrabajo;
 
-        private TelefonoFax _telefonoFax;
+       
         
         private Cliente _cliente;
 
@@ -29,8 +29,6 @@ namespace Core.LogicaNegocio.Entidades
             _telefonoCelular = new TelefonoCelular();
             
             _telefonoTrabajo = new TelefonoTrabajo();
-
-            _telefonoFax = new TelefonoFax();
         }
 
         public virtual int IdContacto
@@ -100,12 +98,6 @@ namespace Core.LogicaNegocio.Entidades
             set { _telefonoCelular = value; }
         }
 
-        public virtual TelefonoFax TelefonoDeFax
-        {
-            get { return _telefonoFax; }
-
-            set { _telefonoFax = value; }
-        }
 
         public virtual Cliente ClienteContac
         {

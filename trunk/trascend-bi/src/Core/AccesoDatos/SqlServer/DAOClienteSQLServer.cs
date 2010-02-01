@@ -440,7 +440,7 @@ namespace Core.AccesoDatos.SqlServer
 
                     cliente.Telefono = new TelefonoTrabajo[3];
 
-                    cliente.Telefono = BuscarTelefonos(cliente.IdCliente);
+                   // cliente.Telefono = BuscarTelefonos(cliente.IdCliente); OJO DESCOMENTAR ANTES DE SUBIR
 
                     //Console.WriteLine(cliente.Telefono[1].Tipo);
 

@@ -186,7 +186,6 @@
     <Compile Include="LogicaNegocio\Entidades\EstadoEmpleado.cs" />
     <Compile Include="LogicaNegocio\Entidades\Permiso.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonoceular.cs" />
-    <Compile Include="LogicaNegocio\Entidades\Telefonofax.cs" />
     <Compile Include="LogicaNegocio\Entidades\Telefonotrabajo.cs" />
     <Compile Include="LogicaNegocio\Entidades\Contacto.cs" />
     <Compile Include="LogicaNegocio\Entidades\Direccion.cs" />
