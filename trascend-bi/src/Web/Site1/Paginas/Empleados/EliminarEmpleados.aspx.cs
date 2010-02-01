@@ -12,20 +12,22 @@ using Core.LogicaNegocio.Entidades;
 public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminarEmpleado
 {
     private EliminarEmpleadoPresenter _presenter;
-    private Empleado _empleado;
+   
+    //private Empleado _empleado;
 
     #region Propiedades de la Pagina
-    public DropDownList opcion
+   
+    public RadioButtonList opcion
     {
         get { return opcion1; }
         set { opcion1 = value; }
     }
 
-    public DropDownList SeleccionCargo
+   /* public DropDownList SeleccionCargo
     {
         get { return uxSeleccion; }
         set { uxSeleccion = value; }
-    }
+    }*/
 
     public MultiView MultiViewConsultar
     {
@@ -50,8 +52,14 @@ public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminar
         get { return uxParametro; }
         set { uxParametro = value; }
     }
+    public TextBox ParametroCedula
+    {
+        get { return uxParametroCedula; }
+        set { uxParametroCedula = value; }
 
-    public Label LabelSelec
+    }
+
+   /* public Label LabelSelec
     {
         get { return LabelSeleccion; }
         set { LabelSeleccion = value; }
@@ -60,6 +68,91 @@ public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminar
     {
         get { return LabelParametroB; }
         set { LabelParametroB = value; }
+    }*/
+
+
+    public Label LabelCI
+    {
+        get { return uxCedEmp; }
+        set { uxCedEmp = value; }
+    }
+    public Label LabelNombre
+    {
+        get { return uxNombreEmp; }
+        set { uxNombreEmp = value; }
+    }
+    public Label LabelApellido
+    {
+        get { return uxApellidoEmp; }
+        set { uxApellidoEmp = value; }
+    }
+    public Label LabelNumCuenta
+    {
+        get { return uxNumCuentaE; }
+        set { uxNumCuentaE = value; }
+    }
+    public Label LabelFechaNac
+    {
+        get { return uxFecNacE; }
+        set { uxFecNacE = value; }
+    }
+    public Label LabelEstado
+    {
+        get { return uxEstadoE; }
+        set { uxEstadoE = value; }
+    }
+
+    public Label LabelDirCalle
+    {
+        get { return uxDirCalleEmp; }
+        set { uxDirCalleEmp = value; }
+    }
+
+    public Label LabelDirAve
+    {
+        get { return uxDirAveEmp; }
+        set { uxDirAveEmp = value; }
+    }
+
+    public Label LabelDirUrb
+    {
+        get { return uxDirUrbEmp; }
+        set { uxDirUrbEmp = value; }
+    }
+
+    public Label LabelDirEdifCasa
+    {
+        get { return uxDirEdCasaEmp; }
+        set { uxDirEdCasaEmp = value; }
+    }
+
+    public Label LabelDirPisoApto
+    {
+        get { return uxDirPisAptoEmp; }
+        set { uxDirPisAptoEmp = value; }
+    }
+
+    public Label LabelDirCiudad
+    {
+        get { return uxDirCiudadEmp; }
+        set { uxDirCiudadEmp = value; }
+    }
+
+    public Label LabelCargo
+    {
+        get { return uxCargoEmp; }
+        set { uxCargoEmp = value; }
+    }
+
+    public DropDownList drowListaCargo
+    {
+        get { return listaCargo; }
+        set { listaCargo = value; }
+    }
+    public Button Aceptar
+    {
+        get { return uxBotonAceptar; }
+        set { uxBotonAceptar = value; }
     }
 
     
@@ -98,9 +191,10 @@ public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminar
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        if (opcion1.SelectedIndex == 0)//Busqueda por cedula
+        #region no se utiliza
+        /* if (opcion1.SelectedIndex == 0)//Busqueda por cedula
         {
-            LabelParametroB.Text = "Introduzca Cedula:";
+           LabelParametroB.Text = "Introduzca Cedula:";
             LabelParametroB.Visible = true;
             uxParametro.Visible = true;
             uxBotonBuscar.Visible = true;
@@ -126,12 +220,21 @@ public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminar
             LabelSeleccion.Visible = true;
             uxSeleccion.Visible = true;
             uxBotonBuscar2.Visible = true;
-        }
-        _presenter.BotonSeleccionTipo();
-    }
-    protected void uxBotonBuscar_Click(object sender, EventArgs e)
-    {
+        }*/
+#endregion
         _presenter.BotonAccionEliminar();
+    }
+     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presenter.ChangedSearch();
+    }
+   
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            _presenter.ConsultarCargos();
+        }
 
     }
 }

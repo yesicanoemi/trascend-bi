@@ -6,6 +6,8 @@ using System.Net;
 using Presentador.Empleado.Contrato;
 using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Fabricas;
+using System.Web.UI.WebControls;
+using Core.LogicaNegocio.Comandos;
 
 namespace Presentador.Empleado.Vistas
 {
@@ -14,6 +16,7 @@ namespace Presentador.Empleado.Vistas
         private IEliminarEmpleado _vista;
         private IList<Core.LogicaNegocio.Entidades.Empleado> empleado;
         private IList<string> cargo;
+        private string campoVacio = " ";
         Core.LogicaNegocio.Entidades.Empleado emp;
 
         #region Constructor
@@ -25,7 +28,7 @@ namespace Presentador.Empleado.Vistas
 
         #region Metodos
 
-        
+
         /// <summary>
         /// Metodo que ejecuta la accion de Selección de tipo de Consulta
         /// </summary>
@@ -48,9 +51,9 @@ namespace Presentador.Empleado.Vistas
                 cargo = BuscarCargos();
                 for (int i = 0; i < cargo.Count; i++)
                 {
-                    _vista.SeleccionCargo.Items.Add(cargo.ElementAt(i));
+                    _vista.drowListaCargo.Items.Add(cargo.ElementAt(i));
                 }
-                _vista.SeleccionCargo.DataBind();
+                _vista.drowListaCargo.DataBind();
             }
 
             #endregion
@@ -67,8 +70,8 @@ namespace Presentador.Empleado.Vistas
 
             #endregion
             #region Desactivar Campos
-            _vista.opcion.Visible = false;
-            _vista.SeleccionCargo.Visible = false;
+            _vista.opcion.Visible = true;
+            _vista.drowListaCargo.Visible = false;
             #endregion
 
             #endregion
@@ -113,7 +116,7 @@ namespace Presentador.Empleado.Vistas
             }
             if (_vista.opcion.SelectedIndex == 2)//cargo
             {
-                emp.Cargo = _vista.SeleccionCargo.SelectedItem.Text;
+                emp.Cargo = _vista.drowListaCargo.SelectedItem.Text;
                 IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(emp);
                 try
                 {
@@ -129,6 +132,57 @@ namespace Presentador.Empleado.Vistas
             }
             #endregion
         }
+        private void LimpiarFormulario()
+        {
+            _vista.TextBoxParametro.Text = campoVacio;
+
+        }
+        public void ChangedSearch()
+        {
+            LimpiarFormulario();
+
+            if (_vista.opcion.SelectedValue == "1")
+            {
+                _vista.drowListaCargo.Visible = false;
+                _vista.opcion.Visible = true;
+                _vista.TextBoxParametro.Visible = false;
+                _vista.ParametroCedula.Visible = true;
+                _vista.Aceptar.Visible = true;
+                _vista.GetOCConsultarEmp.DataSource = "";
+                _vista.ParametroCedula.Text = "";
+                _vista.TextBoxParametro.Text = "";
+
+
+            }
+
+            if (_vista.opcion.SelectedValue == "2")
+            {
+                _vista.drowListaCargo.Visible = false;
+                _vista.opcion.Visible = true;
+                _vista.TextBoxParametro.Visible = true;
+                _vista.Aceptar.Visible = true;
+                _vista.ParametroCedula.Visible = false;
+                _vista.GetOCConsultarEmp.DataSource = "";
+                _vista.ParametroCedula.Text = "";
+                _vista.TextBoxParametro.Text = "";
+
+
+            }
+
+            if (_vista.opcion.SelectedValue == "3")
+            {
+                _vista.drowListaCargo.Visible = true;
+                _vista.opcion.Visible = true;
+                _vista.TextBoxParametro.Visible = false;
+                _vista.Aceptar.Visible = true;
+                _vista.ParametroCedula.Visible = false;
+                _vista.GetOCConsultarEmp.DataSource = "";
+                _vista.ParametroCedula.Text = "";
+                _vista.TextBoxParametro.Text = "";
+
+            }
+        }
+
 
         public void uxObjectConsultaUsuariosSelecting(string cedula)
         {
@@ -203,14 +257,82 @@ namespace Presentador.Empleado.Vistas
             int resultado = 0;
 
             Core.LogicaNegocio.Comandos.ComandoEmpleado.EliminarEmpleado eliminar;
-            
+
             eliminar = FabricaComandosEmpleado.CrearComandoEliminarEmpleado(entidad);
-            
+
             resultado = eliminar.Ejecutar();
-            
+
             return resultado;
 
         }
-        #endregion
+        public void BotonAccionConsulta()
+        {
+            // _vista.opcion.Visible = false;
+            // _vista.SeleccionCargo.Visible = false;                       
+
+            #region Solicitud Servicio
+
+            emp = new Core.LogicaNegocio.Entidades.Empleado();
+
+            #region buscar por cedula
+
+            if (_vista.opcion.SelectedValue == "1")//cedula
+            {
+                emp.Cedula = Int32.Parse(_vista.ParametroCedula.Text);
+
+                Core.LogicaNegocio.Entidades.Empleado empleado = BuscarPorCedula(emp);
+
+                IList<Core.LogicaNegocio.Entidades.Empleado> listado = new List<Core.LogicaNegocio.Entidades.Empleado>();
+
+                listado.Add(empleado);
+
+                try
+                {
+                    if (listado != null)
+                    {
+                        _vista.GetOCConsultarEmp.DataSource = listado;
+                    }
+                }
+                catch (WebException e)
+                {
+
+                }
+            }
+            #endregion
+            #endregion
+        }
+        public void ConsultarCargos()
+        {
+            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;
+            IList<Core.LogicaNegocio.Entidades.Cargo> cargo = new List<Core.LogicaNegocio.Entidades.Cargo>();
+            try
+            {
+                DropDownList e = new DropDownList();
+                Core.AccesoDatos.SqlServer.DAOCargoSQLServer conex = new Core.AccesoDatos.SqlServer.DAOCargoSQLServer();
+                cargos = conex.ConsultarCargos();
+                for (int i = 0; i < cargos.Count; i++)
+                {
+                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo)cargos[i]);
+                }
+                _vista.drowListaCargo.Items.Clear();
+                _vista.drowListaCargo.Items.Add("--");
+                _vista.drowListaCargo.Items[0].Value = "0";
+                _vista.drowListaCargo.DataSource = cargo;
+                _vista.drowListaCargo.DataTextField = "Nombre";
+                _vista.drowListaCargo.DataValueField = "Id";
+                _vista.drowListaCargo.DataBind();
+            }
+            catch (WebException e)
+            {
+                // _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                // _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+            catch (Exception e)
+            {
+                //_vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                //_vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+        }
     }
 }
+#endregion
