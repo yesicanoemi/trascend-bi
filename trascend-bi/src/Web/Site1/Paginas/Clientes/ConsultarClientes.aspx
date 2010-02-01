@@ -4,6 +4,7 @@
 <%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <form id="form1" runat="server">
     <div class="container subnav"> 
 			<div class="content"> 
 				<div class="sub-heading"> 
@@ -27,8 +28,6 @@
                     <h3>Consultar Clientes</h3> 
                    
                     
-                    
-                    <form id="Form3" action="#" runat="server">
                     
                     <asp:MultiView runat="server" ID="uxMultiViewConsultar" ActiveViewIndex="0">
                         
@@ -84,8 +83,7 @@
                                             DelimiterCharacters="; ," EnableCaching="true" MinimumPrefixLength="1" 
                                             ServiceMethod="GetSuggestionsClienteNombre" 
                                             ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor" 
-                                            UseContextKey="false">
-                                        </ajaxToolkit:AutoCompleteExtender>
+                                            UseContextKey="false"></ajaxToolkit:AutoCompleteExtender>
                                                                                
                                         </td>
                                         </tr>
@@ -111,6 +109,8 @@
                                             
                                           
                                               <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+                                              
+                                               
                                  <tr>                      
 
                                     <td>
@@ -136,15 +136,27 @@
                               
                                 </td>
                             </tr>
-                            
-                        </table>
+                    
+                        
                      
                         </asp:View>
                         <asp:View ID="uxViewMostrar" runat="server">
                            
+                           <table>
+                         <tr>
+                                <td>
                                 <asp:DetailsView ID="uxMuestraCliente" datasourceid="uxObjectConsultaCliente"
                                 datakeynames="rif" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  HeaderText="Datos de Cliente"
-                                 Width="275px">     <headerstyle backcolor="Navy"            forecolor="White"/>
+                                 Width="275px" CellPadding="4" ForeColor="#333333" Font-Size="Small" 
+                                        GridLines="None" Font-Names="Verdana">     
+                                    <headerstyle backcolor="#66CCFF"            forecolor="White" Font-Bold="True" 
+                                        HorizontalAlign="Center"/>
+
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
+                                    <RowStyle BackColor="#EFF3FB" />
+                                    <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
+                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
 
                                   <Fields>
                                                         <asp:BoundField HeaderText="Rif" DataField="rif" ReadOnly="True"/> 
@@ -153,48 +165,89 @@
                                                                                                                 
                                                    
                                   </Fields>
+                                    <EditRowStyle BackColor="#EFF3FB" />
+                                    <AlternatingRowStyle BackColor="White" />
                                 </asp:DetailsView>
                                 
-                                <asp:DetailsView ID="uxMuestraDireccion" datasourceid="uxObjectConsultaDireccion" HeaderText="Direccion"
-                                datakeynames="calle" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  
-                                 Width="275px">  <headerstyle backcolor="Navy"            forecolor="White"/>
-                                  <Fields>
-                                                        <asp:BoundField HeaderText="Avenida" DataField="avenida" ReadOnly="True"/> 
-                                                        <asp:BoundField HeaderText="Urbanizacion" DataField="urbanizacion" ReadOnly="True"/>
-                                                        <asp:BoundField HeaderText="Edificio/Casa" DataField="edif_casa" ReadOnly="True"/>  
-                                                        <asp:BoundField HeaderText="Oficina" DataField="oficina" ReadOnly="True"/> 
-                                                        <asp:BoundField HeaderText="Ciudad" DataField="ciudad" ReadOnly="True"/>      
-                                  </Fields>
-                                </asp:DetailsView>
+                                    <asp:DetailsView ID="uxMuestraDireccion" Runat="server" 
+                                        AutoGenerateRows="False" CellPadding="4" datakeynames="calle" 
+                                        datasourceid="uxObjectConsultaDireccion" DefaultMode="Edit" ForeColor="White" 
+                                        GridLines="None" HeaderText="Direccion" font-size="Small"
+                                        onpageindexchanging="uxMuestraDireccion_PageIndexChanging" Width="275px" 
+                                        Font-Names="Verdana">
+                                        <headerstyle backcolor="#66CCFF" Font-Bold="True" forecolor="White" 
+                                            HorizontalAlign="Center" />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
+                                        <RowStyle BackColor="#EFF3FB" />
+                                        <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <Fields>
+                                            <asp:BoundField DataField="avenida" HeaderText="Avenida" ReadOnly="True" />
+                                            <asp:BoundField DataField="urbanizacion" HeaderText="Urbanizacion" 
+                                                ReadOnly="True" />
+                                            <asp:BoundField DataField="edif_casa" HeaderText="Edificio/Casa" 
+                                                ReadOnly="True" />
+                                            <asp:BoundField DataField="oficina" HeaderText="Oficina" ReadOnly="True" />
+                                            <asp:BoundField DataField="ciudad" HeaderText="Ciudad" ReadOnly="True" />
+                                        </Fields>
+                                        <EditRowStyle BackColor="#EFF3FB" />
+                                        <AlternatingRowStyle BackColor="White" />
+                                    </asp:DetailsView>
+                                    <br />
+                                    <asp:GridView ID="uxMuestraTelefono" runat="server" AllowPaging="True" 
+                                        AutoGenerateColumns="False" CellPadding="4" DataKeyNames="codigoarea" 
+                                        DataSourceID="uxObjectConsultaTelefono" Font-Names="Verdana"
+                                        Font-Size="Small" ForeColor="#333333" GridLines="Both" Width="275px" 
+                                        HorizontalAlign="Center">
+                                        <RowStyle BackColor="#EFF3FB" ForeColor="White" Font-Bold="True" HorizontalAlign="Center"/>
+                                        <headerstyle backcolor="#33CCCC" Font-Bold="True" forecolor="#33CCCC" />
+                                        <Columns>
+                                            <asp:BoundField DataField="tipo" HeaderText="Tipo de Telefono" ReadOnly="True" />
+                                            <asp:BoundField DataField="codigoarea" HeaderText="Codigo" 
+                                                ReadOnly="True" />
+                                            <asp:BoundField DataField="numero" HeaderText="Numero" ReadOnly="True" />
+                                        </Columns>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <EmptyDataTemplate>
+                                            <center>
+                                                <span>No tiene telefonos cargados</span>
+                                            </center>
+                                        </EmptyDataTemplate>
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderStyle BackColor="#0066FF" />
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <AlternatingRowStyle BackColor="White" />
+                                    </asp:GridView>
                                 
-                                         
-                              <asp:DetailsView ID="uxMuestraTelefono" 
-                                    datasourceid="uxObjectConsultaTelefono" HeaderText="Telefonos"
-                                datakeynames="codigoarea" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  
-                                 Width="306px">  <headerstyle backcolor="#c60"            forecolor="White"/>
-                                  <Fields>
-                                                        <asp:BoundField HeaderText="Codigo de Area" DataField="codigoarea" ReadOnly="True"/> 
-                                                        <asp:BoundField HeaderText="Tipo" DataField="tipo" ReadOnly="True"/>
-                                                        <asp:BoundField HeaderText="Numero" DataField="numero" ReadOnly="True"/>
-                                                       
-                                  </Fields>
-                                </asp:DetailsView>
-
+                                </td>
+                                   <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                             
+                              <td></td>  
+                              
+                               <td>    
+                                   &nbsp;</td> 
+                           </tr>  
+                          
+                                   </table>
                                 
-                                
-                                <br />
-                                <asp:UpdatePanel ID="up2" runat="server">
-                                    <ContentTemplate>
-                                        <uc1:DialogoError ID="uxDialogoError" runat="server" />
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
+                                <caption>
+                                    <br />
+                                    <asp:UpdatePanel ID="up2" runat="server">
+                                        <ContentTemplate>
+                                            <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </caption>
                                 
                                 
                         </asp:View>
                        
                    </asp:MultiView>     
                     
-                     </form>
                  </div> 
              
                       
@@ -211,6 +264,7 @@
         
         <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.TelefonoTrabajo" />  
         
-        <pp:objectcontainerdatasource runat="server" ID="ObjectConsultaContacto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Contacto" />
+    </form>
+        
 </asp:Content>
 

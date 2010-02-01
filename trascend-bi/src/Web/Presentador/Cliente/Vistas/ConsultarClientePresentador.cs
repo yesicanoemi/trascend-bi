@@ -112,10 +112,13 @@ namespace Presentador.Cliente.Vistas
                 cliente.Nombre = _vista.Valor.Text;
 
                 IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
-                _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
+     /*           _vista.GetObjectContainerConsultaCliente.DataSource = listaCliente;
                 _vista.GetObjectContainerConsultaDireccion.DataSource = listaCliente[0].Direccion;
                 _vista.GetObjectContainerConsultaTelefono.DataSource = listaCliente[0].Telefono[0];
+*/
 
+
+                CargarDatos(listaCliente[0]);
                 CambiarVista(1);
 
             }
@@ -137,52 +140,34 @@ namespace Presentador.Cliente.Vistas
         }
 
 
+        public void CargarDatos(Core.LogicaNegocio.Entidades.Cliente cliente)
+        {
+            int i=0;
+            IList<Core.LogicaNegocio.Entidades.TelefonoTrabajo> telefonos = new List<TelefonoTrabajo>();
+            
+            
+            _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
+            _vista.GetObjectContainerConsultaDireccion.DataSource = cliente.Direccion;
+            while (i < 3)
+            {
+                if (cliente.Telefono[i] != null)
+                {
+                    telefonos.Add(cliente.Telefono[i]);    
+                }
+                i++;
+            }
+            _vista.GetObjectContainerConsultaTelefono.DataSource = telefonos;
+            _vista.GetObjectContainerConsultaTelefono.DataBind();
+        }
 
 
-        /*   public IList<Core.LogicaNegocio.Entidades.Cliente> BuscarNombre()
-           {
-               Core.LogicaNegocio.Comandos.ComandoCliente.Consultar consultar;
-
-               consultar = FabricaComandosCliente.CrearComandoConsultar(cliente);
-
-               cliente = consultar.ejecutar();
-
-               _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
-               //_vista.GetObjectContainerConsultaUsuario.DataSource = listado;
-
-               CambiarVista(1);
-
-               return cliente;
-
-           }
-    
-       
-           public IList<Core.LogicaNegocio.Entidades.Cliente> BuscarPorAreaNegocio()
-           {
-               #region logica
-
-               Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarAreaNegocio consultar;
-
-               consultar = FabricaComandosCliente.CrearComandoConsultarAreaNegocio(cliente);
-
-               //cliente = consultar.Ejecutar();
-
-               _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
-
-               CambiarVista(1);
-
-               return cliente;
-
-               #endregion
-           }
-             */
 
         public IList<Core.LogicaNegocio.Entidades.Cliente>
             ConsultarClienteNombre(Core.LogicaNegocio.Entidades.Cliente entidad)
         {
             IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = null;
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando; //tengo q crear una nueva consulta
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre comando;
 
             comando = FabricaComandosCliente.CrearComandoConsultarNombre(entidad);
 
@@ -196,7 +181,7 @@ namespace Presentador.Cliente.Vistas
         {
             Core.LogicaNegocio.Entidades.Cliente seleccioncliente = new Core.LogicaNegocio.Entidades.Cliente();
 
-            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif comando; //tengo q crear una nueva consulta
+            Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif comando; 
 
             comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
 
@@ -205,6 +190,19 @@ namespace Presentador.Cliente.Vistas
             return seleccioncliente;
         }
 
+        public void uxObjectConsultaClienteSelecting(string rif)
+        {
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+
+            Core.LogicaNegocio.Entidades.Cliente cliente2 = new Core.LogicaNegocio.Entidades.Cliente();
+
+            cliente.Rif = rif;
+
+            cliente2 = ConsultarClienteRif(cliente);
+
+            CambiarVista(1);
+
+        }
 
 
         #endregion
