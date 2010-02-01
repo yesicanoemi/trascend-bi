@@ -69,12 +69,33 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
         set { lbFechaFactura = value; }
     }
 
+    #region Mensajes
+
+    public Label Mensaje
+    {
+        get { return lbMensaje; }
+        set { lbMensaje = value; }
+    }
+
+    public void Pintar(string mensaje)
+    {
+        this.lbMensaje.Text = mensaje;
+    }
+
+    public bool MensajeVisible
+    {
+        get { return lbMensaje.Visible; }
+        set { lbMensaje.Visible = value; }
+    }
+
+    #endregion
+
     #endregion
 
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+ 
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -107,14 +128,23 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
         _presenter.ConsultarFactura();
-        btAnular.Visible = true;
-        tbDatos.Visible = true;
     }
 
     protected void btAnular_Click(object sender, EventArgs e)
     {
         _presenter.AnularFactura();
-        btAnular.Visible = false;
-        tbDatos.Visible = false;
     }
+
+    public void ActivarElementos()
+    {
+        tbDatos.Visible = true;
+        btAnular.Visible = true;
+    }
+
+    public void DesactivarElementos()
+    {
+        tbDatos.Visible = false;
+        btAnular.Visible = false;
+    }
+
 }

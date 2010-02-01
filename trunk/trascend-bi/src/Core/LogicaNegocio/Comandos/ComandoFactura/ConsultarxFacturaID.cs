@@ -19,6 +19,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
     public class ConsultarxFacturaID : Comando<Factura>
     {
         private Factura _factura;
+
         #region Constructor
 
         /// <summary>Constructor por defecto de la clase 'ConsultarxFacturaID'.</summary>
@@ -46,14 +47,10 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IDAOFactura bdfactura = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
-            try
-            {
-                if (_factura == null) { throw new ConsultarFacturaLNException(); }
-                factura = bdfactura.ConsultarFacturaID(_factura);
-            }
-            catch (ConsultarFacturaADException e) { }
-            catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Se recibio una factura vacia", e); }
-            catch (Exception e) { throw new ConsultarFacturaLNException("Error al Consultar", e); }
+
+            if (_factura == null) { throw new ConsultarFacturaLNException(); }
+            factura = bdfactura.ConsultarFacturaID(_factura);
+
             return factura;
         }
         #endregion

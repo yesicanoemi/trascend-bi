@@ -49,18 +49,23 @@ namespace Presentador.Factura.Vistas
                 _vista.FechaFactura.Text = factura.Fechaingreso.ToShortDateString().ToString();
                 _vista.PorcentajeFactura.Text = factura.Procentajepagado.ToString() + " %";
                 _vista.TotalFactura.Text = (factura.Prop.MontoTotal * factura.Procentajepagado).ToString();
+
+                _vista.ActivarElementos();
             }
             catch (WebException e)
             {
-                
+                _vista.Pintar("Error WEB anulando la factura");
+                _vista.MensajeVisible = true;
             }
-            catch (EliminarException e)
+            catch (ConsultarException e)
             {
-                
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
             catch (Exception e)
             {
-               
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
         }
 
@@ -73,14 +78,20 @@ namespace Presentador.Factura.Vistas
                 int.Parse(_vista.NumeroFactura.Text));
 
                 comandoAnular.Ejecutar();
+
+                _vista.DesactivarElementos();
+                _vista.Pintar("La Factura ha sido anulada con exito.");
+                _vista.MensajeVisible = true;
             }
             catch (EliminarException e)
             {
-                
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;   
             }
             catch (Exception e)
             {
-
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
         }
     }

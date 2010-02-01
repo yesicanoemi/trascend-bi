@@ -283,15 +283,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando las propuestas con el fin de utilizarlas para facturas en la Base de Datos", e);
-            }
-            catch (ConsultarFacturaADException e)
-            {
-                throw new ConsultarFacturaADException("No se consiguio la factura", e);
+                throw new ConsultarException("Error de SQL consultando una factura", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando las propuestas con el fin de utilizarlas para facturas en la Base de Datos", e);
+                throw new ConsultarException("Error consultando una factura", e);
             }
             return factura;
         }
