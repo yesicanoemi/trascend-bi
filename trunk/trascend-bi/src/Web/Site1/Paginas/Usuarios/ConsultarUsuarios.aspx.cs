@@ -7,6 +7,7 @@ using Presentador.Usuario.Contrato;
 using Presentador.Usuario.Vistas;
 using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Aplicacion;
+using Core.LogicaNegocio.Excepciones;
 
 public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultarUsuario
 {
@@ -14,6 +15,8 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
     #region Propiedades
 
     private ConsultarUsuarioPresenter _presentador;
+
+    private ConsultarUsuarioPresenter _presenter;
 
     protected const string paginaConsulta = "~/Paginas/Usuarios/ConsultarUsuarios.aspx";
 
@@ -53,7 +56,30 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
 
     #region Informacion Basica
 
-   
+    public Label AsteriscoStatus
+    {
+        get { return uxAsteriscoStatus; }
+        set { uxAsteriscoStatus = value; }
+    }
+
+    /*public Label AsteriscoLogin
+    {
+        get { return uxAsteriscoLogin; }
+        set { uxAsteriscoLogin = value; }
+    }*/
+
+    public Label NombreUsuarioLabel
+    {
+        get { return uxLoginLabel; }
+        set { uxLoginLabel = value; }
+    }
+
+    public Label StatusDdLLabel
+    {
+        get { return uxStatusDdLLabel; }
+        set { uxStatusDdLLabel = value; }
+    }
+
     public TextBox NombreUsuario
     {
         get { return uxLogin; }
@@ -77,7 +103,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         get { return uxConsultaUsuario; }
         set { throw new System.NotImplementedException(); }
     }
-    
+
     public ObjectContainerDataSource GetObjectContainerConsultaUsuario
     {
         get { return uxObjectConsultaUsuario; }
@@ -95,13 +121,13 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         get { return uxNombreEmp; }
         set { uxNombreEmp = value; }
     }
-    
+
     public Label ApellidoEmp
     {
         get { return uxApellidoEmp; }
         set { uxApellidoEmp = value; }
-    }     
-    
+    }
+
     public Label UsuarioU
     {
         get { return uxStatusU; }
@@ -143,17 +169,23 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         get { return uxRbCampoBusqueda; }
         set { uxRbCampoBusqueda = value; }
     }
-    
+
     public Button BotonBuscar
     {
         get { return uxBotonBuscar; }
         set { uxBotonBuscar = value; }
     }
-    
+
     public RequiredFieldValidator ValidarNombreVacio
     {
         get { return uxRequiredFieldValidator; }
         set { uxRequiredFieldValidator = value; }
+    }
+
+    public RequiredFieldValidator ValidarNoSeleccion
+    {
+        get { return uxRequiredFieldValidator2; }
+        set { uxRequiredFieldValidator2 = value; }
     }
 
     #endregion
@@ -176,24 +208,41 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
         Core.LogicaNegocio.Entidades.Usuario usuario =
                         (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
+        Core.LogicaNegocio.Entidades.Permiso _permiso = new
+                               Core.LogicaNegocio.Entidades.Permiso();
+
+        _presenter = new ConsultarUsuarioPresenter();
+
+        _permiso = _presenter.ConsultarIdPermiso();
+
+        int idPermiso = _permiso.IdPermiso;
+
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 30)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new ConsultarUsuarioPresenter(this);
+                    _presentador = new ConsultarUsuarioPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            Response.Redirect(paginaDefault);
+            //throw new PermisoException("No posee privilegios para ver esta pagina", a);
         }
 
     }
@@ -207,7 +256,7 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
     {
         _presentador.OnBotonBuscar();
     }
-    
+
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.OnBotonAceptar();
@@ -226,10 +275,12 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 
-    #endregion
+    
 
     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
     {
         _presentador.CampoBusqueda_Selected();
     }
+
+    #endregion
 }

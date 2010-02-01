@@ -29,42 +29,43 @@
                 <div class="features_overview"> 
                     <div class="features_overview_right"> 
                         <h3>Inicio de Sesion</h3>
-                                <p class="large">
-                                
-                                        
-                 
-                                    &nbsp;<uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible = "false" /><p>
-              
-                                <asp:Label ID="uxNombreLogin" runat="server" Text="Nombre de usuario"></asp:Label>
-                                &nbsp;
-                                <asp:TextBox ID="uxLogin" runat="server" Width="150px"></asp:TextBox><br />
-                                
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                <p class="large"><p>
+                                 
+                                <table>
+                                    <tr>
+                                        <td><span style="color:#FF0000"><asp:Label ID="uxNombreLogin1" runat="server" Text="<%$ Resources:DSU, Asterisco%>">
+                                        </asp:Label></span><asp:Label ID="uxNombreLogin" runat="server" Text="<%$ Resources:DSU, Login%>"></asp:Label></td>
+                                        <td><asp:TextBox ID="uxLogin" runat="server" Width="150px"></asp:TextBox><br /></td>
+                                        <td> <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                         ControlToValidate="uxLogin" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
-                            
-    
-                                
+                           </td>
+                                    </tr>
+                                    
+                                    <tr>
+                               
+                                <td><span style="color:#FF0000"><asp:Label ID="Label1" runat="server" Text="<%$ Resources:DSU, Asterisco%>">
+                                        </asp:Label></span><asp:Label ID="uxNombreContrasena" runat="server" Text="<%$ Resources:DSU, Contrasena%>"></asp:Label></td>
 
-                                <br />
-                                <br />
-                                <asp:Label ID="uxNombreContrasena" runat="server" Text="Contrasena"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                <asp:TextBox ID="uxContrasena" runat="server" Width="150px" TextMode="Password"></asp:TextBox>
-                                <br />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                <td><asp:TextBox ID="uxContrasena" runat="server" Width="150px" TextMode="Password"></asp:TextBox></td>
+                                
+                                <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                         ControlToValidate="uxContrasena" 
-                                        ErrorMessage="<%$ Resources:DSU, FaltaContrasena%>"  />
-                                
-                                <br />
-                                
-                                <br />
-                                <br />
-                                <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="uxBotonAceptar_Click"/>
+                                        ErrorMessage="<%$ Resources:DSU, FaltaContrasena%>"  Font-Size="Smaller"/></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                            
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><asp:Button ID="uxBotonAceptar" runat="server" Text="<%$ Resources:DSU, Aceptar%>" OnClick="uxBotonAceptar_Click"/>
+                                </td>
+                                </tr>
+                                </table>
+                               <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
                                 
                               
-                    </p>
-                           
                      </div>
                 </div>
             </div>

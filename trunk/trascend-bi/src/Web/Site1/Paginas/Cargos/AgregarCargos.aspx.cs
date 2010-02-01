@@ -39,7 +39,7 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        _presentador.FechaActual();
+       // _presentador.FechaActual();
     }
 
     #region Propiedades
@@ -129,10 +129,10 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
 
     protected void uxSueldoMinimo_TextChanged(object sender, EventArgs e)
     {
-        _presentador.ValidarMontoMinimo();
+       // _presentador.ValidarMontoMinimo();
     }
     protected void uxSueldoMaximo_TextChanged(object sender, EventArgs e)
     {
-        _presentador.ValidarMontoMaximo();
+        //_presentador.ValidarMontoMaximo();
     }
 }
