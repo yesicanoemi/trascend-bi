@@ -11,5 +11,11 @@ namespace Presentador.Factura.Contrato
         TextBox NumeroFactura { get; set; }
         GridView DetalleFactura { get; set; }
         DropDownList Estado { get; set; }
+        Label Mensaje { get; set; }
+
+        #region Mensaje
+        void Pintar(string mensaje);
+        bool MensajeVisible { get; set; }
+        #endregion
     }
 }

@@ -26,6 +26,10 @@
                             </p>
                         <p>
                             Introduzca el N° de factura a la que se quiere cambiar el estado</p>
+                            <p class="large" >
+                                <br />
+                                <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
+                            </p>
                         <p class="large">
                             <table style="width:auto">
                                 <tr>
@@ -33,6 +37,13 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
+                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda" FilterType="Numbers"
+                                            ID="FilteredTextBoxExtender1" runat="server">
+                                        </AjaxControlToolkit:FilteredTextBoxExtender>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxBusqueda"
+                                            ErrorMessage="<%$ Resources:DSU, FaltaNumeroFactura%>" Font-Size="Smaller" Display="None" />
+                                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
+                                            TargetControlID="RequiredFieldValidator1" />
                                     </td>
                                     <td>&nbsp;&nbsp;</td>
                                     <td>
