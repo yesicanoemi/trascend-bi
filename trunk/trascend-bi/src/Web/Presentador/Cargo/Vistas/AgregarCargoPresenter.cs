@@ -55,7 +55,7 @@ namespace Presentador.Cargo.Vistas
                     ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandoCargo.CrearComandoIngresar(cargo);
                     ComandoIngresar.Ejecutar();
                     
-                    _vista.Mensaje("El cargo se ingreso satisfactoriamente con los siguientes datos:");
+                    _vista.Mensaje("El cargo se ingreso satisfactoriamente");
                 }
                 catch(FormatException e)
                 {
@@ -183,20 +183,32 @@ namespace Presentador.Cargo.Vistas
         /// </summary>
         public void ValidarMontoMaximo()
         {
-            float montoMinimo = float.Parse(_vista.SueldoMinimo.Text);
-            float montoMaximo = float.Parse(_vista.SueldoMaximo.Text);
-            if (montoMaximo > 0.00)
+            try
             {
-                if (montoMaximo < montoMinimo)
+                float montoMinimo = float.Parse(_vista.SueldoMinimo.Text);
+                float montoMaximo = float.Parse(_vista.SueldoMaximo.Text);
+                if (montoMaximo > 0.00)
                 {
-                    _vista.LabelError.Text = "El sueldo maximo no puede ser menor que 0 y menor que el sueldo minimo";
+                    if (montoMaximo < montoMinimo)
+                    {
+                        _vista.LabelError.Text = "El sueldo maximo no puede ser menor que 0 y menor que el sueldo minimo";
+                        _vista.LabelError.Visible = true;
+                    }
+                    else
+                    {
+                        _vista.LabelError.Visible = false;
+                        _vista.LabelError.Text = "";
+                    }
+                }
+                else
+                {
+                    _vista.LabelError.Text = "El sueldo maximo no puede ser menor que 0.00";
                     _vista.LabelError.Visible = true;
                 }
             }
-            else
+            catch (Exception e)
             {
-                _vista.LabelError.Text = "El sueldo maximo no puede ser menor que 0.00";
-                _vista.LabelError.Visible = true;
+                _vista.Mensaje(e.ToString());
             }
         }
         #endregion

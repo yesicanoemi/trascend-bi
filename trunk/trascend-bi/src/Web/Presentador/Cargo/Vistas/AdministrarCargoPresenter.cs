@@ -235,6 +235,10 @@ namespace Presentador.Cargo.Vistas
             _vista.SueldoMinimo.Enabled = true;
             _vista.SueldoMaximo.Enabled = true;
             _vista.VigenciaSueldo.Enabled = true;
+            _vista.DescripcionCargo.ReadOnly = false;
+            _vista.SueldoMaximo.ReadOnly = false;
+            _vista.SueldoMinimo.ReadOnly = false;
+            _vista.VigenciaSueldo.ReadOnly = false;
         }
 
         /// <summary>
