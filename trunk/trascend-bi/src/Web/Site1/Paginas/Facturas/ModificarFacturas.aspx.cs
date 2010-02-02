@@ -88,11 +88,17 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
         _presenter.ConsultarFactura();
+        tbDatos.Visible = true;
     }
 
     protected void btGuardar_Click(object sender, EventArgs e)
     {
         _presenter.SaldarFactura();
     }
-    
+
+    protected void uxTablaSueldos_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
 }
