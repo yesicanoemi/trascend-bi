@@ -156,7 +156,7 @@ namespace Presentador.Propuesta.Vistas
             _vista.LabelCargP.Text = propuesta.ElementAt(0).CargoReceptor;
             _vista.LabelFechaIP.Text = propuesta.ElementAt(0).FechaInicio.ToString("MM/dd/yyyy");
             _vista.LabelFechaFiP.Text = propuesta.ElementAt(0).FechaFin.ToString("MM/dd/yyyy");
-            _vista.LabelTotalHorasP.Text = string.Format("{0:n2}", propuesta.ElementAt(0).TotalHoras);
+            _vista.LabelTotalHorasP.Text = propuesta.ElementAt(0).TotalHoras.ToString();
             _vista.LabelMontP.Text = string.Format("{0:n2}", propuesta.ElementAt(0).MontoTotal);
 
             for (int i = 0; i < propuesta.ElementAt(0).EquipoTrabajo.Count; i++)

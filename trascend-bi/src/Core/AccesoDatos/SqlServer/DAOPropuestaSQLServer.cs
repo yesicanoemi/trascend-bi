@@ -289,6 +289,7 @@ namespace Core.AccesoDatos.SqlServer
                 {
 
                     Propuesta _Propuesta = new Propuesta();
+                    Propuesta _PropuestaEquipo = new Propuesta();
                     _Propuesta.Titulo = (string)conexion["Titulo"];
                     _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
                     _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
@@ -296,7 +297,8 @@ namespace Core.AccesoDatos.SqlServer
                     _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
                     _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
                     _Propuesta.Id = (int)conexion["IdPropuesta"];
-                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+                    _PropuestaEquipo = BuscarEmpleado(_Propuesta.Id);
+                    _Propuesta.EquipoTrabajo = _PropuestaEquipo.EquipoTrabajo;
 
                     #region Busqueda del Receptor
                     int j = 0;
@@ -367,6 +369,7 @@ namespace Core.AccesoDatos.SqlServer
                     {
 
                         Propuesta _Propuesta = new Propuesta();
+                        Propuesta _PropuestaEquipo = new Propuesta();
                         _Propuesta.Titulo = (string)conexion["Titulo"];
                         _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
                         _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
@@ -374,7 +377,11 @@ namespace Core.AccesoDatos.SqlServer
                         _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
                         _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
                         _Propuesta.Id = (int)conexion["IdPropuesta"];
-                        _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+                        _PropuestaEquipo = BuscarEmpleado(_Propuesta.Id);
+                        //_Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+                        //_Propuesta.TotalHoras = BuscarHoras(_Propuesta.Id);
+                        _Propuesta.EquipoTrabajo = _PropuestaEquipo.EquipoTrabajo;
+                        _Propuesta.TotalHoras = _PropuestaEquipo.TotalHoras;
 
                         #region Busqueda del Receptor
                         int j = 0;
@@ -439,10 +446,11 @@ namespace Core.AccesoDatos.SqlServer
         /// Metodo que se encarga de buscar Los empleados de una propuesta en específico
         /// </summary>
         /// <returns></returns>
-        private List<Empleado> BuscarEmpleado(int IdPropuesta)
+        private Propuesta BuscarEmpleado(int IdPropuesta)
         {
-
+            int horas = 0;
             List<Empleado> ListaEmpleado = new List<Empleado>();
+            Propuesta _propuesta = new Propuesta();
 
             try
             {
@@ -459,12 +467,16 @@ namespace Core.AccesoDatos.SqlServer
                 {
                     Empleado empleado = new Empleado();
                     empleado.Nombre = (string)conexionempleado["Nombre"];
+                    horas = (int)conexionempleado["HorasParticipadas"];
 
                     ListaEmpleado.Insert(j, empleado);
                     j++;
                 }
 
-                return ListaEmpleado;
+                _propuesta.EquipoTrabajo = ListaEmpleado;
+                _propuesta.TotalHoras = horas;
+
+                return _propuesta;
 
             }
             catch (SqlException e)
@@ -589,6 +601,7 @@ namespace Core.AccesoDatos.SqlServer
                 {
 
                     Propuesta _Propuesta = new Propuesta();
+                    Propuesta _PropuestaEquipo = new Propuesta();
                     _Propuesta.Titulo = (string)conexion["Titulo"];
                     _Propuesta.Version = (string)conexion["NumeroVersion"].ToString();
                     _Propuesta.FechaFirma = (DateTime)conexion["FechaFirma"];
@@ -596,7 +609,8 @@ namespace Core.AccesoDatos.SqlServer
                     _Propuesta.FechaFin = (DateTime)conexion["FechaFin"];
                     _Propuesta.MontoTotal = float.Parse(conexion["Monto"].ToString());
                     _Propuesta.Id = (int)conexion["IdPropuesta"];
-                    _Propuesta.EquipoTrabajo = BuscarEmpleado(_Propuesta.Id);
+                    _PropuestaEquipo = BuscarEmpleado(_Propuesta.Id);
+                    _Propuesta.EquipoTrabajo = _PropuestaEquipo.EquipoTrabajo;
 
                     #region Busqueda del Receptor
 
