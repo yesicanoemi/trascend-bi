@@ -110,18 +110,28 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
 
     protected void uxBusquedaBoton_Click(object sender, EventArgs e)
     {
+        lbMensaje.Text = "";
         _presenter.ConsultarFactura();
-        tbDatos.Visible = true;
+        if (lbMensaje.Text.Equals(""))
+            tbDatos.Visible = true;
+        else
+            tbDatos.Visible = false;
     }
 
     protected void btGuardar_Click(object sender, EventArgs e)
     {
         _presenter.SaldarFactura();
+        tbDatos.Visible = false;
     }
 
     protected void uxTablaSueldos_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowIndex % 2 == 0)
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+    protected string FormatearFecha(DateTime fecha)
+    {
+        return _presenter.FormatearFechaParaMostrar(fecha);
     }
 }

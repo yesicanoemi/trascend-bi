@@ -66,7 +66,13 @@
                                     <asp:BoundField HeaderText="Titulo" DataField="Titulo" runat="server"></asp:BoundField>
                                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" runat="server"></asp:BoundField>
                                     <asp:BoundField HeaderText="%" DataField="Procentajepagado" runat="server"></asp:BoundField>
-                                    <asp:BoundField HeaderText="Fecha" ItemStyle-Width="15%" DataField="Fechaingreso" runat="server"></asp:BoundField>
+                                    
+
+                                    <asp:TemplateField HeaderText="Fecha" ItemStyle-Width="15%" runat="server">
+                                    <ItemTemplate>
+                                        <%# FormatearFecha((DateTime)Eval("Fechaingreso")) %></ItemTemplate>
+                                    </asp:TemplateField>
+                                    
                                     <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
                                         <ItemTemplate>
                                             <asp:Label ID="lblprop" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.Titulo") %>'></asp:Label>
