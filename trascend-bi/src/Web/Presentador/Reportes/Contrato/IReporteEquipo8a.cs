@@ -13,6 +13,7 @@ namespace Presentador.Reportes.Contrato
         GridView FacturasEmitidas { get; set; }
         DropDownList Anios { get; set; }
         ObjectContainerDataSource GetObjectContainerReporte8a { get; set; }
+        Label LabelContador { get; set; }
         //ObjectContainerDataSource
         #endregion
     }

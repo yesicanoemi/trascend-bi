@@ -29,6 +29,11 @@ public partial class Paginas_Reportes_ReportesEquipo8a : PaginaBase, IReporteEqu
         get { return uxObjectReporte8a; }
         set { uxObjectReporte8a = value; }
     }
+    public Label LabelContador
+    {
+        get { return uxLabelContador ; }
+        set { uxLabelContador = value; }
+    }
 
     ReporteEquipo8aPresenter _presenter;
 
