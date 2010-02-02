@@ -65,7 +65,11 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
 
     #endregion
 
-
+    public Label CorreoEnviado
+    {
+        get { return uxCorreEnviado; }
+        set { uxCorreEnviado = value; }
+    }
     public TextBox NombreUsuario
     {
         get { return uxLogin; }

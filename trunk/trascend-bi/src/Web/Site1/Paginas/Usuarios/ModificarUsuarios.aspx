@@ -34,7 +34,7 @@
                                 <span style="text-align:center; font-size:large">   
                                         <uc1:DialogoError ID="uxDialogoError" runat="server" Visible="false" />
                                   </span>
-                                  <span style="text-align:center; font-size:large">
+                                  <span style="text-align:center; font-size:medium; color:Red">
                                     <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
                                                     Visible="false" />
                                   </span>  
