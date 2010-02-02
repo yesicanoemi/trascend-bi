@@ -32,13 +32,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IList<Factura> facturas = new List<Factura>();
 
-            try
-            {
-                facturas = bdpropuestas.ConsultarFacturas();
-            }
-            catch (ConsultarFacturaADException e) { }
-            catch (ConsultarFacturaLNException e) { throw new ConsultarFacturaLNException("Error en la Consulta", e); }
-            catch (Exception e) { throw new ConsultarFacturaLNException("Error en la Consulta", e); }
+            facturas = bdpropuestas.ConsultarFacturas();
 
             return facturas;
         }
