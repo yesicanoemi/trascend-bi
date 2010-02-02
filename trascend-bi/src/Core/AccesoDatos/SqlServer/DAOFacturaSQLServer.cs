@@ -267,7 +267,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 }
                 else
-                    throw new ConsultarFacturaADException();
+                    throw new ConsultarException();
 
                 IList<Propuesta> propuestas = ConsultarPropuesta();
 
