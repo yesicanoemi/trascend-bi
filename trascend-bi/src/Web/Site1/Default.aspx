@@ -42,7 +42,7 @@
                                         ErrorMessage="<%$ Resources:DSU, FaltaNombreUsuario%>" Font-Size="Smaller" Display="Static" />
                            </td>
                                     </tr>
-                                    
+                                     <tr><td>&nbsp;</td></tr>
                                     <tr>
                                
                                 <td><span style="color:#FF0000"><asp:Label ID="Label1" runat="server" Text="<%$ Resources:DSU, Asterisco%>">

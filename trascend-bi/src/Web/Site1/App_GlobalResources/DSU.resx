@@ -531,4 +531,7 @@
   <data name="CorreoEnviado" xml:space="preserve">
     <value>Se le ha enviado un correo al empleado con sus datos!</value>
   </data>
+  <data name="SeleccioneAnio" xml:space="preserve">
+    <value>Seleccione año:</value>
+  </data>
 </root>
