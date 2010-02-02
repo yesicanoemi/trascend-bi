@@ -42,14 +42,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IDAOFactura bdfactura = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
-            try
-            {
-                if (_factura == null) { throw new IngresarFacturaLNException(); }
-                factura = bdfactura.IngresarFactura(_factura);
-            }
-            catch (InsertarFacturaADException e) { }
-            catch (IngresarFacturaLNException e) { throw new IngresarFacturaLNException("Se esta recibiendo una factura vacía", e); }
-            catch (Exception e) { throw new IngresarFacturaLNException("Error al Insertar", e); }
+            factura = bdfactura.IngresarFactura(_factura);
+
             return factura;
         }
         #endregion
