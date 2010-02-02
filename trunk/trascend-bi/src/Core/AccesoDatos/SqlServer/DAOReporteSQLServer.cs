@@ -33,7 +33,7 @@ namespace Core.AccesoDatos.SqlServer
 
         #region Constructor
 
-        public ReporteSQLServer()
+        public DAOReporteSQLServer()
         {
         }
 
