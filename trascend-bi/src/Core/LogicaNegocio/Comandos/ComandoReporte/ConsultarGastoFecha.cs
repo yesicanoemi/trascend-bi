@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoReporte
 {
@@ -36,8 +38,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         public IList<Gasto> Ejecutar()
         {
 
-            ReporteSQLServer acceso = new ReporteSQLServer();
-            _listagasto = acceso.ConsultarGastoFecha(_fechainicio, _fechafin);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOReporte iDAOReporte = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOReporte();
+
+            _listagasto = iDAOReporte.ConsultarGastoFecha(_fechainicio, _fechafin);
 
             return _listagasto;
         }
