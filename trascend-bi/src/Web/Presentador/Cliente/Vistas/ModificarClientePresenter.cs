@@ -24,7 +24,6 @@ namespace Presentador.Cliente.Vistas
 
         #region Propiedades
         private IModificarCliente _vista;
-        string _RifAux;
         private const string campoVacio = "";
         #endregion
 
@@ -145,10 +144,16 @@ namespace Presentador.Cliente.Vistas
                 CargarGrid(listaCliente);
             }
             else
-            {
-                CargarDatos(listaCliente[0]);
-                CambiarVista(1);
-            }
+                if (listaCliente.Count != 0)
+                {
+                    CargarDatos(listaCliente[0]);
+                    CambiarVista(1);
+                }
+                else
+                {
+                    _vista.PintarInformacion2(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
+                    _vista.InformacionVisible2 = true;
+                }
         }
 
         public void CargarGrid(IList<Core.LogicaNegocio.Entidades.Cliente> clientes)
@@ -168,6 +173,7 @@ namespace Presentador.Cliente.Vistas
 
             _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
 
+            _vista.IdCliente.Text = cliente.IdCliente.ToString();
             _vista.NombreCliente.Text = cliente.Nombre.ToString();
             _vista.AreaNegocioCliente.Text = cliente.AreaNegocio.ToString();
             _vista.CalleAvenidaCliente.Text = cliente.Direccion.Avenida.ToString();
@@ -176,8 +182,8 @@ namespace Presentador.Cliente.Vistas
             _vista.PisoApartamentoCliente.Text = cliente.Direccion.Oficina.ToString();
             _vista.rifCliente.Text = cliente.Rif.ToString();
             _vista.UrbanizacionCliente.Text = cliente.Direccion.Urbanizacion.ToString();
-            _vista.TelefonoTrabajoCliente.Text = cliente.Telefono[0].Codigoarea.ToString();
-            _vista.CodigoTrabajoCliente.Text = cliente.Telefono[0].Numero.ToString();
+            _vista.TelefonoTrabajoCliente.Text = cliente.Telefono[0].Numero.ToString();
+            _vista.CodigoTrabajoCliente.Text = cliente.Telefono[0].Codigoarea.ToString();
 
             if (cliente.Telefono[1] != null)
             {
@@ -305,9 +311,9 @@ namespace Presentador.Cliente.Vistas
                     cliente.Telefono[2].Tipo = "Fax";
                 }
 
-                _RifAux = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString();
+                cliente.IdCliente = int.Parse((string)_vista.IdCliente.Text); 
 
-                cliente.Rif = _RifAux;
+                cliente.Rif = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString();
 
                 cliente.Nombre = _vista.NombreCliente.Text;
 

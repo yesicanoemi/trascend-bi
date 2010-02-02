@@ -18,6 +18,12 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
     private int width;
 
+    public TextBox IdCliente
+    {
+        get { return uxIdCliente; }
+        set { uxIdCliente = value; }
+    }
+
     public TextBox Valor
     {
         get { return uxValor; }
@@ -155,13 +161,25 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
     public void PintarInformacion(string mensaje, string estilo)
     {
-        uxMensajeInformacion.PintarControl(mensaje, estilo);
+        uxMensajeInformacion0.PintarControl(mensaje, estilo);
     }
 
     public bool InformacionVisible
     {
-        get { return uxMensajeInformacion.Visible; }
-        set { uxMensajeInformacion.Visible = value; }
+        get { return uxMensajeInformacion0.Visible; }
+        set { uxMensajeInformacion0.Visible = value; }
+    }
+
+
+    public void PintarInformacion2(string mensaje, string estilo)
+    {
+        uxMensajeInformacion1.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible2
+    {
+        get { return uxMensajeInformacion1.Visible; }
+        set { uxMensajeInformacion1.Visible = value; }
     }
 
     #endregion

@@ -147,10 +147,17 @@ namespace Presentador.Cliente.Vistas
                 CargarGrid(listaCliente);
             }
             else
-            {
-                CargarDatos(listaCliente[0]);
-                CambiarVista(1);
-            }
+                if (listaCliente.Count != 0)
+                {
+                    CargarDatos(listaCliente[0]);
+                    CambiarVista(1);
+                }
+                else
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
+                    _vista.InformacionVisible = true;
+                }
+            
         }
 
         public void CargarGrid(IList<Core.LogicaNegocio.Entidades.Cliente> clientes)
@@ -183,10 +190,12 @@ namespace Presentador.Cliente.Vistas
                 _vista.GetObjectContainerConsultaTelefono.DataSource = telefonos;
                 _vista.GetObjectContainerConsultaTelefono.DataBind();
             }
-            else
-            {
-               // Pinta mensaje de error
-            }
+            //else
+            //{
+            //    _vista.PintarInformacion(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
+            //    _vista.InformacionVisible = true;
+            //    // Pinta mensaje de error
+            //}
             
         }
 

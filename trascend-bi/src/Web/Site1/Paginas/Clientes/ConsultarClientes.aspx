@@ -61,8 +61,8 @@
                                                     <tr>
                                                    
                                                         <td align="center">
-                                                            <asp:TextBox ID="uxConsultaRif" MaxLength=11 runat="server" Visible="false" Width="100" >
-                                                            </asp:TextBox>
+                                                            <asp:TextBox ID="uxConsultaRif" MaxLength=11 runat="server" Visible="false" 
+                                                                Width="120px" ></asp:TextBox>
                                                              
 <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" 
 					 CompletionListCssClass="list" 
@@ -123,6 +123,16 @@
                                                
                                                   </td>
                                          </tr> 
+                                          <tr>
+                                              <td align="right" colspan="2">
+                                                  <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                      <ContentTemplate>
+                                                          <uc2:MensajeInformacion ID="uxMensajeInformacion0" runat="server" 
+                                                              Visible="false" />
+                                                      </ContentTemplate>
+                                                  </asp:UpdatePanel>
+                                              </td>
+                                          </tr>
                                           <tr>
                                               <td>
                                               </td>
