@@ -19,7 +19,7 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
     {
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
-        btBotonIngresar.Enabled = false;
+        btBotonIngresarFactura.Enabled = false;
         btBotonIngresarFactura.Visible = false;
 
         bool permiso = false;
