@@ -24,6 +24,10 @@
                         <form id="form1" runat="server">
                         <p class="large">
                             Seleccione el tipo de busqueda e ingrese el parametro:</p>
+                            <p class="large" >
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
+                            </p>
                         <table style="width: auto">
                             <tr>
                                 <td>

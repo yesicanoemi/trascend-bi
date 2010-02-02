@@ -27,29 +27,35 @@ namespace Presentador.Factura.Vistas
 
         public void CargarTabla()
         {
-            _propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
-            _propuesta.Titulo = _vista.ParametroTexto.Text;
+            try
+            {
+                _propuesta = new Core.LogicaNegocio.Entidades.Propuesta();
+                _propuesta.Titulo = _vista.ParametroTexto.Text;
 
 
-            IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
-            Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultaPropuesta;
-            consultaPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(1, _propuesta.Titulo);
-            listaPropuesta = consultaPropuesta.Ejecutar();
+                IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
+                Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultaPropuesta;
+                consultaPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(1, _propuesta.Titulo);
+                listaPropuesta = consultaPropuesta.Ejecutar();
 
-            _propuesta = listaPropuesta.ElementAt(0);
+                _propuesta = listaPropuesta.ElementAt(0);
 
-            _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
-            _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
+                _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
+                _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
+            }
+            catch (Exception e){ }
 
-            
 
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsultarTabla;
+                ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
+                IList<Core.LogicaNegocio.Entidades.Factura> listaFacturas = ComandoConsultarTabla.Ejecutar();
 
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsultarTabla;
-            ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
-            IList<Core.LogicaNegocio.Entidades.Factura> listaFacturas = ComandoConsultarTabla.Ejecutar();
-
-            _vista.TablaFacturas.DataSource = listaFacturas;
-            _vista.TablaFacturas.DataBind();
+                _vista.TablaFacturas.DataSource = listaFacturas;
+                _vista.TablaFacturas.DataBind();
+            }
+            catch (Exception e) { }
         }
 
         public void CargarDatos()

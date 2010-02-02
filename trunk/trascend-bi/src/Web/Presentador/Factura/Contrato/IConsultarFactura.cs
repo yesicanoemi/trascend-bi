@@ -22,5 +22,7 @@ namespace Presentador.Factura.Contrato
         Label Estado { get; set; }
 
         void Mensaje(string msg);
+        void Pintar(string mensaje);
+        bool MensajeVisible { get; set; }
     }
 }

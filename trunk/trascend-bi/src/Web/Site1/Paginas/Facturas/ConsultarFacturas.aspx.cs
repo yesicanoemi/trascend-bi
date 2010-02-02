@@ -83,6 +83,18 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         get { return this.lbEstado; }
         set { lbEstado = value; }
     }
+
+    public void Pintar(string mensaje)
+    {
+        this.lbMensaje.Text = mensaje;
+    }
+
+    public bool MensajeVisible
+    {
+        get { return lbMensaje.Visible; }
+        set { lbMensaje.Visible = value; }
+    }
+
     #endregion
 
     protected void Page_Load(object sender, EventArgs e)
@@ -149,18 +161,26 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
     
     protected void btBotonBuscar_Click(object sender, EventArgs e)
     {
-        if (ParametroBox.SelectedItem.Text.Equals("Por Nombre de Propuesta"))
+        if (ParametroTexto.Text.Equals(""))
         {
-            _presenter.CargarTabla();
-            MultiViewFacturas.Visible = true;
-            MultiViewFacturas.ActiveViewIndex = 0;
-            
+            Pintar("Debe introducir un parametro de busqueda");
+            MensajeVisible = true;
         }
-        if (ParametroBox.SelectedItem.Text.Equals("Por Numero de Factura"))
+        else
         {
-            _presenter.CargarDatos();
-            MultiViewFacturas.Visible = true;
-            MultiViewFacturas.ActiveViewIndex = 1;
+            if (ParametroBox.SelectedItem.Text.Equals("Por Nombre de Propuesta"))
+            {
+                _presenter.CargarTabla();
+                MultiViewFacturas.Visible = true;
+                MultiViewFacturas.ActiveViewIndex = 0;
+
+            }
+            if (ParametroBox.SelectedItem.Text.Equals("Por Numero de Factura"))
+            {
+                _presenter.CargarDatos();
+                MultiViewFacturas.Visible = true;
+                MultiViewFacturas.ActiveViewIndex = 1;
+            }
         }
 
     }
