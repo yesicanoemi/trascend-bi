@@ -19,16 +19,12 @@
                 </ul> 
 
             </div> 
-
-
             <div class="sub-content"> 
                 <div class="features_overview"> 
                     <div class="features_overview_rightUser"> 
                         <h3>Modificar Usuario</h3> 
                         <p class="large">Introduzca la informacion a continuación</p> 
-                       
-<form id="Form1" action="#" runat="server">
-
+                          <form id="Form1" action="#" runat="server">
                             <asp:MultiView ID="uxMultiViewModificar" runat="server" ActiveViewIndex="0">
                                 <asp:View ID="ViewConsultaUsuario" runat="server">
                                 <span style="text-align:center; font-size:large">

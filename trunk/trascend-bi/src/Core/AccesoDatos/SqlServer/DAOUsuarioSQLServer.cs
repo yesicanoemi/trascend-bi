@@ -73,7 +73,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-
+                throw new ConsultarUsuarioBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarUsuarioBDExcepciones("Error consultando credencialeso", e);
             }
             return _usuario;
 
@@ -133,9 +137,12 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-
+                throw new ConsultarUsuarioBDExcepciones("Error consultando en la base de datos", e);
             }
-
+            catch (Exception e)
+            {
+                throw new ConsultarUsuarioBDExcepciones("Error consultando usuarios", e);
+            }
             return usuario;
 
         }
@@ -253,7 +260,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarPermisosBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPermisosBDExcepciones("Error consultando permisos", e);
             }
 
             return permiso;
@@ -467,7 +478,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-
+                throw new ConsultarUsuarioBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarUsuarioBDExcepciones("Error consultando empleados con usuario", e);
             }
 
             return empleado;
@@ -476,7 +491,7 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
-        #region ConsultarEmpleadoConUsuario
+        #region ConsultarEmpleadoSinUsuario
 
         /// <summary>
         /// Metodo para consultar el usuario por "Login"
@@ -514,7 +529,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-
+                throw new ConsultarUsuarioBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarUsuarioBDExcepciones("Error consultando empleados sin usuario", e);
             }
 
             return empleado;
@@ -558,7 +577,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarPermisosBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPermisosBDExcepciones("Error consultando usuarios activos", e);
             }
 
             return usuario;
@@ -601,7 +624,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarPermisosBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPermisosBDExcepciones("Error verificando usuarios", e);
             }
             return _usuario;
 
@@ -703,7 +730,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarPermisosBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPermisosBDExcepciones("Error consultando todos los usuario", e);
             }
             return usuario;
 
@@ -750,7 +781,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ConsultarPermisosBDExcepciones("Error consultando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarPermisosBDExcepciones("Error consultando los id de permisos", e);
             }
 
             return permiso;
