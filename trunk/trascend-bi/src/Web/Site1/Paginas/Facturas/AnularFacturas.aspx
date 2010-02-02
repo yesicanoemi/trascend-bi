@@ -36,7 +36,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="uxBusqueda" runat="server" TabIndex="1"></asp:TextBox>
-                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda" FilterType="Numbers"
+                                        <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda" FilterType="Numbers" 
                                             ID="FilteredTextBoxExtender1" runat="server">
                                         </AjaxControlToolkit:FilteredTextBoxExtender>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxBusqueda"
