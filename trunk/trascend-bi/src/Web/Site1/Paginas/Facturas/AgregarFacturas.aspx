@@ -29,14 +29,18 @@
             
             
        
-        <form id="form1" runat="server">
-        <asp:MultiView ID="uxMultiViewFactura" runat="server" ActiveViewIndex="0">
-        <asp:View ID="ViewBuscarPropuesta" runat="server">
+        
             <p class="large">Introduzca el nombre de la propuesta a buscar:</p>
             <p class="large" >
                                 <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
                             </p>
-                <p class="large">&nbsp;<table style="width:auto">
+                
+                
+                <form id="form1" runat="server">
+        <asp:MultiView ID="uxMultiViewFactura" runat="server" ActiveViewIndex="0">
+        <asp:View ID="ViewBuscarPropuesta" runat="server">
+                
+                <table style="width:auto">
                         
                         <tr>
                             <td> Nombre Propuesta:</td>
@@ -114,7 +118,7 @@
                             <td align="center"><asp:Button ID="btBotonIngresarFactura" runat="server" Text="Ingresar Factura Nueva" OnClick = "btBotonIngresarFactura_Click"/></td>
                         </tr>
                     </table>
-                </p>
+                
                 
         </asp:View>
         <asp:View ID="ViewAgregarFactura" runat="server">
