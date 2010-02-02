@@ -17,8 +17,6 @@ namespace Core.AccesoDatos.SqlServer
 {
     class DAOUsuarioSQLServer : IDAOUsuario
     {
-
-
         IConexion _conexion = new FabricaConexion().getConexionSQLServer();
 
         #region Constructor
@@ -77,7 +75,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (Exception e)
             {
-                throw new ConsultarUsuarioBDExcepciones("Error consultando credencialeso", e);
+                throw new ConsultarUsuarioBDExcepciones("Error consultando credenciales", e);
             }
             return _usuario;
 
@@ -159,6 +157,7 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
+                //usuario = null;//Para probar la excepcion de modificar usuario
                 SqlParameter[] arParms = new SqlParameter[1];
 
                 arParms[0] = new SqlParameter("@IdUsuario", SqlDbType.Int);
@@ -282,10 +281,10 @@ namespace Core.AccesoDatos.SqlServer
 
         public void AgregarUsuario(Usuario usuario)
         {
-           
+            try
+            {
                 #region Busca el Id del empleado
-                try
-                {
+              
 
 
                     SqlParameter[] arParmsIdEmp = new SqlParameter[1];
@@ -303,16 +302,12 @@ namespace Core.AccesoDatos.SqlServer
                     }
 
 
-                }
-                catch(SqlException e)
-                {
-                    throw new ConsultarUsuarioBDExcepciones("Error consultando empleado", e);
-                }
+               
+               
                 #endregion
 
                 #region Agregar Usuario en la bd
-                try
-                {
+                
 
 
                     SqlParameter[] arParms = new SqlParameter[4];
@@ -338,17 +333,7 @@ namespace Core.AccesoDatos.SqlServer
                     /*SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                             "AgregarUsuario", arParms);*/
 
-                }
-                catch (SqlException e)
-                {
-                    //System.Console.Write(e);
-                    throw new AgregarUsuarioBDExcepciones("Error agregando en la base de datos", e);
-                }
-                catch (Exception e)
-                {
-
-                    throw new AgregarUsuarioBDExcepciones("Error agregando usuario", e);
-                }
+               
                 #endregion
 
                 #region ConsultarUsuario agregado
@@ -381,8 +366,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 #region Agregar Permisos al usuario registrado
 
-                try
-                {
+                
 
                     SqlParameter[] arParmsAgregarPermisos = new SqlParameter[2];
 
@@ -402,18 +386,19 @@ namespace Core.AccesoDatos.SqlServer
                         /*SqlHelper.ExecuteNonQuery(_conexion.GetConnection(),
                                                 "AgregarPermisoUsuario", arParmsAgregarPermisos);*/
                     }
-                }
-                catch (SqlException e)
-                {
-                    //System.Console.Write(e);
-                    throw new AgregarPermisosBDExcepciones("Error agregando en la base de datos", e);
-                }
-                catch (Exception e)
-                {
-
-                    throw new AgregarPermisosBDExcepciones("Error agregando permisos de usuario", e);
-                }
+               
+               
                 #endregion
+            }
+            catch (SqlException e)
+            {
+                //System.Console.Write(e);
+                throw new AgregarUsuarioBDExcepciones("Error agregando en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new AgregarUsuarioBDExcepciones("Error agregando usuario y sus permisos", e);
+            }
         }
 
         #endregion
@@ -649,7 +634,7 @@ namespace Core.AccesoDatos.SqlServer
             Usuario _usuario = new Usuario();
             try
             {
-
+                //usuario = null; //Para probar la excepcion de eliminar usuario
                 SqlParameter[] arParms = new SqlParameter[2];
                 // Parametros
                 arParms[0] = new SqlParameter("@LoginUsuario", SqlDbType.VarChar);
@@ -674,7 +659,7 @@ namespace Core.AccesoDatos.SqlServer
             catch (SqlException e)
             {
                 //System.Console.Write(e);
-                throw new EliminarUsuarioBDExcepciones("Error elimnando en la base de datos", e);
+                throw new EliminarUsuarioBDExcepciones("Error eliminando en la base de datos", e);
             }
             catch (Exception e)
             {
