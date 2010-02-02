@@ -183,8 +183,8 @@
                                     </td>
                                     <td align="right">
                                         <asp:Button ID="btAnular" runat="server" Text="Anular" Visible="false" OnClick="btAnular_Click"
-                                            OnClientClick="return confirm('Esta seguro que quiere anular esta factura?');"
-                                            TabIndex="3" />
+                                            OnClientClick="return confirm('Esta seguro que quiere anular esta factura?');" 
+                                            TabIndex="3" />                                       
                                     </td>
                                 </tr>
                             </table>
