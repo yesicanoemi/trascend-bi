@@ -108,6 +108,8 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
        
 
         MultiViewFacturas.Visible = false;
+        ParametroTexto.Visible = false;
+        btBotonBuscar.Visible = false;
 
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
@@ -192,5 +194,11 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
     protected string FormatearFecha(DateTime fecha)
     {
         return _presenter.FormatearFechaParaMostrar(fecha);
+    }
+
+    protected void uxParametroBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ParametroTexto.Visible = true;
+        btBotonBuscar.Visible = true;
     }
 }
