@@ -47,6 +47,29 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
             uxEstados = value;
         }
     }
+
+
+    #region Mensajes
+
+    public Label Mensaje
+    {
+        get { return lbMensaje; }
+        set { lbMensaje = value; }
+    }
+
+    public void Pintar(string mensaje)
+    {
+        this.lbMensaje.Text = mensaje;
+    }
+
+    public bool MensajeVisible
+    {
+        get { return lbMensaje.Visible; }
+        set { lbMensaje.Visible = value; }
+    }
+
+    #endregion
+
     #endregion
 
 

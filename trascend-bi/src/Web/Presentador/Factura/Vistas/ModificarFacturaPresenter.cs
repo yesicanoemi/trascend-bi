@@ -57,9 +57,11 @@ namespace Presentador.Factura.Vistas
             }
             catch (ConsultarException e)
             {
+                _vista.Pintar(e.Message);
             }
             catch (Exception e)
             {
+                _vista.Pintar(e.Message);
             }
         }
 
@@ -73,9 +75,18 @@ namespace Presentador.Factura.Vistas
                     int.Parse(_vista.NumeroFactura.Text), _vista.Estado.SelectedItem.Text);
 
                 comandoSaldar.Ejecutar();
+                _vista.Pintar("Cambio ejecutado con éxito");
+                _vista.MensajeVisible = true;
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
             catch (Exception e)
             {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
         }
 
@@ -92,8 +103,16 @@ namespace Presentador.Factura.Vistas
                     _vista.Estado.Items.Add(estados[i].ToString());
                 }
             }
-            catch (ConsultarException e) { }
-            catch (Exception e) { }
+            catch (ConsultarException e) 
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e) 
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
 
         }
 
