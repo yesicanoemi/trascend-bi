@@ -149,3 +149,27 @@
 {
    width:500px; /* or percent value: 25% */
 }
+
+
+
+
+.list {
+	border: 1px solid #666666;
+	list-style-type: none;
+	margin-left: 0px;
+	background-color: #ffffff;
+	text-align: left;
+}
+
+
+
+
+.listitem {
+	color: #666666;
+}
+
+
+
+.hoverlistitem {
+	background-color:#FFFBD6;
+}
