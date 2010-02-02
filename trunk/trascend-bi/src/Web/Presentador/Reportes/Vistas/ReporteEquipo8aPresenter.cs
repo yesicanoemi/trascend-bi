@@ -39,6 +39,8 @@ namespace Presentador.Reportes.Vistas
                 if (facturasEmitidas != null)
                 {
                     _vista.GetObjectContainerReporte8a.DataSource = facturasEmitidas;
+                    _vista.LabelContador.Text =  _vista.LabelContador.Text + facturasEmitidas.Count.ToString();
+                    _vista.LabelContador.Visible = true; 
                     
 
                 }
