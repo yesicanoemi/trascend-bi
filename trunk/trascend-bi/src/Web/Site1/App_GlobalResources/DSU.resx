@@ -436,7 +436,7 @@
     <value>Aceptar</value>
   </data>
   <data name="Agregar" xml:space="preserve">
-    <value>Agregar:</value>
+    <value>Agregar</value>
   </data>
   <data name="ApellidoEmpleado" xml:space="preserve">
     <value>Apellido del Empleado: </value>
@@ -448,7 +448,7 @@
     <value>Buscar</value>
   </data>
   <data name="Consultar" xml:space="preserve">
-    <value>Consultar:</value>
+    <value>Consultar</value>
   </data>
   <data name="Contrasena" xml:space="preserve">
     <value>Contraseña:</value>
@@ -457,7 +457,7 @@
     <value>* Contraseña:</value>
   </data>
   <data name="Eliminar" xml:space="preserve">
-    <value>Eliminar:</value>
+    <value>Eliminar</value>
   </data>
   <data name="EstadoEmpleado" xml:space="preserve">
     <value>Estado del Empleado:</value>
@@ -484,7 +484,7 @@
     <value>* Nombre de Usuario:</value>
   </data>
   <data name="Modificar" xml:space="preserve">
-    <value>Modificar:</value>
+    <value>Modificar</value>
   </data>
   <data name="NombreEmpleadoObligatorio" xml:space="preserve">
     <value>* Nombre de Empleado:</value>
@@ -503,5 +503,11 @@
   </data>
   <data name="NombreEmpleadoAgregar" xml:space="preserve">
     <value>Nombre Empleado:</value>
+  </data>
+  <data name="ConsultarUsuario" xml:space="preserve">
+    <value>Consultar usuario por:</value>
+  </data>
+  <data name="DatosUsuario" xml:space="preserve">
+    <value>Datos del usuario:</value>
   </data>
 </root>

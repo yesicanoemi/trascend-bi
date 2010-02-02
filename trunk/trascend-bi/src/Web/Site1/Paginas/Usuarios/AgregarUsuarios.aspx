@@ -34,7 +34,7 @@
 
                 <div class="features_overview"> 
     
-                    <div class="features_overview_right"> 
+                    <div class="features_overview_rightUser"> 
                         <h3>Agregar Usuarios</h3>
                          <p class="large">Introduzca la informacion a continuación</p> 
                         
@@ -45,11 +45,13 @@
                                 <asp:View ID="ViewConsulta" runat="server">
                                   <span style="text-align:center"><uc3:MensajeInformacionBotonAceptar ID="uxMensajeInformacionBotonAceptar" 
                                                         runat="server" Visible="false" /></span>
-                                    <p><div style="background-color:InfoBackground">Consultar por nombre de empleado que no tienen acceso al sistema</div>
+                                    <p>
+                                    <!--<div style="background-color:InfoBackground">Consultar por nombre de empleado que no tienen acceso al sistema</div>-->
+                                    <div>Consultar por nombre de empleado que no tienen acceso al sistema</div>
                                    
                                     <br />
                     
-                                    <table width="1000px">
+                                    <table>
                                 
                                         <tr>
                                             <td><asp:Label runat="server" ID="uxCampoNombreEmpleado" Text="<%$ Resources:DSU, NombreEmpleadoObligatorio %>"></asp:Label></td>
@@ -94,8 +96,10 @@
                         
                                 <asp:View ID="ViewEmpleado" runat="server">
                         
-                                   <p><div style="background-color:InfoBackground">Datos del Empleado</div>
-                                                     
+                                   <p>
+                                   <!--<div style="background-color:InfoBackground">Datos del Empleado</div>-->
+                                   
+                                      <div style="background-color:InfoBackground">Datos del Empleado</div>               
                          
                                     <!--form id="uxFormConsultarUsuario" action=""-->
                             
@@ -164,7 +168,7 @@
                                                 <td>&nbsp;</td>
                                             </tr>
                                         </table>
-                                        <table>
+                                        <table class="solotablasuser">
                                           
                                            
                                            <tr>

@@ -9,6 +9,7 @@
         <link href="Estilos/base.css" rel="stylesheet" type="text/css" />
         <link href="Estilos/type.css" rel="stylesheet" type="text/css" />
         <link href="Estilos/reset.css" rel="stylesheet" type="text/css" />  
+        <link href="Estilos/Otros.css" rel="stylesheet" type="text/css" />  
     </head>
 
 <body id="interior">
@@ -27,11 +28,11 @@
 	            <div class="content"> 
 	        <div class="sub-content"> 
                 <div class="features_overview"> 
-                    <div class="features_overview_right"> 
+                    <div class="features_overview_rightUser"> 
                         <h3>Inicio de Sesion</h3>
                                 <p class="large"><p>
                                  
-                                <table>
+                                <table class="SoloTablasUser">
                                     <tr>
                                         <td><span style="color:#FF0000"><asp:Label ID="uxNombreLogin1" runat="server" Text="<%$ Resources:DSU, Asterisco%>">
                                         </asp:Label></span><asp:Label ID="uxNombreLogin" runat="server" Text="<%$ Resources:DSU, Login%>"></asp:Label></td>
