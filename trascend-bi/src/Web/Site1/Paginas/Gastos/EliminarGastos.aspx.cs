@@ -7,6 +7,7 @@ using Presentador.Gasto.Contrato;
 using Presentador.Gasto.Vistas;
 using Core.LogicaNegocio.Entidades;
 using Microsoft.Practices.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
 {
@@ -25,6 +26,13 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
         get { return uxBusquedaConsulta; }
         set { uxBusquedaConsulta = value; }
     }
+
+    public Label LabelInfo
+    {
+        get { return uxLabelInfo; }
+        set { uxLabelInfo = value; }
+    }
+
     public RadioButtonList CheckOpcionBuscar
     {
         get { return uxCheckOpcionBuscar; }
@@ -41,10 +49,64 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
         set { throw new System.NotImplementedException(); }
     }
 
+    public GridView GridViewParametro
+    {
+        get { return uxGridParamCoincidente; }
+        set { throw new System.NotImplementedException(); }
+    }
+
+    public GridView GridViewCliente
+    {
+        get { return uxGridCliente; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     public ObjectContainerDataSource GetObjectContainerConsultaGasto
     {
         get { return uxObjectEliminarGasto; }
         set { uxObjectEliminarGasto = value; }
+    }
+    
+    public ObjectContainerDataSource GetObjectContainerConsultaGastoSeleccion
+    {
+        get { return uxObjectParamCoinci; }
+        set { uxObjectParamCoinci = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerCliente
+    {
+        get { return uxObjectCliente; }
+        set { uxObjectCliente = value; }
+    }
+
+    public HtmlTable TablaSeleccionGrid
+    {
+        get { return uxTablaSeleccion; }
+        set { uxTablaSeleccion = value; }
+    }
+
+    public HtmlTable TablaConsultaParametro
+    {
+        get { return uxTablaParametros; }
+        set { uxTablaParametros = value; }
+    }
+
+    public HtmlTable TablaCliente
+    {
+        get { return uxTablaCliente; }
+        set { uxTablaCliente = value; }
+    }
+
+    public HtmlTable TablaInicio
+    {
+        get { return uxTablaInicio; }
+        set { uxTablaInicio = value; }
+    }
+
+    public Image Calendario
+    {
+        get { return uxFechaInicioImg; }
+        set { uxFechaInicioImg = value; }
     }
 
     public Label MensajeError
@@ -88,7 +150,24 @@ public partial class Paginas_Gastos_EliminarGastos : PaginaBase, IEliminarGasto
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
         _presenter.BuscarInformacion();
-    }    
+    }
+
+    protected void verseleccion(object sender, EventArgs e)
+    {
+        _presenter.verseleccion();
+    }
+
+    protected void parametrizado(object sender, GridViewSelectEventArgs e)
+    {
+
+        _presenter.busquedaparametrizado(int.Parse(uxGridParamCoincidente.DataKeys[e.NewSelectedIndex].Value.ToString()), "Propuesta");
+    }
+
+    protected void parametrizadocliente(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.busquedaparametrizado(-1, uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+    
 
     protected void uxEliminarGasto_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
     {

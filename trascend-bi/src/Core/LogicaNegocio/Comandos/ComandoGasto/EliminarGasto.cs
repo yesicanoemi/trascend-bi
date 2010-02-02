@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoGasto
 {
@@ -27,14 +28,21 @@ namespace Core.LogicaNegocio.Comandos.ComandoGasto
 
         #region Metodos
         /// <summary>
-        /// Ejecuta el comando para eliminar el regustro en la base de datos
+        /// Ejecuta el comando para eliminar el registro en la base de datos
         /// </summary>
         public Gasto Ejecutar()
         {
+
             Gasto _gasto = null;
-            DAOGastoSQLServer bd = new DAOGastoSQLServer();
-            _gasto = bd.EliminarGasto(gasto);
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOGasto bdGasto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOGasto();
+
+            _gasto = bdGasto.EliminarGasto(gasto);
+
             return _gasto;
+
         }
         #endregion
     }
