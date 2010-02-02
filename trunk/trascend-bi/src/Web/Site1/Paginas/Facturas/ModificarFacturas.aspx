@@ -93,7 +93,8 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
-                                <asp:Button ID="btAnular" runat="server" Text="Guardar" OnClick="btGuardar_Click" />
+                                <asp:Button ID="btAnular" runat="server" Text="Guardar" OnClick="btGuardar_Click"
+                                OnClientClick="return confirm('Esta seguro que quiere cambiar esta factura?');"  />
                                 </td>
                             </tr>
                             </table>
