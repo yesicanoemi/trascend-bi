@@ -166,9 +166,12 @@ namespace Presentador.Usuario.Vistas
                     }
                     else
                     {
-                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                                            ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisibleBotonAceptar = true;
+                        _vista.PintarInformacion
+                   (ManagerRecursos.GetString("MensajeConsulta"), "mensajes");
+
+                        _vista.InformacionVisible = true;
+                   
+                      
 
                     }
 
@@ -215,9 +218,11 @@ namespace Presentador.Usuario.Vistas
                 if ((listadoInactivo.Count == 0) && (listadoActivo.Count == 0)
                    && (_vista.RbCampoBusqueda.SelectedValue != "1"))
                 {
-                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                                            ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisibleBotonAceptar = true;
+                    _vista.PintarInformacion
+                 (ManagerRecursos.GetString("MensajeConsulta"), "mensajes");
+
+                    _vista.InformacionVisible = true;
+                  
 
 
                 }
@@ -286,9 +291,12 @@ namespace Presentador.Usuario.Vistas
                 else
                 {
                     CambiarVista(0);
-                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                    ("mensajeUsuarioInactivo"), "mensajes");
-                    _vista.InformacionVisibleBotonAceptar = true;
+                    _vista.PintarInformacion
+                 (ManagerRecursos.GetString("mensajeUsuarioInactivo"), "mensajes");
+
+                    _vista.InformacionVisible = true;
+                   
+                   
 
                 }
             }

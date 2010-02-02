@@ -19,6 +19,10 @@ namespace Presentador.Reportes.Contrato
 
         Label TotalGastos { get; set; }
 
+        Label TotalGastosLabel { get; set; }
+
+        Label Aviso { get; set; }
+
 
         #endregion
         void Mensaje(string msg);

@@ -154,9 +154,9 @@ namespace Presentador.Usuario.Vistas
 
                 else
                 {
-                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                    _vista.PintarInformacion(ManagerRecursos.GetString
                                                 ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisibleBotonAceptar = true;
+                    _vista.InformacionVisible = true;
                 }
             }
              catch (WebException e)
@@ -411,18 +411,21 @@ namespace Presentador.Usuario.Vistas
                     else
                     {
                         CambiarVista(0);
-                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                    ("mensajeUsuarioExiste"), "mensajes");
-                        _vista.InformacionVisibleBotonAceptar = true;
+                        _vista.PintarInformacion
+                   (ManagerRecursos.GetString("mensajeUsuarioExiste"), "mensajes");
 
+                        _vista.InformacionVisible = true;
+                   
                     }
                 }
                 else
                 {
                     CambiarVista(0);
-                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                    ("mensajeEmpleadoTieneUsuario"), "mensajes");
-                    _vista.InformacionVisibleBotonAceptar = true;
+                    _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeEmpleadoTieneUsuario"), "mensajes");
+
+                    _vista.InformacionVisible = true;
+                   
                 }
             }
 

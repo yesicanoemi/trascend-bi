@@ -48,6 +48,8 @@ namespace Presentador.Reportes.Vistas
         {
             Core.LogicaNegocio.Entidades.Factura factura = new Core.LogicaNegocio.Entidades.Factura();
 
+            try
+            {
             factura.Fechaingreso = Convert.ToDateTime(_vista.FechaInicio.Text);
 
             factura.Fechapago = Convert.ToDateTime(_vista.FechaFin.Text);
@@ -58,8 +60,7 @@ namespace Presentador.Reportes.Vistas
 
             _vista.GridViewReporteFactura3b.DataBind();
 
-            try
-            {
+           
                 if (listadoF.Count > 0)
                 {
 
@@ -78,28 +79,23 @@ namespace Presentador.Reportes.Vistas
             }
             catch (WebException e)
             {
-
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
-                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorWeb"),"mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (ConsultarException e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
-                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion
+                   (ManagerRecursos.GetString("mensajeErrorConsultar"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (Exception e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
-                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
+                _vista.PintarInformacion
+                   (ManagerRecursos.GetString("mensajeErrorGeneral"), "mensajes");
+                _vista.InformacionVisible = true;
             }
         }
 
