@@ -31,59 +31,94 @@ namespace Presentador.Factura.Vistas
 
         public void CargarDatosPropuesta()
         {
-            float MontoPagado;
-            float MontoRestante;
-            float PorcentajePagado = 0;
-            float PorcentajeRestante;
-
-            IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
-            Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultaPropuesta;
-            consultaPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(1, _vista.NombrePropuesta.Text);
-            listaPropuesta = consultaPropuesta.Ejecutar();
-
-            _propuesta = listaPropuesta.ElementAt(0);
-
-            _vista.LabelNombrePropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
-            _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
-
-            IList<Core.LogicaNegocio.Entidades.Factura> listaFacturasPropuesta;
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro consultaFacturas;
-            consultaFacturas = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(listaPropuesta.ElementAt(0));
-            listaFacturasPropuesta = consultaFacturas.Ejecutar();
-
-            foreach (Core.LogicaNegocio.Entidades.Factura Factura in listaFacturasPropuesta)
+            try
             {
-                if (Factura.Estado.Equals("Por Cobrar") || Factura.Estado.Equals("Cobrada"))
-                    PorcentajePagado += Factura.Procentajepagado;
-            } 
-            MontoPagado = (PorcentajePagado / 100) * listaPropuesta.ElementAt(0).MontoTotal;
-            PorcentajeRestante = 100 - PorcentajePagado;
-            MontoRestante = listaPropuesta.ElementAt(0).MontoTotal - MontoPagado;
+                float MontoPagado;
+                float MontoRestante;
+                float PorcentajePagado = 0;
+                float PorcentajeRestante;
 
-            _vista.PorcentajePagado.Text = PorcentajePagado.ToString();
-            _vista.PorcentajeRestante.Text = PorcentajeRestante.ToString();
-            _vista.MontoPagado.Text = MontoPagado.ToString();
-            _vista.MontoRestante.Text = MontoRestante.ToString();
+                IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
+                Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar consultaPropuesta;
+                consultaPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(1, _vista.NombrePropuesta.Text);
+                listaPropuesta = consultaPropuesta.Ejecutar();
+
+                _propuesta = listaPropuesta.ElementAt(0);
+
+                _vista.LabelNombrePropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
+                _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
+
+                IList<Core.LogicaNegocio.Entidades.Factura> listaFacturasPropuesta;
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro consultaFacturas;
+                consultaFacturas = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(listaPropuesta.ElementAt(0));
+                listaFacturasPropuesta = consultaFacturas.Ejecutar();
+
+                foreach (Core.LogicaNegocio.Entidades.Factura Factura in listaFacturasPropuesta)
+                {
+                    if (Factura.Estado.Equals("Por Cobrar") || Factura.Estado.Equals("Cobrada"))
+                        PorcentajePagado += Factura.Procentajepagado;
+                }
+                MontoPagado = (PorcentajePagado / 100) * listaPropuesta.ElementAt(0).MontoTotal;
+                PorcentajeRestante = 100 - PorcentajePagado;
+                MontoRestante = listaPropuesta.ElementAt(0).MontoTotal - MontoPagado;
+
+                _vista.PorcentajePagado.Text = PorcentajePagado.ToString();
+                _vista.PorcentajeRestante.Text = PorcentajeRestante.ToString();
+                _vista.MontoPagado.Text = MontoPagado.ToString();
+                _vista.MontoRestante.Text = MontoRestante.ToString();
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB al ingresar la factura");
+                _vista.MensajeVisible = true;
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
 
     
         }
 
         public void IngresarPropuesta()
         {
-            Core.LogicaNegocio.Entidades.Factura Factura = new Core.LogicaNegocio.Entidades.Factura();
-            
-            Factura.Titulo = _vista.Titulo.Text;
-            Factura.Descripcion = _vista.Descripcion.Text;
-            Factura.Prop = _propuesta;
-            Factura.Fechaingreso = DateTime.Now;
-            Factura.Estado = _vista.Estado.SelectedItem.Text;
-            Factura.Fechapago = DateTime.Now;
-            Factura.Procentajepagado = float.Parse(_vista.Porcentaje.Text);
+            try
+            {
+                Core.LogicaNegocio.Entidades.Factura Factura = new Core.LogicaNegocio.Entidades.Factura();
 
-            Core.LogicaNegocio.Comandos.ComandoFactura.Ingresar Ingresar;
-            Ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoIngresar(Factura);
-            Ingresar.Ejecutar();
-            
+                Factura.Titulo = _vista.Titulo.Text;
+                Factura.Descripcion = _vista.Descripcion.Text;
+                Factura.Prop = _propuesta;
+                Factura.Fechaingreso = DateTime.Now;
+                Factura.Estado = _vista.Estado.SelectedItem.Text;
+                Factura.Fechapago = DateTime.Now;
+                Factura.Procentajepagado = float.Parse(_vista.Porcentaje.Text);
+
+                Core.LogicaNegocio.Comandos.ComandoFactura.Ingresar Ingresar;
+                Ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoIngresar(Factura);
+                Ingresar.Ejecutar();
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB al ingresar la factura");
+                _vista.MensajeVisible = true;
+            }
+            catch (IngresarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
 
         }
 
