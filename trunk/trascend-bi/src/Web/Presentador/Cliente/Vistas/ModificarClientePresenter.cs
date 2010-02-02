@@ -281,6 +281,26 @@ namespace Presentador.Cliente.Vistas
 
         }
 
+
+        public void uxObjectConsultaClienteDeleting(string rif)
+        {
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+
+            IList<Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
+
+            cliente.Rif = rif;
+
+            listacliente = ConsultarClienteRif(cliente);
+            EliminarCliente(listacliente[0]);
+
+        }
+
+        public void EliminarCliente(Core.LogicaNegocio.Entidades.Cliente cliente)
+        {
+            cliente.Estatus = 0;
+            Actualizar(cliente);
+        }
+
         public void ActualizarCliente()
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();

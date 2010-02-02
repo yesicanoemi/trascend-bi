@@ -292,6 +292,18 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
        _presentador.uxObjectConsultaClienteSelecting( uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
+
+
+ protected void ClienteGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+  {
+      _presentador.uxObjectConsultaClienteDeleting(uxGridCliente.DataKeys[e.RowIndex].Value.ToString());
+            
+    }
+
+
+
+
+
     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
     {
         _presentador.CampoBusqueda_Selected();
