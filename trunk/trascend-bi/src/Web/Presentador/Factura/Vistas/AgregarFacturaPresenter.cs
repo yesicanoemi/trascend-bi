@@ -43,6 +43,9 @@ namespace Presentador.Factura.Vistas
                 consultaPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(1, _vista.NombrePropuesta.Text);
                 listaPropuesta = consultaPropuesta.Ejecutar();
 
+                if (listaPropuesta.Count == 0)
+                    throw new ConsultarException("La propuesta solicitada no existe");
+
                 _propuesta = listaPropuesta.ElementAt(0);
 
                 _vista.LabelNombrePropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
