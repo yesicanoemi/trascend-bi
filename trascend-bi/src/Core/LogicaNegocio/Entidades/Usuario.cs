@@ -17,6 +17,8 @@ namespace Core.LogicaNegocio.Entidades
 
         private IList<Core.LogicaNegocio.Entidades.Permiso> permisoUsu;
 
+        private string loginNuevo;
+
         public virtual int IdUsuario
         {
             get
@@ -74,6 +76,18 @@ namespace Core.LogicaNegocio.Entidades
             set
             {
                 this.permisoUsu = value;
+            }
+        }
+
+        public virtual string LoginNuevo
+        {
+            get 
+            {
+                return this.loginNuevo;
+            }
+            set
+            {
+                this.loginNuevo = value;
             }
         }
 
