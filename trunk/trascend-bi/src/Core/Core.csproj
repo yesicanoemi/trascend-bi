@@ -96,7 +96,6 @@
     <Compile Include="AccesoDatos\SqlServer\DAOGastoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\ReporteSQLServer.cs" />
-    <Compile Include="AccesoDatos\SqlServer\UsuarioSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOFacturaSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOEmpleadoSQLServer.cs" />
     <Compile Include="LogicaNegocio\Comandos\Comando.cs" />
