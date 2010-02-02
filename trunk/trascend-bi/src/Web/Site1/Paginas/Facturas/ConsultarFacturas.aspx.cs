@@ -12,7 +12,7 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
     ConsultarFacturaPresenter _presenter;
 
     #region Propiedades
-    public DropDownList ParametroBox
+    public RadioButtonList ParametroBox
     {
         get { return this.uxParametroBox; }
         set { uxParametroBox = value; }
@@ -105,9 +105,7 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        ParametroBox.Items.Clear();
-        ParametroBox.Items.Add("Por Nombre de Propuesta");
-        ParametroBox.Items.Add("Por Numero de Factura");
+       
 
         MultiViewFacturas.Visible = false;
 
@@ -168,13 +166,13 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         }
         else
         {
-            if (ParametroBox.SelectedItem.Text.Equals("Por Nombre de Propuesta"))
+            if (ParametroBox.SelectedValue == "1")
             {
                 _presenter.CargarTabla();
                
 
             }
-            if (ParametroBox.SelectedItem.Text.Equals("Por Numero de Factura"))
+            if (ParametroBox.SelectedValue == "2")
             {
                 _presenter.CargarDatos();
                 

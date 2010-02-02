@@ -8,7 +8,7 @@ namespace Presentador.Factura.Contrato
 {
     public interface IConsultarFactura
     {
-        DropDownList ParametroBox { get; set; }
+        RadioButtonList ParametroBox { get; set; }
         TextBox ParametroTexto { get; set; }
         MultiView MultiViewFacturas { get; set; }
         Label TituloPropuesta { get; set; }
