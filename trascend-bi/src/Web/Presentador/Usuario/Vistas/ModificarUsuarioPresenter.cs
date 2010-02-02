@@ -26,6 +26,8 @@ namespace Presentador.Usuario.Vistas
 
         private DefaultUsuarioPresenter _presentadorDefault = new DefaultUsuarioPresenter();
 
+        private const string campoVacio = "";
+
         #endregion
 
         #region Constructor
@@ -184,6 +186,8 @@ namespace Presentador.Usuario.Vistas
             {
                 _vista.NombreUsuario.Visible = true;
 
+                _vista.NombreUsuario.Text = campoVacio;
+
                 _vista.NombreUsuarioLabel.Visible = true;
 
                 _vista.StatusDdL.Visible = false;
@@ -240,8 +244,13 @@ namespace Presentador.Usuario.Vistas
         {
             _vista.InformacionVisibleBotonAceptar = false;
 
+            _vista.InformacionVisible = false;
+
+
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
+            try
+            {
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
             IList<Core.LogicaNegocio.Entidades.Usuario> listadoActivo =
@@ -250,10 +259,10 @@ namespace Presentador.Usuario.Vistas
             IList<Core.LogicaNegocio.Entidades.Usuario> listadoInactivo =
                                                 new List<Core.LogicaNegocio.Entidades.Usuario>();
 
-            user.Login = _vista.NombreUsuario.Text;
+           
+                user.Login = _vista.NombreUsuario.Text;
 
-            try
-            {
+            
                 if ((_vista.RbCampoBusqueda.SelectedValue == "1") && (user.Login != ""))
                 {
 
@@ -268,9 +277,9 @@ namespace Presentador.Usuario.Vistas
                     }
                     else
                     {
-                        _vista.PintarInformacion(ManagerRecursos.GetString
+                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisible = true;
+                        _vista.InformacionVisibleBotonAceptar = true;
 
                     }
                 }
@@ -286,9 +295,9 @@ namespace Presentador.Usuario.Vistas
                     }
                     else
                     {
-                        _vista.PintarInformacion(ManagerRecursos.GetString
+                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisible = true;
+                        _vista.InformacionVisibleBotonAceptar = true;
 
                     }
 
@@ -335,9 +344,9 @@ namespace Presentador.Usuario.Vistas
                 if ((listadoInactivo.Count == 0) && (listadoActivo.Count == 0) 
                     && (_vista.RbCampoBusqueda.SelectedValue != "1"))
                 {
-                    _vista.PintarInformacion(ManagerRecursos.GetString
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisible = true;
+                    _vista.InformacionVisibleBotonAceptar = true;
 
 
                 }
@@ -390,47 +399,57 @@ namespace Presentador.Usuario.Vistas
         {
             Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
 
-            usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
-
-            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                        UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                        UnirPermisos(ModificarCheckBox(_vista.CBLModificar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                        UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
-
-
-            /*usuario.LoginNuevo = _vista.NombreUsuNuevo.Text;
-
-            if (usuario.Login == usuario.LoginNuevo)
+            try
             {
-                usuario.LoginNuevo = _vista.NombreUsu.Text;
-            }
-            else
-            {
-                usuario.LoginNuevo = _vista.NombreUsuNuevo.Text;
+                usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
+
+                usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
+
+                usuario.PermisoUsu =
+                            UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
+
+                usuario.PermisoUsu =
+                            UnirPermisos(ModificarCheckBox(_vista.CBLModificar), usuario.PermisoUsu);
+
+                usuario.PermisoUsu =
+                            UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
+
+
+                /*usuario.LoginNuevo = _vista.NombreUsuNuevo.Text;
+
+                if (usuario.Login == usuario.LoginNuevo)
+                {
+                    usuario.LoginNuevo = _vista.NombreUsu.Text;
+                }
+                else
+                {
+                    usuario.LoginNuevo = _vista.NombreUsuNuevo.Text;
                 
-            }*/
+                }*/
 
-            usuario.Login = _vista.NombreUsu.Text;
+                usuario.Login = _vista.NombreUsu.Text;
 
-            usuario.Status = _vista.DLStatusUsuario.SelectedItem.Text;
+                usuario.Status = _vista.DLStatusUsuario.SelectedItem.Text;
 
-            usuario.IdUsuario = ConsultarUsuario(usuario)[0].IdUsuario;
+                usuario.IdUsuario = ConsultarUsuario(usuario)[0].IdUsuario;
 
-            ModificarUsuario(usuario);
+                ModificarUsuario(usuario);
 
-            CambiarVista(0);
+                CambiarVista(0);
 
-            _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                            ("mensajeUsuarioModificado"), "mensajes");
-            _vista.InformacionVisibleBotonAceptar = true;
+                _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                ("mensajeUsuarioModificado"), "mensajes");
+                _vista.InformacionVisibleBotonAceptar = true;
 
-            _vista.GetObjectContainerConsultaModificarUsuario.DataSource = "";
+                _vista.GetObjectContainerConsultaModificarUsuario.DataSource = "";
+            }
+            catch (Exception e)
+            {
+                CambiarVista(0);
+                _vista.PintarInformacion(ManagerRecursos.GetString("mensajeErrorModificar"), "mensajes");
+                _vista.InformacionVisible = true;
+
+            }
 
         }
         public void onBotonRegresar()
@@ -548,18 +567,27 @@ namespace Presentador.Usuario.Vistas
 
         public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
         {
-
             Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
 
             Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+            try
+            {
+                permiso2.Permisos = "Modificar Usuarios";
 
-            permiso2.Permisos = "Modificar Usuarios";
+                Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
 
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+                comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
 
-            comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+                permiso1 = comando.Ejecutar();
+            }
+            catch (Exception e)
+            {
 
-            permiso1 = comando.Ejecutar();
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorConsultarPermiso"), "mensajes");
+
+                _vista.InformacionVisible = true;
+            }
 
             return permiso1;
         }

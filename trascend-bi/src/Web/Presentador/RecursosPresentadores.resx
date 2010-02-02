@@ -198,4 +198,13 @@
   <data name="mensajeClienteEliminado" xml:space="preserve">
     <value>Cliente eliminado con éxito</value>
   </data>
+  <data name="mensajeErrorConsultarPermiso" xml:space="preserve">
+    <value>Ha ocurrido un Error tratando de consultar la permisologia</value>
+  </data>
+  <data name="mensajeErrorEliminar" xml:space="preserve">
+    <value>Ha ocurrido un Error tratando de eliminar.</value>
+  </data>
+  <data name="mensajeErrorModificar" xml:space="preserve">
+    <value>Ha ocurrido un Error trantando de modificar</value>
+  </data>
 </root>

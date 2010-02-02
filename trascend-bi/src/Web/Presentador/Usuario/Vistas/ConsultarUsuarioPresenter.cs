@@ -21,6 +21,8 @@ namespace Presentador.Usuario.Vistas
 
         private IConsultarUsuario _vista;
 
+        private const string campoVacio = "";
+
         #endregion
 
         #region Constructor
@@ -115,6 +117,8 @@ namespace Presentador.Usuario.Vistas
             {
                 _vista.NombreUsuario.Visible = true;
 
+                _vista.NombreUsuario.Text = campoVacio;
+
                 _vista.NombreUsuarioLabel.Visible = true;
 
                 _vista.StatusDdL.Visible = false;
@@ -166,6 +170,10 @@ namespace Presentador.Usuario.Vistas
 
         public void OnBotonBuscar()
         {
+            //_vista.InformacionVisibleBotonAceptar = true;
+
+            _vista.InformacionVisible = false;
+
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
@@ -309,23 +317,32 @@ namespace Presentador.Usuario.Vistas
 
         public void uxObjectConsultaUsuarioSelecting(string login)
         {
-            Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
+            try
+            {
+                Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
-            user.Login = login;
+                user.Login = login;
 
-            IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
+                IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
-            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(listado[0]);
+                IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(listado[0]);
 
-            user = null;
+                user = null;
 
-            user = listado[0];
+                user = listado[0];
 
-            CargarDatos(user);
+                CargarDatos(user);
 
-            CargarCheckBox(listadoPermiso);
+                CargarCheckBox(listadoPermiso);
 
-            CambiarVista(1);
+                CambiarVista(1);
+            }
+            catch (Exception e)
+            {
+                _vista.PintarInformacion
+                   (ManagerRecursos.GetString("mensajeErrorConsultar"), "mensajes");
+                _vista.InformacionVisible = true;
+            }
 
         }
 
@@ -409,20 +426,32 @@ namespace Presentador.Usuario.Vistas
 
         public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
         {
-
             Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
 
             Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+            try
+            {
+              
 
-            permiso2.Permisos = "Consultar Usuarios";
+                permiso2.Permisos = "Consultar Usuarios";
 
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+                Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
 
-            comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+                comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
 
-            permiso1 = comando.Ejecutar();
+                permiso1 = comando.Ejecutar();
+            }
+            catch (Exception e)
+            {
+
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorConsultarPermiso"), "mensajes");
+
+                _vista.InformacionVisible = true;
+            }
 
             return permiso1;
+
         }
         #endregion
     }
