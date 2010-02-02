@@ -266,19 +266,7 @@ namespace Core.AccesoDatos.SqlServer
                     factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
 
                 }
-
-                IList<Propuesta> propuestas = ConsultarPropuesta();
-
-                List<Factura> facturas = new List<Factura>();
-
-                foreach (Propuesta propuestaAux in propuestas)
-                {
-                    if (propuestaAux.Id == factura.Prop.Id)
-                    {
-                        factura.Prop = propuestaAux;
-                    }
-                }
-
+                
                 return factura;
             }
             catch (SqlException e)

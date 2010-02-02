@@ -51,6 +51,9 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             if (_factura == null) { throw new ConsultarFacturaLNException(); }
             factura = bdfactura.ConsultarFacturaID(_factura);
 
+            if (factura.Titulo == null)
+                throw new ConsultarException("No se encontro ninguna factura");
+
             return factura;
         }
         #endregion

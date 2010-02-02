@@ -11,6 +11,12 @@ namespace Core.LogicaNegocio.Excepciones
         {
 
         }
+
+        public ConsultarException(string s) : base(s)
+        {
+
+        }
+
         public ConsultarException(string s, Exception e)
             : base(s, e)
         {
