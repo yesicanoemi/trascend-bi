@@ -31,6 +31,11 @@ namespace Presentador.Factura.Contrato
 
         #endregion
 
+        #region Mensaje
+        void Pintar(string mensaje);
+        bool MensajeVisible { get; set; }
+        #endregion
+
         void Mensaje(string msg);
     }
 }

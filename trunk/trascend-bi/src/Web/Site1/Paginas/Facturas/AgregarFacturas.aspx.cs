@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Presentador.Factura.Contrato;
 using Presentador.Factura.Vistas;
 
-public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFactura
+public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactura
 {
     AgregarFacturaPresenter _presentador;
 
@@ -19,6 +19,8 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
     {
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+        btBotonIngresar.Enabled = false;
+        btBotonIngresarFactura.Visible = false;
 
         bool permiso = false;
 
@@ -122,6 +124,17 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
         set { throw new System.NotImplementedException(); }
     }
 
+    public void Pintar(string mensaje)
+    {
+        this.lbMensaje.Text = mensaje;
+    }
+
+    public bool MensajeVisible
+    {
+        get { return lbMensaje.Visible; }
+        set { lbMensaje.Visible = value; }
+    }
+
     public void Mensaje(string msg)
     {
         Label lbl = new Label();
@@ -137,6 +150,8 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
     protected void btBotonBuscar_Click(object sender, EventArgs e)
     {
         _presentador.CargarDatosPropuesta();
+        btBotonIngresarFactura.Enabled = true;
+        btBotonIngresarFactura.Visible = true;
 
     }
 
@@ -148,11 +163,6 @@ public partial class Paginas_Facturas_AgregarFacturas1 : PaginaBase,IAgregarFact
     {
        
         MultiViewFactura.ActiveViewIndex = 1;
-    }
-    protected void btBotonVolver_Click(object sender, EventArgs e)
-    {
-        
-        MultiViewFactura.ActiveViewIndex = 0;
     }
 
     protected void btCalcularMonto_Click(object sender, EventArgs e)

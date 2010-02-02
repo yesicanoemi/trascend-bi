@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" 
-        CodeFile="AgregarFacturas.aspx.cs" Inherits="Paginas_Facturas_AgregarFacturas1" %>
+        CodeFile="AgregarFacturas.aspx.cs" Inherits="Paginas_Facturas_AgregarFacturas" %>
 
 
 
@@ -13,7 +13,7 @@
 				<div class="subnav-container"> 
 				
 					<ul id="subnav"> 
-  <li><a href="AgregarFacturas1.aspx" class="active">Agregar<span></span></a></li> 
+  <li><a href="AgregarFacturas.aspx" class="active">Agregar<span></span></a></li> 
   <li><a href="ConsultarFacturas.aspx" >Consultar<span></span></a></li>
   <li><a href="AnularFacturas.aspx">Anular<span></span></a></li> 
   <li><a href="ModificarFacturas.aspx" >Modificar<span></span></a></li> 
@@ -33,6 +33,10 @@
         <asp:MultiView ID="uxMultiViewFactura" runat="server" ActiveViewIndex="0">
         <asp:View ID="ViewBuscarPropuesta" runat="server">
             <p class="large">Introduzca el nombre de la propuesta a buscar:</p>
+            <p class="large" >
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
+                            </p>
                 <p class="large">&nbsp;<table style="width:auto">
                         
                         <tr>
@@ -42,6 +46,18 @@
                             <td><asp:Button ID="btBotonBuscar" runat="server" Text="Buscar" OnClick = "btBotonBuscar_Click"/></td>
                             
                         </tr>
+                        <tr>
+                       <td>&nbsp;</td>
+                       <td>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                ControlToValidate="uxNombrePropuesta" 
+                                ErrorMessage="<%$ Resources:DSU, FaltaParametroBusqueda%>" Font-Size="Smaller" Display="None" />
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxNombrePropuesta" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars="' '"
+                                            ID="FilteredTextBoxExtender4" runat="server"/>
+                       <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender4"
+                                            TargetControlID="RequiredFieldValidator4" />         
+                       </td>
+                    </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -96,7 +112,7 @@
                     </table>
                     <table width="100%">
                         <tr align="center">
-                            <td align="center"><asp:Button ID="btBotonIngresarFactura" runat="server" Text="Ingresar Factura" OnClick = "btBotonIngresarFactura_Click"/></td>
+                            <td align="center"><asp:Button ID="btBotonIngresarFactura" runat="server" Text="Ingresar Factura Nueva" OnClick = "btBotonIngresarFactura_Click"/></td>
                         </tr>
                     </table>
                 </p>
@@ -116,6 +132,8 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                 ControlToValidate="uxTitulo" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaTituloFactura%>" Font-Size="Smaller" Display="None" />
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxTitulo" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars="' '"
+                                            ID="FilteredTextBoxExtender1" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
                                             TargetControlID="RequiredFieldValidator1" />         
                        </td>
@@ -125,13 +143,18 @@
                         <td><asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
+                       
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                       <td>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="uxDescripcion" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaDescripcionFactura%>" Font-Size="Smaller" Display="None" />
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxDescripcion" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars="' '"
+                                            ID="FilteredTextBoxExtender2" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender2"
-                                            TargetControlID="RequiredFieldValidator2" />
+                                            TargetControlID="RequiredFieldValidator2" />         
                        </td>
+                    
                     </tr>
                     <tr>
                         <td><span style="color: #FF0000">*</span> Porcentaje a pagar:</td>
@@ -139,12 +162,15 @@
                         </asp:TextBox></td>
                     </tr>
                     <tr>
-                       <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                      <td>&nbsp;</td>
+                       <td>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                 ControlToValidate="uxPorcentaje" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaPorcentajeFactura%>" Font-Size="Smaller" Display="None" />
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxPorcentaje" FilterType="Numbers, Custom" ValidChars=""
+                                            ID="FilteredTextBoxExtender3" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender3"
-                                            TargetControlID="RequiredFieldValidator3" />
+                                            TargetControlID="RequiredFieldValidator3" />         
                        </td>
                     </tr>
                     
@@ -182,7 +208,7 @@
                         
                     </tr>
                     <tr>
-                        <td><asp:Button ID="btBotonVolver" runat="server" Text="Volver" OnClick = "btBotonVolver_Click" /></td>
+                        <td>&nbsp;</td>
                         <td><asp:Button ID="btBotonIngresar" runat="server" Text="Ingresar" OnClick = "btBotonIngresar_Click" /></td>
                     </tr>
                     
