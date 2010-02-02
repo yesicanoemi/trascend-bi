@@ -266,8 +266,6 @@ namespace Core.AccesoDatos.SqlServer
                     factura.Prop.MontoTotal = float.Parse(reader["Monto"].ToString());
 
                 }
-                else
-                    throw new ConsultarException();
 
                 IList<Propuesta> propuestas = ConsultarPropuesta();
 
