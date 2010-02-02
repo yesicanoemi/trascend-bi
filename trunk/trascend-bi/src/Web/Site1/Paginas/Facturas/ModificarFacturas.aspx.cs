@@ -86,22 +86,30 @@ public partial class Paginas_Facturas_ModificarFacturas : PaginaBase, IModificar
 
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 19)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == 13)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presenter = new ModificarFacturaPresenter(this);
+                    _presenter = new ModificarFacturaPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            Response.Redirect(paginaDefault);
+
         }
 
         _presenter.LLenarDDLEstados();
