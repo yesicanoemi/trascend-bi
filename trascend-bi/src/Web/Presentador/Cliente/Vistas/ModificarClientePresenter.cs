@@ -301,6 +301,9 @@ namespace Presentador.Cliente.Vistas
         {
             cliente.Estatus = 0;
             Actualizar(cliente);
+            _vista.PintarInformacion2(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
+            _vista.InformacionVisible2 = true;
+            OnBotonBuscar();
         }
 
         public void ActualizarCliente()

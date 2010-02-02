@@ -195,4 +195,7 @@
   <data name="mensajeTelefonoIncorrecto" xml:space="preserve">
     <value>El Codigo del Telefono debe ser de 3 digitos y el Numero ser de 7 digitos.</value>
   </data>
+  <data name="mensajeClienteEliminado" xml:space="preserve">
+    <value>Cliente eliminado con éxito</value>
+  </data>
 </root>
