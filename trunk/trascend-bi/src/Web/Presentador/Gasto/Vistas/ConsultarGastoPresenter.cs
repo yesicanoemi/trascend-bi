@@ -272,16 +272,22 @@ namespace Presentador.Gasto.Vistas
             {
                 _vista.LabelInfo.Text = "Ingrese Nombre Propuesta";
                 _vista.Calendario.Visible = false;
+                _vista.BusquedaConsulta.Visible = true;
+                _vista.BotonBuscarDatos.Visible = true;
             }
             if (_vista.CheckOpcionBuscar.SelectedValue.Equals("1"))
             {
                 _vista.LabelInfo.Text = "Ingrese Nombre de Cliente";
                 _vista.Calendario.Visible = false;
+                _vista.BusquedaConsulta.Visible = true;
+                _vista.BotonBuscarDatos.Visible = true;
             }
             if (_vista.CheckOpcionBuscar.SelectedValue.Equals("2"))
             {
                 _vista.LabelInfo.Text = "Ingrese Fecha a través de la Imagen";
                 _vista.Calendario.Visible=true;
+                _vista.BusquedaConsulta.Visible = true;
+                _vista.BotonBuscarDatos.Visible = true;
             }
         }
 
