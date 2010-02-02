@@ -34,8 +34,9 @@
         <div class="features_overview_right"> 
             <h3>Reporte Equipo #3 (Facturas Emitidas)</h3> 
             <p>&nbsp;</p>
-            
-            
+            <span style="text-align:center; font-size:smal; color:Red">
+             <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
+             </span>             
             <table style="width: 100%">
             <tr>
                 <td>
@@ -50,6 +51,13 @@
                     </AjaxControlToolkit:CalendarExtender>                      
                                         
                     
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator runat="server" ID="uxRequired1"
+                    ErrorMessage="<%$Resources:DSU, FaltaFechaInicio %>"
+                    ControlToValidate="uxFechaInicio" Font-Size="Smaller">
+                    </asp:RequiredFieldValidator>
+                
                 </td>
                 
                
@@ -67,18 +75,18 @@
                     </AjaxControlToolkit:CalendarExtender>
                  
                 </td>
-                <td><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                <td>
+                 <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1"
+                    ErrorMessage="<%$Resources:DSU, FaltaFechaFin %>"
+                    ControlToValidate="uxFechaFin" Font-Size="Smaller">
+                    </asp:RequiredFieldValidator></td>
+                
+             </tr>
+             <tr><td>&nbsp;</td></tr>
+             <tr>
+                <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                         onclick="uxBotonAceptar_Click" /></td>
              </tr>
-                     <tr>
-                          <td>
-                             <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
-                          </td>
-                     </tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
             
              <tr>
              <td>

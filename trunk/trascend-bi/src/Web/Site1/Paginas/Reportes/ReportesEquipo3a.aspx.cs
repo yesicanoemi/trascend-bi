@@ -49,15 +49,24 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
         get { return uxTotal; }
         set { uxTotal = value; }
     }
-
+    public Label TotalGastosLabel
+    {
+        get { return uxLabelTotal; }
+        set { uxLabelTotal = value; }
+    }
+    public Label Aviso
+    {
+        get { return uxAviso; }
+        set { uxAviso = value; }
+    }
+    
     #endregion
 
 
     public void Mensaje(string msg)
     {
-        Label lbl = new Label();
-        lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
-        Page.Controls.Add(lbl);
+        uxAviso.Visible = true;
+        uxAviso.Text = msg;  
     }
 
     protected void Page_Init(object sender, EventArgs e)

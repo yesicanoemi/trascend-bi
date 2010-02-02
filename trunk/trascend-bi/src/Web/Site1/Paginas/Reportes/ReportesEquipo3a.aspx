@@ -29,13 +29,20 @@
 				
 				<div class="sub-content"> 
     <div class="features_overview"> 
-        <div class="features_overview_right"> 
+        <div class="features_overview_rightUser"> 
             <h3>Reporte Equipo #3 (Gasto Anuales)</h3> 
             <p>&nbsp;</p>
-            
-            <table style="width: 100%">
+            <span style="text-align:center; font-size:smal; color:Red">
+                <asp:Label ID="uxAviso" runat="server" Visible="false"></asp:Label>
+            </span>
+              <p>&nbsp;</p>
+            <table class="solotablasuser" style="width: 100%">
+            <tr><td><asp:Label runat="server" ID="uxLabelAnio" Text="<%$ Resources:DSU, SeleccioneAnio %>">"></asp:Label></td></tr>
+                <tr><td>&nbsp;</td></tr>
                 <tr>
                     <td>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <asp:DropDownList ID="uxAnios" runat="server">
                             <asp:ListItem Value="0">Seleccionar...</asp:ListItem>
                             <asp:ListItem Value="2010">2010</asp:ListItem>
@@ -51,57 +58,60 @@
                             <asp:ListItem Value="2000">2000</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>
-                        <asp:Button ID="uxBotonConsultar_Click" runat="server" Text="Consultar" 
-                          onclick="uxBotonConsulta_Click" />
-                    </td>
-                </tr>
-                   <tr>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RangeValidator MaximumValue="2010" MinimumValue="2000" Display="Static" ID="RegularExpressionValidator1" runat="server"
                                     ErrorMessage="<%$Resources:DSU, FaltaAnioReportes %>" ControlToValidate="uxAnios"
                                     Font-Size="Smaller"></asp:RangeValidator>
                              
                     </td>
+               </tr>
+               <tr><td>&nbsp;</td></tr>
+               <tr>
+                    
+                    
+                    <td align="center">
+                        <asp:Button ID="uxBotonConsultar_Click" runat="server" Text="<%$ Resources:DSU, Buscar %>" 
+                          onclick="uxBotonConsulta_Click" />
+                          
+                    </td>
+                   
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
+                
             </table>
             
          </div> 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <table class="solotablasuser" runat="server">
+      <tr>
+      <td>
         <asp:GridView runat="server" ID="uxReporteGastos3a"  AutoGenerateColumns="false" 
-                        DataKeyNames="Codigo" AllowPaging="True" PageSize="10" ShowFooter="true"
+                        DataKeyNames="Codigo" AllowPaging="True" Width="500px" PageSize="10" ShowFooter="true"
                         DataSourceID="uxObjectReporte3a">
              <Columns>
-                                            
-                <asp:BoundField HeaderText="Id Gasto" DataField="Codigo" />
-                <asp:BoundField HeaderText="Fecha" DataField="fechaGasto" />
-                <asp:BoundField HeaderText="Tipo" DataField="tipo" />
-                  <asp:BoundField HeaderText="Monto" DataField="Monto" />
-      
-                                            
+                <asp:BoundField ItemStyle-HorizontalAlign="center" HeaderText="Id Gasto" DataField="Codigo" />
+                <asp:BoundField ItemStyle-HorizontalAlign="center" HeaderText="Fecha" DataField="fechaGasto" />
+                <asp:BoundField ItemStyle-HorizontalAlign="center" HeaderText="Tipo" DataField="tipo" />
+                <asp:BoundField ItemStyle-HorizontalAlign="center" HeaderText="Monto" DataField="Monto" />
              </Columns>
-                                            
-        
-                                        
-         </asp:GridView>
-        
-        
-        
+        </asp:GridView>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <br />
+        <asp:Label ID="uxLabelTotal" runat="server" Text="Total Gastos en el Año:" Visible="false"></asp:Label>
+        <asp:Label ID="uxTotal" runat="server" Text="" Visible="false"></asp:Label>
+        </td></tr>
+     </table>
+          <br />
         <br />
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <br />
         <br />
         <br />
-        Total Gastos en el Año:
-        <asp:Label ID="uxTotal" runat="server" Text=""></asp:Label>
+        <br />
+        <br />
+        <br />
     </div> 
 </div>  
 
