@@ -56,7 +56,8 @@
                                 <table style="width: auto">
                                         
                                         <p class="large">
-                                            <asp:GridView ID="uxTablaFacturas" runat="server" AutoGenerateColumns="false" 
+                                        <RowStyle HorizontalAlign="Center" />
+                                            <asp:GridView Width="150%" ID="uxTablaFacturas" runat="server" AutoGenerateColumns="false" 
                                                 CellPadding="10" CellSpacing="5" OnRowDataBound="uxTablaFacturas_RowDataBound">
                                                 <RowStyle HorizontalAlign="Center" />
                                                 <Columns>
@@ -65,8 +66,14 @@
                                                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" />
                                                     <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                                                     <asp:BoundField DataField="Procentajepagado" HeaderText="Porcentaje" />
-                                                    <asp:BoundField DataField="Fechaingreso" HeaderText="Fecha Ingreso" />
-                                                    <asp:BoundField DataField="Fechapago" HeaderText="Fecha Pago" />
+                                                    <asp:TemplateField ItemStyle-Width="15%" HeaderText="Fecha Ingreso">
+                                                    <ItemTemplate>
+                                                        <%# FormatearFecha((DateTime)Eval("Fechaingreso")) %></ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField ItemStyle-Width="15%" HeaderText="Fecha">
+                                                    <ItemTemplate>
+                                                        <%# FormatearFecha((DateTime)Eval("Fechapago")) %></ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                                 </Columns>
                                             </asp:GridView>

@@ -172,4 +172,9 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
 
     }
+
+    protected string FormatearFecha(DateTime fecha)
+    {
+        return _presenter.FormatearFechaParaMostrar(fecha);
+    }
 }
