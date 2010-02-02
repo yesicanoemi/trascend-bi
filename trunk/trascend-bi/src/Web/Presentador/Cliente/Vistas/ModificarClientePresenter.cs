@@ -276,6 +276,8 @@ namespace Presentador.Cliente.Vistas
             cliente.Rif = rif;
 
             listacliente = ConsultarClienteRif(cliente);
+
+            //Carga datos en la vista
             CargarDatos(listacliente[0]);
             CambiarVista(1);
 
