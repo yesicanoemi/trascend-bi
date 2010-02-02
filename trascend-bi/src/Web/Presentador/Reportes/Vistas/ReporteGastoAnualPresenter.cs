@@ -20,6 +20,8 @@ namespace Presentador.Reportes.Vistas
     {
         private IReporteGastoAnual _vista;
 
+        private const String campoVacio = "";
+
         #region Constructor
 
         public ReporteGastoAnualPresenter(IReporteGastoAnual vista)
@@ -34,6 +36,8 @@ namespace Presentador.Reportes.Vistas
 
         public void OnBotonBuscar()
         {
+            _vista.Aviso.Visible = false;
+
             Core.LogicaNegocio.Entidades.Gasto gasto = new Core.LogicaNegocio.Entidades.Gasto();
 
             string anio;//Año seleccionado como criterio de busqueda
@@ -50,6 +54,10 @@ namespace Presentador.Reportes.Vistas
 
             if (listaGastos.Count != 0)
             {
+                _vista.TotalGastos.Visible = true;
+
+                _vista.TotalGastosLabel.Visible = true;
+
                 _vista.GetObjectContainerReporteGastos3a.DataSource = listaGastos;
 
                 _vista.TotalGastos.Text = totalGastosS;
@@ -59,6 +67,9 @@ namespace Presentador.Reportes.Vistas
             else
             {
                 _vista.Mensaje("No existen gastos registrados correspondientes a ese parametro");
+                _vista.GetObjectContainerReporteGastos3a.DataSource = campoVacio;
+                _vista.TotalGastos.Visible = false;
+                _vista.TotalGastosLabel.Visible = false;
             }
         }
 
