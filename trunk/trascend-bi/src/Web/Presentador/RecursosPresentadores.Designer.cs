@@ -115,6 +115,15 @@ namespace Presentador {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cliente eliminado con éxito.
+        /// </summary>
+        internal static string mensajeClienteEliminado {
+            get {
+                return ResourceManager.GetString("mensajeClienteEliminado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No hay datos para el parámetro de búsqueda seleccionado.
         /// </summary>
         internal static string MensajeConsulta {
