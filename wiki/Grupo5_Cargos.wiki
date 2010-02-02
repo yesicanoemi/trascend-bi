@@ -10,9 +10,9 @@ Gestion de Cargos en el Sistema.
 
 == Details ==
   * Ingresar Cargo (CU-C01) _Eduardo Rotundo_
-  * Modificar Empleado (CU-C02) _Iann Yanes_
-  * Consultar Cargo (CU-C03) _Eduardo Rotundo_
-  * Eliminar Empleado (CU-C04) _Iann Yanes_
+  * Modificar Cargo (CU-C02) _Eduardo Rotundo_
+  * Consultar Cargo (CU-C03) _Iann Yanes_
+  * Eliminar Cargo (CU-C04) _Iann Yanes_
 
 == Casos de uso ==
 
