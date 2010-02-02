@@ -311,7 +311,10 @@ namespace Presentador.Cliente.Vistas
                     cliente.Telefono[2].Tipo = "Fax";
                 }
 
+
+
                 cliente.IdCliente = int.Parse((string)_vista.IdCliente.Text); 
+
 
                 cliente.Rif = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString();
 

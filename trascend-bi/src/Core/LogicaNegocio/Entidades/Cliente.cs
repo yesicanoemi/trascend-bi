@@ -12,6 +12,7 @@ namespace Core.LogicaNegocio.Entidades
         private TelefonoTrabajo[] telefono = new TelefonoTrabajo[3];
         private Direccion direccion;
         private string areaNegocio;
+        private int estatus;
         /*private string calleAvenidad;
         private string urbanizacion;
         private string edificioCasa;
@@ -105,7 +106,21 @@ namespace Core.LogicaNegocio.Entidades
             set { telefono = value; }
         }
 
+        public virtual int Estatus
+        {
+            get
+            {
+                return estatus;
+            }
+
+            set
+            {
+                estatus = value;
+            }
+        }
         
+
+
         /* public virtual string CalleAvenidad
         {
             get
