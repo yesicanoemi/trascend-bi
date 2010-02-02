@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos.Fabricas;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
 
 namespace Core.LogicaNegocio.Comandos.ComandoReporte
 {
@@ -32,10 +35,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         public float Ejecutar(string anio)
         {
 
-            ReporteSQLServer bd = new ReporteSQLServer();
 
-            float _gasto = bd.TotalGastosAnuales(anio);
+            //ReporteSQLServer bd = new ReporteSQLServer();
 
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOReporte iDAOReporte = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOReporte();
+
+            float _gasto = iDAOReporte.TotalGastosAnuales(anio);
+
+   
             return _gasto;
         }
 

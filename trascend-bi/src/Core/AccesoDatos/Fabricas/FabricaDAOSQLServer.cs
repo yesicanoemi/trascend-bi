@@ -64,6 +64,11 @@ namespace Core.AccesoDatos.Fabricas
         {
             return new DAOCargoSQLServer();
         }
+
+        public override IDAOReporte ObtenerDAOReporte()
+        {
+            return new DAOReporteSQLServer();
+        }
     }
 
 }

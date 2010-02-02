@@ -93,6 +93,7 @@
     <Compile Include="AccesoDatos\SqlServer\DAOCargoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOClienteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOContactoSQLServer.cs" />
+    <Compile Include="AccesoDatos\SqlServer\DAOReporteSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOUsuarioSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOGastoSQLServer.cs" />
     <Compile Include="AccesoDatos\SqlServer\DAOPropuestaSQLServer.cs" />
