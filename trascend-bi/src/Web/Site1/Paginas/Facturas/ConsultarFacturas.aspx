@@ -81,7 +81,7 @@
                                                     <ItemTemplate>
                                                         <%# FormatearFecha((DateTime)Eval("Fechaingreso")) %></ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField ItemStyle-Width="15%" HeaderText="Fecha">
+                                                    <asp:TemplateField ItemStyle-Width="15%" HeaderText="Fecha Pago">
                                                     <ItemTemplate>
                                                         <%# FormatearFecha((DateTime)Eval("Fechapago")) %></ItemTemplate>
                                                     </asp:TemplateField>
