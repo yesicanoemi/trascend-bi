@@ -24,22 +24,30 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 1)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == 13)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new AgregarFacturaPresenter(this);
+                    _presentador = new AgregarFacturaPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            Response.Redirect(paginaDefault);
+
         }
 
         _presentador.LlenarDDLEstados();
