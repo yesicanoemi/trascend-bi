@@ -287,7 +287,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (Exception e)
             {
-                throw new ConsultarException("Error consultando una factura", e);
+                throw new ConsultarException("Error consultando la factura", e);
             }
             return factura;
         }
