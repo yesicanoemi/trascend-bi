@@ -171,6 +171,8 @@ namespace Core.Pruebas
 
             cliente.Telefono[2].Tipo = "Celular";
 
+            cliente.Estatus = 0;
+
             #endregion
 
             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;

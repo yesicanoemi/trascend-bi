@@ -179,7 +179,7 @@ namespace Core.AccesoDatos.SqlServer
             try
             {
 
-                SqlParameter[] arParms = new SqlParameter[9];
+                SqlParameter[] arParms = new SqlParameter[10];
 
                 // Parametros 
 
@@ -211,6 +211,9 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[8] = new SqlParameter("@IdCliente", SqlDbType.Int);
                 arParms[8].Value = cliente.IdCliente;
+
+                arParms[9] = new SqlParameter("@Estatus", SqlDbType.Int);
+                arParms[9].Value = cliente.Estatus;
 
                 int result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "ModificarCliente", arParms);
 
