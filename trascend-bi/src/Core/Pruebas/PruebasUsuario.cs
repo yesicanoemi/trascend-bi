@@ -16,77 +16,7 @@ namespace Core.Pruebas
     [TestFixture]
     class PruebasUsuario
     {
-        #region Prueba Para Eliminar Usuario
-
-        [Test]
-
-        public void TestEliminarusuario()
-        {
-            Usuario usuario = new Usuario();
-
-            IList<Usuario> listadoUsuarios = new List<Usuario>();
-
-            string Login = "usuario";
-
-            usuario.Login = Login;
-
-            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
-
-            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
-
-            iDAOUsuario.EliminarUsuario(usuario);
-
-            listadoUsuarios = iDAOUsuario.ConsultarUsuario(usuario);
-
-            Assert.AreEqual("Inactivo", listadoUsuarios[0].Status);
-
-        }
-
-        #endregion
-
-        #region Prueba Para Consultar Usuario
-
-        [Test]
-
-        public void TestConsultarUsuario()
-        {
-            Usuario usuario = new Usuario();
-
-            string Login = "usuario";
-
-            usuario.Login = Login;
-
-            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
-
-            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
-
-            //UsuarioSQLServer bd = new UsuarioSQLServer();
-
-            IList<Usuario> listadoUsuarios = new List<Usuario>();
-
-            listadoUsuarios = iDAOUsuario.ConsultarUsuario(usuario);
-
-            //listadoUsuarios = bd.ConsultarUsuario(usuario);
-
-            for (int i = 0; i < listadoUsuarios.Count; i++)
-            {
-                if (listadoUsuarios[i].Login == "usuario")
-                {
-                    usuario.Login = listadoUsuarios[i].Login;
-                    i = listadoUsuarios.Count;
-                }
-                else
-                {
-                    usuario.Login = "null";
-
-                }
-            }
-
-            Assert.AreEqual(Login, usuario.Login);
-        }
-
-        #endregion
-
+        
         #region Prueba Para Agregar Usuario
 
         [Test]
@@ -95,13 +25,13 @@ namespace Core.Pruebas
         {
             Usuario usuario = new Usuario();
 
-            usuario.Login = "UsuarioPrueba12";
+            usuario.Login = "tercero";
 
-            usuario.Password = "123456";
+            usuario.Password = "tercero123";
 
             usuario.Status = "Activo";
 
-            usuario.Cedula = 13776256;
+            usuario.Cedula = 33333333;
 
             IList<Permiso> listado = new List<Permiso>();
 
@@ -134,6 +64,46 @@ namespace Core.Pruebas
 
         #endregion
 
+        #region Prueba Para Eliminar Usuario
+
+        [Test]
+
+        public void TestEliminarusuario()
+        {
+            Usuario usuario = new Usuario();
+
+            Usuario usuario1 = new Usuario();
+
+            IList<Usuario> listadoUsuarios = new List<Usuario>();
+
+            string Login = "tercero";
+
+            usuario.Login = Login;
+
+            string Estado = "Inactivo";
+
+            usuario.Status = Estado;
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+
+            IDAOUsuario iDAOUsuario1 = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+
+            iDAOUsuario.EliminarUsuario(usuario);
+
+            string Login1 = "tercero";
+
+            usuario1.Login = Login1;
+
+            listadoUsuarios = iDAOUsuario1.ConsultarUsuario(usuario1);
+
+            Assert.AreEqual("Inactivo", listadoUsuarios[0].Status);
+
+        }
+
+        #endregion
+        
         #region Prueba Para Modificar Usuario
 
         [Test]
@@ -146,7 +116,9 @@ namespace Core.Pruebas
 
             Permiso permiso = new Permiso();
 
-            //UsuarioSQLServer bd = new UsuarioSQLServer();
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
 
             IList<Usuario> listadoUsuarios = new List<Usuario>();
 
@@ -154,22 +126,16 @@ namespace Core.Pruebas
 
             IList<Permiso> listadoPermisosTest = new List<Permiso>();
 
-            //consulta de usuario y sus permisos
+            string Login = "tercero";
 
-            //listadoUsuarios = bd.ConsultarUsuario(usuario);
-
-            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
-
-            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+            usuario.Login = Login;
 
             listadoUsuarios = iDAOUsuario.ConsultarUsuario(usuario);
 
             usuario = listadoUsuarios[0];
 
             listadoPermisos = iDAOUsuario.ConsultarPermisos(listadoUsuarios[0]);
-
-            //listadoPermisos = bd.ConsultarPermisos(listadoUsuarios[0]);
-
+            
             if (usuario.Status.CompareTo("Inactivo") >= 0)
             {
                 usuario.Status = "Activo";
@@ -183,23 +149,54 @@ namespace Core.Pruebas
 
             iDAOUsuario.ModificarUsuario(usuario);
 
-            //bd.ModificarUsuario(usuario);
-
-            //consulta de permisos y de usuario nuevamente
-
             listadoUsuarios = iDAOUsuario.ConsultarUsuario(usuario);
 
-            //listadoUsuarios = bd.ConsultarUsuario(usuario);
-
             listadoPermisos = iDAOUsuario.ConsultarPermisos(listadoUsuarios[0]);
-
-            //listadoPermisos = bd.ConsultarPermisos(listadoUsuarios[0]);
-
+            
             usuarioTest = listadoUsuarios[0];
 
             Assert.AreEqual(6, listadoPermisos[0].IdPermiso);
 
             Assert.AreEqual(usuario.Status, usuarioTest.Status);
+        }
+
+        #endregion
+
+        #region Prueba Para Consultar Usuario
+
+        [Test]
+
+        public void TestConsultarUsuario()
+        {
+            Usuario usuario = new Usuario();
+
+            string Login = "usuario";
+
+            usuario.Login = Login;
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOUsuario iDAOUsuario = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOUsuario();
+
+            IList<Usuario> listadoUsuarios = new List<Usuario>();
+
+            listadoUsuarios = iDAOUsuario.ConsultarUsuario(usuario);
+
+            for (int i = 0; i < listadoUsuarios.Count; i++)
+            {
+                if (listadoUsuarios[i].Login == "usuario")
+                {
+                    usuario.Login = listadoUsuarios[i].Login;
+                    i = listadoUsuarios.Count;
+                }
+                else
+                {
+                    usuario.Login = "null";
+
+                }
+            }
+
+            Assert.AreEqual(Login, usuario.Login);
         }
 
         #endregion
