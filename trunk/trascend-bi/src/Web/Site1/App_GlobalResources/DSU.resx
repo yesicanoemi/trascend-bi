@@ -505,7 +505,7 @@
     <value>Nombre Empleado:</value>
   </data>
   <data name="ConsultarUsuario" xml:space="preserve">
-    <value>Consultar usuario por:</value>
+    <value>Realizar consulta por:</value>
   </data>
   <data name="DatosUsuario" xml:space="preserve">
     <value>Datos del usuario:</value>
@@ -518,5 +518,11 @@
   </data>
   <data name="FaltaTituloFactura" xml:space="preserve">
     <value>Debe introducir un titulo</value>
+  </data>
+  <data name="DatosEmpleado" xml:space="preserve">
+    <value>Datos del Empleado:</value>
+  </data>
+  <data name="Regresar" xml:space="preserve">
+    <value>Regresar</value>
   </data>
 </root>

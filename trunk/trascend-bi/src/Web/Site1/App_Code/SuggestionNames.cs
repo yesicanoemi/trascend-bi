@@ -20,7 +20,7 @@ using Core.AccesoDatos.Fabricas;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 [System.Web.Script.Services.ScriptService]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-// [System.Web.Script.Services.ScriptService]
+//[System.Web.Script.Services.ScriptService]
 public class SuggestionNames : System.Web.Services.WebService
 {
 
@@ -84,6 +84,31 @@ public class SuggestionNames : System.Web.Services.WebService
         foreach (Cliente cli in listaclientes)
         {
             responses.Add(cli.Rif);
+        }
+
+        return responses.ToArray();
+    }
+
+    //AutoCompleteExtender para los empleados que se le van asignar nombre de usuario y clave
+    [WebMethod]
+    public string[] GetSuggestionsEmpleadoNombreSinUsuario(string prefixText, int count)
+    {
+        List<string> responses = new List<string>();
+
+        Empleado empleado = new Empleado();
+
+        empleado.Nombre = prefixText;
+
+        Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarEmpleadoSinUsuario comando =
+        Core.LogicaNegocio.Fabricas.FabricaComandosUsuario.CrearComandoConsultarEmpleadoSinUsuario(empleado);
+
+       
+        IList<Empleado> listaEmpleados = comando.Ejecutar();
+
+
+        foreach (Empleado _empleado in listaEmpleados)
+        {
+            responses.Add(_empleado.Nombre);
         }
 
         return responses.ToArray();

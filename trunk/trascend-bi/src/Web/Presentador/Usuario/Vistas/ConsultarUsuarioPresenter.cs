@@ -255,39 +255,39 @@ namespace Presentador.Usuario.Vistas
 
                     }
 
-                    else
-                    {
-                        _vista.PintarInformacion(ManagerRecursos.GetString
-                                                ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisible = true;
+                   
+                }
+                if ((listadoInactivo.Count == 0) && (listadoActivo.Count == 0)
+                   && (_vista.RbCampoBusqueda.SelectedValue != "1"))
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                                            ("MensajeConsulta"), "mensajes");
+                    _vista.InformacionVisible = true;
 
-                    }
+
                 }
 
             }
-            catch (WebException e)
+             catch (WebException e)
             {
-
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
-                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+               
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("mensajeErrorWeb"),"mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (ConsultarException e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
-                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("mensajeErrorConsultar"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (Exception e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
-                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorGeneral"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
 
@@ -327,6 +327,11 @@ namespace Presentador.Usuario.Vistas
 
             CambiarVista(1);
 
+        }
+
+        public void onBotonRegresar()
+        {
+            CambiarVista(0);
         }
 
         #endregion

@@ -154,35 +154,38 @@ namespace Presentador.Usuario.Vistas
                     _vista.InformacionVisible = true;
                 }
             }
-            catch (WebException e)
+             catch (WebException e)
             {
-
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
-                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+               
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("mensajeErrorWeb"),"mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (ConsultarException e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
-                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("mensajeErrorConsultar"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (Exception e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
-                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorGeneral"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
 
 
         }
 
+        public void onBotonRegresar()
+        {
+            CambiarVista(0);
+        }
+
+        #region Comandos
         /// <summary>
         /// Consultar el empleado al que se le desea asignar usuario
         /// </summary>
@@ -450,6 +453,9 @@ namespace Presentador.Usuario.Vistas
 
             return permiso1;
         }
+
+        #endregion
+
         #endregion
 
     }
