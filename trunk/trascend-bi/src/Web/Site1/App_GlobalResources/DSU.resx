@@ -525,4 +525,7 @@
   <data name="Regresar" xml:space="preserve">
     <value>Regresar</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Cerrar Sesion</value>
+  </data>
 </root>
