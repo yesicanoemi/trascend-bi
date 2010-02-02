@@ -26,9 +26,8 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// <returns>true si se logro agregar el cargo y false si hubo error</returns>
         public void Ejecutar()
         {
-            /*CargoSQLServer bd = new CargoSQLServer();
-             * AQUI SE DEBE HACER LA LLAMADA CON EL NUEVO PATRON DAO.
-            bd.IngresarCargo( _cargo );*/
+            DAOCargoSQLServer bd = new DAOCargoSQLServer();
+            bd.IngresarCargo(_cargo);
         }
     }
 }

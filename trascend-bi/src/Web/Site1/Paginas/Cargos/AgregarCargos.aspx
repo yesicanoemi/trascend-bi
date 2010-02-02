@@ -35,10 +35,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Nombre:
+                                        <asp:Label ID="Label1" CssClass="campos" runat="server">*</asp:Label>Nombre:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxNombre" runat="server"></asp:TextBox><asp:Label ID="Label1" CssClass="campos" runat="server">*</asp:Label>
+                                        <asp:TextBox ID="uxNombre" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,10 +53,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Descripcion:
+                                        <asp:Label ID="Label2" CssClass="campos" runat="server">*</asp:Label>Descripcion:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox><asp:Label ID="Label2" CssClass="campos" runat="server">*</asp:Label>
+                                        <asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -71,17 +71,17 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Sueldo Mínimo:
+                                        <asp:Label ID="Label3" CssClass="campos" runat="server">*</asp:Label>Sueldo Mínimo:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="uxSueldoMinimo" runat="server" AutoPostBack="true"
-                                            OnTextChanged="uxSueldoMinimo_TextChanged"></asp:TextBox><asp:Label ID="Label3" CssClass="campos" runat="server">*</asp:Label>
+                                            OnTextChanged="uxSueldoMinimo_TextChanged"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="uxDescripcion"
-                                            FilterType="Numbers, Custom" ValidChars="." />
+                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="uxSueldoMinimo"
+                                            FilterType="Numbers, Custom" ValidChars="," />
                                     </td>
                                     <td>
                                         <asp:RequiredFieldValidator ID="rfvSueldoMinimo" runat="server" ControlToValidate="uxSueldoMinimo"
@@ -90,17 +90,17 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Sueldo Máximo
+                                        <asp:Label ID="Label4" CssClass="campos" runat="server">*</asp:Label>Sueldo Máximo
                                     </td>
                                     <td>
                                         <asp:TextBox ID="uxSueldoMaximo" runat="server" AutoPostBack="true"
-                                            OnTextChanged="uxSueldoMaximo_TextChanged"></asp:TextBox><asp:Label ID="Label4" CssClass="campos" runat="server">*</asp:Label>
+                                            OnTextChanged="uxSueldoMaximo_TextChanged"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="uxDescripcion"
-                                            FilterType="Numbers, Custom" ValidChars="." />
+                                        <AjaxControlToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" TargetControlID="uxSueldoMaximo"
+                                            FilterType="Numbers, Custom" ValidChars="," />
                                     </td>
                                     <td>
                                         <asp:RequiredFieldValidator ID="rvfSueldoMaximo" runat="server" ControlToValidate="uxSueldoMaximo"
@@ -109,11 +109,11 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Vigencia de Sueldo:
+                                        <asp:Label CssClass="campos" ID="Label5" runat="server">*</asp:Label>Vigencia de Sueldo:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="uxVigenciaSueldo" runat="server" CausesValidation="False"></asp:TextBox>
-                                        <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" /><asp:Label CssClass="campos" ID="Label5" runat="server">*</asp:Label>
+                                        <asp:Image ID="uxImgFechaNac" runat="server" ImageUrl="~/Images/calendario.png" />
                                     </td>
                                     <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server"
                                         ID="uxceFechaNac" Format="dd/MM/yyyy" TargetControlID="uxVigenciaSueldo" PopupButtonID="uxImgFechaNac">

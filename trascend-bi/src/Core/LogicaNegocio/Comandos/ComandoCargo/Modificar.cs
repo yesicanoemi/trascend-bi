@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Core.LogicaNegocio.Comandos.ComandoCargo
 {
@@ -26,9 +27,15 @@ namespace Core.LogicaNegocio.Comandos.ComandoCargo
         /// <returns>El cargo con valores modificados</returns>
         public void Ejecutar()
         {
-            /*CargoSQLServer bd = new CargoSQLServer();
-             * AQUI SE DEBE HACER LA LLAMADA CON EL NUEVO PATRON DAO.
-            bd.ModificarCargo(_cargo);*/
+            try
+            {
+                DAOCargoSQLServer bd = new DAOCargoSQLServer();
+                bd.ModificarCargo(_cargo);
+            }
+            catch (Exception e)
+            {
+                throw new ModificarException();
+            }
         }
     }
 }
