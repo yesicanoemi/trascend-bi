@@ -166,20 +166,28 @@ namespace Presentador.Cliente.Vistas
         {
             int i=0;
             IList<Core.LogicaNegocio.Entidades.TelefonoTrabajo> telefonos = new List<TelefonoTrabajo>();
-            
-            
-            _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
-            _vista.GetObjectContainerConsultaDireccion.DataSource = cliente.Direccion;
-            while (i < 3)
+
+            if (cliente != null)
             {
-                if (cliente.Telefono[i] != null)
+
+                _vista.GetObjectContainerConsultaCliente.DataSource = cliente;
+                _vista.GetObjectContainerConsultaDireccion.DataSource = cliente.Direccion;
+                while (i < 3)
                 {
-                    telefonos.Add(cliente.Telefono[i]);    
+                    if (cliente.Telefono[i] != null)
+                    {
+                        telefonos.Add(cliente.Telefono[i]);
+                    }
+                    i++;
                 }
-                i++;
+                _vista.GetObjectContainerConsultaTelefono.DataSource = telefonos;
+                _vista.GetObjectContainerConsultaTelefono.DataBind();
             }
-            _vista.GetObjectContainerConsultaTelefono.DataSource = telefonos;
-            _vista.GetObjectContainerConsultaTelefono.DataBind();
+            else
+            {
+               // Pinta mensaje de error
+            }
+            
         }
 
 
@@ -230,7 +238,7 @@ namespace Presentador.Cliente.Vistas
                 comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
 
                 listacliente = comando.ejecutar();
-
+ 
                 
             }
             catch (ConsultarClienteLNException e)

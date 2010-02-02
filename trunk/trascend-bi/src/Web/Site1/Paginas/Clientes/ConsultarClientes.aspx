@@ -55,13 +55,23 @@
                                                 <table>
                                                    <tr>
                                                         
-                                                        <td align="center"><asp:Label ID="uxRifCliente" runat="server" Visible="false" Text="RIF del Cliente"></asp:Label></td>
+                                                        <td align="center"><asp:Label ID="uxRifCliente" runat="server" Visible="false"  ontextchanged="uxRifCliente_TextChanged" 
+                                                        Text="RIF del Cliente"></asp:Label></td>
                                                     </tr>
                                                     <tr>
                                                    
                                                         <td align="center">
                                                             <asp:TextBox ID="uxConsultaRif" MaxLength=11 runat="server" Visible="false" Width="100" >
                                                             </asp:TextBox>
+                                                             
+<ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" 
+					 CompletionListCssClass="list" 
+                                            CompletionListHighlightedItemCssClass="hoverlistitem" 
+                                            CompletionListItemCssClass="listitem" CompletionSetCount="1"
+					 MinimumPrefixLength="1" 
+                                            ServiceMethod="GetSuggestionsClienteRif" 
+                                            ServicePath="../../SuggestionNames.asmx" TargetControlID="uxConsultaRif" 
+                                            UseContextKey="false"></ajaxToolkit:AutoCompleteExtender>
                                                         </td>
                                                         
                                                     </tr>
@@ -77,10 +87,10 @@
                                              <tr>
                                              <td>                                        
                                              <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" 
-                                            CompletionInterval="1000" CompletionListCssClass="completionList" 
-                                            CompletionListHighlightedItemCssClass="itemHighlighted" 
-                                            CompletionListItemCssClass="listItem" CompletionSetCount="20" 
-                                            DelimiterCharacters="; ," EnableCaching="true" MinimumPrefixLength="1" 
+                                          					 CompletionListCssClass="list" 
+                                            CompletionListHighlightedItemCssClass="hoverlistitem" 
+                                            CompletionListItemCssClass="listitem" CompletionSetCount="1"
+				                        	 MinimumPrefixLength="1" 
                                             ServiceMethod="GetSuggestionsClienteNombre" 
                                             ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor" 
                                             UseContextKey="false"></ajaxToolkit:AutoCompleteExtender>
@@ -113,64 +123,46 @@
                                                
                                                   </td>
                                          </tr> 
-                                     <tr>
-                                     <td></td>
-                                     
-                                                                          <td align="center">
-                                         <asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" 
-                                          AutoGenerateColumns="False" 
-                                         DataKeyNames="rif" AutoGenerateSelectButton="True" 
-                                         Width="70%" Font-Names="Verdana" Font-Size="Smaller"
-                                         OnSelectedIndexChanging="SelectCliente" 
-                                          onrowdatabound="uxGridView_RowDataBound">
-                                        <RowStyle HorizontalAlign="Center" />  
-                                        <Columns>
-                                            <asp:BoundField HeaderText="Rif" DataField="rif" />
-                                            <asp:BoundField HeaderText="Nombre" DataField="nombre" />
-                                            <asp:BoundField HeaderText="Area de Negocio" DataField="areanegocio"/>
-                                            
-                                        </Columns>
-                                                                    <EmptyDataTemplate>
-                                            <center>
-                                                <span>No Data Papa</span>
-                                            </center>
-                                        </EmptyDataTemplate>
-                                    </asp:GridView> 
-                                      
-                                     </td>
-                                     </tr>
-                                     <tr>
-                                    <td colspan="2">
-
-                                        
-                                        
-                                        
-                                        
-
-                                <br />
-                                                <asp:UpdatePanel ID="up2" runat="server">
-                                                    <ContentTemplate>
-                                                        <uc1:DialogoError ID="uxDialogoError0" runat="server" />
-                                                    </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                                <br />
-                                                <br />
-                                                <br />
-                                                
-                                        
-                                        
-                                        
-                                                <br />
-                                                <br />
-                                                
-                                                
-                                            </td>
-
-                                     </tr>
-                           
-                              
-                                </td>
-                            </tr>
+                                          <tr>
+                                              <td>
+                                              </td>
+                                              <td align="center">
+                                                  <br />
+                                                   <br />
+                                                  <asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" 
+                                                      AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="rif" 
+                                                      Font-Names="Verdana" Font-Size="Small" onrowdatabound="uxGridView_RowDataBound" 
+                                                      OnSelectedIndexChanging="SelectCliente" Width="100%">
+                                                      <RowStyle HorizontalAlign="Center" />
+                                                      <Columns>
+                                                          <asp:BoundField DataField="rif" HeaderText="Rif" />
+                                                          <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                                                          <asp:BoundField DataField="areanegocio" HeaderText="Area de Negocio" />
+                                                      </Columns>
+                                                      <EmptyDataTemplate>
+                                                          <center>
+                                                              <span>No Data Papa</span>
+                                                          </center>
+                                                      </EmptyDataTemplate>
+                                                  </asp:GridView>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td colspan="2">
+                                                  <br />
+                                                  <asp:UpdatePanel ID="up2" runat="server">
+                                                      <ContentTemplate>
+                                                          <uc1:DialogoError ID="uxDialogoError0" runat="server" />
+                                                      </ContentTemplate>
+                                                  </asp:UpdatePanel>
+                                                  <br />
+                                                  <br />
+                                                  <br />
+                                                  <br />
+                                                  <br />
+                                              </td>
+                                          </tr>
+                                          </td>
                     
                         </table>
                      
@@ -181,10 +173,10 @@
                          <tr>
                                 <td>
                                 <asp:DetailsView ID="uxMuestraCliente" datasourceid="uxObjectConsultaCliente"
-                                datakeynames="rif" Runat="server" AutoGenerateRows="False" DefaultMode="Edit"  HeaderText="Datos de Cliente"
-                                 Width="275px" CellPadding="4" ForeColor="#333333" Font-Size="Small" 
-                                        GridLines="None" Font-Names="Verdana">     
-                                    <headerstyle backcolor="#66CCFF"            forecolor="White" Font-Bold="True" 
+                                datakeynames="rif" Runat="server" AutoGenerateRows="False"  HeaderText="Datos de Cliente"
+                                 Width="275px" CellPadding="4" ForeColor="White" Font-Size="Small" 
+                                        GridLines="None" Font-Names="Verdana" Font-Color="White"  >     
+                                    <headerstyle backcolor="#FFBC40"            forecolor="White" Font-Bold="True" 
                                         HorizontalAlign="Center"/>
 
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -210,7 +202,7 @@
                                         GridLines="None" HeaderText="Direccion" font-size="Small"
                                         onpageindexchanging="uxMuestraDireccion_PageIndexChanging" Width="275px" 
                                         Font-Names="Verdana">
-                                        <headerstyle backcolor="#66CCFF" Font-Bold="True" forecolor="White" 
+                                        <headerstyle backcolor="#FFBC40" Font-Bold="True" forecolor="White" 
                                             HorizontalAlign="Center" />
                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                         <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />

@@ -62,5 +62,32 @@ public class SuggestionNames : System.Web.Services.WebService
         return responses.ToArray();
     }
 
+
+
+    [WebMethod]
+    public string[] GetSuggestionsClienteRif(string prefixText, int count)
+    {
+        List<string> responses = new List<string>();
+
+        Cliente cliente = new Cliente();
+
+        cliente.Rif = prefixText;
+
+        Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif consultaCliente =
+           Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoConsultarRif(cliente);
+
+
+
+        IList<Cliente> listaclientes = consultaCliente.ejecutar();
+
+
+        foreach (Cliente cli in listaclientes)
+        {
+            responses.Add(cli.Rif);
+        }
+
+        return responses.ToArray();
+    }
+
 }
 
