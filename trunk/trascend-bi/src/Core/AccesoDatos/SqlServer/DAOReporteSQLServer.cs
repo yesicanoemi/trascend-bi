@@ -288,7 +288,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
- //               _factura.Estado = (int)reader["Estado"];
+               _factura.Estado = (string)reader["Nombre"];
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
