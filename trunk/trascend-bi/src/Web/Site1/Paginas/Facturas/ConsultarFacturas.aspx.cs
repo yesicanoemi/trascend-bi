@@ -171,15 +171,13 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
             if (ParametroBox.SelectedItem.Text.Equals("Por Nombre de Propuesta"))
             {
                 _presenter.CargarTabla();
-                MultiViewFacturas.Visible = true;
-                MultiViewFacturas.ActiveViewIndex = 0;
+               
 
             }
             if (ParametroBox.SelectedItem.Text.Equals("Por Numero de Factura"))
             {
                 _presenter.CargarDatos();
-                MultiViewFacturas.Visible = true;
-                MultiViewFacturas.ActiveViewIndex = 1;
+                
             }
         }
 

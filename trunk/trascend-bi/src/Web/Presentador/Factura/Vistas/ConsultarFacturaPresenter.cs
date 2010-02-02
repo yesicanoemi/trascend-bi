@@ -38,10 +38,21 @@ namespace Presentador.Factura.Vistas
                 consultaPropuesta = Core.LogicaNegocio.Fabricas.FabricaComandosPropuesta.CrearComandoConsultar(1, _propuesta.Titulo);
                 listaPropuesta = consultaPropuesta.Ejecutar();
 
-                _propuesta = listaPropuesta.ElementAt(0);
+                if (listaPropuesta.Count == 0)
+                {
+                    _vista.Pintar("No existe la propuesta");
+                    _vista.MensajeVisible = true;
+                    
+                }
+                else
+                {
+                    _propuesta = listaPropuesta.ElementAt(0);
 
-                _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
-                _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
+                    _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
+                    _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
+                    _vista.MultiViewFacturas.Visible = true;
+                    _vista.MultiViewFacturas.ActiveViewIndex = 0;
+                }
             }
             catch (Exception e){ }
 
@@ -52,8 +63,19 @@ namespace Presentador.Factura.Vistas
                 ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
                 IList<Core.LogicaNegocio.Entidades.Factura> listaFacturas = ComandoConsultarTabla.Ejecutar();
 
-                _vista.TablaFacturas.DataSource = listaFacturas;
-                _vista.TablaFacturas.DataBind();
+                if (listaFacturas.Count == 0)
+                {
+                    _vista.Pintar("No existe la factura");
+                    _vista.MensajeVisible = true;
+                }
+                else
+                {
+                    _vista.TablaFacturas.DataSource = listaFacturas;
+                    _vista.TablaFacturas.DataBind();
+
+                    _vista.MultiViewFacturas.Visible = true;
+                    _vista.MultiViewFacturas.ActiveViewIndex = 1;
+                }
             }
             catch (Exception e) { }
         }
@@ -67,6 +89,8 @@ namespace Presentador.Factura.Vistas
             ComandoConsultarFactura = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID(_factura);
 
             _factura = ComandoConsultarFactura.Ejecutar();
+
+            if (_factura == null)
 
             _vista.Titulo.Text = _factura.Titulo;
             _vista.Descripcion.Text = _factura.Descripcion;
