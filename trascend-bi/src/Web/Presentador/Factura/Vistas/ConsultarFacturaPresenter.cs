@@ -68,8 +68,11 @@ namespace Presentador.Factura.Vistas
             _vista.FechaPago.Text = _factura.Fechapago.ToShortDateString().ToString();
             _vista.Estado.Text = _factura.Estado;
             _vista.Porcentaje.Text = _factura.Procentajepagado.ToString();
+        }
 
-
+        public string FormatearFechaParaMostrar(DateTime fecha)
+        {
+            return fecha.ToShortDateString();
         }
 
         /*
