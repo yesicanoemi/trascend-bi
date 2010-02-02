@@ -289,7 +289,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-                _factura.Estado = (string)reader["Estado"];
+ //               _factura.Estado = (int)reader["Estado"];
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
@@ -342,11 +342,11 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-                _factura.Estado = (string)reader["Estado"];
+                _factura.Estado = (string)reader["Nombre"];
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
-                _factura.Procentajepagado = (float)reader["Porcentaje"];
+                _factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                 factura.Add(_factura);
             }
@@ -404,11 +404,11 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-                _factura.Estado = (string)reader["Estado"];
+                _factura.Estado = (string)reader["Nombre"];
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
-                _factura.Procentajepagado = (float)reader["Porcentaje"];
+                _factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                 factura.Add(_factura);
             }
