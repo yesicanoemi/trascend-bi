@@ -56,7 +56,7 @@
                                 <table style="width: auto">
                                         
                                         <p class="large">
-                                        <RowStyle HorizontalAlign="Center" />
+                                        
                                             <asp:GridView Width="150%" ID="uxTablaFacturas" runat="server" AutoGenerateColumns="false" 
                                                 CellPadding="10" CellSpacing="5" OnRowDataBound="uxTablaFacturas_RowDataBound">
                                                 <RowStyle HorizontalAlign="Center" />

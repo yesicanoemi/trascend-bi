@@ -20,30 +20,42 @@
                 <div class="features_overview">
                     <div class="features_overview_right">
                         <form id="Form1" runat="server">
+                        <p>
                         <h3>
                             Saldar Facturas</h3>
-                        <p class="small">
+                            </p>
+                        <p>
                             Introduzca el N° de factura a la que se quiere cambiar el estado</p>
                         <p class="large">
-                            <table style="width: auto">
+                            <table style="width:auto">
                                 <tr>
+                                    <td>Número Factura:
+                                    </td>
                                     <td>
                                         <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
                                     </td>
+                                    <td>&nbsp;&nbsp;</td>
                                     <td>
                                         <asp:Button ID="uxBusquedaBoton" runat="server" Text="Buscar" OnClick="uxBusquedaBoton_Click" />
                                     </td>
                                 </tr>
                             </table>
                         </p>
+                        
+                        <table visible="false" id="tbDatos" runat="server" style="width:auto">
+                        <tr>
+                            <td>
                         <p class="small">
-                            <asp:GridView ID="uxDetalleFactura" runat="server" AutoGenerateRows="false" AutoGenerateColumns="false">
+                        
+                            <asp:GridView Width="150%" ID="uxDetalleFactura" runat="server" 
+                            AutoGenerateRows="false" AutoGenerateColumns="false" OnRowDataBound="uxTablaSueldos_RowDataBound">
+                            <RowStyle HorizontalAlign="Center" />
                                 <Columns>
-                                    <asp:BoundField HeaderText="N°" DataField="Numero" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="N°" HeaderStyle-Width="5%" DataField="Numero" runat="server"></asp:BoundField>
                                     <asp:BoundField HeaderText="Titulo" DataField="Titulo" runat="server"></asp:BoundField>
                                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" runat="server"></asp:BoundField>
                                     <asp:BoundField HeaderText="%" DataField="Procentajepagado" runat="server"></asp:BoundField>
-                                    <asp:BoundField HeaderText="Fecha" DataField="Fechaingreso" runat="server"></asp:BoundField>
+                                    <asp:BoundField HeaderText="Fecha" ItemStyle-Width="15%" DataField="Fechaingreso" runat="server"></asp:BoundField>
                                     <asp:TemplateField HeaderText="Propuesta" AccessibleHeaderText="Propuesta">
                                         <ItemTemplate>
                                             <asp:Label ID="lblprop" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Prop.Titulo") %>'></asp:Label>
@@ -64,8 +76,20 @@
                                        </asp:DropDownList>
                             <br />
                             <br />
-                            <asp:Button ID="btAnular" runat="server" Text="Guardar" OnClick="btGuardar_Click" />
+                            <table>
+                            <tr>
+                                <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                <asp:Button ID="btAnular" runat="server" Text="Guardar" OnClick="btGuardar_Click" />
+                                </td>
+                            </tr>
+                            </table>
                         </p>
+                        </td>
+                        </tr>
+                        </table>
                         </form>
                     </div>
                 </div>
