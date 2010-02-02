@@ -77,13 +77,13 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     public void PintarInformacion(string mensaje, string estilo)
     {
-        uxMensajeInformacion.PintarControl(mensaje, estilo);
+        uxMensajeInformacion0.PintarControl(mensaje, estilo);
     }
 
     public bool InformacionVisible
     {
-        get { return uxMensajeInformacion.Visible; }
-        set { uxMensajeInformacion.Visible = value; }
+        get { return uxMensajeInformacion0.Visible; }
+        set { uxMensajeInformacion0.Visible = value; }
     }
 
     #endregion

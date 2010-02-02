@@ -37,7 +37,9 @@ namespace Presentador.Cliente.Contrato
 
         bool DialogoVisible { get; set; }
         void Pintar(string codigo, string mensaje, string actor, string detalles);
-       
+        bool InformacionVisible { get; set; }
+        void PintarInformacion(string mensaje, string estilo);
+
         #endregion
 
         ObjectContainerDataSource GetObjectContainerConsultaCliente { get; set; }

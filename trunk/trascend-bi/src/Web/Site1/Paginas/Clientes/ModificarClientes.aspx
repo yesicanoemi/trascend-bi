@@ -60,8 +60,16 @@
                                                     <tr>
                                                    
                                                         <td align="center">
-                                                            <asp:TextBox ID="uxConsultaRif" MaxLength=11 runat="server" Visible="false" Width="100" >
-                                                            </asp:TextBox>
+                                                            <asp:TextBox ID="uxConsultaRif" MaxLength=11 runat="server" Visible="false" 
+                                                                Width="120px" ></asp:TextBox>
+                                                            <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" 
+                                                                CompletionListCssClass="list" 
+                                                                CompletionListHighlightedItemCssClass="hoverlistitem" 
+                                                                CompletionListItemCssClass="listitem" CompletionSetCount="1" 
+                                                                MinimumPrefixLength="1" ServiceMethod="GetSuggestionsClienteRif" 
+                                                                ServicePath="../../SuggestionNames.asmx" TargetControlID="uxConsultaRif" 
+                                                                UseContextKey="false">
+                                                            </ajaxToolkit:AutoCompleteExtender>
                                                         </td>
                                                         
                                                     </tr>
@@ -113,6 +121,16 @@
                                                
                                                   </td>
                                          </tr> 
+                                          <tr>
+                                              <td align="right" colspan="2">
+                                                  <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                                      <ContentTemplate>
+                                                          <uc2:MensajeInformacion ID="uxMensajeInformacion1" runat="server" 
+                                                              Visible="false" />
+                                                      </ContentTemplate>
+                                                  </asp:UpdatePanel>
+                                              </td>
+                                          </tr>
                                      <tr>
                                      <td></td>
                                      
@@ -199,8 +217,7 @@
                                         &nbsp;&nbsp; -<asp:TextBox ID="uxRif" runat="server" MaxLength="9" Width="87px"></asp:TextBox>
                                         &nbsp;<span style="color: #FF0000"> </span>
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" 
-                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxRif">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxRif"></ajaxToolkit:FilteredTextBoxExtender>
                                         <span style="color: #FF0000">
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" 
                                             ControlToValidate="uxRif" Display="None" 
@@ -208,8 +225,7 @@
                                             ValidationExpression="<%$Resources:DSU, ERRif%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender91" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator6">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator6"></ajaxToolkit:ValidatorCalloutExtender>
                                         </span>
                                     </td>
                                 </tr>
@@ -362,30 +378,26 @@
                                         <span style="color: #FF0000">
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" 
                                             runat="server" FilterType="Custom, Numbers" TargetControlID="uxCodTrabajo" 
-                                            ValidChars="+ ()">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            ValidChars="+ ()"></ajaxToolkit:FilteredTextBoxExtender>
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
                                             ControlToValidate="uxCodTrabajo" Display="None" 
                                             ErrorMessage="<%$Resources:DSU, ErrorFormatoCodTelefono %>" 
                                             ValidationExpression="<%$Resources:DSU, ERTelefono%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender88" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator3">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator3"></ajaxToolkit:ValidatorCalloutExtender>
                                         </span>
                                         <asp:TextBox ID="uxTelefonoTrabajo" runat="server" MaxLength="7" Width="85px"></asp:TextBox>
                                         <span style="color: #FF0000">&nbsp;
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender7" 
-                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxTelefonoTrabajo">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxTelefonoTrabajo"></ajaxToolkit:FilteredTextBoxExtender>
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" 
                                             ControlToValidate="uxTelefonoTrabajo" Display="None" 
                                             ErrorMessage="<%$Resources:DSU, ErrorFormatoNumTelf %>" 
                                             ValidationExpression="<%$Resources:DSU, ERNumTelf%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender92" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator7">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator7"></ajaxToolkit:ValidatorCalloutExtender>
                                         </span>
                                     </td>
                                 </tr>
@@ -413,8 +425,7 @@
                                         <asp:TextBox ID="uxCodCelular" runat="server" MaxLength="5" Width="55px"></asp:TextBox>
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender8" 
                                             runat="server" FilterType="Custom, Numbers" TargetControlID="uxCodCelular" 
-                                            ValidChars="+ ()">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            ValidChars="+ ()"></ajaxToolkit:FilteredTextBoxExtender>
                                         <span style="color: #FF0000">
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" 
                                             ControlToValidate="uxCodCelular" Display="None" 
@@ -422,13 +433,11 @@
                                             ValidationExpression="<%$Resources:DSU, ERTelefono%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender89" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator4">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator4"></ajaxToolkit:ValidatorCalloutExtender>
                                         <asp:TextBox ID="uxTelefonoCelular" runat="server" MaxLength="7" Width="85px"></asp:TextBox>
                                         </span>
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" 
-                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxTelefonoCelular">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxTelefonoCelular"></ajaxToolkit:FilteredTextBoxExtender>
                                         <span style="color: #FF0000">
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" 
                                             ControlToValidate="uxTelefonoCelular" Display="None" 
@@ -436,8 +445,7 @@
                                             ValidationExpression="<%$Resources:DSU, ERNumTelf%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender93" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator8">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator8"></ajaxToolkit:ValidatorCalloutExtender>
                                         </span>
                                     </td>
                                 </tr>
@@ -454,8 +462,7 @@
                                         <asp:TextBox ID="uxCodFax" runat="server" MaxLength="5" Width="55px"></asp:TextBox>
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender10" 
                                             runat="server" FilterType="Custom, Numbers" TargetControlID="uxCodFax" 
-                                            ValidChars="+ ()">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            ValidChars="+ ()"></ajaxToolkit:FilteredTextBoxExtender>
                                         <span style="color: #FF0000">
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" 
                                             ControlToValidate="uxCodFax" Display="None" 
@@ -463,13 +470,11 @@
                                             ValidationExpression="<%$Resources:DSU, ERTelefono%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender90" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator5">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator5"></ajaxToolkit:ValidatorCalloutExtender>
                                         <asp:TextBox ID="uxTelefonoFax" runat="server" MaxLength="7" Width="85px"></asp:TextBox>
                                         </span>
                                         <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender11" 
-                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxTelefonoFax">
-                                        </ajaxToolkit:FilteredTextBoxExtender>
+                                            runat="server" FilterType="Custom, Numbers" TargetControlID="uxTelefonoFax"></ajaxToolkit:FilteredTextBoxExtender>
                                         <span style="color: #FF0000">
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" 
                                             ControlToValidate="uxTelefonoFax" Display="None" 
@@ -477,8 +482,7 @@
                                             ValidationExpression="<%$Resources:DSU, ERNumTelf%>" 
                                             ValidationGroup="ValidarCampos"></asp:RegularExpressionValidator>
                                         <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender94" 
-                                            runat="Server" TargetControlID="RegularExpressionValidator9">
-                                        </ajaxToolkit:ValidatorCalloutExtender>
+                                            runat="Server" TargetControlID="RegularExpressionValidator9"></ajaxToolkit:ValidatorCalloutExtender>
                                         </span>
                                     </td>
                                 </tr>
@@ -506,11 +510,12 @@
                                                 </td>
                                                 <td align="center">
                                                     <asp:Button ID="Button1" runat="server" 
-                                                        PostBackUrl="~/Paginas/Clientes/DefaultClientes.aspx" Text="Cancelar" />
+                                                        PostBackUrl="~/Paginas/Clientes/DefaultClientes.aspx" Text="Volver" />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">
+                                                    <asp:TextBox ID="uxIdCliente" runat="server" Visible="False"></asp:TextBox>
                                                     <br />
                                                 </td>
                                             </tr>

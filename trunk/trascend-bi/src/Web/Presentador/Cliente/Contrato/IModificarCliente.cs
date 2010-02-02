@@ -21,6 +21,7 @@ namespace Presentador.Cliente.Contrato
         GridView GridCliente { get; set; }
         RadioButtonList RbCampoBusqueda { get; set; }
         MultiView MultiViewConsulta { get; set; }
+        TextBox IdCliente { get; set; }
 
         #endregion
 
@@ -30,6 +31,8 @@ namespace Presentador.Cliente.Contrato
         void Pintar(string codigo, string mensaje, string actor, string detalles);
         bool InformacionVisible { get; set; }
         void PintarInformacion(string mensaje, string estilo);
+        bool InformacionVisible2 { get; set; }
+        void PintarInformacion2(string mensaje, string estilo);
 
         #endregion
 
