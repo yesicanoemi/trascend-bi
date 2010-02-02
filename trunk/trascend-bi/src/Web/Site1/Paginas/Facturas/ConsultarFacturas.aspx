@@ -36,6 +36,9 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="uxParametroTexto" runat="server"></asp:TextBox>
+                                    <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxParametroTexto" FilterType="UppercaseLetters, LowercaseLetters, Numbers, Custom" ValidChars="' '"
+                                            ID="FilteredTextBoxExtender1" runat="server">
+                                        </AjaxControlToolkit:FilteredTextBoxExtender>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxParametroTexto"
                                             ErrorMessage="<%$ Resources:DSU, FaltaParametroBusqueda%>" Font-Size="Smaller" Display="None" />
                                         <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
