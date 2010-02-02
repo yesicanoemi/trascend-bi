@@ -71,7 +71,7 @@
                                                         CompletionListHighlightedItemCssClass="hoverlistitem" 
                                                         CompletionListItemCssClass="listitem" CompletionSetCount="1"
 					                                    MinimumPrefixLength="1" 
-                                                        ServiceMethod="GetSuggestionsEmpleadoNombreSinUsuario" 
+                                                        ServiceMethod="GetSuggestionsEmpleadoNombreSinUsuario1" 
                                                         ServicePath="../../SuggestionNames.asmx" TargetControlID="uxNombreEmpleadoBuscar" 
                                                         UseContextKey="false"></ajaxToolkit:AutoCompleteExtender>-->
                                             
