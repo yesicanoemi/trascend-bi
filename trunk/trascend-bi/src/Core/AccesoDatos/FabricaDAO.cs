@@ -79,6 +79,13 @@ namespace Core.AccesoDatos
 
         public abstract IDAOCargo ObtenerDAOCargo();
 
+        /// <summary>
+        /// Metodo que devuelve el DTA de Reportes
+        /// </summary>
+        /// <returns></returns>
+        public abstract IDAOReporte ObtenerDAOReporte();
+
+      
         #endregion
 
        
