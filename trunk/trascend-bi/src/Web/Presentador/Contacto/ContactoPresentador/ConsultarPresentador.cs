@@ -313,7 +313,13 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 }
 
-                if (listContac.Count > 0)
+                if (listContac.Count == 1)
+                {
+                    CargarDatos(listContac[0]);
+
+                    CambiarVista(1);
+                }
+                else if (listContac.Count > 1)
                 {
                     //_vista.InformacionVisible = false;
 

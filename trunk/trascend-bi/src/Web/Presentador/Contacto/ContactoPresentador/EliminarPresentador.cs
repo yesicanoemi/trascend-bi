@@ -410,14 +410,17 @@ namespace Presentador.Contacto.ContactoPresentador
 
                 }
 
-                if (listContac.Count > 0)
+                if (listContac.Count == 1)
                 {
-                    //_vista.InformacionVisible = false;
+                    CargarDatos(listContac[0]);
 
+                    CambiarVista(1);
+                }
+                else if (listContac.Count > 1)
+                {
                     _vista.GetObjectContainerConsultaContacto.DataSource = listContac;
 
                     _vista.GetObjectContainerConsultaContacto.DataBind();
-
                 }
                 else
                 {
