@@ -261,7 +261,13 @@ public partial class Paginas_Usuarios_ConsultarUsuarios : PaginaBase, IConsultar
     {
         _presentador.OnBotonAceptar();
     }
+    
+    protected void uxBotonRegresar_Click(object sender, EventArgs e)
+    {
+        _presentador.onBotonRegresar();
+        //Response.Redirect("~/Paginas/Usuarios/ModificarUsuarios.aspx");
 
+    }
     public void CambiarPagina()
     {
         Response.Redirect(paginaConsulta);

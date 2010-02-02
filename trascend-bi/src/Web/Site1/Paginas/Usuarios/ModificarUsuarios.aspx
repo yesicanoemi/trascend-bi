@@ -31,13 +31,23 @@
 
                             <asp:MultiView ID="uxMultiViewModificar" runat="server" ActiveViewIndex="0">
                                 <asp:View ID="ViewConsultaUsuario" runat="server">
-                                <span style="text-align:center"><uc3:MensajeInformacionBotonAceptar ID="uxMensajeInformacionBotonAceptar" runat="server" Visible="false" />
+                                <span style="text-align:center; font-size:large">
+                                    <uc3:MensajeInformacionBotonAceptar 
+                                    ID="uxMensajeInformacionBotonAceptar" runat="server" Visible="false" />
+                                </span>
+                                <span style="text-align:center; font-size:large">   
+                                        <uc1:DialogoError ID="uxDialogoError" runat="server" Visible="false" />
                                   </span>
+                                  <span style="text-align:center; font-size:large">
+                                    <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
+                                                    Visible="false" />
+                                  </span>  
                                     <p>
                                     <!--<div style="background-color:InfoBackground"><asp:Label runat="server" ID="Label10" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
                                                 </div>-->
-                                    <div><asp:Label runat="server" ID="Label101" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
-                                                </div>
+                                    <div><b><asp:Label runat="server" ID="Label101" 
+                                    Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
+                                                </b></div>
                                     <br />
                                     <table class="solotablasuser">
                                     <tr>
@@ -73,10 +83,7 @@
                                             
                                         </tr>
                                         <tr><td>&nbsp;</td></tr>
-                                      <tr> <td>
-                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
-                                                    Visible="false" />
-                                            </td></tr>
+                                      
                                  </table>
                                  <table class="solotablasuser">
                                         <tr>
@@ -131,7 +138,7 @@
                                                 <td>&nbsp;</td>
                                             </tr>
                                             <tr>
-                                                <td><b><asp:Label runat="server" ID="Label2" Text="<%$ Resources:DSU, NombreEmpleado%>" Visible="true"></asp:Label></b></td>
+                                                <td><b><asp:Label runat="server" ID="Label2" Text="<%$ Resources:DSU, NombreEmpleadoAgregar%>" Visible="true"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxNombreEmp" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                             <tr>
@@ -156,6 +163,7 @@
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
                                                 <td>&nbsp;</td>
 
@@ -313,7 +321,10 @@
                                             <table class="solotablasuser">
                                             <tr>
                                                 <td>&nbsp;</td>
+                                                <!--<td align="right"> <asp:Button ID="uxBotonRegresar" runat="server" Text="<%$ Resources:DSU, Regresar %>" 
+                                                    onclick="uxBotonRegresar_Click"/></td>-->
                                                 <td align="right">
+                                                   
                                                     <asp:Button ID="uxBotonAceptar" runat="server" Text="<%$ Resources:DSU, Aceptar%>" 
                                                     onclick="uxBotonAceptar_Click" />
                                                 </td>
@@ -327,7 +338,7 @@
                             </asp:MultiView> 
                             <asp:UpdatePanel ID="up2" runat="server">
                                 <ContentTemplate>
-                                    <uc1:DialogoError ID="uxDialogoError" runat="server" />
+                                   
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </form>                  

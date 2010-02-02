@@ -240,8 +240,6 @@ namespace Presentador.Usuario.Vistas
         {
             _vista.InformacionVisibleBotonAceptar = false;
 
-
-
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
@@ -328,46 +326,119 @@ namespace Presentador.Usuario.Vistas
 
                         _vista.GetObjectContainerConsultaModificarUsuario.DataSource = listadoInactivo;
 
+                        listadoActivo.Count();
+                        listadoInactivo.Count();
                     }
+            
+                    
+                }
+                if ((listadoInactivo.Count == 0) && (listadoActivo.Count == 0) 
+                    && (_vista.RbCampoBusqueda.SelectedValue != "1"))
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                                            ("MensajeConsulta"), "mensajes");
+                    _vista.InformacionVisible = true;
 
-                    else
-                    {
-                        _vista.PintarInformacion(ManagerRecursos.GetString
-                                                ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisible = true;
 
-                    }
                 }
 
             }
             catch (WebException e)
             {
-
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
-                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+               
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("mensajeErrorWeb"),"mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (ConsultarException e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
-                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("mensajeErrorConsultar"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
             catch (Exception e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
-                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message +
-                                                                "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
+                _vista.PintarInformacion(ManagerRecursos.GetString("mensajeErrorGeneral"), "mensajes");
+                _vista.InformacionVisible = true;
 
             }
 
         }
 
+        /// <summary>
+        /// Método para unir las distintas listas de checkbox
+        /// </summary>
+        /// <param name="permiso">Lista de permisos</param>
+        /// <param name="_permiso">Lista de permisos</param>
+        /// <returns>La nueva lista de permisos unida</returns>
+
+        private IList<Core.LogicaNegocio.Entidades.Permiso>
+                        UnirPermisos(IList<Core.LogicaNegocio.Entidades.Permiso> permiso,
+                        IList<Core.LogicaNegocio.Entidades.Permiso> _permiso)
+        {
+            for (int i = 0; i < permiso.Count; i++)
+            {
+                _permiso.Add(permiso[i]);
+            }
+
+            return _permiso;
+        }
+
+        public void OnBotonAceptar()
+        {
+            Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
+
+            usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
+
+            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
+
+            usuario.PermisoUsu =
+                        UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
+
+            usuario.PermisoUsu =
+                        UnirPermisos(ModificarCheckBox(_vista.CBLModificar), usuario.PermisoUsu);
+
+            usuario.PermisoUsu =
+                        UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
+
+
+            /*usuario.LoginNuevo = _vista.NombreUsuNuevo.Text;
+
+            if (usuario.Login == usuario.LoginNuevo)
+            {
+                usuario.LoginNuevo = _vista.NombreUsu.Text;
+            }
+            else
+            {
+                usuario.LoginNuevo = _vista.NombreUsuNuevo.Text;
+                
+            }*/
+
+            usuario.Login = _vista.NombreUsu.Text;
+
+            usuario.Status = _vista.DLStatusUsuario.SelectedItem.Text;
+
+            usuario.IdUsuario = ConsultarUsuario(usuario)[0].IdUsuario;
+
+            ModificarUsuario(usuario);
+
+            CambiarVista(0);
+
+            _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                            ("mensajeUsuarioModificado"), "mensajes");
+            _vista.InformacionVisibleBotonAceptar = true;
+
+            _vista.GetObjectContainerConsultaModificarUsuario.DataSource = "";
+
+        }
+        public void onBotonRegresar()
+        {
+            CambiarVista(0);
+        }
+
+        #region Comandos
         /// <summary>
         /// Consulta los usuarios en la bd
         /// </summary>
@@ -467,59 +538,7 @@ namespace Presentador.Usuario.Vistas
             return usuario1;
         }
 
-        /// <summary>
-        /// Método para unir las distintas listas de checkbox
-        /// </summary>
-        /// <param name="permiso">Lista de permisos</param>
-        /// <param name="_permiso">Lista de permisos</param>
-        /// <returns>La nueva lista de permisos unida</returns>
-
-        private IList<Core.LogicaNegocio.Entidades.Permiso>
-                        UnirPermisos(IList<Core.LogicaNegocio.Entidades.Permiso> permiso,
-                        IList<Core.LogicaNegocio.Entidades.Permiso> _permiso)
-        {
-            for (int i = 0; i < permiso.Count; i++)
-            {
-                _permiso.Add(permiso[i]);
-            }
-
-            return _permiso;
-        }
-
-        public void OnBotonAceptar()
-        {
-            Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
-
-            usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
-
-            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                        UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                        UnirPermisos(ModificarCheckBox(_vista.CBLModificar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                        UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
-
-            usuario.Login = _vista.NombreUsu.Text;
-
-            usuario.Status = _vista.DLStatusUsuario.SelectedItem.Text;
-
-            usuario.IdUsuario = ConsultarUsuario(usuario)[0].IdUsuario;
-
-            ModificarUsuario(usuario);
-
-            CambiarVista(0);
-
-            _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                            ("mensajeUsuarioModificado"), "mensajes");
-            _vista.InformacionVisibleBotonAceptar = true;
-
-            _vista.GetObjectContainerConsultaModificarUsuario.DataSource = "";
-
-        }
+     
 
         /// <summary>
         /// Método para el comando Consultar IdPermiso
@@ -544,6 +563,7 @@ namespace Presentador.Usuario.Vistas
 
             return permiso1;
         }
+        #endregion
 
         #endregion
 

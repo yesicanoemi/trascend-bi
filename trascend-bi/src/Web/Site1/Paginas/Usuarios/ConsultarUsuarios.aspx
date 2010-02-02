@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" Title="Consultar Usuarios" CodeFile="ConsultarUsuarios.aspx.cs" Inherits="Paginas_Usuarios_ConsultarUsuarios" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" Title="Consultar Usuario" CodeFile="ConsultarUsuarios.aspx.cs" Inherits="Paginas_Usuarios_ConsultarUsuarios" %>
 <%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
 <%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 
@@ -37,14 +37,20 @@
                             <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
                           
                                 <asp:View ID="ViewConsulta" runat="server">
-                          
+                          <span style="text-align:center; font-size:large">
+                                    <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
+                                                    Visible="false" />
+                                       
+                                        </span>  
                                     <p>
+                                     
                                     <!--<div style="background-color:InfoBackground">
                                     <asp:Label runat="server" ID="Label13" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true">
                                     </asp:Label>
                                                 </div>-->
-                                    <div><asp:Label runat="server" ID="Label14" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
-                                                </div>
+                                    <div><b><asp:Label runat="server" ID="Label14" 
+                                    Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
+                                            </b></div>
                                     <br />
                                     <table class="solotablasuser">
                                         <tr>
@@ -80,15 +86,7 @@
                                             
                                         </tr>
                                         <tr><td>&nbsp;</td></tr>
-                                      <tr> 
-                                      
-                                        <td>
-                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
-                                                    Visible="false" />
-                                        </td>
-                                        
-                                       </tr>
-                                         
+                                     
                                         </table>
                                         <table class="solotablasuser">
                                             <tr>
@@ -296,8 +294,9 @@
                                             </table>
                                             <table class="solotablasuser">
                                                 <tr>
-                                                    <td>
-                                                        &nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                <td align="right"> <asp:Button ID="uxBotonRegresar" runat="server" Text="<%$ Resources:DSU, Regresar %>" 
+                                                   onclick="uxBotonRegresar_Click"/></td>
                                                     <td align="right">
                                                         <asp:Button ID="uxBotonAceptar" runat="server" onclick="uxBotonAceptar_Click" 
                                                             Text="<%$ Resources:DSU, Aceptar %>" />

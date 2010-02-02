@@ -271,6 +271,14 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     }
 
+    protected void uxBotonRegresar_Click(object sender, EventArgs e)
+    {
+        _presentador.onBotonRegresar();
+
+        //Response.Redirect("~/Paginas/Usuarios/ModificarUsuarios.aspx");
+
+    }
+
     protected void StatusUsuario_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -361,13 +369,10 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
         }
 
     }
-    #endregion
     protected void uxCBLReporte_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
+
     }
-    public void uxCBLReporte_tamano()
-    {
-        //uxCBLReporte.Width = 100;
-    }
+    #endregion
+   
 }
