@@ -31,84 +31,113 @@ namespace Core.Pruebas
         public void TestConsultarFacturaID()
         {
             Factura factura = new Factura();
-            factura.Numero = 3;
-            factura = new DAOFacturaSQLServer().ConsultarFacturaID(factura);
+            Factura facturaNueva = new Factura();
+            factura.Numero = 1;
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID ComandoConsulta;
+            ComandoConsulta = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID(factura);
+            facturaNueva = ComandoConsulta.Ejecutar();
+
             Assert.AreNotEqual(factura, new Factura());
-            Assert.AreEqual(factura.Titulo, "Pago de la primera cuota");
-            Assert.AreEqual(factura.Prop.Id, 1);
         }
 
-        [Test]
-        public void ConsultarPropuesta()
-        {
-            int estado = 1;
-            IList<Propuesta> propuestas = new DAOPropuestaSQLServer().ConsultarPropuesta(estado);
-            Assert.AreEqual(propuestas[0].Titulo, "Automatizacion de la Certificacion de Empleados");
-        }
 
         [Test]
         public void TestConsultarFacturasNomPro()
         {
             Propuesta propuesta = new Propuesta();
             propuesta.Titulo = "Automatizacion de la Certificacion de Empleados";
-            IList<Factura> facturas = new DAOFacturaSQLServer().ConsultarFacturasNomPro(propuesta);
-            Assert.AreEqual(facturas.Count, 2);
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsulta;
+            ComandoConsulta = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(propuesta);
+
+
+
+            IList<Factura> facturas = ComandoConsulta.Ejecutar();
+            Assert.AreNotEqual(facturas.ElementAt(0), new Factura());
         }
 
-        [Test]
-        public void TestConsultarFacturasNomProExceptionGenerica()
-        {
-            try
-            {
-                Propuesta propuesta = null;
-                IList<Factura> facturas = new DAOFacturaSQLServer().ConsultarFacturasNomPro(propuesta);
-                Assert.AreEqual(facturas.Count, 0);
-            }
-            catch (ConsultarFacturaADException e)
-            {
-                Console.WriteLine("Exito: "+e.Message);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("Excepcion Equivocada");
-            }
-        }
+       
 
-        [Test]
-        public void TestConsultarFacturasIDPro()  
-        {
-            Propuesta propuesta = new Propuesta();
-            propuesta.Id = 1;
-            IList<Factura> facturas = new DAOFacturaSQLServer().ConsultarFacturasIDPro(propuesta);
-            Assert.AreEqual(facturas.Count, 47);
-        }
+       
+        
 
         
 
         [Test]
-        public void TestIngresarFactura()
+        public void Test1IngresarFactura()
         {
             Factura factura = new Factura();
-            factura.Numero = 0;
-            factura.Titulo = "Pago de la enesima cuota LULZ!!!";
-            factura.Descripcion = "Imaginate tu!";
-            factura.Procentajepagado = 1.3f;
+            IList<Propuesta> propuestas;
+
+            propuestas = new DAOPropuestaSQLServer().ConsultarPropuestaNueva(1,"Automatizacion de la Certificacion de Empleados");
+
+            factura.Titulo = "Prueba Ingresar";
+            factura.Descripcion = "Esto es una Prueba de Ingresar";
+            factura.Procentajepagado = 1;
             factura.Fechapago = DateTime.Now;
             factura.Fechaingreso = DateTime.Now;
-            factura.Estado = "Pagado";
-            factura.Prop = new Propuesta();
-            factura.Prop.Id = 1;
-            factura = new DAOFacturaSQLServer().IngresarFactura(factura);
-            Assert.AreNotEqual(factura,new Factura());
+            factura.Estado = "Por Cobrar";
+            factura.Prop = propuestas.ElementAt(0);
+            Core.LogicaNegocio.Comandos.ComandoFactura.Ingresar ComandoIngresar;
+            ComandoIngresar = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoIngresar(factura);
+            ComandoIngresar.Ejecutar();
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsulta;
+            ComandoConsulta = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(propuestas.ElementAt(0));
+            IList<Factura> listaFactura = ComandoConsulta.Ejecutar();
+
+            
+            Assert.AreEqual(listaFactura.ElementAt(listaFactura.Count - 1).Titulo,"Prueba Ingresar");
         }
 
         [Test]
-        public void TestUpdate()
+        public void Test3Saldar()
         {
-            Factura factura = new Factura();
-            factura.Numero = 1;
-            factura = new DAOFacturaSQLServer().UpdateFactura(factura);
-            Assert.AreNotEqual(factura, new Factura());
+            Propuesta propuesta = new Propuesta();
+            propuesta.Titulo = "Automatizacion de la Certificacion de Empleados";
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsulta;
+            ComandoConsulta = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(propuesta);
+            IList<Factura> listaFactura = ComandoConsulta.Ejecutar();
+
+            listaFactura.ElementAt(listaFactura.Count - 1).Estado = "Cobrada";
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.Saldar ComandoSaldar;
+            ComandoSaldar = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoSaldar
+                (listaFactura.ElementAt(listaFactura.Count -1).Numero,listaFactura.ElementAt(listaFactura.Count-1).Estado);
+            ComandoSaldar.Ejecutar();
+
+            listaFactura = null;
+            listaFactura = ComandoConsulta.Ejecutar();
+
+            Assert.AreEqual(listaFactura.ElementAt(listaFactura.Count - 1).Estado, "Cobrada");
         }
+
+
+        [Test]
+        public void Test2Anular()
+        {
+            Propuesta propuesta = new Propuesta();
+
+            propuesta.Titulo = "Automatizacion de la Certificacion de Empleados";
+
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsulta;
+            ComandoConsulta = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(propuesta);
+            IList<Factura> listaFactura = ComandoConsulta.Ejecutar();
+
+            Core.LogicaNegocio.Comandos.ComandoFactura.Anular ComandoAnular;
+            ComandoAnular = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoAnular(listaFactura.ElementAt(listaFactura.Count - 1).Numero);
+            ComandoAnular.Ejecutar();
+
+            listaFactura = ComandoConsulta.Ejecutar();
+            Assert.AreEqual(listaFactura.ElementAt(listaFactura.Count - 1).Estado, "Anulada");
+
+            new DAOFacturaSQLServer().ModificarEstadoFactura(listaFactura.ElementAt(listaFactura.Count - 1).Numero, "Por Cobrar");
+
+        }
+
+        
     }
 }
