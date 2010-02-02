@@ -51,7 +51,7 @@
                                    
                                     <br />
                     
-                                    <table>
+                                    <table class="solotablasuser">
                                 
                                         <tr>
                                             <td><asp:Label runat="server" ID="uxCampoNombreEmpleado" Text="<%$ Resources:DSU, NombreEmpleadoObligatorio %>"></asp:Label></td>

@@ -23,7 +23,7 @@
 
             <div class="sub-content"> 
                 <div class="features_overview"> 
-                    <div class="fea"> 
+                    <div class="features_overview_rightUser"> 
                         <h3>Modificar Usuario</h3> 
                         <p class="large">Introduzca la informacion a continuación</p> 
                        
@@ -78,7 +78,7 @@
                                                     Visible="false" />
                                             </td></tr>
                                  </table>
-                                 <table class="SoloTablasUser">
+                                 <table class="solotablasuser">
                                         <tr>
                                     
                                             <td align="center">
@@ -257,36 +257,37 @@
                                                 
                                             </tr>
                                                 <table class="solotablasuser" style="width: 100%; border: 1px solid #799CBE">
-                                                    <tr>
-                                                        <td>
-                                                            &nbsp;</td>
+                                                    
+                                                     <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            &nbsp;</td>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                        <td align="left">
-                                                            (<asp:LinkButton ID="lbAllReporte" runat="server" onclick="lbAllReporte_Click">todos,
+                                                       <td>&nbsp;</td>
+                                                       <td align="left">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                       
+                                                            (<asp:LinkButton ID="lbAllReporte" runat="server" 
+                                                            onclick="lbAllReporte_Click">todos,
                                                             </asp:LinkButton>
-                                                            <asp:LinkButton ID="lbNoneReporte" runat="server" onclick="lbNoneReporte_Click">ninguno)</asp:LinkButton>
-                                                        </td>
+                                                            <asp:LinkButton ID="lbNoneReporte" runat="server" 
+                                                            onclick="lbNoneReporte_Click">ninguno)</asp:LinkButton>
+                                                       </td>
+                                                        
                                                     </tr>
                                                      <tr>
-                                                        <td>
-                                                            &nbsp;</td>
+                                                        <td><b><asp:Label ID="Label9" runat="server" 
+                                                        Text="<%$ Resources:DSU, Reportes%>" Visible="true"></asp:Label></b>
+                                                        </td>
+                                                         <td>&nbsp;</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <b>
-                                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:DSU, Reportes%>" 
-                                                                Visible="true"></asp:Label>
-                                                            </b></td>
-                                                        <td>
-                                                            &nbsp;</td>
+                                                      
+                                                        <td>&nbsp;</td>
                                                         <td align="center">
-                                                            <asp:CheckBoxList ID="uxCBLReporte" runat="server">
+                                                            <asp:CheckBoxList ID="uxCBLReporte" CssClass="chkBoxListUser" runat="server"
+                                                                onselectedindexchanged="uxCBLReporte_SelectedIndexChanged">
                                                                 <asp:ListItem Text="Paquete Anual" Value="33"></asp:ListItem>
                                                                 <asp:ListItem Text="Total Anual" Value="34"></asp:ListItem>
                                                                 <asp:ListItem Text="Total de Horas Anuales" Value="35"></asp:ListItem>
@@ -309,7 +310,7 @@
                                                 <td>&nbsp;</td>
                                                 <td>&nbsp;</td>
                                             </tr>
-                                            <table>
+                                            <table class="solotablasuser">
                                             <tr>
                                                 <td>&nbsp;</td>
                                                 <td align="right">

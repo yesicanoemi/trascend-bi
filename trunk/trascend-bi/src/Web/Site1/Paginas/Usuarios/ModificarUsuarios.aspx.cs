@@ -362,4 +362,12 @@ public partial class Paginas_Usuarios_ModificarUsuarios : PaginaBase, IModificar
 
     }
     #endregion
+    protected void uxCBLReporte_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+    }
+    public void uxCBLReporte_tamano()
+    {
+        //uxCBLReporte.Width = 100;
+    }
 }

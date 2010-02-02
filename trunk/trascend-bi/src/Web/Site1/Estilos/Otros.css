@@ -133,11 +133,19 @@
 {
     background-color: #ffcccc;
 }
-.SoloTablasUser
+.solotablasuser
 {
-	width:100%;margin-bottom:1.4em;border-collapse:collapse;border:0px solid #ddd;
+	width:100%;margin-bottom:1.4em;border-collapse:inherit;
 
 	
 	}
-.features_overview_rightUser{float:left;width:550px;
+.features_overview_rightUser{float:left;width:550px;}
+.chkBoxListUser tr
+{
+   height:24px;
+}
+
+.chkBoxListUser td
+{
+   width:500px; /* or percent value: 25% */
 }

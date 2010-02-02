@@ -141,7 +141,7 @@ namespace Presentador.Aplicacion
             return permiso1;
         }
 
-
+      
         public void LimpiarFormulario()
         {
             _vista.Login.Text = campoVacio;
