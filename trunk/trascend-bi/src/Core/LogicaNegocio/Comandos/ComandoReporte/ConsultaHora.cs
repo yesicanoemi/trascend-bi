@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 
 namespace Core.LogicaNegocio.Comandos.ComandoReporte
@@ -22,8 +24,12 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         public int Ejecutar()
         {
             int hora;
-            ReporteSQLServer acceso = new ReporteSQLServer();
-            hora = acceso.SumaHora(_rol);
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOReporte iDAOReporte = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOReporte();
+
+            hora = iDAOReporte.SumaHora(_rol);
             return hora;
         }
         #endregion

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 
 namespace Core.LogicaNegocio.Comandos.ComandoReporte
@@ -24,8 +26,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoReporte
         #region Metodos
         public IList<string> Ejecutar()
         {
-            ReporteSQLServer acceso = new ReporteSQLServer();
-            _rol = acceso.ObtenerRol(_FechaI, _FechaF);
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOReporte iDAOReporte = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOReporte();
+
+            _rol = iDAOReporte.ObtenerRol(_FechaI, _FechaF);
             return _rol;
         }
         #endregion
