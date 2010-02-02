@@ -10,12 +10,49 @@ using Microsoft.Practices.Web.UI.WebControls;
 
 public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificarCliente
 {
+    private ModificarClientePresenter _presentador;
 
-
+    // private Cliente _cliente;
 
     #region propiedades
 
-    private ConsultarClientePresentador _presentador;
+    private int width;
+
+    public TextBox Valor
+    {
+        get { return uxValor; }
+        set { uxValor = value; }
+    }
+
+    public Label LabelNombreCliente
+    {
+        get { return uxNombreCliente; }
+        set { uxNombreCliente = value; }
+    }
+
+    public TextBox ConsultaRif
+    {
+        get { return uxConsultaRif; }
+        set { uxConsultaRif = value; }
+    }
+
+    public Label RifCliente
+    {
+        get { return uxRifCliente; }
+        set { uxRifCliente = value; }
+    }
+
+    public Button BotonBuscar
+    {
+        get { return uxBotonBuscar; }
+        set { uxBotonBuscar = value; }
+    }
+
+    public GridView GridCliente
+    {
+        get { return uxGridCliente; }
+        set { uxGridCliente = value; }
+    }
 
     public TextBox rifCliente
     {
@@ -25,8 +62,8 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
     public TextBox NombreCliente
     {
-        get { return uxNombreCliente; }
-        set { uxNombreCliente = value; }
+        get { return uxNombreCliente0; }
+        set { uxNombreCliente0 = value; }
     }
 
     public TextBox CalleAvenidaCliente
@@ -107,31 +144,88 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
         set { uxTipoRif = value; }
     }
 
-    public TextBox CampoBusqueda
+    public Button Agregar
     {
-        get { return uxCampoBusqueda; }
-        set { uxCampoBusqueda = value; }
+        get { return uxBotonAceptar; }
+        set { uxBotonAceptar = value; }
     }
 
+
+    #region Información
+
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
+
+    #endregion
+
+
+    #region Diálogo
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError0.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError0.Visible; }
+        set { uxDialogoError0.Visible = value; }
+    }
+
+    #endregion
+
+
+    public ObjectContainerDataSource GetObjectContainerConsultaCliente
+    {
+        get { return uxObjectConsultaCliente; }
+        set { uxObjectConsultaCliente = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectContainerConsultaDireccion
+    {
+        get { return uxObjectConsultaDireccion; }
+        set { uxObjectConsultaDireccion = value; }
+    }
+
+
+    public ObjectContainerDataSource GetObjectContainerConsultaTelefono
+    {
+        get { return uxObjectConsultaTelefono; }
+        set { uxObjectConsultaTelefono = value; }
+    }
+
+
+    public MultiView MultiViewConsulta
+    {
+        get { return uxMultiViewConsultar; }
+        set { uxMultiViewConsultar = value; }
+    }
     public RadioButtonList RbCampoBusqueda
     {
         get { return uxRbCampoBusqueda; }
         set { uxRbCampoBusqueda = value; }
     }
 
+
     #endregion
 
-
-
-
+ 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        width = 0;
     }
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
+        #region Permisologia
         Core.LogicaNegocio.Entidades.Usuario usuario =
                                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
@@ -139,11 +233,11 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 7)
+            if (usuario.PermisoUsu[i].IdPermiso == 6)
             {
                 i = usuario.PermisoUsu.Count;
 
-                //Deben colocar aqui la instancia del presentador a usar 
+                _presentador = new ModificarClientePresenter(this);
 
                 permiso = true;
 
@@ -154,25 +248,83 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
         {
             Response.Redirect(paginaSinPermiso);
         }
-
-        uxCampoBusqueda.Visible = true;
-        uxCampoBusqueda.Visible = true;
+        #endregion
     }
 
-
-
-    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
 
+        _presentador.OnBotonBuscar();
+
+
+
+    }
+    protected void uxGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 
-    protected void uxNombreCliente_TextChanged(object sender, EventArgs e)
+
+
+    protected void SelectCliente(object sender, GridViewSelectEventArgs e)
+    {
+       _presentador.uxObjectConsultaClienteSelecting( uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+    }
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presentador.CampoBusqueda_Selected();
+    }
+
+
+    protected void uxMuestra_SelectedIndexChanged(object sender, GridViewSelectEventArgs e)
+    {
+        //_presentador.metodoEnPresendator(int.Parse(uxMuestra.DataKeys[e.NewSelectedIndex].Value.ToString()));
+
+    }
+
+    /* protected void uxTablaClientes_RowDataBound(object sender, GridViewRowEventArgs e)
+     {
+         if (e.Row.DataItem != null)
+         {
+             string s = e.Row.DataItem.ToString();
+
+             if (s.Length > width)
+             {
+                 width = s.Length;
+                
+            //     uxMuestra.Rows[0].ItemStyle.Width = s.Length;
+              //   uxMuestra.Rows[0].ItemStyle.Wrap = false;
+             }
+         }
+
+         if (e.Row.RowIndex % 2 == 0)
+             e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+     }
+
+     */
+
+    protected void uxValor_TextChanged(object sender, EventArgs e)
     {
 
     }
+
+
+    protected void uxMuestraDireccion_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
+    {
+
+    }
+    protected void uxMuestraCliente_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
+    {
+
+    }
+
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        _presentador.ActualizarCliente();
+    }
 }
+
