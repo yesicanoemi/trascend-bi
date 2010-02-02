@@ -130,13 +130,9 @@ namespace Core.AccesoDatos.SqlServer
             {
                 throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta en la Base de Datos", e);
             }
-            catch (ConsultarFacturaADException e)
-            {
-                throw new ConsultarFacturaADException("No se pudo realizar la consulta, se recibio un parametro de busqueda vacio, en este caso, el nombre de la propuesta", e);
-            }
             catch (Exception e)
             {
-                throw new ConsultarFacturaADException("Error consultando la factura por el ID de la propuesta en la Base de Datos", e);
+                throw new ConsultarException("Error consultando la factura por el ID de la propuesta en la Base de Datos", e);
             }
 
             return facturas;
@@ -410,11 +406,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.InsertarFacturaADException("Error de SQL insertando factura en la Base de Datos", e);
+                throw new IngresarException("Error de SQL insertando factura en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new InsertarFacturaADException("Error insertando factura en la Base de Datos", e);
+                throw new IngresarException("Error insertando factura en la Base de Datos", e);
             }
         }
 
@@ -560,11 +556,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ModificarFacturaADException("Error de SQL modificando una factura en la Base de Datos", e);
+                throw new ModificarException("Error de SQL modificando una factura en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ModificarFacturaADException("Error modificando una factura en la Base de Datos", e);
+                throw new ModificarException("Error modificando una factura en la Base de Datos", e);
             }
         }
 
