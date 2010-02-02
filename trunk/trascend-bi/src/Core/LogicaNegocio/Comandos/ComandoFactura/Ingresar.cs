@@ -9,6 +9,7 @@ using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones;
 using Core.AccesoDatos;
 using Core.AccesoDatos.Interfaces;
+using System.Collections;
 
 namespace Core.LogicaNegocio.Comandos.ComandoFactura
 {
@@ -42,7 +43,25 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IDAOFactura bdfactura = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
-            factura = bdfactura.IngresarFactura(_factura);
+            IList<Factura> facturas = bdfactura.ConsultarFacturasNomPro(_factura.Prop);
+
+            #region Validar porcentaje a pagar
+
+            float porcentaje = 0;
+
+            foreach (Factura f in facturas)
+            {
+                porcentaje += f.Procentajepagado;
+            }
+
+            porcentaje += _factura.Procentajepagado;
+
+            #endregion
+
+            if (porcentaje > 100)
+                throw new IngresarException("El porcentaje ingresado supera el monto restante de la propuesta");
+            else
+                factura = bdfactura.IngresarFactura(_factura);
 
             return factura;
         }
