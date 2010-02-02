@@ -24,12 +24,23 @@ namespace Presentador.Empleado.Contrato
         string RangoSueldo { get; set; }
         bool RangoVisible { get; set; }
         DropDownList ComboCargos { get; set; }
-        Label MensajeError { get; set; }
+        //Label MensajeError { get; set; }
+        MultiView MultiViewPropuesta { get; set; }
+        void Mensaje(string msg);
+        
         #endregion
-        #region Dialogo
-        bool DialogoVisible { get; set; }
+
         void Pintar(string codigo, string mensaje, string actor, string detalles);
-        void PintarInformacion(string mensaje, string estilo);
-        #endregion
+        
+        bool DialogoVisible{get;set;}
+
+        void PintarInformacion(string mensaje, string estilo);        
+
+        bool InformacionVisible
+        {
+            get;
+            set;
+        }
+
     }
 }

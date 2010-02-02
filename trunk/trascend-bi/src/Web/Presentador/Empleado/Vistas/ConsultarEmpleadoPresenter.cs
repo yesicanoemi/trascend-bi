@@ -117,9 +117,13 @@ namespace Presentador.Empleado.Vistas
 
                             try
                             {
-                                if (listado!=null)
-                                {
-                                    _vista.GetOCConsultarEmp.DataSource = listado;
+                                foreach (Core.LogicaNegocio.Entidades.Empleado empleado1 in listado)
+                                { 
+                                    
+                                    if (empleado1.Cedula!=0)
+                                    {
+                                        _vista.GetOCConsultarEmp.DataSource = listado;
+                                    }
                                 }
                             }
                             catch (WebException e)

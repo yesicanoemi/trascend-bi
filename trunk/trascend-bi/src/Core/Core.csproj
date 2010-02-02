@@ -208,6 +208,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LogicaNegocio\Excepciones\EliminarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Empleados\AccesoDatos\IngresarEmpleadoBDExepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Empleados\LogicaNegocio\AgregarEmpleadoLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ConsultarFacturaADException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\InsertarFacturaADException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ModificarFacturaADException.cs" />

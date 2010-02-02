@@ -10,23 +10,9 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
 {
     private AgregarEmpleadoPresenter _presentador;
     #region Propiedades
-    #region Dialogos
-    public bool DialogoVisible
-    {
-        get { return uxDialogoError.Visible; }
-        set { uxDialogoError.Visible = value; }
-    }
-    public void Pintar(string codigo, string mensaje, string actor, string detalles)
-    {
-        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
-    }
-
-    public void PintarInformacion(string mensaje, string estilo)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
+    
     #region Informacion Basica
+    
 
     public TextBox NombreEmpleado
     {
@@ -118,12 +104,51 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
         set { uxCargoEmpleado = value; }
     }
     
-    public Label MensajeError
+   /* public Label MensajeError
     {
         get { return LabelMensajeError; }
         set { LabelMensajeError = value; }
+    }*/
+    public MultiView MultiViewPropuesta
+    {
+        get { return uxMultiViewPropuesta; }
+        set { throw new System.NotImplementedException(); }
     }
     #endregion
+
+    #endregion
+
+    public void Mensaje(string msg)
+    {
+       // MensajeError.Text = msg;
+        //MensajeError.Visible = true;
+        //Label lbl = new Label();
+        //lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
+        //Page.Controls.Add(lbl); 
+    }
+    #region Propiedades del Dialogo
+
+    public void Pintar(string codigo, string mensaje, string actor, string detalles)
+    {
+        uxDialogoError.Pintar(codigo, mensaje, actor, detalles);
+    }
+
+    public bool DialogoVisible
+    {
+        get { return uxDialogoError.Visible; }
+        set { uxDialogoError.Visible = value; }
+    }
+
+    public void PintarInformacion(string mensaje, string estilo)
+    {
+        uxMensajeInformacion.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion.Visible = value; }
+    }
 
     #endregion
 
@@ -153,6 +178,7 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
         }
 
     }
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -161,12 +187,26 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
         }
 
     }
+    
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.IngresarEmpleado();
+
+        MultiViewPropuesta.ActiveViewIndex = 0;
     }
+    
     protected void uxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
     {
         _presentador.ConsultarSueldos(); 
+    }
+    
+    protected void uxBotonSiguiente_Click(object sender, EventArgs e)
+    {
+        MultiViewPropuesta.ActiveViewIndex = 1;
+    }
+    
+    protected void uxBotonAtras_Click(object sender, EventArgs e)
+    {
+        MultiViewPropuesta.ActiveViewIndex = 0;
     }
 }

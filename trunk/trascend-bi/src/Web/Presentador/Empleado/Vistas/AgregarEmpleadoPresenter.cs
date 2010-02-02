@@ -9,9 +9,20 @@ using Core.AccesoDatos;
 using Core.AccesoDatos.Fabricas;
 using System.Net;
 using System.Web.UI.WebControls;
+using Core.LogicaNegocio.Excepciones.Empleados.LogicaNegocio;
+using System.Globalization;
+using System.Data;
+using System.Web;
+using System.Configuration;
+using Presentador.Base;
+using Presentador.Cliente.Vistas;
+using Presentador.Cliente.Contrato;
+using Core.LogicaNegocio.Comandos;
+using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
+
 namespace Presentador.Empleado.Vistas
 {
-    public class AgregarEmpleadoPresenter
+    public class AgregarEmpleadoPresenter: PresentadorBase
     {
         private IAgregarEmpleado _vista;
         private string campoVacio = "";
@@ -155,31 +166,42 @@ namespace Presentador.Empleado.Vistas
                 //{    
                 //ejecuta el comando.
                  _empleado = ingresar.Ejecutar();
-                 if (_empleado.Id == -1) 
+                 if ((_empleado.Id != -1) ||(_empleado.Id == -2))
                  {
-                     _vista.MensajeError.Text = "Operacion Fallida: No se pudo ingresar el empleado";
-                     _vista.MensajeError.Visible = true;
-                 }
-                 else if (_empleado.Id == -2)
-                 {
-                     _vista.MensajeError.Text = "Operacion Fallida: No se pudo ingresaro el empleado";
-                     _vista.MensajeError.Visible = true;
-                 }
-                 else
-                 {
-                     _vista.MensajeError.Text = "El empleado se agrego con exito";
-                     _vista.MensajeError.Visible = true;
-                 }
+                     //_vista.MensajeError.Text = "El empleado se agrego con exito";
+                     //_vista.MensajeError.Visible = true;
+                 }                
                 
                 LimpiarRegistros();
                 
 
             }
+            catch (WebException e)
+            {
+                //LimpiarRegistros();
+                //_vista.Mensaje(e.Message);
+
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (AgregarEmpleadoLNException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorIngresar"),
+                 ManagerRecursos.GetString("mensajeErrorIngresar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
             catch (Exception e)
             {
-                _vista.Pintar("0001", "Error Ingresando Empleado", "Especificacion del Error", e.ToString());
-                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
             }
+            LimpiarRegistros();
+            
         }
         #endregion
       
