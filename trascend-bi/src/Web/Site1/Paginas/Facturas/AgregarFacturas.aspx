@@ -112,9 +112,12 @@
                     </tr>
                     <tr>
                        <td>&nbsp;</td>
-                       <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                       <td>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                 ControlToValidate="uxTitulo" 
-                                ErrorMessage="Debe introducir un Titulo" Font-Size="Smaller" Display="Static" />
+                                ErrorMessage="<%$ Resources:DSU, FaltaTituloFactura%>" Font-Size="Smaller" Display="None" />
+                       <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
+                                            TargetControlID="RequiredFieldValidator1" />         
                        </td>
                     </tr>
                     <tr>
@@ -125,7 +128,9 @@
                        <td>&nbsp;</td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="uxDescripcion" 
-                                ErrorMessage="Debe introducir una Descripcion" Font-Size="Smaller" Display="Static" />
+                                ErrorMessage="<%$ Resources:DSU, FaltaDescripcionFactura%>" Font-Size="Smaller" Display="None" />
+                       <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender2"
+                                            TargetControlID="RequiredFieldValidator2" />
                        </td>
                     </tr>
                     <tr>
@@ -137,7 +142,9 @@
                        <td>&nbsp;</td>
                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                 ControlToValidate="uxPorcentaje" 
-                                ErrorMessage="Debe introducir un Porcentaje" Font-Size="Smaller" Display="Static" />
+                                ErrorMessage="<%$ Resources:DSU, FaltaPorcentajeFactura%>" Font-Size="Smaller" Display="None" />
+                       <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender3"
+                                            TargetControlID="RequiredFieldValidator3" />
                        </td>
                     </tr>
                     

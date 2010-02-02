@@ -510,4 +510,13 @@
   <data name="DatosUsuario" xml:space="preserve">
     <value>Datos del usuario:</value>
   </data>
+  <data name="FaltaDescripcionFactura" xml:space="preserve">
+    <value>Debe introducir una descripcion</value>
+  </data>
+  <data name="FaltaPorcentajeFactura" xml:space="preserve">
+    <value>Debe introducir un porcentaje</value>
+  </data>
+  <data name="FaltaTituloFactura" xml:space="preserve">
+    <value>Debe introducir un titulo</value>
+  </data>
 </root>
