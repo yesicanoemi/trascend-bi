@@ -58,10 +58,12 @@ namespace Presentador.Factura.Vistas
             catch (ConsultarException e)
             {
                 _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
             catch (Exception e)
             {
                 _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
         }
 
@@ -114,6 +116,11 @@ namespace Presentador.Factura.Vistas
                 _vista.MensajeVisible = true;
             }
 
+        }
+
+        public string FormatearFechaParaMostrar(DateTime fecha)
+        {
+            return fecha.ToShortDateString();
         }
 
         #endregion
