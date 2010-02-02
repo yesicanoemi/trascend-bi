@@ -23,7 +23,7 @@
 
             <div class="sub-content"> 
                 <div class="features_overview"> 
-                    <div class="features_overview_right"> 
+                    <div class="fea"> 
                         <h3>Modificar Usuario</h3> 
                         <p class="large">Introduzca la informacion a continuación</p> 
                        
@@ -33,9 +33,13 @@
                                 <asp:View ID="ViewConsultaUsuario" runat="server">
                                 <span style="text-align:center"><uc3:MensajeInformacionBotonAceptar ID="uxMensajeInformacionBotonAceptar" runat="server" Visible="false" />
                                   </span>
-                                    <p><div style="background-color:InfoBackground">Consultar usuario</div>
+                                    <p>
+                                    <!--<div style="background-color:InfoBackground"><asp:Label runat="server" ID="Label10" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
+                                                </div>-->
+                                    <div><asp:Label runat="server" ID="Label101" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
+                                                </div>
                                     <br />
-                                    <table width="70%">
+                                    <table class="solotablasuser">
                                     <tr>
                                             <td>
                                             <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" 
@@ -74,7 +78,7 @@
                                                     Visible="false" />
                                             </td></tr>
                                  </table>
-                                 <table>
+                                 <table class="SoloTablasUser">
                                         <tr>
                                     
                                             <td align="center">
@@ -109,12 +113,16 @@
                                                 </asp:GridView>
                                 </asp:View>
                                 <asp:View ID="ViewUsuario" runat="server">
-
-                                    <p><div style="background-color:InfoBackground">Datos del usuario</div>
+                                <p>
+                                    <!--<div style="background-color:InfoBackground"><asp:Label runat="server" ID="Label102" Text="<%$ Resources:DSU, DatosUsuario%>" Visible="true"></asp:Label>
+                                                </div>-->
+                                    <div><asp:Label runat="server" ID="Label111" Text="<%$ Resources:DSU, DatosUsuario%>" Visible="true"></asp:Label>
+                                                </div>
+                                    
                                     <br />                    
 
                                     <form id="uxFormConsultarUsuario">
-                                        <table style="width:100%;">
+                                        <table class="solotablasuser">
                                             <tr>
                                                 <td><b><asp:Label runat="server" ID="Label1" Text="<%$ Resources:DSU, Login%>" Visible="true"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxNombreU" runat="server" Text=""></asp:Label></td>
@@ -156,7 +164,7 @@
                                         </table>  
                                              
                                       
-                                        <table style="width: 100%; border: 1px solid #799CBE">
+                                        <table class="solotablasuser" style="width: 100%; border: 1px solid #799CBE">
                                            <tr>
                                                             <td>&nbsp;</td>
                                                             <td><asp:Label runat="server" ID="Label5" Text="<%$ Resources:DSU, Agregar%>" Visible="false"></asp:Label></td>
@@ -248,7 +256,7 @@
                                                 </td>
                                                 
                                             </tr>
-                                                <table style="width: 100%; border: 1px solid #799CBE">
+                                                <table class="solotablasuser" style="width: 100%; border: 1px solid #799CBE">
                                                     <tr>
                                                         <td>
                                                             &nbsp;</td>

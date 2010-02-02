@@ -25,7 +25,7 @@
  
         	    <div class="features_overview"> 
                  
-                    <div class="features_overview_right"> 
+                    <div class="features_overview_rightUser"> 
                         
                         <h3>Consultar Usuario</h3> 
                         
@@ -38,9 +38,15 @@
                           
                                 <asp:View ID="ViewConsulta" runat="server">
                           
-                                    <p><div style="background-color:InfoBackground">Consultar usuario</div>
+                                    <p>
+                                    <!--<div style="background-color:InfoBackground">
+                                    <asp:Label runat="server" ID="Label13" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true">
+                                    </asp:Label>
+                                                </div>-->
+                                    <div><asp:Label runat="server" ID="Label14" Text="<%$ Resources:DSU, ConsultarUsuario%>" Visible="true"></asp:Label>
+                                                </div>
                                     <br />
-                                    <table>
+                                    <table class="solotablasuser">
                                         <tr>
                                             <td>
                                             <asp:RadioButtonList ID="uxRbCampoBusqueda" runat="server" 
@@ -84,7 +90,7 @@
                                        </tr>
                                          
                                         </table>
-                                        <table>
+                                        <table class="solotablasuser">
                                             <tr>
                                              <td align="center">
                                                 <asp:Button ID="uxBotonBuscar" runat="server" onclick="uxBotonBuscar_Click" 
@@ -98,7 +104,7 @@
                                             </tr>
                                         </table>
                                       
-                                       <table>
+                                       <table class="solotablasuser">
                                        <tr>
                                               <td>
                                                   <asp:GridView ID="uxConsultaUsuario" runat="server" AllowPaging="True" 
@@ -127,7 +133,13 @@
                         
                                 <asp:View ID="ViewUsuario" runat="server">
                         
-                                    <p><div style="background-color:InfoBackground">Datos del usuario</div>
+                                    <p>
+                                    <!--<div style="background-color:InfoBackground">
+                                    <asp:Label runat="server" ID="Label11" Text="<%$ Resources:DSU, DatosUsuario%>" Visible="true">
+                                    </asp:Label>
+                                                </div>-->
+                                    <div><asp:Label runat="server" ID="Label12" Text="<%$ Resources:DSU, DatosUsuario%>" Visible="true"></asp:Label>
+                                                </div>
                                     <br />                    
                          
                                     <!--form id="uxFormConsultarUsuario" action=""-->
@@ -289,7 +301,7 @@
                                                         &nbsp;</td>
                                                 </tr>
                                             </table>
-                                            <table>
+                                            <table class="solotablasuser">
                                                 <tr>
                                                     <td>
                                                         &nbsp;</td>
