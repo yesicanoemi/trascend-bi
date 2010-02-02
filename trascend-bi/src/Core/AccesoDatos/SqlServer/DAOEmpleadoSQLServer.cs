@@ -11,7 +11,7 @@ using System.Data;
 using System.Configuration;
 using System.Xml;
 using System.Net;
-using Core.LogicaNegocio.Excepciones.Propuesta.AccesoDatos;
+using Core.LogicaNegocio.Excepciones.Empleados.AccesoDatos;
 using Core.AccesoDatos.Interfaces;
 using Core.AccesoDatos.Fabricas;
 
@@ -75,7 +75,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[6].Value = empleado.SueldoBase;
                 arParms[7] = new SqlParameter("@cargo", SqlDbType.Int);
                 arParms[7].Value = empleado.Cargo;
-                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "InsertarEmpleado", arParms);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "InsertarEmplead", arParms);
                 if (reader.Read())
                 {
                     Direccion direccion;
@@ -85,11 +85,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                _empleado.Id = -1;
-            }
+                throw new IngresarEmpleadoBDExepciones("Error Ingresando en la Base de datos", e);   
+            }           
             catch (Exception e)
             {
-                _empleado.Id = -2;
+                throw new IngresarEmpleadoBDExepciones("Error Ingresando Empledo", e);   
             }
             
             return _empleado;
@@ -125,7 +125,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch(SqlException e)
             {
-                throw new Exception(e.ToString());  
+                throw new IngresarEmpleadoBDExepciones("Error Ingresando en la Base de datos", e);   
+            }
+            catch (Exception e)
+            {
+                throw new IngresarEmpleadoBDExepciones("Error Ingresando en Empleado en direccion", e);
             }
             
 
