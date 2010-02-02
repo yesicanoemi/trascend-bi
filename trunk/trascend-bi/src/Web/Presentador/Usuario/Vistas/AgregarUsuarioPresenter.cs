@@ -131,15 +131,20 @@ namespace Presentador.Usuario.Vistas
 
         public void OnBotonBuscar()
         {
+            _vista.InformacionVisibleBotonAceptar = false;
+
+            _vista.InformacionVisible = false;
+
             Core.LogicaNegocio.Entidades.Empleado empleado =
                                     new Core.LogicaNegocio.Entidades.Empleado();
 
+            try
+            {
             empleado.Nombre = _vista.EmpleadoBuscar.Text;
 
             IList<Core.LogicaNegocio.Entidades.Empleado> listado = ConsultarEmpleado(empleado);
 
-            try
-            {
+          
                 if (listado.Count > 0)
                 {
 
@@ -149,9 +154,9 @@ namespace Presentador.Usuario.Vistas
 
                 else
                 {
-                    _vista.PintarInformacion(ManagerRecursos.GetString
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                 ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisible = true;
+                    _vista.InformacionVisibleBotonAceptar = true;
                 }
             }
              catch (WebException e)
@@ -172,7 +177,7 @@ namespace Presentador.Usuario.Vistas
             catch (Exception e)
             {
                 _vista.PintarInformacion
-                    (ManagerRecursos.GetString("mensajeErrorGeneral"), "mensajes");
+                    (ManagerRecursos.GetString("mensajeErrorConsultar"), "mensajes");
                 _vista.InformacionVisible = true;
 
             }
@@ -356,59 +361,78 @@ namespace Presentador.Usuario.Vistas
 
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
 
-
-            usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
-
-            usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                UnirPermisos(ModificarCheckBox(_vista.CBLModificar), usuario.PermisoUsu);
-
-            usuario.PermisoUsu =
-                UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
-
-            usuario.Login = _vista.NombreUsuario.Text;
-
-            usuario.Password = _vista.ContrasenaUsuario.Text;
-
-            usuario.Cedula = int.Parse(_vista.CedulaEmp.Text);
-
-            empleado.Cedula = int.Parse(_vista.CedulaEmp.Text);
-
-            if (ConsultarEmpleadoConUsuario(empleado).Count == 0)
+            try
             {
 
-                if (ConsultarUsuario(usuario).Count == 0)
+
+
+
+                usuario.PermisoUsu = ModificarCheckBoxReporte(_vista.CBLReporte);
+
+                usuario.PermisoUsu = UnirPermisos(ModificarCheckBox(_vista.CBLAgregar), usuario.PermisoUsu);
+
+                usuario.PermisoUsu =
+                    UnirPermisos(ModificarCheckBox(_vista.CBLConsultar), usuario.PermisoUsu);
+
+                usuario.PermisoUsu =
+                    UnirPermisos(ModificarCheckBox(_vista.CBLModificar), usuario.PermisoUsu);
+
+                usuario.PermisoUsu =
+                    UnirPermisos(ModificarCheckBox(_vista.CBLEliminar), usuario.PermisoUsu);
+
+                usuario.Login = _vista.NombreUsuario.Text;
+
+                usuario.Password = _vista.ContrasenaUsuario.Text;
+
+                usuario.Cedula = int.Parse(_vista.CedulaEmp.Text);
+
+                empleado.Cedula = int.Parse(_vista.CedulaEmp.Text);
+
+                if (ConsultarEmpleadoConUsuario(empleado).Count == 0)
                 {
-                    AgregarUsuario(usuario);
 
-                    //EnviarCorreo();
-                    CambiarVista(0);
+                    if (ConsultarUsuario(usuario).Count == 0)
+                    {
+                        AgregarUsuario(usuario);
 
-                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                        ("mensajeUsuarioAgregado"), "mensajes");
-                    _vista.InformacionVisibleBotonAceptar = true;
+                        //EnviarCorreo();
+                        CambiarVista(0);
 
-                    _vista.GetObjectContainerConsultaEmpleado.DataSource = "";
+                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                            ("mensajeUsuarioAgregado"), "mensajes");
+                        _vista.InformacionVisibleBotonAceptar = true;
 
-                    _vista.EmpleadoBuscar.Text = campoVacio;
+                        _vista.GetObjectContainerConsultaEmpleado.DataSource = "";
+
+                        _vista.EmpleadoBuscar.Text = campoVacio;
+
+                        _vista.CorreoEnviado.Visible = true;
+                    }
+                    else
+                    {
+                        CambiarVista(0);
+                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                    ("mensajeUsuarioExiste"), "mensajes");
+                        _vista.InformacionVisibleBotonAceptar = true;
+
+                    }
                 }
                 else
                 {
+                    CambiarVista(0);
                     _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                ("mensajeUsuarioExiste"), "mensajes");
+                                    ("mensajeEmpleadoTieneUsuario"), "mensajes");
                     _vista.InformacionVisibleBotonAceptar = true;
-
                 }
             }
-            else
+
+            catch (Exception e)
             {
-                _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                ("mensajeEmpleadoTieneUsuario"), "mensajes");
-                _vista.InformacionVisibleBotonAceptar = true;
+                CambiarVista(0);
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorIngresar"), "mensajes");
+     
+                _vista.InformacionVisible = true;
             }
 
         }
@@ -438,18 +462,30 @@ namespace Presentador.Usuario.Vistas
 
         public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
         {
-
             Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
 
             Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+            try
+            {
+               
 
-            permiso2.Permisos = "Agregar Usuarios";
+                permiso2.Permisos = "Agregar Usuarios";
 
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+                Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
 
-            comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+                comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
 
-            permiso1 = comando.Ejecutar();
+                permiso1 = comando.Ejecutar();
+            }
+
+            catch (Exception e)
+            {
+                
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorConsultarPermiso"), "mensajes");
+     
+                _vista.InformacionVisible = true;
+            }
 
             return permiso1;
         }

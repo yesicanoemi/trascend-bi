@@ -11,6 +11,8 @@ namespace Presentador.Usuario.Contrato
     {
         #region Información Básica
 
+        Label CorreoEnviado { get; set; }
+
         TextBox NombreUsuario { get; set; }
 
         TextBox ContrasenaUsuario { get; set; }

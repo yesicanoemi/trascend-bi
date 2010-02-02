@@ -20,7 +20,10 @@ namespace Presentador.Usuario.Vistas
         #region Propiedades
 
         private IEliminarUsuario _vista;
+
         private const int _TamanoLista = 8;
+
+        private const string campoVacio = "";
 
         #endregion
 
@@ -53,6 +56,8 @@ namespace Presentador.Usuario.Vistas
             if (_vista.RbCampoBusqueda.SelectedValue == "1")
             {
                 _vista.Login.Visible = true;
+
+                _vista.Login.Text = campoVacio;
 
                 _vista.NombreUsuarioLabel.Visible = true;
 
@@ -109,9 +114,15 @@ namespace Presentador.Usuario.Vistas
         public void OnBotonBuscar()
         {
             _vista.InformacionVisibleBotonAceptar = false;
+       
+            _vista.InformacionVisible = false;
+
 
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
+
+            try
+            {
             IList<Core.LogicaNegocio.Entidades.Usuario> listado = ConsultarUsuario(user);
 
 
@@ -123,8 +134,6 @@ namespace Presentador.Usuario.Vistas
 
             user.Login = _vista.Login.Text;
 
-            try
-            {
                 if ((_vista.RbCampoBusqueda.SelectedValue == "1") && (user.Login != ""))
                 {
 
@@ -139,9 +148,9 @@ namespace Presentador.Usuario.Vistas
                     }
                     else
                     {
-                        _vista.PintarInformacion(ManagerRecursos.GetString
+                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisible = true;
+                        _vista.InformacionVisibleBotonAceptar = true;
 
                     }
                 }
@@ -157,9 +166,9 @@ namespace Presentador.Usuario.Vistas
                     }
                     else
                     {
-                        _vista.PintarInformacion(ManagerRecursos.GetString
+                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisible = true;
+                        _vista.InformacionVisibleBotonAceptar = true;
 
                     }
 
@@ -206,9 +215,9 @@ namespace Presentador.Usuario.Vistas
                 if ((listadoInactivo.Count == 0) && (listadoActivo.Count == 0)
                    && (_vista.RbCampoBusqueda.SelectedValue != "1"))
                 {
-                    _vista.PintarInformacion(ManagerRecursos.GetString
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                    _vista.InformacionVisible = true;
+                    _vista.InformacionVisibleBotonAceptar = true;
 
 
                 }
@@ -251,33 +260,45 @@ namespace Presentador.Usuario.Vistas
 
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
-            usuario.Login = login;
-
-            user = VerificarUsuario(usuario);
-
-            if ((user != null) && (user.Status == "Activo"))
+            try
             {
-                user.Status = "Inactivo";
+                usuario.Login = login;
 
-                EliminarUsuario(user);
+                user = VerificarUsuario(usuario);
 
-                CambiarVista(0);
+                if ((user != null) && (user.Status == "Activo"))
+                {
+                    user.Status = "Inactivo";
 
-                _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                ("mensajeUsuarioEliminado"), "mensajes");
-                _vista.InformacionVisibleBotonAceptar = true;
+                    EliminarUsuario(user);
 
-                _vista.GetObjectContainerConsultaEliminarUsuario.DataSource = "";
+                    CambiarVista(0);
+
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                    ("mensajeUsuarioEliminado"), "mensajes");
+                    _vista.InformacionVisibleBotonAceptar = true;
+
+                    _vista.GetObjectContainerConsultaEliminarUsuario.DataSource = "";
 
 
+                }
+
+                else
+                {
+                    CambiarVista(0);
+                    _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                                    ("mensajeUsuarioInactivo"), "mensajes");
+                    _vista.InformacionVisibleBotonAceptar = true;
+
+                }
             }
-
-            else
+            catch (Exception e)
             {
-                _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
-                                ("mensajeUsuarioInactivo"), "mensajes");
-                _vista.InformacionVisibleBotonAceptar = true;
+                CambiarVista(0);
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorEliminar"), "mensajes");
 
+                _vista.InformacionVisible = true;
             }
             //CambiarVista(1);
 
@@ -411,20 +432,32 @@ namespace Presentador.Usuario.Vistas
 
         public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
         {
-
             Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
 
             Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+            try
+            {
+                
 
-            permiso2.Permisos = "Eliminar Usuarios";
+                permiso2.Permisos = "Eliminar Usuarios";
 
-            Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+                Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
 
-            comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+                comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
 
-            permiso1 = comando.Ejecutar();
+                permiso1 = comando.Ejecutar();
+            }
+            catch (Exception e)
+            {
+
+                _vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorConsultarPermiso"), "mensajes");
+
+                _vista.InformacionVisible = true;
+            }
 
             return permiso1;
+
         }
         #endregion
     }

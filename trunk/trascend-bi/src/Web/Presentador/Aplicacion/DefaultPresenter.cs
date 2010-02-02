@@ -57,29 +57,40 @@ namespace Presentador.Aplicacion
         {
             Core.LogicaNegocio.Entidades.Usuario user = new Core.LogicaNegocio.Entidades.Usuario();
 
-            user.Login = _vista.Login.Text;
-
-            user.Password = _vista.Password.Text;
-
-            user = ConsultarCredenciales(user);
-
-            IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(user);
-
-            user.PermisoUsu = listadoPermiso;
-
-            if ((user != null) && (user.Status == "Activo"))
+            try
             {
-                _vista.Sesion["SesionUsuario"] = user;
+                user.Login = _vista.Login.Text;
 
-                SesionUsuario = (Core.LogicaNegocio.Entidades.Usuario)_vista.Sesion["SesionUsuario"];
+                user.Password = _vista.Password.Text;
 
-                _vista.IngresarSistema();
+                user = ConsultarCredenciales(user);
+
+                IList<Core.LogicaNegocio.Entidades.Permiso> listadoPermiso = ConsultarPermisos(user);
+
+                user.PermisoUsu = listadoPermiso;
+
+                if ((user != null) && (user.Status == "Activo"))
+                {
+                    _vista.Sesion["SesionUsuario"] = user;
+
+                    SesionUsuario = (Core.LogicaNegocio.Entidades.Usuario)_vista.Sesion["SesionUsuario"];
+
+                    _vista.IngresarSistema();
+                }
+
+                else
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                                                ("MensajeIniciarSesion"), "mensajes");
+
+                    _vista.InformacionVisible = true;
+
+                }
             }
-
-            else
+            catch (Exception e)
             {
                 _vista.PintarInformacion(ManagerRecursos.GetString
-                                            ("MensajeIniciarSesion"), "mensajes");
+                                               ("MensajeIniciarSesion"), "mensajes");
 
                 _vista.InformacionVisible = true;
 
