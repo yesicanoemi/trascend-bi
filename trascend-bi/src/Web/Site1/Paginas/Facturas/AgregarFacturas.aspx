@@ -107,7 +107,7 @@
                 <p class="large">
                     <table style="width:auto">
                     <tr>
-                        <td> Titulo:</td>
+                        <td><span style="color: #FF0000">*</span> Titulo:</td>
                         <td><asp:TextBox ID="uxTitulo" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
@@ -118,7 +118,7 @@
                        </td>
                     </tr>
                     <tr>
-                        <td> Descripcion:</td>
+                        <td><span style="color: #FF0000">*</span> Descripcion:</td>
                         <td><asp:TextBox ID="uxDescripcion" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
@@ -129,7 +129,7 @@
                        </td>
                     </tr>
                     <tr>
-                        <td> Porcentaje a pagar:</td>
+                        <td><span style="color: #FF0000">*</span> Porcentaje a pagar:</td>
                         <td><asp:TextBox ID="uxPorcentaje" runat="server">
                         </asp:TextBox></td>
                     </tr>
@@ -143,7 +143,7 @@
                     
                    
                     <tr>
-                        <td> Estado:</td>
+                        <td><span style="color: #FF0000">*</span> Estado:</td>
                         <td>
                             <asp:DropDownList ID="uxEstado" runat="server"></asp:DropDownList> 
                         </td>

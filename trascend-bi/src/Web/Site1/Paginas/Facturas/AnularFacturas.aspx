@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true"
     CodeFile="AnularFacturas.aspx.cs" Inherits="Paginas_Facturas_AnularFacturas"
     Title="Anular Factura" %>
-    
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav">
         <div class="content">
@@ -20,20 +20,20 @@
             <div class="sub-content">
                 <div class="features_overview">
                     <div class="features_overview_right">
-                        <h3 style="font-size:small;">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anular Factura</h3>
-                        <p class="large" style="font-size:small;">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        <h3 style="font-size: small;">
+                            Anular Factura</h3>
+                        <p class="large" style="font-size: small;">
                             Introduzca el numero de factura a continuación</p>
-                            <p class="large" >
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
-                            </p>
+                        <p class="large">
+                            <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
+                        </p>
                         <form id="Form1" runat="server">
                         <p class="large">
-                       
                             <table style="width: 75%;">
                                 <tr>
+                                    <td>
+                                        Numero Factura:
+                                    </td>
                                     <td>
                                         <asp:TextBox ID="uxBusqueda" runat="server" TabIndex="1"></asp:TextBox>
                                         <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda" FilterType="Numbers"
@@ -43,6 +43,9 @@
                                             ErrorMessage="<%$ Resources:DSU, FaltaNumeroFactura%>" Font-Size="Smaller" Display="None" />
                                         <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
                                             TargetControlID="RequiredFieldValidator1" />
+                                    </td>
+                                    <td>
+                                        &nbsp;&nbsp;
                                     </td>
                                     <td align="center">
                                         <asp:Button ID="uxBusquedaBoton" runat="server" Text="Buscar" OnClick="uxBusquedaBoton_Click"
@@ -63,8 +66,8 @@
                             <table style="width: 100%;" visible="false" id="tbDatos" runat="server">
                                 <tr>
                                     <td>
-                                        <asp:Label ID="lbDatosPropuesta" runat="server" Text="Datos de la Propuesta" Font-Bold="true"></asp:Label>
-                                    </td>
+                                        <asp:Label ID="lbDatosPropuesta" runat="server" Text="Datos de la Propuesta:" Font-Bold="true"></asp:Label>
+                                        &nbsp;</td>
                                     <td>
                                     </td>
                                 </tr>
@@ -102,8 +105,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:Label ID="lbDatosFactura" runat="server" Text="Datos de la Factura" Font-Bold="true"></asp:Label>
-                                    </td>
+                                        <asp:Label ID="lbDatosFactura" runat="server" Text="Datos de la Factura:" Font-Bold="true"></asp:Label>
+                                        &nbsp;</td>
                                     <td>
                                     </td>
                                 </tr>
@@ -115,7 +118,7 @@
                                         &nbsp;
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style="background-color: #FFFFCC;">
                                     <td>
                                         <asp:Label ID="lbNumero" runat="server" Text="Numero:"></asp:Label>
                                     </td>
@@ -131,7 +134,7 @@
                                         <asp:Label ID="lbTituloFactura" runat="server"></asp:Label>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style="background-color: #FFFFCC;">
                                     <td>
                                         <asp:Label ID="lbDescripcion" runat="server" Text="Descripcion:"></asp:Label>
                                     </td>
@@ -147,7 +150,7 @@
                                         <asp:Label ID="lbFechaFactura" runat="server"></asp:Label>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style="background-color: #FFFFCC;">
                                     <td>
                                         <asp:Label ID="lbPorcentaje" runat="server" Text="Porcentaje:"></asp:Label>
                                     </td>
@@ -176,12 +179,12 @@
                             </tr>
                             <table>
                                 <tr>
-                                    <td style="width: 77%;">
+                                    <td style="width: 78%;">
                                     </td>
                                     <td align="right">
                                         <asp:Button ID="btAnular" runat="server" Text="Anular" Visible="false" OnClick="btAnular_Click"
-                                            OnClientClick="return confirm('Esta seguro que quiere anular ésta factura?');" 
-                                            TabIndex="3" />                                       
+                                            OnClientClick="return confirm('Esta seguro que quiere anular ésta factura?');"
+                                            TabIndex="3" />
                                     </td>
                                 </tr>
                             </table>
