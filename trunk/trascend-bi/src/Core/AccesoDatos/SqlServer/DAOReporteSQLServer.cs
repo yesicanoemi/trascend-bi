@@ -103,7 +103,11 @@ namespace Core.AccesoDatos.SqlServer
 
             catch (SqlException e)
             {
-                System.Console.Write(e);
+                throw new ReportesException("Error al consultar en la base de datos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ReportesException("Error en consultar facturas emitidas", e);
             }
 
             return factura;
