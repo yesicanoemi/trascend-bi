@@ -32,7 +32,7 @@
                             <tr>
                                 <td>
                                     <asp:RadioButtonList ID="uxParametroBox" runat="server" 
-                                                    
+                                                     onselectedindexchanged="uxParametroBox_SelectedIndexChanged" 
                                                     AutoPostBack="true" RepeatColumns="1" Width="100px">
                                                     <asp:ListItem Value="1" Text="Nombre Propuesta"></asp:ListItem> 
                                                     <asp:ListItem Value="2" Text="Numero Factura"></asp:ListItem>
