@@ -50,8 +50,7 @@ namespace Presentador.Factura.Vistas
 
                     _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
                     _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
-                    _vista.MultiViewFacturas.Visible = true;
-                    _vista.MultiViewFacturas.ActiveViewIndex = 0;
+                    
                 }
             }
             catch (Exception e){ }
@@ -74,7 +73,7 @@ namespace Presentador.Factura.Vistas
                     _vista.TablaFacturas.DataBind();
 
                     _vista.MultiViewFacturas.Visible = true;
-                    _vista.MultiViewFacturas.ActiveViewIndex = 1;
+                    _vista.MultiViewFacturas.ActiveViewIndex = 0;
                 }
             }
             catch (Exception e) { }
@@ -98,6 +97,9 @@ namespace Presentador.Factura.Vistas
             _vista.FechaPago.Text = _factura.Fechapago.ToShortDateString().ToString();
             _vista.Estado.Text = _factura.Estado;
             _vista.Porcentaje.Text = _factura.Procentajepagado.ToString();
+
+            _vista.MultiViewFacturas.Visible = true;
+            _vista.MultiViewFacturas.ActiveViewIndex = 1;
         }
 
         public string FormatearFechaParaMostrar(DateTime fecha)

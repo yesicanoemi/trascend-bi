@@ -31,8 +31,12 @@
                         <table style="width: auto">
                             <tr>
                                 <td>
-                                    <asp:DropDownList ID="uxParametroBox" runat="server">
-                                    </asp:DropDownList>
+                                    <asp:RadioButtonList ID="uxParametroBox" runat="server" 
+                                                    
+                                                    AutoPostBack="true" RepeatColumns="1" Width="100px">
+                                                    <asp:ListItem Value="1" Text="Nombre Propuesta"></asp:ListItem> 
+                                                    <asp:ListItem Value="2" Text="Numero Factura"></asp:ListItem>
+                                                </asp:RadioButtonList>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="uxParametroTexto" runat="server"></asp:TextBox>
@@ -44,6 +48,7 @@
                                         <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
                                             TargetControlID="RequiredFieldValidator1" />
                                 </td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>
                                     <asp:Button ID="btBotonBuscar" runat="server" Text="Buscar" OnClick="btBotonBuscar_Click" />
                                 </td>
