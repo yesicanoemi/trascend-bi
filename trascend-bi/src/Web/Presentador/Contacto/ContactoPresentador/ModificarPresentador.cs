@@ -78,13 +78,34 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.IdContacto = Int32.Parse(_vista.IdContactoH.Text);
 
                 contacto.ClienteContac.IdCliente = Int32.Parse(_vista.IdClienteH.Text);
-               
-                ModificarContacto(contacto);
 
-                LimpiarElementosVisibles();
+                if ((_vista.CodTelefonoC1.Text.Length == 3) &&
+                                    (_vista.TelefonoC1.Text.Length == 7))
+                {
+                    if (((_vista.CodTelefonoC2.Text.Length == 3) &&
+                                (_vista.TelefonoC2.Text.Length == 7)) ||
+                                        ((_vista.CodTelefonoC2.Text.Length == 0) &&
+                                                    (_vista.TelefonoC2.Text.Length == 0)))
+                    {
+                        ModificarContacto(contacto);
 
-                CambiarVista(0);
+                        LimpiarElementosVisibles();
 
+                        CambiarVista(0);
+                    }
+                    else
+                    {
+                        _vista.PintarInformacion2(ManagerRecursos.GetString
+                           ("mensajeTelefonoIncorrecto"), "mensajes");
+                        _vista.InformacionVisible2 = true;
+                    }
+                }
+                else
+                {
+                    _vista.PintarInformacion2(ManagerRecursos.GetString
+                               ("mensajeTelefonoIncorrecto"), "mensajes");
+                    _vista.InformacionVisible2 = true;
+                }
             }
             catch (WebException e)
             {
