@@ -189,6 +189,9 @@
   <data name="mensajeUsuarioInactivo" xml:space="preserve">
     <value>El Usuario ya se encuentra inactivo</value>
   </data>
+  <data name="ClienteModificacionExitosa" xml:space="preserve">
+    <value>Cliente modificado con éxito</value>
+  </data>
   <data name="mensajeTelefonoIncorrecto" xml:space="preserve">
     <value>El Codigo del Telefono debe ser de 3 digitos y el Numero ser de 7 digitos.</value>
   </data>
