@@ -10,15 +10,29 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using Presentador.Logout;
+using System.Web.SessionState;
 
-public partial class Paginas_Logout_Logout : PaginaBase
+public partial class Paginas_Logout_Logout : PaginaBase, ILogoutPresenter
 {
+    private LogoutPresenter _presentador;
+
+    public HttpSessionState Sesion
+    {
+        get { return Session; }
+
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Redirect(paginaDefault);
+        //Response.Redirect(paginaDefault);
     }
     protected void Page_Init(object sender, EventArgs e)
     {
+        _presentador = new LogoutPresenter(this);
+        
+        _presentador.Logout();
+        
         Response.Redirect(paginaDefault);
 
     }

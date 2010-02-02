@@ -184,7 +184,7 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
         int idPermiso = _permiso.IdPermiso;
 
         bool permiso = false;
-
+        
 
         try
         {

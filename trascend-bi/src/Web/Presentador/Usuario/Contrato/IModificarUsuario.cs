@@ -56,6 +56,8 @@ namespace Presentador.Usuario.Contrato
 
         RequiredFieldValidator ValidarNoSeleccion { get; set; }
 
+        void uxCBLReporte_tamano();
+
         //void CambiarPagina();
 
         #region Dialogo

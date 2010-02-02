@@ -117,6 +117,8 @@ namespace Presentador.Usuario.Vistas
                         if (_vista.CBLReporte.Items[k].Value == permiso[i].IdPermiso.ToString())
                         {
                             _vista.CBLReporte.Items[k].Selected = true;
+
+                            //_vista.uxCBLReporte_tamano();
                         }
                     }
                 }

@@ -144,7 +144,7 @@
                          
                                     <!--form id="uxFormConsultarUsuario" action=""-->
                             
-                                        <table style="width:100%;">
+                                        <table class="solotablasuser">
                                             
                                             <tr>
                                                 <td><b><asp:Label runat="server" ID="uxCampoNombreEmpleado" Text="<%$ Resources:DSU, Login %>"></asp:Label></b></td>
@@ -156,7 +156,7 @@
                                             </tr>
                                        
                                             <tr>
-                                                <td><b><asp:Label runat="server" ID="Label1" Text="<%$ Resources:DSU, NombreEmpleado %>"></asp:Label></b></td>
+                                                <td><b><asp:Label runat="server" ID="Label1" Text="<%$ Resources:DSU, NombreEmpleadoAgregar %>"></asp:Label></b></td>
                                                 <td><asp:Label ID="uxNombreEmp" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                         
@@ -178,17 +178,9 @@
                                                 <td><asp:Label ID="uxStatusU" runat="server" Text=""></asp:Label></td>
                                             </tr>
                                         
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                           
-                                           <tr>
-                                                <td>&nbsp;</td>
-                                           </tr>
-                                           
                                           
                                         </table>
-                                            <table style="width: 100%; border: 1px solid #799CBE">
+                                            <table class="solotablasuser" style="width: 100%; border: 1px solid #799CBE">
                                                 <tr>
                                                     <td>
                                                         &nbsp;</td>
@@ -262,19 +254,20 @@
                                                         </td>
                                                    
                                                 </tr>
+                                              
                                                 <table style="width: 100%; border: 1px solid #799CBE">
                                                     <tr>
-                                                        <td>
-                                                            &nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            &nbsp;</td>
-                                                        <td>
-                                                            <asp:Label ID="Label9" runat="server" Text="<%$ Resources:DSU, Reportes %>"></asp:Label>
-                                                        </td>
-                                                        <td align="center">
-                                                            <asp:CheckBoxList ID="uxCBLReporte" runat="server">
+                                                        <td><b><asp:Label ID="Label9" 
+                                                        runat="server" Text="<%$ Resources:DSU, Reportes %>"></asp:Label></b></td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td align="center"><asp:CheckBoxList ID="uxCBLReporte" CssClass="chkBoxListUser" runat="server">
                                                                 <asp:ListItem Enabled="false" Text="Paquete Anual" Value="33"></asp:ListItem>
                                                                 <asp:ListItem Enabled="false" Text="Total Anual" Value="34"></asp:ListItem>
                                                                 <asp:ListItem Enabled="false" Text="Total de Horas Anuales" Value="35"></asp:ListItem>

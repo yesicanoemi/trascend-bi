@@ -108,6 +108,8 @@
     <Compile Include="Gasto\Vistas\EliminarGastoPresenter.cs" />
     <Compile Include="Gasto\Vistas\IngresarGastoPresenter.cs" />
     <Compile Include="Gasto\Vistas\ModificarGastoPresenter.cs" />
+    <Compile Include="Logout\ILogoutPresenter.cs" />
+    <Compile Include="Logout\LogoutPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
