@@ -48,10 +48,10 @@
       
                             </td>
                             
-		                    <td align="left">
+		                    <td align="center">
 		                        <asp:Label ID="uxLabelInfo" runat="server" Font-Names="Verdana" />
                                 <asp:TextBox ID="uxBusquedaConsulta" runat="server" Height="19px" 
-                                    Width="139px" ></asp:TextBox>
+                                    Width="139px" Visible="false" ></asp:TextBox>
 		                         <asp:Image ID="uxFechaInicioImg" runat="server" 
                                     ImageUrl="~/Images/calendario.png" Height="16px" Width="16px" Visible="false" />
 		                        <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"
@@ -62,7 +62,7 @@
 		                    </tr>
 		                    <tr>
 		                    <td></td>
-		                    <td><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" onclick="uxBotonBuscar_Click" /></td>
+		                    <td align="center"><asp:Button ID="uxBotonBuscarDatos" Text="Buscar" runat="server" onclick="uxBotonBuscar_Click" Visible="false" /></td>
 		                    
 		                </tr>		                		                
 		                <tr>

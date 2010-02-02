@@ -12,11 +12,13 @@ using System.Xml;
 using System.Net;
 using Core.LogicaNegocio.Excepciones;
 using Core.LogicaNegocio.Excepciones.Propuesta.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos.Fabricas;
 
 
 namespace Core.AccesoDatos.SqlServer
 {
-    class ReporteSQLServer
+    class ReporteSQLServer: IDAOReporte
     {
         #region Propiedades
 
@@ -25,6 +27,8 @@ namespace Core.AccesoDatos.SqlServer
         List<Gasto> ListaGasto = new List<Gasto>();
 
         List<string> ListaCargos = new List<string>();
+
+        IConexion _conexion = new FabricaConexion().getConexionSQLServer();
 
         #endregion
 
@@ -36,26 +40,6 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
-        #region Conexion
-
-        private SqlConnection GetConnection()
-        {
-            XmlDocument xDoc = new XmlDocument();
-
-            xDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "configuration.xml");
-
-            XmlNodeList conexiones = xDoc.GetElementsByTagName("connection");
-
-            string lista = conexiones[0].InnerText;
-
-            SqlConnection connection = new SqlConnection(lista);
-
-            connection.Open();
-
-            return connection;
-        }
-
-        #endregion
 
         #region Metodos
 
@@ -86,7 +70,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[1].Value = entidad.Fechapago.ToShortDateString();
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "FacturasEmitidas", arParms);
 
                 while (reader.Read())
@@ -157,7 +141,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 //Se realiza la conexion con los Parametros definidos anteriormente
 
-                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader conexion = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                 "ConsultarGastoxFecha", Parametros);
 
                 int i = 0;
@@ -213,7 +197,7 @@ namespace Core.AccesoDatos.SqlServer
                 Parametros[1] = new SqlParameter("@FechaF", SqlDbType.DateTime);
 
                 Parametros[1].Value = FechaF;
-                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarHorasRolFecha", Parametros);
+                DbDataReader conexion = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarHorasRolFecha", Parametros);
                 int i = 0;
 
                 while (conexion.Read())
@@ -249,7 +233,7 @@ namespace Core.AccesoDatos.SqlServer
                 ParametroRol.Value = rol; ;
 
                 DbDataReader conexion =
-                    SqlHelper.ExecuteReader(GetConnection(), "ConsultarHorasRol", ParametroRol);
+                    SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarHorasRol", ParametroRol);
 
                 int i = 0;
 
@@ -286,7 +270,7 @@ namespace Core.AccesoDatos.SqlServer
 
             parametro[0].Value = factura.Fechapago;
 
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasEmitidasAnuales", parametro);
+            DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "FacturasEmitidasAnuales", parametro);
 
             int i = 0;
 
@@ -339,7 +323,7 @@ namespace Core.AccesoDatos.SqlServer
             parametro[0].Value = facturas.Fechapago;
 
 
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasCobradasAnuales", parametro);
+            DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "FacturasCobradasAnuales", parametro);
 
             int i = 0;
 
@@ -401,7 +385,7 @@ namespace Core.AccesoDatos.SqlServer
 
             parametro[0].Value = facturas.Fechapago;
 
-            DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "FacturasPorCobrarAnuales", parametro);
+            DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "FacturasPorCobrarAnuales", parametro);
 
             int i = 0;
 
@@ -465,7 +449,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = anio;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ConsultarDatosGastoAnual", arParms);
 
                 while (reader.Read())
@@ -519,7 +503,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = anio;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "GastoAnual", arParms);
 
                 while (reader.Read())
@@ -571,7 +555,7 @@ namespace Core.AccesoDatos.SqlServer
                 arParms[0].Value = metodo;
 
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(), "ReporteAnualPorCargo", arParms);
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ReporteAnualPorCargo", arParms);
 
 
 
@@ -612,7 +596,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = data;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ReporteAnualPorEmpleadoPaquetesNombre", arParms);
 
                 Empleados = new List<Empleado>();
@@ -654,7 +638,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = data;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ReporteAnualPorEmpleadoPaquetesNombre", arParms);
 
                 Cargos = new List<Cargo>();
@@ -693,7 +677,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = data;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ReporteAnualPorEmpleadoPaquetes", arParms);
 
                 Empleados = new List<Empleado>();
@@ -735,7 +719,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 arParms[0].Value = data;
 
-                DbDataReader reader = SqlHelper.ExecuteReader(GetConnection(),
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
                                         "ReporteAnualPorEmpleadoPaquetes", arParms);
 
                 Cargos = new List<Cargo>();
@@ -768,7 +752,7 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                DbDataReader conexion = SqlHelper.ExecuteReader(GetConnection(), "ConsultarCargo1");
+                DbDataReader conexion = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarCargo1");
                 int i = 0;
 
                 while (conexion.Read())
