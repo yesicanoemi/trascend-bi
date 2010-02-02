@@ -34,7 +34,6 @@
         <asp:View ID="ViewBuscarPropuesta" runat="server">
             <p class="large">Introduzca el nombre de la propuesta a buscar:</p>
             <p class="large" >
-                                &nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Label ID="lbMensaje" runat="server" Visible="false" ForeColor="Red" Font-Size="Medium"></asp:Label>
                             </p>
                 <p class="large">&nbsp;<table style="width:auto">
