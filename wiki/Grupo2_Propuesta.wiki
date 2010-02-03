@@ -23,9 +23,9 @@ Eliminar Propuesta - Jessy Rodriguez
 
 Reporte
 
-Propuesta emitida por rango de fecha - Juan Diego De Abreu
+Total de horas anuales por rol - Jessy Rodriguez
 
-Total de propuestas emitidas anuales - Jean Paul Benfele
+Gastos por rango de fecha - Kozhaya Sleiman
 
 
 = Casos de Uso =
