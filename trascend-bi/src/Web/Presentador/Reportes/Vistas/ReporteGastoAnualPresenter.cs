@@ -18,11 +18,15 @@ namespace Presentador.Reportes.Vistas
 {
     public class ReporteGastoAnualPresenter
     {
+        #region Propiedades
         private IReporteGastoAnual _vista;
 
         private const String campoVacio = "";
+        #endregion
 
         #region Constructor
+        public ReporteGastoAnualPresenter()
+        { }
 
         public ReporteGastoAnualPresenter(IReporteGastoAnual vista)
         {
@@ -100,7 +104,42 @@ namespace Presentador.Reportes.Vistas
 
             return gasto1;
         }
+        
+        /// <summary>
+        /// Método para el comando Consultar IdPermiso
+        /// </summary>
+        /// <param name="entidad">Entidad permiso</param>
+        /// 
 
+        public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
+        {
+            Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
+
+            Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+            try
+            {
+
+
+                permiso2.Permisos = "Gastos Anuales";
+
+                Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+
+                comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+
+                permiso1 = comando.Ejecutar();
+            }
+
+            catch (Exception e)
+            {
+
+                /*_vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorConsultarPermiso"), "mensajes");
+
+                _vista.InformacionVisible = true;*/
+            }
+
+            return permiso1;
+        }
 
 
         #endregion

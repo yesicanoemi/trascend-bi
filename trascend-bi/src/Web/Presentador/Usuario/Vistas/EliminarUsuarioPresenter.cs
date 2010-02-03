@@ -148,9 +148,9 @@ namespace Presentador.Usuario.Vistas
                     }
                     else
                     {
-                        _vista.PintarInformacionBotonAceptar(ManagerRecursos.GetString
+                        _vista.PintarInformacion(ManagerRecursos.GetString
                                                             ("MensajeConsulta"), "mensajes");
-                        _vista.InformacionVisibleBotonAceptar = true;
+                        _vista.InformacionVisible = true;
 
                     }
                 }

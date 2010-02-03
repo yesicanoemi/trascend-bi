@@ -30,6 +30,10 @@ namespace Presentador.Reportes.Vistas
 
         #region Constructor
 
+        public ReporteFaturasEmitidasPresenter()
+        { 
+        
+        }
         public ReporteFaturasEmitidasPresenter(IReporteFacturasEmitidas vista)
         {
             _vista = vista;
@@ -122,6 +126,42 @@ namespace Presentador.Reportes.Vistas
            factura1 = comando.Ejecutar();
 
             return factura1;
+        }
+
+        /// <summary>
+        /// Método para el comando Consultar IdPermiso
+        /// </summary>
+        /// <param name="entidad">Entidad permiso</param>
+        /// 
+
+        public Core.LogicaNegocio.Entidades.Permiso ConsultarIdPermiso()
+        {
+            Core.LogicaNegocio.Entidades.Permiso permiso1 = null;
+
+            Core.LogicaNegocio.Entidades.Permiso permiso2 = new Permiso();
+            try
+            {
+
+
+                permiso2.Permisos = "Facturas Emitidas";
+
+                Core.LogicaNegocio.Comandos.ComandoUsuario.ConsultarIdPermiso comando;
+
+                comando = FabricaComandosUsuario.CrearComandoConsultarIdPermiso(permiso2);
+
+                permiso1 = comando.Ejecutar();
+            }
+
+            catch (Exception e)
+            {
+
+                /*_vista.PintarInformacion
+                    (ManagerRecursos.GetString("mensajeErrorConsultarPermiso"), "mensajes");
+
+                _vista.InformacionVisible = true;*/
+            }
+
+            return permiso1;
         }
 
         #endregion
