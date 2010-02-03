@@ -54,6 +54,12 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
         set { uxBotonBuscar = value; }
     }
 
+    public Button BotonVolver
+    {
+        get { return uxBotonVolver; }
+        set { uxBotonVolver = value; }
+    }
+
     public GridView GridCliente
     {
         get { return uxGridCliente; }
@@ -342,6 +348,10 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
         _presentador.ActualizarCliente();
+    }
+    protected void uxDesactivarCliente_Click(object sender, EventArgs e)
+    {
+        _presentador.DesactivarCliente();
     }
 }
 

@@ -205,6 +205,12 @@
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </tr>
+                                 <tr> <td></td> <td align="center">
+                                                    <asp:Button ID="uxDesactivarCliente" runat="server" onclick="uxDesactivarCliente_Click" 
+                                                   Visible="true"     Text="Desactivar Cliente" ValidationGroup="ValidarCampos" />
+                                                    <br />
+                                                    <br />
+                                                </td></tr>
                                 <tr>
                                     <td>
                                         <span style="color: #FF0000">* </span>RIF:</td>
@@ -510,7 +516,7 @@
                                                         Text="Modificar" ValidationGroup="ValidarCampos" />
                                                 </td>
                                                 <td align="center">
-                                                    <asp:Button ID="Button1" runat="server" 
+                                                    <asp:Button ID="uxBotonVolver" runat="server" 
                                                         PostBackUrl="~/Paginas/Clientes/DefaultClientes.aspx" Text="Volver" />
                                                 </td>
                                             </tr>
@@ -554,11 +560,11 @@
 				
 			</div> 
 		</div> 
-		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaDireccion" DataObjectTypeName="Core.LogicaNegocio.Entidades.Direccion" />
+		
 		
 		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 
         
-        <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.TelefonoTrabajo" />  
+        
         
     </form>
         

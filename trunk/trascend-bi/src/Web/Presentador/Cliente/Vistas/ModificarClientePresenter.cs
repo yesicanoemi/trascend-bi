@@ -27,6 +27,7 @@ namespace Presentador.Cliente.Vistas
         #region Propiedades
         private IModificarCliente _vista;
         private const string campoVacio = "";
+
         #endregion
 
 
@@ -62,7 +63,20 @@ namespace Presentador.Cliente.Vistas
             _vista.ConsultaRif.Text = campoVacio;
 
             _vista.Valor.Text = campoVacio;
-
+            _vista.AreaNegocioCliente.Text = campoVacio;
+            _vista.CalleAvenidaCliente.Text = campoVacio;
+            _vista.CiudadCliente.Text = campoVacio;
+            _vista.EdificioCasaCliente.Text = campoVacio;
+            _vista.NombreCliente.Text = campoVacio;
+            _vista.PisoApartamentoCliente.Text = campoVacio;
+            _vista.rifCliente.Text = campoVacio;
+            _vista.UrbanizacionCliente.Text = campoVacio;
+            _vista.TelefonoTrabajoCliente.Text = campoVacio;
+            _vista.CodigoTrabajoCliente.Text = campoVacio;
+            _vista.TelefonoCelular.Text = campoVacio;
+            _vista.CodCelular.Text = campoVacio;
+            _vista.TelefonoFax.Text = campoVacio;
+            _vista.CodFax.Text = campoVacio;
 
 
         }
@@ -107,6 +121,25 @@ namespace Presentador.Cliente.Vistas
 
         public void OnBotonBuscar()
         {
+            IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
+            listaCliente = BuscarListaClientes();
+
+
+
+
+            if (listaCliente.Count != 0)
+            {
+                CargarGrid(listaCliente);
+            }
+            else
+            {
+                _vista.PintarInformacion2(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
+                _vista.InformacionVisible2 = true;
+            }
+        }
+
+        public IList<Core.LogicaNegocio.Entidades.Cliente> BuscarListaClientes()
+        {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
             IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
             try
@@ -142,20 +175,9 @@ namespace Presentador.Cliente.Vistas
 
             }
 
-
-
-
-
-            if (listaCliente.Count != 0)
-            {
-                CargarGrid(listaCliente);
-            }
-            else
-            {
-                _vista.PintarInformacion2(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
-                _vista.InformacionVisible2 = true;
-            }
+            return listaCliente;
         }
+
 
         public void CargarGrid(IList<Core.LogicaNegocio.Entidades.Cliente> clientes)
         {
@@ -200,6 +222,86 @@ namespace Presentador.Cliente.Vistas
 
         }
 
+
+        public Core.LogicaNegocio.Entidades.Cliente CargarObjetoCliente()
+        {
+
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+            try
+            {
+                cliente.Direccion = new Direccion();
+
+                cliente.Telefono = new TelefonoTrabajo[3];
+
+                cliente.Telefono[0] = new TelefonoTrabajo();
+                cliente.Telefono[0].Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
+                cliente.Telefono[0].Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
+                cliente.Telefono[0].Tipo = "Trabajo";
+
+                if (!_vista.CodCelular.Text.Equals("") && !_vista.TelefonoCelular.Text.Equals(""))
+                {
+                    cliente.Telefono[1] = new TelefonoTrabajo();
+                    cliente.Telefono[1].Codigoarea = int.Parse((string)_vista.CodCelular.Text);
+                    cliente.Telefono[1].Numero = int.Parse((string)_vista.TelefonoCelular.Text);
+                    cliente.Telefono[1].Tipo = "Celular";
+                }
+
+                if (!_vista.CodFax.Text.Equals("") && !_vista.TelefonoFax.Text.Equals(""))
+                {
+                    cliente.Telefono[2] = new TelefonoTrabajo();
+                    cliente.Telefono[2].Codigoarea = int.Parse((string)_vista.CodFax.Text);
+                    cliente.Telefono[2].Numero = int.Parse((string)_vista.TelefonoFax.Text);
+                    cliente.Telefono[2].Tipo = "Fax";
+                }
+
+
+
+                cliente.IdCliente = int.Parse((string)_vista.IdCliente.Text);
+
+
+                cliente.Rif = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString();
+
+                cliente.Nombre = _vista.NombreCliente.Text;
+
+                cliente.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
+
+                cliente.Direccion.Avenida = _vista.CalleAvenidaCliente.Text;
+
+                cliente.Direccion.Urbanizacion = _vista.UrbanizacionCliente.Text;
+
+                cliente.Direccion.Edif_Casa = _vista.EdificioCasaCliente.Text;
+
+                cliente.Direccion.Oficina = _vista.PisoApartamentoCliente.Text;
+
+                cliente.Direccion.Ciudad = _vista.CiudadCliente.Text;
+
+                cliente.AreaNegocio = _vista.AreaNegocioCliente.Text;
+
+            }
+            catch (WebException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
+                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (AgregarClienteLNException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorIngresar"),
+                    ManagerRecursos.GetString("mensajeErrorIngresar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+
+            return cliente;
+        }
 
 
         public IList<Core.LogicaNegocio.Entidades.Cliente>
@@ -272,14 +374,15 @@ namespace Presentador.Cliente.Vistas
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
 
+
             IList<Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
 
             cliente.Rif = rif;
 
             listacliente = ConsultarClienteRif(cliente);
-
+            cliente = listacliente[0];
             //Carga datos en la vista
-            CargarDatos(listacliente[0]);
+            CargarDatos(cliente);
             CambiarVista(1);
 
         }
@@ -287,6 +390,7 @@ namespace Presentador.Cliente.Vistas
 
         public void uxObjectConsultaClienteDeleting(string rif)
         {
+
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
 
             IList<Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
@@ -294,6 +398,7 @@ namespace Presentador.Cliente.Vistas
             cliente.Rif = rif;
 
             listacliente = ConsultarClienteRif(cliente);
+
             EliminarCliente(listacliente[0]);
 
         }
@@ -309,83 +414,29 @@ namespace Presentador.Cliente.Vistas
             OnBotonBuscar();
         }
 
+
+        public void DesactivarCliente()
+        {
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+            cliente = CargarObjetoCliente();
+            EliminarCliente(cliente);
+
+            _vista.PintarInformacion(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
+            _vista.InformacionVisible = true;
+            LimpiarFormulario();
+            _vista.Agregar.Visible = false;
+            _vista.BotonVolver.Visible = true;
+
+        }
+
+
         public void ActualizarCliente()
         {
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-            try
-            {
-                cliente.Direccion = new Direccion();
 
-                cliente.Telefono = new TelefonoTrabajo[3];
+            cliente = CargarObjetoCliente();
 
-                cliente.Telefono[0] = new TelefonoTrabajo();
-                cliente.Telefono[0].Codigoarea = int.Parse((string)_vista.CodigoTrabajoCliente.Text);
-                cliente.Telefono[0].Numero = int.Parse((string)_vista.TelefonoTrabajoCliente.Text);
-                cliente.Telefono[0].Tipo = "Trabajo";
-
-                if (!_vista.CodCelular.Text.Equals("") && !_vista.TelefonoCelular.Text.Equals(""))
-                {
-                    cliente.Telefono[1] = new TelefonoTrabajo();
-                    cliente.Telefono[1].Codigoarea = int.Parse((string)_vista.CodCelular.Text);
-                    cliente.Telefono[1].Numero = int.Parse((string)_vista.TelefonoCelular.Text);
-                    cliente.Telefono[1].Tipo = "Celular";
-                }
-
-                if (!_vista.CodFax.Text.Equals("") && !_vista.TelefonoFax.Text.Equals(""))
-                {
-                    cliente.Telefono[2] = new TelefonoTrabajo();
-                    cliente.Telefono[2].Codigoarea = int.Parse((string)_vista.CodFax.Text);
-                    cliente.Telefono[2].Numero = int.Parse((string)_vista.TelefonoFax.Text);
-                    cliente.Telefono[2].Tipo = "Fax";
-                }
-
-
-
-                cliente.IdCliente = int.Parse((string)_vista.IdCliente.Text);
-
-
-                cliente.Rif = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString();
-
-                cliente.Nombre = _vista.NombreCliente.Text;
-
-                cliente.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
-
-                cliente.Direccion.Avenida = _vista.CalleAvenidaCliente.Text;
-
-                cliente.Direccion.Urbanizacion = _vista.UrbanizacionCliente.Text;
-
-                cliente.Direccion.Edif_Casa = _vista.EdificioCasaCliente.Text;
-
-                cliente.Direccion.Oficina = _vista.PisoApartamentoCliente.Text;
-
-                cliente.Direccion.Ciudad = _vista.CiudadCliente.Text;
-
-                cliente.AreaNegocio = _vista.AreaNegocioCliente.Text;
-
-                Actualizar(cliente);
-
-            }
-            catch (WebException e)
-            {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorWeb"),
-                    ManagerRecursos.GetString("mensajeErrorWeb"), e.Source, e.Message + "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
-            }
-            catch (AgregarClienteLNException e)
-            {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorIngresar"),
-                    ManagerRecursos.GetString("mensajeErrorIngresar"), e.Source, e.Message + "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
-            }
-            catch (Exception e)
-            {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
-                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
-                _vista.DialogoVisible = true;
-
-            }
+            Actualizar(cliente);
 
             _vista.PintarInformacion(ManagerRecursos.GetString("ClienteModificacionExitosa"), "confirmacion");
             _vista.InformacionVisible = true;
