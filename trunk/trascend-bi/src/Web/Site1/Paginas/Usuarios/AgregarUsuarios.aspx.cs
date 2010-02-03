@@ -65,6 +65,7 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
 
     #endregion
 
+    #region Propiedades
     public Label CorreoEnviado
     {
         get { return uxCorreEnviado; }
@@ -161,6 +162,7 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
         get { return uxCBLReporte; }
         set { uxCBLReporte = value; }
     }
+    #endregion
 
     #endregion
 

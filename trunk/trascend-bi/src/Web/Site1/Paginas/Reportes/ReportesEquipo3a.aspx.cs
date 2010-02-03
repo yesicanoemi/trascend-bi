@@ -18,6 +18,8 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
 
     private ReporteGastoAnualPresenter _presentador;
 
+    private ReporteGastoAnualPresenter _presenter;
+
     #endregion
 
     #region Informacion Basica
@@ -71,11 +73,21 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
         Core.LogicaNegocio.Entidades.Usuario usuario =
            (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
+        Core.LogicaNegocio.Entidades.Permiso _permiso = new
+            Core.LogicaNegocio.Entidades.Permiso();
+
+        _presenter = new ReporteGastoAnualPresenter();
+
+        _permiso = _presenter.ConsultarIdPermiso();
+
+        int idPermiso = _permiso.IdPermiso;
+            
+
         bool permiso = false;
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 37)
+            if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
             {
                 i = usuario.PermisoUsu.Count;
 

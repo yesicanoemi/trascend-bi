@@ -37,7 +37,7 @@
                             <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
                           
                                 <asp:View ID="ViewConsulta" runat="server">
-                          <span style="text-align:center; font-size:large">
+                          <span style="text-align:center; font-size:small; color:Red">
                                     <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
                                                     Visible="false" />
                                        
