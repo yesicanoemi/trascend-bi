@@ -187,7 +187,7 @@
                                  Width="275px" CellPadding="4" ForeColor="White" Font-Size="Small" 
                                         GridLines="None" Font-Names="Verdana" Font-Color="White"  >     
                                     <headerstyle backcolor="#FFBC40"            forecolor="White" Font-Bold="True" 
-                                        HorizontalAlign="Center"/>
+                                        HorizontalAlign="Left"/>
 
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                     <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
@@ -213,7 +213,7 @@
                                         onpageindexchanging="uxMuestraDireccion_PageIndexChanging" Width="275px" 
                                         Font-Names="Verdana">
                                         <headerstyle backcolor="#FFBC40" Font-Bold="True" forecolor="White" 
-                                            HorizontalAlign="Center" />
+                                            HorizontalAlign="Left" />
                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                         <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
                                         <RowStyle BackColor="#EFF3FB" />
@@ -231,7 +231,7 @@
                                         <EditRowStyle BackColor="#EFF3FB" />
                                         <AlternatingRowStyle BackColor="White" />
                                     </asp:DetailsView>
-                                    <br />
+                   
                                     <asp:GridView ID="uxMuestraTelefono" runat="server" AllowPaging="True" 
                                         AutoGenerateColumns="False" CellPadding="4" DataKeyNames="codigoarea" 
                                         DataSourceID="uxObjectConsultaTelefono" Font-Names="Verdana"
@@ -257,7 +257,47 @@
                                         <EditRowStyle BackColor="#2461BF" />
                                         <AlternatingRowStyle BackColor="White" />
                                     </asp:GridView>
-                                
+                               
+                                     
+                                     
+                                     
+                                    <asp:Label ID="Label1" runat="server" Text="Contactos" BackColor="#FFBC40" 
+                                        Font-Names="Verdana" Font-Size="9pt" Width="275px"></asp:Label>
+          
+                                       <asp:GridView ID="uxConsultaContacto" runat="server" AllowPaging="True" 
+                                        AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdContacto" 
+                                        DataSourceID="uxObjectConsultaContacto" Font-Names="Verdana"
+                                        Font-Size="Small" ForeColor="#333333" GridLines="Both" Width="275px" 
+                                        HorizontalAlign="Center">
+                                        <RowStyle BackColor="#EFF3FB" ForeColor="White" Font-Bold="True" HorizontalAlign="Center"/>
+                                        <headerstyle backcolor="#33CCCC" Font-Bold="True" forecolor="#33CCCC" />
+                                         <Columns>
+                                            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                            <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                                            <asp:TemplateField HeaderText="Teléfono" AccessibleHeaderText="Telefono">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label2" runat="server" 
+                                                    Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
+                                                    <asp:Label ID="L2" runat="server" 
+                                                    Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Numero") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField> 
+                                            
+                                        </Columns>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <EmptyDataTemplate>
+                                            <center>
+                                                <span>No hay contactos asociados al cliente</span>
+                                            </center>
+                                        </EmptyDataTemplate>
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderStyle BackColor="#0066FF" />
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <AlternatingRowStyle BackColor="White" />
+                                    </asp:GridView>
+                                    
+                                    
                                 </td>
                                    <td>&nbsp;</td>
                           </tr>
@@ -305,7 +345,7 @@
 		<pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 
         
         <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaTelefono" DataObjectTypeName="Core.LogicaNegocio.Entidades.TelefonoTrabajo" />  
-        
+        <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaContacto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Contacto" /> 
     </form>
         
     </form>
