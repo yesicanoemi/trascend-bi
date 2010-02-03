@@ -9,6 +9,7 @@ using Core.LogicaNegocio.Comandos;
 using System.Net;
 using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Excepciones.Facturas.LogicaNegocio;
+using Core.LogicaNegocio.Excepciones;
 
 
 namespace Presentador.Factura.Vistas
@@ -53,7 +54,21 @@ namespace Presentador.Factura.Vistas
                     
                 }
             }
-            catch (Exception e){ }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
 
 
             try
@@ -76,7 +91,21 @@ namespace Presentador.Factura.Vistas
                     _vista.MultiViewFacturas.ActiveViewIndex = 0;
                 }
             }
-            catch (Exception e) { }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
         }
 
         public void CargarDatos()
@@ -102,6 +131,15 @@ namespace Presentador.Factura.Vistas
                 _vista.MultiViewFacturas.Visible = true;
                 _vista.MultiViewFacturas.ActiveViewIndex = 1;
             }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
             catch (Exception e)
             {
                 _vista.Pintar(e.Message);
@@ -113,30 +151,5 @@ namespace Presentador.Factura.Vistas
         {
             return fecha.ToShortDateString();
         }
-
-
-
-        /// <summary>
-        /// Metodo que recibo un string y devuelve un objeto datetim con el formato DD/MM/AAAA
-        /// </summary>
-        /// <param name="fecha">string de fecha en formato MM/DD/AAAA</param>
-        /// <returns>Datetime</returns>
-        public DateTime ConvertirToFecha(string fecha)
-        {
-            string[] str = fecha.Split('/');
-            return new DateTime(Convert.ToInt32(str[2]), Convert.ToInt32(str[1]), Convert.ToInt32(str[0]));
-
-        }
-
-
-
-        public void InhabilitarCampos()
-        {
-
-        }
-
-   
     }
-
-
 }

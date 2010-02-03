@@ -38,8 +38,7 @@
                                     </asp:RadioButtonList>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="uxParametroTexto" runat="server"></asp:TextBox>
-                                    <asp:TextBox ID="uxParametroTexto2" Visible="false" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="uxParametroTexto" runat="server"></asp:TextBox>                                    
                                     <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"                                                                             
                                         CompletionListCssClass="list"
                                         CompletionListHighlightedItemCssClass="hoverlistitem" 
@@ -52,10 +51,21 @@
                                         ValidChars="' '" ID="FilteredTextBoxExtender1" runat="server">
                                     </AjaxControlToolkit:FilteredTextBoxExtender>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="uxParametroTexto"
-                                        ErrorMessage="<%$ Resources:DSU, FaltaParametroBusqueda%>" Font-Size="Smaller"
+                                        ErrorMessage="<%$ Resources:DSU, FaltaNombrePropuesta%>" Font-Size="Smaller"
                                         Display="None" />
                                     <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
                                         TargetControlID="RequiredFieldValidator1" />
+                                        
+                                    <asp:TextBox ID="uxParametroTexto2" Visible="false" runat="server"></asp:TextBox>    
+                                    <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxParametroTexto2" FilterType="Numbers"
+                                        ID="FilteredTextBoxExtender2" runat="server">
+                                    </AjaxControlToolkit:FilteredTextBoxExtender>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxParametroTexto2"
+                                        ErrorMessage="<%$ Resources:DSU, FaltaNumeroFactura%>" Font-Size="Smaller"
+                                        Display="None" />
+                                    <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender2"
+                                        TargetControlID="RequiredFieldValidator2" />
+                                        
                                 </td>
                                 <td>
                                     &nbsp;&nbsp;

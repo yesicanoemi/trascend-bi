@@ -128,11 +128,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error de SQL consultando la factura por el nombre de la propuesta en la Base de Datos", e);
+                throw new Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos.ConsultarFacturaADException("Error SQL consultando factura por el nombre de la propuesta en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarException("Error consultando la factura por el ID de la propuesta en la Base de Datos", e);
+                throw new ConsultarException("Error consultando la factura por el nombre de la propuesta en la Base de Datos", e);
             }
 
             return facturas;
@@ -271,12 +271,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new ConsultarException("Error de SQL consultando una factura", e);
+                throw new ConsultarException("Error de SQL consultando una factura en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarException("Error consultando la factura", e);
+                throw new ConsultarException("Error consultando la factura en la Base de Datos", e);
             }
+
             return factura;
         }
 
@@ -396,7 +397,7 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (Exception e)
             {
-                throw new IngresarException("Error insertando factura en la Base de Datos", e);
+                throw new IngresarException("Error insertando la factura en la Base de Datos", e);
             }
         }
 
@@ -512,11 +513,11 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new ConsultarException("Error SQL al consultar los estados", e);
+                throw new ConsultarException("Error SQL al consultar los estados en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new ConsultarException("Error al consultar los estados", e);
+                throw new ConsultarException("Error al consultar los estados en la Base de Datos", e);
             }
 
             return estados;

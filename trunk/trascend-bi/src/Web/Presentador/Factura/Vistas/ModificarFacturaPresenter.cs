@@ -55,6 +55,11 @@ namespace Presentador.Factura.Vistas
                 _vista.DetalleFactura.DataBind();
 
             }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
             catch (ConsultarException e)
             {
                 _vista.Pintar(e.Message);
@@ -80,7 +85,12 @@ namespace Presentador.Factura.Vistas
                 _vista.Pintar("Cambio ejecutado con éxito");
                 _vista.MensajeVisible = true;
             }
-            catch (ConsultarException e)
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
+            catch (ModificarException e)
             {
                 _vista.Pintar(e.Message);
                 _vista.MensajeVisible = true;
@@ -105,12 +115,17 @@ namespace Presentador.Factura.Vistas
                     _vista.Estado.Items.Add(estados[i].ToString());
                 }
             }
-            catch (ConsultarException e) 
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
+            catch (ConsultarException e)
             {
                 _vista.Pintar(e.Message);
                 _vista.MensajeVisible = true;
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 _vista.Pintar(e.Message);
                 _vista.MensajeVisible = true;

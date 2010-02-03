@@ -139,8 +139,21 @@ namespace Presentador.Factura.Vistas
                     _vista.Estado.Items.Add(estados[i].ToString());
                 }
             }
-            catch (ConsultarException e) { }
-            catch (Exception e) { }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
         }
 
 
@@ -156,18 +169,7 @@ namespace Presentador.Factura.Vistas
             {
                 _vista.Monto.Text = ((_propuesta.MontoTotal * float.Parse(_vista.Porcentaje.Text)) / 100).ToString();
             }
-        }
-
-        public void InhabilitarCampos()
-        {
-
-        }
-
-        
-   
-
-        
+        } 
     }
-
 
 }
