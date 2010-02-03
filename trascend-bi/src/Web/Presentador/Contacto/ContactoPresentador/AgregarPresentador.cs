@@ -12,11 +12,12 @@ using Presentador.Base;
 
 namespace Presentador.Contacto.ContactoPresentador
 {
-    public class AgregarPresentador: PresentadorBase
+    public class AgregarPresentador : PresentadorBase
     {
         #region Propiedades
 
         private IAgregarContacto _vista;
+        private string campoVacio = "";
 
         #endregion
 
@@ -39,7 +40,7 @@ namespace Presentador.Contacto.ContactoPresentador
         {
             Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
             Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-         
+
 
             try
             {
@@ -52,7 +53,7 @@ namespace Presentador.Contacto.ContactoPresentador
                 contacto.TelefonoDeTrabajo.Numero = int.Parse(_vista.TextBoxTelfOficina.Text);
                 contacto.TelefonoDeTrabajo.Codigoarea = int.Parse(_vista.TextBoxCodOficina.Text);
 
-              
+
                 cliente.Nombre = _vista.Valor.Text;
 
                 IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = ConsultarClienteNombre(cliente);
@@ -88,6 +89,31 @@ namespace Presentador.Contacto.ContactoPresentador
             }
         }
 
+
+        public void limpiarRegistro()
+        {
+            _vista.TextBoxNombreContacto.Text = campoVacio;
+            _vista.TextBoxApellidoContacto.Text = campoVacio;
+            _vista.TextBoxAreaNegocio.Text = campoVacio;
+            _vista.TextBoxCargoContacto.Text = campoVacio;
+            _vista.TextBoxCodCelular.Text = campoVacio;
+            _vista.TextBoxCodOficina.Text = campoVacio;
+            _vista.TextBoxTelfCelular.Text = campoVacio;
+            _vista.TextBoxTelfOficina.Text = campoVacio;
+            _vista.Valor.Text = campoVacio;
+
+        }
+
+        public void NuevaInsercion()
+        {
+            limpiarRegistro();
+            _vista.InformacionVisible = false;
+            _vista.InsertarOtroC.Visible = false;
+            _vista.Insertar.Visible = true;
+        }
+
+
+
         #endregion
 
         #region Comandos
@@ -99,40 +125,40 @@ namespace Presentador.Contacto.ContactoPresentador
 
             Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoNombreApellido ConsultarContacto;
 
-             IList<Core.LogicaNegocio.Entidades.Contacto> Contactos = 
-                 new List<Core.LogicaNegocio.Entidades.Contacto>();
+            IList<Core.LogicaNegocio.Entidades.Contacto> Contactos =
+                new List<Core.LogicaNegocio.Entidades.Contacto>();
 
-             ConsultarContacto= Core.LogicaNegocio.Fabricas.FabricaComandosContacto.
-                 CrearComandoConsultarContactoNombreApellido(_contacto);
+            ConsultarContacto = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.
+                CrearComandoConsultarContactoNombreApellido(_contacto);
 
-             Contactos = ConsultarContacto.Ejecutar();
+            Contactos = ConsultarContacto.Ejecutar();
 
-             if (Contactos.Count == 0)
-             {
+            if (Contactos.Count == 0)
+            {
 
-                 ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
+                ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
 
-                 ingresar.Ejecutar();
+                ingresar.Ejecutar();
 
-                 if (imprime == true)
-                 {
-                     _vista.PintarInformacion(ManagerRecursos.GetString
-                     ("MensajeContactoAgregado"), "mensajes");
-                     _vista.InformacionVisible = true;
-                 }
+                if (imprime == true)
+                {
+                    _vista.PintarInformacion(ManagerRecursos.GetString
+                    ("MensajeContactoAgregado"), "mensajes");
+                    _vista.InformacionVisible = true;
+                }
 
-             }
+            }
 
-             else
-             {
-                 if (imprime == true)
-                 {
-                     _vista.PintarInformacion2(ManagerRecursos.GetString
-                     ("MensajeContactoExistente"), "mensajes");
-                     _vista.InformacionVisible2 = true;
-                 }
+            else
+            {
+                if (imprime == true)
+                {
+                    _vista.PintarInformacion2(ManagerRecursos.GetString
+                    ("MensajeContactoExistente"), "mensajes");
+                    _vista.InformacionVisible2 = true;
+                }
 
-             }
+            }
         }
 
 
