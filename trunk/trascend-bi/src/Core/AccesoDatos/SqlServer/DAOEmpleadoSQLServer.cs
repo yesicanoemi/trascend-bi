@@ -643,8 +643,8 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@Cedula", SqlDbType.VarChar);
-                arParms[0].Value = emp.Cedula;
+                arParms[0] = new SqlParameter("@id", SqlDbType.VarChar);
+                arParms[0].Value = emp.Id;
                 result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "EliminarEmpleado", arParms);
             }
             catch (SqlException e)
