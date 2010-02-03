@@ -23,6 +23,25 @@ public partial class Paginas_Empleados_ConsultarEmpleados : PaginaBase, IConsult
         set { opcion1 = value; }
     }
 
+    public RequiredFieldValidator ValidacionCedula
+    {
+        get { return RequiredFieldValidator2; }
+        set { RequiredFieldValidator2 = value; }
+    }
+
+    public RegularExpressionValidator ERCedula
+    {
+        get { return RegularExpressionValidator1; }
+        set { RegularExpressionValidator1 = value; }
+     
+    }
+
+    public Label MensajeConsulta
+    {
+        get { return Label1; }
+        set { Label1 = value; }
+    }
+
     /*public DropDownList SeleccionCargo
     {
         get { return uxSeleccion; }

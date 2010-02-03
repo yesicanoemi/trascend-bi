@@ -52,7 +52,7 @@ namespace Presentador.Empleado.Vistas
 
                 comprobar = comprobarCedula(empleado.Cedula);
 
-                if (comprobar == 0)
+                if (comprobar > 0)
                     throw new Core.LogicaNegocio.Excepciones.Empleados.LogicaNegocio.AgregarEmpleadoLNException();
 
                 empleado.Cuenta = _vista.CuentaEmpleado.Text;

@@ -9,6 +9,9 @@ namespace Presentador.Empleado.Contrato
 {
     public interface IConsultarEmpleado
     {
+        Label MensajeConsulta { get; set; }
+        RegularExpressionValidator ERCedula { get; set; }
+        RequiredFieldValidator ValidacionCedula { get; set; }
         TextBox ParametroCedula{ get; set;}
         RadioButtonList opcion { get; set; }
         //DropDownList SeleccionCargo { get; set; }

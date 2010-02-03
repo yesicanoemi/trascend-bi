@@ -1,18 +1,3 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
@@ -34,6 +19,12 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE dbo.Direccion SET Calle=@calle,Avenida=@avenida,Urbanizacion=@urbanizacion,EdifCasa=@edif,PisoApto=@piso,Ciudad=@ciudad WHERE IdEmpleado = @cedula
+	UPDATE dbo.Direccion 
+    SET Calle=@calle,
+    Avenida=@avenida,
+    Urbanizacion=@urbanizacion,
+    EdifCasa=@edif,
+    PisoApto=@piso,
+    Ciudad=@ciudad 
+    WHERE IdEmpleado = (SELECT IdEmpleado from Empleado where Empleado.CIEmpleado=@cedula)
 END
-GO

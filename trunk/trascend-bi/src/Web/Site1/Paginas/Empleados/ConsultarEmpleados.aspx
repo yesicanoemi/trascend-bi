@@ -1,4 +1,12 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" CodeFile="ConsultarEmpleados.aspx.cs" Inherits="Paginas_Empleados_ConsultarEmpleados" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true" 
+CodeFile="ConsultarEmpleados.aspx.cs" Inherits="Paginas_Empleados_ConsultarEmpleados" %>
+
+ <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
+
+<%@ Register Src="~/ControlesBase/DialogoError.ascx" TagName="DialogoError" TagPrefix="uc1" %>
+
+
+<%@ Register Src="~/ControlesBase/MensajeInformacion.ascx" TagName="MensajeInformacion" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav"> 
@@ -62,15 +70,41 @@
       <tr>
         <td align="left" width="50%">
             <asp:TextBox ID="uxParametro" runat="server" Visible="false">
+     
             </asp:TextBox><asp:TextBox ID="uxParametroCedula" runat="server" Visible="false">
             </asp:TextBox>  <asp:DropDownList ID="listaCargo" runat="server" Visible="false"> </asp:DropDownList>
         </td>
       </tr>
       <tr>
-        <td>&nbsp;</td>
+        <td>        
+        <asp:RegularExpressionValidator Display="Static" ID="RegularExpressionValidator1"
+        runat="server" ErrorMessage="<%$Resources:DSU, ErrorFormatoNumCedula%>"
+        ControlToValidate="uxParametroCedula" ValidationExpression="<%$Resources:DSU, ERFormatoNumCedula%>"
+        Font-Size="Smaller">
+        </asp:RegularExpressionValidator>
+                                            
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="uxParametroCedula" 
+        ErrorMessage="<%$ Resources:DSU, FaltaCIEmpleado%>" Font-Size="Smaller"
+        Display="Static" />
+        
+     <AjaxControlToolkit:FilteredTextBoxExtender  
+            runat="server" ID="FilteredTextBoxExtender6" TargetControlID="uxParametro" FilterType="LowercaseLetters, 
+             UppercaseLetters">
+     </AjaxControlToolkit:FilteredTextBoxExtender>
+     
+     <AjaxControlToolkit:FilteredTextBoxExtender  
+            runat="server" ID="FilteredTextBoxExtender1" TargetControlID="uxParametroCedula" FilterType="Custom, Numbers">
+     </AjaxControlToolkit:FilteredTextBoxExtender>
+     
+     
+
+     </td>
       </tr>
       <tr>
-        <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" onclick="uxBotonAceptar_Click" Visible="false"/></td>
+        <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="Buscar" onclick="uxBotonAceptar_Click" Visible="false"/></td>
+      </tr>
+      <tr>
+            <td>&nbsp;</td>
       </tr>
 	   <tr>
         <td align="center"><asp:Label ID="Label1" runat="server" Text = "Introduzca" Visible = "False" /></td>
@@ -93,7 +127,7 @@
          
          <EmptyDataTemplate>
            <center>
-             <span>No hay data cargada </span>
+             <span></span>
            </center>
          </EmptyDataTemplate>
        </asp:GridView></td>

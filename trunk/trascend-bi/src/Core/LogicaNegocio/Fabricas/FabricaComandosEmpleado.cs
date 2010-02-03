@@ -19,7 +19,7 @@ namespace Core.LogicaNegocio.Fabricas
             return new Modificar(empleado);
         }
 
-      
+
         public static ConsultarE CrearComandoConsultarE(IList<Persona> empleado)
         {
             return new ConsultarE(empleado);
@@ -33,6 +33,14 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new ConsultarCargo(cargo);
         }
+
+
+
+        public static ConsultarEstadoEmpleado CrearComandoConsultarEstados()
+        {
+            return new ConsultarEstadoEmpleado();
+        }
+
 
         public static ConsultarPorCI CrearComandoConsultarPorCI(Empleado empleado)
         {
@@ -79,12 +87,12 @@ namespace Core.LogicaNegocio.Fabricas
         public static ELiminarConsultarPorNombre CrearComandoEliminarConsultarPorNombre(Empleado empleado)
         {
             return new ELiminarConsultarPorNombre(empleado);
-     }
+        }
 
         public static EliminarConsultarPorCargo CrearComandoEliminarConsultarPorCargo(Empleado empleado)
         {
             return new EliminarConsultarPorCargo(empleado);
-     } 
+        }
 
     }
 }
