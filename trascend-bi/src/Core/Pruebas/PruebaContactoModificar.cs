@@ -71,9 +71,9 @@ namespace Core.Pruebas
             Assert.AreEqual(comparar.Apellido, contacto.Apellido);
             Assert.AreEqual(comparar.AreaDeNegocio, contacto.AreaDeNegocio);
             Assert.AreEqual(comparar.Cargo, contacto.Cargo);
-            Assert.AreEqual(comparar.TelefonoDeCelular.Codigocel, contacto.TelefonoDeCelular.Codigocel);
-            Assert.AreEqual(comparar.TelefonoDeCelular.Numero, contacto.TelefonoDeCelular.Numero);
-            Assert.AreEqual(comparar.TelefonoDeCelular.Tipo, contacto.TelefonoDeCelular.Tipo);
+            Assert.AreEqual(comparar.TelefonoDeTrabajo.Codigoarea, contacto.TelefonoDeCelular.Codigocel);
+            Assert.AreEqual(comparar.TelefonoDeTrabajo.Numero, contacto.TelefonoDeCelular.Numero);
+            Assert.AreEqual(comparar.TelefonoDeTrabajo.Tipo, contacto.TelefonoDeCelular.Tipo);
 
         }
     }
