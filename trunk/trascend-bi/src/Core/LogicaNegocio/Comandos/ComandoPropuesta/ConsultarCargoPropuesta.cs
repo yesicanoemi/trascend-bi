@@ -36,7 +36,7 @@ namespace Core.LogicaNegocio.Comandos.ComandoPropuesta
             IDAOCargo iDAOCargo = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
 
             //CargoSQLServer bd = new CargoSQLServer();
-            return iDAOCargo.ConsultarCargos();
+            return iDAOCargo.ConsultarCargosPropuesta();
         }
     }
 }

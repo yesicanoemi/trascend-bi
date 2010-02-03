@@ -32,5 +32,11 @@ namespace Core.AccesoDatos.Interfaces
         /// </summary>
         /// <param name="IdCargo">Id del cargo a eliminar</param>
         void EliminarCargo(int IdCargo);
+
+        /// <summary>
+        /// Metodo para consultar todos los cargos del sistema
+        /// </summary>
+        /// <returns>Una IList de entidades que contienen todos los cargos</returns>
+        IList<Entidad> ConsultarCargosPropuesta();
     }
 }
