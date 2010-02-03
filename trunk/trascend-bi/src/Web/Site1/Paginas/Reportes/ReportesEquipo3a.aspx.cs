@@ -12,9 +12,6 @@ using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Reportes.Contrato;
 using Presentador.Reportes.Vistas;
 
-
-
-
 public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGastoAnual
 {
     #region Propiedades
@@ -62,7 +59,7 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
     
     #endregion
 
-
+    #region Metodos
     public void Mensaje(string msg)
     {
         uxAviso.Visible = true;
@@ -106,5 +103,16 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
     {
         _presentador.OnBotonBuscar();
     }
+    protected void uxReporteGastos3a_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
+    }
+
+    protected void uxReporteGastos3a_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    #endregion
 }
 

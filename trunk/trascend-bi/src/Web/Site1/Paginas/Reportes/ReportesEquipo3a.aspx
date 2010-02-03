@@ -86,7 +86,7 @@
       <td>
         <asp:GridView runat="server" ID="uxReporteGastos3a"  AutoGenerateColumns="false" 
                         DataKeyNames="Codigo" AllowPaging="True" Width="500px" PageSize="10" ShowFooter="true"
-                        DataSourceID="uxObjectReporte3a">
+                        DataSourceID="uxObjectReporte3a" OnRowDataBound="uxReporteGastos3a_RowDataBound">
              <Columns>
                 <asp:BoundField ItemStyle-HorizontalAlign="center" HeaderText="Id Gasto" DataField="Codigo" />
                 <asp:BoundField ItemStyle-HorizontalAlign="center" HeaderText="Fecha" DataField="fechaGasto" />
