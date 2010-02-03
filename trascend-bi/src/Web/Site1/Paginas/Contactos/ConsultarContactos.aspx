@@ -132,8 +132,7 @@
                                         Width="70%" Font-Names="Verdana" Font-Size="Smaller" 
                                         OnSelectedIndexChanging="SelectContacto" 
                                         onrowdatabound="uxGridView_RowDataBound"
-                                        style="left:250px; POSITION: absolute; TOP: 300px;" 
-                                        onselectedindexchanged="uxConsultaContacto_SelectedIndexChanged">
+                                        style="left:250px; POSITION: absolute; TOP: 300px;">
                                         <RowStyle HorizontalAlign="Center" />  
                                         <Columns>
                                             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
