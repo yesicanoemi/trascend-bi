@@ -777,6 +777,66 @@ namespace Core.AccesoDatos.SqlServer
 
         #endregion
 
+        #region ReporteAnualPorPaquetesEmpleadoId
+
+        /// <summary>
+        /// Metodo para consultar ReporteAnualPorPaquetesEmpleadoIdo
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
+        /// <returns>Empleado que coincida con el criterio</returns>
+
+        public Empleado ReporteAnualPorPaquetesEmpleadoId(Empleado entidad)
+        {
+            Empleado empleado = new Empleado();
+
+            try
+            {
+                //Parametros de busqueda
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@CodigoArea", SqlDbType.Int);
+
+                arParms[0].Value = empleado.Id;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ReporteAnualPorPaquetesEmpleadoId_3", arParms);
+
+                while (reader.Read())
+                {
+                    Empleado _empleado = new Empleado();
+
+                    _empleado.Nombre = (string)reader.GetValue(0);
+
+                    _empleado.Apellido = (string)reader.GetValue(1);
+
+                    _empleado.Estado = (int)reader.GetValue(2);
+
+                    _empleado.Cargo = (string)reader.GetValue(3);
+
+                    _empleado.SueldoBase = (float)reader.GetValue(4);
+
+                    _empleado.Cedula = (int)reader.GetValue(5);
+
+                    empleado = _empleado;
+                }
+
+                return empleado;
+
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarException("Error SQL al consultar el Reporte", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar el Reporte", e);
+            }
+
+        }
+
+        #endregion
+
         #endregion
 
     }

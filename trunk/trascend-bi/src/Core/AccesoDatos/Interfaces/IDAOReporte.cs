@@ -30,5 +30,7 @@ namespace Core.AccesoDatos.Interfaces
         Cargo ConsultarEmpleadoCargoAnual(string metodo);
 
         IList<string> ObtenerCargo();
+
+        Empleado ReporteAnualPorPaquetesEmpleadoId(Empleado entidad);
     }
 }
