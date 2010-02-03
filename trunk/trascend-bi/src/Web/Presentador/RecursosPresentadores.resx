@@ -207,4 +207,7 @@
   <data name="mensajeErrorModificar" xml:space="preserve">
     <value>Ha ocurrido un Error trantando de modificar</value>
   </data>
+  <data name="MensajeContactoAgregado" xml:space="preserve">
+    <value>El Contaco ha sido agregado con exito!</value>
+  </data>
 </root>
