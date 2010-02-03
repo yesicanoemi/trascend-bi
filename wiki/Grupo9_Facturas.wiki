@@ -10,26 +10,26 @@ Casos de uso para la Gestión de Facturas y 2 reportes correspondientes a propue
 
 == Detalles ==
 
-    * Generar Factura - Interfaz Gráfico y la implementación MVP (CU-901) - Luis Figueras
-    * Generar Factura - Implementación de los comandos (CU-902) - Alexis Romero
+    * Generar Factura - Interfaz Gráfico y la implementación MVP (CU-901) 
+    * Generar Factura - Implementación de los comandos (CU-902) 
     * Generar Factura - Capa de BD (CU-903) - Jesus Viloria
-    * Consultar Factura - Interfaz Gráfico y la implementación MVP (CU-904) - Luis Figueras
-    * Consultar Factura - Implementación de los comandos (CU-905) - Alexis Romero
-    * Consultar Factura - Capa de BD (CU-906) - Jesus Viloria
-    * Modificar Factura - Interfaz Gráfico y la implementación MVP (CU-913) - Luis Figueras
-    * Modificar Factura - Implementación de los comandos (CU-914) - Alexis Romero
-    * Modificar Factura - Capa de BD (CU-915) - Jesus Viloria
+    * Consultar Factura - Interfaz Gráfico y la implementación MVP (CU-904) 
+    * Consultar Factura - Implementación de los comandos (CU-905) 
+    * Consultar Factura - Capa de BD (CU-906) 
+    * Modificar Factura - Interfaz Gráfico y la implementación MVP (CU-913) 
+    * Modificar Factura - Implementación de los comandos (CU-914)
+    * Modificar Factura - Capa de BD (CU-915)
     
-    * Propuestas emitidas por rango de fechas - Implementacion de comandos (CU-907) - Alexis Romero
-    * Propuestas emitidas por rango de fechas - Interfaz Gráfico e Implementacion de MVP (CU-908) - Alexis Romero y Jesus Viloria
-    * Propuestas emitidas por rango de fechas - Capa de BD (CU-909) - Jesus Viloria
-    * Total de propuestas emitidas anuales - Interfaz Gráfico e Implementacion de MVP (CU-910) - Jesus Viloria
-    * Total de propuestas emitidas anuales - Implementacion de Comandos (CU-911) - Alexis Romero
-    * Total de propuestas emitidas anuales - Capa de BD (CU-912) - Jesus Viloria
+    * Propuestas emitidas por rango de fechas - Implementacion de comandos (CU-907)
+    * Propuestas emitidas por rango de fechas - Interfaz Gráfico e Implementacion de MVP (CU-908) 
+    * Propuestas emitidas por rango de fechas - Capa de BD (CU-909)
+    * Total de propuestas emitidas anuales - Interfaz Gráfico e Implementacion de MVP 
+    * Total de propuestas emitidas anuales - Implementacion de Comandos (CU-911) 
+    * Total de propuestas emitidas anuales - Capa de BD (CU-912) 
 
-    * Manejo de excepciones - Capa de MVP (CU-916) - Luis Figueras
-    * Manejo de excepciones - Capa de Lógica de Negocios (CU-917) - Alexis Romero
-    * Manejo de excepciones - Capa de BD (CU-918) - Jesus Viloria
+    * Manejo de excepciones - Capa de MVP (CU-916) 
+    * Manejo de excepciones - Capa de Lógica de Negocios (CU-917) 
+    * Manejo de excepciones - Capa de BD (CU-918) 
 
 == Casos de uso ==
 
