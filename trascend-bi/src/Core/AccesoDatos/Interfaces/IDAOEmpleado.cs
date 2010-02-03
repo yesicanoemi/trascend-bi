@@ -35,6 +35,12 @@ namespace Core.AccesoDatos.Interfaces
 
         Empleado ConsultarPorCodigo(Empleado emp);
 
+        Empleado EliminarConsultarPorTipoCedula(Empleado emp);
+
+        List<Empleado> EliminarConsultarPorTipoNombre(Empleado emp);
+
+        IList<Empleado> EliminarConsultarPorTipoCargo(Empleado emp);
+
         //sEmpleado ConsultarCargoNuevo(Cargo entidad);
 
     }

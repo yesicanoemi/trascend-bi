@@ -80,14 +80,15 @@
   </tr>
    <tr>
        <td colspan="2"><asp:GridView ID="uxConsultarEmpleado" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultarEmpleado"
-                                            AutoGenerateColumns="False" DataKeyNames ="Nombre" AutoGenerateSelectButton="True"
+                                            AutoGenerateColumns="False" DataKeyNames ="ID" AutoGenerateSelectButton="True"
                                             Width="95%" Font-Names="Verdana" Font-Size="Smaller" PageSize = "10"
                                             OnSelectedIndexChanging="SelectUsuarios">
          <columns>
-         <asp:BoundField HeaderText="Cedula" DataField="Cedula" SortExpression="Cedula" />
+         <asp:BoundField HeaderText="Cedula" DataField="Cedula" SortExpression="Cedula"  />
          <asp:BoundField DataField="Nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="Nombre" />
          <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
          </columns>
+         
          <EmptyDataTemplate>
            <center>
              <span>No hay data cargada </span>

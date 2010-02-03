@@ -457,8 +457,8 @@ namespace Core.AccesoDatos.SqlServer
             {
                 SqlParameter[] arParms = new SqlParameter[1];
 
-                arParms[0] = new SqlParameter("@Cedula", SqlDbType.VarChar);
-                arParms[0].Value = emp.Cedula;
+                arParms[0] = new SqlParameter("@id", SqlDbType.VarChar);
+                arParms[0].Value = emp.Id;
                 result = SqlHelper.ExecuteNonQuery(_conexion.GetConnection(), "EliminarEmpleado", arParms);
             }
             catch (SqlException e)
@@ -537,7 +537,7 @@ namespace Core.AccesoDatos.SqlServer
 
                 _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
 
-                _empleado.SueldoBase = float.Parse(reader["SueldoBase"].ToString());// (float)reader["SueldoBase"];
+                //_empleado.SueldoBase = float.Parse(reader["SueldoBase"].ToString());// (float)reader["SueldoBase"];
 
                 _estadoEmpleado.Nombre = (string)reader["EstadoEmpleado"];
 
@@ -564,6 +564,174 @@ namespace Core.AccesoDatos.SqlServer
             }
 
             return _empleado;
+        }
+
+        public Empleado EliminarConsultarPorTipoCedula(Empleado emp)
+        {
+            SqlParameter[] arParms = new SqlParameter[1];
+
+            Empleado _empleado = new Empleado();
+
+            arParms[0] = new SqlParameter("@ced", SqlDbType.Int);
+            arParms[0].Value = emp.Cedula;
+
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "EliminarConsultarEmpleadoCI", arParms);
+
+            if (reader.Read())
+            {
+
+                Direccion _direccion = new Direccion();
+
+                _empleado.Id = (int)reader["IdEmpleado"];
+
+                _empleado.Cedula = (int)reader["CIEmpleado"];
+
+                _empleado.Nombre = (string)reader["Nombre"];
+
+                _empleado.Apellido = (string)reader["Apellido"];
+
+                _empleado.Cuenta = (string)reader["NumCuenta"];
+
+                _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+
+                _empleado.Estado = (int)reader["Estado"];
+
+                _empleado.Cargo = (string)reader["Expr1"];
+
+                _direccion.Avenida = (string)reader["Avenida"];
+
+                _direccion.Calle = (string)reader["Calle"];
+
+                _direccion.Ciudad = (string)reader["Ciudad"];
+
+                _direccion.Edif_Casa = (string)reader["EdifCasa"];
+
+                _direccion.Piso_apto = (string)reader["PisoApto"];
+
+                _direccion.Urbanizacion = (string)reader["Urbanizacion"];
+
+                _empleado.Direccion = _direccion;
+
+            }
+
+            return _empleado;
+        }
+
+
+        public List<Empleado> EliminarConsultarPorTipoNombre(Empleado emp)
+        {
+            List<Empleado> empleado = new List<Empleado>();
+
+            SqlParameter[] arParms = new SqlParameter[1];
+
+
+
+            arParms[0] = new SqlParameter("@nombre", SqlDbType.VarChar);
+            arParms[0].Value = emp.Nombre;
+
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "ELiminarConsultarPorNombre", arParms);
+            int i = 0;
+
+            while (reader.Read())
+            {
+                Empleado _empleado = new Empleado();
+
+                Direccion _direccion = new Direccion();
+
+                _empleado.Id = (int)reader["IdEmpleado"];
+
+                _empleado.Cedula = (int)reader["CIEmpleado"];
+
+                _empleado.Nombre = (string)reader["Nombre"];
+
+                _empleado.Apellido = (string)reader["Apellido"];
+
+                _empleado.Cuenta = (string)reader["NumCuenta"];
+
+                _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+
+                _empleado.Estado = (int)reader["Estado"];
+
+                _empleado.Cargo = (string)reader["Expr1"];
+
+                _direccion.Avenida = (string)reader["Avenida"];
+
+                _direccion.Calle = (string)reader["Calle"];
+
+                _direccion.Ciudad = (string)reader["Ciudad"];
+
+                _direccion.Edif_Casa = (string)reader["EdifCasa"];
+
+                _direccion.Piso_apto = (string)reader["PisoApto"];
+
+                _direccion.Urbanizacion = (string)reader["Urbanizacion"];
+
+                _empleado.Direccion = _direccion;
+
+                empleado.Insert(i, _empleado);
+                //empleado.Add(_empleado);
+                i++;
+            }
+            return empleado;
+        }
+
+        public IList<Empleado> EliminarConsultarPorTipoCargo(Empleado emp)
+        {
+            List<Empleado> empleado = new List<Empleado>();
+
+
+
+            SqlParameter[] arParms = new SqlParameter[1];
+
+            arParms[0] = new SqlParameter("@cargo", SqlDbType.Int);
+
+            arParms[0].Value = emp.CargoEmpleado;
+
+            DbDataReader reader = SqlHelper.ExecuteReader
+                (_conexion.GetConnection(), "EliminarConsultarEmpleadoCargo", arParms);
+
+            while (reader.Read())
+            {
+
+                Empleado _empleado = new Empleado();
+
+                Direccion _direccion = new Direccion();
+
+                _empleado.Id = (int)reader["IdEmpleado"];
+
+                _empleado.Cedula = (int)reader["CIEmpleado"];
+
+                _empleado.Nombre = (string)reader["Nombre"];
+
+                _empleado.Apellido = (string)reader["Apellido"];
+
+                _empleado.Cuenta = (string)reader["NumCuenta"];
+
+                _empleado.FechaNacimiento = (DateTime)reader["FechaNac"];
+
+                _empleado.Estado = (int)reader["Estado"];
+
+                _empleado.Cargo = (string)reader["Expr1"];
+
+                _direccion.Avenida = (string)reader["Avenida"];
+
+                _direccion.Calle = (string)reader["Calle"];
+
+                _direccion.Ciudad = (string)reader["Ciudad"];
+
+                _direccion.Edif_Casa = (string)reader["EdifCasa"];
+
+                _direccion.Piso_apto = (string)reader["PisoApto"];
+
+                _direccion.Urbanizacion = (string)reader["Urbanizacion"];
+
+                _empleado.Direccion = _direccion;
+
+                empleado.Add(_empleado);
+            }
+            return empleado;
         }
 
         #endregion

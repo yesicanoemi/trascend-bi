@@ -64,5 +64,19 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarPorCodigo(empleado);
         }
 
+        public static EliminarConsultarPorCI CrearComandoEliminarConsultarPorCI(Empleado empleado)
+        {
+            return new EliminarConsultarPorCI(empleado);
+        }
+
+        public static ELiminarConsultarPorNombre CrearComandoEliminarConsultarPorNombre(Empleado empleado)
+        {
+            return new ELiminarConsultarPorNombre(empleado);
+     }
+
+        public static EliminarConsultarPorCargo CrearComandoEliminarConsultarPorCargo(Empleado empleado)
+        {
+            return new EliminarConsultarPorCargo(empleado);
+     } 
     }
 }

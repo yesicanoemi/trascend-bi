@@ -186,7 +186,7 @@ public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminar
 
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
-        _presenter.uxObjectConsultaUsuariosSelecting(uxConsultarEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presenter.uxObjectConsultaUsuariosSelecting(int.Parse(uxConsultarEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString()));
     }
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
