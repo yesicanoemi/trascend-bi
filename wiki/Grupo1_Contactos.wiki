@@ -10,10 +10,10 @@ Gestion de Contacto en el Sistema
 
 = Detalles =
 
-Consultar Contacto(CC-C): Claudio Melcón.<br/>
-Ingresar Contacto(CC-I): Edgar Ruiz.<br/>
-Eliminar Contacto(CC-E): Claudio Melcón.<br/>
-Modificar Contacto(CC-M): Edgar Ruiz.<br/>
+Consultar Contacto(CC-C): Por asignar<br/>
+Ingresar Contacto(CC-I): Sofia Ostos.<br/>
+Eliminar Contacto(CC-E): Daniel Trejo<br/>
+Modificar Contacto(CC-M): Dinangela Rojas.<br/>
 <br/>
 
 
