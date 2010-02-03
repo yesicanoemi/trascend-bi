@@ -70,6 +70,9 @@ namespace Presentador.Factura.Vistas
                 _vista.MontoPagado.Text = MontoPagado.ToString();
                 _vista.MontoRestante.Text = MontoRestante.ToString();
 
+                if (_vista.PorcentajePagado.Text == "100")
+                    throw new ConsultarException("La factura esta 100% pagada");
+
             }
             catch (WebException e)
             {

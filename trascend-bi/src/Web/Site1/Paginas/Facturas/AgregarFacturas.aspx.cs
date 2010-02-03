@@ -159,8 +159,17 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
     {
         lbMensaje.Text = "";
         _presentador.CargarDatosPropuesta();
-        btBotonIngresarFactura.Enabled = true;
-        btBotonIngresarFactura.Visible = true;
+        if (PorcentajePagado.Text == "100")
+        {
+            lbMensaje.Text = "";
+            btBotonIngresarFactura.Enabled = false;
+            btBotonIngresarFactura.Visible = false;
+        }
+        else
+        {
+            btBotonIngresarFactura.Enabled = true;
+            btBotonIngresarFactura.Visible = true;
+        }
     }
 
     protected void btBotonIngresar_Click(object sender, EventArgs e)
