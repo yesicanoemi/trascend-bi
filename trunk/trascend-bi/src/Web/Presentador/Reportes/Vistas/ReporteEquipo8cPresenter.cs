@@ -40,8 +40,8 @@ namespace Presentador.Reportes.Vistas
                 if (facturasPorCobrar != null)
                 {
                     _vista.GetObjectContainerReporte8c.DataSource = facturasPorCobrar;
-                    _vista.LabelContador.Text = _vista.LabelContador.Text;
-                        //+ facturasPorCobrar.Count.ToString;
+                    _vista.LabelContador.Text = _vista.LabelContador.Text
+                        + facturasPorCobrar.Count.ToString();
                     _vista.LabelContador.Visible = true;
                 }
             }
