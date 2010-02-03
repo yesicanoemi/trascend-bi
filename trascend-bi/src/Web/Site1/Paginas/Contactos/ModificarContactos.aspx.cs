@@ -334,7 +334,10 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
         }
         catch (Exception a)
         {
-            Response.Redirect(paginaDefault);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
 
         }
 

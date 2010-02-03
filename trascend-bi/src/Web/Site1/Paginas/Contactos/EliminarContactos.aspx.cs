@@ -272,7 +272,10 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
         }
         catch (Exception a)
         {
-            Response.Redirect(paginaDefault);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
 
         }
 
