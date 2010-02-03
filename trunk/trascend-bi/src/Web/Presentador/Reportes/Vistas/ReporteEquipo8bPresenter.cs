@@ -13,18 +13,20 @@ using System.Threading;
 using System.Globalization;
 using System.Configuration;
 
-
 namespace Presentador.Reportes.Vistas
 {
     //Facturas Cobradas Anuales
     public class ReporteEquipo8bPresenter
     {
         IReporteEquipo8b _vista;
+
         #region Constructor
+
         public ReporteEquipo8bPresenter(IReporteEquipo8b vista)
         {
             _vista = vista;
         }
+
         #endregion
 
         public void onBotonBuscar()
@@ -37,9 +39,11 @@ namespace Presentador.Reportes.Vistas
             {
                 if (facturasCobradas != null)
                 {
+
                     _vista.GetObjectContainerReporte8b.DataSource = facturasCobradas;
-
-
+                    _vista.LabelContador.Text = _vista.LabelContador.Text;
+                            // + facturasCobradas.Count.ToString;
+                  _vista.LabelContador.Visible = true;
                 }
             }
 

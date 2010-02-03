@@ -266,6 +266,8 @@ namespace Core.AccesoDatos.SqlServer
         {
             IList<Core.LogicaNegocio.Entidades.Factura> facturas =
                                                 new List<Core.LogicaNegocio.Entidades.Factura>();
+            try
+            {
 
             SqlParameter[] parametro = new SqlParameter[1];
 
@@ -292,13 +294,22 @@ namespace Core.AccesoDatos.SqlServer
 
                 _factura.Fechaingreso = (DateTime)reader["FechaIngreso"];
 
-               _factura.Estado = (string)reader["Nombre"];
+                _factura.Estado = (string)reader["Nombre"];
 
                 _factura.Fechapago = (DateTime)reader["Fecha"];
 
                 _factura.Procentajepagado = float.Parse(reader["Porcentaje"].ToString());
 
                 facturas.Add(_factura);
+            }
+             }
+            catch (ConsultarException e)
+            {
+                throw new ConsultarException("Error al consultar",e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("error",e);
             }
 
             return facturas;

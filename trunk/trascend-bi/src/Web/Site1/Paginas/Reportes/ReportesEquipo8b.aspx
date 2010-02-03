@@ -71,6 +71,8 @@
         <br />
         <br />
         <br />
+        <asp:Label ID="uxLabelContador" runat="server" Visible="false" Text="Cantidad Facturas: "></asp:Label>
+       <br />
         <asp:GridView ID="uxFacturasCobradas" runat="server" 
             onselectedindexchanged="uxFacturasCobradas_SelectedIndexChanged" DataSourceID="uxObjectReporte8b">
         </asp:GridView>

@@ -30,6 +30,12 @@ public partial class Paginas_Reportes_ReportesEquipo8c : PaginaBase, IReporteEqu
         set { uxObjectReporte8c = value; }
     }
 
+    public Label LabelContador
+    {
+        get { return uxLabelContador; }
+        set { uxLabelContador = value; }
+    }
+
     ReporteEquipo8cPresenter _presenter;
 
     protected void Page_Load(object sender, EventArgs e)
