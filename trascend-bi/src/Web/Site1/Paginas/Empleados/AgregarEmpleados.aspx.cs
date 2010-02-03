@@ -10,7 +10,13 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
 {
     private AgregarEmpleadoPresenter _presentador;
     #region Propiedades
-    
+
+    public MultiView MultiViewPropuesta
+    {
+        get { return uxMultiViewPropuesta; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     #region Informacion Basica
     
 
@@ -104,28 +110,27 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
         set { uxCargoEmpleado = value; }
     }
     
-   /* public Label MensajeError
+   
+#endregion
+    
+     public Label MensajeError
     {
         get { return LabelMensajeError; }
         set { LabelMensajeError = value; }
-    }*/
-    public MultiView MultiViewPropuesta
-    {
-        get { return uxMultiViewPropuesta; }
-        set { throw new System.NotImplementedException(); }
     }
-    #endregion
-
-    #endregion
+   
+    
+    #endregion    
 
     public void Mensaje(string msg)
     {
-       // MensajeError.Text = msg;
-        //MensajeError.Visible = true;
+        MensajeError.Text = msg;
+        MensajeError.Visible = true;
         //Label lbl = new Label();
         //lbl.Text = "<script language='javascript'>" + Environment.NewLine + "window.alert('" + msg + "')</script>";
         //Page.Controls.Add(lbl); 
     }
+
     #region Propiedades del Dialogo
 
     public void Pintar(string codigo, string mensaje, string actor, string detalles)
@@ -151,6 +156,9 @@ public partial class Paginas_Empleados_AgregarEmpleados : PaginaBase, IAgregarEm
     }
 
     #endregion
+
+
+
 
     protected void Page_Init(object sender, EventArgs e)
     {

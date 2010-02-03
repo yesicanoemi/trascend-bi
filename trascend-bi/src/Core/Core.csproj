@@ -122,6 +122,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoContacto\ModificarContacto.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCargoNuevo.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCedula.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarE.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarEmpleado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
@@ -213,8 +214,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LogicaNegocio\Excepciones\EliminarException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Empleados\AccesoDatos\ConsultarEmpleadoBDException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Empleados\AccesoDatos\IngresarEmpleadoBDExepciones.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Empleados\LogicaNegocio\AgregarEmpleadoLNException.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Empleados\LogicaNegocio\ConsultarEmpleadoLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ConsultarFacturaADException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\InsertarFacturaADException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Facturas\AccesoDatos\ModificarFacturaADException.cs" />

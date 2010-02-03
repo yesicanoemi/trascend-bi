@@ -64,6 +64,13 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarPorCodigo(empleado);
         }
 
+
+        public static ConsultarCedula CrearComandoConsultarCedula(int cedula)
+        {
+            return new ConsultarCedula(cedula);
+        }
+
+
         public static EliminarConsultarPorCI CrearComandoEliminarConsultarPorCI(Empleado empleado)
         {
             return new EliminarConsultarPorCI(empleado);
@@ -78,5 +85,6 @@ namespace Core.LogicaNegocio.Fabricas
         {
             return new EliminarConsultarPorCargo(empleado);
      } 
+
     }
 }
