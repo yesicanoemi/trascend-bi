@@ -19,7 +19,9 @@ namespace Presentador.Reportes.Vistas
     public class ReporteEquipo8cPresenter
     {
         private IReporteEquipo8c _vista;
+
         #region Constructor
+
         public ReporteEquipo8cPresenter(IReporteEquipo8c vista)
         {
             _vista = vista;
@@ -38,8 +40,9 @@ namespace Presentador.Reportes.Vistas
                 if (facturasPorCobrar != null)
                 {
                     _vista.GetObjectContainerReporte8c.DataSource = facturasPorCobrar;
-
-
+                    _vista.LabelContador.Text = _vista.LabelContador.Text;
+                        //+ facturasPorCobrar.Count.ToString;
+                    _vista.LabelContador.Visible = true;
                 }
             }
 

@@ -236,7 +236,6 @@ namespace Presentador.Gasto.Vistas
             }
         }
 
-
         public IList<Core.LogicaNegocio.Entidades.Gasto> 
             ConsultarPorTipo(Core.LogicaNegocio.Entidades.Gasto _gasto)
         {
@@ -264,8 +263,7 @@ namespace Presentador.Gasto.Vistas
                 return listaGasto;
             }
         }
-
-
+        
         /// <summary>
         /// Metodo que revisa la seleccion del radio button
         /// </summary>
@@ -342,6 +340,7 @@ namespace Presentador.Gasto.Vistas
                 return listaGasto;
             }
         }
+  
         public IList<Core.LogicaNegocio.Entidades.Gasto> ConsultarPorEstado(Core.LogicaNegocio.Entidades.Gasto _gasto)
         {
             try

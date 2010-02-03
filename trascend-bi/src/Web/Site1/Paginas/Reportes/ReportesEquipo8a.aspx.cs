@@ -59,7 +59,6 @@ public partial class Paginas_Reportes_ReportesEquipo8a : PaginaBase, IReporteEqu
                 _presenter = new ReporteEquipo8aPresenter(this);
 
                 permiso = true;
-
             }
         }
 

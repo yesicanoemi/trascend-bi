@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls;
+
 namespace Presentador.Reportes.Contrato
 {
     //Facturas Emitidas Anuales
@@ -14,7 +15,7 @@ namespace Presentador.Reportes.Contrato
         DropDownList Anios { get; set; }
         ObjectContainerDataSource GetObjectContainerReporte8a { get; set; }
         Label LabelContador { get; set; }
-        //ObjectContainerDataSource
+
         #endregion
     }
 }

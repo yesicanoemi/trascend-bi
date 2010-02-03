@@ -18,14 +18,15 @@ namespace Presentador.Reportes.Vistas
     //Facturas Emitidas Anuales
     public class ReporteEquipo8aPresenter
     {
-
-
         IReporteEquipo8a _vista;
+
         #region Constructor
+
         public ReporteEquipo8aPresenter(IReporteEquipo8a vista)
         {
             _vista = vista;
         }
+
         #endregion
 
         public void BuscarFactura()
@@ -38,8 +39,10 @@ namespace Presentador.Reportes.Vistas
             {
                 if (facturasEmitidas != null)
                 {
+
                     _vista.GetObjectContainerReporte8a.DataSource = facturasEmitidas;
-                    _vista.LabelContador.Text =  _vista.LabelContador.Text + facturasEmitidas.Count.ToString();
+                    _vista.LabelContador.Text =  _vista.LabelContador.Text + 
+                                        facturasEmitidas.Count.ToString();
                     _vista.LabelContador.Visible = true; 
                     
 

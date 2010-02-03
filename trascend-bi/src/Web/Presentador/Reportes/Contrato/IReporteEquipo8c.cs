@@ -11,9 +11,11 @@ namespace Presentador.Reportes.Contrato
     public interface IReporteEquipo8c
     {
         #region Informacion Basica
-            GridView FacturasPorCobrar { get; set; }
-            DropDownList Anios { get; set; }
-            ObjectContainerDataSource GetObjectContainerReporte8c { get; set; }
+        GridView FacturasPorCobrar { get; set; }
+        DropDownList Anios { get; set; }
+        ObjectContainerDataSource GetObjectContainerReporte8c { get; set; }
+        Label LabelContador { get; set; }
+
         #endregion
 
     }
