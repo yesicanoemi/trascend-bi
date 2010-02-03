@@ -84,6 +84,17 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         set { uxMensajeInformacion.Visible = value; }
     }
 
+    public void PintarInformacion2(string mensaje, string estilo)
+    {
+        uxMensajeInformacion2.PintarControl(mensaje, estilo);
+    }
+
+    public bool InformacionVisible2
+    {
+        get { return uxMensajeInformacion.Visible; }
+        set { uxMensajeInformacion2.Visible = value; }
+    }
+
     #endregion
 
     #region Diálogo
@@ -128,24 +139,32 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
 
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
-        {
-            if (usuario.PermisoUsu[i].IdPermiso == 9)
+       try
+       {
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == 9)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new AgregarPresentador(this);
-               
+                    _presentador = new AgregarPresentador(this);
+                   
 
-                permiso = true;
+                    permiso = true;
 
+                }
             }
-        }
 
-        if (permiso == false)
-        {
-            Response.Redirect(paginaSinPermiso);
-        }
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
+            }
+       }
+        catch (Exception a)
+       {
+           Response.Redirect(paginaDefault);
+
+       }
     }
 
     protected void uxValor_TextChanged(object sender, EventArgs e)

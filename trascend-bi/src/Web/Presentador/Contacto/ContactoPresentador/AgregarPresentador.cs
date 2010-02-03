@@ -112,17 +112,24 @@ namespace Presentador.Contacto.ContactoPresentador
 
                  ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
 
-
                  ingresar.Ejecutar();
+
+                 if (imprime == true)
+                 {
+                     _vista.PintarInformacion(ManagerRecursos.GetString
+                     ("MensajeContactoAgregado"), "mensajes");
+                     _vista.InformacionVisible = true;
+                 }
+
              }
 
              else
              {
                  if (imprime == true)
                  {
-                     _vista.PintarInformacion(ManagerRecursos.GetString
+                     _vista.PintarInformacion2(ManagerRecursos.GetString
                      ("MensajeContactoExistente"), "mensajes");
-                     _vista.InformacionVisible = true;
+                     _vista.InformacionVisible2 = true;
                  }
 
              }

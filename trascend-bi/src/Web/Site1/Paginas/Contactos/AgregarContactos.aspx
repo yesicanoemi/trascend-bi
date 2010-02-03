@@ -38,6 +38,12 @@
             <p class="large"> </p>
          
                 <form id="Form1" runat="server">
+                         
+                           <asp:Label ID="Label2" 
+                                           style="left:593px; POSITION: absolute; TOP: 149px; color:Black" 
+                               runat="server">
+                                        <uc2:MensajeInformacion ID="uxMensajeInformacion2" runat="server" Visible="false"/>
+                                     </asp:Label>
                            
                            <asp:Label ID="Label1" 
                                            style="left:593px; POSITION: absolute; TOP: 149px; color:Red" 
@@ -47,8 +53,9 @@
                            
                            <table style="width:100%;">
                                <tr>
-                                   <td>(*) Nombre: </td>
+                                   <td><span style="color:#FF0000">* </span> Nombre: </td>
                                    <td>
+                                        <br />
                                         <asp:TextBox ID="uxNombreContacto" runat="server"></asp:TextBox>
                                          <br />
                                          <asp:RequiredFieldValidator ID="uxValidatorNombre" runat="server" 
@@ -61,8 +68,9 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>(*) Apellido: </td>
+                                   <td><span style="color:#FF0000">* </span> Apellido: </td>
                                    <td>
+                                        <br />
                                         <asp:TextBox ID="uxApellidoContacto" runat="server"></asp:TextBox>
                                         <br />
                                         <asp:RequiredFieldValidator ID="uxValidatorApellido" runat="server" 
@@ -75,8 +83,9 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>(*) Cargo: </td>
+                                   <td><span style="color:#FF0000">* </span> Cargo: </td>
                                    <td>
+                                       <br />
                                        <asp:TextBox ID="uxCargoContacto" runat="server">
                                        </asp:TextBox>
                                        <br />
@@ -90,8 +99,9 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>(*) Area de negocio: </td>
+                                   <td><span style="color:#FF0000">* </span> Area de negocio: </td>
                                    <td>
+                                       <br />
                                        <asp:TextBox ID="uxAreaNegocio" runat="server">
                                        </asp:TextBox>
                                         <br />
@@ -105,13 +115,19 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>(*) Telefono de Oficina: </td>
+                                   <td><span style="color:#FF0000">* </span>Telefono de Oficina: </td>
                                    <td>
-                                        <asp:TextBox ID="uxCodOficina" runat="server" Width="40" MaxLength="3"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="118px" MaxLength="7"></asp:TextBox>
                                         <br />
+                                        <asp:TextBox ID="uxCodOficina" runat="server" Width="40" MaxLength="3"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="110px" MaxLength="7"></asp:TextBox>
+                                        <br />
+    
                                         &nbsp;&nbsp; Ej: 212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                        5555555<br />
+                                        55555555<br />
+                                         <AjaxControlToolkit:FilteredTextBoxExtender
+                                          ID="FilteredTextBoxExtender1" runat="server" FilterType="Custom, Numbers"
+                                          TargetControlID="uxTelfOficina" >
+                                      </AjaxControlToolkit:FilteredTextBoxExtender>
                                         
                                         <asp:RequiredFieldValidator ID="uxValidatorTelfOficina" runat="server" 
                                         ControlToValidate="uxTelfOficina" 
@@ -121,7 +137,7 @@
                                         ErrorMessage="<%$ Resources:DSU, FaltaCodTelefono%>" Font-Size="Smaller" Display="Static" />
                                         
                                         <br />
-&nbsp;</td>
+                                                         </td>
                                </tr>
                                <tr>
                                    <td></td>
@@ -130,12 +146,18 @@
                                                          </td>
                                </tr>
                                <tr>
-                                   <td>(*) Telefono de Celular: </td>
+                                   <td><span style="color:#FF0000">* </span>Telefono de Celular: </td>
                                    <td>
-                                        <asp:TextBox ID="uxCodCel" runat="server" Width="40" MaxLength="3"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="115px" MaxLength="7"></asp:TextBox>
                                         <br />
-&nbsp; Ej: 416&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5555555<br />
+                                        <asp:TextBox ID="uxCodCel" runat="server" Width="40" MaxLength="3"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="107px" MaxLength="7"></asp:TextBox>
+                                        <br />
+                                        &nbsp; Ej: 416&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 55555555<br />
+                                         <AjaxControlToolkit:FilteredTextBoxExtender
+                                          ID="FilteredTextBoxExtender3" runat="server" FilterType="Custom, Numbers"
+                                          TargetControlID="uxTelfCelular" >
+                                      </AjaxControlToolkit:FilteredTextBoxExtender>
+
                                         <asp:RequiredFieldValidator ID="uxValidatorCodCel" runat="server" 
                                         ControlToValidate="uxCodCel" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaCodTelefono%>" Font-Size="Smaller" Display="Static" />
@@ -146,7 +168,7 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td> (*) Cliente: 
+                                   <td> <span style="color:#FF0000">* </span> Cliente: 
                                        
                                    </td>
                                    <td>
@@ -177,7 +199,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                 <tr>
-                                   <td>(*) Campos obligatorios</td>
+                                   <td>(<span style="color:#FF0000">*</span>) Campos obligatorios</td>
                                    <td>&nbsp;</td>
                                 </tr>
                                 <tr>
