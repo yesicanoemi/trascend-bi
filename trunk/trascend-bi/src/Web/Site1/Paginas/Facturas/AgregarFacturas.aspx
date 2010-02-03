@@ -55,7 +55,7 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                 ControlToValidate="uxNombrePropuesta" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaParametroBusqueda%>" Font-Size="Smaller" Display="None" />
-                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxNombrePropuesta" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars="' '"
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxNombrePropuesta" FilterType="UppercaseLetters, LowercaseLetters, Numbers, Custom" ValidChars="' '"
                                             ID="FilteredTextBoxExtender4" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender4"
                                             TargetControlID="RequiredFieldValidator4" />         
@@ -135,7 +135,7 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                 ControlToValidate="uxTitulo" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaTituloFactura%>" Font-Size="Smaller" Display="None" />
-                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxTitulo" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars="' '"
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxTitulo" FilterType="UppercaseLetters, LowercaseLetters, Numbers, Custom" ValidChars="' '"
                                             ID="FilteredTextBoxExtender1" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
                                             TargetControlID="RequiredFieldValidator1" />         
@@ -152,7 +152,7 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="uxDescripcion" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaDescripcionFactura%>" Font-Size="Smaller" Display="None" />
-                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxDescripcion" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars="' '"
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxDescripcion" FilterType="UppercaseLetters, LowercaseLetters, Numbers, Custom" ValidChars="' '"
                                             ID="FilteredTextBoxExtender2" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender2"
                                             TargetControlID="RequiredFieldValidator2" />         
@@ -170,7 +170,7 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                 ControlToValidate="uxPorcentaje" 
                                 ErrorMessage="<%$ Resources:DSU, FaltaPorcentajeFactura%>" Font-Size="Smaller" Display="None" />
-                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxPorcentaje" FilterType="Numbers, Custom" ValidChars=""
+                                <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxPorcentaje" FilterType="Numbers, Custom" ValidChars="."
                                             ID="FilteredTextBoxExtender3" runat="server"/>
                        <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender3"
                                             TargetControlID="RequiredFieldValidator3" />         
