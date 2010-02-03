@@ -18,6 +18,8 @@ namespace Core.AccesoDatos.Interfaces
 
         Contacto ConsultarContactoxId(Contacto entidad);
 
+        Contacto Ingresar(Contacto entidad);
+
         void Eliminar(Contacto contacto);
 
         void ModificarContacto(Contacto entidad);

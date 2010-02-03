@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoContacto
 {
-    public class Ingresar : Comando<Contacto>
+    public class Ingresar : Comando<Core.LogicaNegocio.Entidades.Contacto>
     {
         private Contacto contacto;
-        private int idCliente;
+      //  private int idCliente;
 
         #region Constructor
 
@@ -23,17 +25,21 @@ namespace Core.LogicaNegocio.Comandos.ComandoContacto
         public Ingresar(Contacto contacto)
         {
             this.contacto = contacto;
-            //this.idCliente = idCliente;
+           
         }
 
         #endregion
+
+ 
 
         #region Metodos
         public Contacto Ejecutar()
         {
             Contacto _contacto = null;
-            DAOContactoSQLServer bd = new DAOContactoSQLServer();
-            _contacto = bd.Ingresar(contacto);
+             FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+            IDAOContacto bdcontacto = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
+            
+            _contacto = bdcontacto.Ingresar(contacto);
 
             return _contacto;
         }

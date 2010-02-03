@@ -5,9 +5,10 @@ using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
 using NUnit.Framework;
-using Core.LogicaNegocio.Excepciones;
-using Core.LogicaNegocio.Excepciones.Facturas.AccesoDatos;
 using Core.LogicaNegocio.Fabricas;
+using Core.AccesoDatos.Interfaces;
+using Core.AccesoDatos;
+
 
 
 namespace Core.Pruebas
@@ -31,15 +32,25 @@ namespace Core.Pruebas
         [Test]
         public void IngresarContacto()
         {
+            IList<Contacto> listContacto = new List<Contacto>();
+
             Contacto contacto = new Contacto();
 
-            contacto.Nombre = "Claudio";
+            Contacto _contacto = new Contacto();
 
-            contacto.Apellido = "Melcon";
+            Cliente cliente = new Cliente();
 
-            contacto.AreaDeNegocio = "Informatica";
+            string Nombre = "Juan";
 
-            contacto.Cargo = "Presidente";
+            string Apellido = "Apellido";
+
+            contacto.Nombre = Nombre;
+
+            contacto.Apellido = Apellido;
+
+            contacto.AreaDeNegocio = "Ventas";
+
+            contacto.Cargo = "Secretario";
 
             contacto.TelefonoDeTrabajo.Numero = 7315797;
 
@@ -49,31 +60,40 @@ namespace Core.Pruebas
 
             contacto.TelefonoDeTrabajo.Codigoarea = 212;
 
-            contacto.TelefonoDeTrabajo.Tipo = "Trabajo";
+            cliente.Nombre = "Integra";
 
-            int id = 2;
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
-            Core.LogicaNegocio.Comandos.ComandoContacto.Ingresar ComandoContacto;
+            IDAOContacto acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
 
-            ComandoContacto = FabricaComandosContacto.CrearComandoIngresar(contacto);
+            _contacto = acceso.Ingresar(contacto);
 
-            ComandoContacto.Ejecutar();
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
 
+            IDAOContacto bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOContacto();
+
+            listContacto = bd.ConsultarContactoNombreApellido(contacto);
+
+            for (int i = 0; i < listContacto.Count; i++)
+            {
+                if ((listContacto[i].Nombre == Nombre) && (listContacto[i].Apellido == Apellido))
+                {
+                    contacto.Nombre = listContacto[i].Nombre;
+                    contacto.Apellido = listContacto[i].Apellido;
+                    i = listContacto.Count;
+                }
+                else
+                {
+                    contacto.Nombre = "null";
+                    contacto.Apellido = "null";
+                }
+            }
+
+            Assert.AreEqual(Nombre, contacto.Nombre);
+            Assert.AreEqual(Apellido, contacto.Apellido);
 
         }
 
-        /*[Test]
-         public void ConsultarCliente()
-         {
-             Cliente cliente = new Cliente();
-
-             cliente.Nombre = "Polar";
-
-             //Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarNombre
-         }*/
-
-
-
-
     }
 }
+
