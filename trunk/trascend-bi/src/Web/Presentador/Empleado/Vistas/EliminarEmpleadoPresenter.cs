@@ -81,7 +81,7 @@ namespace Presentador.Empleado.Vistas
 
             if (_vista.opcion.SelectedIndex == 0)//cedula
             {
-                emp.Cedula = Int32.Parse(_vista.TextBoxParametro.Text);
+                emp.Cedula = Int32.Parse(_vista.ParametroCedula.Text);
                 Core.LogicaNegocio.Entidades.Empleado empleado = BuscarPorCedula(emp);
                 IList<Core.LogicaNegocio.Entidades.Empleado> listado = new List<Core.LogicaNegocio.Entidades.Empleado>();
                 listado.Add(empleado);
@@ -184,17 +184,17 @@ namespace Presentador.Empleado.Vistas
         }
 
 
-        public void uxObjectConsultaUsuariosSelecting(string cedula)
+        public void uxObjectConsultaUsuariosSelecting(int codigoEmpleado)
         {
             Core.LogicaNegocio.Entidades.Empleado emp = new Core.LogicaNegocio.Entidades.Empleado();
-            emp.Cedula = Int32.Parse(cedula);
-
+            //emp.Nombre = nombre;
+            emp.Id = codigoEmpleado;
             int result = EliminarEmpleado(emp);
 
             //lanzar un ventana de confirmacion si result es 1 o una de error si result es 0
 
         }
-
+  
         /// <summary>
         /// Metodo que busca las propuestas
         /// </summary>
@@ -203,9 +203,9 @@ namespace Presentador.Empleado.Vistas
         {
             IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
 
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre consultar;
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ELiminarConsultarPorNombre consultar;
 
-            consultar = FabricaComandosEmpleado.CrearComandoConsultarPorNombre(entidad);
+            consultar = FabricaComandosEmpleado.CrearComandoEliminarConsultarPorNombre(entidad);
 
             empleado1 = consultar.Ejecutar();
 
@@ -218,9 +218,10 @@ namespace Presentador.Empleado.Vistas
 
             Core.LogicaNegocio.Entidades.Empleado empleado1 = new Core.LogicaNegocio.Entidades.Empleado();
 
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCI consultar;
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.EliminarConsultarPorCI consultar;
 
-            consultar = FabricaComandosEmpleado.CrearComandoConsultarPorCI(entidad);
+            consultar = FabricaComandosEmpleado.CrearComandoEliminarConsultarPorCI(entidad);
+            
             empleado1 = consultar.Ejecutar();
 
             return empleado1;
@@ -241,9 +242,9 @@ namespace Presentador.Empleado.Vistas
         {
             IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
 
-            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCargo consultar;
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.EliminarConsultarPorCargo consultar;
 
-            consultar = FabricaComandosEmpleado.CrearComandoConsultarPorCargo(entidad);
+            consultar = FabricaComandosEmpleado.CrearComandoEliminarConsultarPorCargo(entidad);
 
             empleado1 = consultar.Ejecutar();
 
