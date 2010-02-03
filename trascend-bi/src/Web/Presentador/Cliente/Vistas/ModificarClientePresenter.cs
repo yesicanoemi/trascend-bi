@@ -213,14 +213,14 @@ namespace Presentador.Cliente.Vistas
 
             if (cliente.Telefono[1] != null)
             {
-                _vista.TelefonoCelular.Text = cliente.Telefono[1].Codigoarea.ToString();
-                _vista.CodCelular.Text = cliente.Telefono[1].Numero.ToString();
+                _vista.TelefonoCelular.Text = cliente.Telefono[1].Numero.ToString(); 
+                _vista.CodCelular.Text = cliente.Telefono[1].Codigoarea.ToString();
             }
 
             if (cliente.Telefono[2] != null)
             {
-                _vista.TelefonoFax.Text = cliente.Telefono[2].Codigoarea.ToString();
-                _vista.CodFax.Text = cliente.Telefono[2].Numero.ToString();
+                _vista.TelefonoFax.Text = cliente.Telefono[2].Numero.ToString(); 
+                _vista.CodFax.Text = cliente.Telefono[2].Codigoarea.ToString();
             }
 
         }

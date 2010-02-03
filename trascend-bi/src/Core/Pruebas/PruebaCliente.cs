@@ -58,7 +58,7 @@ namespace Core.Pruebas
 
             cliente.Telefono[0] = new TelefonoTrabajo();
 
-            cliente.Telefono[0].Codigoarea = 212;
+            cliente.Telefono[0].Codigoarea = 58212;
 
             cliente.Telefono[0].Numero = 2350592;
 
@@ -66,15 +66,15 @@ namespace Core.Pruebas
 
             cliente.Telefono[1] = new TelefonoTrabajo();
 
-            cliente.Telefono[1].Codigoarea = 212;
+            cliente.Telefono[1].Codigoarea = 58212;
 
-            cliente.Telefono[1].Numero = 2350593;
+            cliente.Telefono[1].Numero = 2885577;
 
             cliente.Telefono[1].Tipo = "Fax";
 
             cliente.Telefono[2] = new TelefonoTrabajo();
 
-            cliente.Telefono[2].Codigoarea = 414;
+            cliente.Telefono[2].Codigoarea = 58414;
 
             cliente.Telefono[2].Numero = 2350592;
 
