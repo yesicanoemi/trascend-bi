@@ -132,22 +132,23 @@
                                         Width="70%" Font-Names="Verdana" Font-Size="Smaller" 
                                         OnSelectedIndexChanging="SelectContacto" 
                                         onrowdatabound="uxGridView_RowDataBound"
-                                        style="left:250px; POSITION: absolute; TOP: 300px;">
+                                        style="left:250px; POSITION: absolute; TOP: 300px;" 
+                                        onselectedindexchanged="uxConsultaContacto_SelectedIndexChanged">
                                         <RowStyle HorizontalAlign="Center" />  
                                         <Columns>
                                             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                                             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                                             <asp:TemplateField HeaderText="Teléfono" AccessibleHeaderText="Telefono">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="L1" runat="server" 
-                                                    ext='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
+                                                    <asp:Label ID="Label2" runat="server" 
+                                                    Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
                                                     <asp:Label ID="L2" runat="server" 
                                                     Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Numero") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField> 
                                             <asp:TemplateField HeaderText="Cliente" AccessibleHeaderText="Cliente">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="L1" runat="server" 
+                                                    <asp:Label ID="L3" runat="server" 
                                                     Text='<%# DataBinder.Eval(Container, "DataItem.ClienteContac.Nombre") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField> 

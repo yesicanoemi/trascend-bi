@@ -143,9 +143,9 @@
                                             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                                             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                                             <asp:TemplateField HeaderText="Teléfono" AccessibleHeaderText="Telefono">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="L1" runat="server" 
-                                                    ext='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
+                                             <ItemTemplate>
+                                                    <asp:Label ID="Label2" runat="server" 
+                                                    Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Codigoarea") %>'></asp:Label>
                                                     <asp:Label ID="L2" runat="server" 
                                                     Text='<%# DataBinder.Eval(Container, "DataItem.TelefonoDeTrabajo.Numero") %>'></asp:Label>
                                                 </ItemTemplate>
