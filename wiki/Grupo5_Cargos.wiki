@@ -67,3 +67,6 @@ http://trascend-bi.googlecode.com/files/Consultar%20Cargo%20grupo%20%236.png
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
 http://trascend-bi.googlecode.com/files/Eliminar%20Empleado%20CU-E04.jpg
+
+== Nuevo Diagrama de Clases ==
+http://trascend-bi.googlecode.com/files/Diagrama%20de%20Clases%20%28Cargo%29.jpg
