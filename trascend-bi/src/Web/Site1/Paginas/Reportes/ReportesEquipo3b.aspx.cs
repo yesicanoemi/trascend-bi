@@ -19,6 +19,8 @@ public partial class Paginas_Reportes_ReportesEquipo3b : PaginaBase, IReporteFac
 
     private ReporteFaturasEmitidasPresenter _presentador;
 
+    private ReporteFaturasEmitidasPresenter _presenter;
+
     #region Propiedades del Diálogo
 
     public void Pintar(string codigo, string mensaje, string actor, string detalles)
@@ -88,9 +90,19 @@ public partial class Paginas_Reportes_ReportesEquipo3b : PaginaBase, IReporteFac
 
         bool permiso = false;
 
+        Core.LogicaNegocio.Entidades.Permiso _permiso = new
+                                Core.LogicaNegocio.Entidades.Permiso();
+
+        _presenter = new ReporteFaturasEmitidasPresenter();
+
+        _permiso = _presenter.ConsultarIdPermiso();
+
+        int idPermiso = _permiso.IdPermiso;
+       
+
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 38)
+            if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
             {
                 i = usuario.PermisoUsu.Count;
 
