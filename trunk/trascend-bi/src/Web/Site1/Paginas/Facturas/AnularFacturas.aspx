@@ -29,9 +29,9 @@
                         </p>
                         <form id="Form1" runat="server">
                         <p class="large">
-                            <table style="width: 75%;">
+                            <table style="width: 100%;">
                                 <tr>
-                                    <td>
+                                    <td style="width:25%;">
                                         Numero Factura:
                                     </td>
                                     <td>
@@ -185,9 +185,9 @@
                                     &nbsp;
                                 </td>
                             </tr>
-                            <table>
+                            <table width="99%"> 
                                 <tr>
-                                    <td style="width: 78%;">
+                                    <td>
                                     </td>
                                     <td align="right">
                                         <asp:Button ID="btAnular" runat="server" Text="Anular" Visible="false" OnClick="btAnular_Click"

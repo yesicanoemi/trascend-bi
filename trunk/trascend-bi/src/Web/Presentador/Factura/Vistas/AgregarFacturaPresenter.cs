@@ -65,12 +65,12 @@ namespace Presentador.Factura.Vistas
                 PorcentajeRestante = 100 - PorcentajePagado;
                 MontoRestante = listaPropuesta.ElementAt(0).MontoTotal - MontoPagado;
 
-                _vista.PorcentajePagado.Text = PorcentajePagado.ToString();
+                _vista.PorcentajePagado.Text = PorcentajePagado.ToString() + " %";
                 _vista.PorcentajeRestante.Text = PorcentajeRestante.ToString();
                 _vista.MontoPagado.Text = MontoPagado.ToString();
                 _vista.MontoRestante.Text = MontoRestante.ToString();
 
-                if (_vista.PorcentajePagado.Text == "100")
+                if (_vista.PorcentajePagado.Text == "100 %")
                     throw new ConsultarException("La factura esta 100% pagada");
 
             }

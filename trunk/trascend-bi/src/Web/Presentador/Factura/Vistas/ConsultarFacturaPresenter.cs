@@ -54,6 +54,8 @@ namespace Presentador.Factura.Vistas
                 ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
                 IList<Core.LogicaNegocio.Entidades.Factura> listaFacturas = ComandoConsultarTabla.Ejecutar();
 
+                if (listaFacturas.Count == 0)
+                    throw new ConsultarException("La propuesta no tiene facturas asociadas");
 
                 _vista.TablaFacturas.DataSource = listaFacturas;
                 _vista.TablaFacturas.DataBind();
