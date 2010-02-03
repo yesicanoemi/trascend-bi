@@ -459,31 +459,31 @@ namespace Core.AccesoDatos.SqlServer
         {
             try
             {
-                SqlParameter[] arParms = new SqlParameter[6];
+                SqlParameter[] arParms = new SqlParameter[5];
 
                 arParms[0] = new SqlParameter("@IdContacto", SqlDbType.Int);
 
                 arParms[0].Value = contacto.IdContacto;
 
-                arParms[1] = new SqlParameter("@IdCliente", SqlDbType.Int);
+                //arParms[1] = new SqlParameter("@IdCliente", SqlDbType.Int);
 
-                arParms[1].Value = contacto.ClienteContac.IdCliente;
+                //arParms[1].Value = contacto.ClienteContac.IdCliente;
 
-                arParms[2] = new SqlParameter("@Area", SqlDbType.VarChar);
+                arParms[1] = new SqlParameter("@Area", SqlDbType.VarChar);
 
-                arParms[2].Value = contacto.AreaDeNegocio;
+                arParms[1].Value = contacto.AreaDeNegocio;
 
-                arParms[3] = new SqlParameter("@Cargo", SqlDbType.VarChar);
+                arParms[2] = new SqlParameter("@Cargo", SqlDbType.VarChar);
 
-                arParms[3].Value = contacto.Cargo;
+                arParms[2].Value = contacto.Cargo;
 
-                arParms[4] = new SqlParameter("@Apellido", SqlDbType.VarChar);
+                arParms[3] = new SqlParameter("@Apellido", SqlDbType.VarChar);
 
-                arParms[4].Value = contacto.Apellido;
+                arParms[3].Value = contacto.Apellido;
 
-                arParms[5] = new SqlParameter("@Nombre", SqlDbType.VarChar);
+                arParms[4] = new SqlParameter("@Nombre", SqlDbType.VarChar);
 
-                arParms[5].Value = contacto.Nombre;
+                arParms[4].Value = contacto.Nombre;
 
                 //Modificar el contacto en la BD 
 

@@ -267,6 +267,17 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
             set { MensajeInformacion1.Visible = value; }
         }
 
+        public void PintarInformacionError(string mensaje, string estilo)
+        {
+            MensajeInformacionError.PintarControl(mensaje, estilo);
+        }
+
+        public bool InformacionVisibleError
+        {
+            get { return MensajeInformacionError.Visible; }
+            set { MensajeInformacionError.Visible = value; }
+        }
+
         #endregion
 
         #region Diálogo

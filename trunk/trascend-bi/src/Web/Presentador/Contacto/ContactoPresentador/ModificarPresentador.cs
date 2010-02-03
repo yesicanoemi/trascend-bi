@@ -95,16 +95,16 @@ namespace Presentador.Contacto.ContactoPresentador
                     }
                     else
                     {
-                        _vista.PintarInformacion2(ManagerRecursos.GetString
+                        _vista.PintarInformacionError(ManagerRecursos.GetString
                            ("mensajeTelefonoIncorrecto"), "mensajes");
-                        _vista.InformacionVisible2 = true;
+                        _vista.InformacionVisibleError = true;
                     }
                 }
                 else
                 {
-                    _vista.PintarInformacion2(ManagerRecursos.GetString
+                    _vista.PintarInformacionError(ManagerRecursos.GetString
                                ("mensajeTelefonoIncorrecto"), "mensajes");
-                    _vista.InformacionVisible2 = true;
+                    _vista.InformacionVisibleError = true;
                 }
             }
             catch (WebException e)
@@ -156,6 +156,12 @@ namespace Presentador.Contacto.ContactoPresentador
                            ("mensajeModificarContacto"), "mensajes");
 
             _vista.InformacionVisible2 = true;
+
+            _vista.InformacionVisibleError = false;
+
+            _vista.CodTelefonoC2.Text = "";
+
+            _vista.TelefonoC2.Text = "";
 
             _vista.RbCampoBusqueda.ClearSelection();
         }
@@ -267,6 +273,8 @@ namespace Presentador.Contacto.ContactoPresentador
             _vista.InformacionVisible = false;
 
             _vista.InformacionVisible2 = false;
+
+            _vista.InformacionVisibleError = false;
 
         }
 

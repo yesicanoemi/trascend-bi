@@ -75,10 +75,10 @@ namespace Presentador.Contacto.ContactoPresentador
                 }
                 else
                 {
-                    _vista.PintarInformacionEliminar(ManagerRecursos.GetString
+                    _vista.PintarInformacionError(ManagerRecursos.GetString
                             ("MensajeEliminarFallida"), "mensajes");
 
-                    _vista.InformacionVisibleEliminar = true;
+                    _vista.InformacionVisibleError = true;
 
                 }
             }
@@ -165,6 +165,8 @@ namespace Presentador.Contacto.ContactoPresentador
 
             _vista.InformacionVisibleEliminar = false;
 
+            _vista.InformacionVisibleError = false;
+
         }
 
         public void LimpiarElementosVisibles()
@@ -199,6 +201,8 @@ namespace Presentador.Contacto.ContactoPresentador
                        ("MensajeEliminarCorrecto"), "mensajes");
 
             _vista.InformacionVisibleEliminar = true;
+
+            _vista.InformacionVisibleError = false;
 
             _vista.RbCampoBusqueda.ClearSelection();
         }

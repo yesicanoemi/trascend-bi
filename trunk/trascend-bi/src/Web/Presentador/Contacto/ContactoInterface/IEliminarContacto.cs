@@ -79,6 +79,10 @@ namespace Presentador.Contacto.ContactoInterface
 
         void PintarInformacionEliminar(string mensaje, string estilo);
 
+        bool InformacionVisibleError { get; set; }
+
+        void PintarInformacionError(string mensaje, string estilo);
+
         #endregion
 
         void CambiarPagina();
