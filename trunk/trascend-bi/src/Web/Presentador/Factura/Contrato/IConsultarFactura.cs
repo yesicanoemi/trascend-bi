@@ -10,6 +10,7 @@ namespace Presentador.Factura.Contrato
     {
         RadioButtonList ParametroBox { get; set; }
         TextBox ParametroTexto { get; set; }
+        TextBox ParametroTexto2 { get; set; }
         MultiView MultiViewFacturas { get; set; }
         Label TituloPropuesta { get; set; }
         Label MontoTotal { get; set; }

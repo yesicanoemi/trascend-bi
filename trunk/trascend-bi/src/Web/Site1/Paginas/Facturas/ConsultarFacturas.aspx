@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterPageHeader.master" AutoEventWireup="true"
     CodeFile="ConsultarFacturas.aspx.cs" Inherits="Paginas_Facturas_ConsultarFacturas" %>
-
+    
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" tagprefix="ajaxToolkit"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="container subnav">
         <div class="content">
@@ -38,6 +39,15 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="uxParametroTexto" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="uxParametroTexto2" Visible="false" runat="server"></asp:TextBox>
+                                    <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"                                                                             
+                                        CompletionListCssClass="list"
+                                        CompletionListHighlightedItemCssClass="hoverlistitem" 
+                                        CompletionListItemCssClass="listitem" CompletionSetCount="1"
+				                        MinimumPrefixLength="1" 
+                                        ServiceMethod="GetSuggestionsFacturaPropuesta" 
+                                        ServicePath="../../SuggestionNames.asmx" TargetControlID="uxParametroTexto" 
+                                        ></ajaxToolkit:AutoCompleteExtender>                                        
                                     <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxParametroTexto" FilterType="UppercaseLetters, LowercaseLetters, Numbers, Custom"
                                         ValidChars="' '" ID="FilteredTextBoxExtender1" runat="server">
                                     </AjaxControlToolkit:FilteredTextBoxExtender>
@@ -91,28 +101,32 @@
                                     </tr>
                                 </table>
                                 <table style="width: auto">
+                                    </caption __designer:mapid="70">
                                     <p class="large">
-                                        <asp:GridView Width="150%" ID="uxTablaFacturas" runat="server" AutoGenerateColumns="false"
-                                            CellPadding="10" CellSpacing="5" OnRowDataBound="uxTablaFacturas_RowDataBound">
+                                        <asp:GridView ID="uxTablaFacturas" runat="server" AutoGenerateColumns="false" 
+                                            CellPadding="10" CellSpacing="5" OnRowDataBound="uxTablaFacturas_RowDataBound" 
+                                            Width="150%">
                                             <RowStyle HorizontalAlign="Center" />
                                             <Columns>
-                                                <asp:BoundField DataField="Numero" HeaderText="Numero" ItemStyle-HorizontalAlign="Justify" />
+                                                <asp:BoundField DataField="Numero" HeaderText="Numero" 
+                                                    ItemStyle-HorizontalAlign="Justify" />
                                                 <asp:BoundField DataField="Titulo" HeaderText="Titulo" />
                                                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                                                 <asp:BoundField DataField="Procentajepagado" HeaderText="Porcentaje" />
-                                                <asp:TemplateField ItemStyle-Width="15%" HeaderText="Fecha Ingreso">
+                                                <asp:TemplateField HeaderText="Fecha Ingreso" ItemStyle-Width="15%">
                                                     <ItemTemplate>
-                                                        <%# FormatearFecha((DateTime)Eval("Fechaingreso")) %></ItemTemplate>
+                                                        <%# FormatearFecha((DateTime)Eval("Fechaingreso")) %>
+                                                    </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField ItemStyle-Width="15%" HeaderText="Fecha Pago">
+                                                <asp:TemplateField HeaderText="Fecha Pago" ItemStyle-Width="15%">
                                                     <ItemTemplate>
-                                                        <%# FormatearFecha((DateTime)Eval("Fechapago")) %></ItemTemplate>
+                                                        <%# FormatearFecha((DateTime)Eval("Fechapago")) %>
+                                                    </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                             </Columns>
                                         </asp:GridView>
                                     </p>
-                                    </caption>
                                 </table>
                             </asp:View>
                             <asp:View ID="ViewBuscarPorFactura" runat="server">

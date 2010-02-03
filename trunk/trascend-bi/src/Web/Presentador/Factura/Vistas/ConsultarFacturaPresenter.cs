@@ -81,25 +81,32 @@ namespace Presentador.Factura.Vistas
 
         public void CargarDatos()
         {
+            try
+            {
+                _factura = new Core.LogicaNegocio.Entidades.Factura();
+                _factura.Numero = int.Parse(_vista.ParametroTexto2.Text);
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID ComandoConsultarFactura;
+                ComandoConsultarFactura = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID(_factura);
 
-            _factura = new Core.LogicaNegocio.Entidades.Factura();
-            _factura.Numero = int.Parse(_vista.ParametroTexto.Text);
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxFacturaID ComandoConsultarFactura;
-            ComandoConsultarFactura = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxFacturaID(_factura);
+                _factura = ComandoConsultarFactura.Ejecutar();
 
-            _factura = ComandoConsultarFactura.Ejecutar();
+                if (_factura == null)
 
-            if (_factura == null)
+                    _vista.Titulo.Text = _factura.Titulo;
+                _vista.Descripcion.Text = _factura.Descripcion;
+                _vista.FechaIngreso.Text = _factura.Fechaingreso.ToShortDateString().ToString();
+                _vista.FechaPago.Text = _factura.Fechapago.ToShortDateString().ToString();
+                _vista.Estado.Text = _factura.Estado;
+                _vista.Porcentaje.Text = _factura.Procentajepagado.ToString();
 
-            _vista.Titulo.Text = _factura.Titulo;
-            _vista.Descripcion.Text = _factura.Descripcion;
-            _vista.FechaIngreso.Text = _factura.Fechaingreso.ToShortDateString().ToString();
-            _vista.FechaPago.Text = _factura.Fechapago.ToShortDateString().ToString();
-            _vista.Estado.Text = _factura.Estado;
-            _vista.Porcentaje.Text = _factura.Procentajepagado.ToString();
-
-            _vista.MultiViewFacturas.Visible = true;
-            _vista.MultiViewFacturas.ActiveViewIndex = 1;
+                _vista.MultiViewFacturas.Visible = true;
+                _vista.MultiViewFacturas.ActiveViewIndex = 1;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
         }
 
         public string FormatearFechaParaMostrar(DateTime fecha)

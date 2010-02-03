@@ -24,6 +24,12 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         set { uxParametroTexto = value; } 
     }
 
+    public TextBox ParametroTexto2
+    {
+        get { return this.uxParametroTexto2; }
+        set { uxParametroTexto2 = value; }
+    }
+
     public MultiView MultiViewFacturas 
     {
         get { return this.uxMultiViewFactura; }
@@ -206,7 +212,17 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
 
     protected void uxParametroBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        ParametroTexto.Visible = true;
-        btBotonBuscar.Visible = true;
+        if (int.Parse(uxParametroBox.SelectedValue) == 1)
+        {
+            ParametroTexto2.Visible = false;
+            ParametroTexto.Visible = true;
+            btBotonBuscar.Visible = true;
+        }
+        else
+        {
+            ParametroTexto.Visible = false;
+            ParametroTexto2.Visible = true;
+            btBotonBuscar.Visible = true;
+        }
     }
 }
