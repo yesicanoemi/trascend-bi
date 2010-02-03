@@ -67,7 +67,7 @@ namespace Presentador.Reportes.Vistas
                     {
                         if (PropuestaAux.FechaInicio.CompareTo(fin) <= 0)
                         {
-                            PropuestaAux.NombreReceptor += PropuestaAux.ApellidoReceptor;
+                            PropuestaAux.NombreReceptor += " " + PropuestaAux.ApellidoReceptor;
                             PropuestasBuenas.Add(PropuestaAux);
                         }
                     }

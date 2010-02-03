@@ -159,8 +159,9 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
     {
         lbMensaje.Text = "";
         _presentador.CargarDatosPropuesta();
-        if (PorcentajePagado.Text == "100")
+        if (PorcentajePagado.Text == "100 %")
         {
+            uxNombrePropuesta.Text = "";
             btBotonIngresarFactura.Enabled = false;
             btBotonIngresarFactura.Visible = false;
         }

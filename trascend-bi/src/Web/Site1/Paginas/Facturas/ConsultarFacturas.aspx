@@ -109,6 +109,17 @@
                                             <asp:Label ID="lbMontoTotal" runat="server" Text=""></asp:Label>
                                         </td>
                                     </tr>
+                                     <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
                                 </table>
                                 <table style="width: auto">
                                     </caption __designer:mapid="70">
