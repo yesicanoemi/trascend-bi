@@ -12,7 +12,7 @@ using Core.LogicaNegocio.Entidades;
 public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminarEmpleado
 {
     private EliminarEmpleadoPresenter _presenter;
-   
+    protected const string paginaConsulta = "~/Paginas/Empleados/ConsultarEmpleados.aspx";
     //private Empleado _empleado;
 
     #region Propiedades de la Pagina
@@ -187,6 +187,7 @@ public partial class Paginas_Empleados_EliminarEmpleados : PaginaBase, IEliminar
     protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
     {
         _presenter.uxObjectConsultaUsuariosSelecting(int.Parse(uxConsultarEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString()));
+        Response.Redirect(paginaConsulta);
     }
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
