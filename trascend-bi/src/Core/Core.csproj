@@ -177,6 +177,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoFactura\ConsultarxNomPro.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoFactura\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoFactura\Modificar.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoReporte\ReporteAnualPorPaquetesEmpleadoId.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\AgregarUsuario.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarCredenciales.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoUsuario\ConsultarEmpleadoConUsuario.cs" />

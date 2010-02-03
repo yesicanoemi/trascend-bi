@@ -254,7 +254,6 @@ namespace Core.AccesoDatos.SqlServer
         }
         #endregion
 
-
         #region ReporteFacturasEmitidasAnuales
         /// <summary>
         /// Metodo para el reporte de facturas emitidas en un año especifico
@@ -785,6 +784,68 @@ namespace Core.AccesoDatos.SqlServer
             catch (SqlException e)
             {
                 throw new Exception(e.ToString());
+            }
+
+        }
+
+        #endregion
+
+        #region ReporteAnualPorPaquetesEmpleadoId
+
+        /// <summary>
+        /// Metodo para consultar ReporteAnualPorPaquetesEmpleadoIdo
+        /// </summary>
+        /// <param name="contacto">Criterio de busqueda</param>
+        /// <returns>Empleado que coincida con el criterio</returns>
+
+        public Empleado ReporteAnualPorPaquetesEmpleadoId(Empleado entidad)
+        {
+            Empleado empleado = new Empleado();
+
+            try
+            {
+                //Parametros de busqueda
+
+                SqlParameter[] arParms = new SqlParameter[1];
+
+                arParms[0] = new SqlParameter("@IdEmpleado", SqlDbType.Int);
+
+                arParms[0].Value = entidad.Id;
+
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(),
+                                        "ReporteAnualPorPaquetesEmpleadoId_3", arParms);
+
+                while (reader.Read())
+                {
+                    Empleado _empleado = new Empleado();  
+             
+                    _empleado.CargoEmpleado = new Cargo();
+
+                    _empleado.Nombre = (string)reader.GetValue(0);
+
+                    _empleado.Apellido = (string)reader.GetValue(1);
+
+                    _empleado.Estado = (int)reader.GetValue(2);
+
+                    _empleado.Cargo = (string)reader.GetValue(3);
+
+                    _empleado.CargoEmpleado.SueldoMaximo = float.Parse(reader.GetValue(4).ToString());
+
+                    _empleado.CargoEmpleado.SueldoMinimo = float.Parse(reader.GetValue(5).ToString());
+
+                    empleado = _empleado;
+                }
+
+                return empleado;
+
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarException("Error SQL al consultar el Reporte", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar el Reporte", e);
             }
 
         }

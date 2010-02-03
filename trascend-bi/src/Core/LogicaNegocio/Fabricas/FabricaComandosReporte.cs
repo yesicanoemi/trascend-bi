@@ -94,6 +94,19 @@ namespace Core.LogicaNegocio.Fabricas
             return new ConsultarEmpleadoCargoAnual(cargo);
         }
 
+
+        /// <summary>
+        /// Comando para el ReporteAnualPorPaquetesEmpleadoId
+        /// </summary>
+        /// <param name="entidad">Entidad empleado</param>
+        /// <returns>El comando ReporteAnualPorPaquetesEmpleadoId</returns>
+        
+        public static ReporteAnualPorPaquetesEmpleadoId 
+                                                CrearComandoReporteAnualPorPaquetesEmpleadoId(Empleado entidad)
+        {
+            return new ReporteAnualPorPaquetesEmpleadoId(entidad);
+        }
+
         #endregion
 
     }
