@@ -98,24 +98,34 @@ public partial class Paginas_Reportes_ReportesEquipo3b : PaginaBase, IReporteFac
         _permiso = _presenter.ConsultarIdPermiso();
 
         int idPermiso = _permiso.IdPermiso;
-       
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new ReporteFaturasEmitidasPresenter(this);
+                    _presentador = new ReporteFaturasEmitidasPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
+
         }
   
     }

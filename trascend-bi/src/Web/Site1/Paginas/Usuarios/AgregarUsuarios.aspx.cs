@@ -214,8 +214,11 @@ public partial class Paginas_Usuarios_AgregarUsuarios : PaginaBase, IAgregarUsua
         }
         catch (Exception a)
         {
-            Response.Redirect(paginaDefault);
-            //throw new PermisoException("No posee privilegios para ver esta pagina", a);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
+
         }
     }
 
