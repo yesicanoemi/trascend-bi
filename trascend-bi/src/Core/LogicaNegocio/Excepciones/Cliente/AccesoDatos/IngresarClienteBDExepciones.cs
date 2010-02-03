@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos
 {
-    class IngresarClienteBDExepciones:IngresarException
+    public class IngresarClienteBDExepciones:IngresarException
     {
         public IngresarClienteBDExepciones()
         { 

@@ -15,6 +15,7 @@ using Core.LogicaNegocio.Comandos.ComandoCliente;
 using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
 using Presentador.Base;
 using System.Web;
+using Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos;
 
 
 namespace Presentador.Cliente.Vistas
@@ -114,7 +115,7 @@ namespace Presentador.Cliente.Vistas
                 {
                     cliente.Nombre = _vista.Valor.Text;
                     listaCliente = ConsultarClienteNombre(cliente);
-                   // CargarDatos(listaCliente);
+                    // CargarDatos(listaCliente);
                     //CambiarVista(1);
 
                 }
@@ -123,7 +124,7 @@ namespace Presentador.Cliente.Vistas
                 {
                     cliente.Rif = _vista.ConsultaRif.Text;
                     listaCliente = ConsultarClienteRif(cliente);
-                  //  CargarDatos(listacliente);
+                    //  CargarDatos(listacliente);
                     //CambiarVista(1);
                 }
             }
@@ -134,6 +135,12 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
+            catch (ConsultarClienteBDExcepciones e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+            }
             catch (Exception e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
@@ -141,6 +148,9 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
+
+            if (listaCliente == null)
+                listaCliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
 
             if (listaCliente.Count() > 1)
             {
@@ -227,7 +237,7 @@ namespace Presentador.Cliente.Vistas
 
                 
             }
-            catch (ConsultarClienteLNException e)
+            catch (ConsultarClienteBDExcepciones e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
                     ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
@@ -260,12 +270,11 @@ namespace Presentador.Cliente.Vistas
  
                 
             }
-            catch (ConsultarClienteLNException e)
+            catch (ConsultarClienteBDExcepciones e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
                     ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
                 _vista.DialogoVisible = true;
-
             }
             catch (Exception e)
             {

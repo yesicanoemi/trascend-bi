@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos
 {
-    class ConsultarClienteBDExcepciones:ConsultarException
+    public class ConsultarClienteBDExcepciones:ConsultarException
     {
         public ConsultarClienteBDExcepciones()
         {

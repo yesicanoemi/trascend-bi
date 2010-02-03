@@ -15,7 +15,7 @@ using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
-
+using Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos;
 
 namespace Presentador.Cliente.Vistas
 {
@@ -98,7 +98,7 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
-            catch (AgregarClienteLNException e)
+            catch (IngresarClienteBDExepciones e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorIngresar"),
                     ManagerRecursos.GetString("mensajeErrorIngresar"), e.Source, e.Message + "\n " + e.StackTrace);
