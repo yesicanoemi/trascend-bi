@@ -68,3 +68,8 @@ http://trascend-bi.googlecode.com/files/Eliminar_Usuario.JPG
 || *Flujos Alternativos* || *2a)* Se produce un error al iniciar sesión <br>y el sistema vuelve al paso 1) del Flujo <br>Principal.||
 
 http://trascend-bi.googlecode.com/files/Modificar_Usuario.JPG
+
+====* * *====
+Para tener mejor visibilidad del modelo, se indico en una nota que cada presentador esta asociado a cada uno de los comando:
+
+http://trascend-bi.googlecode.com/files/Diagrama_Clases_Usuario.JPG
