@@ -9,7 +9,7 @@ using Presentador.Contacto.ContactoPresentador;
 public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarContacto
 {
 
-   #region Propiedades
+    #region Propiedades
 
     private AgregarPresentador _presentador;
 
@@ -50,7 +50,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
     {
         get { return uxTelfCelular; }
         set { uxTelfCelular = value; }
-    
+
     }
 
     public TextBox TextBoxCodOficina
@@ -69,6 +69,18 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
     {
         get { return uxValor; }
         set { uxValor = value; }
+    }
+
+    public Button InsertarOtroC
+    {
+        get { return uxInsertarOtroC; }
+        set { uxInsertarOtroC = value; }
+    }
+
+    public Button Insertar
+    {
+        get { return uxBotonAceptar; }
+        set { uxBotonAceptar = value; }
     }
 
     #region Información
@@ -114,7 +126,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
 
 
 
-   #endregion
+    #endregion
 
 
     #region Métodos
@@ -127,8 +139,13 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
-       
+
         _presentador.Onclick();
+    }
+
+    protected void uxInsertarOtroC_Click(object sender, EventArgs e)
+    {
+        _presentador.NuevaInsercion();
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -139,8 +156,8 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
 
         bool permiso = false;
 
-       try
-       {
+        try
+        {
             for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
                 if (usuario.PermisoUsu[i].IdPermiso == 9)
@@ -148,7 +165,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
                     i = usuario.PermisoUsu.Count;
 
                     _presentador = new AgregarPresentador(this);
-                   
+
 
                     permiso = true;
 
@@ -159,12 +176,12 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
             {
                 Response.Redirect(paginaSinPermiso);
             }
-       }
+        }
         catch (Exception a)
-       {
-           Response.Redirect(paginaDefault);
+        {
+            Response.Redirect(paginaDefault);
 
-       }
+        }
     }
 
     protected void uxValor_TextChanged(object sender, EventArgs e)

@@ -8,49 +8,51 @@ namespace Presentador.Contacto.ContactoInterface
 {
     public interface IAgregarContacto
     {
-        
+
         #region Propiedades
 
-            TextBox TextBoxNombreContacto { get; set; }
+        TextBox TextBoxNombreContacto { get; set; }
 
-            TextBox TextBoxApellidoContacto { get; set; }
+        TextBox TextBoxApellidoContacto { get; set; }
 
-            TextBox TextBoxCargoContacto { get; set; }
+        TextBox TextBoxCargoContacto { get; set; }
 
-            TextBox TextBoxAreaNegocio { get; set; }
+        TextBox TextBoxAreaNegocio { get; set; }
 
-            TextBox TextBoxTelfOficina { get; set; }
+        TextBox TextBoxTelfOficina { get; set; }
 
-            TextBox TextBoxTelfCelular { get; set; }
+        TextBox TextBoxTelfCelular { get; set; }
 
-            TextBox TextBoxCodOficina { get; set; }
+        TextBox TextBoxCodOficina { get; set; }
 
-            TextBox TextBoxCodCelular { get; set; }
+        TextBox TextBoxCodCelular { get; set; }
 
-           
+        Button InsertarOtroC { get; set; }
+
+        Button Insertar { get; set; }
 
         //RequiredFieldValidator RequiredFieldValidator { get; set; }
 
         //RequiredFieldValidator RequiredFieldValidator1 { get; set; }
 
-            TextBox Valor { get; set; }
+        TextBox Valor { get; set; }
 
-            #region Diálogo
+        #region Diálogo
 
-            bool DialogoVisible { get; set; }
+        bool DialogoVisible { get; set; }
 
-            void Pintar(string codigo, string mensaje, string actor, string detalles);
+        void Pintar(string codigo, string mensaje, string actor, string detalles);
 
-            bool InformacionVisible { get; set; }
+        bool InformacionVisible { get; set; }
 
-            void PintarInformacion(string mensaje, string estilo);
+        void PintarInformacion(string mensaje, string estilo);
 
-            bool InformacionVisible2 { get; set; }
+        bool InformacionVisible2 { get; set; }
 
-            void PintarInformacion2(string mensaje, string estilo);
+        void PintarInformacion2(string mensaje, string estilo);
 
-            #endregion
+        #endregion
         #endregion
     }
-        
+
 }

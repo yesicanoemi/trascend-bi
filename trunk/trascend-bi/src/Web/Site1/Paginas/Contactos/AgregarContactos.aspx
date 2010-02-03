@@ -126,6 +126,11 @@
                                         55555555<br />
                                          <AjaxControlToolkit:FilteredTextBoxExtender
                                           ID="FilteredTextBoxExtender1" runat="server" FilterType="Custom, Numbers"
+                                          TargetControlID="uxCodOficina" >
+                                      </AjaxControlToolkit:FilteredTextBoxExtender>
+                                      
+                                       <AjaxControlToolkit:FilteredTextBoxExtender
+                                          ID="FilteredTextBoxExtender2" runat="server" FilterType="Custom, Numbers"
                                           TargetControlID="uxTelfOficina" >
                                       </AjaxControlToolkit:FilteredTextBoxExtender>
                                         
@@ -156,6 +161,11 @@
                                          <AjaxControlToolkit:FilteredTextBoxExtender
                                           ID="FilteredTextBoxExtender3" runat="server" FilterType="Custom, Numbers"
                                           TargetControlID="uxTelfCelular" >
+                                      </AjaxControlToolkit:FilteredTextBoxExtender>
+                                      
+                                         <AjaxControlToolkit:FilteredTextBoxExtender
+                                          ID="FilteredTextBoxExtender4" runat="server" FilterType="Custom, Numbers"
+                                          TargetControlID="uxCodCel" >
                                       </AjaxControlToolkit:FilteredTextBoxExtender>
 
                                         <asp:RequiredFieldValidator ID="uxValidatorCodCel" runat="server" 
@@ -205,7 +215,12 @@
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
-                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" OnClick="Aceptar_Click" />
+                                       <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
+                                           OnClick="Aceptar_Click" Width="154px" />
+                                       <asp:Button ID="uxInsertarOtroC" runat="server" Text="Insertar Otro" Width="154px" Visible="False" onclick="uxInsertarOtroC_Click" />
+                                       
+                                       
+                                       <asp:Button ID="Button2" runat="server" Text="Cancelar" PostBackUrl="~/Paginas/Contactos/DefaultContactos.aspx" Width="152px" />
                                     </td>
                                 </tr>
                            </table>
