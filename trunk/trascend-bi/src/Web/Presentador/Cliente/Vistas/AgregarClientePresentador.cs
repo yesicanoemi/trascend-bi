@@ -87,6 +87,8 @@ namespace Presentador.Cliente.Vistas
 
                 Ingresar(cliente);
 
+                _vista.AgregarContactos.Visible = true;
+
                 //limpiarRegistro();
             }
             catch (WebException e)
@@ -120,6 +122,8 @@ namespace Presentador.Cliente.Vistas
             _vista.Agregar.Visible = false;
             
         }
+
+
 
 
         public void limpiarRegistro()
