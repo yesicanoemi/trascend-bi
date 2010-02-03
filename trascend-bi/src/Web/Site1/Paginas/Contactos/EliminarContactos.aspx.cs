@@ -323,5 +323,11 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
     }
 
+    protected void PageChangingConsultarContacto(object sender, GridViewPageEventArgs e)
+    {
+        _presentador.OnBotonBuscar();
+        uxConsultaContacto.PageIndex = e.NewPageIndex;
+    }
+
     #endregion
 }

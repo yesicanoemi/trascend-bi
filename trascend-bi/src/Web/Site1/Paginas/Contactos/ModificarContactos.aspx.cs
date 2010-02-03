@@ -385,5 +385,11 @@ public partial class Paginas_Contactos_ModificarContactos : PaginaBase, IModific
 
     }
 
+    protected void PageChangingConsultarContacto(object sender, GridViewPageEventArgs e)
+    {
+        _presentador.OnBotonBuscar();
+        uxConsultaContacto.PageIndex = e.NewPageIndex;
+    }
+
     #endregion
 }
