@@ -208,6 +208,7 @@
     <Compile Include="LogicaNegocio\Entidades\Usuario.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Cliente\AccesoDatos\ConsultarClienteBDExcepciones.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Cliente\AccesoDatos\IngresarClienteBDExepciones.cs" />
+    <Compile Include="LogicaNegocio\Excepciones\Cliente\AccesoDatos\ModificarClienteBDExcepciones.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Cliente\LogicaNegocio\AgregarClienteLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Cliente\LogicaNegocio\ConsultarClienteLNException.cs" />
     <Compile Include="LogicaNegocio\Excepciones\Cliente\LogicaNegocio\ModificarClienteLNException.cs" />
