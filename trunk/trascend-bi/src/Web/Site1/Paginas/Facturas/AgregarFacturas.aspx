@@ -219,7 +219,7 @@
                                                     ErrorMessage="<%$ Resources:DSU, FaltaPorcentajeFactura%>" Font-Size="Smaller"
                                                     Display="None" />
                                                 <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxPorcentaje" FilterType="Numbers, Custom"
-                                                    ValidChars="." ID="FilteredTextBoxExtender3" runat="server" />
+                                                    ValidChars="," ID="FilteredTextBoxExtender3" runat="server" />
                                                 <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender3"
                                                     TargetControlID="RequiredFieldValidator3" />
                                             </td>
