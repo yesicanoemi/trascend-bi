@@ -69,6 +69,7 @@ namespace Presentador.Factura.Vistas
                 _vista.PorcentajeRestante.Text = PorcentajeRestante.ToString();
                 _vista.MontoPagado.Text = MontoPagado.ToString();
                 _vista.MontoRestante.Text = MontoRestante.ToString();
+
             }
             catch (WebException e)
             {
@@ -106,6 +107,9 @@ namespace Presentador.Factura.Vistas
                 Core.LogicaNegocio.Comandos.ComandoFactura.Ingresar Ingresar;
                 Ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoIngresar(Factura);
                 Ingresar.Ejecutar();
+
+                _vista.Pintar("La factura se agrego con exito");
+                _vista.MensajeVisible = true;
             }
             catch (WebException e)
             {
