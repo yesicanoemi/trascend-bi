@@ -5,6 +5,7 @@ using System.Text;
 using Core.LogicaNegocio.Comandos.ComandoPropuesta;
 using Presentador.Reportes.Contrato;
 using Core.LogicaNegocio.Entidades;
+using Core.LogicaNegocio.Excepciones;
 
 namespace Presentador.Reportes.Vistas
 {
@@ -50,24 +51,50 @@ namespace Presentador.Reportes.Vistas
 
         public IList<Core.LogicaNegocio.Entidades.Propuesta> GetPropuestasIntervalo(DateTime inicio, DateTime fin)
         {
-            Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
-                Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
 
-            IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = comandoConsulta.Ejecutar();
-            
             IList<Core.LogicaNegocio.Entidades.Propuesta> PropuestasBuenas = new List<Core.LogicaNegocio.Entidades.Propuesta>();
 
-            foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
+            try
             {
-                if (PropuestaAux.FechaInicio.CompareTo(inicio) >= 0)
+                Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarPropuestas comandoConsulta =
+                    Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarPropuestas();
+
+                IList<Core.LogicaNegocio.Entidades.Propuesta> ListaPropuestas = comandoConsulta.Ejecutar();
+
+                foreach (Core.LogicaNegocio.Entidades.Propuesta PropuestaAux in ListaPropuestas)
                 {
-                    if (PropuestaAux.FechaInicio.CompareTo(fin) <= 0)
-                        PropuestasBuenas.Add(PropuestaAux);
+                    if (PropuestaAux.FechaInicio.CompareTo(inicio) >= 0)
+                    {
+                        if (PropuestaAux.FechaInicio.CompareTo(fin) <= 0)
+                        {
+                            PropuestaAux.NombreReceptor += PropuestaAux.ApellidoReceptor;
+                            PropuestasBuenas.Add(PropuestaAux);
+                        }
+                    }
                 }
+
+                if (PropuestasBuenas.Count == 0)
+                    throw new ConsultarException("No existen propuestas en los rangos ingresados");
+            }
+            catch (ConsultarException e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(e.Message);
+                _vista.MensajeVisible = true;
             }
 
             return PropuestasBuenas;
         }
+
+        public string FormatearFechaParaMostrar(DateTime fecha)
+        {
+            return fecha.ToShortDateString();
+        }
+
         #endregion
     }
 }
