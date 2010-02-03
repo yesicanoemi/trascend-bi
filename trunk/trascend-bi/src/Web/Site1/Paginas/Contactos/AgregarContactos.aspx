@@ -47,7 +47,7 @@
                            
                            <table style="width:100%;">
                                <tr>
-                                   <td>Nombre: </td>
+                                   <td>(*) Nombre: </td>
                                    <td>
                                         <asp:TextBox ID="uxNombreContacto" runat="server"></asp:TextBox>
                                          <br />
@@ -61,7 +61,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Apellido: </td>
+                                   <td>(*) Apellido: </td>
                                    <td>
                                         <asp:TextBox ID="uxApellidoContacto" runat="server"></asp:TextBox>
                                         <br />
@@ -75,7 +75,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Cargo: </td>
+                                   <td>(*) Cargo: </td>
                                    <td>
                                        <asp:TextBox ID="uxCargoContacto" runat="server">
                                        </asp:TextBox>
@@ -90,7 +90,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Area de negocio: </td>
+                                   <td>(*) Area de negocio: </td>
                                    <td>
                                        <asp:TextBox ID="uxAreaNegocio" runat="server">
                                        </asp:TextBox>
@@ -105,19 +105,23 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td>Telefono de Oficina: </td>
+                                   <td>(*) Telefono de Oficina: </td>
                                    <td>
-                                        <asp:TextBox ID="uxCodOficina" runat="server" Width="40"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="150"></asp:TextBox>
+                                        <asp:TextBox ID="uxCodOficina" runat="server" Width="40" MaxLength="3"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="118px" MaxLength="7"></asp:TextBox>
                                         <br />
-                                        <asp:RequiredFieldValidator ID="uxValidatorCodOficina" runat="server" 
-                                        ControlToValidate="uxCodOficina" 
-                                        ErrorMessage="<%$ Resources:DSU, FaltaCodTelefono%>" Font-Size="Smaller" Display="Static" />
+                                        &nbsp;&nbsp; Ej: 212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                        5555555<br />
                                         
                                         <asp:RequiredFieldValidator ID="uxValidatorTelfOficina" runat="server" 
                                         ControlToValidate="uxTelfOficina" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaNumTelefono%>" Font-Size="Smaller" Display="Static" />
-                                   </td>
+                                        <asp:RequiredFieldValidator ID="uxValidatorCodOficina" runat="server" 
+                                        ControlToValidate="uxCodOficina" 
+                                        ErrorMessage="<%$ Resources:DSU, FaltaCodTelefono%>" Font-Size="Smaller" Display="Static" />
+                                        
+                                        <br />
+&nbsp;</td>
                                </tr>
                                <tr>
                                    <td></td>
@@ -126,11 +130,12 @@
                                                          </td>
                                </tr>
                                <tr>
-                                   <td>Telefono de Celular: </td>
+                                   <td>(*) Telefono de Celular: </td>
                                    <td>
-                                        <asp:TextBox ID="uxCodCel" runat="server" Width="40"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="150"></asp:TextBox>
+                                        <asp:TextBox ID="uxCodCel" runat="server" Width="40" MaxLength="3"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="115px" MaxLength="7"></asp:TextBox>
                                         <br />
+&nbsp; Ej: 416&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5555555<br />
                                         <asp:RequiredFieldValidator ID="uxValidatorCodCel" runat="server" 
                                         ControlToValidate="uxCodCel" 
                                         ErrorMessage="<%$ Resources:DSU, FaltaCodTelefono%>" Font-Size="Smaller" Display="Static" />
@@ -141,7 +146,7 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td> Cliente: 
+                                   <td> (*) Cliente: 
                                        
                                    </td>
                                    <td>
@@ -172,7 +177,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                 <tr>
-                                   <td>&nbsp;</td>
+                                   <td>(*) Campos obligatorios</td>
                                    <td>&nbsp;</td>
                                 </tr>
                                 <tr>
