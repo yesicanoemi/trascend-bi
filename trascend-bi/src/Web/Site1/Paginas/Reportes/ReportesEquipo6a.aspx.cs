@@ -27,23 +27,31 @@ public partial class Paginas_Reportes_ReportesEquipo6 : PaginaBase, IReporteFact
                 (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 39)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == 39)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presenter = new ReporteFacturasCobradasPresenter(this);
+                    _presenter = new ReporteFacturasCobradasPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
+            }
+            else
+            {
+                Response.Redirect(paginaDefault);
+            }
         }
 
     }

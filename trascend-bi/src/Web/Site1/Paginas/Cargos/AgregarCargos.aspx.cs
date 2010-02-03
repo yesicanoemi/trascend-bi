@@ -32,14 +32,18 @@ public partial class Paginas_Cargos_AgregarCargos : PaginaBase, IAgregarCargo
                 }
             }
 
+            
+        }
+        catch (Exception a)
+        {
             if (permiso == false)
             {
                 Response.Redirect(paginaSinPermiso);
             }
-        }
-        catch (Exception a)
-        {
-            Response.Redirect(paginaDefault);
+            else
+            {
+                Response.Redirect(paginaDefault);
+            }
         }
     }
 
