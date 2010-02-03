@@ -13,6 +13,8 @@ using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Entidades;
 using Core.LogicaNegocio.Comandos.ComandoCliente;
 using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Interfaces;
 using Presentador.Base;
 using System.Web;
 
@@ -61,6 +63,8 @@ namespace Presentador.Cliente.Vistas
 
             _vista.Valor.Text = campoVacio;
 
+
+
         }
 
 
@@ -82,7 +86,7 @@ namespace Presentador.Cliente.Vistas
                 _vista.ConsultaRif.Visible = false;
                 _vista.RifCliente.Visible = false;
                 _vista.GetObjectContainerConsultaCliente.DataSource = "";
-               
+
             }
 
             if (_vista.RbCampoBusqueda.SelectedValue == "2")
@@ -93,7 +97,7 @@ namespace Presentador.Cliente.Vistas
                 _vista.ConsultaRif.Visible = true;
                 _vista.RifCliente.Visible = true;
                 _vista.GetObjectContainerConsultaCliente.DataSource = "";
-               
+
             }
         }
 
@@ -111,8 +115,6 @@ namespace Presentador.Cliente.Vistas
                 {
                     cliente.Nombre = _vista.Valor.Text;
                     listaCliente = ConsultarClienteNombre(cliente);
-                    // CargarDatos(listaCliente);
-                    //CambiarVista(1);
 
                 }
 
@@ -120,8 +122,7 @@ namespace Presentador.Cliente.Vistas
                 {
                     cliente.Rif = _vista.ConsultaRif.Text;
                     listaCliente = ConsultarClienteRif(cliente);
-                    //  CargarDatos(listacliente);
-                    //CambiarVista(1);
+
                 }
             }
             catch (WebException e)
@@ -131,6 +132,8 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
+
+
             catch (Exception e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
@@ -139,21 +142,19 @@ namespace Presentador.Cliente.Vistas
 
             }
 
-            if (listaCliente.Count() > 1)
+
+
+
+
+            if (listaCliente.Count != 0)
             {
                 CargarGrid(listaCliente);
             }
             else
-                if (listaCliente.Count != 0)
-                {
-                    CargarDatos(listaCliente[0]);
-                    CambiarVista(1);
-                }
-                else
-                {
-                    _vista.PintarInformacion2(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
-                    _vista.InformacionVisible2 = true;
-                }
+            {
+                _vista.PintarInformacion2(ManagerRecursos.GetString("MensajeConsulta"), "confirmacion");
+                _vista.InformacionVisible2 = true;
+            }
         }
 
         public void CargarGrid(IList<Core.LogicaNegocio.Entidades.Cliente> clientes)
@@ -196,7 +197,7 @@ namespace Presentador.Cliente.Vistas
                 _vista.TelefonoFax.Text = cliente.Telefono[2].Codigoarea.ToString();
                 _vista.CodFax.Text = cliente.Telefono[2].Numero.ToString();
             }
-        
+
         }
 
 
@@ -299,8 +300,10 @@ namespace Presentador.Cliente.Vistas
 
         public void EliminarCliente(Core.LogicaNegocio.Entidades.Cliente cliente)
         {
-            cliente.Estatus = 0;
-            Actualizar(cliente);
+            Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar eliminar; //objeto del comando Eliminar.
+            eliminar = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoEliminar(cliente);
+            eliminar.Ejecutar();
+            LimpiarFormulario();
             _vista.PintarInformacion2(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
             _vista.InformacionVisible2 = true;
             OnBotonBuscar();
@@ -338,7 +341,7 @@ namespace Presentador.Cliente.Vistas
 
 
 
-                cliente.IdCliente = int.Parse((string)_vista.IdCliente.Text); 
+                cliente.IdCliente = int.Parse((string)_vista.IdCliente.Text);
 
 
                 cliente.Rif = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString();
@@ -389,7 +392,7 @@ namespace Presentador.Cliente.Vistas
 
             DesactivarCampos();
             _vista.Agregar.Visible = false;
-            
+
         }
 
         public void DesactivarCampos()
@@ -424,6 +427,8 @@ namespace Presentador.Cliente.Vistas
             actualizar.Ejecutar();
 
         }
+
+
 
         #endregion
     }

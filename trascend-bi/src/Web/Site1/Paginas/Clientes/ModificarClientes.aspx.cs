@@ -16,7 +16,7 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
     #region propiedades
 
-    private int width;
+
 
     public TextBox IdCliente
     {
@@ -207,19 +207,6 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
         set { uxObjectConsultaCliente = value; }
     }
 
-    public ObjectContainerDataSource GetObjectContainerConsultaDireccion
-    {
-        get { return uxObjectConsultaDireccion; }
-        set { uxObjectConsultaDireccion = value; }
-    }
-
-
-    public ObjectContainerDataSource GetObjectContainerConsultaTelefono
-    {
-        get { return uxObjectConsultaTelefono; }
-        set { uxObjectConsultaTelefono = value; }
-    }
-
 
     public MultiView MultiViewConsulta
     {
@@ -235,10 +222,10 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
     #endregion
 
- 
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        width = 0;
+
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -289,15 +276,15 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
 
     protected void SelectCliente(object sender, GridViewSelectEventArgs e)
     {
-       _presentador.uxObjectConsultaClienteSelecting( uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaClienteSelecting(uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
 
 
- protected void ClienteGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
-  {
-      _presentador.uxObjectConsultaClienteDeleting(uxGridCliente.DataKeys[e.RowIndex].Value.ToString());
-            
+    protected void ClienteGridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+    {
+        _presentador.uxObjectConsultaClienteDeleting(uxGridCliente.DataKeys[e.RowIndex].Value.ToString());
+
     }
 
 

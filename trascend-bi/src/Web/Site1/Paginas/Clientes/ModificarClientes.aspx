@@ -15,7 +15,7 @@
 					<ul id="subnav"> 
   <li><a href="AgregarClientes.aspx">Agregar<span></span></a></li> 
   <li><a href="ConsultarClientes.aspx" >Consultar<span></span></a></li> 
-    <li><a href="EliminarClientes.aspx" >Eliminar<span></span></a></li> 
+ 
   <li><a href="ModificarClientes.aspx" class="active">Modificar<span></span></a></li>
 </ul> 
 						

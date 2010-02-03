@@ -12,15 +12,7 @@ namespace Core.LogicaNegocio.Entidades
         private TelefonoTrabajo[] telefono = new TelefonoTrabajo[3];
         private Direccion direccion;
         private string areaNegocio;
-        private int estatus;
-        /*private string calleAvenidad;
-        private string urbanizacion;
-        private string edificioCasa;
-        private string pisoApartamento;
-        private string ciudad;
-        private string areaNegocio;*/    //informacion de direccion
-        //private string telefonoTrabajo; //informacion de telefono
-        //private string codigoTrabajo;   //informacion de teleofnos
+
         private IList<Contacto> contacto;
 
         public virtual int IdCliente
@@ -35,7 +27,7 @@ namespace Core.LogicaNegocio.Entidades
                 idCliente = value;
             }
         }
-        
+
         public virtual string Rif
         {
             get
@@ -77,11 +69,11 @@ namespace Core.LogicaNegocio.Entidades
 
         public virtual Direccion Direccion
         {
-            get 
+            get
             {
                 return direccion;
             }
-            set 
+            set
             {
                 direccion = value;
             }
@@ -106,111 +98,10 @@ namespace Core.LogicaNegocio.Entidades
             set { telefono = value; }
         }
 
-        public virtual int Estatus
-        {
-            get
-            {
-                return estatus;
-            }
-
-            set
-            {
-                estatus = value;
-            }
-        }
-        
 
 
-        /* public virtual string CalleAvenidad
-        {
-            get
-            {
-                return calleAvenidad;
-            }
 
-            set
-            {
-                calleAvenidad = value;
-            }
-        }
 
-        
 
-        public virtual string Urbanizacion
-        {
-            get
-            {
-                return urbanizacion;
-            }
-
-            set
-            {
-                urbanizacion = value;
-            }
-        }
-
-        public virtual string EdificioCasa
-        {
-            get
-            {
-                return edificioCasa;
-            }
-
-            set
-            {
-                edificioCasa = value;
-            }
-        }
-        public virtual string PisoApartamento
-        {
-            get
-            {
-                return pisoApartamento;
-            }
-
-            set
-            {
-                pisoApartamento = value;
-            }
-        }
-        public virtual string Ciudad
-        {
-            get
-            {
-                return ciudad;
-            }
-
-            set
-            {
-                ciudad = value;
-            }
-        }*/             
-
-        /*public virtual string TelefonoTrabajo
-        {
-            get
-            {
-                return telefonoTrabajo;
-            }
-
-            set
-            {
-                telefonoTrabajo = value;
-            }
-        }
-
-        public virtual string CodigoTrabajo
-        {
-            get
-            {
-                return codigoTrabajo;
-            }
-
-            set
-            {
-                codigoTrabajo = value;
-            }
-        }*/
-  
     }
 }
