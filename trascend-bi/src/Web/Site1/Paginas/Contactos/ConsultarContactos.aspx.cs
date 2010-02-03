@@ -293,6 +293,11 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
     }
 
+    protected void PageChangingConsultarContacto(object sender, GridViewPageEventArgs e)
+    {
+        _presentador.OnBotonBuscar();
+        uxConsultaContacto.PageIndex = e.NewPageIndex;
+    }
     #endregion
  
 }
