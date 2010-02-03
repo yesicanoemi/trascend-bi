@@ -114,5 +114,26 @@ public class SuggestionNames : System.Web.Services.WebService
         return responses.ToArray();
     }
 
+    [WebMethod]
+    public string[] GetSuggestionsFacturaPropuesta(string prefixText, int count)
+    {
+        List<string> responses = new List<string>();
+
+        Propuesta propuesta = new Propuesta();
+
+        propuesta.Titulo = prefixText;
+
+        Core.LogicaNegocio.Comandos.ComandoPropuesta.Consultar comando = 
+            FabricaComandosPropuesta.CrearComandoConsultar(1, propuesta.Titulo);
+
+        IList<Propuesta> propuestas = comando.Ejecutar();
+
+        foreach (Propuesta prop in propuestas)
+        {
+            responses.Add(prop.Titulo);
+        }
+        return responses.ToArray();
+    }
+
 }
 
