@@ -18,13 +18,16 @@ namespace Presentador.Gasto.Contrato
         Label LabelInfo { get; set; }
         Label Error { get; set; }
         TextBox BusquedaConsulta { get; set;}
+        TextBox TextBoxFecha { get; set; }
         RadioButtonList CheckOpcionBuscar { get; set; }       
         Button BotonBuscarDatos { get; set; }        
         GridView GridViewConsultaGasto {get; set;}
         GridView GridViewParametro { get; set; }
+        GridView GridViewGastoDetalle { get; set; }
         ObjectContainerDataSource GetObjectContainerConsultaGasto { get; set; }
         ObjectContainerDataSource GetObjectContainerConsultaGastoSeleccion { get; set; }
         ObjectContainerDataSource GetObjectContainerCliente { get; set; }
+        ObjectContainerDataSource GetObjectGastoDetallado { get; set; }
         HtmlTable TablaSeleccionGrid { get; set; }
         HtmlTable TablaConsultaParametro { get; set; }
         HtmlTable TablaCliente { get; set; }

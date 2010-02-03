@@ -24,7 +24,7 @@ namespace Presentador.Gasto.Vistas
         private IConsultarGasto _vista;
         private Core.LogicaNegocio.Entidades.Propuesta propuesta;
         private Core.LogicaNegocio.Entidades.Gasto gasto;
-        private IList<Core.LogicaNegocio.Entidades.Gasto> listaGasto;
+        private static IList<Core.LogicaNegocio.Entidades.Gasto> listaGasto;
         private IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente;
         private IList<Core.LogicaNegocio.Entidades.Gasto> listaGastoAux;
         private IList<Core.LogicaNegocio.Entidades.Propuesta> listaPropuesta;
@@ -141,7 +141,7 @@ namespace Presentador.Gasto.Vistas
                 try
                 {
                     gasto = new Core.LogicaNegocio.Entidades.Gasto();
-                    gasto.FechaGasto = Convert.ToDateTime( _vista.BusquedaConsulta.Text);
+                    gasto.FechaGasto = Convert.ToDateTime( _vista.TextBoxFecha.Text);
 
                     listaGasto = ConsultarPorFecha(gasto);
  
@@ -266,6 +266,9 @@ namespace Presentador.Gasto.Vistas
         }
 
 
+        /// <summary>
+        /// Metodo que revisa la seleccion del radio button
+        /// </summary>
         public void verseleccion()
         {
             if (_vista.CheckOpcionBuscar.SelectedValue.Equals("0"))
@@ -274,6 +277,7 @@ namespace Presentador.Gasto.Vistas
                 _vista.Calendario.Visible = false;
                 _vista.BusquedaConsulta.Visible = true;
                 _vista.BotonBuscarDatos.Visible = true;
+                _vista.TextBoxFecha.Visible = false;
             }
             if (_vista.CheckOpcionBuscar.SelectedValue.Equals("1"))
             {
@@ -281,6 +285,7 @@ namespace Presentador.Gasto.Vistas
                 _vista.Calendario.Visible = false;
                 _vista.BusquedaConsulta.Visible = true;
                 _vista.BotonBuscarDatos.Visible = true;
+                _vista.TextBoxFecha.Visible = false;
             }
             if (_vista.CheckOpcionBuscar.SelectedValue.Equals("2"))
             {
@@ -288,6 +293,27 @@ namespace Presentador.Gasto.Vistas
                 _vista.Calendario.Visible=true;
                 _vista.BusquedaConsulta.Visible = true;
                 _vista.BotonBuscarDatos.Visible = true;
+                _vista.TextBoxFecha.Visible = true;
+                _vista.BusquedaConsulta.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Metodo que realiza la consulta detallada del gasto seleccionado
+        /// </summary>
+        /// <param name="codigo">codigo del gasto seleccionado</param>
+        public void GastoDetallado(string codigo)
+        {
+            int id = Convert.ToInt32(codigo);
+            int i;
+            for ( i = 0; i < listaGasto.Count; i++ )
+            {
+                if (listaGasto.ElementAt(i).Codigo == id)
+                {
+                    _vista.GetObjectGastoDetallado.DataSource = listaGasto.ElementAt(i);
+                    _vista.GridViewGastoDetalle.Visible = true;
+                    _vista.GridViewConsultaGasto.Visible = false;
+                }
             }
         }
 

@@ -52,10 +52,12 @@
 		                        <asp:Label ID="uxLabelInfo" runat="server" Font-Names="Verdana" />
                                 <asp:TextBox ID="uxBusquedaConsulta" runat="server" Height="19px" 
                                     Width="139px" Visible="false" ></asp:TextBox>
+                                    <asp:TextBox ID="uxTextFecha" runat="server" Height="19px" 
+                                    Width="139px" Visible="false" ></asp:TextBox>
 		                         <asp:Image ID="uxFechaInicioImg" runat="server" 
                                     ImageUrl="~/Images/calendario.png" Height="16px" Width="16px" Visible="false" />
 		                        <AjaxControlToolkit:CalendarExtender CssClass="ajax__calendar" Animated="true" runat="server" ID="uxInicio"
-                                        Format="dd/MM/yyyy" TargetControlID="uxBusquedaConsulta" PopupButtonID="uxFechaInicioImg" >
+                                        Format="dd/MM/yyyy" TargetControlID="uxTextFecha" PopupButtonID="uxFechaInicioImg" >
                                 </AjaxControlToolkit:CalendarExtender>
                            </td>
 		                    <td>&nbsp;</td>
@@ -138,17 +140,49 @@
 		                <tr>
 		                    <td><h3>Datos del Gasto<asp:GridView ID="uxConsultaGasto" runat="server" AllowPaging="True" DataSourceID="uxObjectConsultaGasto"
                                                 AutoGenerateColumns="false" DataKeyNames="codigo"
-                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" TextAlign="Center">
+                                                Width="130%" Font-Names="Verdana" Font-Size="X-Small" AutoGenerateSelectButton="true" OnSelectedIndexChanging="GastoDetalle">
                                                 
                                                 <Columns>
                                                         
                                                         <asp:BoundField  HeaderText="Codigo de la Version" DataField="idVersion"/>
                                                                                                  
-                                                        <asp:BoundField  HeaderText="Tipo" DataField="tipo"/>
+                                                        
                                                                                                                 
                                                         <asp:BoundField  HeaderText="Monto" DataField="monto" />
                                                                                                                  
+                                                       
+                                                </Columns>
+                                                <EmptyDataTemplate>
+                                                        <center>
+                                                            <span>No hay data cargada</span>
+                                                        </center>
+                                                </EmptyDataTemplate>            
+                            </asp:GridView>
+                            <asp:GridView ID="uxGridGastoDetalle" runat="server" AllowPaging="True" DataSourceID="uxObjectGastoDetallado"
+                                                AutoGenerateColumns="false" DataKeyNames="codigo"
+                                                Width="150%" Font-Names="Verdana" Font-Size="X-Small" Visible="false">
+                                                
+                                                <Columns>
+                                                        
+                                                        <asp:BoundField  HeaderText="Codigo de la Version" DataField="idVersion"/>
+                                                        
+                                                        
+                                                                                                 
+                                                        <asp:BoundField  HeaderText="Tipo" DataField="tipo"/>
+                                                        
+                                                        
+                                                        
+                                                        <asp:BoundField  HeaderText="Descripcion" DataField="descripcion"/>
+                                                        
+                                                       
+                                                                                                                
+                                                        <asp:BoundField  HeaderText="Monto" DataField="monto" />
+                                                        
+                                                        
+                                                                                                                 
                                                         <asp:BoundField  HeaderText="Gasto Realizado el dia" DataField="fechaGasto" />
+                                                        
+                                                        
                                                          
                                                         <asp:BoundField  HeaderText="Ingresó al sistema" DataField="fechaIngreso" />
                                                 </Columns>
@@ -180,7 +214,8 @@
 
 <pp:objectcontainerdatasource runat="server" ID="uxObjectConsultaGasto" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" />
 <pp:objectcontainerdatasource runat="server" ID="uxObjectParamCoinci" DataObjectTypeName="Core.LogicaNegocio.Entidades.Propuesta" />
-<pp:objectcontainerdatasource runat="server" ID="uxObjectCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" /> 	 
+<pp:objectcontainerdatasource runat="server" ID="uxObjectCliente" DataObjectTypeName="Core.LogicaNegocio.Entidades.Cliente" />
+<pp:objectcontainerdatasource runat="server" ID="uxObjectGastoDetallado" DataObjectTypeName="Core.LogicaNegocio.Entidades.Gasto" /> 	 
 
 		            </form>
 		           
