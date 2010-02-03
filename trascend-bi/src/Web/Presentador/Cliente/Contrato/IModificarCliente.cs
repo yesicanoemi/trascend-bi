@@ -18,6 +18,7 @@ namespace Presentador.Cliente.Contrato
         Label RifCliente { get; set; }
         Label LabelNombreCliente { get; set; }
         Button BotonBuscar { get; set; }
+        Button BotonVolver { get; set; }
         GridView GridCliente { get; set; }
         RadioButtonList RbCampoBusqueda { get; set; }
         MultiView MultiViewConsulta { get; set; }
