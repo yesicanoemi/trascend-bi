@@ -142,7 +142,7 @@
                                                   <asp:GridView ID="uxGridCliente" runat="server" AllowPaging="True" 
                                                       AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="rif" 
                                                       Font-Names="Verdana" Font-Size="Small" onrowdatabound="uxGridView_RowDataBound" 
-                                                      OnSelectedIndexChanging="SelectCliente" Width="100%">
+                                                      OnSelectedIndexChanging="SelectCliente" Width="70%" style="left:200px; POSITION: absolute; TOP: 300px;">
                                                       <RowStyle HorizontalAlign="Center" />
                                                       <Columns>
                                                           <asp:BoundField DataField="rif" HeaderText="Rif" />

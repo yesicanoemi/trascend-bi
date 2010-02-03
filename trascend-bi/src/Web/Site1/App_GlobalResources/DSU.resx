@@ -537,4 +537,7 @@
   <data name="FaltaNombrePropuesta" xml:space="preserve">
     <value>Introduzca el nombre de una propuesta</value>
   </data>
+  <data name="FaltaNumTelefono2" xml:space="preserve">
+    <value>Debe ingresar Num Teléfono</value>
+  </data>
 </root>

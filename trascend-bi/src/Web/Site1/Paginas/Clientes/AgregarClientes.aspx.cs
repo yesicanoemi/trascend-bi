@@ -187,9 +187,9 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
 
     protected void uxBotonAceptar_Click(object sender, EventArgs e)
     {
-        _presentador.IngersarCliente();
+        //_presentador.IngersarCliente();
+        _presentador.OnBotonIngresar();
         //esponse.Redirect(paginaPrueba);
-
     }
 
     protected void uxInsertarOtro_Click(object sender, EventArgs e)

@@ -195,14 +195,17 @@
                                <tr>
                                    <td>&nbsp;</td>
                                    <td>         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="uxCodTrabajo"
-                                                ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
-                                                Display="Dynamic" ValidationGroup="ValidarCampos" /> 
+                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
+                                           ControlToValidate="uxCodTrabajo" Display="Dynamic" 
+                                           ErrorMessage="<%$ Resources:DSU, FaltaCodigoTelefono%>" Font-Size="Smaller" 
+                                           ValidationGroup="ValidarCampos" />
                                        <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="uxTelefonoTrabajo"
-                                                ErrorMessage="<%$ Resources:DSU, LLenarCampo%>" Font-Size="Smaller"
-                                                Display="Dynamic" ValidationGroup="ValidarCampos" /></td>
+                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
+                                           ControlToValidate="uxTelefonoTrabajo" Display="Dynamic" 
+                                           ErrorMessage="<%$ Resources:DSU, FaltaNumTelefono2%>" Font-Size="Smaller" 
+                                           ValidationGroup="ValidarCampos" />
+                                                             </td>
                                </tr>
                                
                                
