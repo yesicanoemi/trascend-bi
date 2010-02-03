@@ -173,7 +173,8 @@ namespace Presentador.Cliente.Vistas
         {
             int i=0;
             IList<Core.LogicaNegocio.Entidades.TelefonoTrabajo> telefonos = new List<TelefonoTrabajo>();
-
+            IList<Core.LogicaNegocio.Entidades.Contacto> listContac = new List<Core.LogicaNegocio.Entidades.Contacto>();
+            Core.LogicaNegocio.Entidades.Contacto contacto = new Core.LogicaNegocio.Entidades.Contacto();
             if (cliente != null)
             {
 
@@ -187,6 +188,15 @@ namespace Presentador.Cliente.Vistas
                     }
                     i++;
                 }
+
+                contacto.ClienteContac = cliente;
+
+                for (int j = 0; j < ConsultarContactoXCliente(contacto).Count; j++)
+                {
+                    listContac.Add(ConsultarContactoXCliente(contacto)[j]);
+                }
+
+                _vista.GetObjectContainerConsultaContacto.DataSource = listContac;
                 _vista.GetObjectContainerConsultaTelefono.DataSource = telefonos;
                 _vista.GetObjectContainerConsultaTelefono.DataBind();
             }
@@ -265,6 +275,22 @@ namespace Presentador.Cliente.Vistas
 
             }
             return listacliente;
+        }
+
+
+
+        public IList<Core.LogicaNegocio.Entidades.Contacto> ConsultarContactoXCliente
+                                             (Core.LogicaNegocio.Entidades.Contacto entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Contacto> contacto1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoContacto.ConsultarContactoXCliente comando;
+
+            comando = FabricaComandosContacto.CrearComandoConsultarContactoXCliente(entidad);
+
+            contacto1 = comando.Ejecutar();
+
+            return contacto1;
         }
 
         public void uxObjectConsultaClienteSelecting(string rif)

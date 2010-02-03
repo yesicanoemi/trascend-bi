@@ -123,6 +123,11 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
         set { uxObjectConsultaTelefono = value; }
     }
 
+    public ObjectContainerDataSource GetObjectContainerConsultaContacto
+    {
+        get { return uxObjectConsultaContacto; }
+        set { uxObjectConsultaContacto = value; }
+    }
 
     public MultiView MultiViewConsulta
     {
