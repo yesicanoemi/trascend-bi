@@ -33,7 +33,7 @@ namespace Core.Pruebas
         public void IngresarCliente()
         {
             Cliente cliente = new Cliente();
-            
+
             #region carga de objeto cliente
 
             cliente.AreaNegocio = "Comercio";
@@ -43,15 +43,15 @@ namespace Core.Pruebas
             cliente.Direccion.Ciudad = "caracas";
 
             cliente.Direccion.Urbanizacion = "Los Ruices";
-            
+
             cliente.Direccion.Avenida = "Avenida Francisco de Miranda";
-            
+
             cliente.Direccion.Edif_Casa = "Piedra Gris";
 
             cliente.Direccion.Oficina = "14-c";
-                                   
+
             cliente.Nombre = "El guevo Erecto";
-            
+
             cliente.Rif = "J-00006372-9";
 
             cliente.Telefono = new TelefonoTrabajo[3];
@@ -92,7 +92,7 @@ namespace Core.Pruebas
         [Test]
         public void ConsultarClientesNombre()
         {
-            Cliente cliente = new Cliente();            
+            Cliente cliente = new Cliente();
 
             cliente.Nombre = "i";
 
@@ -171,7 +171,7 @@ namespace Core.Pruebas
 
             cliente.Telefono[2].Tipo = "Celular";
 
-            cliente.Estatus = 0;
+
 
             #endregion
 
@@ -215,7 +215,7 @@ namespace Core.Pruebas
             {
                 Console.WriteLine(clienteA.Nombre + " " + clienteA.AreaNegocio);
             }
-            
+
         }
     }
 }

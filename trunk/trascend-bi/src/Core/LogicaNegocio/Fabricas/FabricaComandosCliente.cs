@@ -19,6 +19,10 @@ namespace Core.LogicaNegocio.Fabricas
             return new Consultar();
         }
 
+        public static Eliminar CrearComandoEliminar(Cliente cliente)
+        {
+            return new Eliminar(cliente);
+        }
 
 
         public static ConsultarNombre CrearComandoConsultarNombre(Cliente cliente)
@@ -33,10 +37,7 @@ namespace Core.LogicaNegocio.Fabricas
             return new Modificar(cliente);
         }
 
-        public static ConsultarTodos CrearComandoConsultarTodos()
-        {
-            return new ConsultarTodos();
-        }
+
 
 
         public static ConsultarRif CrearComandoConsultarRif(Cliente cliente)

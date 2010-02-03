@@ -16,7 +16,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     #region propiedades
 
-    private int width;
+
 
     public TextBox Valor
     {
@@ -138,10 +138,10 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     #endregion
 
- 
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        width = 0;
+
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -192,7 +192,7 @@ public partial class Paginas_Clientes_ConsultarClientes : PaginaBase, IConsultar
 
     protected void SelectCliente(object sender, GridViewSelectEventArgs e)
     {
-       _presentador.uxObjectConsultaClienteSelecting( uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
+        _presentador.uxObjectConsultaClienteSelecting(uxGridCliente.DataKeys[e.NewSelectedIndex].Value.ToString());
     }
 
     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
