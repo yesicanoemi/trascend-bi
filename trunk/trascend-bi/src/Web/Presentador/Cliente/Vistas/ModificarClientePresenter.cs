@@ -17,6 +17,8 @@ using Core.AccesoDatos;
 using Core.AccesoDatos.Interfaces;
 using Presentador.Base;
 using System.Web;
+using Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos;
+
 
 
 namespace Presentador.Cliente.Vistas
@@ -125,7 +127,8 @@ namespace Presentador.Cliente.Vistas
             listaCliente = BuscarListaClientes();
 
 
-
+            if (listaCliente == null)
+                listaCliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
 
             if (listaCliente.Count != 0)
             {
@@ -285,10 +288,10 @@ namespace Presentador.Cliente.Vistas
                 _vista.DialogoVisible = true;
 
             }
-            catch (AgregarClienteLNException e)
+            catch (ConsultarClienteBDExcepciones e)
             {
-                _vista.Pintar(ManagerRecursos.GetString("codigoErrorIngresar"),
-                    ManagerRecursos.GetString("mensajeErrorIngresar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
                 _vista.DialogoVisible = true;
 
             }
@@ -320,7 +323,7 @@ namespace Presentador.Cliente.Vistas
 
 
             }
-            catch (ConsultarClienteLNException e)
+            catch (ConsultarClienteBDExcepciones e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
                     ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
@@ -353,7 +356,7 @@ namespace Presentador.Cliente.Vistas
 
 
             }
-            catch (ConsultarClienteLNException e)
+            catch (ConsultarClienteBDExcepciones e)
             {
                 _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
                     ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
@@ -380,10 +383,17 @@ namespace Presentador.Cliente.Vistas
             cliente.Rif = rif;
 
             listacliente = ConsultarClienteRif(cliente);
-            cliente = listacliente[0];
-            //Carga datos en la vista
-            CargarDatos(cliente);
-            CambiarVista(1);
+
+            if (listacliente == null)
+                listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
+
+            if (listacliente.Count != 0)
+            {
+                cliente = listacliente[0];
+                //Carga datos en la vista
+                CargarDatos(cliente);
+                CambiarVista(1);
+            }
 
         }
 
@@ -405,44 +415,95 @@ namespace Presentador.Cliente.Vistas
 
         public void EliminarCliente(Core.LogicaNegocio.Entidades.Cliente cliente)
         {
-            Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar eliminar; //objeto del comando Eliminar.
-            eliminar = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoEliminar(cliente);
-            eliminar.Ejecutar();
-            LimpiarFormulario();
-            _vista.PintarInformacion2(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
-            _vista.InformacionVisible2 = true;
-            OnBotonBuscar();
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoCliente.Eliminar eliminar; //objeto del comando Eliminar.
+                eliminar = Core.LogicaNegocio.Fabricas.FabricaComandosCliente.CrearComandoEliminar(cliente);
+                eliminar.Ejecutar();
+                LimpiarFormulario();
+                _vista.PintarInformacion2(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
+                _vista.InformacionVisible2 = true;
+                OnBotonBuscar();
+            }
+            catch (ModificarClienteBDExcepciones e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
         }
 
 
         public void DesactivarCliente()
         {
-            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
-            cliente = CargarObjetoCliente();
-            EliminarCliente(cliente);
+            try
+            {
+                Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+                cliente = CargarObjetoCliente();
+                EliminarCliente(cliente);
 
-            _vista.PintarInformacion(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
-            _vista.InformacionVisible = true;
-            LimpiarFormulario();
-            _vista.Agregar.Visible = false;
-            _vista.BotonVolver.Visible = true;
+                _vista.PintarInformacion(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
+                _vista.InformacionVisible = true;
+                LimpiarFormulario();
+                _vista.Agregar.Visible = false;
+                _vista.BotonVolver.Visible = true;
+            }
+            catch (ModificarClienteBDExcepciones e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
 
         }
 
 
         public void ActualizarCliente()
         {
-            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+            try
+            {
+                Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
 
-            cliente = CargarObjetoCliente();
+                cliente = CargarObjetoCliente();
 
-            Actualizar(cliente);
+                Actualizar(cliente);
 
-            _vista.PintarInformacion(ManagerRecursos.GetString("ClienteModificacionExitosa"), "confirmacion");
-            _vista.InformacionVisible = true;
+                _vista.PintarInformacion(ManagerRecursos.GetString("ClienteModificacionExitosa"), "confirmacion");
+                _vista.InformacionVisible = true;
 
-            DesactivarCampos();
-            _vista.Agregar.Visible = false;
+                DesactivarCampos();
+                _vista.Agregar.Visible = false;
+            }
+            catch (ModificarClienteBDExcepciones e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
 
         }
 
