@@ -250,23 +250,32 @@ public partial class Paginas_Contactos_EliminarContactos : PaginaBase, IEliminar
 
         bool permiso = false;
 
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 10)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == 10)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new EliminarPresentador(this);
+                    _presentador = new EliminarPresentador(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            Response.Redirect(paginaDefault);
+
         }
+
     }
 
     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
