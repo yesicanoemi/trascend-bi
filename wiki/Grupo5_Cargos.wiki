@@ -16,57 +16,43 @@ Gestion de Cargos en el Sistema.
 
 == Casos de uso ==
 
-====*1) Ingresar Cargos*====
+====*1) Ingresar Cargo*====
 
-|| *Identificador* || *CU-C01* ||
-|| *Caso de Uso* ||Ingresar Cargo ||
-|| *Actores* ||Usuario administrador ||
-|| *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  || El usuario administrador ingresa un nuevo <br>Cargo al sistema.|| 
-|| *Precondiciones* || *1)* Debe existir el usuario administrador.||
-|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador crea el nuevo Cargo <br> asignando un nombre de empleado y los datos <br>*3)* El sistema finaliza el caso de uso.||
-|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*2a)*El administrador crea un usuario para asi poder crear el cargo <br> recien creado CU-U01.||
+http://trascend-bi.googlecode.com/files/Ingresar%20Cargo.jpg
 
 http://trascend-bi.googlecode.com/files/Ingresar%20Cargo%20grupo%20%236.png
 
+
+
 ====*2) Modificar Cargos*====
 
-|| *Identificador* || *CU-E02* ||
-|| *Caso de Uso* ||Modificar Empleado ||
-|| *Actores* || Usuario administrador ||
-|| *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  || El usuario administrador selecciona y modifica los datos <br> de un Empleado en el sistema.|| 
-|| *Precondiciones* || *1)* Debe existir el usuario administrador. <br> *2)* Debe existir el usuario a modificar||
-|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador busca el Empleado que desea modificar <br> lo selecciona y el sistema le muestra los datos <br>*3)* El administrador asigna los valores <br> a los datos del empleado y guarda los cambios.<br>*4)* El sistema finaliza el caso de uso.||
-|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>*3a)*El administrador no guarda los cambios.||
+http://trascend-bi.googlecode.com/files/Modificar%20Cargo.jpg
 
-http://trascend-bi.googlecode.com/files/Modificar%20Datos%20de%20Empleado%20CU-E02.jpg
+http://trascend-bi.googlecode.com/files/Modificar%20Cargo%20grupo%20%236.png
 
-====*3) Consultar Cargo*====
 
-|| *Identificador* || *CU-C03* ||
-|| *Caso de Uso* ||Consultar Cargos ||
-|| *Actores* || Usuario Administrador ||
-|| *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  || El usuario administrador consulta los datos<br> de algun Cargo en el sistema.|| 
-|| *Precondiciones* || *1)* Debe existir el usuario administrador.<br> *2)* Debe existir al menos un usuario registrado||
-|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador ingresa los datos del criterio de busqueda de Cargo <br> asignando uno o varios valores a los mostrados por el sistema <br>*3)* El sistema muestra los resultados de la busqueda y termina el caso de uso.||
-|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.||
+
+====*3) Eliminar Cargos*====
+
+http://trascend-bi.googlecode.com/files/Eliminar%20Cargo.jpg
+
+http://trascend-bi.googlecode.com/files/Eliminar%20Cargo%20grupo%20%236.png
+
+
+
+====*4) Consultar Cargos*====
+
+http://trascend-bi.googlecode.com/files/Consultar%20Cargo.jpg
 
 http://trascend-bi.googlecode.com/files/Consultar%20Cargo%20grupo%20%236.png
 
-====*4) Eliminar Cargo*====
 
-|| *Identificador* || *CU-C04* ||
-|| *Caso de Uso* ||Eliminar Empleado ||
-|| *Actores* || Usuario Administrador ||
-|| *Tipo* ||Necesario ||
-|| *Resumen/Propósito*  ||El usuario administrador elimina un empleado|| 
-|| *Precondiciones* || *1)* Debe existir el usuario administrador. <br> *2)* Debe existir el empleado a eliminar.||
-|| *Flujo Principal* || *1)* El usuario administrador inicia sesión. <br> *2)* El administrador inicia el caso de uso CU-E03<br>*3)* El sistema muestra el resultado de la busqueda.<br>*4)* El administrador selecciona el usuario a eliminar. <br> *5)* El sistema finaliza el caso de uso.||
-|| *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
-http://trascend-bi.googlecode.com/files/Eliminar%20Empleado%20CU-E04.jpg
+====*5) Crear Tabla Inflacionaria*====
+
+http://trascend-bi.googlecode.com/files/Crear%20Tabla%20Inflacionaria.jpg
+
+http://trascend-bi.googlecode.com/files/Tabla%20Inflacionaria%20grupo%20%236.png
 
 == Nuevo Diagrama de Clases ==
 http://trascend-bi.googlecode.com/files/Diagrama%20de%20Clases%20%28Cargo%29.jpg
