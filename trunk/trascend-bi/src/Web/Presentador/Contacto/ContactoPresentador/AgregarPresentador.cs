@@ -104,16 +104,6 @@ namespace Presentador.Contacto.ContactoPresentador
 
         }
 
-        public void NuevaInsercion()
-        {
-            limpiarRegistro();
-            _vista.InformacionVisible = false;
-            _vista.InsertarOtroC.Visible = false;
-            _vista.Insertar.Visible = true;
-        }
-
-
-
         #endregion
 
         #region Comandos
@@ -139,6 +129,8 @@ namespace Presentador.Contacto.ContactoPresentador
                 ingresar = Core.LogicaNegocio.Fabricas.FabricaComandosContacto.CrearComandoIngresar(_contacto);
 
                 ingresar.Ejecutar();
+
+                limpiarRegistro();
 
                 if (imprime == true)
                 {

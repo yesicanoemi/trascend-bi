@@ -27,14 +27,6 @@ namespace Presentador.Contacto.ContactoInterface
 
         TextBox TextBoxCodCelular { get; set; }
 
-        Button InsertarOtroC { get; set; }
-
-        Button Insertar { get; set; }
-
-        //RequiredFieldValidator RequiredFieldValidator { get; set; }
-
-        //RequiredFieldValidator RequiredFieldValidator1 { get; set; }
-
         TextBox Valor { get; set; }
 
         #region Diálogo

@@ -71,18 +71,7 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         set { uxValor = value; }
     }
 
-    public Button InsertarOtroC
-    {
-        get { return uxInsertarOtroC; }
-        set { uxInsertarOtroC = value; }
-    }
-
-    public Button Insertar
-    {
-        get { return uxBotonAceptar; }
-        set { uxBotonAceptar = value; }
-    }
-
+    
     #region Información
 
     public void PintarInformacion(string mensaje, string estilo)
@@ -143,10 +132,6 @@ public partial class Paginas_Contactos_AgregarContactos : PaginaBase, IAgregarCo
         _presentador.Onclick();
     }
 
-    protected void uxInsertarOtroC_Click(object sender, EventArgs e)
-    {
-        _presentador.NuevaInsercion();
-    }
 
     protected void Page_Init(object sender, EventArgs e)
     {

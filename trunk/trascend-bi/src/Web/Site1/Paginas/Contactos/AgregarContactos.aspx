@@ -217,10 +217,6 @@
                                    <td>
                                        <asp:Button ID="uxBotonAceptar" runat="server" Text="Aceptar" 
                                            OnClick="Aceptar_Click" Width="154px" />
-                                       <asp:Button ID="uxInsertarOtroC" runat="server" Text="Insertar Otro" Width="154px" Visible="False" onclick="uxInsertarOtroC_Click" />
-                                       
-                                       
-                                       <asp:Button ID="Button2" runat="server" Text="Cancelar" PostBackUrl="~/Paginas/Contactos/DefaultContactos.aspx" Width="152px" />
                                     </td>
                                 </tr>
                            </table>
