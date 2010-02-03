@@ -12,7 +12,7 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -157,23 +157,46 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
 
     protected void btBotonBuscar_Click(object sender, EventArgs e)
     {
+        lbMensaje.Text = "";
         _presentador.CargarDatosPropuesta();
         btBotonIngresarFactura.Enabled = true;
         btBotonIngresarFactura.Visible = true;
-
     }
 
     protected void btBotonIngresar_Click(object sender, EventArgs e)
     {
+
         _presentador.IngresarPropuesta();
+        MultiViewFactura.ActiveViewIndex = 0;
+        uxNombrePropuesta.Text = "";
+        lbMontoTotal.Text = "";
+        lbMontoPagado.Text = "";
+        lbMontoRestante.Text = "";
+        lbPorcentajePagado.Text = "";
+        lbPorcentajeRestante.Text = "";
+        lbNombrePropuesta.Text = "";
     }
+
     protected void btBotonIngresarFactura_Click(object sender, EventArgs e)
     {
-       
+        uxTitulo.Text = "";
+        uxDescripcion.Text = "";
+        uxPorcentaje.Text = "";
+        lbMensaje.Text = "";
+        btBotonIngresar.Enabled = false;
+        btBotonIngresar.Visible = false;
+        lbMonto.Text = "";
         MultiViewFactura.ActiveViewIndex = 1;
     }
 
     protected void btCalcularMonto_Click(object sender, EventArgs e)
+    {
+        _presentador.CalcularMontoTotal();
+        btBotonIngresar.Enabled = true;
+        btBotonIngresar.Visible = true;
+    }
+
+    protected void uxPorcentaje_TextChanged(object sender, EventArgs e)
     {
         _presentador.CalcularMontoTotal();
     }
