@@ -267,13 +267,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new IngresarClienteBDExepciones
-                    ("Error de SQL en ingresando el cliente en la Base de Datos", e);
+                throw new ModificarClienteBDExcepciones
+                    ("Error de SQL modificando el cliente en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new IngresarClienteBDExepciones
-                    ("Error ingresando cliente en la base de datos", e);
+                throw new ModificarClienteBDExcepciones
+                    ("Error modificando cliente en la base de datos", e);
             }
         }
 
@@ -491,8 +491,6 @@ namespace Core.AccesoDatos.SqlServer
                 
             }
             #endregion
-
-            return listaCliente;
 
 
         }
@@ -817,13 +815,13 @@ namespace Core.AccesoDatos.SqlServer
             }
             catch (SqlException e)
             {
-                throw new IngresarClienteBDExepciones
-                    ("Error de SQL en ingresando el cliente en la Base de Datos", e);
+                throw new ModificarClienteBDExcepciones
+                    ("Error de SQL eliminando el cliente en la Base de Datos", e);
             }
             catch (Exception e)
             {
-                throw new IngresarClienteBDExepciones
-                    ("Error ingresando cliente en la base de datos", e);
+                throw new ModificarClienteBDExcepciones
+                    ("Error eliminando cliente en la base de datos", e);
             }
         }
 
