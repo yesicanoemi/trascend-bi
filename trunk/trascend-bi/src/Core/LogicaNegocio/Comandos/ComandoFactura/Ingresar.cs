@@ -43,7 +43,11 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
 
             IDAOFactura bdfactura = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOFactura();
 
+            IDAOPropuesta bdpropuesta = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOPropuesta();
+
             IList<Factura> facturas = bdfactura.ConsultarFacturasNomPro(_factura.Prop);
+
+            IList<Propuesta> propuestas = bdpropuesta.ConsultarPropuestaNueva(1, _factura.Prop.Titulo);
 
             #region Validar porcentaje a pagar
 
@@ -61,7 +65,16 @@ namespace Core.LogicaNegocio.Comandos.ComandoFactura
             if (porcentaje > 100)
                 throw new IngresarException("El porcentaje ingresado supera el monto restante de la propuesta");
             else
+            {
+                foreach (Propuesta p in propuestas)
+                {
+                    if (p.Version != "Activa")
+                        throw new IngresarException("No se puede facturar una propuesta que no este activa ");
+                    
+                }
+
                 factura = bdfactura.IngresarFactura(_factura);
+            }
 
             return factura;
         }
