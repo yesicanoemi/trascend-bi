@@ -121,6 +121,39 @@ namespace Core.AccesoDatos.SqlServer
         /// Metodo para consultar todos los cargos del sistema
         /// </summary>
         /// <returns>Una IList de entidades que contienen todos los cargos</returns>
+        public IList<Entidad> ConsultarCargosPropuesta()
+        {
+            IList<Entidad> listaCargos = new List<Entidad>();
+            try
+            {
+                DbDataReader reader = SqlHelper.ExecuteReader(_conexion.GetConnection(), "ConsultarCargos");
+                Cargo cargo;
+
+                while (reader.Read())
+                {
+                    cargo = new Cargo();
+                    cargo.Nombre = reader["Nombre"].ToString();
+
+                    listaCargos.Add(cargo);
+                }
+
+            }
+            catch (SqlException e)
+            {
+                throw new ConsultarException("Error SQL al consultar la lista de los cargos", e);
+            }
+            catch (Exception e)
+            {
+                throw new ConsultarException("Error al consultar la lista de los cargos", e);
+            }
+
+            return listaCargos;
+        }
+
+        /// <summary>
+        /// Metodo para consultar todos los cargos del sistema
+        /// </summary>
+        /// <returns>Una IList de entidades que contienen todos los cargos</returns>
         public IList<Entidad> ConsultarCargos()
         {
             IList<Entidad> listaCargos = new List<Entidad>();
