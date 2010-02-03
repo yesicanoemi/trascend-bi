@@ -31,13 +31,13 @@
 				</div> 
 			<div class="sub-content"> 
     <div class="features_overview"> 
-        <div class="features_overview_right"> 
+        <div class="features_overview_rightUser"> 
             <h3>Reporte Equipo #3 (Facturas Emitidas)</h3> 
             <p>&nbsp;</p>
             <span style="text-align:center; font-size:smal; color:Red">
              <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false" />
              </span>             
-            <table style="width: 100%">
+            <table class="solotablasuser" style="width: 100%">
             <tr>
                 <td>
                     <asp:Label ID="Label1" runat="server" Text="Fecha inicio"></asp:Label>
@@ -92,7 +92,7 @@
              <td>
 
              <asp:GridView runat="server" ID="uxReporteFactura3b" AutoGenerateColumns="false"
-                           PageSize="10" onrowdatabound="uxGridView_RowDataBound" Width="150%">
+                           PageSize="10" onrowdatabound="uxGridView_RowDataBound" Width="500px">
              
              <RowStyle HorizontalAlign="Center" />              
              
