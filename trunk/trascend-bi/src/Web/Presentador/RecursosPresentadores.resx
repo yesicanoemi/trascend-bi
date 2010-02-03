@@ -210,4 +210,7 @@
   <data name="MensajeContactoAgregado" xml:space="preserve">
     <value>El Contaco ha sido agregado con exito!</value>
   </data>
+  <data name="ClienteyaRegistrado" xml:space="preserve">
+    <value>Cliente ya registrado. Debe agregar un nuevo cliente</value>
+  </data>
 </root>

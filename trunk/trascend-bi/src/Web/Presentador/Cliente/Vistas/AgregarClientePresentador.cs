@@ -12,7 +12,7 @@ using Presentador.Base;
 using Presentador.Cliente.Vistas;
 using Presentador.Cliente.Contrato;
 using Core.LogicaNegocio.Entidades;
-using Core.AccesoDatos.Fabricas;
+using Core.LogicaNegocio.Fabricas;
 using Core.LogicaNegocio.Comandos;
 using Core.LogicaNegocio.Excepciones.Cliente.LogicaNegocio;
 using Core.LogicaNegocio.Excepciones.Cliente.AccesoDatos;
@@ -124,6 +124,58 @@ namespace Presentador.Cliente.Vistas
         }
 
 
+        public IList<Core.LogicaNegocio.Entidades.Cliente> ConsultarClienteRif(Core.LogicaNegocio.Entidades.Cliente entidad)
+        {
+            IList<Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
+
+
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoCliente.ConsultarRif comando; //tengo q crear una nueva consulta
+
+                comando = FabricaComandosCliente.CrearComandoConsultarRif(entidad);
+
+                listacliente = comando.ejecutar();
+
+
+            }
+            catch (ConsultarClienteLNException e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorConsultar"),
+                    ManagerRecursos.GetString("mensajeErrorConsultar"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            catch (Exception e)
+            {
+                _vista.Pintar(ManagerRecursos.GetString("codigoErrorGeneral"),
+                    ManagerRecursos.GetString("mensajeErrorGeneral"), e.Source, e.Message + "\n " + e.StackTrace);
+                _vista.DialogoVisible = true;
+
+            }
+            return listacliente;
+        }
+
+
+        public void OnBotonIngresar()
+        {
+            Core.LogicaNegocio.Entidades.Cliente cliente = new Core.LogicaNegocio.Entidades.Cliente();
+
+            IList<Core.LogicaNegocio.Entidades.Cliente> listacliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
+
+            cliente.Rif = _vista.TipoRif.SelectedValue.ToString() + " - " + _vista.rifCliente.Text.ToString(); ;
+
+            listacliente = ConsultarClienteRif(cliente);
+
+            if (listacliente.Count == 0)
+                IngersarCliente();
+            else
+            {
+                _vista.PintarInformacion(ManagerRecursos.GetString("ClienteyaRegistrado"), "confirmacion");
+                _vista.InformacionVisible = true;
+            }
+
+        }
 
 
         public void limpiarRegistro()
