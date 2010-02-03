@@ -364,33 +364,43 @@ namespace Core.AccesoDatos.SqlServer
         {
             TelefonoTrabajo[] telefonosA = new TelefonoTrabajo[3];
 
-            SqlParameter[] arParms = new SqlParameter[1];
-
-            arParms[0] = new SqlParameter("@IdCLiente", SqlDbType.Int);
-            arParms[0].Value = IdCliente;
-
-            DbDataReader conexion = SqlHelper.ExecuteReader
-                    (_conexion.GetConnection(), "ConsultarTelefonosCliente", arParms);
-
-            int i = 0;
-
-            while (conexion.Read())
+            try
             {
-                //Console.WriteLine(i);
 
-                telefonosA[i] = new TelefonoTrabajo();
+                SqlParameter[] arParms = new SqlParameter[1];
 
-                telefonosA[i].Codigoarea = (int)conexion["CodigoArea"];
+                arParms[0] = new SqlParameter("@IdCLiente", SqlDbType.Int);
+                arParms[0].Value = IdCliente;
 
-                telefonosA[i].Numero = (int)conexion["Numero"];
+                DbDataReader conexion = SqlHelper.ExecuteReader
+                        (_conexion.GetConnection(), "ConsultarTelefonosCliente", arParms);
 
-                telefonosA[i].Tipo = (string)conexion["Nombre"];
+                int i = 0;
 
-                //Console.WriteLine(telefonos[i].Tipo);
+                while (conexion.Read())
+                {
+                    //Console.WriteLine(i);
 
-                //Console.WriteLine("------");
+                    telefonosA[i] = new TelefonoTrabajo();
 
-                i++;
+                    telefonosA[i].Codigoarea = (int)conexion["CodigoArea"];
+
+                    telefonosA[i].Numero = (int)conexion["Numero"];
+
+                    telefonosA[i].Tipo = (string)conexion["Nombre"];
+
+                    //Console.WriteLine(telefonos[i].Tipo);
+
+                    //Console.WriteLine("------");
+
+                    i++;
+                }
+            }
+            catch (Exception e)
+            {                
+                throw new ConsultarClienteBDExcepciones
+                    ("Error en el SQL al consultar el cliente en la base de daot", e);
+                return telefonosA;
             }
 
             return telefonosA;
@@ -398,9 +408,11 @@ namespace Core.AccesoDatos.SqlServer
 
         public IList<Cliente> ConsultarNombre(Cliente cliente)
         {
+            IList<Cliente> listaCliente = new List<Cliente>();
+
             try
             {
-                IList<Cliente> listaCliente = new List<Cliente>();
+                
 
                 SqlParameter[] arParms = new SqlParameter[1];
 
@@ -461,23 +473,26 @@ namespace Core.AccesoDatos.SqlServer
 
             #region Execepciones
             catch (SqlException e)
-            {
+            {                
                 throw new ConsultarClienteBDExcepciones
                     ("Error en el SQL al consultar el cliente en la base de daot", e);
+
             }
             catch (ConsultarClienteBDExcepciones e)
-            {
+            {                
                 throw new ConsultarClienteBDExcepciones
                     ("No se encontro ninguna informacion del cliente en la base de dato", e);
+
             }
             catch (Exception e)
-            {
+            {                
                 throw new ConsultarClienteBDExcepciones
                     ("No se encontro ninguna informacion del cliente en la base de dato", e);
+                
             }
             #endregion
 
-
+            return listaCliente;
 
 
         }
