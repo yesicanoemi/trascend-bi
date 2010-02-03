@@ -172,30 +172,20 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         Page.Controls.Add(lbl);
     }
 
-    
+
     protected void btBotonBuscar_Click(object sender, EventArgs e)
     {
-        if (ParametroTexto.Text.Equals(""))
+        if (ParametroBox.SelectedValue == "1")
         {
-            Pintar("Debe introducir un parametro de busqueda");
-            MensajeVisible = true;
-        }
-        else
-        {
-            if (ParametroBox.SelectedValue == "1")
-            {
-                _presenter.CargarTabla();
-               
-
-            }
-            if (ParametroBox.SelectedValue == "2")
-            {
-                _presenter.CargarDatos();
-                
-            }
+            _presenter.CargarTabla();
         }
 
+        if (ParametroBox.SelectedValue == "2")
+        {
+            _presenter.CargarDatos();
+        }
     }
+
     protected void uxTablaFacturas_RowDataBound(object sender, GridViewRowEventArgs e)
     {
        
@@ -216,13 +206,21 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
         {
             ParametroTexto2.Visible = false;
             ParametroTexto.Visible = true;
+            ParametroTexto.Text = "";
+            ParametroTexto2.Text = "";
             btBotonBuscar.Visible = true;
+            uxMultiViewFactura.Visible = false;
+            lbMensaje.Visible = false;
         }
         else
         {
             ParametroTexto.Visible = false;
             ParametroTexto2.Visible = true;
+            ParametroTexto.Text = "";
+            ParametroTexto2.Text = "";
             btBotonBuscar.Visible = true;
+            uxMultiViewFactura.Visible = false;
+            lbMensaje.Visible = false;
         }
     }
 }

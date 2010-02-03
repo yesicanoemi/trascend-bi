@@ -83,10 +83,15 @@ namespace Presentador.Factura.Vistas
                 _vista.Pintar("La Factura ha sido anulada con exito.");
                 _vista.MensajeVisible = true;
             }
+            catch (WebException e)
+            {
+                _vista.Pintar("Error WEB consultando");
+                _vista.MensajeVisible = true;
+            }
             catch (EliminarException e)
             {
                 _vista.Pintar(e.Message);
-                _vista.MensajeVisible = true;   
+                _vista.MensajeVisible = true;
             }
             catch (Exception e)
             {

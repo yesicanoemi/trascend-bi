@@ -534,4 +534,7 @@
   <data name="SeleccioneAnio" xml:space="preserve">
     <value>Seleccione año:</value>
   </data>
+  <data name="FaltaNombrePropuesta" xml:space="preserve">
+    <value>Introduzca el nombre de una propuesta</value>
+  </data>
 </root>
