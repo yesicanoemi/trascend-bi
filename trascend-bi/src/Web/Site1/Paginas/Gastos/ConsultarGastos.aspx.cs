@@ -36,6 +36,12 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         get { return uxBusquedaConsulta; }
         set { uxBusquedaConsulta = value; }
     }
+
+    public TextBox TextBoxFecha
+    {
+        get { return uxTextFecha; }
+        set { uxTextFecha = value; }
+    }
     public RadioButtonList CheckOpcionBuscar
     {
         get { return uxCheckOpcionBuscar; }
@@ -64,6 +70,12 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
         set { throw new System.NotImplementedException(); }
     }
 
+    public GridView GridViewGastoDetalle
+    {
+        get { return uxGridGastoDetalle; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     public ObjectContainerDataSource GetObjectContainerConsultaGasto
     {
         get { return uxObjectConsultaGasto; }
@@ -80,6 +92,12 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     {
         get { return uxObjectCliente; }
         set { uxObjectCliente = value; }
+    }
+
+    public ObjectContainerDataSource GetObjectGastoDetallado
+    {
+        get { return uxObjectGastoDetallado; }
+        set { uxObjectGastoDetallado = value; }
     }
 
     public HtmlTable TablaSeleccionGrid
@@ -168,5 +186,12 @@ public partial class Paginas_Gastos_ConsultarGastos : PaginaBase, IConsultarGast
     protected void verseleccion(object sender, EventArgs e)
     {
         _presenter.verseleccion();
+    }
+
+    protected void GastoDetalle(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.GastoDetallado
+            (uxConsultaGasto.DataKeys[e.NewSelectedIndex].Value.ToString());
+
     }
 }
