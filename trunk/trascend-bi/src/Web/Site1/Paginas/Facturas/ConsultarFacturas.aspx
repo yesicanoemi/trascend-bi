@@ -56,7 +56,7 @@
                                     <AjaxControlToolkit:ValidatorCalloutExtender runat="Server" ID="ValidatorCalloutExtender1"
                                         TargetControlID="RequiredFieldValidator1" />
                                         
-                                    <asp:TextBox ID="uxParametroTexto2" Visible="false" runat="server"></asp:TextBox>    
+                                    <asp:TextBox ID="uxParametroTexto2" Visible="false" runat="server" MaxLength="9"></asp:TextBox>    
                                     <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxParametroTexto2" FilterType="Numbers"
                                         ID="FilteredTextBoxExtender2" runat="server">
                                     </AjaxControlToolkit:FilteredTextBoxExtender>

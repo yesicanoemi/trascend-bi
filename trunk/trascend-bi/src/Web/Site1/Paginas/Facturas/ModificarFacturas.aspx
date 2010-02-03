@@ -36,7 +36,7 @@
                                     <td>Número Factura:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxBusqueda" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="uxBusqueda" runat="server" MaxLength="9"></asp:TextBox>
                                         <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda" FilterType="Numbers"
                                             ID="FilteredTextBoxExtender1" runat="server">
                                         </AjaxControlToolkit:FilteredTextBoxExtender>

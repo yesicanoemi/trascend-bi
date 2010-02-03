@@ -14,6 +14,7 @@ namespace Presentador.Factura.Contrato
         Label NumeroFactura { get; set; }
         Label TituloFactura { get; set; }
         Label DescripcionFactura { get; set; }
+        Label EstadoFactura { get; set; }
         Label PorcentajeFactura { get; set; }
         Label TotalFactura { get; set; }
         Label FechaFactura { get; set; }
