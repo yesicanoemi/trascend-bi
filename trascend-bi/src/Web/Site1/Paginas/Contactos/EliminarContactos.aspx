@@ -36,6 +36,9 @@
                                 <form id="Form3" action="#" runat="server">
                                 
                                 <uc2:MensajeInformacion ID="uxMensajeEliminar" runat="server" Visible="false" />
+                                <asp:Label ID="Label2" style="color: #FF0000;" runat="server">
+                                        <uc2:MensajeInformacion ID="MensajeInformacionError" runat="server" Visible="false" />
+                                </asp:Label>
                                 
                                 <asp:MultiView ID="uxMultiViewConsultar" runat="server" ActiveViewIndex="0">
                           
@@ -118,7 +121,7 @@
                                         ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor">
                                      </ajaxToolkit:AutoCompleteExtender>
                                      
-                                     <asp:Label ID="Label1" style="left:380px; POSITION: absolute; TOP: 280px;" runat="server">
+                                     <asp:Label ID="Label1" style="left:380px; color: #FF0000; POSITION: absolute; TOP: 280px;" runat="server">
                                         <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false"/>
                                      </asp:Label>
                                      

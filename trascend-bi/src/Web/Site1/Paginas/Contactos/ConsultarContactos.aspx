@@ -116,7 +116,7 @@
                                         ServicePath="../../SuggestionNames.asmx" TargetControlID="uxValor">
                                      </ajaxToolkit:AutoCompleteExtender>
                                      
-                                     <asp:Label ID="Label1" style="left:380px; POSITION: absolute; TOP: 280px;" runat="server">
+                                     <asp:Label ID="Label1" style="left:380px; color: #FF0000; POSITION: absolute; TOP: 280px;" runat="server">
                                         <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" Visible="false"/>
                                      </asp:Label>
                                      

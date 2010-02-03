@@ -105,6 +105,10 @@ namespace Presentador.Contacto.ContactoInterface
 
         void PintarInformacion2(string mensaje, string estilo);
 
+        bool InformacionVisibleError { get; set; }
+
+        void PintarInformacionError(string mensaje, string estilo);
+
         #endregion
 
         #endregion 
