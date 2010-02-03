@@ -20,6 +20,12 @@ public partial class Paginas_Clientes_AgregarClientes : PaginaBase, IAgregarClie
         set { uxInsertarOtro = value; }
     }
 
+    public Button AgregarContactos
+    {
+        get { return uxAgregarContactos; }
+        set { uxAgregarContactos = value; }
+    }
+
     public TextBox rifCliente
     {
         get { return uxRif; }

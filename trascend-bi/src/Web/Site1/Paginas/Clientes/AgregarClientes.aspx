@@ -313,7 +313,7 @@
                                                        Visible="False" onclick="uxInsertarOtro_Click" />
                                                </td>
                                                <td align="center">
-                                                   <asp:Button ID="Button1" runat="server" Text="Cancelar"  PostBackUrl="~/Paginas/Clientes/DefaultClientes.aspx" />
+                                                   <asp:Button ID="uxAgregarContactos" runat="server" Text="Agregar Contactos" Visible="false"  PostBackUrl="~/Paginas/Contactos/AgregarContactos.aspx" />
                                                </td>
                                            </tr>
                                            <tr>
