@@ -53,7 +53,7 @@
                            
                            <table style="width:100%;">
                                <tr>
-                                   <td><span style="color:#FF0000">* </span> Nombre: </td>
+                                   <td><span style="color:#FF0000">&nbsp;</span>Nombre: </td>
                                    <td>
                                         <br />
                                         <asp:TextBox ID="uxNombreContacto" runat="server"></asp:TextBox>
@@ -68,7 +68,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td><span style="color:#FF0000">* </span> Apellido: </td>
+                                   <td><span style="color:#FF0000">&nbsp;</span>Apellido: </td>
                                    <td>
                                         <br />
                                         <asp:TextBox ID="uxApellidoContacto" runat="server"></asp:TextBox>
@@ -83,7 +83,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td><span style="color:#FF0000">* </span> Cargo: </td>
+                                   <td><span style="color:#FF0000">&nbsp;</span>Cargo: </td>
                                    <td>
                                        <br />
                                        <asp:TextBox ID="uxCargoContacto" runat="server">
@@ -99,7 +99,7 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td><span style="color:#FF0000">* </span> Area de negocio: </td>
+                                   <td><span style="color:#FF0000">&nbsp;</span>Area de negocio: </td>
                                    <td>
                                        <br />
                                        <asp:TextBox ID="uxAreaNegocio" runat="server">
@@ -115,11 +115,11 @@
                                    <td>&nbsp;</td>
                                </tr>
                                <tr>
-                                   <td><span style="color:#FF0000">* </span>Telefono de Oficina: </td>
+                                   <td><span style="color:#FF0000">&nbsp;</span>Telefono de Oficina: </td>
                                    <td>
                                         <br />
                                         <asp:TextBox ID="uxCodOficina" runat="server" Width="40" MaxLength="3"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="110px" MaxLength="7"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfOficina" runat="server" Width="109px" MaxLength="7"></asp:TextBox>
                                         <br />
     
                                         &nbsp;&nbsp; Ej: 212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -151,11 +151,11 @@
                                                          </td>
                                </tr>
                                <tr>
-                                   <td><span style="color:#FF0000">* </span>Telefono de Celular: </td>
+                                   <td><span style="color:#FF0000">&nbsp;</span>Telefono de Celular: </td>
                                    <td>
                                         <br />
                                         <asp:TextBox ID="uxCodCel" runat="server" Width="40" MaxLength="3"></asp:TextBox>
-                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="107px" MaxLength="7"></asp:TextBox>
+                                        <asp:TextBox ID="uxTelfCelular" runat="server" Width="109px" MaxLength="7"></asp:TextBox>
                                         <br />
                                         &nbsp; Ej: 416&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 55555555<br />
                                          <AjaxControlToolkit:FilteredTextBoxExtender
@@ -178,7 +178,7 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td> <span style="color:#FF0000">* </span> Cliente: 
+                                   <td> <span style="color:#FF0000">&nbsp;</span>Cliente: 
                                        
                                    </td>
                                    <td>
@@ -205,13 +205,13 @@
                                    </td>
                                </tr>
                                <tr>
-                                   <td>&nbsp;</td>
-                                   <td>&nbsp;</td>
+                                   <td>
+                                       <span style="color:#FF0000">Nota: Todos los campos son obligatorios</span>
+                                   
+                                       <br />
+                                   </td>
+                                   </td>
                                </tr>
-                                <tr>
-                                   <td>(<span style="color:#FF0000">*</span>) Campos obligatorios</td>
-                                   <td>&nbsp;</td>
-                                </tr>
                                 <tr>
                                    <td>&nbsp;</td>
                                    <td>
