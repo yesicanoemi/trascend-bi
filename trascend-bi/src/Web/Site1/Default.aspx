@@ -58,9 +58,9 @@
                             
                                 <tr><td>&nbsp;</td></tr>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td><asp:Button ID="uxBotonAceptar" runat="server" Text="<%$ Resources:DSU, Aceptar%>" OnClick="uxBotonAceptar_Click"/>
+                                    <td>&nbsp;</td>
+                                    <td align="center"><asp:Button ID="uxBotonAceptar" runat="server" Text="<%$ Resources:DSU, Aceptar%>" OnClick="uxBotonAceptar_Click"/></td>
+                                    <td>&nbsp;
                                 </td>
                                 </tr>
                                 </table>
