@@ -35,7 +35,7 @@
                                         Numero Factura:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="uxBusqueda" runat="server" TabIndex="1"></asp:TextBox>
+                                        <asp:TextBox ID="uxBusqueda" runat="server" TabIndex="1" MaxLength="9"></asp:TextBox>
                                         <AjaxControlToolkit:FilteredTextBoxExtender TargetControlID="uxBusqueda" FilterType="Numbers" 
                                             ID="FilteredTextBoxExtender1" runat="server">
                                         </AjaxControlToolkit:FilteredTextBoxExtender>
@@ -152,13 +152,21 @@
                                 </tr>
                                 <tr style="background-color: #FFFFCC;">
                                     <td>
+                                        <asp:Label ID="lbEstado" runat="server" Text="Estado:"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbEstadoFactura" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <asp:Label ID="lbPorcentaje" runat="server" Text="Porcentaje:"></asp:Label>
                                     </td>
                                     <td>
                                         <asp:Label ID="lbPorcentajeFactura" runat="server"></asp:Label>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style="background-color: #FFFFCC;">
                                     <td>
                                         <asp:Label ID="lbTotal" runat="server" Text="Total Factura:"></asp:Label>
                                     </td>

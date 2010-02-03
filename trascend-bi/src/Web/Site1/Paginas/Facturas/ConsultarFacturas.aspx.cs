@@ -177,12 +177,18 @@ public partial class Paginas_Facturas_ConsultarFacturas : PaginaBase, IConsultar
     {
         if (ParametroBox.SelectedValue == "1")
         {
+            lbMensaje.Visible = false;
+            uxMultiViewFactura.Visible = false;
             _presenter.CargarTabla();
+            ParametroTexto.Text = "";
         }
 
         if (ParametroBox.SelectedValue == "2")
         {
+            lbMensaje.Visible = false;
+            uxMultiViewFactura.Visible = false;
             _presenter.CargarDatos();
+            ParametroTexto2.Text = "";
         }
     }
 

@@ -40,56 +40,27 @@ namespace Presentador.Factura.Vistas
                 listaPropuesta = consultaPropuesta.Ejecutar();
 
                 if (listaPropuesta.Count == 0)
-                {
-                    _vista.Pintar("No existe la propuesta");
-                    _vista.MensajeVisible = true;
-                    
-                }
-                else
-                {
-                    _propuesta = listaPropuesta.ElementAt(0);
-
-                    _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
-                    _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
-                    
-                }
-            }
-            catch (WebException e)
-            {
-                _vista.Pintar("Error WEB consultando");
-                _vista.MensajeVisible = true;
-            }
-            catch (ConsultarException e)
-            {
-                _vista.Pintar(e.Message);
-                _vista.MensajeVisible = true;
-            }
-            catch (Exception e)
-            {
-                _vista.Pintar(e.Message);
-                _vista.MensajeVisible = true;
-            }
+                    throw new ConsultarException("No existe la propuesta");
 
 
-            try
-            {
+                _propuesta = listaPropuesta.ElementAt(0);
+
+                _vista.TituloPropuesta.Text = listaPropuesta.ElementAt(0).Titulo.ToString();
+                _vista.MontoTotal.Text = listaPropuesta.ElementAt(0).MontoTotal.ToString();
+
+
+
                 Core.LogicaNegocio.Comandos.ComandoFactura.ConsultarxNomPro ComandoConsultarTabla;
                 ComandoConsultarTabla = Core.LogicaNegocio.Fabricas.FabricaComandosFactura.CrearComandoConsultarxNomPro(_propuesta);
                 IList<Core.LogicaNegocio.Entidades.Factura> listaFacturas = ComandoConsultarTabla.Ejecutar();
 
-                if (listaFacturas.Count == 0)
-                {
-                    _vista.Pintar("No existe la factura");
-                    _vista.MensajeVisible = true;
-                }
-                else
-                {
-                    _vista.TablaFacturas.DataSource = listaFacturas;
-                    _vista.TablaFacturas.DataBind();
 
-                    _vista.MultiViewFacturas.Visible = true;
-                    _vista.MultiViewFacturas.ActiveViewIndex = 0;
-                }
+                _vista.TablaFacturas.DataSource = listaFacturas;
+                _vista.TablaFacturas.DataBind();
+
+                _vista.MultiViewFacturas.Visible = true;
+                _vista.MultiViewFacturas.ActiveViewIndex = 0;
+
             }
             catch (WebException e)
             {
@@ -119,9 +90,8 @@ namespace Presentador.Factura.Vistas
 
                 _factura = ComandoConsultarFactura.Ejecutar();
 
-                if (_factura == null)
 
-                    _vista.Titulo.Text = _factura.Titulo;
+                _vista.Titulo.Text = _factura.Titulo;
                 _vista.Descripcion.Text = _factura.Descripcion;
                 _vista.FechaIngreso.Text = _factura.Fechaingreso.ToShortDateString().ToString();
                 _vista.FechaPago.Text = _factura.Fechapago.ToShortDateString().ToString();

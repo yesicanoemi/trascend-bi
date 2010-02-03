@@ -46,6 +46,7 @@ namespace Presentador.Factura.Vistas
                 _vista.NumeroFactura.Text = factura.Numero.ToString();
                 _vista.TituloFactura.Text = factura.Titulo;
                 _vista.DescripcionFactura.Text = factura.Descripcion;
+                _vista.EstadoFactura.Text = factura.Estado;
                 _vista.FechaFactura.Text = factura.Fechaingreso.ToShortDateString().ToString();
                 _vista.PorcentajeFactura.Text = factura.Procentajepagado.ToString() + " %";
                 _vista.TotalFactura.Text = (factura.Prop.MontoTotal * (factura.Procentajepagado/100)).ToString();

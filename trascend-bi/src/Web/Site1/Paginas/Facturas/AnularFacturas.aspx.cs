@@ -51,6 +51,12 @@ public partial class Paginas_Facturas_AnularFacturas : PaginaBase, IAnularFactur
         set { lbDescripcionFactura = value; }
     }
 
+    public Label EstadoFactura
+    {
+        get { return lbEstadoFactura; }
+        set { lbEstadoFactura = value; }
+    }
+
     public Label PorcentajeFactura
     {
         get { return lbPorcentajeFactura; }
