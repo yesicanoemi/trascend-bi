@@ -67,3 +67,5 @@ http://trascend-bi.googlecode.com/files/Consultar%20Datos%20de%20Empleado%20CU-E
 || *Flujos Alternativos* || *1a)* Se produce un error al iniciar sesión.<br>||
 
 http://trascend-bi.googlecode.com/files/Eliminar%20Empleado%20CU-E04.jpg
+
+http://trascend-bi.googlecode.com/files/DiagramaClaseEmpleado.png
