@@ -125,6 +125,7 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarCedula.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarE.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarEmpleado.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarEstadoEmpleado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCargo.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCI.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\ConsultarPorCodigo.cs" />

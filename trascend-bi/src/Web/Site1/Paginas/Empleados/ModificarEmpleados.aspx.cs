@@ -6,191 +6,177 @@ using System.Web.UI.WebControls;
 using Presentador.Empleado.Vistas;
 using Presentador.Empleado.Contrato;
 using Microsoft.Practices.Web.UI.WebControls;
+using Core.LogicaNegocio.Entidades;
 
-public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificarEmpleado
+
+public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase, IModificarEmpleado
 {
-   
-    private ModificarEmpleadoPresenter _presentador;
-    #region Propiedades
-    #region Dialogos
-    public bool DialogoVisible
+
+    private ModificarEmpleadoPresenter _presenter;
+
+    private Empleado _empleado;
+
+
+    #region Propiedades de la Pagina
+    public RadioButtonList opcion
     {
-        get { return uxDialogoError.Visible; }
-        set { uxDialogoError.Visible = value; }
-    }
-    public void Pintar(string codigo, string mensaje, string actor, string detalles)
-    {
-        throw new NotImplementedException();
+        get { return opcion1; }
+        set { opcion1 = value; }
     }
 
-    public void PintarInformacion(string mensaje, string estilo)
+    public DropDownList SeleccionEstado
     {
-        throw new NotImplementedException();
+        get { return uxEstadoEmp; }
+        set { uxEstadoEmp = value; }
     }
-    #endregion
-    #region Informacion Basica
 
-    public TextBox NombreEmpleado
+    public MultiView MultiViewConsultar
     {
-        get { return uxNombreEmpleado; }
-        set { uxNombreEmpleado = value; }
-    }
-    public GridView GridViewConsultarEmpleado
-    {
-        get { return gvwConsultarEmpleado; }
+        get { return uxMultiViewConsultar; }
         set { throw new System.NotImplementedException(); }
     }
+
+    public GridView GridViewConsultarEmpleado
+    {
+        get { return uxConsultarEmpleado; }
+        set { throw new System.NotImplementedException(); }
+    }
+
     public ObjectContainerDataSource GetOCConsultarEmp
     {
-        get { return gvwObjectConsultarEmpleado; }
-        set { gvwObjectConsultarEmpleado = value; }
-    }
-    public DropDownList ComboCargos
-    {
-        get { return uxCargoEmpleado; }
-        set { uxCargoEmpleado = value; }
-    }
-    public DropDownList ComboBusqueda
-    {
-        get { return ddlTipoBusqueda; }
-        set { ddlTipoBusqueda = value; }
-    }
-    public DropDownList SeleccionCargo
-    {
-        get { return ddlSeleccionCargo; }
-        set { ddlSeleccionCargo = value; }
-    }
-    public TextBox NombreEmpleadoBus
-    {
-        get { return uxNombreCon; }
-        set { uxNombreCon = value; }
+        get { return uxObjectConsultarEmpleado; }
+        set { uxObjectConsultarEmpleado = value; }
     }
 
-    public TextBox CedulaEmpleadoBus
+    public TextBox TextBoxParametro
     {
-        get { return uxCedulaCon; }
-        set { uxCedulaCon = value; }
+        get { return uxParametro; }
+        set { uxParametro = value; }
     }
 
-    public TextBox ApellidoEmpleado
+    public TextBox TextBoxCI
     {
-        get { return uxApellidoEmpleado; }
-        set { uxApellidoEmpleado = value; }
+        get { return uxCedEmp; }
+        set { uxCedEmp = value; }
     }
 
-    public TextBox CedulaEmpleado
+    public TextBox ParametroCedula
     {
-        get { return uxCedulaEmpleado; }
-        set { uxCedulaEmpleado = value; }
+        get { return uxParametroCedula; }
+        set { uxParametroCedula = value; }
+
     }
 
-    public TextBox CuentaEmpleado
+    /*public Label LabelSelec
     {
-        get { return uxNumCuentaEmpleado; }
-        set { uxNumCuentaEmpleado = value; }
+        get { return LabelSeleccion; }
+        set { LabelSeleccion = value; }
+    }
+    public Label LabelParametro
+    {
+        get { return LabelParametroB; }
+        set { LabelParametroB = value; }
+    }*/
+
+
+    public TextBox TextBoxNombre
+    {
+        get { return uxNombreEmp; }
+        set { uxNombreEmp = value; }
+    }
+    public TextBox TextBoxApellido
+    {
+        get { return uxApellidoEmp; }
+        set { uxApellidoEmp = value; }
+    }
+    public TextBox TextBoxNumCuenta
+    {
+        get { return uxNumCuentaE; }
+        set { uxNumCuentaE = value; }
+    }
+    public TextBox TextBoxFechaNac
+    {
+        get { return uxFecNacE; }
+        set { uxFecNacE = value; }
     }
 
-    public TextBox SueldoEmpleado
+
+    public TextBox TextBoxDirCalle
+    {
+        get { return uxDirCalleEmp; }
+        set { uxDirCalleEmp = value; }
+    }
+
+    public TextBox TextBoxDirAve
+    {
+        get { return uxDirAveEmp; }
+        set { uxDirAveEmp = value; }
+    }
+
+    public TextBox TextBoxDirUrb
+    {
+        get { return uxDirUrbEmp; }
+        set { uxDirUrbEmp = value; }
+    }
+
+    public TextBox TextBoxDirEdifCasa
+    {
+        get { return uxDirEdCasaEmp; }
+        set { uxDirEdCasaEmp = value; }
+    }
+
+    public TextBox TextBoxDirPisoApto
+    {
+        get { return uxDirPisAptoEmp; }
+        set { uxDirPisAptoEmp = value; }
+    }
+
+    public TextBox TextBoxDirCiudad
+    {
+        get { return uxDirCiudadEmp; }
+        set { uxDirCiudadEmp = value; }
+    }
+
+    public DropDownList TextBoxCargo
+    {
+        get { return uxCargoEmp; }
+        set { uxCargoEmp = value; }
+    }
+
+    public DropDownList drowListaCargo
+    {
+        get { return listaCargo; }
+        set { listaCargo = value; }
+    }
+    public Button Aceptar
+    {
+        get { return uxBotonAceptar; }
+        set { uxBotonAceptar = value; }
+    }
+
+    public TextBox TextBoxSueldoBase
     {
         get { return uxSueldoBase; }
         set { uxSueldoBase = value; }
     }
 
-    public TextBox FechaNacEmpleado
-    {
-        get { return uxFechaNac; }
-        set { uxFechaNac = value; }
-    }
-    public string RangoSueldo
-    {
-        get { return lbRangoSueldo.Text; }
-        set { lbRangoSueldo.Text = value; }
-    }
-    public string Id
-    {
-        get { return lbId.Text; }
-        set { lbId.Text = value; }
-    }
-    public bool RangoVisible
-    {
-        get { return lbRangoSueldo.Visible; }
-        set { lbRangoSueldo.Visible = value; }
-    }
-    public TextBox AvenidaEmpleado
-    {
-        get { return uxAvenida; }
-        set { uxAvenida = value; }
-    }
-
-    public TextBox CalleEmpleado
-    {
-        get { return uxCalle; }
-        set { uxCalle = value; }
-    }
-
-    public TextBox CiudadEmpleado
-    {
-        get { return uxCiudad; }
-        set { uxCiudad = value; }
-    }
-
-    public TextBox PisoEmpleado
-    {
-        get { return uxPiso; }
-        set { uxPiso = value; }
-    }
-
-    public TextBox EdificioEmpleado
-    {
-        get { return uxEdificio; }
-        set { uxEdificio = value; }
-    }
-
-    public TextBox UrbanizacionEmpleado
-    {
-        get { return uxUrbanizacion; }
-        set { uxUrbanizacion = value; }
-    }
-
-    public MultiView MultiViewEmpleado
-    {
-        get { return uxMultiViewEmpleado ; }
-        set { uxMultiViewEmpleado = value; }
-    }
     #endregion
-
-    #endregion
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if (!IsPostBack)
-        {
-            _presentador.ConsultarCargos();
-        }
-        else
-        {
-            
-        }
-    }
-    protected void uxBotonAceptar_Click(object sender, EventArgs e)
-    {
-        _presentador.ModificarEmpleado();
-    }
 
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        Core.LogicaNegocio.Entidades.Usuario usuario =
-                                (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
+        Core.LogicaNegocio.Entidades.Usuario usuario = new Core.LogicaNegocio.Entidades.Usuario();
+        usuario = (Core.LogicaNegocio.Entidades.Usuario)Session[SesionUsuario];
 
         bool permiso = false;
 
         for (int i = 0; i < usuario.PermisoUsu.Count; i++)
         {
-            if (usuario.PermisoUsu[i].IdPermiso == 15)
+            if (usuario.PermisoUsu[i].IdPermiso == 14)
             {
                 i = usuario.PermisoUsu.Count;
 
-                _presentador = new  ModificarEmpleadoPresenter(this);
+                _presenter = new ModificarEmpleadoPresenter(this);
 
                 permiso = true;
 
@@ -201,47 +187,87 @@ public partial class Paginas_Empleados_ModifcarEmpleados : PaginaBase,IModificar
         {
             Response.Redirect(paginaSinPermiso);
         }
+
+
+    }
+
+    protected void SelectUsuarios(object sender, GridViewSelectEventArgs e)
+    {
+        _presenter.uxObjectConsultaUsuariosSelecting
+            (int.Parse(uxConsultarEmpleado.DataKeys[e.NewSelectedIndex].Value.ToString()));
+
+
+
+    }
+
+    protected void uxBotonAceptar_Click(object sender, EventArgs e)
+    {
+        #region comentado no se usa el habilitador y desabilitador de boton y label
+        // if(opcion1.SelectedIndex == 0)//Busqueda por cedula
+        //{
+        /* LabelParametroB.Text = "Introduzca Cedula:";
+         LabelParametroB.Visible = true;
+         uxParametro.Visible = true;
+         uxBotonBuscar.Visible = true;
+         LabelSeleccion.Visible = false;
+         uxSeleccion.Visible = false;
+         uxBotonBuscar2.Visible = false;*/
+        //}
+        //if (opcion1.SelectedIndex == 1)//Busqueda por Nombre
+        //{
+        /* LabelParametroB.Text = "Introduzca Nombre:";
+         LabelParametroB.Visible = true;
+         uxParametro.Visible = true;
+         uxBotonBuscar.Visible = true;
+         LabelSeleccion.Visible = false;
+         uxSeleccion.Visible = false;
+         uxBotonBuscar2.Visible = false;*/
+        //}
+        //if (opcion1.SelectedIndex == 2)//Busqueda por cargo
+        //{
+        /*LabelParametroB.Visible = false;
+        uxParametro.Visible = false;
+        uxBotonBuscar.Visible = false;
+        LabelSeleccion.Visible = true;
+        uxSeleccion.Visible = true;
+        uxBotonBuscar2.Visible = true;*/
+        //}
+        //_presenter.BotonSeleccionTipo();
+        #endregion
+
+        _presenter.BotonAccionConsulta();
+
+    }
+
+    protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _presenter.ChangedSearch();
+    }
+
+    /*protected void uxBotonBuscar_Click(object sender, EventArgs e)
+    {
+        _presenter.BotonAccionConsulta();
+        
+    }*/
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            _presenter.ConsultarCargos();
+            _presenter.ConsultarEstados();
+        }
+
     }
 
 
-    protected void btnBuscar_Click(object sender, EventArgs e)
+    protected void ModificarEmpleado(object sender, EventArgs e)
     {
-        _presentador.ConsultarEmpleado();
+        _presenter.ModificarEmpleado();
+        //Response.Redirect("~/Paginas/Empleados/ConsultarEmpleados.aspx");
+        //_presenter.RedirectModificar();
     }
-    protected void uxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        _presentador.ConsultarSueldos();
-    }
-    protected void ddlTipoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        _presentador.CambiarVista(Int32.Parse(ddlTipoBusqueda.SelectedValue));
-    }
-    protected void btnCambiar_Click(object sender, EventArgs e)
-    {
-        _presentador.CambiarVista(0);
-    }
-    protected void btnCambiar2_Click(object sender, EventArgs e)
-    {
-        _presentador.CambiarVista(0);
-    }
-    protected void btnCambiar3_Click(object sender, EventArgs e)
-    {
-        _presentador.CambiarVista(0);
-    }
-    protected void btnSubmit1_Click(object sender, EventArgs e)
-    {
-        _presentador.ConsultarEmpleado();
-    }
-    protected void btnSubmit2_Click(object sender, EventArgs e)
-    {
-        _presentador.ConsultarEmpleado();
-    }
-    protected void ddlSeleccionCargo_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        _presentador.ConsultarEmpleado();
-    }
-    protected void gvwConsultarEmpleado_SelectedIndexChanged1(object sender, EventArgs e)
-    {
-        _presentador.Consultar();
-    }
+
+
+
 }

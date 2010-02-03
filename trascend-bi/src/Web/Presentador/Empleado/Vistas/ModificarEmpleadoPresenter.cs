@@ -10,67 +10,204 @@ using Core.AccesoDatos.Fabricas;
 using System.Net;
 using System.Web.UI.WebControls;
 using Core.LogicaNegocio.Fabricas;
+using Core.LogicaNegocio.Comandos;
+using Core.LogicaNegocio.Comandos.ComandoEmpleado;
+
+
 
 namespace Presentador.Empleado.Vistas
 {
     public class ModificarEmpleadoPresenter
     {
-        #region Propiedades
+
         private IModificarEmpleado _vista;
-        private string campoVacio = "";
-        private IList<string> cargo;
         private IList<Core.LogicaNegocio.Entidades.Empleado> empleado;
+        private IList<string> cargo;
+        private string campoVacio = " ";
         Core.LogicaNegocio.Entidades.Empleado emp;
-        #endregion
+
         #region Constructor
+
         public ModificarEmpleadoPresenter(IModificarEmpleado vista)
         {
             _vista = vista;
         }
         #endregion
 
-        #region Manejo de Eventos
+        #region Metodos
+
+        public void CambiarVista(int index)
+        {
+            _vista.MultiViewConsultar.ActiveViewIndex = index;
+        }
+
         public void ModificarEmpleado()
         {
-            int resultado = 0;
             Core.LogicaNegocio.Entidades.Empleado empleado = new Core.LogicaNegocio.Entidades.Empleado();
             try
             {
-                empleado.Id = Int32.Parse(_vista.Id);
-                empleado.Nombre = _vista.NombreEmpleado.Text;
-                empleado.Apellido = _vista.ApellidoEmpleado.Text;
-                empleado.Cedula = Int32.Parse(_vista.CedulaEmpleado.Text);
-                empleado.Cuenta = _vista.CuentaEmpleado.Text;
-                empleado.Estado = 1;
-                empleado.FechaIngreso = DateTime.Now;
-                empleado.FechaNacimiento = DateTime.Now;
-                empleado.SueldoBase = float.Parse(_vista.SueldoEmpleado.Text);
-                empleado.Cargo = _vista.ComboCargos.SelectedValue.ToString();
+
+                empleado.Nombre = _vista.TextBoxNombre.Text;
+                empleado.Apellido = _vista.TextBoxApellido.Text;
+                empleado.Estado = Int32.Parse(_vista.SeleccionEstado.SelectedValue);
+                empleado.Cuenta = _vista.TextBoxNumCuenta.Text;
+                empleado.Cedula = Int32.Parse(_vista.TextBoxCI.Text);
+                empleado.Cargo = _vista.TextBoxCargo.SelectedValue.ToString();
+                empleado.FechaNacimiento = DateTime.Parse(_vista.TextBoxFechaNac.Text);
                 empleado.Direccion = new Core.LogicaNegocio.Entidades.Direccion();
-                empleado.Direccion.Avenida = _vista.AvenidaEmpleado.Text;
-                empleado.Direccion.Calle = _vista.CalleEmpleado.Text;
-                empleado.Direccion.Ciudad = _vista.CiudadEmpleado.Text;
-                empleado.Direccion.Edif_Casa = _vista.EdificioEmpleado.Text;
-                empleado.Direccion.Piso_apto = _vista.PisoEmpleado.Text;
-                empleado.Direccion.Urbanizacion = _vista.UrbanizacionEmpleado.Text;
-                Modificar(empleado);
-                LimpiarRegistros();
+                empleado.Direccion.Avenida = _vista.TextBoxDirAve.Text;
+                empleado.Direccion.Calle = _vista.TextBoxDirCalle.Text;
+                empleado.Direccion.Ciudad = _vista.TextBoxDirCiudad.Text;
+                empleado.Direccion.Edif_Casa = _vista.TextBoxDirEdifCasa.Text;
+                empleado.Direccion.Piso_apto = _vista.TextBoxDirPisoApto.Text;
+                empleado.Direccion.Urbanizacion = _vista.TextBoxDirUrb.Text;
+                empleado.SueldoBase = float.Parse(_vista.TextBoxSueldoBase.Text);
+                ModificarEmpleadoLogica(empleado);
+
             }
             catch (WebException e)
             {
-                //Aqui se maneja la excepcion en caso de que de error la seccion Web
+                // _vista.Pintar("0001", "Error Modificando Empleado", "Especificacion del Error", e.ToString());
+                // _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+            }
+            catch (Exception e)
+            {
+                //_vista.Pintar("0001", "Error Modificando Empleado", "Especificacion del Error", e.ToString());
+                //_vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
-        public void ConsultarEmpleado()
+
+        public void ModificarEmpleadoLogica(Core.LogicaNegocio.Entidades.Empleado empleado)
         {
+            Core.LogicaNegocio.Entidades.Empleado _empleado;
+
+            try
+            {
+                Core.LogicaNegocio.Comandos.ComandoEmpleado.Modificar modificar; //objeto del comando Ingresar.
+
+                //fábrica que instancia el comando Ingresar.
+                modificar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoModificar(empleado);
+
+                //try
+                //{    
+                //ejecuta el comando.
+                modificar.Ejecutar();
+                /*if (_empleado.Id == -1)
+                {
+                    _vista.MensajeError.Text = "Operacion Fallida: No se pudo ingresar el empleado";
+                    _vista.MensajeError.Visible = true;
+                }
+                else if (_empleado.Id == -2)
+                {
+                    _vista.MensajeError.Text = "Operacion Fallida: No se pudo ingresaro el empleado";
+                    _vista.MensajeError.Visible = true;
+                }
+                else
+                {
+                    _vista.MensajeError.Text = "El empleado se agrego con exito";
+                    _vista.MensajeError.Visible = true;
+                }
+
+                LimpiarRegistros();
+                */
+
+            }
+            catch (Exception e)
+            {
+                /* _vista.Pintar("0001", "Error Ingresando Empleado", "Especificacion del Error", e.ToString());
+                 _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web */
+            }
+        }
+
+
+
+        private void CargarDatos(Core.LogicaNegocio.Entidades.Empleado empleado)
+        {
+            _vista.TextBoxNombre.Text = empleado.Nombre;
+
+            _vista.TextBoxApellido.Text = empleado.Apellido;
+
+            _vista.TextBoxCI.Text = empleado.Cedula.ToString();
+
+            _vista.TextBoxCI.Enabled = false;
+
+            _vista.TextBoxNumCuenta.Text = empleado.Cuenta;
+
+            _vista.TextBoxSueldoBase.Text = empleado.SueldoBase.ToString();
+
+            _vista.TextBoxFechaNac.Text = empleado.FechaNacimiento.ToShortDateString();
+
+            //_vista.TextBoxEstado.Text = empleado.EstadoEmpleado.Nombre.ToString();//   .Estado.ToString();
+
+            _vista.TextBoxDirAve.Text = empleado.Direccion.Avenida;
+
+            _vista.TextBoxDirCalle.Text = empleado.Direccion.Calle;
+
+            _vista.TextBoxDirUrb.Text = empleado.Direccion.Urbanizacion;
+
+            _vista.TextBoxDirEdifCasa.Text = empleado.Direccion.Edif_Casa;
+
+            _vista.TextBoxDirPisoApto.Text = empleado.Direccion.Piso_apto;
+
+            _vista.TextBoxDirCiudad.Text = empleado.Direccion.Ciudad;
+
+
+            _vista.TextBoxCargo.SelectedIndex = empleado.CargoEmpleado.Id;
+
+            _vista.SeleccionEstado.SelectedIndex = empleado.EstadoEmpleado.IdEstadoEmpleado;
+        }
+
+
+
+
+
+        /*public void BotonSeleccionTipo()
+        {
+            #region SolicitudServicios
+
+            if (_vista.opcion.SelectedIndex == 0) // Seleccion Cedula
+            {
+
+            }
+
+            if (_vista.opcion.SelectedIndex == 1)// Seleccion Nombre
+            {
+
+            }
+
+            if (_vista.opcion.SelectedIndex == 2)// Seleccion Cargo
+            {
+                cargo = BuscarCargos();
+                for (int i = 0; i < cargo.Count; i++)
+                {
+                    _vista.SeleccionCargo.Items.Add(cargo.ElementAt(i));
+                }
+                _vista.SeleccionCargo.DataBind();
+            }
+
+            #endregion
+        }*/
+
+
+        public void BotonAccionConsulta()
+        {
+            // _vista.opcion.Visible = false;
+            // _vista.SeleccionCargo.Visible = false;                       
+
             #region Solicitud Servicio
+
             emp = new Core.LogicaNegocio.Entidades.Empleado();
 
-            if (Int32.Parse(_vista.ComboBusqueda.SelectedValue) == 1)//cedula
+            #region buscar por cedula
+
+            if (_vista.opcion.SelectedValue == "1")//cedula
             {
-                emp.Cedula = Int32.Parse(_vista.CedulaEmpleadoBus.Text);
+                emp.Cedula = Int32.Parse(_vista.ParametroCedula.Text);
+
                 Core.LogicaNegocio.Entidades.Empleado empleado = BuscarPorCedula(emp);
+
                 IList<Core.LogicaNegocio.Entidades.Empleado> listado = new List<Core.LogicaNegocio.Entidades.Empleado>();
+
                 listado.Add(empleado);
 
                 try
@@ -85,30 +222,18 @@ namespace Presentador.Empleado.Vistas
 
                 }
             }
-            if (Int32.Parse(_vista.ComboBusqueda.SelectedValue) == 2)//nombre
-            {
-                emp.Nombre = _vista.NombreEmpleadoBus.Text;
-                IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
-                try
-                {
-                    if (listado != null)
-                    {
-                        _vista.GetOCConsultarEmp.DataSource = listado;
-                        CambiarVista(4);
-                    }
-                }
-                catch (WebException e)
-                {
+            #endregion
 
-                }
-            }
-            if (Int32.Parse(_vista.ComboBusqueda.SelectedValue) == 3)//cargo
+            #region buscar por nombre
+            if (_vista.opcion.SelectedValue == "2")//nombre
             {
-                emp.Cargo = _vista.SeleccionCargo.SelectedItem.Text;
-                IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(emp);
+                emp.Nombre = _vista.TextBoxParametro.Text;
+
+                List<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
+
                 try
                 {
-                    if (listado != null)
+                    if (listado.Count > 0)
                     {
                         _vista.GetOCConsultarEmp.DataSource = listado;
                     }
@@ -119,120 +244,60 @@ namespace Presentador.Empleado.Vistas
                 }
             }
             #endregion
-        }
-        public void CambiarVista(int index)
-        {
-            _vista.MultiViewEmpleado.ActiveViewIndex = index;
-        }
-        public void ConsultarCargos()
-        {
-            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;
-            IList<Core.LogicaNegocio.Entidades.Cargo> cargo = new List<Core.LogicaNegocio.Entidades.Cargo>();
-            try
+
+            #region buscar por cargo
+            if (_vista.opcion.SelectedValue == "3")//cargo
             {
-                //esto lo modifico Iann Yanes para que corriera con el nuevo paton de diseño de DAO
-            
-                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+                Core.LogicaNegocio.Entidades.Empleado empleado1 =
+                    new Core.LogicaNegocio.Entidades.Empleado();
 
-                IDAOCargo bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
+                Core.LogicaNegocio.Entidades.Cargo cargoEmpleado =
+                    new Core.LogicaNegocio.Entidades.Cargo();
 
-                cargos = bd.ConsultarCargos();
-                //********************************
-                for (int i = 0; i < cargos.Count; i++)
+                cargoEmpleado.Id = _vista.drowListaCargo.SelectedIndex + 1;
+
+                empleado1.CargoEmpleado = cargoEmpleado;
+
+                IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(empleado1);
+
+                try
                 {
-                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo)cargos[i]);
+                    if (listado != null)
+                    {
+                        _vista.GetOCConsultarEmp.DataSource = listado;
+                    }
                 }
-                _vista.ComboCargos.Items.Clear();
-                _vista.ComboCargos.Items.Add("--");
-                _vista.ComboCargos.Items[0].Value = "0";
-                _vista.ComboCargos.DataSource = cargo;
-                _vista.ComboCargos.DataTextField = "Nombre";
-                _vista.ComboCargos.DataValueField = "Id";
-                _vista.ComboCargos.DataBind();
-            }
-            catch (WebException e)
-            {
-                _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
-                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
-            }
-            catch (Exception e)
-            {
-                _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
-                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
-            }
-        }
-        public void Consultar()
-        {
-            emp = new Core.LogicaNegocio.Entidades.Empleado();
-            emp.Id = Int32.Parse(_vista.GridViewConsultarEmpleado.SelectedValue.ToString());
-            ConsultarEmpleadoId(emp);
-        }
-        public void LimpiarRegistros()
-        {
-            _vista.NombreEmpleado.Text = campoVacio;
-            _vista.SueldoEmpleado.Text = campoVacio;
-            _vista.AvenidaEmpleado.Text = campoVacio;
-            _vista.CalleEmpleado.Text = campoVacio;
-            _vista.CiudadEmpleado.Text = campoVacio;
-            _vista.EdificioEmpleado.Text = campoVacio;
-            _vista.PisoEmpleado.Text = campoVacio;
-            _vista.UrbanizacionEmpleado.Text = campoVacio;
-            _vista.CuentaEmpleado.Text = campoVacio;
-            _vista.CedulaEmpleado.Text = campoVacio;
-            _vista.ApellidoEmpleado.Text = campoVacio;
-            _vista.FechaNacEmpleado.Text = DateTime.Now.ToString();
-        }
-        public void LlenarRegistros(Core.LogicaNegocio.Entidades.Empleado empleado)
-        {
-            _vista.Id = empleado.Id.ToString();
-            _vista.NombreEmpleado.Text = empleado.Nombre;
-            _vista.SueldoEmpleado.Text =empleado.SueldoBase.ToString();
-            _vista.AvenidaEmpleado.Text = empleado.Direccion.Avenida;
-            _vista.CalleEmpleado.Text = empleado.Direccion.Calle;
-            _vista.CiudadEmpleado.Text = empleado.Direccion.Ciudad;
-            _vista.EdificioEmpleado.Text = empleado.Direccion.Edif_Casa;
-            _vista.PisoEmpleado.Text = empleado.Direccion.Piso_apto;
-            _vista.UrbanizacionEmpleado.Text = empleado.Direccion.Urbanizacion;
-            _vista.CuentaEmpleado.Text = empleado.Cuenta.ToString();
-            _vista.CedulaEmpleado.Text = empleado.Cedula.ToString();
-            _vista.ApellidoEmpleado.Text = empleado.Apellido;
-            _vista.FechaNacEmpleado.Text = empleado.FechaNacimiento.ToShortDateString();
-        }
-        public void LlenarComboCargos()
-        {
-            cargo = BuscarCargos();
-            for (int i = 0; i < cargo.Count; i++)
-            {
-                _vista.SeleccionCargo.Items.Add(cargo.ElementAt(i));
-            }
-            _vista.SeleccionCargo.DataBind();
-        }
-        #endregion
 
-        #region Comando
-        public void Modificar(Core.LogicaNegocio.Entidades.Empleado empleado)
-        {
-            try
-            {
-                Core.LogicaNegocio.Comandos.ComandoEmpleado.Modificar modificar; //objeto del comando Ingresar.
+                catch (WebException e)
+                {
 
-                //fábrica que instancia el comando Ingresar.
-                modificar = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoModificar(empleado);
+                }
+            }
+            #endregion
 
-                //try
-                //{    
-                //ejecuta el comando.
-                modificar.Ejecutar();
-            }
-            catch (Exception e)
-            {
-                _vista.Pintar("0004", "Error Modificando al Empleado", "Especificacion del Error", e.ToString());
-                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
-            }
+
         }
-        public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorNombre(Core.LogicaNegocio.Entidades.Empleado entidad)
+
+        public void uxObjectConsultaUsuariosSelecting(int codigoEmpleado)//string nombre
         {
-            IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
+            Core.LogicaNegocio.Entidades.Empleado emp = new Core.LogicaNegocio.Entidades.Empleado();
+            //emp.Nombre = nombre;
+            emp.Id = codigoEmpleado;
+
+            Core.LogicaNegocio.Entidades.Empleado listado = BuscarEmpleadoCodigo(emp);//BuscarPorNombre(emp);
+
+            emp = null;
+
+            emp = listado;
+
+            CargarDatos(emp);
+
+            CambiarVista(1);
+        }
+
+        public List<Core.LogicaNegocio.Entidades.Empleado> BuscarPorNombre(Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
+            List<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
 
             Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorNombre consultar;
 
@@ -252,6 +317,7 @@ namespace Presentador.Empleado.Vistas
             Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCI consultar;
 
             consultar = FabricaComandosEmpleado.CrearComandoConsultarPorCI(entidad);
+
             empleado1 = consultar.Ejecutar();
 
             return empleado1;
@@ -268,7 +334,8 @@ namespace Presentador.Empleado.Vistas
             return cargo;
         }
 
-        public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorCargo(Core.LogicaNegocio.Entidades.Empleado entidad)
+        public IList<Core.LogicaNegocio.Entidades.Empleado> BuscarPorCargo
+            (Core.LogicaNegocio.Entidades.Empleado entidad)
         {
             IList<Core.LogicaNegocio.Entidades.Empleado> empleado1 = null;
 
@@ -281,49 +348,224 @@ namespace Presentador.Empleado.Vistas
             return empleado1;
 
         }
-        public void ConsultarSueldos()
+
+        public Core.LogicaNegocio.Entidades.Cargo BuscarCargosNuevo
+            (Core.LogicaNegocio.Entidades.Cargo entidad)
         {
+            Core.LogicaNegocio.Entidades.Cargo cargo = null;
+
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarCargoNuevo consultar;
+
+            consultar = FabricaComandosEmpleado.CrearComandoConsultarCargoNuevo(entidad);
+
+            cargo = consultar.Ejecutar();
+
+            return cargo;
+
+        }
+
+        public void ChangedSearch()
+        {
+            LimpiarFormulario();
+
+            if (_vista.opcion.SelectedValue == "1")
+            {
+                _vista.drowListaCargo.Visible = false;
+                _vista.opcion.Visible = true;
+                _vista.TextBoxParametro.Visible = false;
+                _vista.ParametroCedula.Visible = true;
+                _vista.Aceptar.Visible = true;
+                _vista.GetOCConsultarEmp.DataSource = "";
+                _vista.ParametroCedula.Text = "";
+                _vista.TextBoxParametro.Text = "";
+
+
+            }
+
+            if (_vista.opcion.SelectedValue == "2")
+            {
+                _vista.drowListaCargo.Visible = false;
+                _vista.opcion.Visible = true;
+                _vista.TextBoxParametro.Visible = true;
+                _vista.Aceptar.Visible = true;
+                _vista.ParametroCedula.Visible = false;
+                _vista.GetOCConsultarEmp.DataSource = "";
+                _vista.ParametroCedula.Text = "";
+                _vista.TextBoxParametro.Text = "";
+
+
+            }
+
+            if (_vista.opcion.SelectedValue == "3")
+            {
+                _vista.drowListaCargo.Visible = true;
+                _vista.opcion.Visible = true;
+                _vista.TextBoxParametro.Visible = false;
+                _vista.Aceptar.Visible = true;
+                _vista.ParametroCedula.Visible = false;
+                _vista.GetOCConsultarEmp.DataSource = "";
+                _vista.ParametroCedula.Text = "";
+                _vista.TextBoxParametro.Text = "";
+
+            }
+        }
+
+        private void LimpiarFormulario()
+        {
+            _vista.TextBoxParametro.Text = campoVacio;
+
+        }
+
+
+        /*Descripcion: Consultar los diferentes cargos que existente en la tabla Cargos
+         *Ingresa en la interfax (drowListaCargo) todos los elemnetos de los formularios
+         *agregar y modificar
+         */
+        public void ConsultarCargos()
+        {
+            IList<Core.LogicaNegocio.Entidades.Entidad> cargos = null;
+            IList<Core.LogicaNegocio.Entidades.Cargo> cargo = new List<Core.LogicaNegocio.Entidades.Cargo>();
             try
             {
-                Core.LogicaNegocio.Entidades.Cargo cargo = new Core.LogicaNegocio.Entidades.Cargo();
-                cargo.Nombre = _vista.ComboCargos.SelectedItem.Text;
-                //esto lo modifico Iann Yanes para que corriera con el nuevo paton de diseño de DAO
-                FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
-                IDAOCargo bd = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOCargo();
-                cargo = (Core.LogicaNegocio.Entidades.Cargo)bd.ConsultarCargo(cargo);
-                //****************************************
-                _vista.RangoSueldo = "Rango de Sueldo: " + cargo.SueldoMinimo.ToString() + " - " + cargo.SueldoMaximo.ToString();
-                _vista.RangoVisible = true;
-                _vista.SueldoEmpleado.Text = cargo.SueldoMinimo.ToString();
-                _vista.SueldoEmpleado.Enabled = false;
+                DropDownList e = new DropDownList();
+
+                Core.AccesoDatos.SqlServer.DAOCargoSQLServer conex = new Core.AccesoDatos.SqlServer.DAOCargoSQLServer();
+
+                cargos = conex.ConsultarCargos();
+
+                for (int i = 0; i < cargos.Count; i++)
+                {
+                    cargo.Add((Core.LogicaNegocio.Entidades.Cargo)cargos[i]);
+                }
+
+
+                _vista.TextBoxCargo.Items.Clear();
+                _vista.TextBoxCargo.Items.Clear();
+                _vista.TextBoxCargo.Items.Add("--");
+                _vista.TextBoxCargo.Items[0].Value = "0";
+                _vista.TextBoxCargo.DataSource = cargo;
+                _vista.TextBoxCargo.DataTextField = "Nombre";
+                _vista.TextBoxCargo.DataValueField = "Id";
+                _vista.TextBoxCargo.DataBind();
+
+
+                _vista.drowListaCargo.Items.Clear();
+                _vista.drowListaCargo.Items.Add("--");
+                _vista.drowListaCargo.Items[0].Value = "0";
+                _vista.drowListaCargo.DataSource = cargo;
+                _vista.drowListaCargo.DataTextField = "Nombre";
+                _vista.drowListaCargo.DataValueField = "Id";
+                _vista.drowListaCargo.DataBind();
             }
             catch (WebException e)
             {
+                // _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                // _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
             catch (Exception e)
             {
+                //_vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                //_vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
-        public void ConsultarEmpleadoId(Core.LogicaNegocio.Entidades.Empleado empleado)
+
+
+        /*Descripcion: Consultar los diferentes estados de los usuarios(Activos, Inactivo, etc) 
+         * que existente en la tabla Cargos
+         *Ingresa en la interfax (drowListaCargo) todos los elemnetos de los formularios
+         *agregar y modificar
+         */
+
+        public void ConsultarEstados()
         {
+            // IList<Core.LogicaNegocio.Entidades.Entidad> estados = null;
+            IList<Core.LogicaNegocio.Entidades.EstadoEmpleado> estados = new List<Core.LogicaNegocio.Entidades.EstadoEmpleado>();
+            Core.LogicaNegocio.Entidades.EstadoEmpleado estado = new EstadoEmpleado();
             try
             {
-                Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEmpleado consultar;
+                DropDownList e = new DropDownList();
 
-                consultar = FabricaComandosEmpleado.CrearComandoConsultarEmpleado(empleado);
+                //Core.AccesoDatos.SqlServer.DAOCargoSQLServer conex = new Core.AccesoDatos.SqlServer.DAOCargoSQLServer();
 
-                empleado = consultar.Ejecutar();
+                Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarEstadoEmpleado consultarestadoempleado; //objeto del comando Ingresar.
 
-                LlenarRegistros(empleado);
+                //fábrica que instancia el comando Ingresar.
+                consultarestadoempleado = Core.LogicaNegocio.Fabricas.FabricaComandosEmpleado.CrearComandoConsultarEstados();
+                estados = consultarestadoempleado.Ejecutar();
 
-                CambiarVista(5);
+                /* for (int i = 0; i < estados.Count; i++)
+                 {
+                     estado.Add((Core.LogicaNegocio.Entidades.EstadoEmpleado)estados[i]);
+                 }
+                 */
+
+                _vista.SeleccionEstado.Items.Clear();
+                _vista.SeleccionEstado.Items.Add("--");
+                _vista.SeleccionEstado.Items[0].Value = "0";
+                _vista.SeleccionEstado.DataSource = estados;
+                _vista.SeleccionEstado.DataTextField = "Nombre";
+                _vista.SeleccionEstado.DataValueField = "IdEstadoEmpleado";
+                _vista.SeleccionEstado.DataBind();
+            }
+            catch (WebException e)
+            {
+                // _vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                // _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
             catch (Exception e)
             {
-                _vista.Pintar("0003", "Error Consultando Empleado", "Especificacion del Error", e.ToString());
-                _vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
+                //_vista.Pintar("0002", "Error consultando cargos", "Error 0002", e.ToString());
+                //_vista.DialogoVisible = true;//Aqui se maneja la excepcion en caso de que de error la seccion Web
             }
         }
+
+        private Core.LogicaNegocio.Entidades.Empleado BuscarEmpleadoCodigo(Core.LogicaNegocio.Entidades.Empleado entidad)
+        {
+            Core.LogicaNegocio.Entidades.Empleado empleado1 = null;
+
+            Core.LogicaNegocio.Comandos.ComandoEmpleado.ConsultarPorCodigo consultar;//nuevo
+
+            consultar = FabricaComandosEmpleado.CrearConsultarPorCodigo(entidad);
+
+            empleado1 = consultar.Ejecutar();
+
+            return empleado1;
+
+        }
+
+            #endregion
+
+
+
+
+
+        public void RedirectModificar()
+        {
+            Core.LogicaNegocio.Entidades.Empleado empleado1 =
+                   new Core.LogicaNegocio.Entidades.Empleado();
+
+
+            empleado1.Nombre = " ";
+
+            List<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(empleado1);
+
+            try
+            {
+                if (listado.Count > 0)
+                {
+                    _vista.GetOCConsultarEmp.DataSource = listado;
+                }
+            }
+            catch (WebException e)
+            {
+
+            }
+        }
+
+
+
         #endregion
+
+
     }
 }

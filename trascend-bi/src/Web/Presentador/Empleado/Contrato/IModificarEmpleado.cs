@@ -9,35 +9,42 @@ namespace Presentador.Empleado.Contrato
 {
     public interface IModificarEmpleado
     {
-        #region Informacion Basica
-        string RangoSueldo { get; set; }
-        bool RangoVisible { get; set; }
-        TextBox NombreEmpleado { get; set; }
-        TextBox NombreEmpleadoBus { get; set; }
-        TextBox CedulaEmpleadoBus { get; set; }
-        TextBox ApellidoEmpleado { get; set; }
-        TextBox CedulaEmpleado { get; set; }
-        TextBox CuentaEmpleado { get; set; }
-        TextBox SueldoEmpleado { get; set; }
-        TextBox FechaNacEmpleado { get; set; }
-        TextBox AvenidaEmpleado { get; set; }
-        TextBox CalleEmpleado { get; set; }
-        TextBox CiudadEmpleado { get; set; }
-        TextBox UrbanizacionEmpleado { get; set; }
-        TextBox EdificioEmpleado { get; set; }
-        TextBox PisoEmpleado { get; set; }
-        string Id { get; set; }
-        DropDownList ComboCargos { get; set; }
-        DropDownList ComboBusqueda { get; set; }
-        DropDownList SeleccionCargo { get; set; }
+        TextBox ParametroCedula { get; set; }
+        RadioButtonList opcion { get; set; }
+        //DropDownList SeleccionCargo { get; set; }
+        MultiView MultiViewConsultar { get; set; }
         GridView GridViewConsultarEmpleado { get; set; }
         ObjectContainerDataSource GetOCConsultarEmp { get; set; }
-        MultiView MultiViewEmpleado { get; set; }
-        #endregion
-        #region Dialogo
-        bool DialogoVisible { get; set; }
-        void Pintar(string codigo, string mensaje, string actor, string detalles);
-        void PintarInformacion(string mensaje, string estilo);
-        #endregion
+        TextBox TextBoxParametro { get; set; }
+        //Label LabelSelec { get; set; }
+        //Label LabelParametro { get; set; }
+        TextBox TextBoxCI { get; set; }
+        TextBox TextBoxNombre { get; set; }
+        TextBox TextBoxApellido { get; set; }
+        TextBox TextBoxNumCuenta { get; set; }
+        TextBox TextBoxFechaNac { get; set; }
+        TextBox TextBoxDirCalle { get; set; }
+        TextBox TextBoxDirAve { get; set; }
+        TextBox TextBoxDirUrb { get; set; }
+        TextBox TextBoxDirEdifCasa { get; set; }
+        TextBox TextBoxDirPisoApto { get; set; }
+        TextBox TextBoxDirCiudad { get; set; }
+        DropDownList TextBoxCargo { get; set; }
+        Button Aceptar { get; set; }
+        TextBox TextBoxSueldoBase { get; set; }
+        DropDownList drowListaCargo
+        {
+            get;
+            set;
+        }
+        DropDownList SeleccionEstado
+        {
+            get;
+            set;
+        }
+
     }
+
+
 }
+

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Core.LogicaNegocio.Entidades;
 using Core.AccesoDatos.SqlServer;
+using Core.AccesoDatos;
+using Core.AccesoDatos.Fabricas;
+using Core.AccesoDatos.Interfaces;
 
 namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
 {
@@ -29,9 +32,19 @@ namespace Core.LogicaNegocio.Comandos.ComandoEmpleado
         #region Metodos
         public void Ejecutar()
         {
-            int _resultado= 0;
+            int _resultado = 0;
             DAOEmpleadoSQLServer bd = new DAOEmpleadoSQLServer();
+
             _resultado = bd.Modificar(empleado);
+
+            FabricaDAO.EnumFabrica = EnumFabrica.SqlServer;
+
+            IDAOEmpleado acceso = FabricaDAO.ObtenerFabricaDAO().ObtenerDAOEmpleado();
+
+            //_empleado = acceso.Modificar(empleado);
+
+
+
         }
         #endregion
     }

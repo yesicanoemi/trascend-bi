@@ -107,23 +107,36 @@ namespace Presentador.Empleado.Vistas
 
                         if (_vista.opcion.SelectedValue == "1")//cedula
                         {
+                            _vista.MensajeConsulta.Visible = false;
+
                             emp.Cedula = Int32.Parse(_vista.ParametroCedula.Text);
 
                             Core.LogicaNegocio.Entidades.Empleado empleado = BuscarPorCedula(emp);
 
-                            IList<Core.LogicaNegocio.Entidades.Empleado> listado = new List<Core.LogicaNegocio.Entidades.Empleado>();
+                            IList<Core.LogicaNegocio.Entidades.Empleado> listado = 
+                                new List<Core.LogicaNegocio.Entidades.Empleado>();
 
                             listado.Add(empleado);
 
                             try
                             {
                                 foreach (Core.LogicaNegocio.Entidades.Empleado empleado1 in listado)
-                                { 
-                                    
-                                    if (empleado1.Cedula!=0)
+                                {
+
+                                    if (empleado1.Cedula != 0)
                                     {
                                         _vista.GetOCConsultarEmp.DataSource = listado;
+
                                     }
+                                    else
+                                    {
+                                        _vista.MensajeConsulta.Text = "No existe usuario con esa cedula";
+
+                                        _vista.MensajeConsulta.Visible = true;
+                                    }
+
+                                    _vista.Aceptar.Visible = false;
+
                                 }
                             }
                             catch (WebException e)
@@ -136,6 +149,12 @@ namespace Presentador.Empleado.Vistas
                         #region buscar por nombre
                         if (_vista.opcion.SelectedValue == "2")//nombre
                         {
+                            _vista.MensajeConsulta.Visible = false;
+
+                            _vista.ValidacionCedula.Visible = false;
+
+                            _vista.ERCedula.Visible = false;
+
                             emp.Nombre = _vista.TextBoxParametro.Text;
                             
                             List<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorNombre(emp);
@@ -144,8 +163,17 @@ namespace Presentador.Empleado.Vistas
                             {
                                 if (listado.Count > 0)
                                 {
-                                    _vista.GetOCConsultarEmp.DataSource = listado;
+                                   _vista.GetOCConsultarEmp.DataSource = listado;                               
+                                   
                                 }
+                                else
+                                {
+                                    _vista.MensajeConsulta.Text = "No existe usuarios con ese nomobre";
+
+                                    _vista.MensajeConsulta.Visible = true;
+                                }
+
+                                _vista.Aceptar.Visible = false;
                             }
                             catch (WebException e)
                             {
@@ -157,6 +185,12 @@ namespace Presentador.Empleado.Vistas
                         #region buscar por cargo
                         if (_vista.opcion.SelectedValue == "3")//cargo
                         {
+                            _vista.ValidacionCedula.Visible = false;
+
+                            _vista.ERCedula.Visible = false;
+                            
+                            _vista.MensajeConsulta.Visible = false;
+
                             Core.LogicaNegocio.Entidades.Empleado empleado1 = 
                                 new Core.LogicaNegocio.Entidades.Empleado();
 
@@ -174,7 +208,17 @@ namespace Presentador.Empleado.Vistas
                                 if (listado != null)
                                 {
                                     _vista.GetOCConsultarEmp.DataSource = listado;
+
+                                   
                                 }
+                                else 
+                                {
+                                    _vista.MensajeConsulta.Text = "No existe usuarios con ese cargo";
+
+                                    _vista.MensajeConsulta.Visible = true;
+                                }
+
+                                _vista.Aceptar.Visible = false;
                             }
                             
                             catch (WebException e)
