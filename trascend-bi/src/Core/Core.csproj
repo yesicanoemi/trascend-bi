@@ -134,7 +134,6 @@
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\EliminarEmpleado.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Ingresar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoEmpleado\Modificar.cs" />
-    <Compile Include="LogicaNegocio\Comandos\ComandoFactura\BuscarPropuestaxNombreSimilar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoFactura\Saldar.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultaGastoM.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoGasto\ConsultarGasto.cs" />
