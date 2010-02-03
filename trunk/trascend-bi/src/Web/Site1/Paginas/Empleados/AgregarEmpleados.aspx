@@ -31,16 +31,17 @@
                             <p class="large">Introduzca la Información del Empleado</p>
                             </p>
                            <form id="form1" runat="server">
-                            <asp:MultiView ID="uxMultiViewPropuesta" runat="server" ActiveViewIndex="0">
+                            
+            <asp:MultiView ID="uxMultiViewPropuesta" runat="server" ActiveViewIndex="0">
                             
                             <asp:View ID="ViewAgregarPropuesta" runat="server">
 	                        
+	                         
+	                        
                               
-                              <p class="large"><asp:UpdatePanel ID="UpdatePanel" runat="server">
-                                    <ContentTemplate>
-                                            <uc1:DialogoError ID="uxDialogoError" runat="server" />
-                                    </ContentTemplate>
-                                    </asp:UpdatePanel>
+                              <p class="large">
+                              <asp:Label Font-Size="Large" ID="LabelMensajeError" runat="server" Visible="false"></asp:Label>
+                                      
                               </p>
 	  
           <p class="large">
@@ -48,12 +49,14 @@
                <table style="width:100%;">
                                 <tr>
                                   <td align="center" colspan="2">
-                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    
+                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                            <ContentTemplate>
                                                <uc2:MensajeInformacion ID="uxMensajeInformacion" runat="server" 
                                                    Visible="false" />
                                            </ContentTemplate>
                                        </asp:UpdatePanel>
+                                       
                                    </td>
                                 </tr>
                                 <tr>
@@ -215,15 +218,15 @@
                    </br>
                    </br>
                    </br>
+                              <asp:UpdatePanel ID="up2" runat="server" >
+                              <ContentTemplate>
+                                  <uc1:DialogoError ID="uxDialogoError" runat="server"  />
+                                  <br />
+                              </ContentTemplate>
+                            </asp:UpdatePanel> 
                    </br>
                    </br>
                    </br>
-                   <asp:UpdatePanel ID="up2" runat="server" >
-                          <ContentTemplate>
-                              <uc1:DialogoError ID="DialogoError1" runat="server"  />
-                              <br />
-                          </ContentTemplate>
-                      </asp:UpdatePanel>
                    </asp:View> 
                    
                    
@@ -359,14 +362,20 @@
                                    
                                 </tr>
                    </table>
-                          
+                       
           </p>
           </asp:View>
           </asp:MultiView>
            
        </div> 
+       <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                                            <ContentTemplate>
+                                                    <uc1:DialogoError ID="uxDialogoError1" runat="server" />
+                                            </ContentTemplate>
+                                      </asp:UpdatePanel>
         </div> 
 	</div> 
+	 
    </div> 
 </div>
 <pp:objectcontainerdatasource runat="server" ID="uxobjectEmpleado" DataObjectTypeName="Core.LogicaNegocio.Entidades.Persona" /> 
