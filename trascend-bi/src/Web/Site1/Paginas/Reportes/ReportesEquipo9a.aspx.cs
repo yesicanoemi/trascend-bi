@@ -14,6 +14,10 @@ using Presentador.Reportes.Contrato;
 public partial class Paginas_Reportes_ReportesEquipo9 : PaginaBase, IPropuestaIntervalo
 {
 
+    PropuestasIntervaloPresenter _presenter;
+
+    #region Propiedades
+
     public GridView Grid
     {
         get { return this.GridView1; }
@@ -39,7 +43,29 @@ public partial class Paginas_Reportes_ReportesEquipo9 : PaginaBase, IPropuestaIn
 
     }
 
-    PropuestasIntervaloPresenter _presenter;
+    #region Mensajes
+
+    public Label Mensaje
+    {
+        get { return lbMensaje; }
+        set { lbMensaje = value; }
+    }
+
+    public void Pintar(string mensaje)
+    {
+        this.lbMensaje.Text = mensaje;
+    }
+
+    public bool MensajeVisible
+    {
+        get { return lbMensaje.Visible; }
+        set { lbMensaje.Visible = value; }
+    }
+
+    #endregion
+
+    #endregion
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -73,12 +99,20 @@ public partial class Paginas_Reportes_ReportesEquipo9 : PaginaBase, IPropuestaIn
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        
-    }
     protected void Button3_Click(object sender, EventArgs e)
     {
+        lbMensaje.Text = "";
         _presenter.CargarGrid();
+    }
+
+    protected string FormatearFecha(DateTime fecha)
+    {
+        return _presenter.FormatearFechaParaMostrar(fecha);
+    }
+
+    protected void uxGridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowIndex % 2 == 0)
+            e.Row.BackColor = System.Drawing.Color.FromName("#FFFFCC");
     }
 }

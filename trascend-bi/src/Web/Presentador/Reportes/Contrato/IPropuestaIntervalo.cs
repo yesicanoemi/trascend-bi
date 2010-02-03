@@ -18,7 +18,14 @@ namespace Presentador.Reportes.Contrato
 
         Button Boton { get; set; }
 
+        Label Mensaje { get; set; }
 
+
+        #endregion
+
+        #region Mensaje
+        void Pintar(string mensaje);
+        bool MensajeVisible { get; set; }
         #endregion
     }
 }
