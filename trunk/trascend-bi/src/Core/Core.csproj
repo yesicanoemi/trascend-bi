@@ -290,6 +290,7 @@
     <Compile Include="Pruebas\PruebasReportePropuestaPorAno.cs" />
     <Compile Include="Pruebas\PruebasReportePropuestasIntervalo.cs" />
     <Compile Include="Pruebas\PruebasUsuario.cs" />
+    <Compile Include="Pruebas\ReporteAnualPorPaquetesEmpleado.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LogicaNegocio\Excepciones\Usuario\LogicaNegocio\" />
