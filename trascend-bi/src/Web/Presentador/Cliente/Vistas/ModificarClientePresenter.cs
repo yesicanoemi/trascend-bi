@@ -121,8 +121,11 @@ namespace Presentador.Cliente.Vistas
 
 
 
-        public void OnBotonBuscar()
+        public void OnBotonBuscar(int i)
         {
+            if (i == 1)
+                _vista.InformacionVisible2 = false;
+
             IList<Core.LogicaNegocio.Entidades.Cliente> listaCliente = new List<Core.LogicaNegocio.Entidades.Cliente>();
             listaCliente = BuscarListaClientes();
 
@@ -423,7 +426,7 @@ namespace Presentador.Cliente.Vistas
                 LimpiarFormulario();
                 _vista.PintarInformacion2(ManagerRecursos.GetString("mensajeClienteEliminado"), "confirmacion");
                 _vista.InformacionVisible2 = true;
-                OnBotonBuscar();
+                OnBotonBuscar(0);
             }
             catch (ModificarClienteBDExcepciones e)
             {

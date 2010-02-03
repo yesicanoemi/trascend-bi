@@ -266,7 +266,7 @@ public partial class Paginas_Clientes_ModificarClientes : PaginaBase, IModificar
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
     {
 
-        _presentador.OnBotonBuscar();
+        _presentador.OnBotonBuscar(1);
 
 
 
