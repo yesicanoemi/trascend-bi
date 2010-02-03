@@ -177,15 +177,13 @@ public partial class Paginas_Usuarios_EliminarUsuarios : PaginaBase, IEliminarUs
             }
 
         }
-        catch (NullReferenceException a)
+        catch (Exception a)
         {
-            //_presentador = new EliminarUsuarioPresenter(this);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
 
-            //_presentador.sesionTerminada();
-
-            Response.Redirect(paginaDefault);
-
-            //throw new PermisoException("No posee privilegios para ver esta pagina", a);
         }
 
     }

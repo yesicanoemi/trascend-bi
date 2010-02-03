@@ -84,23 +84,33 @@ public partial class Paginas_Reportes_ReportesEquipo3a : PaginaBase, IReporteGas
             
 
         bool permiso = false;
-
-        for (int i = 0; i < usuario.PermisoUsu.Count; i++)
+        try
         {
-            if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+            for (int i = 0; i < usuario.PermisoUsu.Count; i++)
             {
-                i = usuario.PermisoUsu.Count;
+                if (usuario.PermisoUsu[i].IdPermiso == idPermiso)
+                {
+                    i = usuario.PermisoUsu.Count;
 
-                _presentador = new ReporteGastoAnualPresenter(this);
+                    _presentador = new ReporteGastoAnualPresenter(this);
 
-                permiso = true;
+                    permiso = true;
 
+                }
+            }
+
+            if (permiso == false)
+            {
+                Response.Redirect(paginaSinPermiso);
             }
         }
-
-        if (permiso == false)
+        catch (Exception a)
         {
-            Response.Redirect(paginaSinPermiso);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
+
         }
 
     }
