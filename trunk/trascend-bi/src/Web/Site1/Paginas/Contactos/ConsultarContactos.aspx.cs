@@ -7,6 +7,8 @@ using Presentador.Contacto.ContactoInterface;
 using Presentador.Contacto.ContactoPresentador;
 using Microsoft.Practices.Web.UI.WebControls;
 using Presentador.Aplicacion;
+using Presentador.Base;
+using System.Net;
 
 public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsultarContacto
 {
@@ -248,7 +250,10 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
         }
         catch (Exception a)
         {
-            Response.Redirect(paginaDefault);
+            if (permiso == false)
+            { Response.Redirect(paginaSinPermiso); }
+            else
+            { Response.Redirect(paginaDefault); }
 
         }
 
@@ -256,7 +261,21 @@ public partial class Paginas_Contactos_ConsultarContactos : PaginaBase, IConsult
 
     protected void uxRbCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
     {
-        _presentador.CampoBusqueda_Selected();
+        try
+        {
+            _presentador.CampoBusqueda_Selected();
+        }
+        catch (WebException c)
+        {
+            Pintar("0001", "Error al Modificar Contacto", "Especificacion del Error", c.ToString());
+            DialogoVisible = true;
+        }
+        catch (Exception c)
+        {
+            Pintar("0001", "Error al Modificar Contacto", "Especificacion del Error", c.ToString());
+            DialogoVisible = true;
+        }
+
     }
 
     protected void uxBotonBuscar_Click(object sender, EventArgs e)
