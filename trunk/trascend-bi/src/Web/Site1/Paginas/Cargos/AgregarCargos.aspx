@@ -26,7 +26,7 @@
                         <p class="large">
                             <table style="width: 100%">
                                 <tr>
-                                    <td colspan="2" align="center"><asp:Label ID="uxLabelError" CssClass="campos" runat="server" Visible="False"></asp:Label></td>
+                                    <td colspan="2" align="center"><asp:Label ID="uxLabelError" runat="server" Visible="False"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
