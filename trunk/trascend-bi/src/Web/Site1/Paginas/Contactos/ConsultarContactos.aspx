@@ -131,7 +131,7 @@
                                         AutoGenerateColumns="False" DataKeyNames="IdContacto" AutoGenerateSelectButton="True"
                                         Width="70%" Font-Names="Verdana" Font-Size="Smaller" 
                                         OnSelectedIndexChanging="SelectContacto" 
-                                        onrowdatabound="uxGridView_RowDataBound"
+                                        onrowdatabound="uxGridView_RowDataBound" PageSize="10" OnPageIndexChanging="PageChangingConsultarContacto"
                                         style="left:250px; POSITION: absolute; TOP: 300px;">
                                         <RowStyle HorizontalAlign="Center" />  
                                         <Columns>
