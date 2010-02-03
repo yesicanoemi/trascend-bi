@@ -183,6 +183,8 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         lbPorcentajePagado.Text = "";
         lbPorcentajeRestante.Text = "";
         lbNombrePropuesta.Text = "";
+        btBotonIngresarFactura.Enabled = false;
+        btBotonIngresarFactura.Visible = false;
     }
 
     protected void btBotonIngresarFactura_Click(object sender, EventArgs e)
