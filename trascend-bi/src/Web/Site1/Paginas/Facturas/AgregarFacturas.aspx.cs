@@ -161,7 +161,6 @@ public partial class Paginas_Facturas_AgregarFacturas : PaginaBase,IAgregarFactu
         _presentador.CargarDatosPropuesta();
         if (PorcentajePagado.Text == "100")
         {
-            lbMensaje.Text = "";
             btBotonIngresarFactura.Enabled = false;
             btBotonIngresarFactura.Visible = false;
         }
