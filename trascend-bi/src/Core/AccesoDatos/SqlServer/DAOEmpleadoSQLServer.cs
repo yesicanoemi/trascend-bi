@@ -926,7 +926,7 @@ namespace Core.AccesoDatos.SqlServer
 
             arParms[0] = new SqlParameter("@cargo", SqlDbType.Int);
 
-            arParms[0].Value = emp.CargoEmpleado;
+            arParms[0].Value = emp.CargoEmpleado.Id;
 
             DbDataReader reader = SqlHelper.ExecuteReader
                 (_conexion.GetConnection(), "EliminarConsultarEmpleadoCargo", arParms);

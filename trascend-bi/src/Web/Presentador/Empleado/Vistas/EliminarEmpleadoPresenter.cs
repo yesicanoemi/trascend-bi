@@ -79,6 +79,8 @@ namespace Presentador.Empleado.Vistas
             #region Solicitud Servicio
             emp = new Core.LogicaNegocio.Entidades.Empleado();
 
+            Core.LogicaNegocio.Entidades.Cargo  cargoEmple = new Core.LogicaNegocio.Entidades.Cargo();
+
             if (_vista.opcion.SelectedIndex == 0)//cedula
             {
                 emp.Cedula = Int32.Parse(_vista.ParametroCedula.Text);
@@ -116,7 +118,10 @@ namespace Presentador.Empleado.Vistas
             }
             if (_vista.opcion.SelectedIndex == 2)//cargo
             {
-                emp.Cargo = _vista.drowListaCargo.SelectedItem.Text;
+                cargoEmple.Id = _vista.drowListaCargo.SelectedIndex + 1;
+
+                emp.CargoEmpleado = cargoEmple;
+ 
                 IList<Core.LogicaNegocio.Entidades.Empleado> listado = BuscarPorCargo(emp);
                 try
                 {
